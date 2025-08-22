@@ -1,0 +1,26 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+- caption: Logics and Their Software Tools
+  chapters:
+    - file: content/logic1
+    - file: content/logic2
+    - file: content/logic3
+    - file: content/logic4
+    - file: content/logic5
+    - file: content/logic6
+    - file: content/logic7
+    - file: content/logic8
+    - file: content/logic9
+    - file: content/logic10
+    - file: content/logic11
+
+- caption: Appendix
+  chapters:
+    - file: content/intro
+    - file: content/markdown
+    - file: content/notebooks
+    - file: content/markdown-notebooks
