@@ -6,6 +6,7 @@ At the end of the course, we will have written a draft of a [book](https://LEAP-
 
 **Quick Links**:
 - A preliminary outline is available [here](overview.md)
+- [Lecture by Lecture](lecture-by-lecture.md)
 - [Canvas](https://canvas.chapman.edu/courses/78014)
 
 **Resources on Discrete Mathematics**:
