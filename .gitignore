@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-local_settings
+local
 
 __pycache__/
 *.py[cod]
