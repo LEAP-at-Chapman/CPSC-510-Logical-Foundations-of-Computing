@@ -20,7 +20,7 @@ Then we have 11 weeks of teaching (gaps to be filled, resources to be added, etc
 |5| predicate logic 3 | SMT solving [(Z3)](https://github.com/Z3Prover/z3) | SMT solving | program verification, model checking | | |
 |6| modal logic | [^ml] | SCAN | computing first-order correspondents | [[1]](https://rkirsling.github.io/modallogic/), [[2]](https://www.irit.fr/Lotrec/) | |
 |7| temporal logic | [Spin](https://spinroot.com/spin/whatispin.html) | LTL model checking | distributed systems, Needham-Schroeder Key Exchange | | |
-|8| epistemic logic | [SMCDEL](https://w4eg.de/malvin/illc/smcdelweb/index.html) | | social networks | [[1]](https://vezwork.github.io/modallogic/?model=;AS?formula=_) | |
+|8| epistemic logic | [SMCDEL](https://w4eg.de/malvin/illc/smcdelweb/index.html) | | social networks | [[1]](https://vezwork.github.io/modallogic/?model=;AS?formula=_) | John |
 |9| Hoare logic | [Dafny](https://github.com/dafny-lang/dafny?tab=readme-ov-file#try-dafny) | | program verification | [[1]](https://dafny.org/dafny/OnlineTutorial/guide), [[2]](https://www.youtube.com/watch?v=oLS_y842fMc), | |
 |10| simply typed lambda calculus | Isabelle/HOL | | | | |
 |11| higher order logic | Isabelle/HOL | | | | |
