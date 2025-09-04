@@ -15,8 +15,8 @@ Then we have 11 weeks of teaching (gaps to be filled, resources to be added, etc
 | Week | Logic | Application (Tool) | Algorithm | Application^2 | Comments | Author |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |2| propositional logic | SAT solver [(minisat)](https://github.com/niklasso/minisat) | semantic tableaux | satisfiability, validity | | Jake |
-|3 | predicate logic 1 | Logic Programming [(SWI-Prolog)](https://www.swi-prolog.org/) | unification, resolution | search with backtracking, data base querying | [[1]](https://book.simply-logical.space/src/simply-logical.html), [[2]](https://swish.swi-prolog.org/) | Matthew |
-|4| predicate logic 2 | Constraint Solving [(MiniZinc)](https://www.minizinc.org/) | constraint solving | program synthesis, automated bug fixing | | Brandon |
+|3 | predicate logic 1 | Logic Programming [(SWI-Prolog)](https://www.swi-prolog.org/) | unification, resolution | search with backtracking, data base querying | [[1]](https://book.simply-logical.space/src/simply-logical.html), [[2]](https://swish.swi-prolog.org/) | Brandon |
+|4| predicate logic 2 | Constraint Solving [(MiniZinc)](https://www.minizinc.org/) | constraint solving | program synthesis, automated bug fixing | | Matthew |
 |5| predicate logic 3 | SMT solving [(Z3)](https://github.com/Z3Prover/z3) | SMT solving | program verification, model checking | | |
 |6| modal logic | [^ml] | SCAN | computing first-order correspondents | [[1]](https://rkirsling.github.io/modallogic/), [[2]](https://www.irit.fr/Lotrec/) | |
 |7| temporal logic | [Spin](https://spinroot.com/spin/whatispin.html) | LTL model checking | distributed systems, Needham-Schroeder Key Exchange | | Jack |
