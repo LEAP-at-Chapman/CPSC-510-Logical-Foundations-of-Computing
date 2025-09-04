@@ -14,7 +14,7 @@ Then we have 11 weeks of teaching (gaps to be filled, resources to be added, etc
 
 | Week | Logic | Application (Tool) | Algorithm | Application^2 | Comments | Author |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|2| propositional logic | SAT solver [(minisat)](https://github.com/niklasso/minisat) | semantic tableaux | satisfiability, validity | Jake |
+|2| propositional logic | SAT solver [(minisat)](https://github.com/niklasso/minisat) | semantic tableaux | satisfiability, validity | | Jake |
 |3 | predicate logic 1 | Logic Programming [(SWI-Prolog)](https://www.swi-prolog.org/) | unification, resolution | search with backtracking, data base querying | [[1]](https://book.simply-logical.space/src/simply-logical.html), [[2]](https://swish.swi-prolog.org/) | |
 |4| predicate logic 2 | Constraint Solving [(MiniZinc)](https://www.minizinc.org/) | constraint solving | program synthesis, automated bug fixing | | |
 |5| predicate logic 3 | SMT solving [(Z3)](https://github.com/Z3Prover/z3) | SMT solving | program verification, model checking | | |
