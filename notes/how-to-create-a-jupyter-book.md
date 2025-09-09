@@ -9,39 +9,15 @@ After creating this repo, cloning it (assume it is called `root` locally), I run
 
 ```
 pip install -U jupyter-book
-jupyter-book create book
-mv book/* root
-cd root
 jupyter-book build .
 ```
 
 The book can now be opened in a browser by opening the file `_build/html/index.html`. On a mac, simply run `open _build/html/index.html`
 
-Following [Math and equations](https://jupyterbook.org/en/stable/content/math.html#math-and-equations) add to `_config.yml`
-
-```
-parse:
-  myst_enable_extensions:
-    # don't forget to list any other extensions you want enabled,
-    # including those that are enabled by default!
-    - amsmath
-    - dollarmath
-```
-
-Adapt `_config.yml` and `_toc.yml`. Add your own files. Go through several iterations of 
-
 ```
 jupyter-book build .
 open _build/html/index.html
 ```
-
-Before committing and pushing to git, I downloaded a `.gitignore`:
-
-```
-curl https://raw.githubusercontent.com/executablebooks/jupyter-book/master/.gitignore > .gitignore
-```
-
-One question I have is how to adjust the size of screenshots and other images.
 
 ### Publish on the web
 
