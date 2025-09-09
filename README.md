@@ -8,7 +8,7 @@ At the end of the course, we will have written a draft of a [book](https://LEAP-
 - A preliminary outline is available [here](overview.md)
 - [Lecture by Lecture](lecture-by-lecture.md)
 - [Canvas](https://canvas.chapman.edu/courses/78014)
-- [How to create a jupyter book](notes/how-to-create-a-jupyter-book)
+- [How to create a jupyter book](notes/how-to-create-a-jupyter-book.md)
 
 **Resources on Discrete Mathematics**:
 - Dr Moshier's book (see Canvas)
