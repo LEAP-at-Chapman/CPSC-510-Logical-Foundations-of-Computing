@@ -10,5 +10,5 @@
 
 **L3.1:** [Satsolving with MiniSat](https://hackmd.io/@alexhkurz/BkZofOIcxl).
 
-**L3.2:** [Prolog](https://github.com/LEAP-at-Chapman/Intro-to-Logic-Programming?tab=readme-ov-file)
+**L3.2:** [Prolog](https://github.com/LEAP-at-Chapman/Intro-to-Logic-Programming?tab=readme-ov-file). We went over the first 7 pages of [these slides](https://github.com/LEAP-at-Chapman/Intro-to-Logic-Programming/blob/main/slides/LP1-introduction-to-logic-programming.pdf). Homework: Install SWI-Prolog as described [here](https://github.com/LEAP-at-Chapman/Intro-to-Logic-Programming?tab=readme-ov-file). Do the [eight queen's exercise](https://github.com/LEAP-at-Chapman/Intro-to-Logic-Programming/blob/main/eight-queens.md).
 
