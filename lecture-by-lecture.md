@@ -14,3 +14,5 @@
 
 **L4.1:** Logic Programming continued.
 
+**L4.2:** [Constraint Programming and MiniZinc](https://hackmd.io/@alexhkurz/HkNBH-Kogg).
+
