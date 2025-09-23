@@ -23,3 +23,9 @@ At the end of the course, we will have written a draft of a [book](https://LEAP-
 
 **Blogs, Videos, etc**:
 - Hillel Wayne: [Logical Duals in Software Engineering](https://buttondown.com/hillelwayne/archive/logical-duals-in-software-engineering/)
+
+**Building a Jupyter Book:
+
+- `jupyter-book build .` compiles the md to html
+- `ghp-import -n -p -f _build/html` pushes to git
+- [book](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/intro.html)
