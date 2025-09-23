@@ -1,1 +1,0 @@
-# Logic example file 1

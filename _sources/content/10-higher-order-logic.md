@@ -1,6 +1,6 @@
 # Chapter 11: Higher-Order Logic with Isabelle/HOL
 
-*Author: Spencer*
+*Author: Spencer Au*
 
 ## Introduction
 
