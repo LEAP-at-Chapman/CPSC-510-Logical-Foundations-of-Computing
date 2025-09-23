@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -57,8 +57,6 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -187,12 +185,8 @@
 <li class="toctree-l1"><a class="reference internal" href="content/7-temporal-logic.html">Logic example file 6</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/8-epistemic-logic.html">Chapter 8: Epistemic Logic with SMCDEL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="content/9-hoare-logic.html">Chapter 9: Hoare Logic with Dafny</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="content/markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content/markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/10-higher-order-logic.html">Chapter 11: Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="content/11-dependent-types.html">Chapter 12: Dependent Type Theory with Lean</a></li>
 </ul>
 
     </div>
@@ -404,12 +398,9 @@ document.write(`
 <p><a class="reference internal" href="content/7-temporal-logic.html"><span class="std std-doc">Chapter 7</span></a> examines temporal logic using the Spin model checker, focusing on LTL (Linear Temporal Logic) model checking and its applications in distributed systems and protocol verification, including the famous Needham-Schroeder Key Exchange protocol.</p>
 <p><a class="reference internal" href="content/8-epistemic-logic.html"><span class="std std-doc">Chapter 8</span></a> explores epistemic logic with SMCDEL, investigating how knowledge and belief can be formally modeled and applied to social network analysis.</p>
 <p><a class="reference internal" href="content/9-hoare-logic.html"><span class="std std-doc">Chapter 9</span></a> presents Hoare logic using Dafny, demonstrating how to formally specify and verify program correctness with preconditions, postconditions, and invariants.</p>
-<p><a class="reference internal" href="#content/10-simply-typed-lambda-calculus.md"><span class="xref myst">Chapter 10</span></a> introduces the simply typed lambda calculus and its implementation in Isabelle/HOL, bridging the gap between logic and computation.</p>
-<p><a class="reference internal" href="content/10-higher-order-logic.html"><span class="std std-doc">Chapter 11</span></a> extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.</p>
-<p><a class="reference internal" href="content/11-dependent-types.html"><span class="std std-doc">Chapter 12</span></a> presents dependent type theory with Lean, demonstrating how types can depend on values and enabling “proofs as programs” through the Curry-Howard correspondence.</p>
+<p><a class="reference internal" href="content/10-higher-order-logic.html"><span class="std std-doc">Chapter 10</span></a> extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.</p>
+<p><a class="reference internal" href="content/11-dependent-types.html"><span class="std std-doc">Chapter 11</span></a> presents dependent type theory with Lean, demonstrating how types can depend on values and enabling “proofs as programs” through the Curry-Howard correspondence.</p>
 <p>Each chapter follows a consistent structure: we first establish the mathematical foundations of the logic, then introduce the corresponding software tool, demonstrate key algorithms, and conclude with practical applications. This approach ensures that readers gain both theoretical understanding and hands-on experience with cutting-edge tools used in industry and research.</p>
-<div class="toctree-wrapper compound">
-</div>
 <div class="toctree-wrapper compound">
 </div>
 </section>
