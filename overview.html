@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; Logical Foundations of Computing</title>
+    <title>CPSC 510 - Logical Foundations of Computing (preliminary) &#8212; Logical Foundations of Computing</title>
   
   
   
@@ -57,12 +57,9 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'overview';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown Files" href="content/markdown.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,7 +142,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -170,8 +167,8 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Introduction
                 </a>
             </li>
@@ -252,7 +249,7 @@
       
       
       
-      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Foverview.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -282,7 +279,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/overview.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -353,7 +350,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -364,11 +363,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>CPSC 510 - Logical Foundations of Computing (preliminary)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-resources">Some Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-topics">Additional Topics</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -378,28 +386,173 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<p>This book project is being developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University.</p>
-<p>Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the classes emphasize more of the theory, this book puts the tools center stage.</p>
-<p>For an outline of the topics see <a class="reference internal" href="overview.html"><span class="std std-doc">the overview</span></a>.</p>
-<p><a class="reference internal" href="content/1-propositional-logic.html"><span class="std std-doc">Chapter 1</span></a> introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.</p>
-<p><a class="reference internal" href="content/2-satsolving.html"><span class="std std-doc">Chapter 2</span></a> explores SAT solving using MiniSat, focusing on semantic tableaux algorithms and their applications to satisfiability and validity checking.</p>
-<p><a class="reference internal" href="content/3-logic-programming.html"><span class="std std-doc">Chapter 3</span></a> introduces logic programming with SWI-Prolog, covering unification, resolution, and applications in search with backtracking and database querying.</p>
-<p><a class="reference internal" href="content/4-constraint-solving.html"><span class="std std-doc">Chapter 4</span></a> presents constraint solving using MiniZinc, demonstrating how constraint satisfaction problems can be solved and applied to program synthesis and automated bug fixing.</p>
-<p><a class="reference internal" href="content/5-smt-solving.html"><span class="std std-doc">Chapter 5</span></a> covers SMT (Satisfiability Modulo Theories) solving with Z3, extending beyond propositional logic to handle theories like arithmetic, arrays, and bit-vectors for program verification and model checking.</p>
-<p><a class="reference internal" href="content/6-modal-logic.html"><span class="std std-doc">Chapter 6</span></a> introduces modal logic and the SCAN algorithm for computing first-order correspondents, exploring the mathematical foundations of modalities.</p>
-<p><a class="reference internal" href="content/7-temporal-logic.html"><span class="std std-doc">Chapter 7</span></a> examines temporal logic using the Spin model checker, focusing on LTL (Linear Temporal Logic) model checking and its applications in distributed systems and protocol verification, including the famous Needham-Schroeder Key Exchange protocol.</p>
-<p><a class="reference internal" href="content/8-epistemic-logic.html"><span class="std std-doc">Chapter 8</span></a> explores epistemic logic with SMCDEL, investigating how knowledge and belief can be formally modeled and applied to social network analysis.</p>
-<p><a class="reference internal" href="content/9-hoare-logic.html"><span class="std std-doc">Chapter 9</span></a> presents Hoare logic using Dafny, demonstrating how to formally specify and verify program correctness with preconditions, postconditions, and invariants.</p>
-<p><a class="reference internal" href="#content/10-simply-typed-lambda-calculus.md"><span class="xref myst">Chapter 10</span></a> introduces the simply typed lambda calculus and its implementation in Isabelle/HOL, bridging the gap between logic and computation.</p>
-<p><a class="reference internal" href="content/10-higher-order-logic.html"><span class="std std-doc">Chapter 11</span></a> extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.</p>
-<p><a class="reference internal" href="content/11-dependent-types.html"><span class="std std-doc">Chapter 12</span></a> presents dependent type theory with Lean, demonstrating how types can depend on values and enabling “proofs as programs” through the Curry-Howard correspondence.</p>
-<p>Each chapter follows a consistent structure: we first establish the mathematical foundations of the logic, then introduce the corresponding software tool, demonstrate key algorithms, and conclude with practical applications. This approach ensures that readers gain both theoretical understanding and hands-on experience with cutting-edge tools used in industry and research.</p>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="cpsc-510-logical-foundations-of-computing-preliminary">
+<h1>CPSC 510 - Logical Foundations of Computing (preliminary)<a class="headerlink" href="#cpsc-510-logical-foundations-of-computing-preliminary" title="Link to this heading">#</a></h1>
+<p>First sketch of content and deliverables, details will change.</p>
+<p>We start with an overview of the course in the first week. Setting the scene.</p>
+<p>Important:</p>
+<ul class="simple">
+<li><p>Use LLMs for research, but not for writing.</p></li>
+<li><p>Do not copy LLM-output into a text intended to be read by humans.</p></li>
+<li><p>When you use LLMs to generate code, make sure that you understand the code.</p></li>
+<li><p>In summary: Use LLMs for learning. Write to show what you learnt.</p></li>
+</ul>
+<p>Then we have 11 weeks of teaching (gaps to be filled, resources to be added, etc):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Week</p></th>
+<th class="head text-center"><p>Logic</p></th>
+<th class="head text-center"><p>Application (Tool)</p></th>
+<th class="head text-center"><p>Algorithm</p></th>
+<th class="head text-center"><p>Application^2</p></th>
+<th class="head text-center"><p>Comments</p></th>
+<th class="head text-center"><p>Author</p></th>
+<th class="head text-center"><p>My Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>2</p></td>
+<td class="text-center"><p>propositional logic</p></td>
+<td class="text-center"><p>SAT solver <a class="reference external" href="https://github.com/niklasso/minisat">(minisat)</a></p></td>
+<td class="text-center"><p>semantic tableaux</p></td>
+<td class="text-center"><p>satisfiability, validity</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Jake</p></td>
+<td class="text-center"><p><a class="reference external" href="https://hackmd.io/&#64;alexhkurz/BkZofOIcxl">1</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>3</p></td>
+<td class="text-center"><p>predicate logic 1</p></td>
+<td class="text-center"><p>Logic Programming <a class="reference external" href="https://www.swi-prolog.org/">(SWI-Prolog)</a></p></td>
+<td class="text-center"><p>unification, resolution</p></td>
+<td class="text-center"><p>search with backtracking, data base querying</p></td>
+<td class="text-center"><p><a class="reference external" href="https://book.simply-logical.space/src/simply-logical.html">[1]</a>, <a class="reference external" href="https://swish.swi-prolog.org/">[2]</a></p></td>
+<td class="text-center"><p>Brandon</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/LEAP-at-Chapman/Intro-to-Logic-Programming">1</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>4</p></td>
+<td class="text-center"><p>predicate logic 2</p></td>
+<td class="text-center"><p>Constraint Solving <a class="reference external" href="https://www.minizinc.org/">(MiniZinc)</a></p></td>
+<td class="text-center"><p>constraint solving</p></td>
+<td class="text-center"><p>program synthesis, automated bug fixing</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Matthew</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>5</p></td>
+<td class="text-center"><p>predicate logic 3</p></td>
+<td class="text-center"><p>SMT solving <a class="reference external" href="https://github.com/Z3Prover/z3">(Z3)</a></p></td>
+<td class="text-center"><p>SMT solving</p></td>
+<td class="text-center"><p>program verification, model checking</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Wayne</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>6</p></td>
+<td class="text-center"><p>modal logic</p></td>
+<td class="text-center"><p><a class="footnote-reference brackets" href="#ml" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
+<td class="text-center"><p>SCAN</p></td>
+<td class="text-center"><p>computing first-order correspondents</p></td>
+<td class="text-center"><p><a class="reference external" href="https://rkirsling.github.io/modallogic/">[1]</a>, <a class="reference external" href="https://www.irit.fr/Lotrec/">[2]</a></p></td>
+<td class="text-center"><p>Alexander</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>7</p></td>
+<td class="text-center"><p>temporal logic</p></td>
+<td class="text-center"><p><a class="reference external" href="https://spinroot.com/spin/whatispin.html">Spin</a></p></td>
+<td class="text-center"><p>LTL model checking</p></td>
+<td class="text-center"><p>distributed systems, Needham-Schroeder Key Exchange</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Jack</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>8</p></td>
+<td class="text-center"><p>epistemic logic</p></td>
+<td class="text-center"><p><a class="reference external" href="https://w4eg.de/malvin/illc/smcdelweb/index.html">SMCDEL</a></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>social networks</p></td>
+<td class="text-center"><p><a class="reference external" href="https://vezwork.github.io/modallogic/?model=;AS?formula=_">[1]</a></p></td>
+<td class="text-center"><p>John</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>9</p></td>
+<td class="text-center"><p>Hoare logic</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/dafny-lang/dafny?tab=readme-ov-file#try-dafny">Dafny</a></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>program verification</p></td>
+<td class="text-center"><p><a class="reference external" href="https://dafny.org/dafny/OnlineTutorial/guide">[1]</a>, <a class="reference external" href="https://www.youtube.com/watch?v=oLS_y842fMc">[2]</a>,</p></td>
+<td class="text-center"><p>Alex</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>10</p></td>
+<td class="text-center"><p>higher order logic</p></td>
+<td class="text-center"><p><a class="reference external" href="https://isabelle.in.tum.de/">Isabelle/HOL</a></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p><a class="reference external" href="http://www.concrete-semantics.org/">Concrete Semantics</a></p></td>
+<td class="text-center"><p>Spencer</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>11</p></td>
+<td class="text-center"><p>dependent type theory</p></td>
+<td class="text-center"><p><a class="reference external" href="https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic">Lean</a></p></td>
+<td class="text-center"><p>type inference</p></td>
+<td class="text-center"><p>proofs as programs</p></td>
+<td class="text-center"><p></p></td>
+<td class="text-center"><p>Khoa</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="toctree-wrapper compound">
-</div>
+<p>If we do not change the schedule, we finish with two weeks of taking stock. Tying things together. Each student writes a research proposal on a topic related to logic.</p>
+<p>Methodology:</p>
+<ul class="simple">
+<li><p>The book:</p>
+<ul>
+<li><p>The intention is that every row in the table corresponds to a chapter in the book we are going to write. Every student will be responsible for one chapter. (It may be possible to divide one larger chapter among two students.)</p></li>
+<li><p>In the first week, we will devide up the topics. For their topic, each student starts by downloading their tool and following an available tutorial. Students write a how-to file with installation instructions and a short account of a small but paradigmatic case study performed with the tool.</p></li>
+</ul>
+</li>
+<li><p>Week by week. It may be a good idea to start each logical week on a Thursday:</p>
+<ul>
+<li><p>The first class of the week (Thursday), I will present the background theory.</p></li>
+<li><p>As a homework, students install the tool until Tuesday and work through a small example.</p></li>
+<li><p>The second class of the week (Tuesday), we discuss the homework and deepen our understanding.</p></li>
+</ul>
+</li>
+</ul>
+<section id="some-resources">
+<h2>Some Resources<a class="headerlink" href="#some-resources" title="Link to this heading">#</a></h2>
+<p>So far no effort has been made to create a systematic list. Thanks to Andrea De Domenico, Malvin Gattinger, Haitian Wang for references.</p>
+<p><a class="reference external" href="https://www.cs.man.ac.uk/~schmidt/tools/">Renate Schmidt’s list</a>, <a class="reference external" href="https://scholar.google.nl/scholar?q=DEMO+(Dynamic+Epistemic+MOdeling)&amp;amp;hl=en&amp;amp;as_sdt=0&amp;amp;as_vis=1&amp;amp;oi=scholart">&#64;Scholar: DEMO (Dynamic Epistemic MOdeling)</a>, <a class="reference external" href="https://github.com/jrclogic/SMCDEL">SMCDEL</a>, <a class="reference external" href="https://sail.doc.ic.ac.uk/software/mcmas/">MCMAS model checker</a>, …</p>
+<p>… tbc …</p>
+</section>
+<section id="additional-topics">
+<h2>Additional Topics<a class="headerlink" href="#additional-topics" title="Link to this heading">#</a></h2>
+<p>Criteria for the choice of topics were the following.</p>
+<ul class="simple">
+<li><p>Are there mature software tools with a large ecosystem and significant industrial applications available?</p></li>
+<li><p>How well does a selected tool illustrates an important logic that has been widely influential in computer science and beyond?</p></li>
+</ul>
+<p>Beyond that more practical constraints such as the knowledge and taste of the lecturer of course also played a role.</p>
+<p>Important logics that have not been introduced (tbc):</p>
+<ul class="simple">
+<li><p>Linear Logic</p></li>
+<li><p>Quantum Logic</p></li>
+<li><p>Dynamic Logic</p></li>
+<li><p>Description Logics</p></li>
+<li><p>Probabilistic Logics</p></li>
+<li><p>HDC/VSA</p></li>
+<li><p>…</p></li>
+</ul>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="ml" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Modal logic has too many applications to pick just one but see temporal logic and epistemic logic below for two examples. There are algorithms to compute corespondents. For example, SCAN has implementations that are publicly available <a class="reference external" href="https://resources.mpi-inf.mpg.de/departments/rg1/software/scan/basic_form.html">here</a> and <a class="reference external" href="https://resources.mpi-inf.mpg.de/departments/rg1/software/scan/corr_form.html">here</a> but they were not developed into advanced software tools. So this item will be the only one that is not primarily software tool based. I include it because of the central importance of modal logic in the landscape of computational logics.</p>
+</aside>
+</aside>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -432,21 +585,28 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="content/markdown.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-resources">Some Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-topics">Additional Topics</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
