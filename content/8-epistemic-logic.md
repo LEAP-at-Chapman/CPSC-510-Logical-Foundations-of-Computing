@@ -21,4 +21,6 @@ This chapter explores epistemic logic using SMCDEL (Symbolic Model Checker for D
 
 ## Exercises
 
+"Test changes to prove access"
+
 *To be added*
