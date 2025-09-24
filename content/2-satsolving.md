@@ -1,6 +1,10 @@
 # SAT solving with MiniSat
 
-## Theory: SAT
+## Idea
+
+...
+
+## Basic Theory: SAT
 
 Propositional Logic. Definition of satisfiability. 
 
