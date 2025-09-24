@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/2-satsolving';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -177,11 +179,12 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">SAT solving with MiniSat</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving with Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Logic example file 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Hoare Logic with Dafny</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">Higher-Order Logic with Isabelle/HOL</a></li>
@@ -365,7 +368,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -381,6 +386,30 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">SAT solving with MiniSat</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-sat-and-minisat">Introduction to SAT and MiniSat</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-sat">Theory: SAT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-minisat">Tool: MiniSat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sat-solvers">SAT solvers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">The Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">Resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">Davis–Putnam algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnamlogemannloveland-dpll-algorithm">Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning">Conflict-driven Clause Learning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -392,7 +421,184 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sat-solving-with-minisat">
 <h1>SAT solving with MiniSat<a class="headerlink" href="#sat-solving-with-minisat" title="Link to this heading">#</a></h1>
-<p>This file will contain Chapter 2.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction-to-sat-and-minisat">
+<h1>Introduction to SAT and MiniSat<a class="headerlink" href="#introduction-to-sat-and-minisat" title="Link to this heading">#</a></h1>
+<section id="theory-sat">
+<h2>Theory: SAT<a class="headerlink" href="#theory-sat" title="Link to this heading">#</a></h2>
+<p>Propositional Logic. Definition of satisfiability.</p>
+<p>SAT takes a formula and finds a satifying valuation (model).</p>
+<p>A SAT specification is written in conjunctive normal form.</p>
+<p><strong>Theorem</strong>: Every formula in propositional logic has a conjunctive normal form.</p>
+<p><em>Proof</em>: (Sketch) The conjunctive normal form can be computed by the following rewrite rules:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+a\to b &amp;= \neg a\vee b &amp; \text{eliminate } \to\\
+\neg(a\wedge b) &amp;= \neg a \vee \neg b &amp; \text{move } \neg \text{ inside} \\
+\neg(a\vee b) &amp;= \neg a\wedge \neg b&amp; \text{move } \neg \text{ inside}\\
+\neg\neg a &amp;= a &amp; \text{eliminate } \neg\neg\\
+a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \text{ outside} \\
+(b\wedge c)\vee a &amp;= (b\vee a)\wedge (c\vee a) &amp; \text{move } \wedge \text{ outside} \\
+\end{align*}\]</div>
+<p>If no rule can be applied anymore, then the formula is in a conjunction <span class="math notranslate nohighlight">\((a_{11}\vee\ldots\vee a_{1n_1})\wedge \ldots \wedge (a_{k1}\vee \ldots \vee a_{kn_k})\)</span> of so-called clauses where each <span class="math notranslate nohighlight">\(a_{ij}\)</span> is either a propositional variable or the negation of a propositional variable.</p>
+<p><strong>Exercise:</strong> Encode the following 2x2 Sudoku in conjunctive normal form.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[1][?]
+[?][?]
+</pre></div>
+</div>
+<p><strong>Exercise:</strong> Estimate the number of variables and clauses you need to encode a 9x9 Sudoku.</p>
+</section>
+<section id="tool-minisat">
+<h2>Tool: MiniSat<a class="headerlink" href="#tool-minisat" title="Link to this heading">#</a></h2>
+<p>Here is what I did for installation on MacOs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">minisat</span>
+<span class="n">echo</span> <span class="s2">&quot;p cnf 2 2</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">0</span><span class="s2">&quot; | minisat</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">minisat</span></code>.</p>
+<p>Explain the output, as far as you can.</p>
+<p><strong>Activity:</strong> Save the file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="n">cnf</span> <span class="mi">8</span> <span class="mi">16</span>
+<span class="n">c</span> <span class="n">Each</span> <span class="n">cell</span> <span class="n">has</span> <span class="n">exactly</span> <span class="n">one</span> <span class="n">value</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">0</span>
+<span class="mi">3</span> <span class="mi">4</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">3</span> <span class="o">-</span><span class="mi">4</span> <span class="mi">0</span>
+<span class="mi">5</span> <span class="mi">6</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">5</span> <span class="o">-</span><span class="mi">6</span> <span class="mi">0</span>
+<span class="mi">7</span> <span class="mi">8</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">7</span> <span class="o">-</span><span class="mi">8</span> <span class="mi">0</span>
+<span class="n">c</span> <span class="n">Each</span> <span class="n">row</span> <span class="n">contains</span> <span class="n">both</span> <span class="n">values</span>
+<span class="mi">1</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">2</span> <span class="mi">4</span> <span class="mi">0</span>
+<span class="mi">5</span> <span class="mi">7</span> <span class="mi">0</span>
+<span class="mi">6</span> <span class="mi">8</span> <span class="mi">0</span>
+<span class="n">c</span> <span class="n">Each</span> <span class="n">column</span> <span class="n">contains</span> <span class="n">both</span> <span class="n">values</span>
+<span class="mi">1</span> <span class="mi">5</span> <span class="mi">0</span>
+<span class="mi">2</span> <span class="mi">6</span> <span class="mi">0</span>
+<span class="mi">3</span> <span class="mi">7</span> <span class="mi">0</span>
+<span class="mi">4</span> <span class="mi">8</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>as <code class="docutils literal notranslate"><span class="pre">sudoku_2x2.cnf</span></code>. Call</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minisat</span> <span class="n">sudoku2x2</span><span class="o">.</span><span class="n">cnf</span> <span class="n">solution</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p><strong>Exercise:</strong> Either reconstruct the encoding in <code class="docutils literal notranslate"><span class="pre">sudoku_2x2.cnf</span></code> and explain the solution. Or create your own encoding of <code class="docutils literal notranslate"><span class="pre">sudoku_2x2.cnf</span></code>, run it, and interpret the solution.</p>
+<p><strong>Homework:</strong> Consider a Boolean circuit: (A ∧ B) ∨ (C ∧ ¬D) = True with the additional constraint that exactly 2 of {A,B,C,D} are true. Write this as a <code class="docutils literal notranslate"><span class="pre">cnf</span></code> specification and solve it with MiniSat. Explain your encoding and the solution in detail.</p>
+<p>How can we one solve a regular Sudoku with MiniSat?</p>
+<hr class="docutils" />
+<p>For an answer see <a class="reference external" href="https://users.aalto.fi/~tjunttil/2020-DP-AUT/notes-sat/solving.html#solving-problems-with-cnf-sat-solvers-the-sudoku-example">Solving problems with CNF SAT solvers: The Sudoku example</a>.</p>
+</section>
+<hr class="docutils" />
+<section id="sat-solvers">
+<h2>SAT solvers<a class="headerlink" href="#sat-solvers" title="Link to this heading">#</a></h2>
+<p>Many companies such as Intel have their own SAT solvers, but the cutting edge of SAT-solvers are widely considered to the open source solvers such as:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://minisat.se/">MiniSat</a> - <a class="reference external" href="https://github.com/niklasso/minisat">&#64;Github</a> The reference implementation</p></li>
+<li><p><a class="reference external" href="https://www.labri.fr/perso/lsimon/glucose/">Glucose</a>, <a class="reference external" href="https://github.com/audemard/glucose">&#64;GitHub</a> … <a class="reference external" href="http://fmv.jku.at/cadical/">CaDiCaL</a>, <a class="reference external" href="https://github.com/arminbiere/cadical">&#64;GitHub</a>, <a class="reference external" href="http://fmv.jku.at/lingeling/">Lingeling</a>, <a class="reference external" href="https://github.com/arminbiere/lingeling">&#64;GitHub</a> … <a class="reference external" href="https://www.msoos.org/cryptominisat5/">CryptoMiniSat</a>, <a class="reference external" href="https://github.com/msoos/cryptominisat">&#64;GitHub</a> are some award winning SAT solvers.</p></li>
+<li><p>Intel SAT Solver, <a class="reference external" href="https://github.com/alexander-nadel/intel_sat_solver">&#64;Github</a>, <a class="reference external" href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.SAT.2022.8">pdf</a></p></li>
+<li><p><a class="reference external" href="https://microsoft.github.io/z3guide/">Z3</a>, <a class="reference external" href="https://github.com/Z3Prover/z3">&#64;GitHub</a> is Microsoft’s SMT solver with powerful SAT core, <a class="reference external" href="https://theory.stanford.edu/~nikolaj/programmingz3.html">Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://potassco.org/clasp/">Clasp</a>, <a class="reference external" href="https://github.com/potassco/clasp">&#64;GitHub</a>, Answer Set Programming solver</p></li>
+</ul>
+<p>The annual <a class="reference external" href="http://www.satcompetition.org/">SAT Competition</a> tracks the current best performers.</p>
+</section>
+<section id="the-algorithm">
+<h2>The Algorithm<a class="headerlink" href="#the-algorithm" title="Link to this heading">#</a></h2>
+<section id="resolution">
+<h3>Resolution<a class="headerlink" href="#resolution" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Resolution_(logic)">Resolution</a> has only one inference rule:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{p_1\vee\ldots\vee p_m\vee a\quad\quad\quad\quad q_1\vee\ldots\vee q_n\vee \neg a }{p_1\vee\ldots\vee p_m\vee q_1\vee\ldots\vee q_n}
+\]</div>
+</section>
+<section id="davisputnam-algorithm">
+<h3>Davis–Putnam algorithm<a class="headerlink" href="#davisputnam-algorithm" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Davis%E2%80%93Putnam_algorithm">Davis–Putnam algorithm</a> uses resolution but has some additional rules to guarantee termination.</p>
+<ol class="arabic simple">
+<li><p>Select a variable</p></li>
+<li><p>If the variable appears only positively, replace it by true and remove the clause.</p></li>
+<li><p>If the variable appears only negatively, replace it by false and remove the clause.</p></li>
+<li><p>If it appears positively and negatively, use resolution to eliminate all occurrences.</p></li>
+<li><p>Repeat until all variables are eliminated.</p></li>
+<li><p>If the empty clause is derived, then UNSATISFIABLE, else SATISFIABLE.</p></li>
+</ol>
+</section>
+<section id="davisputnamlogemannloveland-dpll-algorithm">
+<h3>Davis–Putnam–Logemann–Loveland (DPLL) algorithm<a class="headerlink" href="#davisputnamlogemannloveland-dpll-algorithm" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/DPLL_algorithm">Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></p>
+<p>DP can generate many new clauses. For example in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(a ∨ x₁) ∧ (a ∨ x₂) ∧ (a ∨ x₃) ∧ (a ∨ x₄) ∧
+(¬a ∨ y₁) ∧ (¬a ∨ y₂) ∧ (¬a ∨ y₃) ∧ (¬a ∨ y₄)
+</pre></div>
+</div>
+<p>DP resolves every clause with ‘a’ against every clause with <code class="docutils literal notranslate"><span class="pre">¬a</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(a ∨ x₁) + (¬a ∨ y₁) → (x₁ ∨ y₁)
+(a ∨ x₁) + (¬a ∨ y₂) → (x₁ ∨ y₂)  
+(a ∨ x₁) + (¬a ∨ y₃) → (x₁ ∨ y₃)
+(a ∨ x₁) + (¬a ∨ y₄) → (x₁ ∨ y₄)
+
+(a ∨ x₂) + (¬a ∨ y₁) → (x₂ ∨ y₁)
+(a ∨ x₂) + (¬a ∨ y₂) → (x₂ ∨ y₂)
+...
+(a ∨ x₄) + (¬a ∨ y₄) → (x₄ ∨ y₄)
+</pre></div>
+</div>
+<p>resulting in 4x4=16 clauses.</p>
+<p>DPLL instead intantiates variables and uses backtracking:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Try a = True:
+- All (a ∨ xᵢ) become satisfied (removed)
+- All (¬a ∨ yᵢ) become (yᵢ)
+</pre></div>
+</div>
+<p>Both DP and DPLL have exponential time complexity in the worst case. But in practice DPLL is much better. One difference is that due to backtracking DPLL is linear in memory.</p>
+<p><strong>Example Formula:</strong> <code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">∨</span> <span class="pre">b</span> <span class="pre">∨</span> <span class="pre">c)</span> <span class="pre">∧</span> <span class="pre">(¬a</span> <span class="pre">∨</span> <span class="pre">d)</span> <span class="pre">∧</span> <span class="pre">(¬b</span> <span class="pre">∨</span> <span class="pre">d)</span> <span class="pre">∧</span> <span class="pre">(¬c</span> <span class="pre">∨</span> <span class="pre">d)</span> <span class="pre">∧</span> <span class="pre">(¬d)</span></code></p>
+</section>
+<section id="conflict-driven-clause-learning">
+<h3>Conflict-driven Clause Learning<a class="headerlink" href="#conflict-driven-clause-learning" title="Link to this heading">#</a></h3>
+<p>… tbc … see the forthcoming book chapter …</p>
+</section>
+</section>
+<section id="applications-in-industry">
+<h2>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
+<p>Typical examples are hardware verification (Intel, AMD, Apple, etc) and dependency resolution in software package installers (Debian Linux).</p>
+<p>More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language.</p>
+<p>… tbc … eg there could be more to say about SAT-solving at Intel and other hardware companies … and then about applications of SAT to software engineering …</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Davis, Martin; Putnam, Hilary (1960). <a class="reference external" href="https://doi.org/10.1145%2F321033.321034">A Computing Procedure for Quantification Theory</a>. Journal of the ACM. 7 (3): 201–215.</p>
+<ul>
+<li><p>The original resolution based algorithm that also gave rise to Prolog later, via (Robinson 1965).</p></li>
+</ul>
+</li>
+<li><p>Davis, Martin; Logemann, George; Loveland, Donald (1962). <a class="reference external" href="http://portal.acm.org/citation.cfm?doid=368273.368557">A Machine Program for Theorem Proving</a>. Communications of the ACM. 5 (7): 394–397.</p>
+<ul>
+<li><p>DPLL, also sometimes called DP Backtrack Search.</p></li>
+</ul>
+</li>
+<li><p>Stallman, R. M., &amp; Sussman, G. J. (1977). Forward reasoning and dependency-directed backtracking in a system for computer-aided circuit analysis. Artificial intelligence, 9(2), 135-196. <a class="reference external" href="https://apps.dtic.mil/sti/tr/pdf/ADA035719.pdf">pdf</a></p>
+<ul>
+<li><p>Widely credited for its <strong>dependency-directed backtracking</strong>.</p></li>
+</ul>
+</li>
+<li><p>Marques-Silva, J. P., &amp; Sakallah, K. A. (1999). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=GRASP%3A+A+search+algorithm+for+propositional+satisfiability&amp;amp;btnG=">GRASP: A search algorithm for propositional satisfiability</a>. IEEE Transactions on Computers, 48(5), 506-521. <a class="reference external" href="https://ieeexplore.ieee.org/iel5/12/16670/00769433.pdf">pdf</a></p>
+<ul>
+<li><p>Introduces conflict-directed backtracking, an application of dependency-directed backtracking to SAT, and conflict analysis. Later this will be called <strong>conflict-driven clause learning</strong>.</p></li>
+</ul>
+</li>
+<li><p>Moskewicz, M. W., Madigan, C. F., Zhao, Y., Zhang, L., &amp; Malik, S. (2001, June). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Chaff%3A+Engineering+an+efficient+SAT+solver&amp;amp;btnG=">Chaff: Engineering an efficient SAT solver</a>. In Proceedings of the 38th annual Design Automation Conference (pp. 530-535).</p>
+<ul>
+<li><p>Chaff is widely considered the breakthrough SAT implementation. Section 1.2 also contains a good account of DPLL.</p></li>
+</ul>
+</li>
+<li><p>These papers should give you a good background to understand the more recent articles on SAT solvers.</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -449,6 +655,37 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">SAT solving with MiniSat</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-sat-and-minisat">Introduction to SAT and MiniSat</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-sat">Theory: SAT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-minisat">Tool: MiniSat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sat-solvers">SAT solvers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">The Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">Resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">Davis–Putnam algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnamlogemannloveland-dpll-algorithm">Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning">Conflict-driven Clause Learning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
