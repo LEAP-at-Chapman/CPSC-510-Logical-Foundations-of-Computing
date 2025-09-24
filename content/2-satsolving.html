@@ -179,7 +179,6 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">SAT solving with MiniSat</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving with Z3</a></li>
@@ -391,10 +390,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">SAT solving with MiniSat</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-sat-and-minisat">Introduction to SAT and MiniSat</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-sat">Theory: SAT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory-sat">Basic Theory: SAT</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-minisat">Tool: MiniSat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples">Introductory Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sat-solvers">SAT solvers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">The Algorithm</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">Resolution</a></li>
@@ -404,11 +403,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">Case Studies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -421,11 +418,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sat-solving-with-minisat">
 <h1>SAT solving with MiniSat<a class="headerlink" href="#sat-solving-with-minisat" title="Link to this heading">#</a></h1>
+<section id="idea">
+<h2>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
+<p>…</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="introduction-to-sat-and-minisat">
-<h1>Introduction to SAT and MiniSat<a class="headerlink" href="#introduction-to-sat-and-minisat" title="Link to this heading">#</a></h1>
-<section id="theory-sat">
-<h2>Theory: SAT<a class="headerlink" href="#theory-sat" title="Link to this heading">#</a></h2>
+<section id="basic-theory-sat">
+<h2>Basic Theory: SAT<a class="headerlink" href="#basic-theory-sat" title="Link to this heading">#</a></h2>
 <p>Propositional Logic. Definition of satisfiability.</p>
 <p>SAT takes a formula and finds a satifying valuation (model).</p>
 <p>A SAT specification is written in conjunctive normal form.</p>
@@ -488,11 +486,12 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 </div>
 <p><strong>Exercise:</strong> Either reconstruct the encoding in <code class="docutils literal notranslate"><span class="pre">sudoku_2x2.cnf</span></code> and explain the solution. Or create your own encoding of <code class="docutils literal notranslate"><span class="pre">sudoku_2x2.cnf</span></code>, run it, and interpret the solution.</p>
 <p><strong>Homework:</strong> Consider a Boolean circuit: (A ∧ B) ∨ (C ∧ ¬D) = True with the additional constraint that exactly 2 of {A,B,C,D} are true. Write this as a <code class="docutils literal notranslate"><span class="pre">cnf</span></code> specification and solve it with MiniSat. Explain your encoding and the solution in detail.</p>
+</section>
+<section id="introductory-examples">
+<h2>Introductory Examples<a class="headerlink" href="#introductory-examples" title="Link to this heading">#</a></h2>
 <p>How can we one solve a regular Sudoku with MiniSat?</p>
-<hr class="docutils" />
 <p>For an answer see <a class="reference external" href="https://users.aalto.fi/~tjunttil/2020-DP-AUT/notes-sat/solving.html#solving-problems-with-cnf-sat-solvers-the-sudoku-example">Solving problems with CNF SAT solvers: The Sudoku example</a>.</p>
 </section>
-<hr class="docutils" />
 <section id="sat-solvers">
 <h2>SAT solvers<a class="headerlink" href="#sat-solvers" title="Link to this heading">#</a></h2>
 <p>Many companies such as Intel have their own SAT solvers, but the cutting edge of SAT-solvers are widely considered to the open source solvers such as:</p>
@@ -567,6 +566,10 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <p>Typical examples are hardware verification (Intel, AMD, Apple, etc) and dependency resolution in software package installers (Debian Linux).</p>
 <p>More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language.</p>
 <p>… tbc … eg there could be more to say about SAT-solving at Intel and other hardware companies … and then about applications of SAT to software engineering …</p>
+</section>
+<section id="case-studies">
+<h2>Case Studies<a class="headerlink" href="#case-studies" title="Link to this heading">#</a></h2>
+<p>…</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
@@ -665,10 +668,10 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">SAT solving with MiniSat</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-sat-and-minisat">Introduction to SAT and MiniSat</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-sat">Theory: SAT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory-sat">Basic Theory: SAT</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-minisat">Tool: MiniSat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples">Introductory Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sat-solvers">SAT solvers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">The Algorithm</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">Resolution</a></li>
@@ -678,11 +681,9 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">Case Studies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
