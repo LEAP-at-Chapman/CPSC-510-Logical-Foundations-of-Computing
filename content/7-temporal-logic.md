@@ -1,4 +1,4 @@
-# Logic example file 7
+# Temporal Logic with Spin
 
 This file will contain Chapter 7
 
