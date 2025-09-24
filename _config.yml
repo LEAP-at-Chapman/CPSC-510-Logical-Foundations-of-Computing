@@ -16,7 +16,14 @@ latex:
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
-  - references.bib
+  - content/references.bib
+
+# Exclude files from being processed
+exclude_patterns:
+  - "README.md"
+  - "lecture-by-lecture.md"
+  - "local/**"
+  - "overview.md"
 
 # Information about where the book exists on the web
 repository:
