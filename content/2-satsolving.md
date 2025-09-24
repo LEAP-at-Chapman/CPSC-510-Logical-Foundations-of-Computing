@@ -1,3 +1,3 @@
-# Logic example file 2
+# SAT solving with MiniSat
 
 This file will contain Chapter 2.

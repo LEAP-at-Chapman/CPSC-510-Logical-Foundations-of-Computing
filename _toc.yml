@@ -20,6 +20,7 @@ parts:
 
 - caption: Appendix
   chapters:
+    - file: content/how-to-create-a-jupyter-book
     - file: content/markdown
     - file: content/notebooks
     - file: content/markdown-notebooks

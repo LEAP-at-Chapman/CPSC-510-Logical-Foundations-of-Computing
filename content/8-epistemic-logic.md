@@ -1,4 +1,4 @@
-# Chapter 8: Epistemic Logic with SMCDEL
+# Epistemic Logic with SMCDEL
 
 *Author: John*
 
