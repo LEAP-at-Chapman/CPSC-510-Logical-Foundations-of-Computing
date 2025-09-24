@@ -76,13 +76,12 @@ minisat sudoku2x2.cnf solution.txt
 
 **Homework:** Consider a Boolean circuit: (A ∧ B) ∨ (C ∧ ¬D) = True with the additional constraint that exactly 2 of {A,B,C,D} are true. Write this as a `cnf` specification and solve it with MiniSat. Explain your encoding and the solution in detail.
 
-How can we one solve a regular Sudoku with MiniSat?
+## Introductory Examples
 
----
+How can we one solve a regular Sudoku with MiniSat?
 
 For an answer see [Solving problems with CNF SAT solvers: The Sudoku example](https://users.aalto.fi/~tjunttil/2020-DP-AUT/notes-sat/solving.html#solving-problems-with-cnf-sat-solvers-the-sudoku-example).
 
----
 
 ## SAT solvers
 
@@ -162,6 +161,10 @@ Typical examples are hardware verification (Intel, AMD, Apple, etc) and dependen
 More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language.
 
 ... tbc ... eg there could be more to say about SAT-solving at Intel and other hardware companies ... and then about applications of SAT to software engineering ...
+
+## Case Studies
+
+...
 
 
 ## References
