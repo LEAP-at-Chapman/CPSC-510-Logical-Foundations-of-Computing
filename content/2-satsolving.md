@@ -1,7 +1,5 @@
 # SAT solving with MiniSat
 
-# Introduction to SAT and MiniSat
-
 ## Theory: SAT
 
 Propositional Logic. Definition of satisfiability. 
