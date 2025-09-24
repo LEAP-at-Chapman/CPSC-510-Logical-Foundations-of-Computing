@@ -20,7 +20,6 @@ parts:
 
 - caption: Appendix
   chapters:
-    - file: content/intro
     - file: content/markdown
     - file: content/notebooks
     - file: content/markdown-notebooks
