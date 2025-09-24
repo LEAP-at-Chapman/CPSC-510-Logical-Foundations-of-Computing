@@ -28,7 +28,16 @@ For an outline of the topics see [the overview](overview.md).
 
 [Chapter 11](content/11-dependent-types.md) presents dependent type theory with Lean, demonstrating how types can depend on values and enabling "proofs as programs" through the Curry-Howard correspondence.
 
-Each chapter follows a consistent structure: we first establish the mathematical foundations of the logic, then introduce the corresponding software tool, demonstrate key algorithms, and conclude with practical applications. This approach ensures that readers gain both theoretical understanding and hands-on experience with cutting-edge tools used in industry and research.
+The current suggested outline for each chapter is (see [satsolving.md](content/2-satsolving.md2-) for an example):
+
+- Idea: What you want to tell somebody who doesnt know anything
+- Basic Theory: Recap of the basic theory
+- Tool: The particular tool we will discuss. How to install it. How to run a basic toy example.
+- Introductory Examples
+- Tools: The landscape of tools in this area
+- The Algorithm: Some basic algorithms on which the tools are based
+- Applications in Industry
+- Case Studies
 
 
 
