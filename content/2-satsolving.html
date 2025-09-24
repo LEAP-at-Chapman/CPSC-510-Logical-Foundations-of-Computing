@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Logic example file 2 &#8212; Logical Foundations of Computing</title>
+    <title>SAT solving with MiniSat &#8212; Logical Foundations of Computing</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/2-satsolving';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Logic example file 3" href="3-logic-programming.html" />
+    <link rel="next" title="Logic Programming with Prolog" href="3-logic-programming.html" />
     <link rel="prev" title="Propositional Logic" href="1-propositional-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -176,17 +176,20 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Logic example file 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic example file 3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Logic example file 4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">Chapter 5: SMT Solving with Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Logic example file 5</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Logic example file 6</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Chapter 8: Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Chapter 9: Hoare Logic with Dafny</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving with Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Logic example file 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
 <li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
@@ -373,7 +376,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Logic example file 2</h1>
+    <h1>SAT solving with MiniSat</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -387,8 +390,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="logic-example-file-2">
-<h1>Logic example file 2<a class="headerlink" href="#logic-example-file-2" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="sat-solving-with-minisat">
+<h1>SAT solving with MiniSat<a class="headerlink" href="#sat-solving-with-minisat" title="Link to this heading">#</a></h1>
 <p>This file will contain Chapter 2.</p>
 </section>
 
@@ -436,7 +439,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Logic example file 3</p>
+        <p class="prev-next-title">Logic Programming with Prolog</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

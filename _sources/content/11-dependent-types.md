@@ -1,4 +1,4 @@
-# Chapter 12: Dependent Type Theory with Lean
+# Dependent Type Theory with Lean
 
 *Author: Khoa Nguyen*
 

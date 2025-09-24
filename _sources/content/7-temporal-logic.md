@@ -1,5 +1,5 @@
-# Logic example file 6
+# Temporal Logic with Spin
 
-This file will contain Chapter 6.
+This file will contain Chapter 7
 
-Testing
+Testing ...
