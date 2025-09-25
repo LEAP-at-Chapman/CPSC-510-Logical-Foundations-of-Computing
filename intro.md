@@ -19,6 +19,7 @@ Each chapter should by default be devided into the following sections (subject t
 - History
 - Current Development, Research Challenges, Conferences and Workshops
 - References
+- Suggestions for future work on the book
 
 [Chapter 1](content/1-propositional-logic.md) introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.
 
