@@ -2,7 +2,7 @@
 
 ## Idea
 
-...
+A theory in propositional logic can be seen as a set of equations in variables that range over truth values $\{0,1\}$. A SAT-solver is a software tool that solves such equations. Even though SAT is NP-complete, modern SAT-solvers can solve propositional theories with millions of variables and tens of millions of clauses (reference?). And, as we know from the [Cook-Levin theorem](https://en.wikipedia.org/wiki/Cook%E2%80%93Levin_theorem) every NP-problem can be encoded in SAT.
 
 ## Basic Theory: SAT
 
@@ -173,6 +173,8 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 
 ## References
 
+### Early Work
+
 - Davis, Martin; Putnam, Hilary (1960). [A Computing Procedure for Quantification Theory](https://doi.org/10.1145%2F321033.321034). Journal of the ACM. 7 (3): 201–215. 
     - The original resolution based algorithm that also gave rise to Prolog later, via (Robinson 1965).
 - Davis, Martin; Logemann, George; Loveland, Donald (1962). [A Machine Program for Theorem Proving](http://portal.acm.org/citation.cfm?doid=368273.368557). Communications of the ACM. 5 (7): 394–397. 
@@ -185,6 +187,13 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
     - Chaff is widely considered the breakthrough SAT implementation. Section 1.2 also contains a good account of DPLL.
 - These papers should give you a good background to understand the more recent articles on SAT solvers.
 
+### Modern Developments
+
+... this needs more work ... here are some references I found ...
+
+- Alouneh, S., Abed, S. E., Al Shayeji, M. H., & Mesleh, R. (2019). A comprehensive study and analysis on SAT-solvers: advances, usages and achievements. Artificial Intelligence Review, 52(4), 2575-2601.
+- Froleyks, N., Yu, E., & Biere, A. (2023, October). BIG backbones. In 2023 Formal Methods in Computer-Aided Design (FMCAD) (pp. 162-167). IEEE.
+- ...
 
 
 
