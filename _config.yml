@@ -24,6 +24,7 @@ exclude_patterns:
   - "lecture-by-lecture.md"
   - "local/**"
   - "overview.md"
+  - "notes/**"
 
 # Information about where the book exists on the web
 repository:
@@ -48,7 +49,7 @@ sphinx:
       preamble: |
         \usepackage{stmaryrd}
     bibtex_reference_style: author_year
-    mathjax_config:
+    mathjax3_config:
       tex:
         macros:
           Set: ["{\\sf Set}", 0]

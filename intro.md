@@ -4,8 +4,6 @@ This book project is being developed by the class CPSC 510 Logical Foundations o
 
 Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the classes emphasize more of the theory, this book puts the tools center stage.
 
-For an outline of the topics see [the overview](overview.md).
-
 Each chapter should by default be devided into the following sections (subject to discussion and revision):
 - Idea
 - Basic Theory
@@ -43,7 +41,7 @@ Each chapter should by default be devided into the following sections (subject t
 
 [Chapter 11](content/11-dependent-types.md) presents dependent type theory with Lean, demonstrating how types can depend on values and enabling "proofs as programs" through the Curry-Howard correspondence.
 
-The current suggested outline for each chapter is (see [satsolving.md](content/2-satsolving.md2-) for an example):
+The current suggested outline for each chapter is (see [Chapter 2](content/2-satsolving.md) for an example):
 
 - Idea: What you want to tell somebody who doesnt know anything
 - Basic Theory: Recap of the basic theory
