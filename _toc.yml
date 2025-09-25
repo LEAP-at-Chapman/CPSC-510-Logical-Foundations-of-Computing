@@ -6,21 +6,21 @@ root: intro
 parts:
 - caption: Logics and Their Software Tools
   chapters:
-    - file: content/logic1
-    - file: content/logic2
-    - file: content/logic3
-    - file: content/logic4
-    - file: content/logic5
-    - file: content/logic6
-    - file: content/logic7
-    - file: content/logic8
-    - file: content/logic9
-    - file: content/logic10
-    - file: content/logic11
+    - file: content/1-propositional-logic
+    - file: content/2-satsolving
+    - file: content/3-logic-programming
+    - file: content/4-constraint-solving
+    - file: content/5-smt-solving
+    - file: content/6-modal-logic
+    - file: content/7-temporal-logic
+    - file: content/8-epistemic-logic
+    - file: content/9-hoare-logic
+    - file: content/10-higher-order-logic
+    - file: content/11-dependent-types
 
 - caption: Appendix
   chapters:
-    - file: content/intro
+    - file: content/how-to-create-a-jupyter-book
     - file: content/markdown
     - file: content/notebooks
     - file: content/markdown-notebooks

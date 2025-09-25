@@ -16,7 +16,15 @@ latex:
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
-  - references.bib
+  - content/references.bib
+
+# Exclude files from being processed
+exclude_patterns:
+  - "README.md"
+  - "lecture-by-lecture.md"
+  - "local/**"
+  - "overview.md"
+  - "notes/**"
 
 # Information about where the book exists on the web
 repository:
@@ -41,7 +49,7 @@ sphinx:
       preamble: |
         \usepackage{stmaryrd}
     bibtex_reference_style: author_year
-    mathjax_config:
+    mathjax3_config:
       tex:
         macros:
           Set: ["{\\sf Set}", 0]

@@ -1,4 +1,4 @@
-# Chapter 5: SMT Solving with Z3
+# SMT Solving with Z3
 
 *Author: Wayne*
 
