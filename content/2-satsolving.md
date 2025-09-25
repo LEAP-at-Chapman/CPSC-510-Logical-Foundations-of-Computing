@@ -193,6 +193,7 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 
 - Alouneh, S., Abed, S. E., Al Shayeji, M. H., & Mesleh, R. (2019). A comprehensive study and analysis on SAT-solvers: advances, usages and achievements. Artificial Intelligence Review, 52(4), 2575-2601.
 - Froleyks, N., Yu, E., & Biere, A. (2023, October). BIG backbones. In 2023 Formal Methods in Computer-Aided Design (FMCAD) (pp. 162-167). IEEE.
+- Heule, M. J., Iser, M., Järvisalo, M., & Suda, M. (2024). [Proceedings of SAT Competition 2024: Solver, Benchmark and Proof Checker Descriptions](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%22SAT+Competition+2024%22+&btnG=). [pdf](https://researchportal.helsinki.fi/files/324666039/sc2024-proceedings.pdf)
 - ...
 
 
