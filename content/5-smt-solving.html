@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>SMT Solving with Z3 &#8212; Logical Foundations of Computing</title>
+    <title>SMT Solving and Z3 &#8212; Logical Foundations of Computing</title>
   
   
   
@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -179,7 +179,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">SMT Solving with Z3</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">SMT Solving and Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
@@ -378,7 +378,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>SMT Solving with Z3</h1>
+    <h1>SMT Solving and Z3</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -388,10 +388,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decidable-first-order-theories">Decidable First-Order Theories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-combination-the-nelson-oppen-method">Theory Combination: The Nelson-Oppen Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z3">Z3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z3-playground">Z3 Playground</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-bounds">Array bounds</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#guessing-a-number">Guessing a number</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-solvers">More Solvers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z3-in-python">Z3 in Python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -403,33 +416,146 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="smt-solving-with-z3">
-<h1>SMT Solving with Z3<a class="headerlink" href="#smt-solving-with-z3" title="Link to this heading">#</a></h1>
-<p><em>Author: Wayne</em></p>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>This chapter explores SMT (Satisfiability Modulo Theories) solving using Microsoft’s Z3 theorem prover. We extend beyond propositional logic to handle richer theories like arithmetic, arrays, and bit-vectors.</p>
-</section>
-<section id="topics">
-<h2>Topics<a class="headerlink" href="#topics" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="smt-solving-and-z3">
+<h1>SMT Solving and Z3<a class="headerlink" href="#smt-solving-and-z3" title="Link to this heading">#</a></h1>
+<section id="idea">
+<h2>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
+<p>SMT, satisfiability modulo theories, extends propositional satisfiability (SAT) by adding interpreted functions and predicates from various decidable first-order theories. For example, instead of just Boolean variables, we can have:</p>
 <ul class="simple">
-<li><p>SMT theory foundations</p></li>
-<li><p>Z3 installation and setup</p></li>
-<li><p>Theory combination</p></li>
-<li><p>Program verification applications</p></li>
-<li><p>Model checking with SMT</p></li>
+<li><p>Linear arithmetic: variables like <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> with constraints <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span> <span class="pre">&gt;</span> <span class="pre">10</span></code>, <code class="docutils literal notranslate"><span class="pre">2x</span> <span class="pre">-</span> <span class="pre">3y</span> <span class="pre">≤</span> <span class="pre">5</span></code></p></li>
+<li><p>Bit-vectors: variables like <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> with bitwise operations <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&amp;</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">0xFF</span></code>, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;&lt;</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">b</span></code></p></li>
+<li><p>Arrays: array variables <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code> with operations <code class="docutils literal notranslate"><span class="pre">A[i]</span> <span class="pre">=</span> <span class="pre">B[j]</span></code>, <code class="docutils literal notranslate"><span class="pre">store(A,</span> <span class="pre">i,</span> <span class="pre">v)</span></code></p></li>
+<li><p>Uninterpreted functions: function symbols <code class="docutils literal notranslate"><span class="pre">f</span></code>, <code class="docutils literal notranslate"><span class="pre">g</span></code> with constraints <code class="docutils literal notranslate"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">g(y)</span></code>, <code class="docutils literal notranslate"><span class="pre">f(f(x))</span> <span class="pre">=</span> <span class="pre">x</span></code></p></li>
+</ul>
+<p><strong>Remark:</strong> This looks very similar to constraint programming. So what is the difference? MiniZinc can call Z3 as a backend and SMT-solvers are used in CP competitions. The answer to the question may well be how different communities in computer science research evolved historically. We should add a section that explores this history.</p>
+</section>
+<section id="basic-theory">
+<h2>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
+<p>First-order logic is not decidable, but it does contain some decidable theories. SMT leverages special solvers for decidable first-order theories. Moreover, under certain conditions different decidable theories can be combined into larger ones.</p>
+<section id="decidable-first-order-theories">
+<h3>Decidable First-Order Theories<a class="headerlink" href="#decidable-first-order-theories" title="Link to this heading">#</a></h3>
+<p>Typically, decidability requires that the formulas have to by quantifier-free (QF) but there are exceptions, most famously the theory of real closed fields.</p>
+<p><strong>Real Closed Fields</strong> (RCF) have a decidable theory due to Tarski’s quantifier elimination (1930s) which shows that any first-order formula over reals can be reduced to a quantifier-free formula:</p>
+<ul class="simple">
+<li><p><em>Variables</em>: Real numbers</p></li>
+<li><p><em>Operations</em>: <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">≤</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">≥</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code>, quantifiers <code class="docutils literal notranslate"><span class="pre">∀</span></code>, <code class="docutils literal notranslate"><span class="pre">∃</span></code></p></li>
+<li><p><em>Example</em>: <code class="docutils literal notranslate"><span class="pre">∀x∀y.</span> <span class="pre">x²</span> <span class="pre">+</span> <span class="pre">y²</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">→</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">∨</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">0</span></code> (every point on unit circle is not zero)</p></li>
+</ul>
+<p><strong>Linear Arithmetic</strong> (QFLRA/QFLIA) can be solved using simplex algorithm or Fourier-Motzkin elimination:</p>
+<ul class="simple">
+<li><p><em>Variables</em>: Rationals (QFLRA) or Integers (QFLIA)</p></li>
+<li><p><em>Operations</em>: <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">≤</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">≥</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code></p></li>
+<li><p><em>Example</em>: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">2y</span> <span class="pre">≤</span> <span class="pre">10</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></p></li>
+</ul>
+<p><strong>Equality with Uninterpreted Functions</strong> (EUF) can be solved with the congruence closure algorithm (1970s):</p>
+<ul class="simple">
+<li><p><em>Variables</em>: Any domain, with function symbols <code class="docutils literal notranslate"><span class="pre">f</span></code>, <code class="docutils literal notranslate"><span class="pre">g</span></code>, etc.</p></li>
+<li><p><em>Operations</em>: Function application, equality</p></li>
+<li><p><em>Example</em>: <code class="docutils literal notranslate"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">g(y)</span> <span class="pre">∧</span> <span class="pre">f(f(x))</span> <span class="pre">=</span> <span class="pre">x</span></code></p></li>
+</ul>
+<p><strong>Arrays</strong> (QF_A) can be reduced to EUF + axioms</p>
+<ul class="simple">
+<li><p><strong>Variables</strong>: Arrays <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, indices <code class="docutils literal notranslate"><span class="pre">i</span></code>, <code class="docutils literal notranslate"><span class="pre">j</span></code>, values <code class="docutils literal notranslate"><span class="pre">v</span></code></p></li>
+<li><p><strong>Operations</strong>: <code class="docutils literal notranslate"><span class="pre">select(A,</span> <span class="pre">i)</span></code>, <code class="docutils literal notranslate"><span class="pre">store(A,</span> <span class="pre">i,</span> <span class="pre">v)</span></code></p></li>
+<li><p><strong>Example</strong>: <code class="docutils literal notranslate"><span class="pre">select(store(A,</span> <span class="pre">i,</span> <span class="pre">v),</span> <span class="pre">j)</span> <span class="pre">=</span> <span class="pre">select(A,</span> <span class="pre">j)</span> <span class="pre">∧</span> <span class="pre">i</span> <span class="pre">≠</span> <span class="pre">j</span></code></p></li>
+</ul>
+<p><strong>Bit-vectors</strong> (QF_BV) can be reduced to SAT or solved with specialized algorithms:</p>
+<ul class="simple">
+<li><p><em>Variables</em>: Fixed-width integers (e.g., 32-bit)</p></li>
+<li><p><em>Operations</em>: Bitwise (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">|</span></code>, <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code>), arithmetic (<code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>), shifts (<code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>)</p></li>
+<li><p><em>Example</em>: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&amp;</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">|</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">0xFF</span></code></p></li>
+</ul>
+<p><strong>Difference Logic</strong> (QF_IDL/QF_RDL) can be solved using shortest path algorithms</p>
+<ul class="simple">
+<li><p><em>Variables</em>: Integers or Reals</p></li>
+<li><p><em>Operations</em>: Differences <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span> <span class="pre">≤</span> <span class="pre">c</span></code>, equality <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">y</span></code></p></li>
+<li><p><em>Example</em>: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span> <span class="pre">≤</span> <span class="pre">5</span> <span class="pre">∧</span> <span class="pre">y</span> <span class="pre">-</span> <span class="pre">z</span> <span class="pre">≤</span> <span class="pre">3</span> <span class="pre">∧</span> <span class="pre">z</span> <span class="pre">-</span> <span class="pre">x</span> <span class="pre">≤</span> <span class="pre">-10</span></code></p></li>
 </ul>
 </section>
-<section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<section id="theory-combination-the-nelson-oppen-method">
+<h3>Theory Combination: The Nelson-Oppen Method<a class="headerlink" href="#theory-combination-the-nelson-oppen-method" title="Link to this heading">#</a></h3>
+<p>See Martin’s <a class="reference external" href="https://www.cs.cmu.edu/~15414/s24/lectures/18-smt-solving.pdf">Lecture Notes on SMT Solving: Nelson-Oppen</a>.</p>
+</section>
+</section>
+<section id="z3">
+<h2>Z3<a class="headerlink" href="#z3" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://microsoft.github.io/z3guide/docs/logic/intro/">Z3 Tutorial</a></p>
+<p>There are different ways to use Z3. We start with the playground and then learn how to call Z3 from Python.</p>
+<section id="z3-playground">
+<h3>Z3 Playground<a class="headerlink" href="#z3-playground" title="Link to this heading">#</a></h3>
+<section id="array-bounds">
+<h4>Array bounds<a class="headerlink" href="#array-bounds" title="Link to this heading">#</a></h4>
+<p>Read the following program written in <a class="reference external" href="https://smt-lib.org/language.shtml">SMT-LIB</a>. For background, I recommend to read Chapter 2 as well as pages 22, 55-56, 76 of the <a class="reference external" href="https://smt-lib.org/papers/smt-lib-reference-v2.7-r2025-07-07.pdf">SMT-LIB Standard</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">const</span> <span class="n">i</span> <span class="n">Int</span><span class="p">)</span>
+<span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">const</span> <span class="n">array_size</span> <span class="n">Int</span><span class="p">)</span>
+
+<span class="p">;</span> <span class="n">Set</span> <span class="n">values</span>
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="o">=</span> <span class="n">array_size</span> <span class="mi">10</span><span class="p">))</span>
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="o">=</span> <span class="n">i</span> <span class="mi">15</span><span class="p">))</span>
+
+<span class="p">;</span> <span class="n">Check</span> <span class="k">if</span> <span class="n">bounds</span> <span class="n">can</span> <span class="n">be</span> <span class="n">violated</span>
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="ow">and</span> <span class="p">(</span><span class="o">&lt;=</span> <span class="mi">0</span> <span class="n">i</span><span class="p">)</span> <span class="p">(</span><span class="o">&lt;</span> <span class="n">i</span> <span class="n">array_size</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="n">check</span><span class="o">-</span><span class="n">sat</span><span class="p">)</span>
+<span class="p">(</span><span class="n">get</span><span class="o">-</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Paste the code into the <a class="reference external" href="https://microsoft.github.io/z3guide/docs/logic/intro/">Z3 Playground</a>. How do you interpret the result?</p>
+<p>Answer the question by keep changing the code and predicting the results you expect.</p>
+</section>
+<section id="guessing-a-number">
+<h4>Guessing a number<a class="headerlink" href="#guessing-a-number" title="Link to this heading">#</a></h4>
+<p>Here’s a more interesting example where we let Z3 find values for variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">const</span> <span class="n">x</span> <span class="n">Int</span><span class="p">)</span>
+<span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">const</span> <span class="n">y</span> <span class="n">Int</span><span class="p">)</span>
+
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="o">=</span> <span class="p">(</span><span class="o">+</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="mi">15</span><span class="p">))</span>
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">check</span><span class="o">-</span><span class="n">sat</span><span class="p">)</span>
+<span class="p">(</span><span class="n">get</span><span class="o">-</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Exercise:</strong> Create your own “guessing the number” puzzle.</p>
+</section>
+</section>
+<section id="more-solvers">
+<h3>More Solvers<a class="headerlink" href="#more-solvers" title="Link to this heading">#</a></h3>
+<p><strong>SMT-LIB</strong> is a standardized language used by many SMT solvers, not just Z3. Try the programs above with:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/Z3Prover/z3">Z3 Documentation</a></p></li>
-<li><p><a class="reference external" href="https://rise4fun.com/z3/tutorial">Z3 Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://cvc4.github.io/app/">CVC4/CVC5</a>: Carnegie Mellon University</p></li>
+</ul>
+<p>Other SMT-solvers that accept SMT-LIB are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://yices.csl.sri.com/">Yices</a>: SRI International</p></li>
+<li><p><a class="reference external" href="http://mathsat.fbk.eu/">MathSAT</a>: University of Trento</p></li>
+<li><p><a class="reference external" href="https://boolector.github.io/">Boolector</a>: Johannes Kepler University</p></li>
+<li><p><a class="reference external" href="https://verify.inf.usi.ch/opensmt/">OpenSMT</a>: University of Lugano</p></li>
 </ul>
 </section>
-<section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
-<p><em>To be added</em></p>
+<section id="z3-in-python">
+<h3>Z3 in Python<a class="headerlink" href="#z3-in-python" title="Link to this heading">#</a></h3>
+<p>Interactive Z3 examples are available below via Colab or Binder.</p>
+<p><strong>Try it interactively:</strong></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/z3/z3-examples.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a> <strong>🚀 Google Colab (Recommended - Fast &amp; Reliable)</strong></p>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/main?filepath=content%2Frequirements.txt&amp;amp;labpath=../z3%2Fz3-examples.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a> <strong>🐳 Binder (Alternative)</strong></p>
+<p><em>Note: The static view above shows executed outputs for reading. For hands-on experimentation, use Colab (fastest) or download the notebook to run locally.</em></p>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sat-group.github.io/ruben/">Reuben Martins</a> (part of a course on <a class="reference external" href="https://www.cs.cmu.edu/~15414/s22/s21/lectures/">Bug Catching: Bug Catching: Automated Program Verification</a> )</p>
+<ul>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~15414/s22/s21/lectures/16-smt.pdf">Lecture Notes on SMT Solving</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~15414/s21/lectures/17-smt-theories.pdf">Lecture Notes on SMT Theories</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~15414/s21/lectures/18-smt-encodings.pdf">Lecture Notes on SMT Encodings</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~15414/s24/lectures/19-smt-encodings.pdf">Lecture Notes on DPLL(T) &amp; SMT Encodings</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~15414/s24/lectures/18-smt-solving.pdf">Lecture Notes on SMT Solving: Nelson-Oppen</a></p></li>
+</ul>
+</li>
+<li><p>Howe, J. M., &amp; King, A. (2012). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=A+Pearl+on+SAT+and+SMT+Solving+in+Prolog&amp;amp;btnG=">A pearl on SAT and SMT solving in Prolog</a>. Theoretical Computer Science, 435, 43-55. <a class="reference external" href="https://www.staff.city.ac.uk/~jacob/solver/tcs.pdf">pdf</a> - - - I only read the intro and do not claim that I understand that paper. It is of interest to our class because it combines ideas from SAT, Prolog and SMT.</p></li>
+</ul>
 </section>
 </section>
 
@@ -497,10 +623,23 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decidable-first-order-theories">Decidable First-Order Theories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-combination-the-nelson-oppen-method">Theory Combination: The Nelson-Oppen Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z3">Z3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z3-playground">Z3 Playground</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-bounds">Array bounds</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#guessing-a-number">Guessing a number</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-solvers">More Solvers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z3-in-python">Z3 in Python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 
