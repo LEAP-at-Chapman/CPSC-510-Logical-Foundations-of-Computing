@@ -6,6 +6,20 @@ Our approach tries to give equal weight to mathematics and to software engineeri
 
 For an outline of the topics see [the overview](overview.md).
 
+Each chapter should by default be devided into the following sections (subject to discussion and revision):
+- Idea
+- Basic Theory
+- Tool (Installation, First Example, First Exercise)
+- Introductory Examples
+- The Landscape of Tools
+- Algorithms
+- Benchmark and Competitions
+- Applications in Industry
+- Case Studies
+- History
+- Current Development, Research Challenges, Conferences and Workshops
+- References
+
 [Chapter 1](content/1-propositional-logic.md) introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.
 
 [Chapter 2](content/2-satsolving.md) explores SAT solving using MiniSat, focusing on semantic tableaux algorithms and their applications to satisfiability and validity checking.
