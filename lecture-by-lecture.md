@@ -14,5 +14,9 @@
 
 **L4.1:** Logic Programming continued.
 
-**L4.2:** [Constraint Programming and MiniZinc](https://hackmd.io/@alexhkurz/HkNBH-Kogg).
+**L4.2:** [Constraint Programming and MiniZinc](https://hackmd.io/@alexhkurz/HkNBH-Kogg). 
+
+**L5.1:** Continued from L4.2.
+
+**L5.2:** [SMT Solving and Z3](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/5-smt-solving.html)
 

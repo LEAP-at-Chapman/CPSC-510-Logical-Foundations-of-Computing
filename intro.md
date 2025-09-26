@@ -4,7 +4,20 @@ This book project is being developed by the class CPSC 510 Logical Foundations o
 
 Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the classes emphasize more of the theory, this book puts the tools center stage.
 
-For an outline of the topics see [the overview](overview.md).
+Each chapter should by default be devided into the following sections (subject to discussion and revision):
+- Idea
+- Basic Theory
+- Tool (Installation, First Example, First Exercise)
+- Introductory Examples
+- The Landscape of Tools
+- Algorithms
+- Benchmark and Competitions
+- Applications in Industry
+- Case Studies
+- History
+- Current Development, Research Challenges, Conferences and Workshops
+- References
+- Suggestions for future work on the book
 
 [Chapter 1](content/1-propositional-logic.md) introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.
 
@@ -24,13 +37,20 @@ For an outline of the topics see [the overview](overview.md).
 
 [Chapter 9](content/9-hoare-logic.md) presents Hoare logic using Dafny, demonstrating how to formally specify and verify program correctness with preconditions, postconditions, and invariants.
 
-[Chapter 10](content/10-simply-typed-lambda-calculus.md) introduces the simply typed lambda calculus and its implementation in Isabelle/HOL, bridging the gap between logic and computation.
+[Chapter 10](content/10-higher-order-logic.md) extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.
 
-[Chapter 11](content/10-higher-order-logic.md) extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.
+[Chapter 11](content/11-dependent-types.md) presents dependent type theory with Lean, demonstrating how types can depend on values and enabling "proofs as programs" through the Curry-Howard correspondence.
 
-[Chapter 12](content/11-dependent-types.md) presents dependent type theory with Lean, demonstrating how types can depend on values and enabling "proofs as programs" through the Curry-Howard correspondence.
+The current suggested outline for each chapter is (see [Chapter 2](content/2-satsolving.md) for an example):
 
-Each chapter follows a consistent structure: we first establish the mathematical foundations of the logic, then introduce the corresponding software tool, demonstrate key algorithms, and conclude with practical applications. This approach ensures that readers gain both theoretical understanding and hands-on experience with cutting-edge tools used in industry and research.
+- Idea: What you want to tell somebody who doesnt know anything
+- Basic Theory: Recap of the basic theory
+- Tool: The particular tool we will discuss. How to install it. How to run a basic toy example.
+- Introductory Examples
+- Tools: The landscape of tools in this area
+- The Algorithm: Some basic algorithms on which the tools are based
+- Applications in Industry
+- Case Studies
 
 
 

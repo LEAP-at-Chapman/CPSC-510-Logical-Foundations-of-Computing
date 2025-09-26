@@ -1,3 +1,3 @@
-# Logic example file 5
+# Modal Logic
 
 Author: Alexander Kurz

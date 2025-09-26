@@ -1,4 +1,4 @@
-# Chapter 9: Hoare Logic with Dafny
+# Hoare Logic with Dafny
 
 *Author: Alex*
 

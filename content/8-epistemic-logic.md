@@ -1,4 +1,4 @@
-# Chapter 8: Epistemic Logic with SMCDEL
+# Epistemic Logic with SMCDEL
 
 *Author: John*
 
@@ -20,5 +20,7 @@ This chapter explores epistemic logic using SMCDEL (Symbolic Model Checker for D
 - [Epistemic Logic Explorer](https://vezwork.github.io/modallogic/?model=;AS?formula=_)
 
 ## Exercises
+
+"Test changes to prove access"
 
 *To be added*
