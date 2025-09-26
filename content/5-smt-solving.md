@@ -114,7 +114,7 @@ Other SMT-solvers that accept SMT-LIB are:
 
 ### Z3 in Python
 
-Interactive Z3 examples are available below via Colab or Binder ([local copy]())
+Interactive Z3 examples are available below via Colab or Binder or download a copy [here](https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/z3/z3-examples.ipynb).
 
 **Try it interactively:** 
 
