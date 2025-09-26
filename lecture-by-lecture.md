@@ -18,5 +18,5 @@
 
 **L5.1:** Continued from L4.2.
 
-**L5.2:** 
+**L5.2:** [SMT Solving and Z3](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/5-smt-solving.html)
 
