@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cpsc-510-logical-foundations"
+version = "0.1.0"
+description = "Logical Foundations of Computing - Course Materials"
+authors = [
+    {name = "CPSC 510", email = "cpsc510@chapman.edu"}
+]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "jupyter-book>=1.0.0",
+    "sphinx>=7.0.0",
+    "myst-nb>=1.0.0",
+    "sphinx-design",
+    "sphinx-copybutton",
+    "sphinx-multitoc-numbering",
+    "z3-solver",
+    "sphinx-thebe",
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyter",
+    "ipykernel",
+    "notebook",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["content*", "z3*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.ipynb", "*.md", "*.yml", "*.bib"]

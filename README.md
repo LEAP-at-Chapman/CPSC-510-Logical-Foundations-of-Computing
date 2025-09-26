@@ -24,8 +24,33 @@ At the end of the course, we will have written a draft of a [book](https://LEAP-
 **Blogs, Videos, etc**:
 - Hillel Wayne: [Logical Duals in Software Engineering](https://buttondown.com/hillelwayne/archive/logical-duals-in-software-engineering/)
 
-**Building a Jupyter Book**:
+**Setup and Installation**:
 
-- `jupyter-book build .` compiles the md to html
-- `ghp-import -n -p -f _build/html` pushes to git
-- [book](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/intro.html)
+**Quick Setup** (recommended):
+```bash
+./setup.sh
+```
+
+**Manual Setup**:
+1. **Install dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   # OR using pip with pyproject.toml:
+   pip install -e .
+   ```
+
+2. **Build the book**:
+   ```bash
+   jupyter-book build .
+   ```
+
+3. **Deploy to GitHub Pages**:
+   ```bash
+   ghp-import -n -p -f _build/html
+   ```
+
+4. **View the book**: [https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/intro.html](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/intro.html)
+
+**Development**:
+- For development with Jupyter notebooks: `pip install -e ".[dev]"`
+- Interactive examples: [Z3 Examples](z3/z3-examples.ipynb)

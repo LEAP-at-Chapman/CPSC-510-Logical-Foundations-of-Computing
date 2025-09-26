@@ -1,0 +1,13 @@
+# Jupyter Book and documentation dependencies
+jupyter-book>=1.0.0
+sphinx>=7.0.0
+myst-nb>=1.0.0
+sphinx-design
+sphinx-copybutton
+sphinx-multitoc-numbering
+
+# Python packages for examples
+z3-solver
+
+# Optional: for interactive features
+sphinx-thebe

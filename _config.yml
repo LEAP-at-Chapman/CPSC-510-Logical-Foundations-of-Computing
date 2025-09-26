@@ -25,6 +25,8 @@ exclude_patterns:
   - "local/**"
   - "overview.md"
   - "notes/**"
+  - ".venv/**"
+  - "z3/**"
 
 # Information about where the book exists on the web
 repository:

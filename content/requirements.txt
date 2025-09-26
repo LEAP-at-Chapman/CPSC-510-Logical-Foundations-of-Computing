@@ -1,3 +1,15 @@
-jupyter-book
+# Dependencies for interactive Jupyter notebooks
+# Used by Binder, JupyterLite, and other interactive environments
+
+# Core dependencies
+z3-solver
+jupyter
+ipykernel
+
+# Data science and visualization (for examples)
 matplotlib
 numpy
+pandas
+
+# Optional: additional useful packages for logic examples
+sympy
