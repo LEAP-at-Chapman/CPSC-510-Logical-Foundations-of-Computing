@@ -1,4 +1,5 @@
 # SAT solving with MiniSat
+Author: Jake Triester
 
 ## Idea
 
