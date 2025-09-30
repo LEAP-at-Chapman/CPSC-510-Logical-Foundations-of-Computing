@@ -1,4 +1,4 @@
-# Logic example file 4
+# Constraint Programming with MiniZinc
 
 This file will contain Chapter 4.
 

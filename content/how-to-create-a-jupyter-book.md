@@ -3,7 +3,7 @@
 
 Starting from [Create your first book](https://jupyterbook.org/en/stable/start/your-first-book.html) the following steps were taken.
 
-### Basics
+## Basics
 
 After creating this repo, cloning it (assume it is called `root` locally), I run the following from the commandline in the folder containing `root`.
 
@@ -19,7 +19,7 @@ jupyter-book build .
 open _build/html/index.html
 ```
 
-### Publish on the web
+## Publish on the web
 
 Following [Publish your book online](https://jupyterbook.org/en/stable/start/publish.html) install `ghp-import` with
 `pip install ghp-import` and then publish the book by running
@@ -30,7 +30,7 @@ ghp-import -n -p -f _build/html
 
 This makes the book available online at `https://USERNAME.github.io/REPONAME`. It also keeps the source files in the `main`-branch separate from the html-files in `_build` in the `gh-pages` branch.
 
-### Create a pdf
+## Create a pdf
 
 Following [Build a PDF](https://jupyterbook.org/en/stable/advanced/pdf.html), I first run `pip install pyppeteer` to use with  `jb build . --builder pdfhtml` but this produced the error `pyppeteer.errors.TimeoutError: Navigation Timeout Exceeded: 30000 ms exceeded.` The following did produce a pdf.
 
@@ -40,7 +40,7 @@ jb build . --builder pdflatex
 
 This would need some work by hand to have a nice layout. Maybe worth the effort once a book reaches a state where a book can be considered more or less finished ... 
 
-### Important commands
+## Important commands
 
 If, for example, the table of contents in the left-hand pane behaves in a strange way, clean out `_build`:
 
