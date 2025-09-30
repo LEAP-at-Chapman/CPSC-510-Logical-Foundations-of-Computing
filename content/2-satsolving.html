@@ -191,6 +191,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="puzzles.html">Resources on Puzzles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
 <li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
@@ -422,14 +426,51 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sat-solving-with-minisat">
 <h1>SAT solving with MiniSat<a class="headerlink" href="#sat-solving-with-minisat" title="Link to this heading">#</a></h1>
+<p>Author: Jake Triester</p>
 <section id="idea">
 <h2>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
 <p>A theory in propositional logic can be seen as a set of equations in variables that range over truth values <span class="math notranslate nohighlight">\(\{0,1\}\)</span>. A SAT-solver is a software tool that solves such equations. Even though SAT is NP-complete, modern SAT-solvers can solve propositional theories with millions of variables and tens of millions of clauses (reference?). And, as we know from the <a class="reference external" href="https://en.wikipedia.org/wiki/Cook%E2%80%93Levin_theorem">Cook-Levin theorem</a> every NP-problem can be encoded in SAT.</p>
 </section>
 <section id="basic-theory-sat">
 <h2>Basic Theory: SAT<a class="headerlink" href="#basic-theory-sat" title="Link to this heading">#</a></h2>
-<p>Propositional Logic. Definition of satisfiability.</p>
-<p>SAT takes a formula and finds a satifying valuation (model).</p>
+<p>Propositional Logic.</p>
+<p>Informal Definition of satisfiability:
+SAT takes a formula and finds a satifying valuation (model).</p>
+<p>Formal definition of satisfiability:
+Given a boolean formula in propositional logic, does there exist an assignment of truth values to its variables that make this formula true. If so, we say this formula is <em>satisfiable</em>. Otherwise, we say this formula is <em>unsatifiable</em>.</p>
+<p>Let’s look at a basic example of a propositional logic formula to emphasize the importance of SAT solvers:</p>
+<div class="math notranslate nohighlight">
+\[(p\vee q)\wedge(\neg p\vee q)\]</div>
+<p>Creating the truth table for this, we get:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>p</p></th>
+<th class="head"><p>q</p></th>
+<th class="head"><p>(p ∨ q) ∧ (¬p ∨ q)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Since there is at least one assignment of truth values that makes the equation true, this equation is <em>satisfiable</em>.</p>
+<p>As we can see in this example, finding the truth table to determine if an equation is satisfiable is not incredibly difficult. However, the need for SAT solvers arises when the number of variables increases. In our example, we only had 2 variables, and therefore 4 rows in our truth table. However, there is an exponential increase in size of the truth table as we increase variables because for an equation with <em>n</em> variables, the number of rows in our truth table is <span class="math notranslate nohighlight">\(2^n\)</span>.</p>
 <p>A SAT specification is written in conjunctive normal form.</p>
 <p><strong>Theorem</strong>: Every formula in propositional logic has a conjunctive normal form.</p>
 <p><em>Proof</em>: (Sketch) The conjunctive normal form can be computed by the following rewrite rules:</p>
@@ -459,7 +500,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">0</span><span class="s2">&quot; | minisat</span>
 </pre></div>
 </div>
-<p>Use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">minisat</span></code>.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">minisat</span></code> to install on Linux.</p>
 <p>Explain the output, as far as you can.</p>
 <p><strong>Activity:</strong> Save the file</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="n">cnf</span> <span class="mi">8</span> <span class="mi">16</span>

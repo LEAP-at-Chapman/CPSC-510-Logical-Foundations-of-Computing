@@ -189,6 +189,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="puzzles.html">Resources on Puzzles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
 <li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
@@ -412,12 +416,47 @@ document.write(`
 </section>
 <section id="topics">
 <h2>Topics<a class="headerlink" href="#topics" title="Link to this heading">#</a></h2>
-<ul class="simple">
+<ul>
 <li><p>Epistemic logic foundations</p></li>
 <li><p>Knowledge and belief operators</p></li>
 <li><p>SMCDEL installation and usage</p></li>
 <li><p>Social network modeling</p></li>
-<li><p>Dynamic epistemic logic</p></li>
+<li><p>Dynamic epistemic logic</p>
+<h2 class="rubric" id="epistemic-logic-in-hintikka-s-knowledge-and-belief">Epistemic Logic in Hintikka’s Knowledge and Belief</h2>
+<h3 class="rubric" id="possible-worlds-semantics">Possible Worlds Semantics</h3>
+<ul class="simple">
+<li><p>Epistemic logic introduces accessibility relations tied to an agent’s epistemic state.</p></li>
+<li><p>For knowledge: the agent “knows φ” if φ holds in all worlds accessible from the actual world (all worlds the agent considers possible).</p></li>
+<li><p>For belief: the condition is weaker; the agent “believes φ” if φ holds in all worlds compatible with the agent’s belief system, which need not exclude false ones.</p></li>
+</ul>
+<h3 class="rubric" id="properties-of-knowledge">Properties of Knowledge</h3>
+<ul class="simple">
+<li><p>Knowledge is modeled as stronger than belief:</p>
+<ul>
+<li><p>It is factive (Kφ → φ).</p></li>
+<li><p>Often taken as closed under logical consequence (if Kφ and K(φ → ψ), then Kψ).</p></li>
+</ul>
+</li>
+<li><p>These features generate rich logical structures but also raise philosophical puzzles, such as the “logical omniscience problem”—the unrealistic assumption that if someone knows φ and φ implies ψ, they must also know ψ.</p></li>
+</ul>
+<h3 class="rubric" id="properties-of-belief">Properties of Belief</h3>
+<ul class="simple">
+<li><p>Belief systems are internally consistent (ideally, an agent doesn’t believe both φ and ¬φ).</p></li>
+<li><p>But they allow for error: an agent can believe something false.</p></li>
+<li><p>Epistemic logic provides tools to model rational but fallible agents.</p></li>
+</ul>
+<h3 class="rubric" id="interplay-of-knowledge-and-belief">Interplay of Knowledge and Belief</h3>
+<ul class="simple">
+<li><p>Hintikka analyzes questions like:</p>
+<ul>
+<li><p>Does knowledge imply belief?
+(Many systems assume Kφ → Bφ.)</p></li>
+<li><p>Can beliefs upgrade to knowledge under stronger conditions?</p></li>
+<li><p>How do we formally capture the gap between “true justified belief” and knowledge (anticipating later epistemological debates like the Gettier problem)?</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="resources">
@@ -425,6 +464,7 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference external" href="https://w4eg.de/malvin/illc/smcdelweb/index.html">SMCDEL</a></p></li>
 <li><p><a class="reference external" href="https://vezwork.github.io/modallogic/?model=;AS?formula=_">Epistemic Logic Explorer</a></p></li>
+<li><p><a class="reference external" href="https://archive.org/details/knowledgebeliefi00hint_0">Hintikka’s Knowledge and Belief</a></p></li>
 </ul>
 </section>
 <section id="exercises">
