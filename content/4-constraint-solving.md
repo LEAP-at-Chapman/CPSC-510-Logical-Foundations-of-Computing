@@ -39,3 +39,5 @@ output [
 ## How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory.
 
 1) Start at the base case and work backwards
+2) Identify the recursive structure by trying to break the logic down into smaller subproblems
+3) Define the recursion functions or predicates while making sure each recursive call brings you closer to the base case
