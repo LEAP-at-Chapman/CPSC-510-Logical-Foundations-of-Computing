@@ -7,9 +7,31 @@ A theory in propositional logic can be seen as a set of equations in variables t
 
 ## Basic Theory: SAT
 
-Propositional Logic. Definition of satisfiability. 
+Propositional Logic. 
 
+Informal Definition of satisfiability: 
 SAT takes a formula and finds a satifying valuation (model).
+
+Formal definition of satisfiability:
+Given a boolean formula in propositional logic, does there exist an assignment of truth values to its variables that make this formula true. If so, we say this formula is *satisfiable*. Otherwise, we say this formula is *unsatifiable*.
+
+Let's look at a basic example of a propositional logic formula to emphasize the importance of SAT solvers:
+
+$$(p\vee q)\wedge(\neg p\vee q)$$
+
+Creating the truth table for this, we get:
+| p | q | (p ∨ q) ∧ (¬p ∨ q) |
+|---|---|--------------------|
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 0 |
+| 1 | 1 | 1 |
+
+Since there is at least one assignment of truth values that makes the equation true, this equation is *satisfiable*.
+
+As we can see in this example, finding the truth table to determine if an equation is satisfiable is not incredibly difficult. However, the need for SAT solvers arises when the number of variables increases. In our example, we only had 2 variables, and therefore 4 rows in our truth table. However, there is an exponential increase in size of the truth table as we increase variables because for an equation with *n* variables, the number of rows in our truth table is $2^n$.
+
+
 
 A SAT specification is written in conjunctive normal form. 
 
@@ -45,7 +67,7 @@ echo "p cnf 2 2
 1 2 0
 -1 -2 0" | minisat
 ```
-Use `sudo apt install minisat`.
+Use `sudo apt install minisat` to install on Linux.
 
 Explain the output, as far as you can.
 

@@ -20,6 +20,10 @@ parts:
 
 - caption: Appendix
   chapters:
+    - file: content/puzzles
+
+- caption: "Appendix: On Jupyter Books"
+  chapters:
     - file: content/how-to-create-a-jupyter-book
     - file: content/markdown
     - file: content/notebooks
