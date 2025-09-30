@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Modal Logic &#8212; Logical Foundations of Computing</title>
+    <title>How to Create a Jupyter Book &#8212; Logical Foundations of Computing</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,11 +57,9 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/6-modal-logic';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notes/how-to-create-a-jupyter-book';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Temporal Logic with Spin" href="7-temporal-logic.html" />
-    <link rel="prev" title="SMT Solving and Z3" href="5-smt-solving.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,6 +122,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -173,30 +173,11 @@
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modal Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">Dependent Type Theory with Lean</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="puzzles.html">Resources on Puzzles</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../content/markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
 </ul>
 
     </div>
@@ -268,7 +249,7 @@
       
       
       
-      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fcontent/6-modal-logic.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fnotes/how-to-create-a-jupyter-book.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -298,7 +279,7 @@
       
       
       
-      <li><a href="../_sources/content/6-modal-logic.md" target="_blank"
+      <li><a href="../_sources/notes/how-to-create-a-jupyter-book.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -369,7 +350,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -380,11 +363,22 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Modal Logic</h1>
+    <h1>How to Create a Jupyter Book</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-on-the-web">Publish on the web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-pdf">Create a pdf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-commands">Important commands</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -394,9 +388,49 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="modal-logic">
-<h1>Modal Logic<a class="headerlink" href="#modal-logic" title="Link to this heading">#</a></h1>
-<p>Author: Alexander Kurz</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="how-to-create-a-jupyter-book">
+<h1>How to Create a Jupyter Book<a class="headerlink" href="#how-to-create-a-jupyter-book" title="Link to this heading">#</a></h1>
+<p>Starting from <a class="reference external" href="https://jupyterbook.org/en/stable/start/your-first-book.html">Create your first book</a> the following steps were taken.</p>
+<section id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Link to this heading">#</a></h2>
+<p>After creating this repo, cloning it (assume it is called <code class="docutils literal notranslate"><span class="pre">root</span></code> locally), I run the following from the commandline in the folder containing <code class="docutils literal notranslate"><span class="pre">root</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">book</span>
+<span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>The book can now be opened in a browser by opening the file <code class="docutils literal notranslate"><span class="pre">_build/html/index.html</span></code>. On a mac, simply run <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">_build/html/index.html</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">.</span>
+<span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+</section>
+<section id="publish-on-the-web">
+<h2>Publish on the web<a class="headerlink" href="#publish-on-the-web" title="Link to this heading">#</a></h2>
+<p>Following <a class="reference external" href="https://jupyterbook.org/en/stable/start/publish.html">Publish your book online</a> install <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code> with
+<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">ghp-import</span></code> and then publish the book by running</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">f</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>This makes the book available online at <code class="docutils literal notranslate"><span class="pre">https://USERNAME.github.io/REPONAME</span></code>. It also keeps the source files in the <code class="docutils literal notranslate"><span class="pre">main</span></code>-branch separate from the html-files in <code class="docutils literal notranslate"><span class="pre">_build</span></code> in the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch.</p>
+</section>
+<section id="create-a-pdf">
+<h2>Create a pdf<a class="headerlink" href="#create-a-pdf" title="Link to this heading">#</a></h2>
+<p>Following <a class="reference external" href="https://jupyterbook.org/en/stable/advanced/pdf.html">Build a PDF</a>, I first run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyppeteer</span></code> to use with  <code class="docutils literal notranslate"><span class="pre">jb</span> <span class="pre">build</span> <span class="pre">.</span> <span class="pre">--builder</span> <span class="pre">pdfhtml</span></code> but this produced the error <code class="docutils literal notranslate"><span class="pre">pyppeteer.errors.TimeoutError:</span> <span class="pre">Navigation</span> <span class="pre">Timeout</span> <span class="pre">Exceeded:</span> <span class="pre">30000</span> <span class="pre">ms</span> <span class="pre">exceeded.</span></code> The following did produce a pdf.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jb</span> <span class="n">build</span> <span class="o">.</span> <span class="o">--</span><span class="n">builder</span> <span class="n">pdflatex</span>
+</pre></div>
+</div>
+<p>This would need some work by hand to have a nice layout. Maybe worth the effort once a book reaches a state where a book can be considered more or less finished …</p>
+</section>
+<section id="important-commands">
+<h2>Important commands<a class="headerlink" href="#important-commands" title="Link to this heading">#</a></h2>
+<p>If, for example, the table of contents in the left-hand pane behaves in a strange way, clean out <code class="docutils literal notranslate"><span class="pre">_build</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">.</span>                <span class="c1"># compile the md files to html</span>
+<span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>         <span class="c1"># read html in browser</span>
+<span class="n">ghp</span><span class="o">-</span><span class="kn">import</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">f</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span>     <span class="c1"># publish html on github</span>
+<span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">clean</span> <span class="o">.</span>                <span class="c1"># delete auxiliary files</span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -412,7 +446,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./content"
+            path: "./notes"
         },
         predefinedOutput: true
     }
@@ -429,30 +463,30 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="5-smt-solving.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">SMT Solving and Z3</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="7-temporal-logic.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Temporal Logic with Spin</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-on-the-web">Publish on the web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-pdf">Create a pdf</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-commands">Important commands</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
