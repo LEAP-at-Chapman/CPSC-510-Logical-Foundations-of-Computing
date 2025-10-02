@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z3 WebAssembly Equation Solver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .equation-display {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: center;
+        }
+        
+        .equation {
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+        
+        .input-group {
+            margin: 15px 0;
+        }
+        
+        label {
+            display: inline-block;
+            width: 120px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        input[type="number"] {
+            width: 100px;
+            padding: 8px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        button:hover {
+            background: #45a049;
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e7f5e7;
+            border-left: 4px solid #4CAF50;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .result.show {
+            display: block;
+        }
+        
+        .result h3 {
+            margin-top: 0;
+            color: #2e7d32;
+        }
+        
+        .solution {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .status {
+            text-align: center;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .status.loading {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .status.ready {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .info {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Z3 Equation Solver</h1>
+        <div class="subtitle">WebAssembly Demo - Real Z3 SMT Solver in Browser</div>
+        
+        <div class="status loading" id="status">Loading Z3 WebAssembly module...</div>
+        
+        <div class="equation-display">
+            <div class="equation">x + y = <span id="eq-a">10</span></div>
+            <div class="equation">x - y = <span id="eq-b">4</span></div>
+        </div>
+        
+        <div class="input-group">
+            <label for="input-a">Value of a:</label>
+            <input type="number" id="input-a" value="10" oninput="updateDisplay()" />
+        </div>
+        
+        <div class="input-group">
+            <label for="input-b">Value of b:</label>
+            <input type="number" id="input-b" value="4" oninput="updateDisplay()" />
+        </div>
+        
+        <button id="solveBtn" onclick="solveEquations()" disabled>Solve with Z3</button>
+        
+        <div class="result" id="result">
+            <h3>Solution:</h3>
+            <div class="solution" id="solution"></div>
+        </div>
+        
+        <div class="info">
+            <strong>About this demo:</strong><br>
+            This webpage loads Z3 as a WebAssembly module compiled with Emscripten.
+            Z3 runs entirely in your browser - no server needed!
+            <br><br>
+            <strong>Technology:</strong> Z3 (C++) → Emscripten → WebAssembly → Browser
+            <br><br>
+            <strong>Using:</strong> <a href="https://github.com/cpitclaudel/z3.wasm" target="_blank">z3.wasm by cpitclaudel</a>
+        </div>
+    </div>
+
+    <script>
+        let Z3Module = null;
+        
+        function updateDisplay() {
+            document.getElementById('eq-a').textContent = document.getElementById('input-a').value || 'a';
+            document.getElementById('eq-b').textContent = document.getElementById('input-b').value || 'b';
+        }
+        
+        function showStatus(message, type) {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = 'status ' + type;
+        }
+        
+        // Load Z3 WebAssembly module dynamically
+        async function initZ3() {
+            try {
+                showStatus('Loading Z3 WebAssembly (local files)...', 'loading');
+                
+                // Try loading from Microsoft's official z3guide/Z3 JavaScript bindings
+                const script = document.createElement('script');
+                // First try: Microsoft Research's CDN
+                script.src = 'https://microsoft.github.io/z3guide/z3.js';
+                
+                script.onload = async () => {
+                    try {
+                        showStatus('Z3 script loaded, initializing WASM module...', 'loading');
+                        console.log('Z3 script loaded, checking for Module...');
+                        
+                        // Wait for the module to initialize (WASM takes time to load)
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        
+                        // Check if Module is available
+                        if (typeof Module !== 'undefined' && Module) {
+                            Z3Module = Module;
+                            showStatus('Z3 WebAssembly ready! Click Solve.', 'ready');
+                            document.getElementById('solveBtn').disabled = false;
+                            console.log('Z3 WebAssembly initialized successfully');
+                            console.log('Available functions:', Module.ccall ? 'ccall available' : 'ccall NOT available');
+                        } else {
+                            throw new Error('Module not available after loading script');
+                        }
+                    } catch (e) {
+                        showStatus('Error initializing Z3: ' + e.message, 'error');
+                        console.error('Z3 init error:', e);
+                    }
+                };
+                
+                script.onerror = (error) => {
+                    console.error('Script load error:', error);
+                    console.error('Attempted URL:', script.src);
+                    showStatus('Failed to load Z3 from: ' + script.src, 'error');
+                    
+                    // Try fallback to local files
+                    console.log('Trying local z3smt2w.js as fallback...');
+                    const fallbackScript = document.createElement('script');
+                    fallbackScript.src = './z3smt2w.js';
+                    fallbackScript.onload = script.onload;
+                    fallbackScript.onerror = () => {
+                        showStatus('Z3 not available. Need either CDN access or local files with web server.', 'error');
+                    };
+                    document.head.appendChild(fallbackScript);
+                };
+                
+                document.head.appendChild(script);
+                
+            } catch (error) {
+                showStatus('Error loading Z3: ' + error.message, 'error');
+                console.error('Z3 load error:', error);
+            }
+        }
+        
+        // Solve equations using Z3
+        async function solveEquations() {
+            const a = parseInt(document.getElementById('input-a').value);
+            const b = parseInt(document.getElementById('input-b').value);
+            
+            if (isNaN(a) || isNaN(b)) {
+                alert('Please enter valid numbers');
+                return;
+            }
+            
+            if (!Z3Module) {
+                alert('Z3 is not loaded yet');
+                return;
+            }
+            
+            try {
+                showStatus('Solving with Z3...', 'loading');
+                
+                // Create a Z3 context using the SMT2 API
+                const ctx = Z3Module.ccall('smt2Init', 'number', [], []);
+                console.log('Z3 context created:', ctx);
+                
+                // Build SMT-LIB query
+                const query = `(declare-const x Int)
+(declare-const y Int)
+(assert (= (+ x y) ${a}))
+(assert (= (- x y) ${b}))
+(check-sat)
+(get-model)`;
+                
+                console.log('Z3 Query:', query);
+                
+                // Call Z3 with the query
+                const resultPtr = Z3Module.ccall('smt2Ask', 'number', ['number', 'string'], [ctx, query]);
+                const result = Z3Module.UTF8ToString(resultPtr);
+                console.log('Z3 Result:', result);
+                
+                // Clean up
+                Z3Module.ccall('smt2Destroy', null, ['number'], [ctx]);
+                
+                // Parse the result
+                if (result.includes('sat')) {
+                    // Extract x and y values from model
+                    const xMatch = result.match(/\(define-fun x \(\) Int\s+(-?\d+)\)/);
+                    const yMatch = result.match(/\(define-fun y \(\) Int\s+(-?\d+)\)/);
+                    
+                    if (xMatch && yMatch) {
+                        const xValue = xMatch[1];
+                        const yValue = yMatch[1];
+                        
+                        document.getElementById('solution').innerHTML = `x = ${xValue}<br>y = ${yValue}`;
+                        document.getElementById('result').classList.add('show');
+                        showStatus('Solution found with Z3!', 'ready');
+                        
+                        console.log(`Z3 Solution: x = ${xValue}, y = ${yValue}`);
+                    }
+                } else if (result.includes('unsat')) {
+                    document.getElementById('solution').textContent = 'No solution exists';
+                    document.getElementById('result').classList.add('show');
+                    showStatus('No solution found', 'error');
+                } else {
+                    throw new Error('Unexpected Z3 result: ' + result);
+                }
+                
+            } catch (error) {
+                showStatus('Error: ' + error.message, 'error');
+                console.error('Z3 solving error:', error);
+            }
+        }
+        
+        // Wait for Z3 script to load, then initialize
+        window.addEventListener('load', () => {
+            setTimeout(initZ3, 100);
+        });
+        
+        updateDisplay();
+    </script>
+</body>
+</html>
+
