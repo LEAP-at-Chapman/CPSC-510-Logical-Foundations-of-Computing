@@ -34,12 +34,12 @@ It also includes several additional modal operators:
 
 The tool we will be using to explore temporal logic is called SPIN. It is primarily used to verify multithreaded software.
 
-# Installation
+### Installation
 Link: https://spinroot.com/spin/Man/README.html
 
-
-# Example
-# Excercise
+I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple *sudo apt-get install spin*.
+### Example
+### Excercise
 
 ## References
 * https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators
