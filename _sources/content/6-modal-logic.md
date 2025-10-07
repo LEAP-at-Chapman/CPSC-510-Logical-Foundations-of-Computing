@@ -2,6 +2,30 @@
 $\newcommand{\sem}[1]{[\![#1]\!]}$
 Author: Alexander Kurz
 
+## Idea
+
+Modal Logic (ML) is more expressive than propositional logic (PL) and less expressive than first-order logic (FOL), in informal but suggestive notation: 
+
+$$\rm PL \subseteq ML \subseteq FOL$$
+
+This is of interest for various reasons:
+
+- ML-formulas are more succinct, for example, as we will see below, the translation of the ML-formula $\Box p$  to FOL is $\forall v (wRv\Rightarrow Pv)$.[^pP]
+- ML is decidable while FOL is undecidable. [^decidable]
+- Logical equivalence of ML formalizes an important notion of "observational equivalence" (aka bisimilarity) of computing machines.[^observational] 
+- Many problems in philosophy, linguistics and computer science can be analysed from the point of view of ML.[^philosophical]
+
+[^pP]: We follow here a convention in much of the literature to denote atomic propositions in ML by lower case letters and one-place predicates in FOL by upper-case letters. Thus $p$ is translated to $Pv$.
+
+[^decidable]: A logic is decidable if there is an algorithm $A$ that can takes formulas $\phi$ of the logic as input and
+    - always terminates,
+    - returns 1 if $\phi$ is valid,
+    - returns 0 if $\phi$ is not valid.
+    
+[^observational]: Two models $M,M'$ are logically equivalent if for all formulas $\phi$ it holds that $M$ satisfies $\phi$ if and only if $M'$ satisfies $\phi$. If $M,M'$ are models of computation there are various notions of equivalence motivated by computational consdirations. Some of these equivalences are called "obserational". Roughly speaking, two models are observationally equivalent if they cannot be distinguished by running them an only observing their outputs (as opposed to looking at how they are implemented). 
+
+[^philosophical]: In this notes we only mention the question of the meaning of "necessary" and "possible". For a study of time from the point of view of modal logic, I recommend van Benthem, The Logic of Time. The work of David Lewis on Counterfactuals is another good example. I plan to add more references along these lines in the future ...
+
 ## Motivation
 
 Superficially, modal logic adds to the propositional connectives $\wedge$ (and), $\vee$ (or), $\neg$ (not) two new connectives that allow us to take any formula $\phi$ and form two new formulas 
@@ -23,12 +47,12 @@ Besides temporal logic and epistemic logic there is also ... (insert more exampl
 - Modal logic is a decidable fragment of first-order logic.
 - Modal logic is the bisimulation invariant fragment of first-order logic.
 
-The first point has given rise to various generalisations of modal logic, in particular in the area of automated theorem proving. Search for [guarded fragment](https://www.google.com/search?q=%22guarded+fragment%22&oq=%22guarded+fragment%22&aqs=chrome..69i57j0j0i22i30l2.3319j1j4&sourceid=chrome&ie=UTF-8) for references. 
+The first point has given rise to various generalisations of modal logic, in particular in the area of automated theorem proving. Search for [guarded fragment](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%22guarded+fragment%22+%22modal+logic%22&btnG=) for references. 
 
 In the second point bisimulation refers to a relation of observational or behavioural equivalence of dynamic systems, which are themselves considered as "black boxes". In fact, bisimulation is the natural notion of behavioural equivalence for non-determinstic transition systems in which the states themselves are not observable but choices are. This leads us to the next item.
 
 **(Possible Worlds Semantics)** The idea that something is necessarily true if it is true in all possible worlds is an old one. The turning point for modal logic was the mathematical formalisation of possible world semantics by Kripke:
-- Saul Kripke: [A Completeness Theorem in Modal Logic](http://www.naturalthinker.net/trl/texts/Kripke,Saul/Kripke%20S.%20-%20A%20Completeness%20Theorem%20in%20Modal%20Logic.pdf). 1959.
+- Saul Kripke: [A Completeness Theorem in Modal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Saul+Kripke%3A+A+Completeness+Theorem+in+Modal+Logic.+1959.&btnG=). 1959.
 - Saul Kripke: [Semantical Analysis of Modal Logic I](http://fitelson.org/142/kripke_1.pdf). 1963. I recommend Section 2.1, which also contains the solution to one of the exercises below.
 - Saul Kripke: [Semantical Analysis of Modal Logic II](http://fitelson.org/142/kripke_2.pdf). 1965. 
 

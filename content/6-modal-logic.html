@@ -394,6 +394,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
 </ul>
@@ -415,6 +416,19 @@ document.write(`
 <h1>Modal Logic<a class="headerlink" href="#modal-logic" title="Link to this heading">#</a></h1>
 <p><span class="math notranslate nohighlight">\(\newcommand{\sem}[1]{[\![#1]\!]}\)</span>
 Author: Alexander Kurz</p>
+<section id="idea">
+<h2>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
+<p>Modal Logic (ML) is more expressive than propositional logic (PL) and less expressive than first-order logic (FOL), in informal but suggestive notation:</p>
+<div class="math notranslate nohighlight">
+\[\rm PL \subseteq ML \subseteq FOL\]</div>
+<p>This is of interest for various reasons:</p>
+<ul class="simple">
+<li><p>ML-formulas are more succinct, for example, as we will see below, the translation of the ML-formula <span class="math notranslate nohighlight">\(\Box p\)</span>  to FOL is <span class="math notranslate nohighlight">\(\forall v (wRv\Rightarrow Pv)\)</span>.<a class="footnote-reference brackets" href="#pp" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p>ML is decidable while FOL is undecidable. <a class="footnote-reference brackets" href="#decidable" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></li>
+<li><p>Logical equivalence of ML formalizes an important notion of “observational equivalence” (aka bisimilarity) of computing machines.<a class="footnote-reference brackets" href="#observational" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p></li>
+<li><p>Many problems in philosophy, linguistics and computer science can be analysed from the point of view of ML.<a class="footnote-reference brackets" href="#philosophical" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p></li>
+</ul>
+</section>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
 <p>Superficially, modal logic adds to the propositional connectives <span class="math notranslate nohighlight">\(\wedge\)</span> (and), <span class="math notranslate nohighlight">\(\vee\)</span> (or), <span class="math notranslate nohighlight">\(\neg\)</span> (not) two new connectives that allow us to take any formula <span class="math notranslate nohighlight">\(\phi\)</span> and form two new formulas</p>
@@ -435,19 +449,19 @@ Author: Alexander Kurz</p>
 <li><p>Modal logic is a decidable fragment of first-order logic.</p></li>
 <li><p>Modal logic is the bisimulation invariant fragment of first-order logic.</p></li>
 </ul>
-<p>The first point has given rise to various generalisations of modal logic, in particular in the area of automated theorem proving. Search for <a class="reference external" href="https://www.google.com/search?q=%22guarded+fragment%22&amp;amp;oq=%22guarded+fragment%22&amp;amp;aqs=chrome..69i57j0j0i22i30l2.3319j1j4&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8">guarded fragment</a> for references.</p>
+<p>The first point has given rise to various generalisations of modal logic, in particular in the area of automated theorem proving. Search for <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%22guarded+fragment%22+%22modal+logic%22&amp;amp;btnG=">guarded fragment</a> for references.</p>
 <p>In the second point bisimulation refers to a relation of observational or behavioural equivalence of dynamic systems, which are themselves considered as “black boxes”. In fact, bisimulation is the natural notion of behavioural equivalence for non-determinstic transition systems in which the states themselves are not observable but choices are. This leads us to the next item.</p>
 <p><strong>(Possible Worlds Semantics)</strong> The idea that something is necessarily true if it is true in all possible worlds is an old one. The turning point for modal logic was the mathematical formalisation of possible world semantics by Kripke:</p>
 <ul class="simple">
-<li><p>Saul Kripke: <a class="reference external" href="http://www.naturalthinker.net/trl/texts/Kripke,Saul/Kripke%20S.%20-%20A%20Completeness%20Theorem%20in%20Modal%20Logic.pdf">A Completeness Theorem in Modal Logic</a>. 1959.</p></li>
+<li><p>Saul Kripke: <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Saul+Kripke%3A+A+Completeness+Theorem+in+Modal+Logic.+1959.&amp;amp;btnG=">A Completeness Theorem in Modal Logic</a>. 1959.</p></li>
 <li><p>Saul Kripke: <a class="reference external" href="http://fitelson.org/142/kripke_1.pdf">Semantical Analysis of Modal Logic I</a>. 1963. I recommend Section 2.1, which also contains the solution to one of the exercises below.</p></li>
 <li><p>Saul Kripke: <a class="reference external" href="http://fitelson.org/142/kripke_2.pdf">Semantical Analysis of Modal Logic II</a>. 1965.</p></li>
 </ul>
 <p>There is a lot to say here, but to present the main ideas as quickly as possible I would proceed as follows (see Chapters 3.1 and 3.2 of the book referenced below).</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(Prop\)</span> be a set of ‘propositional variables’. The language of modal logic is the smallest set of ‘formulas’ containing <span class="math notranslate nohighlight">\(Prop\)</span> and closed under <span class="math notranslate nohighlight">\(\wedge\)</span> , <span class="math notranslate nohighlight">\(\vee\)</span>, <span class="math notranslate nohighlight">\(\neg\)</span>, <span class="math notranslate nohighlight">\(\Box\)</span>, <span class="math notranslate nohighlight">\(\Diamond\)</span>.</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(W\)</span> be a set of ‘worlds’ and <span class="math notranslate nohighlight">\(R\subseteq W\times W\)</span>. Let <span class="math notranslate nohighlight">\(\sem{-}:Prop\to 2^W\)</span> be a function assigning sets of worlds to each atomic proposition. Define</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4758df90-095b-4c47-ae53-073815f5d58a">
-<span class="eqno">(1)<a class="headerlink" href="#equation-4758df90-095b-4c47-ae53-073815f5d58a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d066a16d-0604-4c6f-a9c9-da29719fb31a">
+<span class="eqno">(1)<a class="headerlink" href="#equation-d066a16d-0604-4c6f-a9c9-da29719fb31a" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sem{\phi\wedge\phi'} &amp;= \sem{\phi}\cap\sem{\phi'}\\
 \sem{\phi\vee\phi'} &amp;= \sem{\phi}\cup\sem{\phi'}\\
 \sem{\neg\phi} &amp;= W\setminus \sem{\phi}\\
@@ -469,7 +483,7 @@ w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}
 <p><strong>Exercise:</strong> If <span class="math notranslate nohighlight">\(R\)</span> is reflexive, then <span class="math notranslate nohighlight">\((W,R)\models \Box p\to p\)</span>.</p>
 <p>A crucial observation that lets us glimpse the power of Kripke’s approach is that the converse is also true.</p>
 <p><strong>Prop:</strong> If <span class="math notranslate nohighlight">\((W,R)\models \Box p\to p\)</span>, then <span class="math notranslate nohighlight">\(R\)</span> is reflexive.</p>
-<p>The proof is short once you know the trick. Try to find it for yourself before looking at the footnote.<a class="footnote-reference brackets" href="#proof" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>The proof is short once you know the trick. Try to find it for yourself before looking at the footnote.<a class="footnote-reference brackets" href="#proof" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p>
 <p>The proof can be generalised to a method applying to all so-called Sahlqvist formulas and the area of modal logic is known as correspondence theory. We just look at one other basic example:</p>
 <p><strong>Exercise:</strong> <span class="math notranslate nohighlight">\((W,R)\models \Box p\to\Box\Box p\)</span> iff <span class="math notranslate nohighlight">\(R\)</span> is transitive.</p>
 <p><strong>Remark:</strong> In the early 20th century modal logics where developed by philosophers from a syntactic and proof theoretic point of view. Axioms such as <span class="math notranslate nohighlight">\(\Box p\to p\)</span> and <span class="math notranslate nohighlight">\(\Box\phi\to\Box\Box\phi\)</span> where discovered by reading them as “necessarily p implies p” and “necessarily p implies necessarily necessarily p” and modal logics where characterised by axioms and proof rules. As far as I know the history, it came as a surprise that these axioms had such a neat semantic characterisation.</p>
@@ -506,8 +520,29 @@ w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}
 <p>Blackburn, de Rijke, Venema: “Modal Logic”.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="proof" role="doc-footnote">
+<aside class="footnote brackets" id="pp" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>We follow here a convention in much of the literature to denote atomic propositions in ML by lower case letters and one-place predicates in FOL by upper-case letters. Thus <span class="math notranslate nohighlight">\(p\)</span> is translated to <span class="math notranslate nohighlight">\(Pv\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="decidable" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>A logic is decidable if there is an algorithm <span class="math notranslate nohighlight">\(A\)</span> that can takes formulas <span class="math notranslate nohighlight">\(\phi\)</span> of the logic as input and</p>
+<ul class="simple">
+<li><p>always terminates,</p></li>
+<li><p>returns 1 if <span class="math notranslate nohighlight">\(\phi\)</span> is valid,</p></li>
+<li><p>returns 0 if <span class="math notranslate nohighlight">\(\phi\)</span> is not valid.</p></li>
+</ul>
+</aside>
+<aside class="footnote brackets" id="observational" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Two models <span class="math notranslate nohighlight">\(M,M'\)</span> are logically equivalent if for all formulas <span class="math notranslate nohighlight">\(\phi\)</span> it holds that <span class="math notranslate nohighlight">\(M\)</span> satisfies <span class="math notranslate nohighlight">\(\phi\)</span> if and only if <span class="math notranslate nohighlight">\(M'\)</span> satisfies <span class="math notranslate nohighlight">\(\phi\)</span>. If <span class="math notranslate nohighlight">\(M,M'\)</span> are models of computation there are various notions of equivalence motivated by computational consdirations. Some of these equivalences are called “obserational”. Roughly speaking, two models are observationally equivalent if they cannot be distinguished by running them an only observing their outputs (as opposed to looking at how they are implemented).</p>
+</aside>
+<aside class="footnote brackets" id="philosophical" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>In this notes we only mention the question of the meaning of “necessary” and “possible”. For a study of time from the point of view of modal logic, I recommend van Benthem, The Logic of Time. The work of David Lewis on Counterfactuals is another good example. I plan to add more references along these lines in the future …</p>
+</aside>
+<aside class="footnote brackets" id="proof" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
 <p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(w\in W\)</span>. Let <span class="math notranslate nohighlight">\(\sem{p}=\{v \mid wRv\}\)</span>. We know <span class="math notranslate nohighlight">\(w\Vdash\Box p\)</span> by definition of <span class="math notranslate nohighlight">\(\sem{\Box p}\)</span> and <span class="math notranslate nohighlight">\(w\Vdash \Box p\to p\)</span> by assumption. It follows <span class="math notranslate nohighlight">\(w\Vdash p\)</span>, which implies <span class="math notranslate nohighlight">\(wRw\)</span> by definition of <span class="math notranslate nohighlight">\(\sem{p}\)</span>.</p>
 </aside>
 </aside>
@@ -578,6 +613,7 @@ w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
 </ul>
