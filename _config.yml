@@ -27,6 +27,9 @@ exclude_patterns:
   - "notes/**"
   - ".venv/**"
   - "z3/**"
+  - "playground/**"
+  - "src/**"
+  - "notebooks/**"
 
 # Information about where the book exists on the web
 repository:

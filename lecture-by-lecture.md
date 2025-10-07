@@ -20,3 +20,5 @@
 
 **L5.2:** [SMT Solving and Z3](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/5-smt-solving.html)
 
+**L6.1-7.1:** Introduction to Modal Logic. Syntax, Semantics. [Muddy Children](https://hackmd.io/@alexhkurz/ryD5Deg6gg).
+
