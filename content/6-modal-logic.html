@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/6-modal-logic';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -369,7 +371,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -385,6 +389,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-theory-of-modal-logic">The Basic Theory of Modal Logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -396,7 +413,105 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modal-logic">
 <h1>Modal Logic<a class="headerlink" href="#modal-logic" title="Link to this heading">#</a></h1>
-<p>Author: Alexander Kurz</p>
+<p><span class="math notranslate nohighlight">\(\newcommand{\sem}[1]{[\![#1]\!]}\)</span>
+Author: Alexander Kurz</p>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
+<p>Superficially, modal logic adds to the propositional connectives <span class="math notranslate nohighlight">\(\wedge\)</span> (and), <span class="math notranslate nohighlight">\(\vee\)</span> (or), <span class="math notranslate nohighlight">\(\neg\)</span> (not) two new connectives that allow us to take any formula <span class="math notranslate nohighlight">\(\phi\)</span> and form two new formulas</p>
+<div class="math notranslate nohighlight">
+\[
+\Box\phi\quad\quad\Diamond\phi.
+\]</div>
+<p>One of the reasons modal logic has been so important is that there are so many possible interpretations for these connectives. For example,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Box\phi\)</span> means <strong>necessarily</strong> <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\Diamond\phi\)</span> means possibly <span class="math notranslate nohighlight">\(\phi\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Box\phi\)</span> means <strong>always</strong> <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\Diamond\phi\)</span> means sometimes <span class="math notranslate nohighlight">\(\phi\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Box_i\phi\)</span> means agent <span class="math notranslate nohighlight">\(i\)</span> <strong>knows</strong> <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\Diamond_i\phi\)</span> means agent <span class="math notranslate nohighlight">\(i\)</span> thinks <span class="math notranslate nohighlight">\(\phi\)</span> is possible.</p></li>
+</ul>
+<p><strong>(Temporal and Epistemic Logic)</strong> Each of these interpretations created their own field of research. The first one dominated modal logic in the first half of the 20th century. The second one is known as temporal logic and has been playing an important role in computer science (verificiation, model checking) since the 1980ies. The third one is known as epistemic logic and continues to be cutting edge in philosophy, economics, software engineering, AI and other areas.</p>
+<p>Besides temporal logic and epistemic logic there is also … (insert more examples) …</p>
+<p><strong>(Fragments of First-Order Logic)</strong> Another reason modal logic has been important is as a fragment of first-order logic. As we can see from the examples above, <span class="math notranslate nohighlight">\(\Box\phi\)</span> is a universal quantifier (eg always) and <span class="math notranslate nohighlight">\(\Diamond\phi\)</span> is an existential quantifier (eg sometimes). Consequently, modal logic is a fragment of first-order logic. In fact, modal logic is a fragment of first-order logic in at least two different but interesting ways:</p>
+<ul class="simple">
+<li><p>Modal logic is a decidable fragment of first-order logic.</p></li>
+<li><p>Modal logic is the bisimulation invariant fragment of first-order logic.</p></li>
+</ul>
+<p>The first point has given rise to various generalisations of modal logic, in particular in the area of automated theorem proving. Search for <a class="reference external" href="https://www.google.com/search?q=%22guarded+fragment%22&amp;amp;oq=%22guarded+fragment%22&amp;amp;aqs=chrome..69i57j0j0i22i30l2.3319j1j4&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8">guarded fragment</a> for references.</p>
+<p>In the second point bisimulation refers to a relation of observational or behavioural equivalence of dynamic systems, which are themselves considered as “black boxes”. In fact, bisimulation is the natural notion of behavioural equivalence for non-determinstic transition systems in which the states themselves are not observable but choices are. This leads us to the next item.</p>
+<p><strong>(Possible Worlds Semantics)</strong> The idea that something is necessarily true if it is true in all possible worlds is an old one. The turning point for modal logic was the mathematical formalisation of possible world semantics by Kripke:</p>
+<ul class="simple">
+<li><p>Saul Kripke: <a class="reference external" href="http://www.naturalthinker.net/trl/texts/Kripke,Saul/Kripke%20S.%20-%20A%20Completeness%20Theorem%20in%20Modal%20Logic.pdf">A Completeness Theorem in Modal Logic</a>. 1959.</p></li>
+<li><p>Saul Kripke: <a class="reference external" href="http://fitelson.org/142/kripke_1.pdf">Semantical Analysis of Modal Logic I</a>. 1963. I recommend Section 2.1, which also contains the solution to one of the exercises below.</p></li>
+<li><p>Saul Kripke: <a class="reference external" href="http://fitelson.org/142/kripke_2.pdf">Semantical Analysis of Modal Logic II</a>. 1965.</p></li>
+</ul>
+<p>There is a lot to say here, but to present the main ideas as quickly as possible I would proceed as follows (see Chapters 3.1 and 3.2 of the book referenced below).</p>
+<p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(Prop\)</span> be a set of ‘propositional variables’. The language of modal logic is the smallest set of ‘formulas’ containing <span class="math notranslate nohighlight">\(Prop\)</span> and closed under <span class="math notranslate nohighlight">\(\wedge\)</span> , <span class="math notranslate nohighlight">\(\vee\)</span>, <span class="math notranslate nohighlight">\(\neg\)</span>, <span class="math notranslate nohighlight">\(\Box\)</span>, <span class="math notranslate nohighlight">\(\Diamond\)</span>.</p>
+<p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(W\)</span> be a set of ‘worlds’ and <span class="math notranslate nohighlight">\(R\subseteq W\times W\)</span>. Let <span class="math notranslate nohighlight">\(\sem{-}:Prop\to 2^W\)</span> be a function assigning sets of worlds to each atomic proposition. Define</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4758df90-095b-4c47-ae53-073815f5d58a">
+<span class="eqno">(1)<a class="headerlink" href="#equation-4758df90-095b-4c47-ae53-073815f5d58a" title="Permalink to this equation">#</a></span>\[\begin{align}
+\sem{\phi\wedge\phi'} &amp;= \sem{\phi}\cap\sem{\phi'}\\
+\sem{\phi\vee\phi'} &amp;= \sem{\phi}\cup\sem{\phi'}\\
+\sem{\neg\phi} &amp;= W\setminus \sem{\phi}\\
+\sem{\Box\phi} &amp;= \{w\in W\mid \forall v\in W\,.\, v\in\sem{\phi}\}\\
+\sem{\Diamond\phi} &amp;= \{w\in W\mid \exists v\in W\,.\, v\in\sem{\phi}\}\\
+\end{align}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+(W,R)\models \phi
+\]</div>
+<p>iff <span class="math notranslate nohighlight">\(\sem{\phi}=W\)</span> for all choices of <span class="math notranslate nohighlight">\(\sem{-}:Prop\to 2^W\)</span>.</p>
+<p>It is convenient to write</p>
+<div class="math notranslate nohighlight">
+\[
+w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}.
+\]</div>
+<p>The following exercise is a straightforward unvraveling of definitions:</p>
+<p><strong>Exercise:</strong> If <span class="math notranslate nohighlight">\(R\)</span> is reflexive, then <span class="math notranslate nohighlight">\((W,R)\models \Box p\to p\)</span>.</p>
+<p>A crucial observation that lets us glimpse the power of Kripke’s approach is that the converse is also true.</p>
+<p><strong>Prop:</strong> If <span class="math notranslate nohighlight">\((W,R)\models \Box p\to p\)</span>, then <span class="math notranslate nohighlight">\(R\)</span> is reflexive.</p>
+<p>The proof is short once you know the trick. Try to find it for yourself before looking at the footnote.<a class="footnote-reference brackets" href="#proof" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>The proof can be generalised to a method applying to all so-called Sahlqvist formulas and the area of modal logic is known as correspondence theory. We just look at one other basic example:</p>
+<p><strong>Exercise:</strong> <span class="math notranslate nohighlight">\((W,R)\models \Box p\to\Box\Box p\)</span> iff <span class="math notranslate nohighlight">\(R\)</span> is transitive.</p>
+<p><strong>Remark:</strong> In the early 20th century modal logics where developed by philosophers from a syntactic and proof theoretic point of view. Axioms such as <span class="math notranslate nohighlight">\(\Box p\to p\)</span> and <span class="math notranslate nohighlight">\(\Box\phi\to\Box\Box\phi\)</span> where discovered by reading them as “necessarily p implies p” and “necessarily p implies necessarily necessarily p” and modal logics where characterised by axioms and proof rules. As far as I know the history, it came as a surprise that these axioms had such a neat semantic characterisation.</p>
+<p><strong>Exercise:</strong> Interpret <span class="math notranslate nohighlight">\(\Box p\to p\)</span> and <span class="math notranslate nohighlight">\(\Box p\to\Box\Box p\)</span> from the point of view of temporal and epistemic logic.</p>
+<section id="further-reading">
+<h3>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h3>
+<p>The paper</p>
+<ul class="simple">
+<li><p>Halpern, Vardi: <a class="reference external" href="https://www.cs.cornell.edu/home/halpern/papers/manifesto.pdf">Model Checking v. Theorem Proving: A Manifesto</a>. 1991.</p></li>
+</ul>
+<p>illustrates many of the themes that make modal logic so important for computer science applications.</p>
+</section>
+</section>
+<section id="the-basic-theory-of-modal-logic">
+<h2>The Basic Theory of Modal Logic<a class="headerlink" href="#the-basic-theory-of-modal-logic" title="Link to this heading">#</a></h2>
+<p>We have seen that modal logic comprises several independent areas (temporal logic, epistemic logic, etc) and has important overlaps with others (concurrency, multi-agent systems, automated reasoning, game theory, etc). My intention here is only to sketch out the basic theory that is important in all these fields.</p>
+<p>Actually, instead of writing this out myself, I refer to the book “Modal Logic” by Blackburn, de Rijke, Venema.(The book treats also <span class="math notranslate nohighlight">\(n\)</span>-ary relations (the “general case”, as opposed to binary relations). This generalisation is interesting for some applications but should be skipped on a first reading.)</p>
+<p>Here is what I would consider essential for a first run through the basics of modal logic.</p>
+<ul class="simple">
+<li><p>1.2: Modal Languages</p></li>
+<li><p>1.3: Models and Frames</p></li>
+<li><p>1.5: Semantic Consequence</p></li>
+<li><p>1.6: Normal Modal Logics</p></li>
+<li><p>2.1: Invariance Results (Def 2.10 and Prop 2.14)</p></li>
+<li><p>2.2: Bisimulations (up to Thm 2.20)</p></li>
+<li><p>2.3: Finite Models (can be skipped on first reading)</p></li>
+<li><p>2.4: The Standard Translation (up to Prop 2.47)</p></li>
+<li><p>3.1: Frame Definability (Exle 3.6)</p></li>
+<li><p>3.2: Frame Definability and Second-Order Logic (Exle 3.11)</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>Blackburn, de Rijke, Venema: “Modal Logic”.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="proof" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(w\in W\)</span>. Let <span class="math notranslate nohighlight">\(\sem{p}=\{v \mid wRv\}\)</span>. We know <span class="math notranslate nohighlight">\(w\Vdash\Box p\)</span> by definition of <span class="math notranslate nohighlight">\(\sem{\Box p}\)</span> and <span class="math notranslate nohighlight">\(w\Vdash \Box p\to p\)</span> by assumption. It follows <span class="math notranslate nohighlight">\(w\Vdash p\)</span>, which implies <span class="math notranslate nohighlight">\(wRw\)</span> by definition of <span class="math notranslate nohighlight">\(\sem{p}\)</span>.</p>
+</aside>
+</aside>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -453,6 +568,26 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-theory-of-modal-logic">The Basic Theory of Modal Logic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

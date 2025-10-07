@@ -17,7 +17,7 @@ One of the most powerful aspects of this logic is its built-in support for backt
 
 ### Mini Family Tree
 
-```{mermaid}
+```mermaid
 graph TD
     P[Parent]
     C1[Child 1]
