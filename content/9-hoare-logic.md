@@ -2,9 +2,22 @@
 
 *Author: Alex*
 
-## Introduction
+## Idea
 
-This chapter presents Hoare logic using Microsoft's Dafny verification system, demonstrating how to formally specify and verify program correctness with preconditions, postconditions, and invariants.
+### Idea
+
+Hoare Logic is a formal system for proving program correctness using logical assertions. It represents programs as Hoare triples:
+
+{P}\ C\ {Q}
+
+where (P) is the precondition, (C) the command, and (Q) the postcondition. For example:
+
+{x = 2}\ x := x + 3\ {x = 5}
+
+means that if (x = 2) before execution, then (x = 5) afterward.
+
+Hoare logic forms the basis of modern verification tools like Dafny, which extend it with loop invariants, assertions, and automated theorem proving. Unlike testing, which checks correctness for specific cases, Hoare logic proves correctness for all possible executions.
+
 
 ## Topics
 
