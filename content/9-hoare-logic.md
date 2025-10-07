@@ -8,7 +8,7 @@
 
 Hoare Logic is a formal system for proving program correctness using logical assertions. It represents programs as Hoare triples:
 
-{P}\ C\ {Q}
+{P} C {Q}
 
 where (P) is the precondition, (C) the command, and (Q) the postcondition. For example:
 
