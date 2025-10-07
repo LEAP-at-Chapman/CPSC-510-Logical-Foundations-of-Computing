@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -393,6 +393,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool">Tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise">Excercise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -408,10 +416,54 @@ document.write(`
 <h1>Temporal Logic with Spin<a class="headerlink" href="#temporal-logic-with-spin" title="Link to this heading">#</a></h1>
 <section id="idea">
 <h2>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
-<p>Temporal logic is a system of logic used to reason about time. A statement in temporal logic may have a truth value that changes over the course of time. It includes new qualifiers that relate to time, such as: <code class="docutils literal notranslate"><span class="pre">always</span></code>, <code class="docutils literal notranslate"><span class="pre">eventually</span></code>, <code class="docutils literal notranslate"><span class="pre">never</span></code>, <code class="docutils literal notranslate"><span class="pre">until</span></code>, <code class="docutils literal notranslate"><span class="pre">whenever</span></code> etc.</p>
-<p>For example: I will <code class="docutils literal notranslate"><span class="pre">eventually</span></code> be hungry</p>
-<p>This mode of logic can be very useful in concurrent systems where two threads must be made to <code class="docutils literal notranslate"><span class="pre">never</span></code> access the same reasource at the same time.</p>
-<p>Testing …</p>
+<p>Temporal logic is a system of logic used to reason about time. A statement in temporal logic may have a truth value that changes over the course of time. It includes new qualifiers that relate to time, such as: <em>always</em>, <em>eventually</em>, <em>never</em>, <em>until</em>, <em>whenever</em> etc.</p>
+<p>For example: I will <em>eventually</em> be hungry</p>
+<p>This mode of logic can be very useful in concurrent systems where two threads must be made to <em>never</em> access the same reasource at the same time.</p>
+</section>
+<section id="basic-theory">
+<h2>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
+<p>Temporal logic is used to reason about things in terms of time. For example, a statement like “It is raining” may vary in truth throughout time. Sometimes it will be raining and sometimes it will not be raining. Temporal logic allows truth values to vary throughout time. There are many different types of temporal logic, some allow you to view the system as a single path through time, while some may involve multiple timelines.</p>
+<p>It includes all basic logical operators: and, or, not and implies.</p>
+<p>It also includes several additional modal operators:</p>
+<ul class="simple">
+<li><p>Until (U):
+A U B means that A must be true until B becomes true, after which A no longer needs to be true.</p></li>
+<li><p>Release (R):
+A R B means that B is true up to and including the first position in which A is true.</p></li>
+<li><p>Next (N or a Circle):
+N A means that A must be true in the next state.</p></li>
+<li><p>Future (F or a Diamond):
+F A means that A must be true somewhere ahead of the current position in time.</p></li>
+<li><p>Globally (G or Box):
+G A means that A must be true for the rest of the timeline or path.</p></li>
+<li><p>For All (A or an upsidedown A):
+A B means that B must be true on all paths starting from the current position.</p></li>
+<li><p>There Exists (E or a backwards E):
+E A means that there exists at least one path starting from the current position where A is true.</p></li>
+</ul>
+</section>
+<section id="tool">
+<h2>Tool<a class="headerlink" href="#tool" title="Link to this heading">#</a></h2>
+<p>The tool we will be using to explore temporal logic is called SPIN. It is primarily used to verify multithreaded software.</p>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<p>Link: https://spinroot.com/spin/Man/README.html</p>
+<p>I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple <em>sudo apt-get install spin</em>.</p>
+</section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+</section>
+<section id="excercise">
+<h3>Excercise<a class="headerlink" href="#excercise" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators</p></li>
+<li><p>https://en.wikipedia.org/wiki/SPIN_model_checker</p></li>
+<li><p>https://spinroot.com/spin/whatispin.html</p></li>
+</ul>
 </section>
 </section>
 
@@ -480,6 +532,14 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool">Tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise">Excercise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

@@ -179,7 +179,54 @@ Both DP and DPLL have exponential time complexity in the worst case. But in prac
 
 ### Conflict-driven Clause Learning
 
-... tbc ... see the forthcoming book chapter ...
+[Conflict-driven Clause Learning](https://en.wikipedia.org/wiki/Conflict-driven_clause_learning)
+(CDCL) is another algorithm for solving SAT problems that is similar to DPLL but the main difference is that CDCL does not back-jump chronologically. CDCL was proposed by Marques-Silva and Karem A. Sakallah (1996, 1999) and Bayardo and Schrag (1997). The algorithm is as follows:
+
+1. Choose a variable and assign it with either true or false (called the decision state).
+2. Apply Unit Propagation (this will be explained below).
+3. Construct the Implication Graph (this will also be explained below).
+4. If there is any conflict in the graph, do the following:
+    a. Determine where in the graph the break that caused the conflict is.
+    b. Make a new clause that is the negation of the assignments that caused the conflict.
+    c. Backtrack non-chronologically (backjump) to the decision level where the first assigned variable in the conflict was assigned.
+5. If there was no conflict, start from step 1 on a new variable until every variable has been assigned.
+
+#### Unit Propagation
+
+Unit propagation is a fairly simply concept. All that it says is that if we have a clause where all but one of its literals is evaluated as False, then the last literal must be True in order for the clause to be True. For example, given the following clause:
+
+$$(A\vee B\vee C)$$
+
+If we have $A =$ False and $B =$ False, then $C$ must be True in order for our clause to be True.
+
+
+#### Implication Graphs
+
+An implication graph is something that is drawn in step 3 of the CDCL algorithm, and it involves using your arbitrary choices, unit propagation, and implications to determine a satisfiable answer to an algorithm. To show how implication graphs work (and how the entire algorithm works), we will use this example formula:
+
+$$(\neg A\vee B) \wedge (\neg B\vee C) \wedge (\neg C \vee A) \wedge (\neg A\vee \neg B)$$
+
+Step 1 of the algorithm says to choose a variable and assign it either True or False. For this example, we will start by assigning $A =$ True. (A=1)
+
+Now we move on to step 2 of the algorithm, using unit propagation to assign other variables. In the first clause, since we have $A =$ True, we must have $B =$ True. (A=1 -> B=1)
+
+Now since $B =$ True, in the second clause we must have $C =$ True. (A=1 -> B=1 -> C=1)
+
+In the fourth clause, since $A =$ True, $B$ must be False. (A=1 -> (B=0) and (B=1 -> C=1))
+
+Now we have a conflict, since $B$ cannot be both True and False. According to the algorithm, once we have a conflict we must first determine in the graph the break that caused the conflict. In our graph, it is simple to see that the conflict is solely caused by $A =$ True. Thus, according to the algorithm, we must add a new clause that is the negation of the conflict. So, our new formula is:
+
+$$(\neg A\vee B) \wedge (\neg B\vee C) \wedge (\neg C \vee A) \wedge (\neg A\vee \neg B) \wedge (\neg A)$$
+
+Now we backjump back to where our problem was (in this case, the beginning of the graph) and start again. This time, we will assign $A =$ False. (A=0)
+
+Using unit propagation, since $A =$ False, C must be False according to clause 3. (A=0 -> C=0)
+
+Since $C =$ False, $B =$ False according to clause 2. (A=0 -> C=0 -> B=0).
+
+Now we have hit step 5 of the algorithm, there are no conflicts and every variable has been assigned. Thus, our formula is satisfiable.
+
+
 
 ## Applications in Industry
 

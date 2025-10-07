@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -403,7 +403,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">Resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">Davis–Putnam algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnamlogemannloveland-dpll-algorithm">Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning">Conflict-driven Clause Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning">Conflict-driven Clause Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-propagation">Unit Propagation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implication-graphs">Implication Graphs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
@@ -603,7 +607,42 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 </section>
 <section id="conflict-driven-clause-learning">
 <h3>Conflict-driven Clause Learning<a class="headerlink" href="#conflict-driven-clause-learning" title="Link to this heading">#</a></h3>
-<p>… tbc … see the forthcoming book chapter …</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Conflict-driven_clause_learning">Conflict-driven Clause Learning</a>
+(CDCL) is another algorithm for solving SAT problems that is similar to DPLL but the main difference is that CDCL does not back-jump chronologically. CDCL was proposed by Marques-Silva and Karem A. Sakallah (1996, 1999) and Bayardo and Schrag (1997). The algorithm is as follows:</p>
+<ol class="arabic simple">
+<li><p>Choose a variable and assign it with either true or false (called the decision state).</p></li>
+<li><p>Apply Unit Propagation (this will be explained below).</p></li>
+<li><p>Construct the Implication Graph (this will also be explained below).</p></li>
+<li><p>If there is any conflict in the graph, do the following:
+a. Determine where in the graph the break that caused the conflict is.
+b. Make a new clause that is the negation of the assignments that caused the conflict.
+c. Backtrack non-chronologically (backjump) to the decision level where the first assigned variable in the conflict was assigned.</p></li>
+<li><p>If there was no conflict, start from step 1 on a new variable until every variable has been assigned.</p></li>
+</ol>
+<section id="unit-propagation">
+<h4>Unit Propagation<a class="headerlink" href="#unit-propagation" title="Link to this heading">#</a></h4>
+<p>Unit propagation is a fairly simply concept. All that it says is that if we have a clause where all but one of its literals is evaluated as False, then the last literal must be True in order for the clause to be True. For example, given the following clause:</p>
+<div class="math notranslate nohighlight">
+\[(A\vee B\vee C)\]</div>
+<p>If we have <span class="math notranslate nohighlight">\(A =\)</span> False and <span class="math notranslate nohighlight">\(B =\)</span> False, then <span class="math notranslate nohighlight">\(C\)</span> must be True in order for our clause to be True.</p>
+</section>
+<section id="implication-graphs">
+<h4>Implication Graphs<a class="headerlink" href="#implication-graphs" title="Link to this heading">#</a></h4>
+<p>An implication graph is something that is drawn in step 3 of the CDCL algorithm, and it involves using your arbitrary choices, unit propagation, and implications to determine a satisfiable answer to an algorithm. To show how implication graphs work (and how the entire algorithm works), we will use this example formula:</p>
+<div class="math notranslate nohighlight">
+\[(\neg A\vee B) \wedge (\neg B\vee C) \wedge (\neg C \vee A) \wedge (\neg A\vee \neg B)\]</div>
+<p>Step 1 of the algorithm says to choose a variable and assign it either True or False. For this example, we will start by assigning <span class="math notranslate nohighlight">\(A =\)</span> True. (A=1)</p>
+<p>Now we move on to step 2 of the algorithm, using unit propagation to assign other variables. In the first clause, since we have <span class="math notranslate nohighlight">\(A =\)</span> True, we must have <span class="math notranslate nohighlight">\(B =\)</span> True. (A=1 -&gt; B=1)</p>
+<p>Now since <span class="math notranslate nohighlight">\(B =\)</span> True, in the second clause we must have <span class="math notranslate nohighlight">\(C =\)</span> True. (A=1 -&gt; B=1 -&gt; C=1)</p>
+<p>In the fourth clause, since <span class="math notranslate nohighlight">\(A =\)</span> True, <span class="math notranslate nohighlight">\(B\)</span> must be False. (A=1 -&gt; (B=0) and (B=1 -&gt; C=1))</p>
+<p>Now we have a conflict, since <span class="math notranslate nohighlight">\(B\)</span> cannot be both True and False. According to the algorithm, once we have a conflict we must first determine in the graph the break that caused the conflict. In our graph, it is simple to see that the conflict is solely caused by <span class="math notranslate nohighlight">\(A =\)</span> True. Thus, according to the algorithm, we must add a new clause that is the negation of the conflict. So, our new formula is:</p>
+<div class="math notranslate nohighlight">
+\[(\neg A\vee B) \wedge (\neg B\vee C) \wedge (\neg C \vee A) \wedge (\neg A\vee \neg B) \wedge (\neg A)\]</div>
+<p>Now we backjump back to where our problem was (in this case, the beginning of the graph) and start again. This time, we will assign <span class="math notranslate nohighlight">\(A =\)</span> False. (A=0)</p>
+<p>Using unit propagation, since <span class="math notranslate nohighlight">\(A =\)</span> False, C must be False according to clause 3. (A=0 -&gt; C=0)</p>
+<p>Since <span class="math notranslate nohighlight">\(C =\)</span> False, <span class="math notranslate nohighlight">\(B =\)</span> False according to clause 2. (A=0 -&gt; C=0 -&gt; B=0).</p>
+<p>Now we have hit step 5 of the algorithm, there are no conflicts and every variable has been assigned. Thus, our formula is satisfiable.</p>
+</section>
 </section>
 </section>
 <section id="applications-in-industry">
@@ -735,7 +774,11 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">Resolution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">Davis–Putnam algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnamlogemannloveland-dpll-algorithm">Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning">Conflict-driven Clause Learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning">Conflict-driven Clause Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-propagation">Unit Propagation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implication-graphs">Implication Graphs</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
