@@ -65,8 +65,8 @@ There is a lot to say here, but to present the main ideas as quickly as possible
 \sem{\phi\wedge\phi'} &= \sem{\phi}\cap\sem{\phi'}\\
 \sem{\phi\vee\phi'} &= \sem{\phi}\cup\sem{\phi'}\\
 \sem{\neg\phi} &= W\setminus \sem{\phi}\\
-\sem{\Box\phi} &= \{w\in W\mid \forall v\in W\,.\, v\in\sem{\phi}\}\\
-\sem{\Diamond\phi} &= \{w\in W\mid \exists v\in W\,.\, v\in\sem{\phi}\}\\
+\sem{\Box\phi} &= \{w\in W\mid \forall v\in W\,.\, wRv \Rightarrow v\in\sem{\phi}\}\\
+\sem{\Diamond\phi} &= \{w\in W\mid \exists v\in W\,.\, wRv \Rightarrow v\in\sem{\phi}\}\\
 \end{align}
 and  
 
