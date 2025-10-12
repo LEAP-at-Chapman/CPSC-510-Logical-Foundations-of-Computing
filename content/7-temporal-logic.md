@@ -32,17 +32,55 @@ It also includes several additional modal operators:
 
 ## Tool
 
-The tool we will be using to explore temporal logic is called SPIN. It is primarily used to verify multithreaded software.
+The tool we will be using to explore temporal logic is called SPIN. It is primarily used to verify multithreaded software. SPIN uses a coding language called promela.
 
 ### Installation
 Link: https://spinroot.com/spin/Man/README.html
 
-I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple *sudo apt-get install spin*.
-### Example
-### Excercise
+Some examples taken from: https://spinroot.com/courses/summer/
+
+I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple `sudo apt-get install spin`.
+
+### First Example
+
+init {	// file: ex_1a.pml
+		byte i	// initialized to 0 by default
+		do	// loop forever
+		:: i++	// nondisterministic choice, only one option
+		od
+	}
+
+run with `$ spin -u514 -p -l ex_1a.pml`
+
+This should print 514 steps of increasing numbers.
+
+### First Excercise
+A farmer wants to move a cabbage, a goat, and a wolf across a river in his boat. He can only fit one thing in his boat while going across. If the farmer isn't watching, the goat will eat the cabbage, and the wolf will eat the goat. Can you think of a way to model this problem and find it's solution in SPIN?
+
+Note: SPIN allows you to both define the solution in the code and in the fourmula you run from the command line.
+
+## Intro Examples
+
+## The Landscape of Tools
+
+## Algorithms
+
+## Benchmarks
+
+## Applications in Industry
+
+One of the main applications of SPIN in the industry is model checking for concurecy. 
+
+## Case Studies
+
+## History
+
+## Current Development, Research Challenges, Conferences and Workshops
 
 ## References
 * https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators
 * https://en.wikipedia.org/wiki/SPIN_model_checker
 * https://spinroot.com/spin/whatispin.html
+* https://spinroot.com/courses/summer/
 
+## Suggestions for Future Work on this Book
