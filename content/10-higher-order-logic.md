@@ -131,7 +131,201 @@ end
 ```
 
 ### 10.3.3 First Exercise
-WIP
+For the first exercise, we will be proving the associative and commutative properties of a custom `add` function in Isabelle. This exercise comes from Exercise 2.2 of [Concrete Semantics Exercises](http://www.concrete-semantics.org/Exercises/exercises.pdf)
+<!-- i need to change this to a footnote or something that links to references at the end -->
+
+WIP - i'm still porting over my code in isabelle and want to refine the explanations as well as make it easy to follow and understand
+
+The custom add function is defined here:
+```isabelle
+fun add :: "nat ⇒ nat ⇒ nat" where
+    "add 0 n = n" |
+    "add (Suc m) n = Suc(add m n)"
+```
+
+We use 2 lemmas to prove each part of the exercise, namely:
+```isabelle
+lemma add_assoc: "add (add m n) p = add m (add n p)"
+lemma add_comm: "add m n = add n m"
+```
+
+#### General Proof Structure for a Proof by Induction
+
+Isabelle provides a general structure for how to approach and construct your proof. For this exercise, we will be using a proof by induction; first by proving a base case, and then by proving the sucessor case by using the induction hypothesis.
+
+We start the proof by adding the command `proof(induction m)` after the `lemma` command. When we examine the output of this, we find that Isabele actually provides us with the overall goal, subgoals (such as the base case and successor cases), and the general proof outline
+
+For example, for the associative property lemma, we get this:
+```isabelle
+goal (2 subgoals):
+ 1. add (add 0 n) p = add 0 (add n p)
+ 2. ⋀m. add (add m n) p = add m (add n p) ⟹ add (add (Suc m) n) p = add (Suc m) (add n p) 
+Proof outline with cases:
+  case 0
+  then show ?case sorry
+next
+  case (Suc m)
+  then show ?case sorry
+qed
+```
+
+<!-- We first start off by proving the associative property: -->
+#### Associative Property Proof
+
+We first start off by proving the associative property of addition, and we do this by declaring the lemma and its goal:
+```isabelle
+lemma add_assoc: "add (add m n) p = add m (add n p)"
+```
+We then add the type of proof, which in this case will be a simple induction proof via the `proof` command:
+```isabelle
+proof (induction m) 
+```
+We then set the base case with:
+```isabelle
+  case 0
+```
+which will set `m = 0` as the base case, and then will update the goal to:
+`add (add 0 n) p = add 0 (add n p)`
+
+We then use:
+```isabelle
+show ?case by simp
+```
+
+in order to simplify that new goal to:
+`add n p = add n p`
+
+Next, we perform the inductive step in order to prove that if the associative property holds for m, it must also hold for it's successor of  `Suc m`
+
+We introduce the inductive step:
+```isabelle
+next
+  case (Suc m)
+```
+
+This creates 2 things:
+  - A goal of: `add (add (Suc m) n) p = add (Suc m) (add n p)`
+  -	An induction hypothesis (Suc.IH) that assumes the property holds for m:
+    `add (add m n) p = add m (add n p)`
+
+<!-- We then use the recursive definition of add to expand both sides of the equation, and apply the induction hypothesis to simplify the inner equality. This shows that the associative property also holds for the successor case: -->
+```isabelle
+  show ?case by (simp add: Suc.IH)
+```
+
+Here, simp first expands both sides of the equation using the recursive definition
+`add (Suc m) n = Suc (add m n)`
+This reduces the goal to
+`Suc (add (add m n) p) = Suc (add m (add n p))`
+The induction hypothesis (Suc.IH) is then applied to replace
+`add (add m n) p` with `add m (add n p)`,
+making both sides identical.
+The expression simplifies to Suc (...) = Suc (...) and completes the inductive step.
+
+The full lemma proof for associativity is here:
+```isabelle
+lemma add_assoc: "add (add m n) p = add m (add n p)"
+proof (induction m) 
+  case 0
+  show ?case by simp
+next
+  case (Suc m)
+  show ?case by (simp add: Suc.IH)
+qed
+```
+
+
+#### Communative Property Proof
+Next, to prove the communative property, we will first prove 2 helper lemmas:
+```isabelle
+lemma add_0_right: "add m 0 = m"
+lemma add_Suc_right: "add m (Suc n) = Suc (add m n)"
+```
+
+These proofs follow the same general format for induction:
+```isabelle
+lemma add_0_right: "add m 0 = m"
+proof (induction m)
+  case 0
+  show ?case by simp
+next
+  case (Suc m)
+  show ?case by (simp add: Suc.IH)
+qed
+
+lemma add_Suc_right: "add m (Suc n) = Suc (add m n)"
+proof (induction m)
+  case 0
+  show ?case by simp
+next
+  case (Suc m)
+  show ?case by (simp add: Suc.IH)
+qed
+```
+<!-- This follows the same general format for inductive proofs
+```isabelle
+lemma add_0_right: "add m 0 = m"
+proof(induction m)
+  case 0
+
+``` -->
+
+<!-- Case 0 is the base case. In this instance, it means that we will set m = 0. Therefore, we will get `add 0 0 = 0` which is true.
+  show ?case by simp
+  (* Base: add 0 0 = 0 by add.simps(1) *)
+next
+  case (Suc m)
+  (* 
+  IH: add m 0 = m
+  Goal: add (Suc m) 0 = Suc m.
+  Expand the LHS with the recursive clause, then use the IH. 
+  *)
+  show ?case by (simp add: Suc.IH)
+  (* Step: add (Suc m) 0 = Suc (add m 0) by add.simps(2), then = Suc m by IH *)
+qed
+``` -->
+
+<!-- ##### add_Suc_rght Proof
+
+```isabelle
+lemma add_Suc_right: "add m (Suc n) = Suc (add m n)"
+proof(induction m)
+  case 0
+  (* 
+  Goal: add 0 (Suc n) = Suc (add 0 n).
+  By add 0 x = x, both sides become Suc n.
+  *)
+  show ?case by simp
+  (* Base: add 0 (Suc n) = Suc n and Suc (add 0 n) = Suc n *)
+next
+  case (Suc m)
+  (*
+  IH: add m (Suc n) = Suc (add m n)
+  Goal: add (Suc m) (Suc n) = Suc (add (Suc m) n).
+  Expand LHS with add.simps, then use IH, then fold once.
+  *)
+  show ?case by (simp add: Suc.IH)
+  (* Step: add (Suc m) (Suc n) = Suc (add m (Suc n)) (def), then by IH = Suc (Suc (add m n)), 
+  and simp recognizes that equals Suc (add (Suc m) n) via the def again *)
+qed
+``` -->
+
+With the helper lemmas proven, we will use them to prove the commutative property
+
+```isabelle
+lemma add_comm: "add m n = add n m"
+proof (induction m)
+  case 0
+  show ?case
+    by (simp add: add_0_right)
+next
+  case (Suc m)
+  show ?case
+    by (simp add: Suc.IH add_Suc_right)
+qed
+```
+
+where we use the add_0_right lemma in the base case and then the add_Suc_right lemma in the inductive step.
 
 ## 10.4 Introductory Examples {#sec0-10-4}
 
@@ -161,6 +355,7 @@ WIP
 
 - [Isabelle/HOL](https://isabelle.in.tum.de/)
 - [Concrete Semantics](http://www.concrete-semantics.org/)
+- [Concrete Semantics Exercises](http://www.concrete-semantics.org/Exercises/exercises.pdf)
 - [Isabelle YouTube Tutorial by FDS 2020](https://www.youtube.com/@FDS-hs2uc/videos)
 - [Syllogism Slides from Nate Moss](https://logic.berkeley.edu/colloquium/MossSlides.pdf)
 
