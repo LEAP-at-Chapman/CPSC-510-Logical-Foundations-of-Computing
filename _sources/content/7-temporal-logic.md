@@ -32,17 +32,71 @@ It also includes several additional modal operators:
 
 ## Tool
 
-The tool we will be using to explore temporal logic is called SPIN. It is primarily used to verify multithreaded software.
+The tool we will be using to explore temporal logic is called SPIN. It is primarily used to verify multithreaded software. SPIN uses a coding language called promela.
 
 ### Installation
 Link: https://spinroot.com/spin/Man/README.html
 
-I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple *sudo apt-get install spin*.
-### Example
-### Excercise
+Some examples taken from: https://spinroot.com/courses/summer/
+
+I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple `sudo apt-get install spin`.
+
+### First Example
+To test if SPIN works on your machine try run this code:
+
+Note: you will need a C compiler to run SPIN.
+
+init {	// file: ex_1a.pml
+		byte i	// initialized to 0 by default
+		do	// loop forever
+		:: i++	// nondisterministic choice, only one option
+		od
+	}
+
+run with `$ spin -u514 -p -l ex_1a.pml`
+
+This should print 514 steps of increasing numbers.
+
+### First Excercise
+A farmer wants to move a cabbage, a goat, and a wolf across a river in his boat. He can only fit one thing in his boat while going across. If the farmer isn't watching, the goat will eat the cabbage, and the wolf will eat the goat. Can you think of a way to model this problem and find it's solution in SPIN?
+
+Note: SPIN allows you to both define the solution in the code and in the fourmula you run from the command line.
+
+To check a model with fourmulas, you must first define them in the file with `#define`. These defined fourmulas should begin with a lowercase letter.
+
+Afterwards you may run your model with fourmulas by typing the following and replacing FOURMULA with the fourmula you wish to use (ie <>cond2):
+
+```bash
+spin -a -f 'FORMULA' wgc.pml
+gcc -o pan pan.c
+./pan -a
+spin -t wgc.pml
+```
+
+If SPIN can verify the code, it will generate a trail file. Make sure to delete any existing trail files in the folder before you run your program, as this may lead to confusion.
+
+## Intro Examples
+
+## The Landscape of Tools
+
+## Algorithms
+
+## Benchmarks
+
+## Applications in Industry
+
+One of the main applications of SPIN in the industry is model checking for concurecy or mutual exculsion problems. For example, it is often the case where two processes are running in parallel and must read and write from the same reasource. These processes cannot be allowed to access the reasource at the same time to avoid memory problems. However both processes must access the reasource *eventually*. This problem and problems like it can be modeled and checked in SPIN.
+
+## Case Studies
+
+## History
+
+## Current Development, Research Challenges, Conferences and Workshops
 
 ## References
 * https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators
 * https://en.wikipedia.org/wiki/SPIN_model_checker
 * https://spinroot.com/spin/whatispin.html
+* https://spinroot.com/courses/summer/
 
+## Suggestions for Future Work on this Book

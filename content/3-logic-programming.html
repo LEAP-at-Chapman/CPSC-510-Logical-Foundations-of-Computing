@@ -181,7 +181,6 @@
 <li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Hoare Logic with Dafny</a></li>
@@ -402,6 +401,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-tool">Installing The Tool</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example">First Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">Intro Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -446,12 +447,83 @@ document.write(`
 <p>The tool that I will mainly be focusing on is Prolog, a unique coding language designed for logic programming. Prolog was first created in France in 1972 by Alain Colmerauer and Philippe Roussel, with its name derived from programmation en logique (“programming in logic”). The earliest version was an interpreter built in Fortran by Gerard Battani and Henri Meloni where later, David H. D. Warren brought this work to Edinburgh, where he then developed a new front-end that established the Edinburgh Prolog syntax which is now used for most modern implementations(1).</p>
 <section id="installing-the-tool">
 <h3>Installing The Tool<a class="headerlink" href="#installing-the-tool" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://www.swi-prolog.org/download/stable">download and install</a> Prolog. On MacOS, after moving SWI-Prolog to the Applications folder, you may have to run <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">'export</span> <span class="pre">PATH=&quot;/Applications/SWI-Prolog.app/Contents/MacOS:$PATH&quot;'</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.zshrc</span></code> to add <code class="docutils literal notranslate"><span class="pre">swipl</span></code> to your path. Then, running <code class="docutils literal notranslate"><span class="pre">swipl</span></code> in your terminal should start the Prolog interpreter.</p>
 </section>
+</section>
+<section id="first-example">
+<h2>First Example<a class="headerlink" href="#first-example" title="Link to this heading">#</a></h2>
+<p>The eight queens problem is a logic problem in where a user attempts to place all 8 queens on a chess board such that none threaten another.</p>
+<p><strong>What this shows:</strong></p>
+<ul class="simple">
+<li><p>How Prolog automatically finds solutions through backtracking</p></li>
+<li><p>How constraints work together to eliminate impossible choices</p></li>
+<li><p>How recursion naturally models complex problems</p></li>
+<li><p>The difference between procedural and declarative programming</p></li>
+</ul>
+<p>Create a file named <code class="docutils literal notranslate"><span class="pre">eightqueens.pl</span></code> and add the following code:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="nf">solution</span><span class="p">(</span><span class="nv">Queens</span><span class="p">)</span> <span class="p">:-</span> 
+    <span class="nf">length</span><span class="p">(</span><span class="nv">Queens</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+    <span class="nf">queens</span><span class="p">(</span><span class="nv">Queens</span><span class="p">).</span>
+
+<span class="nf">queens</span><span class="p">([]).</span>
+<span class="nf">queens</span><span class="p">([</span><span class="nf">queen</span><span class="p">(</span><span class="nv">Row</span><span class="p">,</span> <span class="nv">Col</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Others</span><span class="p">])</span> <span class="p">:-</span> 
+    <span class="nf">queens</span><span class="p">(</span><span class="nv">Others</span><span class="p">),</span>
+    <span class="nf">length</span><span class="p">(</span><span class="nv">Others</span><span class="p">,</span> <span class="nv">OthersLength</span><span class="p">),</span>
+    <span class="nv">Row</span> <span class="o">is</span> <span class="nv">OthersLength</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nf">member</span><span class="p">(</span><span class="nv">Col</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]),</span>
+    <span class="nf">noattack</span><span class="p">(</span><span class="nf">queen</span><span class="p">(</span><span class="nv">Row</span><span class="p">,</span> <span class="nv">Col</span><span class="p">),</span> <span class="nv">Others</span><span class="p">).</span>
+
+<span class="nf">noattack</span><span class="p">(</span><span class="k">_</span><span class="p">,</span> <span class="p">[]).</span>
+<span class="nf">noattack</span><span class="p">(</span><span class="nf">queen</span><span class="p">(</span><span class="nv">Row</span><span class="p">,</span> <span class="nv">Col</span><span class="p">),</span> <span class="p">[</span><span class="nf">queen</span><span class="p">(</span><span class="nv">Row1</span><span class="p">,</span> <span class="nv">Col1</span><span class="p">)</span> <span class="p">|</span> <span class="nv">Others</span><span class="p">])</span> <span class="p">:-</span>
+    <span class="nv">Col</span> <span class="s s-Atom">=\=</span> <span class="nv">Col1</span><span class="p">,</span>                    
+    <span class="nv">Col1</span><span class="o">-</span><span class="nv">Col</span> <span class="s s-Atom">=\=</span> <span class="nv">Row1</span><span class="o">-</span><span class="nv">Row</span><span class="p">,</span>           
+    <span class="nv">Col1</span><span class="o">-</span><span class="nv">Col</span> <span class="s s-Atom">=\=</span> <span class="nv">Row</span><span class="o">-</span><span class="nv">Row1</span><span class="p">,</span>
+    <span class="nf">noattack</span><span class="p">(</span><span class="nf">queen</span><span class="p">(</span><span class="nv">Row</span><span class="p">,</span> <span class="nv">Col</span><span class="p">),</span> <span class="nv">Others</span><span class="p">).</span>
+</pre></div>
+</div>
+<p>Run the program as follows.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swipl<span class="w"> </span>-f<span class="w"> </span>eight-queens.pl
+</pre></div>
+</div>
+<p>Then in the Prolog prompt:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="s s-Atom">?-</span> <span class="nf">solution</span><span class="p">(</span><span class="nv">S</span><span class="p">).</span>
+</pre></div>
+</div>
+<p>Here there are two options either enter <code class="docutils literal notranslate"><span class="pre">.</span></code> to end the program or <code class="docutils literal notranslate"><span class="pre">;</span></code> to see futher possible outputs.</p>
+<p>Use Ctrl-d to exit Prolog.</p>
+<p>If we enter <code class="docutils literal notranslate"><span class="pre">trace.</span></code> and enter <code class="docutils literal notranslate"><span class="pre">solution(S).</span></code> again. Use the <code class="docutils literal notranslate"><span class="pre">return</span></code> key to look into the execution of a predicate and use <code class="docutils literal notranslate"><span class="pre">s</span></code> to skip directly to the end of the execution of a predicate. Enter <code class="docutils literal notranslate"><span class="pre">a</span></code> to abort the execution. That is useful when you got lost in the execution and want to start over again.</p>
+</section>
+<section id="intro-examples">
+<h2>Intro Examples<a class="headerlink" href="#intro-examples" title="Link to this heading">#</a></h2>
+<p>In logic programming, a Prolog database is composed of facts and rules that describe relationships between entities in a declarative way. Rather than specifying how to compute something, the programmer defines what is true about the problem domain. This allows Prolog to act as a powerful tool for database querying, where relationships can be inferred rather than explicitly stored. Queries are made by posing logical questions to the database then uses backtracking to search through known facts and rules to find all possible solutions to the query.</p>
+<p>In a simple family database, the database models a small family tree using facts such as <code class="docutils literal notranslate"><span class="pre">parent(arthur,</span> <span class="pre">george)</span></code> and <code class="docutils literal notranslate"><span class="pre">parent(george,</span> <span class="pre">amelia)</span></code>, which record direct parent-child relationships. Rules like <code class="docutils literal notranslate"><span class="pre">grandparent/2</span></code>, <code class="docutils literal notranslate"><span class="pre">sibling/2</span></code>, and <code class="docutils literal notranslate"><span class="pre">ancestor/2</span></code> define how more complex family relationships can be logically derived. For instance, <code class="docutils literal notranslate"><span class="pre">grandparent(X,</span> <span class="pre">Z)</span> <span class="pre">:-</span> <span class="pre">parent(X,</span> <span class="pre">Y)</span></code>, <code class="docutils literal notranslate"><span class="pre">parent(Y,</span> <span class="pre">Z)</span></code> states that X is a grandparent of Z if X is a parent of Y and Y is a parent of Z. The sibling rule ensures that two people are considered siblings if they share a parent but are not the same person. The gender facts, combined with the <code class="docutils literal notranslate"><span class="pre">father/2</span></code> and <code class="docutils literal notranslate"><span class="pre">mother/2</span></code> rules, extends the database by categorizing parents according to gender, allowing for more natural queries like <code class="docutils literal notranslate"><span class="pre">father(X,</span> <span class="pre">Y)</span></code> or <code class="docutils literal notranslate"><span class="pre">mother(X,</span> <span class="pre">Y)</span></code>.</p>
+<p>When a query such as</p>
+<p><code class="docutils literal notranslate"><span class="pre">?-</span> <span class="pre">grandparent(X,</span> <span class="pre">richard).</span></code></p>
+<p>is executed, Prolog searches through the database to find all individuals X who satisfy the condition of being a grandparent of richard. The trace output reveals Prolog’s reasoning process step by step:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   Call: (12) grandparent(_32210, richard) ? creep
+   Call: (13) parent(_32210, _33508) ? creep
+   Exit: (13) parent(arthur, george) ? creep
+   Call: (13) parent(george, richard) ? creep
+   Exit: (13) parent(george, richard) ? creep
+   Exit: (12) grandparent(arthur, richard) ? creep
+X = arthur ;
+   Redo: (13) parent(george, richard) ? creep
+   Fail: (13) parent(george, richard) ? creep
+   Redo: (13) parent(_32210, _33508) ? creep
+   Exit: (13) parent(harriet, george) ? creep
+   Call: (13) parent(george, richard) ? creep
+   Exit: (13) parent(george, richard) ? creep
+   Exit: (12) grandparent(harriet, richard) ? creep
+X = harriet ;
+</pre></div>
+</div>
+<p>Here, Prolog begins by attempting to satisfy the rule for <code class="docutils literal notranslate"><span class="pre">grandparent/2</span></code>. It first matches <code class="docutils literal notranslate"><span class="pre">parent(_32210,</span> <span class="pre">_33508)</span></code> and discovers that arthur is a parent of george. Then it checks whether george is a parent of richard, which succeeds. As a result, Prolog concludes that arthur is indeed a grandparent of richard. It then continues to find the other grandparent to see if they are present which is found to be harriet. The [trace] output exposes the resolution process, where Prolog recursively attempts and verifies subgoals until a consistent solution is found. If we were to continue with this trace it would search the rest of the database to see if any other combinations would lead to the <code class="docutils literal notranslate"><span class="pre">grandparent/2</span></code> fact being true and when it fails it will just have the two grandparents that are present, arthur and harriet.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>https://swish.swi-prolog.org/p/dselman.swinb</p></li>
+<li><p>https://www.geeksforgeeks.org/dsa/8-queen-problem/</p></li>
 </ol>
 </section>
 </section>
@@ -529,6 +601,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-tool">Installing The Tool</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example">First Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">Intro Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>

@@ -396,11 +396,20 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool">Tool</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise">Excercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example">First Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-excercise">First Excercise</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">Intro Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">The Landscape of Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks">Benchmarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">Case Studies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">Current Development, Research Challenges, Conferences and Workshops</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-this-book">Suggestions for Future Work on this Book</a></li>
 </ul>
             </nav>
         </div>
@@ -444,18 +453,65 @@ E A means that there exists at least one path starting from the current position
 </section>
 <section id="tool">
 <h2>Tool<a class="headerlink" href="#tool" title="Link to this heading">#</a></h2>
-<p>The tool we will be using to explore temporal logic is called SPIN. It is primarily used to verify multithreaded software.</p>
+<p>The tool we will be using to explore temporal logic is called SPIN. It is primarily used to verify multithreaded software. SPIN uses a coding language called promela.</p>
 <section id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
 <p>Link: https://spinroot.com/spin/Man/README.html</p>
-<p>I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple <em>sudo apt-get install spin</em>.</p>
+<p>Some examples taken from: https://spinroot.com/courses/summer/</p>
+<p>I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">spin</span></code>.</p>
 </section>
-<section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<section id="first-example">
+<h3>First Example<a class="headerlink" href="#first-example" title="Link to this heading">#</a></h3>
+<p>To test if SPIN works on your machine try run this code:</p>
+<p>Note: you will need a C compiler to run SPIN.</p>
+<p>init {	// file: ex_1a.pml
+byte i	// initialized to 0 by default
+do	// loop forever
+:: i++	// nondisterministic choice, only one option
+od
+}</p>
+<p>run with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">spin</span> <span class="pre">-u514</span> <span class="pre">-p</span> <span class="pre">-l</span> <span class="pre">ex_1a.pml</span></code></p>
+<p>This should print 514 steps of increasing numbers.</p>
 </section>
-<section id="excercise">
-<h3>Excercise<a class="headerlink" href="#excercise" title="Link to this heading">#</a></h3>
+<section id="first-excercise">
+<h3>First Excercise<a class="headerlink" href="#first-excercise" title="Link to this heading">#</a></h3>
+<p>A farmer wants to move a cabbage, a goat, and a wolf across a river in his boat. He can only fit one thing in his boat while going across. If the farmer isn’t watching, the goat will eat the cabbage, and the wolf will eat the goat. Can you think of a way to model this problem and find it’s solution in SPIN?</p>
+<p>Note: SPIN allows you to both define the solution in the code and in the fourmula you run from the command line.</p>
+<p>To check a model with fourmulas, you must first define them in the file with <code class="docutils literal notranslate"><span class="pre">#define</span></code>. These defined fourmulas should begin with a lowercase letter.</p>
+<p>Afterwards you may run your model with fourmulas by typing the following and replacing FOURMULA with the fourmula you wish to use (ie &lt;&gt;cond2):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>spin<span class="w"> </span>-a<span class="w"> </span>-f<span class="w"> </span><span class="s1">&#39;FORMULA&#39;</span><span class="w"> </span>wgc.pml
+gcc<span class="w"> </span>-o<span class="w"> </span>pan<span class="w"> </span>pan.c
+./pan<span class="w"> </span>-a
+spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
+</pre></div>
+</div>
+<p>If SPIN can verify the code, it will generate a trail file. Make sure to delete any existing trail files in the folder before you run your program, as this may lead to confusion.</p>
 </section>
+</section>
+<section id="intro-examples">
+<h2>Intro Examples<a class="headerlink" href="#intro-examples" title="Link to this heading">#</a></h2>
+</section>
+<section id="the-landscape-of-tools">
+<h2>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
+</section>
+<section id="algorithms">
+<h2>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
+</section>
+<section id="benchmarks">
+<h2>Benchmarks<a class="headerlink" href="#benchmarks" title="Link to this heading">#</a></h2>
+</section>
+<section id="applications-in-industry">
+<h2>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
+<p>One of the main applications of SPIN in the industry is model checking for concurecy or mutual exculsion problems. For example, it is often the case where two processes are running in parallel and must read and write from the same reasource. These processes cannot be allowed to access the reasource at the same time to avoid memory problems. However both processes must access the reasource <em>eventually</em>. This problem and problems like it can be modeled and checked in SPIN.</p>
+</section>
+<section id="case-studies">
+<h2>Case Studies<a class="headerlink" href="#case-studies" title="Link to this heading">#</a></h2>
+</section>
+<section id="history">
+<h2>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+</section>
+<section id="current-development-research-challenges-conferences-and-workshops">
+<h2>Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Link to this heading">#</a></h2>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
@@ -463,7 +519,11 @@ E A means that there exists at least one path starting from the current position
 <li><p>https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators</p></li>
 <li><p>https://en.wikipedia.org/wiki/SPIN_model_checker</p></li>
 <li><p>https://spinroot.com/spin/whatispin.html</p></li>
+<li><p>https://spinroot.com/courses/summer/</p></li>
 </ul>
+</section>
+<section id="suggestions-for-future-work-on-this-book">
+<h2>Suggestions for Future Work on this Book<a class="headerlink" href="#suggestions-for-future-work-on-this-book" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -535,11 +595,20 @@ E A means that there exists at least one path starting from the current position
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool">Tool</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excercise">Excercise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example">First Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-excercise">First Excercise</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">Intro Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">The Landscape of Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks">Benchmarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">Case Studies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">Current Development, Research Challenges, Conferences and Workshops</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-this-book">Suggestions for Future Work on this Book</a></li>
 </ul>
   </nav></div>
 

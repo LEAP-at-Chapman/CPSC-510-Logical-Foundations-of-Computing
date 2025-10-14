@@ -460,13 +460,13 @@ Author: Alexander Kurz</p>
 <p>There is a lot to say here, but to present the main ideas as quickly as possible I would proceed as follows (see Chapters 3.1 and 3.2 of the book referenced below).</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(Prop\)</span> be a set of ‘propositional variables’. The language of modal logic is the smallest set of ‘formulas’ containing <span class="math notranslate nohighlight">\(Prop\)</span> and closed under <span class="math notranslate nohighlight">\(\wedge\)</span> , <span class="math notranslate nohighlight">\(\vee\)</span>, <span class="math notranslate nohighlight">\(\neg\)</span>, <span class="math notranslate nohighlight">\(\Box\)</span>, <span class="math notranslate nohighlight">\(\Diamond\)</span>.</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(W\)</span> be a set of ‘worlds’ and <span class="math notranslate nohighlight">\(R\subseteq W\times W\)</span>. Let <span class="math notranslate nohighlight">\(\sem{-}:Prop\to 2^W\)</span> be a function assigning sets of worlds to each atomic proposition. Define</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d066a16d-0604-4c6f-a9c9-da29719fb31a">
-<span class="eqno">(1)<a class="headerlink" href="#equation-d066a16d-0604-4c6f-a9c9-da29719fb31a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6296c095-a2d2-4272-98f9-c7a56b205243">
+<span class="eqno">(1)<a class="headerlink" href="#equation-6296c095-a2d2-4272-98f9-c7a56b205243" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sem{\phi\wedge\phi'} &amp;= \sem{\phi}\cap\sem{\phi'}\\
 \sem{\phi\vee\phi'} &amp;= \sem{\phi}\cup\sem{\phi'}\\
 \sem{\neg\phi} &amp;= W\setminus \sem{\phi}\\
-\sem{\Box\phi} &amp;= \{w\in W\mid \forall v\in W\,.\, v\in\sem{\phi}\}\\
-\sem{\Diamond\phi} &amp;= \{w\in W\mid \exists v\in W\,.\, v\in\sem{\phi}\}\\
+\sem{\Box\phi} &amp;= \{w\in W\mid \forall v\in W\,.\, wRv \Rightarrow v\in\sem{\phi}\}\\
+\sem{\Diamond\phi} &amp;= \{w\in W\mid \exists v\in W\,.\, wRv \Rightarrow v\in\sem{\phi}\}\\
 \end{align}\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
