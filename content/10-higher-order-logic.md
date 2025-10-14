@@ -189,7 +189,7 @@ which will set `m = 0` as the base case, and then will update the goal to:
 
 We then use:
 ```isabelle
-show ?case by simp
+  show ?case by simp
 ```
 
 in order to simplify that new goal to:
