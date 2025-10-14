@@ -22,3 +22,5 @@
 
 **L6.1-7.1:** Introduction to Modal Logic. Syntax, Semantics. [Muddy Children](https://hackmd.io/@alexhkurz/ryD5Deg6gg).
 
+**L7.2:** [Model Checking with Spin](https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin)
+

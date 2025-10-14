@@ -34,8 +34,88 @@ Say from parent we wanted to find child 2, in logic programming, it would first 
 The tool that I will mainly be focusing on is Prolog, a unique coding language designed for logic programming. Prolog was first created in France in 1972 by Alain Colmerauer and Philippe Roussel, with its name derived from programmation en logique (“programming in logic”). The earliest version was an interpreter built in Fortran by Gerard Battani and Henri Meloni where later, David H. D. Warren brought this work to Edinburgh, where he then developed a new front-end that established the Edinburgh Prolog syntax which is now used for most modern implementations(1).
 
 ### Installing The Tool
+[download and install](https://www.swi-prolog.org/download/stable) Prolog. On MacOS, after moving SWI-Prolog to the Applications folder, you may have to run `echo 'export PATH="/Applications/SWI-Prolog.app/Contents/MacOS:$PATH"' >> ~/.zshrc` to add `swipl` to your path. Then, running `swipl` in your terminal should start the Prolog interpreter.
 
+## First Example
+The eight queens problem is a logic problem in where a user attempts to place all 8 queens on a chess board such that none threaten another.
+
+**What this shows:**
+- How Prolog automatically finds solutions through backtracking
+- How constraints work together to eliminate impossible choices
+- How recursion naturally models complex problems
+- The difference between procedural and declarative programming
+
+Create a file named ```eightqueens.pl``` and add the following code:
+
+```prolog
+solution(Queens) :- 
+    length(Queens, 8),
+    queens(Queens).
+
+queens([]).
+queens([queen(Row, Col) | Others]) :- 
+    queens(Others),
+    length(Others, OthersLength),
+    Row is OthersLength + 1,
+    member(Col, [1,2,3,4,5,6,7,8]),
+    noattack(queen(Row, Col), Others).
+
+noattack(_, []).
+noattack(queen(Row, Col), [queen(Row1, Col1) | Others]) :-
+    Col =\= Col1,                    
+    Col1-Col =\= Row1-Row,           
+    Col1-Col =\= Row-Row1,
+    noattack(queen(Row, Col), Others).
+```
+
+Run the program as follows.
+```bash
+swipl -f eight-queens.pl
+```
+Then in the Prolog prompt:
+```prolog
+?- solution(S).
+```
+
+Here there are two options either enter `.` to end the program or `;` to see futher possible outputs.
+
+Use Ctrl-d to exit Prolog.
+
+If we enter `trace.` and enter `solution(S).` again. Use the `return` key to look into the execution of a predicate and use `s` to skip directly to the end of the execution of a predicate. Enter `a` to abort the execution. That is useful when you got lost in the execution and want to start over again.
+
+## Intro Examples
+In logic programming, a Prolog database is composed of facts and rules that describe relationships between entities in a declarative way. Rather than specifying how to compute something, the programmer defines what is true about the problem domain. This allows Prolog to act as a powerful tool for database querying, where relationships can be inferred rather than explicitly stored. Queries are made by posing logical questions to the database then uses backtracking to search through known facts and rules to find all possible solutions to the query.
+
+In a simple family database, the database models a small family tree using facts such as `parent(arthur, george)` and `parent(george, amelia)`, which record direct parent-child relationships. Rules like `grandparent/2`, `sibling/2`, and `ancestor/2` define how more complex family relationships can be logically derived. For instance, `grandparent(X, Z) :- parent(X, Y)`, `parent(Y, Z)` states that X is a grandparent of Z if X is a parent of Y and Y is a parent of Z. The sibling rule ensures that two people are considered siblings if they share a parent but are not the same person. The gender facts, combined with the `father/2` and `mother/2` rules, extends the database by categorizing parents according to gender, allowing for more natural queries like `father(X, Y)` or `mother(X, Y)`.
+
+When a query such as
+
+`?- grandparent(X, richard).`
+
+
+is executed, Prolog searches through the database to find all individuals X who satisfy the condition of being a grandparent of richard. The trace output reveals Prolog’s reasoning process step by step:
+
+```
+   Call: (12) grandparent(_32210, richard) ? creep
+   Call: (13) parent(_32210, _33508) ? creep
+   Exit: (13) parent(arthur, george) ? creep
+   Call: (13) parent(george, richard) ? creep
+   Exit: (13) parent(george, richard) ? creep
+   Exit: (12) grandparent(arthur, richard) ? creep
+X = arthur ;
+   Redo: (13) parent(george, richard) ? creep
+   Fail: (13) parent(george, richard) ? creep
+   Redo: (13) parent(_32210, _33508) ? creep
+   Exit: (13) parent(harriet, george) ? creep
+   Call: (13) parent(george, richard) ? creep
+   Exit: (13) parent(george, richard) ? creep
+   Exit: (12) grandparent(harriet, richard) ? creep
+X = harriet ;
+```
+
+Here, Prolog begins by attempting to satisfy the rule for `grandparent/2`. It first matches `parent(_32210, _33508)` and discovers that arthur is a parent of george. Then it checks whether george is a parent of richard, which succeeds. As a result, Prolog concludes that arthur is indeed a grandparent of richard. It then continues to find the other grandparent to see if they are present which is found to be harriet. The [trace] output exposes the resolution process, where Prolog recursively attempts and verifies subgoals until a consistent solution is found. If we were to continue with this trace it would search the rest of the database to see if any other combinations would lead to the `grandparent/2` fact being true and when it fails it will just have the two grandparents that are present, arthur and harriet.
 
 
 ## References
-1. https://swish.swi-prolog.org/p/dselman.swinb 
+1. https://swish.swi-prolog.org/p/dselman.swinb
+2. https://www.geeksforgeeks.org/dsa/8-queen-problem/
