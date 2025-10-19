@@ -89,6 +89,28 @@ One of the main applications of SPIN in the industry is model checking for concu
 
 ## Case Studies
 
+### Finding the Fault in the Needham-Schroedor Protocol
+
+The Needham-Schroedor Public Key Protocol was an oft-used encryption protocol for communicating across the internet. It ustilized public key encryption to exchange a secrect between both parties. This secrect then allowed them to continue conversing securely. After 17 years, a flaw was found in the protocol that would allow an attacker to listen in on communications that were supposed to be secure. The attack was discovered using model checking.
+
+The Needham-Schroedor Protocol works as follows:
+
+1. Alice send Bob a message with her address and a unique random number.
+
+2. Bob sends Alice a message with the same random number along with another unique random number.
+
+3. Alice sends back Bob's random number.
+
+4. The handshake is complete, communication may begin.
+
+These messages are encoded with Public Key Encryption, which is secure but expensive, hence why it isn't used for the whole conversation. 
+
+The following is a link to a SPIN program that can be used to find the flaw in the protocol. This program was written by Professor Kurtz.
+
+https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/blob/main/src/Needham-Schroeder/ns.pml
+
+A fix was proposed by the person who found this fault. To avoid the attack, the second message should also include Bob's address. Can you explain how this avoids the attack? Try editing the SPIN program to include this fix, does it prevent the attack?
+
 ## History
 
 ## Current Development, Research Challenges, Conferences and Workshops
