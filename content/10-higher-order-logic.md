@@ -48,6 +48,57 @@ $ \forall x $ and $ \exists x$ where x is a variable/individual element
 WIP
 $ \forall f(x) $ and $ \exists f(x) $ where x is a function that takes x as an input
 
+The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system of $\mathcal{w}$-order logic which has all finite order logics as subsystems:
+
+1) **Modus Ponens** From $A$ and $A \to B$ to infer $B$.
+2) **Generalization** From $A$ to infer $\forall x\,A$, where x is a variable of any type
+
+In addition, the axiom schemata of $\mathcal{F}^w$ are:
+
+1) $A \lor A \to A$
+2) $A \to (B \lor A)$
+3) From $A \to (B \to C)$, infer $ (A \to B) \lor C$
+4) **Universal Instantiation**
+    $\forall x_\tau\,A \to A[y_\tau / x_\tau]$, where $y_\tau$ is a variable or constant of the same type as the variable $x_\tau$, and $y_\tau$ is free for $x_\tau$ in $A$.
+  
+    Basically, from $\forall x_\tau\,A$, we may infer $A[y_\tau / x_\tau]$, meaning that if $A$ holds for all $x_\tau$, then it also holds for any particular instance $y_\tau$ of the same type.
+
+5) **Quantifier Distribution**
+    $\forall x(A \lor B) \to (A \lor \forall x\,B)$, where $x$ is any variable not free in $A$.
+
+    This means that if $(A \lor B)$ holds for all $x$, and $A$ does not depend on $x$, then either $A$ holds or $B$ holds for all $x$.
+
+6) **Comprehension Axioms**
+    - *0-ary case (a proposition/Boolean) that names a theorem/statement*
+      $$
+        \exists u_{\mathbf{o}}\,[u_{\mathbf{o}} \leftrightarrow A]
+      $$
+      where $u_{\mathbf{o}}$ does not occur free in $A$.  
+
+    <br>
+
+    - *n-ary case (a predicate/function of arity n) that names a property/relation*
+    $$
+    \exists u_{(\tau_1\ldots\tau_n)}\; \forall v^{1}_{\tau_1}\cdots \forall v^{n}_{\tau_n}\,
+    \big[\,u_{(\tau_1\ldots\tau_n)}\,v^{1}_{\tau_1}\cdots v^{n}_{\tau_n}\;\leftrightarrow\;A\,\big]
+    $$
+    where $u_{(\tau_1\ldots\tau_n)}$ does not occur free in $A$, and $v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n}$ are distinct variables.
+    
+    <br>
+
+    These axioms allow us to define new symbols that stand for existing formulas. 
+    In the 0-ary case, a new propositional constant $u_{\mathbf{o}}$ can name a statement $A$. 
+    In the n-ary case, a new predicate $u_{(\tau_1\ldots\tau_n)}$ can be introduced so that $u(v^1,\ldots,v^n)$ is true exactly when $A$ holds for those arguments
+
+7) **Axioms of Extensionality**
+    TODO
+
+*Adapted from Andrews, 2002*[^andrews2002] using modern logic convention.
+
+<!-- *Adapted from* {cite}`Andrews2002` using modern logic convention. -->
+
+[^andrews2002]: Andrews, *An Introduction to Mathematical Logic and Type Theory*, Springer 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4)
+
 
 ## 10.3 Tool (Installation, First Example, First Exercise) {#sec0-10-3}
 
@@ -358,6 +409,10 @@ where we use the add_0_right lemma in the base case and then the add_Suc_right l
 - [Concrete Semantics Exercises](http://www.concrete-semantics.org/Exercises/exercises.pdf)
 - [Isabelle YouTube Tutorial by FDS 2020](https://www.youtube.com/@FDS-hs2uc/videos)
 - [Syllogism Slides from Nate Moss](https://logic.berkeley.edu/colloquium/MossSlides.pdf)
+
+<!-- - [Andrews - An Introduction to Mathematical Logic and Type Theory](https://link.springer.com/book/10.1007/978-94-015-9934-4) -->
+
+- <a id="ref-andrews2002">[1]</a> Andrews, *An Introduction to Mathematical Logic and Type Theory*, 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4)
 
 
 ## 10.13 Suggestions for Future Work {#sec0-10-13}
