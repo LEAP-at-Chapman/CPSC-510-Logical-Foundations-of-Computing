@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -392,13 +392,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Idea</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dafny-installation-and-setup">Dafny Installation and Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-verification-techniques">Program Verification Techniques</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#industrial-applications">Industrial Applications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -415,24 +415,42 @@ document.write(`
 <p><em>Author: Alex</em></p>
 <section id="idea">
 <h2>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3>Idea<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Hoare Logic is a formal system for proving program correctness using logical assertions. It represents programs as Hoare triples:</p>
-<p>{P} C {Q}</p>
-<p>where (P) is the precondition, (C) the command, and (Q) the postcondition. For example:</p>
-<p>{x = 2}\ x := x + 3\ {x = 5}</p>
-<p>means that if (x = 2) before execution, then (x = 5) afterward.</p>
-<p>Hoare logic forms the basis of modern verification tools like Dafny, which extend it with loop invariants, assertions, and automated theorem proving. Unlike testing, which checks correctness for specific cases, Hoare logic proves correctness for all possible executions.</p>
-</section>
-</section>
-<section id="topics">
-<h2>Topics<a class="headerlink" href="#topics" title="Link to this heading">#</a></h2>
+<p>Hoare Logic introduced the idea that we can reason about programs the same way we reason about mathematical proofs by introducing program verification. Instead of observing program behavior through test cases, we showcase what a program should do in logical form, and then prove that it does so. At its core lies the Hoare triple:</p>
+<p>[{P}; C; {Q}]</p>
+<p>This notation captures the relationship between a precondition (P), a command (C), and a postcondition (Q). This notation reads as:</p>
+<p align="center"> If the execution of program P begins in a state where the precondition C holds, then upon termination, the postcondition Q will hold. </p>
+<p>Each component plays a specific role:</p>
 <ul class="simple">
-<li><p>Hoare logic foundations</p></li>
-<li><p>Dafny installation and setup</p></li>
-<li><p>Specification languages</p></li>
-<li><p>Program verification techniques</p></li>
-<li><p>Industrial applications</p></li>
+<li><p><strong>P</strong> (Precondition) - describes the assumptions or required state before execution.</p></li>
+<li><p><strong>C</strong> (Command) - represents a piece of the program</p></li>
+<li><p><strong>Q</strong> (Postcondition) - expresses what is guaranteed to be true after execution if the program halts.</p></li>
+</ul>
+<p>This logic provides partial correctness, meaning the result will be correct if the program terminates. To achieve​​ total correctness, we must demonstrate that the program terminates.</p>
+</section>
+<section id="dafny-installation-and-setup">
+<h2>Dafny Installation and Setup<a class="headerlink" href="#dafny-installation-and-setup" title="Link to this heading">#</a></h2>
+<p><em>To be added</em></p>
+</section>
+<section id="program-verification-techniques">
+<h2>Program Verification Techniques<a class="headerlink" href="#program-verification-techniques" title="Link to this heading">#</a></h2>
+<p><em>To be added</em></p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<p><em>To be added</em></p>
+</section>
+<section id="industrial-applications">
+<h2>Industrial Applications<a class="headerlink" href="#industrial-applications" title="Link to this heading">#</a></h2>
+<p>Using preconditions, postconditions, and invariants, as Hoare Logic showcases, this reasoning is now embedded in modern tools and workflows. These principles have now influenced every layer of software reliability. Here are a few examples of how Hoare Logic has been implemented in industry:</p>
+<ul class="simple">
+<li><p><strong>Safety-Critical Systems:</strong>
+Hoare Logic enables formal verification of systems where failure is unacceptable, such as in the aerospace and medical fields. Engineers ensure that autopilot control, satellite guidance, and pacemaker timing behave safely under all possible conditions by proving correctness through preconditions, postconditions, and invariants.</p></li>
+<li><p><strong>Security and Cryptography:</strong>
+Used to prove that confidential data cannot leak and that cryptographic algorithms behave exactly as specified. Using Hoare Logic, reasoning supports formal proofs of non-interference, access control, and side-channel resistance in encryption and authentication systems.</p></li>
+<li><p><strong>Static Analysis and Software Quality:</strong>
+Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Logic-based reasoning to automatically detect bugs, memory leaks, and logic errors before runtime.</p></li>
+<li><p><strong>Industrial Verification Pipelines:</strong>
+Frameworks like Dafny, Frama-C, SPARK Ada, and Coq use Hoare Logic within large organizations such as Microsoft, Airbus, and AWS. They verify encryption libraries, avionics software, and distributed systems, combining enhanced security with practical reliability.</p></li>
 </ul>
 </section>
 <section id="resources">
@@ -443,9 +461,17 @@ document.write(`
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=oLS_y842fMc">Dafny Video Tutorial</a></p></li>
 </ul>
 </section>
-<section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
-<p><em>To be added</em></p>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://course.ccs.neu.edu/cs2800sp23/l32.html">Northeastern University – CS2800: Logic and Computation (Spring 2023) Lecture 32: Hoare Logic</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.rochester.edu/~spai4/courses/csc-255-455/spring-2024/static/25-intro-hoare-logic.pdf">University of Rochester – CSC 255/455: Programming Languages (Spring 2024) Lecture 25: Introduction to Hoare Logic</a></p></li>
+<li><p><a class="reference external" href="https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html">University of Pennsylvania – Software Foundations, Volume 2: Programming Language Foundations Chapter: Hoare Logic</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~aldrich/courses/654-sp06/notes/3-hoare-notes.pdf">Carnegie Mellon University – 15-654 Software Engineering (Spring 2006) Lecture Notes: Hoare Logic by Jonathan Aldrich</a></p></li>
+<li><p><a class="reference external" href="https://hackmd.io/&#64;alexhkurz/Hy135C2tH">Alexander Kurz – Hoare Logic Example (HackMD) Worked example: Loop invariants and correctness proofs</a></p></li>
+<li><p><a class="reference external" href="https://www.cl.cam.ac.uk/archive/mjcg/HoareLogic/Lectures/AllLectures.pdf">University of Cambridge – M.J.C. Gordon: Hoare Logic Lecture Notes All Lectures (Formal Semantics, wlp, VCG, and Separation Logic)</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=-Bs2Uy3zGsw">Intro. to the Hoare Triple (Discrete Math Tutorial) - Validity, Calculating Precondition, Explained.</a></p></li>
+</ul>
 </section>
 </section>
 
@@ -513,13 +539,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Idea</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dafny-installation-and-setup">Dafny Installation and Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-verification-techniques">Program Verification Techniques</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#industrial-applications">Industrial Applications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

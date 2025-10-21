@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -543,6 +543,16 @@ document.write(`
 <p><strong>Try it interactively:</strong></p>
 <p><a class="reference external" href="https://colab.research.google.com/github/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/z3/z3-examples.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a> <strong>🚀 Google Colab (Recommended - Fast &amp; Reliable)</strong></p>
 <p><a class="reference external" href="https://mybinder.org/v2/gh/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/main?filepath=content%2Frequirements.txt&amp;amp;labpath=../z3%2Fz3-examples.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a> <strong>🐳 Binder (Alternative)</strong></p>
+<p>Practical Examples:</p>
+<p>i) Prove that array access is always within bounds in a loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">fun</span> <span class="n">i</span> <span class="p">()</span> <span class="n">Int</span><span class="p">)</span>
+<span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">fun</span> <span class="n">n</span> <span class="p">()</span> <span class="n">Int</span><span class="p">)</span>
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="ow">and</span> <span class="p">(</span><span class="o">&gt;=</span> <span class="n">i</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="o">&lt;</span> <span class="n">i</span> <span class="n">n</span><span class="p">)))</span>   <span class="p">;</span> <span class="n">loop</span> <span class="n">invariant</span>
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="o">&lt;</span> <span class="n">i</span> <span class="n">n</span><span class="p">)))</span>            <span class="p">;</span> <span class="k">try</span> <span class="n">to</span> <span class="n">violate</span> <span class="n">it</span>
+<span class="p">(</span><span class="n">check</span><span class="o">-</span><span class="n">sat</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Explanation: Z3 can prove safety properties like “no out-of-bounds access occurs”. This connects to static analysis and model checking.</p>
 </section>
 </section>
 <section id="references">
