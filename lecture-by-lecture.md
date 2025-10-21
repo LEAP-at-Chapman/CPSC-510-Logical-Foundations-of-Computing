@@ -28,3 +28,6 @@
 
 **L8.2:** [Epistemic logic](https://hackmd.io/@alexhkurz/H1YRqFCpxg) and [Model Checking](https://hackmd.io/@alexhkurz/rJ-dCMvQgl).
 
+**L9.1:** Epistemic Logic and SMCDEL continued, [see the Exercises](https://hackmd.io/@alexhkurz/r1C3ZYrRlg).
+
+
