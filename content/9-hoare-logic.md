@@ -15,9 +15,9 @@ This notation captures the relationship between a precondition (P), a command (C
 Each component plays a specific role:
 - **P** (Precondition) - describes the assumptions or required state before execution.
 - **C** (Command) - represents a piece of the program
-- **Q** (Postcondition)
+- **Q** (Postcondition) - expresses what is guaranteed to be true after execution if the program halts.
 
-
+This logic provides partial correctness, meaning the result will be correct if the program terminates. To achieve​​ total correctness, we must demonstrate that the program terminates. 
 
 ## Topics
 
