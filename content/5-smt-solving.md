@@ -122,6 +122,19 @@ Interactive Z3 examples are available below via Colab or Binder or download a co
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/main?filepath=content%2Frequirements.txt&labpath=../z3%2Fz3-examples.ipynb) **🐳 Binder (Alternative)**
 
+Practical Examples:
+
+i) Prove that array access is always within bounds in a loop:
+  ```
+  (declare-fun i () Int)
+  (declare-fun n () Int)
+  (assert (and (>= i 0) (< i n)))   ; loop invariant
+  (assert (not (< i n)))            ; try to violate it
+  (check-sat)
+  ```
+
+  Explanation: Z3 can prove safety properties like “no out-of-bounds access occurs”. This connects to static analysis and model checking.
+  
 ## References
 
 - [Reuben Martins](https://sat-group.github.io/ruben/) (part of a course on [Bug Catching: Bug Catching: Automated Program Verification](https://www.cs.cmu.edu/~15414/s22/s21/lectures/) )

@@ -24,3 +24,7 @@
 
 **L7.2:** [Model Checking with Spin](https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin)
 
+**L8.1:** Model Checking the Needham-Schroeder protocol in Spin.
+
+**L8.2:** [Epistemic logic](https://hackmd.io/@alexhkurz/H1YRqFCpxg) and [Model Checking](https://hackmd.io/@alexhkurz/rJ-dCMvQgl).
+
