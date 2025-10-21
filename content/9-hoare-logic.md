@@ -19,24 +19,27 @@ Each component plays a specific role:
 
 This logic provides partial correctness, meaning the result will be correct if the program terminates. To achieve​​ total correctness, we must demonstrate that the program terminates. 
 
-## Topics
+## Dafny Installation and Setup
 
-- Hoare logic foundations
-- Dafny installation and setup
-- Specification languages
-- Program verification techniques
-- Industrial applications
+*To be added*
+
+## Program Verification Techniques
+
+*To be added*
+
+## Exercises
+
+*To be added*
+
+## Industrial Applications
+
+*To be added*
 
 ## Resources
 
 - [Dafny](https://github.com/dafny-lang/dafny)
 - [Dafny Tutorial](https://dafny.org/dafny/OnlineTutorial/guide)
 - [Dafny Video Tutorial](https://www.youtube.com/watch?v=oLS_y842fMc)
-
-## Exercises
-
-*To be added*
-
 
 ## References
 
