@@ -48,7 +48,7 @@ Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Log
 
 
 - **Industrial Verification Pipelines:**
-Frameworks like Dafny, Frama-C, SPARK Ada, and Coq operationalize Hoare Logic within large organizations such as Microsoft, Airbus, and AWS. They verify encryption libraries, avionics software, and distributed systems, combining enhanced security with practical reliability.
+Frameworks like Dafny, Frama-C, SPARK Ada, and Coq use Hoare Logic within large organizations such as Microsoft, Airbus, and AWS. They verify encryption libraries, avionics software, and distributed systems, combining enhanced security with practical reliability.
 ## Resources
 
 - [Dafny](https://github.com/dafny-lang/dafny)
