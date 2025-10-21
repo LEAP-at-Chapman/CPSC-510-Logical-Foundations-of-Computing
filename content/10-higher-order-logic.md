@@ -69,6 +69,23 @@ In addition, the axiom schemata of $\mathcal{F}^w$ are:
     This means that if $(A \lor B)$ holds for all $x$, and $A$ does not depend on $x$, then either $A$ holds or $B$ holds for all $x$.
 
 6) **Comprehension Axioms**
+
+    *0-ary case (a proposition/Boolean) that names a theorem/statement*.  
+    $ \exists u_{\mathbf{o}}\;[\,u_{\mathbf{o}} \leftrightarrow A\,] $
+    where $u_{\mathbf{o}}$ does not occur free in $A$.  
+    
+    *n-ary case (a predicate/function of arity n) that names a property/relation*.  
+    $\exists u_{(\tau_1\ldots\tau_n)}\;
+    \forall v^{1}_{\tau_1}\cdots \forall v^{n}_{\tau_n}\,
+    \big[\,u_{(\tau_1\ldots\tau_n)}(v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n})
+    \leftrightarrow A\,\big]$
+    where $u_{(\tau_1\ldots\tau_n)}$ does not occur free in $A$, and $v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n}$ are distinct variables.
+
+    These axioms allow us to define new symbols that stand for existing formulas.  
+    In the 0-ary case, a new propositional constant $u_{\mathbf{o}}$ can name a statement $A$.  
+    In the n-ary case, a new predicate $u_{(\tau_1\ldots\tau_n)}$ can be introduced so that $u(v^1,\ldots,v^n)$ is true exactly when $A$ holds for those arguments.
+
+<!-- 6) **Comprehension Axioms**
     - *0-ary case (a proposition/Boolean) that names a theorem/statement*
       $$
         \exists u_{\mathbf{o}}\,[u_{\mathbf{o}} \leftrightarrow A]
@@ -88,7 +105,7 @@ In addition, the axiom schemata of $\mathcal{F}^w$ are:
 
     These axioms allow us to define new symbols that stand for existing formulas. 
     In the 0-ary case, a new propositional constant $u_{\mathbf{o}}$ can name a statement $A$. 
-    In the n-ary case, a new predicate $u_{(\tau_1\ldots\tau_n)}$ can be introduced so that $u(v^1,\ldots,v^n)$ is true exactly when $A$ holds for those arguments
+    In the n-ary case, a new predicate $u_{(\tau_1\ldots\tau_n)}$ can be introduced so that $u(v^1,\ldots,v^n)$ is true exactly when $A$ holds for those arguments -->
 
 7) **Axioms of Extensionality**
     TODO
