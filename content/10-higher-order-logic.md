@@ -44,16 +44,34 @@ WIP
 WIP
 $ \forall x $ and $ \exists x$ where x is a variable/individual element
 
-### 10.2.2 Higher Order Logic 
+In higher order logic, we extend this to $ \forall f(x) $ and $ \exists f(x) $, where x is a function that takes x as an input
+
+### 10.2.2 (Explicit) Type System
 WIP
-$ \forall f(x) $ and $ \exists f(x) $ where x is a function that takes x as an input
+
+<!-- – Andrews (2002) Sections 1–2 (“Type theory basics”)
+– Church (1940) A Formulation of the Simple Theory of Types -->
+
+### 10.2.3 Lambda Abstraction
+WIP
+
+<!-- Read:
+– Paulson, Logic and Computation, ch. 2
+– Nipkow et al., Concrete Semantics, §2.1–2.3 -->
+
+### 10.2.4 Rules of Inference
 
 The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system of $\mathcal{w}$-order logic which has all finite order logics as subsystems:
 
 1) **Modus Ponens** From $A$ and $A \to B$ to infer $B$.
 2) **Generalization** From $A$ to infer $\forall x\,A$, where x is a variable of any type
 
-In addition, the axiom schemata of $\mathcal{F}^w$ are:
+*Adapted from Andrews, 2002*[^andrews2002] using modern logic convention.
+
+
+### 10.2.5 Axiom Schemata
+
+The axiom schemata of $\mathcal{F}^w$ are:
 
 1) $A \lor A \to A$
 2) $A \to (B \lor A)$
@@ -70,51 +88,39 @@ In addition, the axiom schemata of $\mathcal{F}^w$ are:
 
 6) **Comprehension Axioms**
 
-    *0-ary case (a proposition/Boolean) that names a theorem/statement*.  
+    - *0-ary case (a proposition/Boolean) that names a theorem/statement*.  
     $ \exists u_{\mathbf{o}}\;[\,u_{\mathbf{o}} \leftrightarrow A\,] $
     where $u_{\mathbf{o}}$ does not occur free in $A$.  
     
-    *n-ary case (a predicate/function of arity n) that names a property/relation*.  
+    - *n-ary case (a predicate/function of arity n) that names a property/relation*.  
     $\exists u_{(\tau_1\ldots\tau_n)}\;
     \forall v^{1}_{\tau_1}\cdots \forall v^{n}_{\tau_n}\,
     \big[\,u_{(\tau_1\ldots\tau_n)}(v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n})
     \leftrightarrow A\,\big]$
     where $u_{(\tau_1\ldots\tau_n)}$ does not occur free in $A$, and $v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n}$ are distinct variables.
 
-    These axioms allow us to define new symbols that stand for existing formulas.  
+    - These axioms allow us to define new symbols that stand for existing formulas.  
     In the 0-ary case, a new propositional constant $u_{\mathbf{o}}$ can name a statement $A$.  
     In the n-ary case, a new predicate $u_{(\tau_1\ldots\tau_n)}$ can be introduced so that $u(v^1,\ldots,v^n)$ is true exactly when $A$ holds for those arguments.
 
-<!-- 6) **Comprehension Axioms**
-    - *0-ary case (a proposition/Boolean) that names a theorem/statement*
-      $$
-        \exists u_{\mathbf{o}}\,[u_{\mathbf{o}} \leftrightarrow A]
-      $$
-      where $u_{\mathbf{o}}$ does not occur free in $A$.  
-
-    <br>
-
-    - *n-ary case (a predicate/function of arity n) that names a property/relation*
-    $$
-    \exists u_{(\tau_1\ldots\tau_n)}\; \forall v^{1}_{\tau_1}\cdots \forall v^{n}_{\tau_n}\,
-    \big[\,u_{(\tau_1\ldots\tau_n)}\,v^{1}_{\tau_1}\cdots v^{n}_{\tau_n}\;\leftrightarrow\;A\,\big]
-    $$
-    where $u_{(\tau_1\ldots\tau_n)}$ does not occur free in $A$, and $v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n}$ are distinct variables.
-    
-    <br>
-
-    These axioms allow us to define new symbols that stand for existing formulas. 
-    In the 0-ary case, a new propositional constant $u_{\mathbf{o}}$ can name a statement $A$. 
-    In the n-ary case, a new predicate $u_{(\tau_1\ldots\tau_n)}$ can be introduced so that $u(v^1,\ldots,v^n)$ is true exactly when $A$ holds for those arguments -->
-
 7) **Axioms of Extensionality**
-    TODO
+    - *0-ary case (a proposition/Boolean) that names a theorem/statement*.  
+    $(x_{\mathbf{o}} \leftrightarrow y_{\mathbf{o}}) \to (x_{\mathbf{o}} = y_{\mathbf{o}})$
+
+    - *n-ary case (a predicate/function of arity n) that names a property/relation*.  
+    $\forall w^{1}_{\tau_1} \ldots \forall w^{n}_{\tau_n} [(x_{(\tau_1 \ldots \tau_n)}w^{1}_{\tau_1}\ldots w^{n}_{\tau_n}) \leftrightarrow (y_{(\tau_1 \dots \tau_n)} w^{1}_{\tau_1} \ldots w^{n}_{\tau_n})] \to (x_{(\tau_1 \ldots \tau_n)} = y_{(\tau_1 \ldots \tau_n)}) $
+
+    - These axioms state that two expressions are equal if and only if they behave identically in that their output result is the same in all evaluations. This formalizes the idea that in higher order logic, equality is extensional (based on meaning and behavior) rather than syntactic (based on form).
+
+
+
 
 *Adapted from Andrews, 2002*[^andrews2002] using modern logic convention.
 
 <!-- *Adapted from* {cite}`Andrews2002` using modern logic convention. -->
 
-[^andrews2002]: Andrews, *An Introduction to Mathematical Logic and Type Theory*, Springer 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4)
+<!-- [^andrews2002]: Andrews, *An Introduction to Mathematical Logic and Type Theory*, Springer 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4) -->
+
 
 
 ## 10.3 Tool (Installation, First Example, First Exercise) {#sec0-10-3}
@@ -429,7 +435,9 @@ where we use the add_0_right lemma in the base case and then the add_Suc_right l
 
 <!-- - [Andrews - An Introduction to Mathematical Logic and Type Theory](https://link.springer.com/book/10.1007/978-94-015-9934-4) -->
 
-- <a id="ref-andrews2002">[1]</a> Andrews, *An Introduction to Mathematical Logic and Type Theory*, 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4)
+<!-- - <a id="ref-andrews2002">[1]</a> Andrews, *An Introduction to Mathematical Logic and Type Theory*, 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4) -->
+
+[^andrews2002]: Andrews, *An Introduction to Mathematical Logic and Type Theory*, Springer 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4) -->
 
 
 ## 10.13 Suggestions for Future Work {#sec0-10-13}
