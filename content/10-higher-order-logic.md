@@ -66,7 +66,10 @@ The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system
 1) **Modus Ponens** From $A$ and $A \to B$ to infer $B$.
 2) **Generalization** From $A$ to infer $\forall x\,A$, where x is a variable of any type
 
-*Adapted from Andrews, 2002*[^andrews2002] using modern logic convention.
+<!-- *Adapted from Andrews, 2002*[^andrews2002] using modern logic convention. -->
+
+*Adapted from* {cite}`Andrews2002` using modern logic convention.
+
 
 
 ### 10.2.5 Axiom Schemata
@@ -115,9 +118,9 @@ The axiom schemata of $\mathcal{F}^w$ are:
 
 
 
-*Adapted from Andrews, 2002*[^andrews2002] using modern logic convention.
+<!-- *Adapted from Andrews, 2002*[^andrews2002] using modern logic convention. -->
 
-<!-- *Adapted from* {cite}`Andrews2002` using modern logic convention. -->
+*Adapted from* {cite}`Andrews2002` using modern logic convention.
 
 <!-- [^andrews2002]: Andrews, *An Introduction to Mathematical Logic and Type Theory*, Springer 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4) -->
 
@@ -126,7 +129,6 @@ The axiom schemata of $\mathcal{F}^w$ are:
 ## 10.3 Tool (Installation, First Example, First Exercise) {#sec0-10-3}
 
 ### 10.3.1 Installation
-WIP
 
 <!-- Looks like isabelle is a program we can just download normally via exe/dmg etc instead of messing around with command line or using `apt/brew` -->
 
@@ -336,53 +338,6 @@ next
   show ?case by (simp add: Suc.IH)
 qed
 ```
-<!-- This follows the same general format for inductive proofs
-```isabelle
-lemma add_0_right: "add m 0 = m"
-proof(induction m)
-  case 0
-
-``` -->
-
-<!-- Case 0 is the base case. In this instance, it means that we will set m = 0. Therefore, we will get `add 0 0 = 0` which is true.
-  show ?case by simp
-  (* Base: add 0 0 = 0 by add.simps(1) *)
-next
-  case (Suc m)
-  (* 
-  IH: add m 0 = m
-  Goal: add (Suc m) 0 = Suc m.
-  Expand the LHS with the recursive clause, then use the IH. 
-  *)
-  show ?case by (simp add: Suc.IH)
-  (* Step: add (Suc m) 0 = Suc (add m 0) by add.simps(2), then = Suc m by IH *)
-qed
-``` -->
-
-<!-- ##### add_Suc_rght Proof
-
-```isabelle
-lemma add_Suc_right: "add m (Suc n) = Suc (add m n)"
-proof(induction m)
-  case 0
-  (* 
-  Goal: add 0 (Suc n) = Suc (add 0 n).
-  By add 0 x = x, both sides become Suc n.
-  *)
-  show ?case by simp
-  (* Base: add 0 (Suc n) = Suc n and Suc (add 0 n) = Suc n *)
-next
-  case (Suc m)
-  (*
-  IH: add m (Suc n) = Suc (add m n)
-  Goal: add (Suc m) (Suc n) = Suc (add (Suc m) n).
-  Expand LHS with add.simps, then use IH, then fold once.
-  *)
-  show ?case by (simp add: Suc.IH)
-  (* Step: add (Suc m) (Suc n) = Suc (add m (Suc n)) (def), then by IH = Suc (Suc (add m n)), 
-  and simp recognizes that equals Suc (add (Suc m) n) via the def again *)
-qed
-``` -->
 
 With the helper lemmas proven, we will use them to prove the commutative property
 
@@ -401,10 +356,32 @@ qed
 
 where we use the add_0_right lemma in the base case and then the add_Suc_right lemma in the inductive step.
 
+*This exercise was provided by Exercise 2.2 in {cite}`concreteSemanticsExercises`*
+
 ## 10.4 Introductory Examples {#sec0-10-4}
+
+<!-- need to talk to Kurz about what should be in first exmaple, first exercise, and in introductory examples -->
 
 
 ## 10.5 The Landscape of Tools {#sec0-10-5}
+
+WIP
+
+### 10.5.1 Interactive Proof Assistants
+
+HOL4 (classic HOL)
+
+Coq (constructive higher-order/type theory)
+
+Lean 4 (modern dependent/HOL hybrid)
+
+
+### 10.5.2 Automated Higher Order Prover
+
+Leo III
+
+Satallax
+
 
 
 ## 10.6 Algorithms {#sec0-10-6}
