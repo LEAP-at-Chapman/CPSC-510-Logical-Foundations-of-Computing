@@ -20,7 +20,8 @@ parts:
 
 - caption: Appendix
   chapters:
-    - file: content/puzzles
+    - file: content/appendix-puzzles
+    - file: content/appendix-hoare-logic
 
 - caption: "Appendix: On Jupyter Books"
   chapters:
