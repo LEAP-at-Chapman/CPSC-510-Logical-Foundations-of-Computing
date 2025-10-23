@@ -1,0 +1,650 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Literature Review Agent Workflow &#8212; Logical Foundations of Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'literature/dafny-in-industry/prompts/literature-review.prompt';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Logical Foundations of Computing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../content/1-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/2-satsolving.html">SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/3-logic-programming.html">Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/5-smt-solving.html">SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/6-modal-logic.html">Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/7-temporal-logic.html">Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/9-hoare-logic.html">Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/10-higher-order-logic.html">Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/11-dependent-types.html">Dependent Type Theory with Lean</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../content/appendix-puzzles.html">Resources on Puzzles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/appendix-hoare-logic.html">Hoare Logic</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../content/how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../content/markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fliterature/dafny-in-industry/prompts/literature-review.prompt.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/literature/dafny-in-industry/prompts/literature-review.prompt.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Literature Review Agent Workflow</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input">Input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constraints">Constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-output-format">Expected Output Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="literature-review-agent-workflow">
+<h1>Literature Review Agent Workflow<a class="headerlink" href="#literature-review-agent-workflow" title="Link to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This is a <strong>prompt script</strong> (also known as an AI workflow definition, runbook, or agent instruction file). It contains natural language instructions that guide an AI agent to conduct a systematic literature review.</p>
+</section>
+<section id="input">
+<h2>Input<a class="headerlink" href="#input" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>All PDF files in the parent folder</p></li>
+<li><p>Each file should be a research paper in PDF format</p></li>
+</ul>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Link to this heading">#</a></h2>
+<p>Create or update:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../literature-review.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">literature-review.md</span></code></span></a> in the parent folder</p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/f4983d059553a105db13da276dc84684/references.bib"><span class="xref download myst"><code class="docutils literal notranslate"><span class="pre">references.bib</span></code></span></a> - BibTeX entries for all reviewed articles</p></li>
+</ul>
+</section>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h2>
+<p>For each new PDF article in the <code class="docutils literal notranslate"><span class="pre">literature/</span></code> folder:</p>
+<ol class="arabic simple">
+<li><p><strong>Convert PDF to text</strong></p>
+<ul class="simple">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">pdftotext</span></code> command-line tool to convert <code class="docutils literal notranslate"><span class="pre">name.pdf</span></code> to <code class="docutils literal notranslate"><span class="pre">name.txt</span></code></p></li>
+<li><p>Store the text file in the same <code class="docutils literal notranslate"><span class="pre">literature/</span></code> folder</p></li>
+<li><p>Name both the .pdf and the .txt according to the format <code class="docutils literal notranslate"><span class="pre">Year</span> <span class="pre">Title.pdf</span></code> and <code class="docutils literal notranslate"><span class="pre">Year</span> <span class="pre">Title.txt</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Extract key information</strong> from the article and add to <code class="docutils literal notranslate"><span class="pre">literature-review.md</span></code>:</p>
+<ul class="simple">
+<li><p>Link to Google Scholar query containg the title of the article.</p></li>
+<li><p><strong>Summary</strong> (2 sentences): Main thesis or contribution of the article</p></li>
+<li><p><strong>Methodology</strong> (2 sentences): Research methods employed and the kind of data used (e.g., quantitative/qualitative, dataset size, time period)</p></li>
+<li><p><strong>Results</strong> (1 sentence): Key findings and conclusions</p></li>
+<li><p><strong>Evaluation</strong> (1-5 scale, 1 sentence justification): Estimate a ranking of the value of this paper compared to other research in the field in terms of importance of the results and the quality of the methodology. Also consider the quality of writing and overall structure.</p></li>
+<li><p><strong>Resources</strong>: Add links to any of the following if available (ignore if you cannot find links):</p>
+<ul>
+<li><p>arXiv LaTeX source (if paper is on arXiv, check for downloadable source files)</p></li>
+<li><p>Code repositories (GitHub, GitLab, etc.)</p></li>
+<li><p>Datasets (data repositories, supplementary materials)</p></li>
+<li><p>Project websites</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Create BibTeX entry</strong> and add to <a class="reference download internal" download="" href="../../../_downloads/f4983d059553a105db13da276dc84684/references.bib"><span class="xref download myst">references.bib</span></a>:</p>
+<ul class="simple">
+<li><p>Generate a proper BibTeX entry for the article</p></li>
+<li><p>Use an appropriate entry type (&#64;article, &#64;inproceedings, &#64;book, etc.)</p></li>
+<li><p>Include essential metadata only: authors, title, year, venue/journal, publisher (for books)</p></li>
+<li><p><strong>Exclude unnecessary fields</strong>: Do NOT include doi, isbn, url, pages, or other fields not needed for basic citations</p></li>
+<li><p>Make the title clickable by wrapping it in <code class="docutils literal notranslate"><span class="pre">\href</span></code>: <code class="docutils literal notranslate"><span class="pre">title</span> <span class="pre">=</span> <span class="pre">{\href{https://scholar.google.com/scholar?q=TITLE}{TITLE}}</span></code></p></li>
+<li><p>Use a citation key format: <code class="docutils literal notranslate"><span class="pre">firstauthorlastnameYEARkeyword</span></code> (e.g., <code class="docutils literal notranslate"><span class="pre">worku2020exploring</span></code>)</p></li>
+<li><p>Check if entry already exists before adding</p></li>
+<li><p>Maintain alphabetical order by citation key</p></li>
+</ul>
+</li>
+<li><p><strong>Format</strong> each entry consistently using markdown headers and lists</p></li>
+</ol>
+</section>
+<section id="constraints">
+<h2>Constraints<a class="headerlink" href="#constraints" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Keep summaries concise</p></li>
+<li><p>Only process new articles (check if already in literature-review.md)</p></li>
+<li><p>Maintain chronological order</p></li>
+<li><p>Preserve existing content when updating the file</p></li>
+</ul>
+</section>
+<section id="expected-output-format">
+<h2>Expected Output Format<a class="headerlink" href="#expected-output-format" title="Link to this heading">#</a></h2>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gu">## [Article Title] (Year)</span>
+
+<span class="gs">**Authors**</span>: [Author names]
+
+<span class="gs">**Google Scholar**</span>: [Link to Google Scholar search with article title]
+
+<span class="gs">**Summary**</span>: [2 sentence summary of main contribution]
+
+<span class="gs">**Methodology**</span>: [2 sentence summary of methods and data]
+
+<span class="gs">**Results**</span>: [1 sentence summary of findings]
+
+<span class="gs">**Evaluation**</span>: [Rating 1-5]/5 - [1 sentence justification for the rating]
+
+<span class="gs">**Resources**</span>:
+<span class="k">-</span><span class="w"> </span>LaTeX Source: [arXiv source link if available]
+<span class="k">-</span><span class="w"> </span>Code: [link if available]
+<span class="k">-</span><span class="w"> </span>Data: [link if available]
+<span class="k">-</span><span class="w"> </span>Project: [link if available]
+
+---
+</pre></div>
+</div>
+</section>
+<section id="verification">
+<h2>Verification<a class="headerlink" href="#verification" title="Link to this heading">#</a></h2>
+<p>After execution, check that:</p>
+<ul class="simple">
+<li><p>[ ] All PDFs have corresponding .txt files</p></li>
+<li><p>[ ] Each article has all required sections in <code class="docutils literal notranslate"><span class="pre">literature-review.md</span></code></p></li>
+<li><p>[ ] Summaries are concise and accurate</p></li>
+<li><p>[ ] Links are valid and properly formatted</p></li>
+<li><p>[ ] File is valid markdown and renders correctly</p></li>
+<li><p>[ ] Each article has a corresponding BibTeX entry in <code class="docutils literal notranslate"><span class="pre">paper/references.bib</span></code></p></li>
+<li><p>[ ] BibTeX entries are properly formatted and valid</p></li>
+<li><p>[ ] Title fields are wrapped in <code class="docutils literal notranslate"><span class="pre">\href{URL}{TITLE}</span></code> to make them clickable links to Google Scholar</p></li>
+<li><p>[ ] Citation keys follow the naming convention</p></li>
+</ul>
+</section>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>Students working with this workflow will learn to:</p>
+<ul class="simple">
+<li><p>Automate repetitive research tasks using AI agents</p></li>
+<li><p>Structure prompts for consistent, reproducible outputs</p></li>
+<li><p>Version control research workflows</p></li>
+<li><p>Document AI-assisted processes for transparency and reproducibility</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./literature/dafny-in-industry/prompts"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input">Input</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constraints">Constraints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-output-format">Expected Output Format</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification">Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By CPSC 510
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

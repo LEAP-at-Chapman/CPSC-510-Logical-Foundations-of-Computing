@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Literature Review: Dafny in Industry &#8212; Logical Foundations of Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'literature/dafny-in-industry/literature-review';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Logical Foundations of Computing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../content/1-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/2-satsolving.html">SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/3-logic-programming.html">Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/5-smt-solving.html">SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/6-modal-logic.html">Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/7-temporal-logic.html">Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/9-hoare-logic.html">Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/10-higher-order-logic.html">Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/11-dependent-types.html">Dependent Type Theory with Lean</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../content/appendix-puzzles.html">Resources on Puzzles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/appendix-hoare-logic.html">Hoare Logic</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../content/how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../content/markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fliterature/dafny-in-industry/literature-review.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/literature/dafny-in-industry/literature-review.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Literature Review: Dafny in Industry</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessible-software-verification-with-dafny-2017">Accessible Software Verification with Dafny (2017)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formally-verified-cloud-scale-authorization-2024">Formally Verified Cloud-Scale Authorization (2024)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ironclad-apps-end-to-end-security-via-automated-full-system-verification-2014">Ironclad Apps: End-to-End Security via Automated Full-System Verification (2014)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ironfleet-proving-practical-distributed-systems-correct-2015">IronFleet: Proving Practical Distributed Systems Correct (2015)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ironfleet-proving-safety-and-liveness-of-practical-distributed-systems-2017">IronFleet: Proving Safety and Liveness of Practical Distributed Systems (2017)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-scalable-automated-program-verification-for-system-software-2025">Towards Scalable Automated Program Verification for System Software (2025)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deductive-verification-of-smart-contracts-with-dafny-2022">Deductive Verification of Smart Contracts with Dafny (2022)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-and-executable-semantics-of-the-ethereum-virtual-machine-in-dafny-2023">Formal and Executable Semantics of the Ethereum Virtual Machine in Dafny (2023)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-dafny-experience-paper-2024">Testing Dafny (Experience Paper) (2024)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-ai-assisted-synthesis-of-verified-dafny-methods-2024">Towards AI-Assisted Synthesis of Verified Dafny Methods (2024)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leveraging-large-language-models-to-boost-dafny-s-developers-productivity-2024">Leveraging Large Language Models to Boost Dafny’s Developers Productivity (2024)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#better-counterexamples-for-dafny-2022">Better Counterexamples for Dafny (2022)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-survey-of-formal-verification-approaches-for-practical-systems-2013">A Survey of Formal Verification Approaches for Practical Systems (2013)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trust-and-verify-formally-verified-and-upgradable-trusted-functions-2025">Trust and Verify: Formally Verified and Upgradable Trusted Functions (2025)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler-fuzzing-in-continuous-integration-a-case-study-on-dafny-2024">Compiler Fuzzing in Continuous Integration: A Case Study on Dafny (2024)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-automatic-specification-repair-in-dafny-programs-2023">Exploring Automatic Specification Repair in Dafny Programs (2023)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="literature-review-dafny-in-industry">
+<h1>Literature Review: Dafny in Industry<a class="headerlink" href="#literature-review-dafny-in-industry" title="Link to this heading">#</a></h1>
+<p>This document contains a systematic review of research papers related to Dafny and its industrial applications.</p>
+<hr class="docutils" />
+<section id="accessible-software-verification-with-dafny-2017">
+<h2>Accessible Software Verification with Dafny (2017)<a class="headerlink" href="#accessible-software-verification-with-dafny-2017" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: K. Rustan M. Leino</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Accessible+Software+Verification+with+Dafny">Accessible Software Verification with Dafny</a></p>
+<p><strong>Summary</strong>: This paper presents Dafny as a modern formal-verification system that takes a language-based approach, providing developers with an immersive experience that feels like programming while encouraging thinking about program correctness. It showcases how Dafny integrates specification constructs directly into the programming language and runs continuously in IDEs to provide immediate feedback on verification failures.</p>
+<p><strong>Evaluation</strong>: 4/5 - An important foundational paper by Dafny’s creator that articulates the design philosophy and demonstrates practical usability. While excellent for introducing Dafny’s approach, it lacks quantitative evaluation data or detailed industrial case studies.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Code: <a class="github reference external" href="https://github.com/Microsoft/dafny">Microsoft/dafny</a></p></li>
+<li><p>Project: <a class="reference external" href="https://dafny.org">https://dafny.org</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="formally-verified-cloud-scale-authorization-2024">
+<h2>Formally Verified Cloud-Scale Authorization (2024)<a class="headerlink" href="#formally-verified-cloud-scale-authorization-2024" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Aleks Chakarov etal (Amazon Web Services and academic collaborators)</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Formally+Verified+Cloud-Scale+Authorization">Formally Verified Cloud-Scale Authorization</a></p>
+<p><strong>Summary</strong>: This paper presents the successful application of formal verification to rebuild AWS’s authorization engine, which is invoked 1 billion times per second. The team built a new engine in Dafny over four years that behaves functionally identically to its Java predecessor, enabling confident deployment of enhancements while maintaining correctness and backward compatibility with a threefold performance improvement.</p>
+<p><strong>Methodology</strong>: Rather than verify the existing Java engine, the team wrote a new engine from scratch in Dafny, generating readable idiomatic Java code. They performed extensive differential and shadow testing throughout development, comparing against 10^15 production samples prior to deployment to ensure specification matches actual system behavior.</p>
+<p><strong>Results</strong>: The new engine was deployed in 2024 without incident, immediately providing customers with a threefold performance improvement while securing access to over 200 AWS services invoked over 1 billion times per second, demonstrating formal verification’s viability at cloud scale.</p>
+<p><strong>Evaluation</strong>: 5/5 - A landmark paper demonstrating formal verification at unprecedented industrial scale. The quantitative results (10^15 test cases, 1 billion requests/second, 3x performance improvement) and successful production deployment make this one of the most significant formal verification success stories. The methodology and lessons learned are invaluable for the field.</p>
+</section>
+<hr class="docutils" />
+<section id="ironclad-apps-end-to-end-security-via-automated-full-system-verification-2014">
+<h2>Ironclad Apps: End-to-End Security via Automated Full-System Verification (2014)<a class="headerlink" href="#ironclad-apps-end-to-end-security-via-automated-full-system-verification-2014" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Chris Hawblitzel, Jon Howell, Jacob R. Lorch, Arjun Narayan, Bryan Parno, Danfeng Zhang, Brian Zill</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Ironclad+Apps+End-to-End+Security+via+Automated+Full-System+Verification">Ironclad Apps End-to-End Security via Automated Full-System Verification</a></p>
+<p><strong>Summary</strong>: This paper introduces Ironclad Apps, which provide end-to-end security guarantees where users can securely transmit data to remote machines with formal guarantees that every instruction adheres to the app’s specification. The system achieves this through complete low-level software verification combined with cryptography and secure hardware to enable secure channels from verified software to remote users.</p>
+<p><strong>Methodology</strong>: The researchers developed new and modified tools, techniques, and engineering disciplines focused on rapid development of verified systems software. They built a complete stack including a verified kernel, verified drivers, verified system and crypto libraries (SHA, HMAC, RSA), and four Ironclad Apps, all verified down to machine code.</p>
+<p><strong>Results</strong>: The project successfully demonstrated that complete full-system verification is achievable for practical systems, providing guarantees stronger than eliminating implementation vulnerabilities—it specifies exactly how apps behave at all times. The complete verified stack from kernel to applications represents a significant milestone in systems verification.</p>
+<p><strong>Evaluation</strong>: 5/5 - A groundbreaking work that demonstrated end-to-end verification at system scale. The complete verification of crypto primitives, kernel, drivers, and applications in a unified framework set new standards for systems security. The methodology has influenced subsequent verification efforts significantly.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Paper: <a class="reference external" href="https://www.usenix.org/conference/osdi14/technical-sessions/presentation/hawblitzel">OSDI 2014 Proceedings</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="ironfleet-proving-practical-distributed-systems-correct-2015">
+<h2>IronFleet: Proving Practical Distributed Systems Correct (2015)<a class="headerlink" href="#ironfleet-proving-practical-distributed-systems-correct-2015" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Chris Hawblitzel, Jon Howell, Manos Kapritsos, Jacob R. Lorch, Bryan Parno, Michael L. Roberts, Srinath Setty, Brian Zill</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=IronFleet+Proving+Practical+Distributed+Systems+Correct">IronFleet Proving Practical Distributed Systems Correct</a></p>
+<p><strong>Summary</strong>: This is the original conference paper presenting IronFleet, the first to achieve automated machine-checked verification of BOTH safety AND liveness for complete implementations of nontrivial distributed systems (prior work verified protocols but not implementations, or safety but not liveness). Implemented entirely in Dafny, the methodology embeds TLA-style state-machine refinement within Dafny’s automated verification framework, combining it with Floyd-Hoare-style imperative verification.</p>
+<p><strong>Methodology</strong>: IronFleet uses Dafny as the single unified verification framework, implementing a concurrency containment strategy that combines TLA-style state-machine refinement for protocol-level concurrency with Floyd-Hoare-style verification for implementation details. The team built a library of 40 TLA proof rules verified in Dafny and demonstrated the approach on a Paxos-based replicated state machine library and a lease-based sharded key-value store.</p>
+<p><strong>Results</strong>: IronFleet successfully verified two full-featured distributed systems with performance competitive to unverified reference implementations. It was the first to mechanically verify liveness properties of practical distributed system implementations, categorically eliminating race conditions, global invariant violations, and failure recovery bugs.</p>
+<p><strong>Evaluation</strong>: 5/5 - The original groundbreaking conference paper that established IronFleet as a major milestone in distributed systems verification. Published at SOSP 2015, this work fundamentally changed what was considered possible in verified distributed systems. The subsequent 2017 CACM version made these results more accessible to a broader audience.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Published at SOSP 2015</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="ironfleet-proving-safety-and-liveness-of-practical-distributed-systems-2017">
+<h2>IronFleet: Proving Safety and Liveness of Practical Distributed Systems (2017)<a class="headerlink" href="#ironfleet-proving-safety-and-liveness-of-practical-distributed-systems-2017" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Chris Hawblitzel, Jon Howell, Manos Kapritsos, Jacob R. Lorch, Bryan Parno, Michael L. Roberts, Srinath Setty, Brian Zill</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=IronFleet+Proving+Safety+and+Liveness+of+Practical+Distributed+Systems">IronFleet Proving Safety and Liveness of Practical Distributed Systems</a></p>
+<p><strong>Summary</strong>: This CACM article presents IronFleet, the first to achieve automated machine-checked verification of BOTH safety AND liveness for complete implementations of nontrivial distributed systems—a combination not achieved by prior work which verified either protocols (not implementations) or safety (not liveness). Built entirely in Dafny, the methodology’s key innovation is embedding TLA-style temporal logic reasoning within Dafny’s automated verification framework alongside Floyd-Hoare-style imperative verification, eliminating semantic gaps between different verification tools.</p>
+<p><strong>Methodology</strong>: The team implemented everything in Dafny, creating a custom TLA embedding that includes a verified library of 40 fundamental TLA proof rules. This unified framework combines TLA-style state-machine refinement for protocol-level concurrency with Floyd-Hoare-style verification for implementation details. They demonstrated the methodology on a Paxos-based replicated state machine library (IronRSL) and a lease-based sharded key-value store (IronKV), verifying both safety and liveness properties.</p>
+<p><strong>Results</strong>: IronFleet successfully verified complete implementations achieving performance competitive with reference systems. It mechanically verified liveness properties of practical protocols and implementations for the first time, categorically eliminating race conditions, global invariant violations, integer overflow, and bugs in failure recovery code paths.</p>
+<p><strong>Evaluation</strong>: 5/5 - A seminal contribution that broke new ground in distributed systems verification by addressing both safety and liveness. The practical performance combined with complete formal guarantees demonstrated that verified distributed systems need not sacrifice efficiency. The methodology has become foundational for subsequent work in distributed systems verification.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Paper: Communications of the ACM (2017)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="towards-scalable-automated-program-verification-for-system-software-2025">
+<h2>Towards Scalable Automated Program Verification for System Software (2025)<a class="headerlink" href="#towards-scalable-automated-program-verification-for-system-software-2025" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Yi Zhou</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Towards+Scalable+Automated+Program+Verification+for+System+Software">Towards Scalable Automated Program Verification for System Software</a></p>
+<p><strong>Summary</strong>: This PhD thesis addresses the scalability challenges of Automated Program Verification (APV) for system software, where automation failures become common as system complexity increases. The work organizes discussion around APV development stages and proposes solutions to handle inevitable automation failures without breaking APV’s automation pledge.</p>
+<p><strong>Methodology</strong>: The thesis conducts systematic research across the development stages of APV, analyzing where and why automation failures occur in complex systems. It combines theoretical analysis of APV’s fundamental undecidability with practical approaches for system software verification, likely using Dafny and related tools given the context.</p>
+<p><strong>Results</strong>: The thesis demonstrates that despite APV being fundamentally undecidable and automation failures being inevitable, APV is not hopeless beyond small-scale systems. It provides methodologies for managing automation failures while maintaining APV’s benefits for complex system software.</p>
+<p><strong>Evaluation</strong>: 4/5 - A comprehensive PhD thesis addressing critical scalability challenges in program verification. The work provides valuable insights into practical limitations and solutions. As a recent thesis (2025), it represents current state-of-the-art thinking on verification scalability, though industrial impact remains to be fully evaluated.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Project: Carnegie Mellon University School of Computer Science</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="deductive-verification-of-smart-contracts-with-dafny-2022">
+<h2>Deductive Verification of Smart Contracts with Dafny (2022)<a class="headerlink" href="#deductive-verification-of-smart-contracts-with-dafny-2022" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Franck Cassez, Joanne Fuller, Horacio Mijail Antón Quiles</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Deductive+Verification+of+Smart+Contracts+with+Dafny">Deductive Verification of Smart Contracts with Dafny</a></p>
+<p><strong>Summary</strong>: This paper presents a methodology for developing verified smart contracts by writing specifications and implementations in Dafny. The approach provides a simple yet powerful solution for reasoning about contracts with external calls, including arbitrary reentrancy—a major source of bugs and attacks in smart contracts like the DAO hack that caused $50 million in losses.</p>
+<p><strong>Methodology</strong>: The team writes smart contracts in Dafny, allowing specification and verification first, then translates to Solidity. While they don’t yet have a compiler from Dafny to EVM bytecode, the translation to Solidity is straightforward enough that properties proven in Dafny can reasonably be assumed to hold in the Solidity code.</p>
+<p><strong>Results</strong>: The methodology successfully handles reentrancy verification and can be readily used to develop and deploy safer contracts. The approach demonstrates that formal verification can address the critical security vulnerabilities that have led to billions in losses in DeFi hacks.</p>
+<p><strong>Evaluation</strong>: 4/5 - An important application of Dafny to blockchain security, addressing real-world vulnerabilities with significant financial impact. The lack of a direct compiler to EVM bytecode is a limitation, though the authors argue the translation gap is manageable. The timing (2022, after major DeFi hacks) makes this work particularly relevant.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>LaTeX Source: <a class="reference external" href="https://arxiv.org/abs/2208.02920">arXiv:2208.02920</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="formal-and-executable-semantics-of-the-ethereum-virtual-machine-in-dafny-2023">
+<h2>Formal and Executable Semantics of the Ethereum Virtual Machine in Dafny (2023)<a class="headerlink" href="#formal-and-executable-semantics-of-the-ethereum-virtual-machine-in-dafny-2023" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Franck Cassez, Joanne Fuller, Milad K. Ghale, David J. Pearce, Horacio M. A. Quiles</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Formal+and+Executable+Semantics+of+the+Ethereum+Virtual+Machine+in+Dafny">Formal and Executable Semantics of the Ethereum Virtual Machine in Dafny</a></p>
+<p><strong>Summary</strong>: This paper presents a complete formal and executable semantics of the Ethereum Virtual Machine (EVM) written in Dafny. The work provides a readable, formal, verified specification of the EVM and a framework for formally reasoning about EVM bytecode, addressing shortcomings in the informal Yellow Paper specification.</p>
+<p><strong>Methodology</strong>: The team built a complete formal specification in Dafny that can execute EVM programs while providing formal semantics. This addresses the Yellow Paper’s lack of precise formal semantics and enables certified compiler development and formal reasoning about bytecode properties like absence of overflow and division by zero.</p>
+<p><strong>Results</strong>: The complete EVM semantics in Dafny enables formal reasoning about bytecode-level properties and provides a foundation for certified compiler development from high-level languages like Solidity to EVM bytecode. The executable semantics can also serve as a reference implementation for EVM client developers.</p>
+<p><strong>Evaluation</strong>: 4/5 - Important foundational work providing formal semantics for a critical piece of blockchain infrastructure. The executable nature combined with formal verification makes this particularly valuable. The work addresses real needs for Ethereum client diversity and compiler correctness, though industrial adoption remains to be demonstrated.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>LaTeX Source: <a class="reference external" href="https://arxiv.org/abs/2303.00152">arXiv:2303.00152</a></p></li>
+<li><p>Code: <a class="github reference external" href="https://github.com/ConsenSys/evm-dafny">ConsenSys/evm-dafny</a></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="testing-dafny-experience-paper-2024">
+<h2>Testing Dafny (Experience Paper) (2024)<a class="headerlink" href="#testing-dafny-experience-paper-2024" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Ahmed Irfan, Sorawee Porncharoenwase, Zvonimir Rakamarić, Neha Rungta, Emina Torlak</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Testing+Dafny+Experience+Paper">Testing Dafny Experience Paper</a></p>
+<p><strong>Summary</strong>: This experience paper presents XDsmith, the first fuzzing and differential testing framework for Dafny, targeting the entire toolchain from verification to compilation across multiple target languages (C#, Java, Go, Javascript). The work builds confidence in verification toolchains by detecting bugs that could compromise correctness guarantees.</p>
+<p><strong>Methodology</strong>: XDsmith randomly generates annotated programs in a subset of Dafny free of loops and heap-mutating operations, including preconditions, postconditions, and assertions with known verification outcomes. These programs test the soundness and precision of the Dafny verifier and perform differential testing across the four Dafny compilers.</p>
+<p><strong>Results</strong>: Using XDsmith, the team uncovered 31 bugs across the Dafny verifier and compilers, all confirmed by Dafny developers, with 8 bugs reported to have security implications. This demonstrates the value of systematic testing for verification tools themselves.</p>
+<p><strong>Evaluation</strong>: 4/5 - Valuable work addressing the critical question “who verifies the verifier?” The discovery of 31 confirmed bugs, including 8 with security implications, demonstrates clear practical value. The methodology could be applied to other verification tools, making this an important contribution to toolchain reliability.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Authors from AWS and University of Washington</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="towards-ai-assisted-synthesis-of-verified-dafny-methods-2024">
+<h2>Towards AI-Assisted Synthesis of Verified Dafny Methods (2024)<a class="headerlink" href="#towards-ai-assisted-synthesis-of-verified-dafny-methods-2024" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Md Rakib Hossain Misu, Cristina V. Lopes, Iris Ma, James Noble</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Towards+AI-Assisted+Synthesis+of+Verified+Dafny+Methods">Towards AI-Assisted Synthesis of Verified Dafny Methods</a></p>
+<p><strong>Summary</strong>: This paper demonstrates how to improve large language models’ proficiency in Dafny by using different prompting strategies to generate verified methods. Using 178 MBPP problems, the study shows that GPT-4 can generate verified, human-evaluated Dafny methods for 58% of problems with appropriate prompting.</p>
+<p><strong>Methodology</strong>: The researchers prompted GPT-4 and PaLM-2 with three prompt types: Contextless (19% success), Signature with test cases (10% success), and Chain of Thought with retrieval augmentation (58% success with GPT-4). They manually wrote 50 verified solutions and GPT-4 synthesized 103, contributing 153 total verified Dafny solutions to MBPP.</p>
+<p><strong>Results</strong>: GPT-4 significantly outperformed PaLM-2, and retrieval-augmented CoT prompting dramatically improved success rates. The work demonstrates that formal verification benefits are now within reach of code-generating LLMs, and verification systems can benefit from LLMs for code synthesis, specification generation, and generating difficult annotations like loop invariants.</p>
+<p><strong>Evaluation</strong>: 4/5 - Timely work at the intersection of formal verification and AI-assisted programming. The quantitative results are solid and the contribution of 153 verified solutions is valuable. However, the 58% success rate, while impressive, indicates significant room for improvement before production use.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Data: 153 verified Dafny solutions to MBPP problems</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="leveraging-large-language-models-to-boost-dafny-s-developers-productivity-2024">
+<h2>Leveraging Large Language Models to Boost Dafny’s Developers Productivity (2024)<a class="headerlink" href="#leveraging-large-language-models-to-boost-dafny-s-developers-productivity-2024" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Álvaro Silva, Alexandra Mendes, João F. Ferreira</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Leveraging+Large+Language+Models+to+Boost+Dafny+Developers+Productivity">Leveraging Large Language Models to Boost Dafny Developers Productivity</a></p>
+<p><strong>Summary</strong>: This research idea paper proposes leveraging LLMs to enhance Dafny developer productivity by generating suggestions for lemmas that Dafny cannot discover and providing calculational proofs. The work addresses the high expertise cost that limits verification-aware language adoption.</p>
+<p><strong>Methodology</strong>: The paper describes preliminary work on using LLMs to assist developers by generating relevant lemmas when Dafny verification fails due to missing lemmas. For lemmas that cannot be proved automatically, the system attempts to provide accompanying calculational proofs. The paper also outlines a research agenda for using LLMs to reduce the expertise required for formal specifications.</p>
+<p><strong>Results</strong>: The paper presents preliminary results and future work directions rather than comprehensive evaluation. It demonstrates the potential for LLMs to act as a “programmer’s verification apprentice” to construct difficult annotations like loop invariants.</p>
+<p><strong>Evaluation</strong>: 3/5 - An interesting research direction with clear motivation, but as a research idea paper with preliminary work, it lacks comprehensive evaluation data. The concept is promising for addressing Dafny’s usability challenges, but practical impact remains to be demonstrated.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Authors from University of Porto and University of Lisbon</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="better-counterexamples-for-dafny-2022">
+<h2>Better Counterexamples for Dafny (2022)<a class="headerlink" href="#better-counterexamples-for-dafny-2022" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Aleksandar Chakarov, Aleksandr Fedchin, Zvonimir Rakamarić, Neha Rungta</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Better+Counterexamples+for+Dafny">Better Counterexamples for Dafny</a></p>
+<p><strong>Summary</strong>: This paper introduces an open-source tool that transforms counterexamples generated by SMT solvers into a more user-friendly format mapped to Dafny syntax. The tool addresses a major bottleneck in proof debugging at AWS, where Dafny is used for critical infrastructure components and hard-to-interpret counterexamples slow development.</p>
+<p><strong>Methodology</strong>: The tool processes counterexamples from the underlying SMT solver, transforming them to map to Dafny syntax and making them suitable for further processing. The work was motivated by AWS developers’ needs when implementing core authorization logic in Dafny and generating production Java code.</p>
+<p><strong>Results</strong>: The tool allows Dafny developers to quickly identify root causes of proof failures, speeding up development of Dafny projects at AWS. The open-source release enables the broader Dafny community to benefit from improved debugging capabilities.</p>
+<p><strong>Evaluation</strong>: 4/5 - Addresses a practical pain point identified by industrial users (AWS) with a concrete tool. The industrial motivation and open-source release add significant value. While the technical contribution is incremental, the practical impact on developer productivity is substantial.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Published at TACAS 2022</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="a-survey-of-formal-verification-approaches-for-practical-systems-2013">
+<h2>A Survey of Formal Verification Approaches for Practical Systems (2013)<a class="headerlink" href="#a-survey-of-formal-verification-approaches-for-practical-systems-2013" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Qiao Zhang, Danyang Zhuo, James Wilcox</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=A+Survey+of+Formal+Verification+Approaches+for+Practical+Systems">A Survey of Formal Verification Approaches for Practical Systems</a></p>
+<p><strong>Summary</strong>: This survey paper provides a systematic taxonomy of formal verification approaches for practical systems, examining key questions including proof effort requirements and Trust Computing Base (TCB) of verified systems. The work argues that verification technology has matured enough to make formal verification of large-scale systems practical.</p>
+<p><strong>Methodology</strong>: The authors conduct a systematic literature survey, classifying existing formal verification approaches and critically examining each to answer how practical systems programming can effectively use formal verification. They analyze projects that have verified systems at scale, previously thought impractical.</p>
+<p><strong>Results</strong>: The survey identifies both the state of maturity in program verification technology and remaining challenges for practical systems building. It identifies system components that would be interesting to formally verify that haven’t yet been attempted.</p>
+<p><strong>Evaluation</strong>: 3/5 - A useful survey providing context for the field, though now over a decade old (2013). The taxonomy and classification are valuable, but the rapid progress in verification tools (including Dafny’s evolution) means some conclusions may be dated. Still valuable for historical perspective and understanding the landscape.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Institution: University of Washington</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="trust-and-verify-formally-verified-and-upgradable-trusted-functions-2025">
+<h2>Trust and Verify: Formally Verified and Upgradable Trusted Functions (2025)<a class="headerlink" href="#trust-and-verify-formally-verified-and-upgradable-trusted-functions-2025" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Marcus Birgersson, Cyrille Artho, Musard Balliu</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Trust+and+Verify+Formally+Verified+and+Upgradable+Trusted+Functions">Trust and Verify Formally Verified and Upgradable Trusted Functions</a></p>
+<p><strong>Summary</strong>: This paper proposes an approach combining automated verification with attestation on trusted execution environments (TEEs) to ensure only conformant applications execute. The system allows updates to computation functions without changing attestation responses as long as formal specifications hold, addressing the challenge of re-verification after updates.</p>
+<p><strong>Methodology</strong>: The system uses formal specifications in Dafny to guarantee computation function behavior conforms to desired functionality. By combining automated verification with TEE attestation, it ensures users don’t need to individually verify code. The authors implement and evaluate on several functions including Dafny-EVM, demonstrating validity with a real-world application.</p>
+<p><strong>Results</strong>: The implementation shows an average overhead of only 50% while providing strong security guarantees. The system successfully demonstrates that formal specifications can enable secure code updates without requiring users to re-verify implementations, solving a major usability challenge for verified cloud computing.</p>
+<p><strong>Evaluation</strong>: 4/5 - Innovative combination of formal verification with trusted hardware to address practical deployment challenges. The 50% overhead is reasonable for the security guarantees provided. The Dafny-EVM demonstration shows practical applicability. The work opens interesting directions for verified cloud computing.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Institution: KTH Royal Institute of Technology</p></li>
+<li><p>Project: Dafny-EVM application</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="compiler-fuzzing-in-continuous-integration-a-case-study-on-dafny-2024">
+<h2>Compiler Fuzzing in Continuous Integration: A Case Study on Dafny (2024)<a class="headerlink" href="#compiler-fuzzing-in-continuous-integration-a-case-study-on-dafny-2024" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Karnbongkot Boonriong, Stefan Zetzsche, Alastair F. Donaldson</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Compiler+Fuzzing+in+Continuous+Integration+A+Case+Study+on+Dafny">Compiler Fuzzing in Continuous Integration A Case Study on Dafny</a></p>
+<p><strong>Summary</strong>: This paper presents CompFuzzCI, a framework for incorporating compiler fuzzing into continuous integration workflows of compiler projects, specifically demonstrated on Dafny. The approach runs brief fuzzing campaigns on each pull request, complementing existing regression testing by proactively finding bugs before they reach production.</p>
+<p><strong>Methodology</strong>: CompFuzzCI addresses challenges including bug deduplication, bisecting revision history when project interfaces change, and ensuring fuzz testing complements regression testing. The authors worked with the Dafny development team at Amazon to design solutions, using the fuzz-d fuzzer with generalisable design for adaptation to other fuzzers.</p>
+<p><strong>Results</strong>: As a by-product of CompFuzzCI development, the team found and reported three previously-unknown bugs in the Dafny compiler. A controlled experiment simulating CompFuzzCI use over time on historic Dafny commits demonstrated ability to find historic bugs, validating the approach’s effectiveness.</p>
+<p><strong>Evaluation</strong>: 4/5 - Practical work addressing real industrial needs (continuous integration at Amazon) with demonstrated bug-finding capability. The generalisable design and lessons learned are valuable beyond Dafny. The three newly discovered bugs and historic bug detection validate the approach, though longer-term industrial adoption results would strengthen the evaluation.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Authors from Imperial College London and AWS</p></li>
+<li><p>Framework: CompFuzzCI</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="exploring-automatic-specification-repair-in-dafny-programs-2023">
+<h2>Exploring Automatic Specification Repair in Dafny Programs (2023)<a class="headerlink" href="#exploring-automatic-specification-repair-in-dafny-programs-2023" title="Link to this heading">#</a></h2>
+<p><strong>Authors</strong>: Alexandre Abreu, Nuno Macedo, Alexandra Mendes</p>
+<p><strong>Google Scholar</strong>: <a class="reference external" href="https://scholar.google.com/scholar?q=Exploring+Automatic+Specification+Repair+in+Dafny+Programs">Exploring Automatic Specification Repair in Dafny Programs</a></p>
+<p><strong>Summary</strong>: This paper shifts focus from implementation repair to specification repair, addressing cases where verification fails because the specification is incorrect rather than the implementation. The work provides a tool to suggest specification repairs when programmers have a trusted reference implementation but are still analyzing contract options.</p>
+<p><strong>Methodology</strong>: The research develops techniques for automatic specification repair in Dafny, focusing on scenarios where implementations can be assumed correct (e.g., reference implementations) but specifications need refinement. The system analyzes verification failures and suggests specification corrections.</p>
+<p><strong>Results</strong>: The work demonstrates that many software issues stem from incorrect specifications providing false security, and provides practical tools for specification repair. This addresses an understudied direction in program verification research, which typically assumes correct specifications.</p>
+<p><strong>Evaluation</strong>: 4/5 - Important work addressing the often-overlooked problem of incorrect specifications. The focus on specification repair rather than just implementation repair is valuable and relatively novel. The practical tool provides concrete value, though more extensive evaluation across larger codebases would strengthen the contribution.</p>
+<p><strong>Resources</strong>:</p>
+<ul class="simple">
+<li><p>Institution: University of Porto &amp; INESC TEC</p></li>
+<li><p>Published at ASEW 2023</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./literature/dafny-in-industry"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessible-software-verification-with-dafny-2017">Accessible Software Verification with Dafny (2017)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formally-verified-cloud-scale-authorization-2024">Formally Verified Cloud-Scale Authorization (2024)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ironclad-apps-end-to-end-security-via-automated-full-system-verification-2014">Ironclad Apps: End-to-End Security via Automated Full-System Verification (2014)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ironfleet-proving-practical-distributed-systems-correct-2015">IronFleet: Proving Practical Distributed Systems Correct (2015)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ironfleet-proving-safety-and-liveness-of-practical-distributed-systems-2017">IronFleet: Proving Safety and Liveness of Practical Distributed Systems (2017)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-scalable-automated-program-verification-for-system-software-2025">Towards Scalable Automated Program Verification for System Software (2025)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deductive-verification-of-smart-contracts-with-dafny-2022">Deductive Verification of Smart Contracts with Dafny (2022)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-and-executable-semantics-of-the-ethereum-virtual-machine-in-dafny-2023">Formal and Executable Semantics of the Ethereum Virtual Machine in Dafny (2023)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-dafny-experience-paper-2024">Testing Dafny (Experience Paper) (2024)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#towards-ai-assisted-synthesis-of-verified-dafny-methods-2024">Towards AI-Assisted Synthesis of Verified Dafny Methods (2024)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leveraging-large-language-models-to-boost-dafny-s-developers-productivity-2024">Leveraging Large Language Models to Boost Dafny’s Developers Productivity (2024)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#better-counterexamples-for-dafny-2022">Better Counterexamples for Dafny (2022)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-survey-of-formal-verification-approaches-for-practical-systems-2013">A Survey of Formal Verification Approaches for Practical Systems (2013)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trust-and-verify-formally-verified-and-upgradable-trusted-functions-2025">Trust and Verify: Formally Verified and Upgradable Trusted Functions (2025)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compiler-fuzzing-in-continuous-integration-a-case-study-on-dafny-2024">Compiler Fuzzing in Continuous Integration: A Case Study on Dafny (2024)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-automatic-specification-repair-in-dafny-programs-2023">Exploring Automatic Specification Repair in Dafny Programs (2023)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By CPSC 510
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
