@@ -395,11 +395,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preconditions-postconditions">Preconditions … Postconditions …</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-variables-vs-mathematical-variables">Program Variables vs Mathematical Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-in-dafny">Verification in Dafny</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Hoare Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rules-in-detail">The Rules in Detail</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loop">While-loop</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-hoare-logic-compositional">Making Hoare Logic Compositional</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-composition">Sequential Composition</a></li>
@@ -408,10 +408,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-then-else">If-then-else</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework"><font color="red"> Homework</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-exercises">Further Exercises</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-and-outlook">Summary and Outlook</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Hoare Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Hoare Logic</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-programming">Structured Programming</a></li>
 </ul>
 </li>
@@ -435,7 +435,8 @@ document.write(`
 <h1>Hoare Logic<a class="headerlink" href="#hoare-logic" title="Link to this heading">#</a></h1>
 <p>“The most  important property of a program is whether it accomplishes the intentions of its user. If the intentions can be described rigorously by making assertions about the values of variables at the end of the execution of the program, then the techniques described in this paper may be used to prove the correcteness of the program.”</p>
 <p>Hoare. <a class="reference external" href="http://extras.springer.com/2002/978-3-642-63970-8/DVD3/rom/pdf/Hoare_hist.pdf">An axiomatic basis for computer programming</a>. Communications of the ACM. 12 (10): 576–580, 1969.</p>
-<hr class="docutils" />
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>In Programming Languages there is an important circle of ideas including <a class="reference external" href="https://en.wikipedia.org/wiki/Hoare_logic">Hoare logic</a> and Dijkstra’s <a class="reference external" href="https://en.wikipedia.org/wiki/Predicate_transformer_semantics">predicate transformer semantics</a>, Kozen’s <a class="reference external" href="https://en.wikipedia.org/wiki/Kleene_algebra">Kleene algebra</a> and Pratt’s <a class="reference external" href="https://en.wikipedia.org/wiki/Dynamic_logic_(modal_logic)">Dynamic logic</a>, O’Hearn and Reynolds’s <a class="reference external" href="https://en.wikipedia.org/wiki/Separation_logic">Separation logic</a> and many more methods, techniques, tools, etc.</p>
 <p>This line of research grew out of the methodology of <strong>structured programming</strong>, which is something that every programmer learns today right from the start, but was a novel concept around 1970. I postpone a discussion of this to the conclusions.</p>
 <p>Here, we will just give some of the basic ideas and illustrate them with an important technique of proving the correctness of while programs.</p>
@@ -462,7 +463,15 @@ document.write(`
 <li><p>Check out the <a class="reference external" href="https://en.wikipedia.org/wiki/Design_by_contract#Language_support">list of programming languages</a> supporting these ideas.</p></li>
 <li><p>Assume/guarantee or rely/guarantee is an important technique in the development of concurrent programs</p></li>
 </ul>
-<p>I am planning to add more in the conclusions, but now let us jump into a concrete</p>
+<p><strong>Table of Contents</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="9-hoare-logic.html"><span class="std std-doc">Summary of the Rules of Hoare Logic</span></a></p></li>
+<li><p>Introductory Example</p></li>
+<li><p>Preconditions and Postconditions</p></li>
+<li><p>Program Variables vs Mathematical Variables</p></li>
+<li><p>The Rules in Detail</p></li>
+</ul>
+</section>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
 <p>Consider the following program.</p>
@@ -484,49 +493,64 @@ document.write(`
 <h2>Preconditions … Postconditions …<a class="headerlink" href="#preconditions-postconditions" title="Link to this heading">#</a></h2>
 <p>As the example shows part of the difficulty lies in having a reliable notation that allows us to track change through a program and making statements (such as <code class="docutils literal notranslate"><span class="pre">z</span> <span class="pre">==</span> <span class="pre">x*y</span></code> ) about its properties.</p>
 <p>The first important idea is that we want express that certain assumptions are satisfied before executing the program (preconditions)  and properties that we then know after the execution of the program (postconditions)</p>
-<p>If <span class="math notranslate nohighlight">\(\mathtt S\)</span> is a program (“S” as in “Sequence of Statements”) then we write
-$<span class="math notranslate nohighlight">\( \{P\}\; \mathtt S\;\{Q\}\)</span>$</p>
+<p>If <span class="math notranslate nohighlight">\(\mathtt S\)</span> is a program (“S” as in “Sequence of Statements”) then we write</p>
+<div class="math notranslate nohighlight">
+\[
+\{P\}\; \mathtt S\;\{Q\}
+\]</div>
 <p>A predicate that holds before the execution of the program is  called  a <em><strong>precondition</strong></em>  and a predicate that holds after  a <em><strong>postcondition</strong></em>. If the precondition is met before execution,  the program  establishes the postcondition if it terminates.</p>
-<p>For example, we can write
-$<span class="math notranslate nohighlight">\(\color{blue}{\{\mathtt x\ge 0 \wedge \mathtt z=0 \}} \; 
-\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \; \)</span>$</p>
+<p>For example, we can write</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{\mathtt x\ge 0 \wedge \mathtt z=0 \}} \; 
+\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;
+\]</div>
 <p>to express what we said above, namely that the we want to execute the program above only in case <span class="math notranslate nohighlight">\(\mathtt x\ge 0\)</span> and <span class="math notranslate nohighlight">\(\mathtt z=0\)</span>.</p>
 <p><strong>Notation:</strong> We use mathematical notation in pre and postconditions. For example, we write “=” in <span class="math notranslate nohighlight">\(\{\mathtt x\ge 0 \wedge \mathtt z=0 \}\)</span> to mean equality, not assignment. Program variables are typeset in typewriter font as in <span class="math notranslate nohighlight">\(\mathtt{x,y,z}\)</span>.</p>
 <p>What should be the post condition?</p>
-<p><strong>Exercise:</strong> A first idea for a postcondition is<br />
-$<span class="math notranslate nohighlight">\({\{\mathtt x\ge 0 \wedge \mathtt z=0 \}} \; 
-\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt{z=x*y}\}}. \)</span>$</p>
+<p><strong>Exercise:</strong> A first idea for a postcondition is</p>
+<div class="math notranslate nohighlight">
+\[
+{\{\mathtt x\ge 0 \wedge \mathtt z=0 \}} \; 
+\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt{z=x*y}\}}.
+\]</div>
 <p>What do you think about this? Does it look right? Consider how <span class="math notranslate nohighlight">\(\mathtt x\)</span> changes through the computation.</p>
 <p>Answer.<a class="footnote-reference brackets" href="#looksright" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="program-variables-vs-mathematical-variables">
 <h2>Program Variables vs Mathematical Variables<a class="headerlink" href="#program-variables-vs-mathematical-variables" title="Link to this heading">#</a></h2>
 <p>Our difficulty in finding the correct postcondition can be remedied using the following trick.</p>
-<p>While we allow program variables to change during the execution of a program <span class="math notranslate nohighlight">\(\mathtt S\)</span> in
-$<span class="math notranslate nohighlight">\( \{P\}\; \mathtt S\;\{Q\}\)</span>$</p>
-<p>we also allow, not in programs, but in the properties <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span>, mathematical variables. This is not surprising, once we had the idea, since we are already using mathematical notation such as <span class="math notranslate nohighlight">\(&gt;,=,\wedge\)</span> etc. And, as in mathematics, there is no assigment-operation that would allow us to change the value of a mathematical variable. So when we write
-$<span class="math notranslate nohighlight">\( \{\ldots n\ldots \}\; \mathtt S\;\{\ldots n\ldots\}\)</span>$</p>
+<p>While we allow program variables to change during the execution of a program <span class="math notranslate nohighlight">\(\mathtt S\)</span> in</p>
+<div class="math notranslate nohighlight">
+\[
+\{P\}\; \mathtt S\;\{Q\}
+\]</div>
+<p>we also allow, not in programs, but in the properties <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span>, mathematical variables. This is not surprising, once we had the idea, since we are already using mathematical notation such as <span class="math notranslate nohighlight">\(&gt;,=,\wedge\)</span> etc. And, as in mathematics, there is no assigment-operation that would allow us to change the value of a mathematical variable. So when we write</p>
+<div class="math notranslate nohighlight">
+\[
+\{\ldots n\ldots \}\; \mathtt S\;\{\ldots n\ldots\}
+\]</div>
 <p>the mathematical variable <span class="math notranslate nohighlight">\(n\)</span> stands for the same value before the execution and after the execution of <span class="math notranslate nohighlight">\(\mathtt S\)</span>.</p>
-<p><strong>Exercise:</strong> What does<br />
-$<span class="math notranslate nohighlight">\( \{\mathtt y = n\}\; \mathtt S\;\{\mathtt y = n\}\)</span>$</p>
-<p>express about <span class="math notranslate nohighlight">\(\mathtt S\)</span>?</p>
-<p>Do you think it should say that the program variable <span class="math notranslate nohighlight">\(\mathtt y\)</span> cannot change during the execution of the program <span class="math notranslate nohighlight">\(\mathtt S\)</span>? (Hint: Recall that the precondition is meant to specify a property that holds just in the moment before executing <span class="math notranslate nohighlight">\(\mathtt S\)</span> and that the postcondition specifies a property that holds immediately after termination of <span class="math notranslate nohighlight">\(\mathtt S\)</span>.)</p>
-<p><strong>Exercise:</strong> Do the following pre and postconditions
-$<span class="math notranslate nohighlight">\(\color{blue}{\{\mathtt z=0 \ \wedge\  \mathtt x =n \}} \; 
-\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt{z=\mathit{n}*y}\}}. \)</span>$</p>
+<p><strong>Question:</strong> Recalling that <span class="math notranslate nohighlight">\(\mathtt y\)</span> is a program variable and that <span class="math notranslate nohighlight">\(n\)</span> is a mathematical variable: What does</p>
+<div class="math notranslate nohighlight">
+\[
+\{\mathtt y = n\}\; \mathtt S\;\{\mathtt y = n\}
+\]</div>
+<p>express about <span class="math notranslate nohighlight">\(\mathtt S\)</span>? Why does it not express that <span class="math notranslate nohighlight">\(\mathtt y\)</span> cannot change during the execution of <span class="math notranslate nohighlight">\(S\)</span>?</p>
+<p><strong>Exercise:</strong> Do the following pre and postconditions</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{\mathtt z=0 \ \wedge\  \mathtt x =n \}} \; 
+\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt{z=\mathit{n}*y}\}}
+\]</div>
 <p>capture our informal discusions above?</p>
 <p><strong>Exercise:</strong> How do you have to change the post and precondition if you  want to drop the precondition <span class="math notranslate nohighlight">\(\color{blue}{\{\mathtt z=0\}}\)</span> and make a statement that holds for arbitrary initial values of <span class="math notranslate nohighlight">\(\mathtt z\)</span>?</p>
 <p>See the footnote for a solution.<a class="footnote-reference brackets" href="#invariantznot0" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p>
 </section>
-<section id="verification-in-dafny">
-<h2>Verification in Dafny<a class="headerlink" href="#verification-in-dafny" title="Link to this heading">#</a></h2>
-<p>Before we are going to take a look how to formalise the reasoning such as the above, let us look at a software tool that implements reasoning in Hoare logic.</p>
-<p><a class="reference external" href="https://hackmd.io/&#64;alexhkurz/SJyBbDQjv">Verification in Dafny</a></p>
-</section>
-<section id="id5">
-<h2>Hoare Logic<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="the-rules-in-detail">
+<h2>The Rules in Detail<a class="headerlink" href="#the-rules-in-detail" title="Link to this heading">#</a></h2>
 <p>Hoare logic (also known as Floyd-Hoare logic) is a formal system developed by the British computer scientist C. A. R. Hoare, and subsequently refined by Hoare and other researchers. The purpose of the system is to provide a set of logical rules in order to reason about the correctness of computer programs with the rigour of mathematical logic and, therefore, the possibility of delegating such reasoning to a compiler or other verification software tools.</p>
-<p>We will describe Hoare Logic for a minimal programming language containg only assignments, conditionals and while-loops. In addition to the rules for the simple language in  Hoare’s original paper, rules for other language constructs have been developed since then by Hoare and many other researchers. There are rules for concurrency, procedures, jumps, and pointers and much more. For example, <a class="reference internal" href="#"><span class="xref myst">Separation logic</span></a> is used by Facebook in verification tools.</p>
+<p>We will describe Hoare Logic for a minimal programming language containg only assignments, conditionals and while-loops. In addition to the rules for the simple language in  Hoare’s original paper, rules for other language constructs have been developed since then by Hoare and many other researchers. There are rules for concurrency, procedures, jumps, and pointers and much more. For example, <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%22O%27Hearn%22+%22separation+logic%22+%22facebook%22&amp;amp;btnG=">Separation logic</a> is used by Facebook in verification tools.</p>
 <section id="while-loop">
 <h3>While-loop<a class="headerlink" href="#while-loop" title="Link to this heading">#</a></h3>
 <p>Let us go back to our leading example</p>
@@ -534,64 +558,98 @@ $<span class="math notranslate nohighlight">\(\color{blue}{\{\mathtt z=0 \ \wedg
 </pre></div>
 </div>
 <p>So let us try to formalise this using pre and postcondition, or, as on says, <em><strong>Hoare triples</strong></em>.</p>
-<p><strong>Exercise:</strong> Prove the Hoare triple
-$<span class="math notranslate nohighlight">\(\color{blue}{\{\mathtt z = (n-\mathtt x)\cdot\mathtt y\}} \; 
-\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt z = (n-\mathtt x)\cdot\mathtt y\}}. \)</span>$</p>
+<p><strong>Exercise:</strong> Prove the Hoare triple</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{\mathtt z = (n-\mathtt x)\cdot\mathtt y\}} \; 
+\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt z = (n-\mathtt x)\cdot\mathtt y\}}.
+\]</div>
 <p><strong>Question:</strong> Why is  <span class="math notranslate nohighlight">\(\color{blue}{\{\mathtt z = (n-\mathtt x)\cdot\mathtt y\}}\)</span> called a loop invariant?</p>
-<p><strong>Activity:</strong> Recall that the intended meaning of the while loop is to compute <span class="math notranslate nohighlight">\(\mathtt z = n\cdot\mathtt y\)</span> which we write in form of a Hoare triple as
-$<span class="math notranslate nohighlight">\(\color{blue}{\{\mathtt z = 0 \ \wedge \ \mathtt x=n\}} \; 
-\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt z = n\cdot\mathtt y\}}. \)</span>$</p>
+<p><strong>Activity:</strong> Recall that the intended meaning of the while loop is to compute <span class="math notranslate nohighlight">\(\mathtt z = n\cdot\mathtt y\)</span> which we write in form of a Hoare triple as</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{\mathtt z = 0 \ \wedge \ \mathtt x=n\}} \; 
+\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt z = n\cdot\mathtt y\}}.
+\]</div>
 <p>What reasoning steps are needed to obtain this Hoare triple from the one of the previous exercise?</p>
 <p>To carefully explain the answer to this question takes a little effort. So let us first give a short answer:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        Show that the precondition implies the invariant and
             that the invariant implies the postcondition
 </pre></div>
 </div>
-<p>First, to show that the precondition implies the invariant, is to show that
-$<span class="math notranslate nohighlight">\(\mathtt z = 0 \ \wedge \ \mathtt x=n \ \Longrightarrow \ \mathtt z = (n-\mathtt x)\cdot\mathtt y\)</span>$</p>
-<p>This is easy: Just replace in the conclusion <span class="math notranslate nohighlight">\(\mathtt z\)</span> by 0 and <span class="math notranslate nohighlight">\(\mathtt x\)</span> by <span class="math notranslate nohighlight">\(n\)</span> and you find <span class="math notranslate nohighlight">\(0=0\)</span>, which is indeed true. <a class="footnote-reference brackets" href="#equals" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p>
-<p>Second, to show that the invariant implies the postcondition, is to show that
-$<span class="math notranslate nohighlight">\(\mathtt z = (n-\mathtt x)\cdot\mathtt y \ \Longrightarrow \ \mathtt z = n\cdot\mathtt y\)</span>$</p>
-<p>and if you go back to the program you see that this is possible since we know that
-$<span class="math notranslate nohighlight">\(\mathtt x=0\)</span>$</p>
+<p>First, to show that the precondition implies the invariant, is to show that</p>
+<div class="math notranslate nohighlight">
+\[
+\mathtt z = 0 \ \wedge \ \mathtt x=n \ \Longrightarrow \ \mathtt z = (n-\mathtt x)\cdot\mathtt y
+\]</div>
+<p>This is easy: Just replace in the conclusion <span class="math notranslate nohighlight">\(\mathtt z\)</span> by 0 and <span class="math notranslate nohighlight">\(\mathtt x\)</span> by <span class="math notranslate nohighlight">\(n\)</span> and you find <span class="math notranslate nohighlight">\(0=0\)</span>, which is indeed true. <a class="footnote-reference brackets" href="#equals" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a></p>
+<p>Second, to show that the invariant implies the postcondition, is to show that</p>
+<div class="math notranslate nohighlight">
+\[
+\mathtt z = (n-\mathtt x)\cdot\mathtt y \ \Longrightarrow \ \mathtt z = n\cdot\mathtt y
+\]</div>
+<p>and if you go back to the program you see that this is possible since we know that</p>
+<div class="math notranslate nohighlight">
+\[
+\mathtt x=0
+\]</div>
 <p>is a postcondition that must always be true after termination of the while-loop.</p>
-<p><strong>Exercise:</strong> Explain why. <a class="footnote-reference brackets" href="#xis0" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a></p>
+<p><strong>Exercise:</strong> Explain why. <a class="footnote-reference brackets" href="#xis0" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a></p>
 <p>So summarise in symbolic notation what we have done so far, we started out with a rule stating that <span class="math notranslate nohighlight">\(I\)</span> is an invariant</p>
 <div class="math notranslate nohighlight">
-\[\frac{\color{blue}{\{I \}}\ \mathtt S\ \color{blue}{\{I\}}}{\color{blue}{\{I \}}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \color{blue}{\{ I\}}}\]</div>
+\[
+\frac{\color{blue}{\{I \}}\ \mathtt S\ \color{blue}{\{I\}}}{\color{blue}{\{I \}}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \color{blue}{\{ I\}}}
+\]</div>
 <p>and then modified it to take into account that after termination of the loop we also know “not <span class="math notranslate nohighlight">\(B\)</span>”, that is,</p>
 <div class="math notranslate nohighlight">
-\[\frac{\{I \}\ \mathtt S\ \{I\}}{\{I \}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \{ \color{blue}{\neg B \,\wedge\,}I\}}\]</div>
+\[
+\frac{\{I \}\ \mathtt S\ \{I\}}{\{I \}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \{ \color{blue}{\neg B \,\wedge\,}I\}}
+\]</div>
 <p>And then we used this rule by showing that the precondition implies <span class="math notranslate nohighlight">\(I\)</span> and that <span class="math notranslate nohighlight">\(\neg B\wedge I\)</span> implies the postcondition.</p>
 <p>This last step, which is important to bring into the picture the pre and postconditions that are actually needed for our (partial) correctness assertion, can also be formalised as a rule as follows.</p>
 <div class="math notranslate nohighlight">
-\[\color{red}{\frac{P'\Rightarrow P \quad\{P \}\ \mathtt S\ \{Q\} \quad Q\Rightarrow Q'}{\{P' \}\ \mathtt S \  \{Q'\}}}\]</div>
+\[
+\color{red}{\frac{P'\Rightarrow P \quad\{P \}\ \mathtt S\ \{Q\} \quad Q\Rightarrow Q'}{\{P' \}\ \mathtt S \  \{Q'\}}}
+\]</div>
 <p>This rule is our first official rule of Hoare logic. We will see more later and they are all highlighted in red for reference.</p>
 <p><strong>Question:</strong> Why does this reasoning not require the precondition <span class="math notranslate nohighlight">\(\color{blue}{\{x\ge 0\}}\)</span>? For what exactly is this precondition needed?</p>
-<p>This question has an important answer, so do look up the footnote after thinking about it yourself. <a class="footnote-reference brackets" href="#xge0" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
-<hr class="docutils" />
+<p>This question has an important answer, so do look up the footnote after thinking about it yourself. <a class="footnote-reference brackets" href="#xge0" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
 <p>Before we formulate the official rule for how to reason with a loop invariant, we need one more adjustment.</p>
-<p><strong>Question:</strong> Given the loop
-$<span class="math notranslate nohighlight">\(\mathtt{while \  (x&lt;10) \  do \ x:= x+1  \ done}\)</span>$</p>
+<p><strong>Question:</strong> Given the loop</p>
+<div class="math notranslate nohighlight">
+\[
+\mathtt{while \  (x&lt;10) \  do \ x:= x+1  \ done}
+\]</div>
 <p>what could we use as loop invariant?</p>
 <p>It is easy to write down some irrelevant invariants, but which invariant would help us to prove the postcondition <span class="math notranslate nohighlight">\(\color{blue}{\{x=10\}}\)</span>?</p>
-<p>A little thought shows that while an <span class="math notranslate nohighlight">\(I\)</span> such that
-$<span class="math notranslate nohighlight">\(\color{blue}{\{I\}} \; 
-\mathtt S  \;\color{blue}{\{I\}}\)</span>$</p>
-<p>is obviously an invariant for <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">B</span> <span class="pre">do</span> <span class="pre">S</span> <span class="pre">done</span></code>  , this is more than we need. After all, the invariant only needs to hold if we enter the loop, so it is enough for a <em><strong>loop invariant</strong></em> <span class="math notranslate nohighlight">\(I\)</span> to satisfy
-$<span class="math notranslate nohighlight">\(\color{blue}{\{I \ \wedge \ \mathtt B\}} \; 
-\mathtt{\mathtt S}  \;\color{blue}{\{I\}}. \)</span>$</p>
+<p>A little thought shows that while an <span class="math notranslate nohighlight">\(I\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{I\}} \; 
+\mathtt S  \;\color{blue}{\{I\}}
+\]</div>
+<p>is obviously an invariant for <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">B</span> <span class="pre">do</span> <span class="pre">S</span> <span class="pre">done</span></code>  , this is more than we need. After all, the invariant only needs to hold if we enter the loop, so it is enough for a <em><strong>loop invariant</strong></em> <span class="math notranslate nohighlight">\(I\)</span> to satisfy</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{I \ \wedge \ \mathtt B\}} \; 
+\mathtt{\mathtt S}  \;\color{blue}{\{I\}}. 
+\]</div>
 <p>To illustrate this idea think about the following.</p>
-<p><strong>Exercise:</strong> Consider again
-$<span class="math notranslate nohighlight">\(\mathtt{while \  (x&lt;10) \  do \ x:= x+1  \ done}\)</span>$</p>
+<p><strong>Exercise:</strong> Consider again</p>
+<div class="math notranslate nohighlight">
+\[
+\mathtt{while \  (x&lt;10) \  do \ x:= x+1  \ done}
+\]</div>
 <p>and find a loop invariant. Can you conclude from that invariant the postcondition <span class="math notranslate nohighlight">\(\color{blue}{\{x = 10\}}\)</span>?</p>
-<p>For a solution see the footnote.<a class="footnote-reference brackets" href="#invariantx10" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a></p>
+<p>For a solution see the footnote.<a class="footnote-reference brackets" href="#invariantx10" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a></p>
 <p>We are now ready to state the Hoare rule for a while loop.</p>
-<p>The <em><strong>while rule</strong></em> is as follows.
-$<span class="math notranslate nohighlight">\(\color{red}{\frac{\{I \wedge \mathtt B \}\ \mathtt S\ \{I\}}{\{I \}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \{\neg B \wedge I\}}}\)</span>$</p>
+<p>The <em><strong>while rule</strong></em> is as follows.</p>
+<div class="math notranslate nohighlight">
+\[
+\color{red}{\frac{\{I \wedge \mathtt B \}\ \mathtt S\ \{I\}}{\{I \}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \{\neg B \wedge I\}}}
+\]</div>
 <p>Here <span class="math notranslate nohighlight">\(I\)</span> is the <em><strong>loop invariant</strong></em>.</p>
 </section>
-<hr class="docutils" />
 <section id="making-hoare-logic-compositional">
 <h3>Making Hoare Logic Compositional<a class="headerlink" href="#making-hoare-logic-compositional" title="Link to this heading">#</a></h3>
 <p>From a practical programming point of view we already learned some important lessons from studying Hoare logic.</p>
@@ -611,144 +669,204 @@ $<span class="math notranslate nohighlight">\(\color{red}{\frac{\{I \wedge \math
 <p>So far we have only seen the rule for while-loops.</p>
 <p>In what follows, we will look at rules for the other programming constructions.</p>
 </section>
-<hr class="docutils" />
 <section id="sequential-composition">
 <h3>Sequential Composition<a class="headerlink" href="#sequential-composition" title="Link to this heading">#</a></h3>
 <p>The rule of composition applies to sequentially-executed programs
-<span class="math notranslate nohighlight">\(\mathtt S\)</span> and <span class="math notranslate nohighlight">\(\mathtt T\)</span>, where <span class="math notranslate nohighlight">\(\mathtt S\)</span> executes prior to <span class="math notranslate nohighlight">\(\mathtt T\)</span> and is written
-$<span class="math notranslate nohighlight">\(\mathtt S;\mathtt T\)</span><span class="math notranslate nohighlight">\(
-For example, consider the following two instances of the assignment axiom:
-   \)</span><span class="math notranslate nohighlight">\( \{ x + 1 = 43\} \ y:=x + 1\ \{y =43 \} \)</span><span class="math notranslate nohighlight">\(
-and
-    \)</span><span class="math notranslate nohighlight">\( \{ y = 43\} \ z:=y\ \{z =43 \}. \)</span><span class="math notranslate nohighlight">\(
-By putting these together, we get:
-\)</span><span class="math notranslate nohighlight">\( \{ x + 1 = 43\} \ y:=x + 1; z:= y\ \{z =43 \}\)</span><span class="math notranslate nohighlight">\(
-The **rule for composition** of programs is as follows.
-\)</span><span class="math notranslate nohighlight">\(\color{red}{
+<span class="math notranslate nohighlight">\(\mathtt S\)</span> and <span class="math notranslate nohighlight">\(\mathtt T\)</span>, where <span class="math notranslate nohighlight">\(\mathtt S\)</span> executes prior to <span class="math notranslate nohighlight">\(\mathtt T\)</span> and is written</p>
+<div class="math notranslate nohighlight">
+\[
+\mathtt S;\mathtt T
+\]</div>
+<p>For example, consider the following two instances of the assignment axiom:</p>
+<div class="math notranslate nohighlight">
+\[ 
+\{ x + 1 = 43\} \ y:=x + 1\ \{y =43 \}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ 
+\{ y = 43\} \ z:=y\ \{z =43 \}. 
+\]</div>
+<p>By putting these together, we get:</p>
+<div class="math notranslate nohighlight">
+\[ 
+\{ x + 1 = 43\} \ y:=x + 1; z:= y\ \{z =43 \}
+\]</div>
+<p>The <strong>rule for composition</strong> of programs is as follows.</p>
+<div class="math notranslate nohighlight">
+\[
+\color{red}{
 \frac{\{P\}\ \mathtt S\ \{Q\} \quad\quad \{Q\}\ \mathtt T\ \{R\}}
 {\{P\}\ \mathtt S ; \mathtt T\ \{R\}}
-}\)</span>$</p>
+}
+\]</div>
 </section>
-<hr class="docutils" />
 <section id="assignment">
 <h3>Assignment<a class="headerlink" href="#assignment" title="Link to this heading">#</a></h3>
-<p>The assignment instruction is written as  $<span class="math notranslate nohighlight">\(\mathtt x:=E\)</span>$</p>
-<p>and it assigns the value <span class="math notranslate nohighlight">\(E\)</span> to the variable <span class="math notranslate nohighlight">\(\mathtt x\)</span>. For example, we consider a   program consisting of only one instruction
-$<span class="math notranslate nohighlight">\(\mathtt x:= \mathtt y-1\)</span>$</p>
+<p>The assignment instruction is written as</p>
+<div class="math notranslate nohighlight">
+\[
+\mathtt x:=E
+\]</div>
+<p>and it assigns the value <span class="math notranslate nohighlight">\(E\)</span> to the variable <span class="math notranslate nohighlight">\(\mathtt x\)</span>. For example, we consider a   program consisting of only one instruction</p>
+<div class="math notranslate nohighlight">
+\[
+\mathtt x:= \mathtt y-1
+\]</div>
 <p>which assigns <span class="math notranslate nohighlight">\(\mathtt y-1\)</span> to the variable <span class="math notranslate nohighlight">\(\mathtt x\)</span>.</p>
-<p>Now, suppose we know that <span class="math notranslate nohighlight">\(y\)</span> has value <span class="math notranslate nohighlight">\(10\)</span> before the execution of this instruction. Then, we know that after its execution the value of <span class="math notranslate nohighlight">\(x\)</span> will be <span class="math notranslate nohighlight">\(9\)</span>. This is expressed in Hoare Logic as follows. $<span class="math notranslate nohighlight">\( \color{blue}{\{\mathtt y = 10 \}} 
+<p>Now, suppose we know that <span class="math notranslate nohighlight">\(y\)</span> has value <span class="math notranslate nohighlight">\(10\)</span> before the execution of this instruction. Then, we know that after its execution the value of <span class="math notranslate nohighlight">\(x\)</span> will be <span class="math notranslate nohighlight">\(9\)</span>. This is expressed in Hoare Logic as follows.</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{\mathtt y = 10 \}} 
 \ \ \ \mathtt x:= \mathtt y-1  \ \ \ 
-\color{blue}{\{\mathtt x=9  \}}\)</span>$</p>
+\color{blue}{\{\mathtt x=9  \}}
+\]</div>
 <p>The predicate <span class="math notranslate nohighlight">\(\mathtt y=10\)</span>  is the precondition and the predicate <span class="math notranslate nohighlight">\(\mathtt x=9\)</span> is the postcondition.</p>
-<p>Our predicates could involve more variables. For instance,
-$<span class="math notranslate nohighlight">\(  \color{blue}{\{\mathtt x&gt;0 \wedge \mathtt x\leq 3 \wedge \mathtt y = 10 \}}
+<p>Our predicates could involve more variables. For instance,</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{\mathtt x&gt;0 \wedge \mathtt x\leq 3 \wedge \mathtt y = 10 \}}
  \ \ \ \mathtt x:= \mathtt y-1  \ \  
-\color{blue}{\{\mathtt x=9 \wedge \mathtt y=10 \}} \)</span>$</p>
-<p>The <em><strong>assignment axiom</strong></em> in Hoare Logic  states that after the assignment any predicate holds for the variable that was previously true for the right-hand side of the assignment:
-$<span class="math notranslate nohighlight">\( 
+\color{blue}{\{\mathtt x=9 \wedge \mathtt y=10 \}} \]</div>
+<p>The <em><strong>assignment axiom</strong></em> in Hoare Logic  states that after the assignment any predicate holds for the variable that was previously true for the right-hand side of the assignment:</p>
+<div class="math notranslate nohighlight">
+\[ 
 \color{red}{\{P [\mathtt{exp}\,/\,\mathtt x]  \}
 \ \ \ \mathtt x:=\mathtt{exp} \ \ \ 
 \{P \}} 
-\)</span>$</p>
+\]</div>
 <p>In other words, the post-condition  <span class="math notranslate nohighlight">\(P\)</span> holds after the execution of the  assignment <span class="math notranslate nohighlight">\(\mathtt x:=E\)</span> provided that  <span class="math notranslate nohighlight">\(P [\mathtt{exp}\,/\,\mathtt x]\)</span> holds prior to it.</p>
-<p>Suppose now that the program is  the statement
-$<span class="math notranslate nohighlight">\(y:=x + 1\)</span>$</p>
+<p>Suppose now that the program is  the statement</p>
+<div class="math notranslate nohighlight">
+\[
+y:=x + 1
+\]</div>
 <p>and we want that <span class="math notranslate nohighlight">\(\mathtt y = 43\)</span> after its execution. What are the possible values for <span class="math notranslate nohighlight">\(\mathtt x\)</span> at the beginning of the execution of our program?</p>
-<p>Using the  assignment axiom we get that
-$<span class="math notranslate nohighlight">\( 
+<p>Using the  assignment axiom we get that</p>
+<div class="math notranslate nohighlight">
+\[ 
 \color{blue}{\{\mathtt x+1 = 43\}}
 \ \ \ \mathtt y:=\mathtt x + 1\ \ \ 
-\color{blue}{\{ \mathtt y = 43 \}}\)</span>$</p>
-<p>The precondition <span class="math notranslate nohighlight">\(\mathtt x+1 = 43\)</span>  can be simplified to <span class="math notranslate nohighlight">\(\mathtt x = 42\)</span>. Hence,
-$<span class="math notranslate nohighlight">\( \color{blue}{\{\mathtt x = 42 \}}
+\color{blue}{\{ \mathtt y = 43 \}}
+\]</div>
+<p>The precondition <span class="math notranslate nohighlight">\(\mathtt x+1 = 43\)</span>  can be simplified to <span class="math notranslate nohighlight">\(\mathtt x = 42\)</span>. Hence,</p>
+<div class="math notranslate nohighlight">
+\[ 
+\color{blue}{\{\mathtt x = 42 \}}
 \ \ \ \mathtt y:=\mathtt x + 1 \ \ \ 
 \color{blue}{\{ \mathtt y = 43 \}}
-\)</span>$</p>
-<p>Suppose now that our program is the statement
-$<span class="math notranslate nohighlight">\(\mathtt x := \mathtt x + 1\)</span>$</p>
-<p>and we want that <span class="math notranslate nohighlight">\(\mathtt x \leq N\)</span> after its execution. Using the assignment axiom we get
-$<span class="math notranslate nohighlight">\(\color{blue}{\{\mathtt x + 1 \leq N \}}
+\]</div>
+<p>Suppose now that our program is the statement</p>
+<div class="math notranslate nohighlight">
+\[
+\mathtt x := \mathtt x + 1
+\]</div>
+<p>and we want that <span class="math notranslate nohighlight">\(\mathtt x \leq N\)</span> after its execution. Using the assignment axiom we get</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{\mathtt x + 1 \leq N \}}
 \ \ \ \mathtt x := \mathtt x + 1\ \ \ 
-\color{blue}{\{\mathtt x \leq N\}} \)</span>$</p>
-<p>Hence,
-$<span class="math notranslate nohighlight">\(\color{blue}{\{\mathtt x &lt;  N \}}
+\color{blue}{\{\mathtt x \leq N\}} 
+\]</div>
+<p>Hence,</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{\mathtt x &lt;  N \}}
 \ \ \ \mathtt x := \mathtt x + 1\ \ \ 
-\color{blue}{\{\mathtt x \leq N\}} \)</span>$</p>
-<p><strong>Remark:</strong> The assignment axiom proposed by Hoare does not apply when more than one name can refer to the same stored value. For example,
-$<span class="math notranslate nohighlight">\(\color{blue}{\{ y = 3\}} 
+\color{blue}{\{\mathtt x \leq N\}} 
+\]</div>
+<p><strong>Remark:</strong> The assignment axiom proposed by Hoare does not apply when more than one name can refer to the same stored value. For example,</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{ y = 3\}} 
 \ \ \ x := 2 \ \ \ 
-\color{blue}{\{y = 3 \}} \)</span>$</p>
+\color{blue}{\{y = 3 \}}
+\]</div>
 <p>The above statement is not  true if <span class="math notranslate nohighlight">\(x\)</span>  and <span class="math notranslate nohighlight">\(y\)</span> refer to the same variable, because no precondition can cause y to be 3 after x is set to 2.</p>
 </section>
-<hr class="docutils" />
 <section id="exercise">
 <h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
-<p>Use the red rules above to show
-$<span class="math notranslate nohighlight">\(\color{blue}{\{true\}}\ \mathtt{while \  (x&lt;10) \  do \ x:= x+1  \ done}\color{blue}{\{\mathtt x=10\}}\)</span>$</p>
-<p>and
-$<span class="math notranslate nohighlight">\(\color{blue}{\{\mathtt z = m \ \wedge \ \mathtt x=n\}} \; 
-\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt z = m + n\cdot\mathtt y\}}. \)</span>$</p>
+<p>Use the red rules above to show</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{true\}}\ \mathtt{while \  (x&lt;10) \  do \ x:= x+1  \ done}\color{blue}{\{\mathtt x=10\}}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\color{blue}{\{\mathtt z = m \ \wedge \ \mathtt x=n\}} \; 
+\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt z = m + n\cdot\mathtt y\}}.
+\]</div>
 <p><strong>Remark:</strong> In the second example you need to strengthen the invariant so that it expresses that <span class="math notranslate nohighlight">\(y\)</span> does not change in the loop.</p>
 </section>
-<hr class="docutils" />
 <section id="if-then-else">
 <h3>If-then-else<a class="headerlink" href="#if-then-else" title="Link to this heading">#</a></h3>
-<p>Consider the following program.
-$<span class="math notranslate nohighlight">\(\mathtt{if}\ (y&gt;0) \ \mathtt{then}\  x: = y \ \mathtt{else}\ x:= -y 
- \ \mathtt{endif}\)</span>$</p>
+<p>Consider the following program.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathtt{if}\ (y&gt;0) \ \mathtt{then}\  x: = y \ \mathtt{else}\ x:= -y 
+ \ \mathtt{endif}
+\]</div>
 <p>We want to show that the above program  calculates the absolute value of <span class="math notranslate nohighlight">\(y\)</span>,
-denoted by <span class="math notranslate nohighlight">\(| y |\)</span>, i.e.
-$<span class="math notranslate nohighlight">\(\{true\} \mathtt{if}\ (y&gt;0) \ \mathtt{then}\  x: = y \ \mathtt{else}\ x:= -y 
- \ \mathtt{endif} \{x = |y|\} \)</span>$</p>
+denoted by <span class="math notranslate nohighlight">\(| y |\)</span>, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+\{true\} \mathtt{if}\ (y&gt;0) \ \mathtt{then}\  x: = y \ \mathtt{else}\ x:= -y 
+ \ \mathtt{endif} \{x = |y|\} 
+\]</div>
 <p>If <span class="math notranslate nohighlight">\(y&gt;0\)</span> then it is clear that <span class="math notranslate nohighlight">\(x=y\)</span>. If not, then <span class="math notranslate nohighlight">\(y \leq 0\)</span>
 and then <span class="math notranslate nohighlight">\(x = - y = |y |\)</span>.</p>
-<p>Consider the following program.
-$<span class="math notranslate nohighlight">\(\mathtt{if}\ (x \geq y) \ \mathtt{then}\  z:= x  \ \mathtt{else}\ z
+<p>Consider the following program.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathtt{if}\ (x \geq y) \ \mathtt{then}\  z:= x  \ \mathtt{else}\ z
 := y 
- \ \mathtt{endif}\)</span><span class="math notranslate nohighlight">\(
-We want to show that the above program calculates the maximum of the
-two values \)</span>x<span class="math notranslate nohighlight">\( and \)</span>y<span class="math notranslate nohighlight">\(, i.e.
- \)</span><span class="math notranslate nohighlight">\(\{true\} \mathtt{if}\ (x \geq y) \ \mathtt{then}\  z:= x  \ \mathtt{else}\ z
+ \ \mathtt{endif}
+\]</div>
+<p>We want to show that the above program calculates the maximum of the
+two values <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, i.e.</p>
+<div class="math notranslate nohighlight">
+\[
+\{true\} \mathtt{if}\ (x \geq y) \ \mathtt{then}\  z:= x  \ \mathtt{else}\ z
 := y 
- \ \mathtt{endif} \{ z = max(x,y) \}\)</span><span class="math notranslate nohighlight">\(
-If \)</span>x \geq y<span class="math notranslate nohighlight">\( then \)</span>x<span class="math notranslate nohighlight">\( is the maximum and then \)</span>z = x = max(x,y)<span class="math notranslate nohighlight">\(. If not, then \)</span>x &lt; y<span class="math notranslate nohighlight">\( and \)</span>z = y = max(x,y)$.</p>
-<p>The  <strong>conditional rule</strong> is as follows.
-$<span class="math notranslate nohighlight">\(\color{red}{
+ \ \mathtt{endif} \{ z = max(x,y) \}
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(x \geq y\)</span> then <span class="math notranslate nohighlight">\(x\)</span> is the maximum and then <span class="math notranslate nohighlight">\(z = x = max(x,y)\)</span>. If not, then <span class="math notranslate nohighlight">\(x &lt; y\)</span> and <span class="math notranslate nohighlight">\(z = y = max(x,y)\)</span>.</p>
+<p>The  <strong>conditional rule</strong> is as follows.</p>
+<div class="math notranslate nohighlight">
+\[
+\color{red}{
 \frac{\{B \wedge P\}\ \mathtt S\ \{Q\} \quad\quad \{\neg B \wedge P \}\ \mathtt T\ \{Q\} }
 {\{P\}\ \mathtt{if}\ B\ \mathtt{then}\ \mathtt S\ \mathtt{else}\ \mathtt T\ \mathtt{endif}\ \{Q\}}
-}\)</span>$</p>
+}
+\]</div>
 <p>This concludes our explanations of Hoare logic.</p>
 </section>
 </section>
 <section id="homework">
-<h2><font color=red> Homework<a class="headerlink" href="#homework" title="Link to this heading">#</a></h2>
-<p>Apply the method of analysis from the lecture to</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>while (x!=0) do z:=z*y;  x:= x-1 done
+<h2>Homework<a class="headerlink" href="#homework" title="Link to this heading">#</a></h2>
+<p>Apply the method of analysis from these notes to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="n">x</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="n">do</span> <span class="n">z</span><span class="o">:=</span><span class="n">z</span><span class="o">*</span><span class="n">y</span><span class="p">;</span>  <span class="n">x</span><span class="o">:=</span> <span class="n">x</span><span class="o">-</span><span class="mi">1</span> <span class="n">done</span>
 </pre></div>
 </div>
 <p>What is the invariant? Indicate the reasoning steps in which you  apply the rules of Hoare logic.</p>
 <p>This exercise is very similar to what we have done above (essentially, we use now <code class="docutils literal notranslate"><span class="pre">*</span></code> instead of <code class="docutils literal notranslate"><span class="pre">+</span></code>). If you want to do something more challenging, you can instead also do the next exercise.</p>
-</font>
 </section>
 <section id="further-exercises">
 <h2>Further Exercises<a class="headerlink" href="#further-exercises" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>Apply the method of analysis from the lecture to</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">)</span> <span class="n">do</span> <span class="n">t</span><span class="o">:=</span><span class="n">t</span><span class="o">+</span><span class="n">i</span><span class="p">;</span> <span class="n">i</span><span class="o">:=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="n">done</span>
+<p>Apply the method of analysis to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="k">while</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">)</span> <span class="n">do</span> <span class="n">t</span><span class="o">:=</span><span class="n">t</span><span class="o">+</span><span class="n">i</span><span class="p">;</span> <span class="n">i</span><span class="o">:=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="n">done</span>
 </pre></div>
 </div>
 <p>[Hint: <a class="reference external" href="https://en.wikipedia.org/wiki/Triangular_number">Triangular numbers</a>.]</p>
-</li>
-<li><p>See also <a class="reference external" href="https://hackmd.io/&#64;alexhkurz/rkhVZNzjH">Exercises: Program Verification, Hoare Logic, Loop Invariants</a>.</p></li>
-</ul>
+<p>See also <a class="reference external" href="https://hackmd.io/&#64;alexhkurz/rkhVZNzjH">Exercises: Program Verification, Hoare Logic, Loop Invariants</a>.</p>
 </section>
-<hr class="docutils" />
 <section id="summary-and-outlook">
 <h2>Summary and Outlook<a class="headerlink" href="#summary-and-outlook" title="Link to this heading">#</a></h2>
 <p>I will first summarise some of the lessons that we learned from studying Hoare logic, lessons that are relevant to programmers and software engineers far beyond the particularities of this specific approach to program correctness.</p>
 <p>Then I will briefely look at the history of ideas around “structured programming” which gave rise to Hoare logic and other approaches to program verification.</p>
-<section id="id10">
-<h3>Hoare Logic<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h3>Hoare Logic<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>… the following summary is currently just a collection of random notes …</p>
 <ul class="simple">
 <li><p>The following habits can improve the practice of programming</p>
@@ -757,7 +875,7 @@ $<span class="math notranslate nohighlight">\(\color{red}{
 <li><p>Should I test them explicitely? Raise an exception if they are violated? Describe them explicitely in comments? Make users of my code aware of them?</p></li>
 <li><p>Using software tools that support pre and postcondition in my code.</p></li>
 <li><p>Thinking of loop-invariants before implementing my loops.</p></li>
-<li><p>Working backwards from postconditions to preconditions: Given that I want to guarantee a postcondition, what are the preconditions and what is the code needed for this? <a class="footnote-reference brackets" href="#fromposttopre" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a></p></li>
+<li><p>Working backwards from postconditions to preconditions: Given that I want to guarantee a postcondition, what are the preconditions and what is the code needed for this? <a class="footnote-reference brackets" href="#fromposttopre" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a></p></li>
 </ul>
 </li>
 <li><p>These programming techniques have formal counterparts, some of which are</p>
@@ -780,7 +898,7 @@ This is a consequence of the previous item. Formal systems can be implemented an
 <h3>Structured Programming<a class="headerlink" href="#structured-programming" title="Link to this heading">#</a></h3>
 <p>(this section is being written as an after-thought and was not part of the semester)</p>
 <p>Early programming close to the machine relies on jumps as a basic mechanism to control flow. Accordingly, early higher level languages such as Fortran had a corresponding <span class="math notranslate nohighlight">\(\texttt{goto}\)</span> statement. Goto’s lend themselves to the writing of “unstructured” code that is difficult to read and debug, but was considered a necessary ingredient.</p>
-<p>In 1966, an <a class="reference internal" href="#"><span class="xref myst">article by Bohm and …</span></a> showed that jumps are not needed when … tbc …</p>
+<p>In 1966, the article <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Flow+diagrams%2C+turing+machines+and+languages+with+only+two+formation+rules&amp;amp;btnG=">Flow diagrams, turing machines and languages with only two formation rules</a> by Boehm and  showed that jumps (gotos) are not needed and any program can be written with just three controle structures: sequential composition, conditional and iteration. This was an important result at the time as it suggested that the complex control structures (typically based on gotos, later fiving rise to so-called spaghetti code) that plagued programming at the time were not necessary.</p>
 </section>
 </section>
 <section id="historical-references">
@@ -883,23 +1001,23 @@ z = t * y
 \mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt{z=n+m*k}\}}. \]</div>
 </aside>
 <aside class="footnote brackets" id="equals" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
 <p>The rule of logic that allows us to replace equals by equals is often called the “congruence rule” of equational reasoning.</p>
 </aside>
 <aside class="footnote brackets" id="xis0" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">6</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
 <p>The condition <span class="math notranslate nohighlight">\(\mathtt B\)</span> that forces to execute the loop is in our example <code class="docutils literal notranslate"><span class="pre">x!=0</span></code>, that is, <span class="math notranslate nohighlight">\(\neg(x=0)\)</span>. Therefore <span class="math notranslate nohighlight">\(\neg\mathtt B\)</span> is <span class="math notranslate nohighlight">\(\neg\neg(x=0)\)</span>, which is <span class="math notranslate nohighlight">\(x=0\)</span>.</p>
 </aside>
 <aside class="footnote brackets" id="xge0" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">7</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
 <p>Our first observation was that the precondition <span class="math notranslate nohighlight">\(\{x\ge 0\}\)</span> is needed for correctness. Why is it not needed in the proof of the Hoare triple? The reason is that Hoare triples only concern what is called <strong>partial correctness</strong>, that is, correctness under the assumption of termination. Indeed, <span class="math notranslate nohighlight">\(\{x\ge 0\}\)</span> is only needed in our example to argue for termination.</p>
 </aside>
 <aside class="footnote brackets" id="invariantx10" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">8</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">8</a><span class="fn-bracket">]</span></span>
 <p><span class="math notranslate nohighlight">\(\color{blue}{x\le 10}\)</span> is a loop invariant.</p>
 </aside>
 <aside class="footnote brackets" id="fromposttopre" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">9</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">9</a><span class="fn-bracket">]</span></span>
 <p>Note that this goes in the opposite direction of our usual thinking about code, which is operational and proceeds from an initial state and works forward from there.</p>
 </aside>
 </aside>
@@ -971,11 +1089,11 @@ z = t * y
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preconditions-postconditions">Preconditions … Postconditions …</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-variables-vs-mathematical-variables">Program Variables vs Mathematical Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verification-in-dafny">Verification in Dafny</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Hoare Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-rules-in-detail">The Rules in Detail</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loop">While-loop</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-hoare-logic-compositional">Making Hoare Logic Compositional</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-composition">Sequential Composition</a></li>
@@ -984,10 +1102,10 @@ z = t * y
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-then-else">If-then-else</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework"><font color="red"> Homework</font></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-exercises">Further Exercises</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-and-outlook">Summary and Outlook</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Hoare Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Hoare Logic</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structured-programming">Structured Programming</a></li>
 </ul>
 </li>

@@ -4,7 +4,7 @@
 
 Hoare. [An axiomatic basis for computer programming](http://extras.springer.com/2002/978-3-642-63970-8/DVD3/rom/pdf/Hoare_hist.pdf). Communications of the ACM. 12 (10): 576–580, 1969.
 
----
+## Introduction
 
 In Programming Languages there is an important circle of ideas including [Hoare logic](https://en.wikipedia.org/wiki/Hoare_logic) and Dijkstra's [predicate transformer semantics](https://en.wikipedia.org/wiki/Predicate_transformer_semantics), Kozen's [Kleene algebra](https://en.wikipedia.org/wiki/Kleene_algebra) and Pratt's [Dynamic logic](https://en.wikipedia.org/wiki/Dynamic_logic_(modal_logic)), O'Hearn and Reynolds's [Separation logic](https://en.wikipedia.org/wiki/Separation_logic) and many more methods, techniques, tools, etc.
 
@@ -38,7 +38,13 @@ These ideas have various ramifications in programming and software engineering.
    
 - Assume/guarantee or rely/guarantee is an important technique in the development of concurrent programs
 
-I am planning to add more in the conclusions, but now let us jump into a concrete
+**Table of Contents**:
+
+- [Summary of the Rules of Hoare Logic](./9-hoare-logic.md)
+- Introductory Example
+- Preconditions and Postconditions
+- Program Variables vs Mathematical Variables
+- The Rules in Detail
 
 ## Example
 
@@ -114,14 +120,20 @@ As the example shows part of the difficulty lies in having a reliable notation t
 The first important idea is that we want express that certain assumptions are satisfied before executing the program (preconditions)  and properties that we then know after the execution of the program (postconditions)
 
 If $\mathtt S$ is a program ("S" as in "Sequence of Statements") then we write
-$$ \{P\}\; \mathtt S\;\{Q\}$$
+
+$$
+\{P\}\; \mathtt S\;\{Q\}
+$$
 
 A predicate that holds before the execution of the program is  called  a ***precondition***  and a predicate that holds after  a ***postcondition***. If the precondition is met before execution,  the program  establishes the postcondition if it terminates. 
 
 
 For example, we can write
-    $$\color{blue}{\{\mathtt x\ge 0 \wedge \mathtt z=0 \}} \; 
-\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \; $$
+
+$$
+\color{blue}{\{\mathtt x\ge 0 \wedge \mathtt z=0 \}} \; 
+\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;
+$$
 
 to express what we said above, namely that the we want to execute the program above only in case $\mathtt x\ge 0$ and $\mathtt z=0$.
 
@@ -131,8 +143,11 @@ to express what we said above, namely that the we want to execute the program ab
 What should be the post condition?
 
 **Exercise:** A first idea for a postcondition is  
-$${\{\mathtt x\ge 0 \wedge \mathtt z=0 \}} \; 
-\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt{z=x*y}\}}. $$
+
+$$
+{\{\mathtt x\ge 0 \wedge \mathtt z=0 \}} \; 
+\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt{z=x*y}\}}.
+$$
 
 What do you think about this? Does it look right? Consider how $\mathtt x$ changes through the computation.
 
@@ -143,23 +158,33 @@ Answer.[^looksright]
 Our difficulty in finding the correct postcondition can be remedied using the following trick. 
 
 While we allow program variables to change during the execution of a program $\mathtt S$ in
-$$ \{P\}\; \mathtt S\;\{Q\}$$
+
+$$
+\{P\}\; \mathtt S\;\{Q\}
+$$
 
 we also allow, not in programs, but in the properties $P$ and $Q$, mathematical variables. This is not surprising, once we had the idea, since we are already using mathematical notation such as $>,=,\wedge$ etc. And, as in mathematics, there is no assigment-operation that would allow us to change the value of a mathematical variable. So when we write
-$$ \{\ldots n\ldots \}\; \mathtt S\;\{\ldots n\ldots\}$$
+
+$$
+\{\ldots n\ldots \}\; \mathtt S\;\{\ldots n\ldots\}
+$$
 
 the mathematical variable $n$ stands for the same value before the execution and after the execution of $\mathtt S$.
 
-**Exercise:** What does  
-$$ \{\mathtt y = n\}\; \mathtt S\;\{\mathtt y = n\}$$
+**Question:** Recalling that $\mathtt y$ is a program variable and that $n$ is a mathematical variable: What does  
 
-express about $\mathtt S$?
+$$
+\{\mathtt y = n\}\; \mathtt S\;\{\mathtt y = n\}
+$$
 
-Do you think it should say that the program variable $\mathtt y$ cannot change during the execution of the program $\mathtt S$? (Hint: Recall that the precondition is meant to specify a property that holds just in the moment before executing $\mathtt S$ and that the postcondition specifies a property that holds immediately after termination of $\mathtt S$.)
+express about $\mathtt S$? Why does it not express that $\mathtt y$ cannot change during the execution of $S$?
 
 **Exercise:** Do the following pre and postconditions
-$$\color{blue}{\{\mathtt z=0 \ \wedge\  \mathtt x =n \}} \; 
-\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt{z=\mathit{n}*y}\}}. $$
+
+$$
+\color{blue}{\{\mathtt z=0 \ \wedge\  \mathtt x =n \}} \; 
+\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt{z=\mathit{n}*y}\}}
+$$
 
 capture our informal discusions above?
 
@@ -167,19 +192,11 @@ capture our informal discusions above?
 
 See the footnote for a solution.[^invariantznot0]
 
-
-## Verification in Dafny
-
-Before we are going to take a look how to formalise the reasoning such as the above, let us look at a software tool that implements reasoning in Hoare logic.
-
-[Verification in Dafny](https://hackmd.io/@alexhkurz/SJyBbDQjv)
-
-
-## Hoare Logic
+## The Rules in Detail
 
 Hoare logic (also known as Floyd-Hoare logic) is a formal system developed by the British computer scientist C. A. R. Hoare, and subsequently refined by Hoare and other researchers. The purpose of the system is to provide a set of logical rules in order to reason about the correctness of computer programs with the rigour of mathematical logic and, therefore, the possibility of delegating such reasoning to a compiler or other verification software tools.
 
-We will describe Hoare Logic for a minimal programming language containg only assignments, conditionals and while-loops. In addition to the rules for the simple language in  Hoare's original paper, rules for other language constructs have been developed since then by Hoare and many other researchers. There are rules for concurrency, procedures, jumps, and pointers and much more. For example, [Separation logic]() is used by Facebook in verification tools.
+We will describe Hoare Logic for a minimal programming language containg only assignments, conditionals and while-loops. In addition to the rules for the simple language in  Hoare's original paper, rules for other language constructs have been developed since then by Hoare and many other researchers. There are rules for concurrency, procedures, jumps, and pointers and much more. For example, [Separation logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%22O%27Hearn%22+%22separation+logic%22+%22facebook%22&btnG=) is used by Facebook in verification tools.
 
 ### While-loop
 
@@ -191,14 +208,20 @@ Let us go back to our leading example
 So let us try to formalise this using pre and postcondition, or, as on says, ***Hoare triples***.
 
 **Exercise:** Prove the Hoare triple
-$$\color{blue}{\{\mathtt z = (n-\mathtt x)\cdot\mathtt y\}} \; 
-\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt z = (n-\mathtt x)\cdot\mathtt y\}}. $$
+
+$$
+\color{blue}{\{\mathtt z = (n-\mathtt x)\cdot\mathtt y\}} \; 
+\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt z = (n-\mathtt x)\cdot\mathtt y\}}.
+$$
 
 **Question:** Why is  $\color{blue}{\{\mathtt z = (n-\mathtt x)\cdot\mathtt y\}}$ called a loop invariant?
 
 **Activity:** Recall that the intended meaning of the while loop is to compute $\mathtt z = n\cdot\mathtt y$ which we write in form of a Hoare triple as
-$$\color{blue}{\{\mathtt z = 0 \ \wedge \ \mathtt x=n\}} \; 
-\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt z = n\cdot\mathtt y\}}. $$
+
+$$
+\color{blue}{\{\mathtt z = 0 \ \wedge \ \mathtt x=n\}} \; 
+\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt z = n\cdot\mathtt y\}}.
+$$
 
 What reasoning steps are needed to obtain this Hoare triple from the one of the previous exercise?
 
@@ -208,15 +231,24 @@ To carefully explain the answer to this question takes a little effort. So let u
                 that the invariant implies the postcondition
 
 First, to show that the precondition implies the invariant, is to show that
-$$\mathtt z = 0 \ \wedge \ \mathtt x=n \ \Longrightarrow \ \mathtt z = (n-\mathtt x)\cdot\mathtt y$$
+
+$$
+\mathtt z = 0 \ \wedge \ \mathtt x=n \ \Longrightarrow \ \mathtt z = (n-\mathtt x)\cdot\mathtt y
+$$
 
 This is easy: Just replace in the conclusion $\mathtt z$ by 0 and $\mathtt x$ by $n$ and you find $0=0$, which is indeed true. [^equals]
 
 Second, to show that the invariant implies the postcondition, is to show that 
-$$\mathtt z = (n-\mathtt x)\cdot\mathtt y \ \Longrightarrow \ \mathtt z = n\cdot\mathtt y$$
+
+$$
+\mathtt z = (n-\mathtt x)\cdot\mathtt y \ \Longrightarrow \ \mathtt z = n\cdot\mathtt y
+$$
 
 and if you go back to the program you see that this is possible since we know that 
-$$\mathtt x=0$$
+
+$$
+\mathtt x=0
+$$
 
 is a postcondition that must always be true after termination of the while-loop.
 
@@ -224,16 +256,24 @@ is a postcondition that must always be true after termination of the while-loop.
 
 So summarise in symbolic notation what we have done so far, we started out with a rule stating that $I$ is an invariant
 
-$$\frac{\color{blue}{\{I \}}\ \mathtt S\ \color{blue}{\{I\}}}{\color{blue}{\{I \}}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \color{blue}{\{ I\}}}$$
+$$
+\frac{\color{blue}{\{I \}}\ \mathtt S\ \color{blue}{\{I\}}}{\color{blue}{\{I \}}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \color{blue}{\{ I\}}}
+$$
 
 and then modified it to take into account that after termination of the loop we also know "not $B$", that is, 
 
-$$\frac{\{I \}\ \mathtt S\ \{I\}}{\{I \}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \{ \color{blue}{\neg B \,\wedge\,}I\}}$$
+$$
+\frac{\{I \}\ \mathtt S\ \{I\}}{\{I \}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \{ \color{blue}{\neg B \,\wedge\,}I\}}
+$$
+
 And then we used this rule by showing that the precondition implies $I$ and that $\neg B\wedge I$ implies the postcondition.
 
 This last step, which is important to bring into the picture the pre and postconditions that are actually needed for our (partial) correctness assertion, can also be formalised as a rule as follows.
 
-$$\color{red}{\frac{P'\Rightarrow P \quad\{P \}\ \mathtt S\ \{Q\} \quad Q\Rightarrow Q'}{\{P' \}\ \mathtt S \  \{Q'\}}}$$
+$$
+\color{red}{\frac{P'\Rightarrow P \quad\{P \}\ \mathtt S\ \{Q\} \quad Q\Rightarrow Q'}{\{P' \}\ \mathtt S \  \{Q'\}}}
+$$
+
 This rule is our first official rule of Hoare logic. We will see more later and they are all highlighted in red for reference.
 
 **Question:** Why does this reasoning not require the precondition $\color{blue}{\{x\ge 0\}}$? For what exactly is this precondition needed? 
@@ -241,29 +281,39 @@ This rule is our first official rule of Hoare logic. We will see more later and 
 This question has an important answer, so do look up the footnote after thinking about it yourself. [^xge0]
 
 
----
-
 Before we formulate the official rule for how to reason with a loop invariant, we need one more adjustment. 
 
 **Question:** Given the loop 
-$$\mathtt{while \  (x<10) \  do \ x:= x+1  \ done}$$
+
+$$
+\mathtt{while \  (x<10) \  do \ x:= x+1  \ done}
+$$
 
 what could we use as loop invariant?
 
 It is easy to write down some irrelevant invariants, but which invariant would help us to prove the postcondition $\color{blue}{\{x=10\}}$?
 
 A little thought shows that while an $I$ such that
-$$\color{blue}{\{I\}} \; 
-\mathtt S  \;\color{blue}{\{I\}}$$
+
+$$
+\color{blue}{\{I\}} \; 
+\mathtt S  \;\color{blue}{\{I\}}
+$$
 
 is obviously an invariant for `while B do S done`  , this is more than we need. After all, the invariant only needs to hold if we enter the loop, so it is enough for a ***loop invariant*** $I$ to satisfy
-$$\color{blue}{\{I \ \wedge \ \mathtt B\}} \; 
-\mathtt{\mathtt S}  \;\color{blue}{\{I\}}. $$
+
+$$
+\color{blue}{\{I \ \wedge \ \mathtt B\}} \; 
+\mathtt{\mathtt S}  \;\color{blue}{\{I\}}. 
+$$
 
 To illustrate this idea think about the following.
 
 **Exercise:** Consider again
-$$\mathtt{while \  (x<10) \  do \ x:= x+1  \ done}$$
+
+$$
+\mathtt{while \  (x<10) \  do \ x:= x+1  \ done}
+$$
 
 and find a loop invariant. Can you conclude from that invariant the postcondition $\color{blue}{\{x = 10\}}$?
 
@@ -272,11 +322,12 @@ For a solution see the footnote.[^invariantx10]
 We are now ready to state the Hoare rule for a while loop.
 
 The ***while rule*** is as follows. 
-$$\color{red}{\frac{\{I \wedge \mathtt B \}\ \mathtt S\ \{I\}}{\{I \}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \{\neg B \wedge I\}}}$$
+
+$$
+\color{red}{\frac{\{I \wedge \mathtt B \}\ \mathtt S\ \{I\}}{\{I \}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \{\neg B \wedge I\}}}
+$$
      
 Here $I$ is the ***loop invariant***. 
-
----
 
 ### Making Hoare Logic Compositional
 
@@ -285,9 +336,7 @@ From a practical programming point of view we already learned some important les
 For example, we have seen 
 
 - how to separate termination from partial correctness and 
-
 - how to prove partial correctness of loops using invariants.
-
 
 But there is more to Hoare logic. 
 
@@ -305,51 +354,77 @@ So far we have only seen the rule for while-loops.
 
 In what follows, we will look at rules for the other programming constructions.
 
-
-
----
-
 ### Sequential Composition
-
 
 The rule of composition applies to sequentially-executed programs
 $\mathtt S$ and $\mathtt T$, where $\mathtt S$ executes prior to $\mathtt T$ and is written 
-$$\mathtt S;\mathtt T$$
+
+$$
+\mathtt S;\mathtt T
+$$
+
 For example, consider the following two instances of the assignment axiom:
-   $$ \{ x + 1 = 43\} \ y:=x + 1\ \{y =43 \} $$
+
+$$ 
+\{ x + 1 = 43\} \ y:=x + 1\ \{y =43 \}
+$$
+
 and
-    $$ \{ y = 43\} \ z:=y\ \{z =43 \}. $$
+
+$$ 
+\{ y = 43\} \ z:=y\ \{z =43 \}. 
+$$
+
 By putting these together, we get:
-$$ \{ x + 1 = 43\} \ y:=x + 1; z:= y\ \{z =43 \}$$
+
+$$ 
+\{ x + 1 = 43\} \ y:=x + 1; z:= y\ \{z =43 \}
+$$
+
 The **rule for composition** of programs is as follows.
-$$\color{red}{
+
+$$
+\color{red}{
 \frac{\{P\}\ \mathtt S\ \{Q\} \quad\quad \{Q\}\ \mathtt T\ \{R\}}
 {\{P\}\ \mathtt S ; \mathtt T\ \{R\}}
-}$$
-
----
+}
+$$
 
 ### Assignment
 
-The assignment instruction is written as  $$\mathtt x:=E$$ 
+The assignment instruction is written as  
+
+$$
+\mathtt x:=E
+$$ 
 
 and it assigns the value $E$ to the variable $\mathtt x$. For example, we consider a   program consisting of only one instruction 
-$$\mathtt x:= \mathtt y-1$$
+
+$$
+\mathtt x:= \mathtt y-1
+$$
 
 which assigns $\mathtt y-1$ to the variable $\mathtt x$. 
 
-Now, suppose we know that $y$ has value $10$ before the execution of this instruction. Then, we know that after its execution the value of $x$ will be $9$. This is expressed in Hoare Logic as follows. $$ \color{blue}{\{\mathtt y = 10 \}} 
+Now, suppose we know that $y$ has value $10$ before the execution of this instruction. Then, we know that after its execution the value of $x$ will be $9$. This is expressed in Hoare Logic as follows. 
+
+$$
+\color{blue}{\{\mathtt y = 10 \}} 
 \ \ \ \mathtt x:= \mathtt y-1  \ \ \ 
-\color{blue}{\{\mathtt x=9  \}}$$
+\color{blue}{\{\mathtt x=9  \}}
+$$
 
 The predicate $\mathtt y=10$  is the precondition and the predicate $\mathtt x=9$ is the postcondition.
 
 Our predicates could involve more variables. For instance,
-$$  \color{blue}{\{\mathtt x>0 \wedge \mathtt x\leq 3 \wedge \mathtt y = 10 \}}
+
+$$
+\color{blue}{\{\mathtt x>0 \wedge \mathtt x\leq 3 \wedge \mathtt y = 10 \}}
  \ \ \ \mathtt x:= \mathtt y-1  \ \  
 \color{blue}{\{\mathtt x=9 \wedge \mathtt y=10 \}} $$
 
 The ***assignment axiom*** in Hoare Logic  states that after the assignment any predicate holds for the variable that was previously true for the right-hand side of the assignment:
+
 $$ 
 \color{red}{\{P [\mathtt{exp}\,/\,\mathtt x]  \}
 \ \ \ \mathtt x:=\mathtt{exp} \ \ \ 
@@ -360,117 +435,150 @@ In other words, the post-condition  $P$ holds after the execution of the  assign
 
 
 Suppose now that the program is  the statement 
-$$y:=x + 1$$ 
+
+$$
+y:=x + 1
+$$ 
 
 and we want that $\mathtt y = 43$ after its execution. What are the possible values for $\mathtt x$ at the beginning of the execution of our program?
 
 Using the  assignment axiom we get that
+
 $$ 
 \color{blue}{\{\mathtt x+1 = 43\}}
 \ \ \ \mathtt y:=\mathtt x + 1\ \ \ 
-\color{blue}{\{ \mathtt y = 43 \}}$$
+\color{blue}{\{ \mathtt y = 43 \}}
+$$
 
 The precondition $\mathtt x+1 = 43$  can be simplified to $\mathtt x = 42$. Hence,
-$$ \color{blue}{\{\mathtt x = 42 \}}
+
+$$ 
+\color{blue}{\{\mathtt x = 42 \}}
 \ \ \ \mathtt y:=\mathtt x + 1 \ \ \ 
 \color{blue}{\{ \mathtt y = 43 \}}
 $$
 
 Suppose now that our program is the statement 
-$$\mathtt x := \mathtt x + 1$$
+
+$$
+\mathtt x := \mathtt x + 1
+$$
 
 and we want that $\mathtt x \leq N$ after its execution. Using the assignment axiom we get 
-$$\color{blue}{\{\mathtt x + 1 \leq N \}}
+
+$$
+\color{blue}{\{\mathtt x + 1 \leq N \}}
 \ \ \ \mathtt x := \mathtt x + 1\ \ \ 
-\color{blue}{\{\mathtt x \leq N\}} $$
+\color{blue}{\{\mathtt x \leq N\}} 
+$$
 
 Hence, 
-$$\color{blue}{\{\mathtt x <  N \}}
+
+$$
+\color{blue}{\{\mathtt x <  N \}}
 \ \ \ \mathtt x := \mathtt x + 1\ \ \ 
-\color{blue}{\{\mathtt x \leq N\}} $$
+\color{blue}{\{\mathtt x \leq N\}} 
+$$
 
 **Remark:** The assignment axiom proposed by Hoare does not apply when more than one name can refer to the same stored value. For example,
-$$\color{blue}{\{ y = 3\}} 
+
+$$
+\color{blue}{\{ y = 3\}} 
 \ \ \ x := 2 \ \ \ 
-\color{blue}{\{y = 3 \}} $$
+\color{blue}{\{y = 3 \}}
+$$
 
 The above statement is not  true if $x$  and $y$ refer to the same variable, because no precondition can cause y to be 3 after x is set to 2.
 
----
 
 ### Exercise
 
 Use the red rules above to show
-$$\color{blue}{\{true\}}\ \mathtt{while \  (x<10) \  do \ x:= x+1  \ done}\color{blue}{\{\mathtt x=10\}}$$
+
+$$
+\color{blue}{\{true\}}\ \mathtt{while \  (x<10) \  do \ x:= x+1  \ done}\color{blue}{\{\mathtt x=10\}}
+$$
 
 and
-$$\color{blue}{\{\mathtt z = m \ \wedge \ \mathtt x=n\}} \; 
-\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt z = m + n\cdot\mathtt y\}}. $$
+
+$$
+\color{blue}{\{\mathtt z = m \ \wedge \ \mathtt x=n\}} \; 
+\mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt z = m + n\cdot\mathtt y\}}.
+$$
 
 **Remark:** In the second example you need to strengthen the invariant so that it expresses that $y$ does not change in the loop.
-
----
 
 ### If-then-else
 
 
 Consider the following program.
-$$\mathtt{if}\ (y>0) \ \mathtt{then}\  x: = y \ \mathtt{else}\ x:= -y 
- \ \mathtt{endif}$$
+
+$$
+\mathtt{if}\ (y>0) \ \mathtt{then}\  x: = y \ \mathtt{else}\ x:= -y 
+ \ \mathtt{endif}
+$$
  
 We want to show that the above program  calculates the absolute value of $y$,
 denoted by $| y |$, i.e.
-$$\{true\} \mathtt{if}\ (y>0) \ \mathtt{then}\  x: = y \ \mathtt{else}\ x:= -y 
- \ \mathtt{endif} \{x = |y|\} $$
+
+$$
+\{true\} \mathtt{if}\ (y>0) \ \mathtt{then}\  x: = y \ \mathtt{else}\ x:= -y 
+ \ \mathtt{endif} \{x = |y|\} 
+$$
  
 If $y>0$ then it is clear that $x=y$. If not, then $y \leq 0$
 and then $x = - y = |y |$.
 
 Consider the following program.
-$$\mathtt{if}\ (x \geq y) \ \mathtt{then}\  z:= x  \ \mathtt{else}\ z
+
+$$
+\mathtt{if}\ (x \geq y) \ \mathtt{then}\  z:= x  \ \mathtt{else}\ z
 := y 
- \ \mathtt{endif}$$
+ \ \mathtt{endif}
+$$
+
 We want to show that the above program calculates the maximum of the
 two values $x$ and $y$, i.e.
- $$\{true\} \mathtt{if}\ (x \geq y) \ \mathtt{then}\  z:= x  \ \mathtt{else}\ z
+ 
+$$
+\{true\} \mathtt{if}\ (x \geq y) \ \mathtt{then}\  z:= x  \ \mathtt{else}\ z
 := y 
- \ \mathtt{endif} \{ z = max(x,y) \}$$
+ \ \mathtt{endif} \{ z = max(x,y) \}
+$$
+
 If $x \geq y$ then $x$ is the maximum and then $z = x = max(x,y)$. If not, then $x < y$ and $z = y = max(x,y)$.  
 
 
 The  **conditional rule** is as follows.
-$$\color{red}{
+
+$$
+\color{red}{
 \frac{\{B \wedge P\}\ \mathtt S\ \{Q\} \quad\quad \{\neg B \wedge P \}\ \mathtt T\ \{Q\} }
 {\{P\}\ \mathtt{if}\ B\ \mathtt{then}\ \mathtt S\ \mathtt{else}\ \mathtt T\ \mathtt{endif}\ \{Q\}}
-}$$
+}
+$$
 
 This concludes our explanations of Hoare logic. 
 
+## Homework
 
-## <font color=red> Homework 
-
-Apply the method of analysis from the lecture to  
-
-    while (x!=0) do z:=z*y;  x:= x-1 done
-
+Apply the method of analysis from these notes to  
+```
+while (x!=0) do z:=z*y;  x:= x-1 done
+```
 What is the invariant? Indicate the reasoning steps in which you  apply the rules of Hoare logic.
 
 This exercise is very similar to what we have done above (essentially, we use now `*` instead of `+`). If you want to do something more challenging, you can instead also do the next exercise.
 
-</font>
-
 ## Further Exercises
 
-- Apply the method of analysis from the lecture to  
-	```
-    while (i<=n) do t:=t+i; i:=i+1 done
-	```
-	[Hint: [Triangular numbers](https://en.wikipedia.org/wiki/Triangular_number).]
+Apply the method of analysis to  
+```
+ while (i<=n) do t:=t+i; i:=i+1 done
+```
+[Hint: [Triangular numbers](https://en.wikipedia.org/wiki/Triangular_number).]
 	
-- See also [Exercises: Program Verification, Hoare Logic, Loop Invariants](https://hackmd.io/@alexhkurz/rkhVZNzjH).
-
- 	
----
+See also [Exercises: Program Verification, Hoare Logic, Loop Invariants](https://hackmd.io/@alexhkurz/rkhVZNzjH).
 
 ## Summary and Outlook
 
@@ -505,7 +613,6 @@ Then I will briefely look at the history of ideas around "structured programming
 - Hoare logic can be implemented by software tools that support program design and development
 This is a consequence of the previous item. Formal systems can be implemented and then turned into tools.
 
-
 - Hoare logic as many ramifications for various special purpose situations such as concurrency, memory management, etc
 
 ### Structured Programming
@@ -514,7 +621,7 @@ This is a consequence of the previous item. Formal systems can be implemented an
 
 Early programming close to the machine relies on jumps as a basic mechanism to control flow. Accordingly, early higher level languages such as Fortran had a corresponding $\texttt{goto}$ statement. Goto's lend themselves to the writing of "unstructured" code that is difficult to read and debug, but was considered a necessary ingredient. 
 
-In 1966, an [article by Bohm and ...]() showed that jumps are not needed when ... tbc ... 
+In 1966, the article [Flow diagrams, turing machines and languages with only two formation rules](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Flow+diagrams%2C+turing+machines+and+languages+with+only+two+formation+rules&btnG=) by Boehm and  showed that jumps (gotos) are not needed and any program can be written with just three controle structures: sequential composition, conditional and iteration. This was an important result at the time as it suggested that the complex control structures (typically based on gotos, later fiving rise to so-called spaghetti code) that plagued programming at the time were not necessary.
 
 ## Historical References
 
