@@ -269,6 +269,19 @@ So far, we were not able to track down the history of the usage of the term, eve
 
 # Appendix
 
+After the demo and discussion in class I made another example. I believe now that using an AI agent for a lit rev is more useful if you want to extract some specific information rather than just summaries. 
+
+The task I set myself was to track the history of the term 'spaghetti code'. The natural language script is at https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/literature/spaghetti-code/prompts/literature-review.prompt.mdLinks to an external site. and the result is at https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/literature/spaghetti-code/literature-review.mdLinks to an external site. 
+
+The whole project took several iterations and somewhat longer than one hour. I also edited the literature review above by hand as the AI, as usual, generates too much. 
+
+I think the AI saved some time, but decisive was the idea to use Google Ngram https://books.google.com/ngrams/graph?content=%22spaghetti+code%22&year_start=1800&year_end=2022&corpus=en&smoothing=3Links to an external site. because it showed me to search for papers around 1980 and then tailor the Google Scholar string to that period as eg in https://scholar.google.com/scholar?hl=en&as_sdt=0,5&q=%22spaghetti+code%22&as_ylo=1975&as_yhi=1981Links to an external site. 
+
+So, maybe not surprisingly, AI helps but only if used as one component in a larger set of tools.
+
+What follows is AI generated and has not been edited or reviewed.
+
+
 ## Summary: Tracking the Term "Spaghetti Code"
 
 ### Key Findings About the Term's Origin
