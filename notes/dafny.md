@@ -41,7 +41,7 @@ $$
 \{P \}
 $$
 
-**While**:
+**Iteration**:
 
 $$\frac{\{I \wedge \mathtt B \}\ \mathtt S\ \{I\}}{\{I \}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \{\neg B \wedge I\}}$$
 
@@ -57,8 +57,8 @@ $$
 $${\frac{P'\Rightarrow P \quad\{P \}\ \mathtt S\ \{Q\} \quad Q\Rightarrow Q'}{\{P' \}\ \mathtt S \  \{Q'\}}}$$
 
 **Remark:**
--  Weakening the constructions of the programming language with the ones of logic. 
--  Assignment is interesting, not least because it reasons from the postcondition towards the precondition. The rule computes the weakest precondition that guarantess the post-condition (assuming that the program S terminates).
+-  Weakening connects the proof system of logic (for proving propositions of the form $P\Rightarrow Q$) with the proof system for the constructs of the programming language. 
+-  Assignment reasons from the postcondition towards the precondition. The rule computes the weakest precondition that guarantess the post-condition (assuming that the program S terminates). Reasoning forward on states and backwards on predicates is typical for [Stone duality](https://en.wikipedia.org/wiki/Stone_duality).
 -  While is interesting because it formalizes reasoning with invariants.
 
 ## Tool (Installation, First Example, First Exercise)
