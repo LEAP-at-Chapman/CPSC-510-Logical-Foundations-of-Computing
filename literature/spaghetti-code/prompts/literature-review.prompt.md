@@ -18,6 +18,8 @@ prerequisites:
 
 This is a **prompt script** (also known as an AI workflow definition, runbook, agent instruction file, natural language script). It contains natural language instructions that guide an AI agent to conduct a systematic literature review.
 
+It's main purpose is to help with tracking down the **history of the term spaghetti code**.
+
 ## Input
 
 - All PDF files in the parent folder
@@ -39,16 +41,14 @@ For each new PDF article in the `literature/` folder:
    - Name both the .pdf and the .txt according to the format `Year Title.pdf` and `Year Title.txt`.
 
 2. **Extract key information** from the article and add to `literature-review.md`:
-   - Link to Google Scholar query containg the title of the article.
-   - **Summary** (2 sentences): Main thesis or contribution of the article
-   - **Methodology** (2 sentences): Research methods employed and the kind of data used (e.g., quantitative/qualitative, dataset size, time period)
-   - **Results** (1 sentence): Key findings and conclusions
-   - **Evaluation** (1-5 scale, 1 sentence justification): Estimate a ranking of the value of this paper compared to other research in the field in terms of importance of the results and the quality of the methodology. Also consider the quality of writing and overall structure.
-   - **Resources**: Add links to any of the following if available (ignore if you cannot find links):
-     - arXiv LaTeX source (if paper is on arXiv, check for downloadable source files)
-     - Code repositories (GitHub, GitLab, etc.)
-     - Datasets (data repositories, supplementary materials)
-     - Project websites
+   - **Link to Google Scholar query** containg the title of the article.
+   - **Summary** (1 sentence): Main thesis or contribution of the article
+   - **History of Spaghetti Code**: Describe the relevance to the history of spaghetti code in one short sentence.
+   - **Use of the Term "Spaghetti Code":** 
+     - Highlight whether the term has been used or not (green check mark or red x).
+     - Quote the sentences in the paper that mention the term 'spaghetti code'.
+     - If the term 'spaghetti code' has a reference, extract it and add a link to a google scholar query with the title of the reference.
+  
 
 3. **Create BibTeX entry** and add to [references.bib](../../../content/references.bib):
    - Generate a proper BibTeX entry for the article
@@ -78,19 +78,11 @@ For each new PDF article in the `literature/` folder:
 
 **Google Scholar**: [Link to Google Scholar search with article title]
 
-**Summary**: [2 sentence summary of main contribution]
+**Summary**: [1 sentence summary of main contribution]
 
-**Methodology**: [2 sentence summary of methods and data]
+**History of Spaghetti Code**: [depending on how much the paper contains on this topic]
 
-**Results**: [1 sentence summary of findings]
-
-**Evaluation**: [Rating 1-5]/5 - [1 sentence justification for the rating]
-
-**Resources**:
-- LaTeX Source: [arXiv source link if available]
-- Code: [link if available]
-- Data: [link if available]
-- Project: [link if available]
+**Use of the Term "Spaghetti Code":** [depending on how much the paper contains on this topic]
 
 ---
 ```
@@ -107,11 +99,3 @@ After execution, check that:
 - [ ] BibTeX entries are properly formatted and valid
 - [ ] Title fields are wrapped in `\href{URL}{TITLE}` to make them clickable links to Google Scholar
 - [ ] Citation keys follow the naming convention
-
-## Learning Objectives
-
-Students working with this workflow will learn to:
-- Automate repetitive research tasks using AI agents
-- Structure prompts for consistent, reproducible outputs
-- Version control research workflows
-- Document AI-assisted processes for transparency and reproducibility

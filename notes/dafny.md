@@ -22,9 +22,44 @@ This allows programmers to specify and verify what their code does, catching bug
 
 Dafny makes this practical by integrating specifications (pre and postconditions) directly in the programming language and using automated theorem proving (Z3) to check the Hoare triples.
 
-## Basic Theory
+## Basic Theory - The Rules of Hoare Logic
 
-...
+Hoare Logic is a logic for compositional reasoning about safety properties of programs. For each construct in the programming language there is a corresponding reasoning rule. For example, for a simple language with sequential composition, assignment, while loop, conditional, we may have:
+
+**Sequential Composition**:
+
+$$
+\frac{\{P\}\ \mathtt S\ \{Q\} \quad\quad \{Q\}\ \mathtt T\ \{R\}}
+{\{P\}\ \mathtt S ; \mathtt T\ \{R\}}
+$$
+
+**Assignment**:
+
+$$ 
+\{P [\mathtt{exp}\,/\,\mathtt x]  \}
+\ \ \ \mathtt x:=\mathtt{exp} \ \ \ 
+\{P \}
+$$
+
+**While**:
+
+$$\frac{\{I \wedge \mathtt B \}\ \mathtt S\ \{I\}}{\{I \}\ \mathtt{while}\ B\ \mathtt{do}\ S\ \mathtt{done} \{\neg B \wedge I\}}$$
+
+**Conditional**:
+
+$$
+\frac{\{B \wedge P\}\ \mathtt S\ \{Q\} \quad\quad \{\neg B \wedge P \}\ \mathtt T\ \{Q\} }
+{\{P\}\ \mathtt{if}\ B\ \mathtt{then}\ \mathtt S\ \mathtt{else}\ \mathtt T\ \mathtt{endif}\ \{Q\}
+}$$
+
+**Weakening**:
+
+$${\frac{P'\Rightarrow P \quad\{P \}\ \mathtt S\ \{Q\} \quad Q\Rightarrow Q'}{\{P' \}\ \mathtt S \  \{Q'\}}}$$
+
+**Remark:**
+-  Weakening the constructions of the programming language with the ones of logic. 
+-  Assignment is interesting, not least because it reasons from the postcondition towards the precondition. The rule computes the weakest precondition that guarantess the post-condition (assuming that the program S terminates).
+-  While is interesting because it formalizes reasoning with invariants.
 
 ## Tool (Installation, First Example, First Exercise)
 
@@ -37,7 +72,7 @@ Recall the Hoare triple
 from the Idea section. For example, if `S` computes the absolute value we may have
 ```
 {x == -5}
-  if x < 0 {x := -x;} else {y := x;}
+  if x < 0 {y := -x;} else {y := x;}
 {y == 5}
 ```
 We can turn this into Dafny ([try it online](https://tio.run/##VY5NDoIwFIT3PcWkK0ggYeMGrIkH8AZuMDxiE6zaHwMRzl5fhYXu5vtmFtO1vZlivJG/3jscLy4ba2jjc1jywRqHbFqFAKtn0JYcvA3ETMaFhBMOCtWfUAoj5nlN5Sje3Oqe3R4VEoCrOlUNwwIaHP36VYtFiO3aqdUmy7@TV2v5iguDT8v0udzlaf@wfBRyM1CQxTYsIM9GNmKJ8QM))
@@ -59,7 +94,7 @@ Note that the two postconditions
   ensures y >= 0                
   ensures y == x || y == -x     
 ```
-together ensure that `Abs` satsifies its mathematical specification. Moreover, Dafny verifies that the postcondition is true.
+together ensure that `Abs` satsifies its mathematical specification. Moreover, Dafny verifies that the postcondition is true. For much more on this example, as well as a wide ranging introduction, see [Getting Started with Dafny: A Guide](https://github.com/dafny-lang/dafny/blob/master/docs/OnlineTutorial/guide.md).
 
 ### First Exercise
 
@@ -108,6 +143,10 @@ method Main() {
 - Run the modified code with `dafny run Divide2.dfy` and with `dafny run --no-verify Divide2.dfy`. How do you interpret the results?
 - How do you change `Divide2.dfy` so that it can accomodate negative dividends? (Note that integer division must return a non-negative remainder.)
 
+## Basic Theory
+
+...
+
 ## The Landscape of Tools
 
 ## Algorithms
@@ -124,8 +163,12 @@ method Main() {
 
 ## References
 
+Introductions:
+- [Getting Started with Dafny: A Guide](https://github.com/dafny-lang/dafny/blob/master/docs/OnlineTutorial/guide.md)
+
+Applications:
 - [@Scholar: AWS Dafny](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=aws+dafny&btnG=)
 - [@Scholar: Dafny Smart Contracts](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%22dafny%22+%22smart+contracts%22&btnG=)
 - [@Scholar: Dafny IronFleet](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%22dafny%22+%22IronFleet%22&btnG=)
-  
+- [@ Scholar: Separation logic Facebook](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%22O%27Hearn%22+%22separation+logic%22+%22facebook%22&btnG=)
 ## Suggestions for future work on the book

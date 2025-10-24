@@ -30,6 +30,8 @@ exclude_patterns:
   - "playground/**"
   - "src/**"
   - "notebooks/**"
+  - "prompts/**"
+  - "literature/**"
 
 # Information about where the book exists on the web
 repository:
