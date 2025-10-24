@@ -12,6 +12,10 @@ This document contains a systematic review of research papers related to Dafny a
 
 **Summary**: This paper presents Dafny as a modern formal-verification system that takes a language-based approach, providing developers with an immersive experience that feels like programming while encouraging thinking about program correctness. It showcases how Dafny integrates specification constructs directly into the programming language and runs continuously in IDEs to provide immediate feedback on verification failures.
 
+**Methodology**: The paper uses an instructional approach with concrete code examples, demonstrating Dafny's capabilities through two examples: an imperative procedure for computing maximum segment sums and a lemma for proving mathematical properties. It discusses the design principles of the language, verifier, and IDE integration.
+
+**Results**: The paper demonstrates that Dafny's streamlined syntax, high degree of automation, and fast IDE turnaround have successfully attracted systems programmers (evidenced by IronFleet and Ironclad Apps projects) and educators (with several dozen universities worldwide using Dafny for teaching).
+
 **Evaluation**: 4/5 - An important foundational paper by Dafny's creator that articulates the design philosophy and demonstrates practical usability. While excellent for introducing Dafny's approach, it lacks quantitative evaluation data or detailed industrial case studies.
 
 **Resources**:
@@ -22,7 +26,7 @@ This document contains a systematic review of research papers related to Dafny a
 
 ## Formally Verified Cloud-Scale Authorization (2024)
 
-**Authors**: Aleks Chakarov etal (Amazon Web Services and academic collaborators)
+**Authors**: Aleks Chakarov et al (Amazon Web Services and academic collaborators)
 
 **Google Scholar**: [Formally Verified Cloud-Scale Authorization](https://scholar.google.com/scholar?q=Formally+Verified+Cloud-Scale+Authorization)
 

@@ -16,7 +16,7 @@ prerequisites:
 
 ## Overview
 
-This is a **prompt script** (also known as an AI workflow definition, runbook, or agent instruction file). It contains natural language instructions that guide an AI agent to conduct a systematic literature review.
+This is a **prompt script** (also known as an AI workflow definition, runbook, agent instruction file, natural language script). It contains natural language instructions that guide an AI agent to conduct a systematic literature review.
 
 ## Input
 

@@ -6,13 +6,6 @@ Hoare. [An axiomatic basis for computer programming](http://extras.springer.com/
 
 ---
 
-Originally based on notes by Paula Severi. [Summary of rules](https://hackmd.io/@alexhkurz/BJyjAXGoB) of Hoare logic. Try this in the [Dafny programming language](https://dafny.org/).
-
----
-
-
-# Hoare logic
-
 In Programming Languages there is an important circle of ideas including [Hoare logic](https://en.wikipedia.org/wiki/Hoare_logic) and Dijkstra's [predicate transformer semantics](https://en.wikipedia.org/wiki/Predicate_transformer_semantics), Kozen's [Kleene algebra](https://en.wikipedia.org/wiki/Kleene_algebra) and Pratt's [Dynamic logic](https://en.wikipedia.org/wiki/Dynamic_logic_(modal_logic)), O'Hearn and Reynolds's [Separation logic](https://en.wikipedia.org/wiki/Separation_logic) and many more methods, techniques, tools, etc.
 
 This line of research grew out of the methodology of **structured programming**, which is something that every programmer learns today right from the start, but was a novel concept around 1970. I postpone a discussion of this to the conclusions.
@@ -22,13 +15,13 @@ Here, we will just give some of the basic ideas and illustrate them with an impo
 Therefore, an alternative title would be
 
 $$
-\text{\bf Correctness of While Programs}
+\textbf{Correctness of While Programs}
 $$
 
 The technique is based on a refinement of the method of invariants. Thus, another possible title is
 
 $$
-\text{\bf Invariants for Program Correctness}
+\textbf{Invariants for Program Correctness}
 $$
 
 These ideas have various ramifications in programming and software engineering.
@@ -50,18 +43,17 @@ I am planning to add more in the conclusions, but now let us jump into a concret
 ## Example
 
 Consider the following program.
-
-            while (x != 0) do z:=z+y;  x:= x-1 done
-
-Does this program  terminate? 
-
-What does the program calculate?
-
-Does this program calculate `x*y` in the variable `z`?
+```
+while (x != 0) do z:=z+y;  x:= x-1 done
+```
+Here are some questions we may ask.
+- Does this program  terminate? 
+- What does the program calculate?
+- Does this program calculate `x*y` in the variable `z`?
 
 It will  depend on the value of `x` and `z` before executing the program. 
 
-This program will terminate and yield `z = x*y`  at the end if `x` is positive and  `z==0` prior to it.
+This program will terminate and yield `z = x*y`  at the end if `x` is non-negative and  `z==0` at the start.
 
 **Activity:** Find an invariant for the while loop.
 
@@ -534,7 +526,7 @@ This is one of the first textbooks teaching verification of programs. I find it 
 
 ## Further Reading
 
-#### Formal Verification
+### Formal Verification
 
 We have seen that the rules of Hoare logic can be formalised in symbolic notation. It should therefore should be possible to implement software engineering tools that automate reasoning about programs.
 
