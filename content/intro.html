@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Resources on Puzzles &#8212; Logical Foundations of Computing</title>
+    <title>Introduction &#8212; Logical Foundations of Computing</title>
   
   
   
@@ -57,11 +57,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/appendix-puzzles';</script>
+    <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Hoare Logic" href="appendix-hoare-logic.html" />
-    <link rel="prev" title="Dependent Type Theory with Lean" href="11-dependent-types.html" />
+    <link rel="next" title="Propositional Logic" href="1-propositional-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,6 +125,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -142,7 +145,7 @@
     
   
 
-<a class="navbar-brand logo" href="intro.html">
+<a class="navbar-brand logo" href="#">
   
   
   
@@ -167,8 +170,8 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
                     Introduction
                 </a>
             </li>
@@ -188,8 +191,8 @@
 <li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Resources on Puzzles</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
@@ -269,7 +272,7 @@
       
       
       
-      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fcontent/appendix-puzzles.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fcontent/intro.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -299,7 +302,7 @@
       
       
       
-      <li><a href="../_sources/content/appendix-puzzles.md" target="_blank"
+      <li><a href="../_sources/content/intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -381,7 +384,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Resources on Puzzles</h1>
+    <h1>Introduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -395,13 +398,54 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="resources-on-puzzles">
-<h1>Resources on Puzzles<a class="headerlink" href="#resources-on-puzzles" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>This book project is being developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University.</p>
+<p>Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the classes emphasize more of the theory, this book puts the tools center stage.</p>
+<p>Each chapter should by default be devided into the following sections (subject to discussion and revision):</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.nikoli.co.jp/en/puzzles/">Nikoli</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Verbal_arithmetic">cryptarithm</a></p></li>
-<li><p>…</p></li>
+<li><p>Idea</p></li>
+<li><p>Basic Theory</p></li>
+<li><p>Tool (Installation, First Example, First Exercise)</p></li>
+<li><p>Introductory Examples</p></li>
+<li><p>The Landscape of Tools</p></li>
+<li><p>Algorithms</p></li>
+<li><p>Benchmark and Competitions</p></li>
+<li><p>Applications in Industry</p></li>
+<li><p>Case Studies</p></li>
+<li><p>History</p></li>
+<li><p>Current Development, Research Challenges, Conferences and Workshops</p></li>
+<li><p>References</p></li>
+<li><p>Suggestions for future work on the book</p></li>
 </ul>
+<p><a class="reference internal" href="#content/1-propositional-logic.md"><span class="xref myst">Chapter 1</span></a> introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.</p>
+<p><a class="reference internal" href="#content/2-satsolving.md"><span class="xref myst">Chapter 2</span></a> explores SAT solving using MiniSat, focusing on semantic tableaux algorithms and their applications to satisfiability and validity checking.</p>
+<p><a class="reference internal" href="#content/3-logic-programming.md"><span class="xref myst">Chapter 3</span></a> introduces logic programming with SWI-Prolog, covering unification, resolution, and applications in search with backtracking and database querying.</p>
+<p><a class="reference internal" href="#content/4-constraint-solving.md"><span class="xref myst">Chapter 4</span></a> presents constraint solving using MiniZinc, demonstrating how constraint satisfaction problems can be solved and applied to program synthesis and automated bug fixing.</p>
+<p><a class="reference internal" href="#content/5-smt-solving.md"><span class="xref myst">Chapter 5</span></a> covers SMT (Satisfiability Modulo Theories) solving with Z3, extending beyond propositional logic to handle theories like arithmetic, arrays, and bit-vectors for program verification and model checking.</p>
+<p><a class="reference internal" href="#content/6-modal-logic.md"><span class="xref myst">Chapter 6</span></a> introduces modal logic and the SCAN algorithm for computing first-order correspondents, exploring the mathematical foundations of modalities.</p>
+<p><a class="reference internal" href="#content/7-temporal-logic.md"><span class="xref myst">Chapter 7</span></a> examines temporal logic using the Spin model checker, focusing on LTL (Linear Temporal Logic) model checking and its applications in distributed systems and protocol verification, including the famous Needham-Schroeder Key Exchange protocol.</p>
+<p><a class="reference internal" href="#content/8-epistemic-logic.md"><span class="xref myst">Chapter 8</span></a> explores epistemic logic with SMCDEL, investigating how knowledge and belief can be formally modeled and applied to social network analysis.</p>
+<p><a class="reference internal" href="#content/9-hoare-logic.md"><span class="xref myst">Chapter 9</span></a> presents Hoare logic using Dafny, demonstrating how to formally specify and verify program correctness with preconditions, postconditions, and invariants.</p>
+<p><a class="reference internal" href="#content/10-higher-order-logic.md"><span class="xref myst">Chapter 10</span></a> extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.</p>
+<p><a class="reference internal" href="#content/11-dependent-types.md"><span class="xref myst">Chapter 11</span></a> presents dependent type theory with Lean, demonstrating how types can depend on values and enabling “proofs as programs” through the Curry-Howard correspondence.</p>
+<p>The current suggested outline for each chapter is (see <a class="reference internal" href="#content/2-satsolving.md"><span class="xref myst">Chapter 2</span></a> for an example):</p>
+<ul class="simple">
+<li><p>Idea: What you want to tell somebody who doesnt know anything</p></li>
+<li><p>Basic Theory: Recap of the basic theory</p></li>
+<li><p>Tool: The particular tool we will discuss. How to install it. How to run a basic toy example.</p></li>
+<li><p>Introductory Examples</p></li>
+<li><p>Tools: The landscape of tools in this area</p></li>
+<li><p>The Algorithm: Some basic algorithms on which the tools are based</p></li>
+<li><p>Applications in Industry</p></li>
+<li><p>Case Studies</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -434,21 +478,12 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="11-dependent-types.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Dependent Type Theory with Lean</p>
-      </div>
-    </a>
     <a class="right-next"
-       href="appendix-hoare-logic.html"
+       href="1-propositional-logic.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Hoare Logic</p>
+        <p class="prev-next-title">Propositional Logic</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
