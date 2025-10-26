@@ -136,9 +136,9 @@ as a formula in propositional logic.
 
 The key insight is now: Finding **an assignment of truth values for the variables satisfying the specification** is the same as solving the puzzle. 
 
-For example, the software tools of Chapters [2](./2-satsolving.md), [4](./4-constraint-solving.md), [5](./5-smt-solving.md), [7](./7-temporal-logic.md), [8](./8-epistemic-logic.md) are all elaborations of this simple idea, based on algorithms solving sets of logical equations.
+For example, the software tools of Chapters [2](./2-satsolving.md), [4](./4-constraint-solving.md), [5](./5-smt-solving.md), [7](./7-temporal-logic.md), [8](./8-epistemic-logic.md) are all elaborations of this simple idea of algorithms solving logical equations.
 
-These satisfiability solving tools are now used everywhere in software engineering, very much like numerical methods are used elswhere in engineering. 
+These satisfiability solvers are now used everywhere in software engineering, very much like numerical methods in more traditional areas of engineering. 
 
 This is a fairly recent development: Only since the beginning of the 21st century, Boole's 1847 vision of "a Calculus of Deductive Reasoning" has become mainstream engineering. 
 
@@ -156,7 +156,9 @@ The reason that this is called a *duality* is that adding *more* equations means
 
 With a little mathematics, we can see that such a duality is a rather general phenomenon. For any relation $R\subseteq X\times A$, there are functions 
 
-<img src="images/2025-10-26-14-31-31.png" width="500" />
+```{figure} ./images/2025-10-26-14-31-31.png
+:width: 500px
+```
 
 between the set $\mathcal PX$ of subsets of $X$ and the set $\mathcal PA$ of subsets of $A$ defined by 
 

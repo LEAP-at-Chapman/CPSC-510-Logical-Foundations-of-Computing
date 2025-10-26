@@ -544,8 +544,8 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$
 as a formula in propositional logic.</p>
 <p>The key insight is now: Finding <strong>an assignment of truth values for the variables satisfying the specification</strong> is the same as solving the puzzle.</p>
-<p>For example, the software tools of Chapters <a class="reference internal" href="2-satsolving.html"><span class="std std-doc">2</span></a>, <a class="reference internal" href="4-constraint-solving.html"><span class="std std-doc">4</span></a>, <a class="reference internal" href="5-smt-solving.html"><span class="std std-doc">5</span></a>, <a class="reference internal" href="7-temporal-logic.html"><span class="std std-doc">7</span></a>, <a class="reference internal" href="8-epistemic-logic.html"><span class="std std-doc">8</span></a> are all elaborations of this simple idea, based on algorithms solving sets of logical equations.</p>
-<p>These satisfiability solving tools are now used everywhere in software engineering, very much like numerical methods are used elswhere in engineering.</p>
+<p>For example, the software tools of Chapters <a class="reference internal" href="2-satsolving.html"><span class="std std-doc">2</span></a>, <a class="reference internal" href="4-constraint-solving.html"><span class="std std-doc">4</span></a>, <a class="reference internal" href="5-smt-solving.html"><span class="std std-doc">5</span></a>, <a class="reference internal" href="7-temporal-logic.html"><span class="std std-doc">7</span></a>, <a class="reference internal" href="8-epistemic-logic.html"><span class="std std-doc">8</span></a> are all elaborations of this simple idea of algorithms solving logical equations.</p>
+<p>These satisfiability solvers are now used everywhere in software engineering, very much like numerical methods in more traditional areas of engineering.</p>
 <p>This is a fairly recent development: Only since the beginning of the 21st century, Boole’s 1847 vision of “a Calculus of Deductive Reasoning” has become mainstream engineering.</p>
 </section>
 <section id="duality-between-syntax-and-semantics">
@@ -558,7 +558,9 @@ M\models\phi
 <p>where <span class="math notranslate nohighlight">\(M\)</span> denotes a model and <span class="math notranslate nohighlight">\(\phi\)</span> (“phi”) a formula. In terms of the Sudoku example, <span class="math notranslate nohighlight">\(\phi\)</span> is the specification representing the rules of the game and a particular puzzle and <span class="math notranslate nohighlight">\(M\)</span> is the solution (satisfying assignment).</p>
 <p>The reason that this is called a <em>duality</em> is that adding <em>more</em> equations means getting <em>fewer</em> solutions.</p>
 <p>With a little mathematics, we can see that such a duality is a rather general phenomenon. For any relation <span class="math notranslate nohighlight">\(R\subseteq X\times A\)</span>, there are functions</p>
-<img src="images/2025-10-26-14-31-31.png" width="500" />
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/2025-10-26-14-31-31.png"><img alt="../_images/2025-10-26-14-31-31.png" src="../_images/2025-10-26-14-31-31.png" style="width: 500px;" /></a>
+</figure>
 <p>between the set <span class="math notranslate nohighlight">\(\mathcal PX\)</span> of subsets of <span class="math notranslate nohighlight">\(X\)</span> and the set <span class="math notranslate nohighlight">\(\mathcal PA\)</span> of subsets of <span class="math notranslate nohighlight">\(A\)</span> defined by</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
