@@ -1,5 +1,7 @@
 # Introduction to Logic
 
+some intro to the intro ...
+
 **Big Ideas of Logic**:
 
 - Validity
@@ -22,7 +24,7 @@ The classic example is:
 > Socrates is a man.  
 > Therefore, Socrates is mortal.
 
-Clearly, this is a valid argument ... but how do we know that it is valid?
+Clearly, this is a valid argument ... but how do we *know* that it is valid?
 
 We know that it is valid because of its form, not because we know anything about Socrates, men, or mortality. The form is:
 
@@ -40,7 +42,7 @@ The argument remains valid in all cases. This is the power of **formal reasoning
 
 Mathematically, a formal language is the smallest set closed under a finite number rules. Some examples:
 - The natural numbers are the smallest set containing "zero" and closed under "plus one". 
-- A programming language is the set of strings (or abstract syntax trees) that can be derived by the [context-free grammar](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of the language, a classic example being the [grammar of the C language](https://www.quut.com/c/ANSI-C-grammar-y.html) and we will see later the [grammar of Promela](https://spinroot.com/spin/Man/grammar.html) in  [Chapter 7: Temporal Logic with Spin](content/7-temporal-logic.md).
+- A programming language is the set of strings (or abstract syntax trees) that can be derived by the [context-free grammar](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of the language, a classic example being the [grammar of the C language](https://www.quut.com/c/ANSI-C-grammar-y.html) and we will see later the [grammar of Promela](https://spinroot.com/spin/Man/grammar.html) in  [Chapter 7: Temporal Logic with Spin](./7-temporal-logic.md).
 - The language of propositional logic is the smallest set containing a given set of atomic propositions (strings) and being closed under the operations AND ($\wedge$), OR ($\vee$), NOT ($\neg$).
 
 Formal languages can be processed by algorithms. In particular, for any given formal language there are (terminating, even efficient) algorithms that
