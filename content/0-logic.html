@@ -545,7 +545,7 @@ p&amp;= 1 &amp;\text{upper left corner is 1}
 \end{split}\]</div>
 <p>as a formula in propositional logic finding a solution to the puzzle is the same as finding <strong>an assignment of truth values for the variables satisfying the logical specification</strong> of the puzzle.</p>
 <p>The software tools of Chapters <a class="reference internal" href="2-satsolving.html"><span class="std std-doc">2</span></a>, <a class="reference internal" href="4-constraint-solving.html"><span class="std std-doc">4</span></a>, <a class="reference internal" href="5-smt-solving.html"><span class="std std-doc">5</span></a>, <a class="reference internal" href="7-temporal-logic.html"><span class="std std-doc">7</span></a>, <a class="reference internal" href="8-epistemic-logic.html"><span class="std std-doc">8</span></a> are all elaborations of this simple idea of algorithms solving logical equations.</p>
-<p><strong>Remark:</strong> Satisfiability solvers are now used everywhere in software engineering, very much like numerical methods in more traditional areas of engineering. This is a fairly recent development: Only since the beginning of the 21st century, Boole’s 1847 vision of “a Calculus of Deductive Reasoning” has become mainstream engineering.</p>
+<p><strong>Remark:</strong> Satisfiability solvers are now used everywhere in software engineering, very much like numerical methods in more traditional areas of engineering. This is a fairly recent development: Only since the beginning of the 21st century, Boole’s 1847 vision of “a Calculus of Deductive Reasoning” has become mainstream engineering on a par with Newton’s and Leibniz’s infinitesimal calculus.</p>
 </section>
 <section id="duality-between-syntax-and-semantics">
 <h2>Duality between Syntax and Semantics<a class="headerlink" href="#duality-between-syntax-and-semantics" title="Link to this heading">#</a></h2>
@@ -554,8 +554,8 @@ p&amp;= 1 &amp;\text{upper left corner is 1}
 \[
 M\models\phi
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(M\)</span> denotes a model and <span class="math notranslate nohighlight">\(\phi\)</span> (“phi”) a formula. In terms of the Sudoku example, <span class="math notranslate nohighlight">\(\phi\)</span> is the specification representing the rules of the game and a particular puzzle and <span class="math notranslate nohighlight">\(M\)</span> is the solution (satisfying assignment).</p>
-<p>The reason that this is called a <em>duality</em> is that adding <em>more</em> equations means getting <em>fewer</em> solutions.</p>
+<p>where <span class="math notranslate nohighlight">\(M\)</span> denotes a model and <span class="math notranslate nohighlight">\(\phi\)</span> (“phi”) a formula. <span class="math notranslate nohighlight">\(M\models\phi\)</span> is read as “<span class="math notranslate nohighlight">\(M\)</span> satisfies <span class="math notranslate nohighlight">\(\phi\)</span>” or “<span class="math notranslate nohighlight">\(\phi\)</span> is true in <span class="math notranslate nohighlight">\(M\)</span>” or “<span class="math notranslate nohighlight">\(\phi\)</span> holds in <span class="math notranslate nohighlight">\(M\)</span>”. In terms of the Sudoku example, <span class="math notranslate nohighlight">\(\phi\)</span> is the specification representing the rules of the game together with a particular starting position and <span class="math notranslate nohighlight">\(M\)</span> is the solution (satisfying assignment).</p>
+<p>The reason that this is called a <em>duality</em> is that adding <em>more</em> equations means specifying <em>fewer</em> solutions.</p>
 <p>With a little mathematics, we can see that such a duality is a rather general phenomenon. For any relation <span class="math notranslate nohighlight">\(R\subseteq X\times A\)</span>, there are functions</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/2025-10-26-14-31-31.png"><img alt="../_images/2025-10-26-14-31-31.png" src="../_images/2025-10-26-14-31-31.png" style="width: 500px;" /></a>
@@ -570,8 +570,8 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 \end{split}\]</div>
 <p>In the example of satisfiability, we read this as follows:</p>
 <ul class="simple">
-<li><p>For a set <span class="math notranslate nohighlight">\(S\)</span> of models, <span class="math notranslate nohighlight">\(t(S)\)</span> is the largest theory (= set of formulas) satisfied by all models.</p></li>
-<li><p>For a theory <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(m(T)\)</span> is the largest set of models satsifying the theory.</p></li>
+<li><p><span class="math notranslate nohighlight">\(t(S)\)</span> is the largest theory satisfied by all models in <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(m(T)\)</span> is the set of all solutions specified by the theory <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
 </ul>
 </section>
 <section id="proof-theory">

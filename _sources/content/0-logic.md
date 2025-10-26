@@ -138,7 +138,7 @@ as a formula in propositional logic finding a solution to the puzzle is the same
 
 The software tools of Chapters [2](./2-satsolving.md), [4](./4-constraint-solving.md), [5](./5-smt-solving.md), [7](./7-temporal-logic.md), [8](./8-epistemic-logic.md) are all elaborations of this simple idea of algorithms solving logical equations.
 
-**Remark:** Satisfiability solvers are now used everywhere in software engineering, very much like numerical methods in more traditional areas of engineering. This is a fairly recent development: Only since the beginning of the 21st century, Boole's 1847 vision of "a Calculus of Deductive Reasoning" has become mainstream engineering. 
+**Remark:** Satisfiability solvers are now used everywhere in software engineering, very much like numerical methods in more traditional areas of engineering. This is a fairly recent development: Only since the beginning of the 21st century, Boole's 1847 vision of "a Calculus of Deductive Reasoning" has become mainstream engineering on a par with Newton's and Leibniz's infinitesimal calculus. 
 
 ## Duality between Syntax and Semantics
 
@@ -148,9 +148,9 @@ $$
 M\models\phi
 $$
 
-where $M$ denotes a model and $\phi$ ("phi") a formula. In terms of the Sudoku example, $\phi$ is the specification representing the rules of the game and a particular puzzle and $M$ is the solution (satisfying assignment).
+where $M$ denotes a model and $\phi$ ("phi") a formula. $M\models\phi$ is read as "$M$ satisfies $\phi$" or "$\phi$ is true in $M$" or "$\phi$ holds in $M$". In terms of the Sudoku example, $\phi$ is the specification representing the rules of the game together with a particular starting position and $M$ is the solution (satisfying assignment).
 
-The reason that this is called a *duality* is that adding *more* equations means getting *fewer* solutions. 
+The reason that this is called a *duality* is that adding *more* equations means specifying *fewer* solutions. 
 
 With a little mathematics, we can see that such a duality is a rather general phenomenon. For any relation $R\subseteq X\times A$, there are functions 
 
@@ -170,8 +170,8 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 $$
 
 In the example of satisfiability, we read this as follows:
-- For a set $S$ of models, $t(S)$ is the largest theory (= set of formulas) satisfied by all models.
-- For a theory $T$, $m(T)$ is the largest set of models satsifying the theory. 
+- $t(S)$ is the largest theory satisfied by all models in $S$.
+- $m(T)$ is the set of all solutions specified by the theory $T$. 
 
 ## Proof Theory
 
