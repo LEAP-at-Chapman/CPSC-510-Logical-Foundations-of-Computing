@@ -156,11 +156,14 @@ The reason that this is called a *duality* is that adding *more* equations means
 
 With a little mathematics, we can see that such a duality is a rather general phenomenon. For any relation $R\subseteq X\times A$, there are functions 
 
-```{figure} ./images/2025-10-26-14-31-31.png
+```{figure} 
+./images/2025-10-26-14-31-31.png
 :width: 500px
 ```
 
-between the set $\mathcal PX$ of subsets of $X$ and the set $\mathcal PA$ of subsets of $A$ defined by 
+between the set $\mathcal PX$ of subsets of $X$ and the set $\mathcal PA$ of subsets of $A$ defined by [^powerset]
+
+[^powerset]: $\mathcal P$ stands for "powerset of".
 
 $$
 \begin{gather*}
