@@ -83,7 +83,7 @@ $$
 \end{array}
 $$
 
-We can encode this puzzle using [Boolean algebra](https://en.wikipedia.org/wiki/Boolean_algebra) as follows. Let us label the four cells as p, q, r, s:
+We can encode this puzzle using [Boolean logic](https://en.wikipedia.org/wiki/Boolean_algebra) as follows. Let us label the four cells as p, q, r, s:
 
 $$
 \begin{array}{|c|c|}
@@ -121,6 +121,18 @@ $$
 p&= 1 &\text{upper left corner is 1}
 \end{align*}
 $$
+
+Now we encoded the puzzle
+$$
+\begin{array}{|c|c|}
+\hline
+ 1 & {\ \ }  \\
+\hline
+   &   \\
+\hline
+\end{array}
+$$
+as a formula in propositional logic.
 
 The key insight is now: Finding **an assignment of truth values for the variables satisfying the specification** is the same as solving the puzzle. 
 

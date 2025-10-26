@@ -498,7 +498,7 @@ Therefore, Z is Y.</p>
 \hline
 \end{array}
 \end{split}\]</div>
-<p>We can encode this puzzle using <a class="reference external" href="https://en.wikipedia.org/wiki/Boolean_algebra">Boolean algebra</a> as follows. Let us label the four cells as p, q, r, s:</p>
+<p>We can encode this puzzle using <a class="reference external" href="https://en.wikipedia.org/wiki/Boolean_algebra">Boolean logic</a> as follows. Let us label the four cells as p, q, r, s:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{|c|c|}
@@ -532,6 +532,17 @@ r &amp; s \\
 p&amp;= 1 &amp;\text{upper left corner is 1}
 \end{align*}
 \]</div>
+<p>Now we encoded the puzzle
+$<span class="math notranslate nohighlight">\(
+\begin{array}{|c|c|}
+\hline
+ 1 &amp; {\ \ }  \\
+\hline
+   &amp;   \\
+\hline
+\end{array}
+\)</span>$
+as a formula in propositional logic.</p>
 <p>The key insight is now: Finding <strong>an assignment of truth values for the variables satisfying the specification</strong> is the same as solving the puzzle.</p>
 <p>For example, the software tools of Chapters <a class="reference internal" href="2-satsolving.html"><span class="std std-doc">2</span></a>, <a class="reference internal" href="4-constraint-solving.html"><span class="std std-doc">4</span></a>, <a class="reference internal" href="5-smt-solving.html"><span class="std std-doc">5</span></a>, <a class="reference internal" href="7-temporal-logic.html"><span class="std std-doc">7</span></a>, <a class="reference internal" href="8-epistemic-logic.html"><span class="std std-doc">8</span></a> are all elaborations of this simple idea, based on algorithms solving sets of logical equations.</p>
 <p>These satisfiability solving tools are now used everywhere in software engineering, very much like numerical methods are used elswhere in engineering.</p>
