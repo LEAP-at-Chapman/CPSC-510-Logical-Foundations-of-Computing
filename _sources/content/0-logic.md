@@ -47,11 +47,11 @@ Mathematically, a formal language is the smallest set closed under a finite numb
 
 Formal languages can be processed by algorithms. In particular, for any given formal language there are (terminating, even efficient) algorithms that
 - answer the yes-no-question, for any string, whether that string belongs to the language,
-- parse a given string into an [abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree)
+- parse a given string into an [abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 
 ## Decidability
 
-Some logical questions are **decidable**: There exists an algorithm that, for any input, will eventually halt and give a correct yes-or-no answer. For example, in the Chapters [2](./2-satsolving.md), [4](./4-constraint-solving.md), [5](./5-smt-solving.md), [7](./7-temporal-logic.md), [8](./8-epistemic-logic.md) we will meet software tools based on algorithms that decide the satisfiability problem of various logics.
+Some logical questions are **decidable**: There exists an algorithm that, for any input, will eventually halt and give a correct yes-or-no answer. For example, in Chapters [2](./2-satsolving.md), [4](./4-constraint-solving.md), [5](./5-smt-solving.md), [7](./7-temporal-logic.md), [8](./8-epistemic-logic.md) we will meet software tools based on algorithms that decide the satisfiability problem of various logics.
 
 Other questions are **undecidable**: No algorithm exists that can always provide an answer. Famously, Turing's [Halting Problem](https://en.wikipedia.org/wiki/Halting_problem) shows that there is no algorithm that can decide, for any program, whether that program terminates on all inputs.
 
@@ -64,7 +64,7 @@ Maybe this can nowadays best be explained with the help of [Sudoku](https://www.
 $$
 \begin{array}{|c|c|}
 \hline
- 1 &   \\
+ 1 & {\ \ }  \\
 \hline
    &   \\
 \hline
