@@ -25,9 +25,9 @@ It also includes several additional modal operators:
     F A means that A must be true somewhere ahead of the current position in time.
 * Globally (G or Box):
     G A means that A must be true for the rest of the timeline or path.
-* For All (A or an upsidedown A):
+* For All (A or an upsidedown A, also sometimes called box `[]`):
     A B means that B must be true on all paths starting from the current position.
-* There Exists (E or a backwards E):
+* There Exists (E or a backwards E, also sometimes called diamond `<>`):
     E A means that there exists at least one path starting from the current position where A is true.
 
 ## Tool
@@ -83,6 +83,10 @@ If SPIN can verify the code, it will generate a trail file. Make sure to delete 
 
 ## Benchmarks
 
+I looked into benchmarks for SPIN and other model checkers, however at the time of writing, there does not appear to have been many benchmarks of such tools available online.
+
+I found a research paper that declared its intent to create a benchmark of model checkers like SPIN, located at https://spinroot.com/spin/symposia/ws07/Pelanek.pdf. However, at the time of writing, the link contained in the paper (https://anna.fi.muni.cz/models) leads to a 404 error.
+
 ## Applications in Industry
 
 One of the main applications of SPIN in the industry is model checking for concurecy or mutual exculsion problems. For example, it is often the case where two processes are running in parallel and must read and write from the same reasource. These processes cannot be allowed to access the reasource at the same time to avoid memory problems. However both processes must access the reasource *eventually*. This problem and problems like it can be modeled and checked in SPIN.
@@ -120,5 +124,7 @@ A fix was proposed by the person who found this fault. To avoid the attack, the 
 * https://en.wikipedia.org/wiki/SPIN_model_checker
 * https://spinroot.com/spin/whatispin.html
 * https://spinroot.com/courses/summer/
+* https://spinroot.com/spin/symposia/ws07/Pelanek.pdf
+
 
 ## Suggestions for Future Work on this Book
