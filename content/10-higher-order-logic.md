@@ -50,7 +50,8 @@ In higher order logic, we extend this to $ \forall f(x) $ and $ \exists f(x) $, 
 WIP
 
 <!-- – Andrews (2002) Sections 1–2 (“Type theory basics”)
-– Church (1940) A Formulation of the Simple Theory of Types -->
+– Church (1940) A Formulation of the Simple Theory of Types 
+Church Text is more relevant to history section-->
 
 ### 10.2.3 Lambda Abstraction
 WIP
@@ -207,6 +208,9 @@ end
 ```
 
 ### 10.3.3 First Exercise
+
+<!-- do not need to have the explicit answer -->
+
 For the first exercise, we will be proving the associative and commutative properties of a custom `add` function in Isabelle. This exercise comes from Exercise 2.2 of [Concrete Semantics Exercises](http://www.concrete-semantics.org/Exercises/exercises.pdf)
 <!-- i need to change this to a footnote or something that links to references at the end -->
 
@@ -361,6 +365,8 @@ where we use the add_0_right lemma in the base case and then the add_Suc_right l
 ## 10.4 Introductory Examples {#sec0-10-4}
 
 <!-- need to talk to Kurz about what should be in first exmaple, first exercise, and in introductory examples -->
+
+<!-- show something interesting about tool, logic, etc and can be digested and understood with minimum experience -->
 
 
 ## 10.5 The Landscape of Tools {#sec0-10-5}
