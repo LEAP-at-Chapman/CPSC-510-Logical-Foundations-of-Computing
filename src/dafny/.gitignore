@@ -1,0 +1,6 @@
+# Dafny compiled output
+*
+!.gitignore
+!*.dfy
+!*/
+*.local*

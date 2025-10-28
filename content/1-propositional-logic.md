@@ -2,13 +2,13 @@
 
 Author: Alexander Kurz
 
-In class, we used mostly used [our class notes] as our reference. Here, we will only give an outline of what was covered with an emphasis on how the topics will relate to later chapters.
+The purpose of this note is to introduce the simplest logic that will appear throughout the book. It is known as [propositional logic](https://en.wikipedia.org/wiki/Propositional_logic), or classical propositional logic (as opposed to variants such as [intuitionistic logic](https://en.wikipedia.org/wiki/Intuitionistic_logic)) or [Boolean logic](https://en.wikipedia.org/wiki/Boolean_algebra) (to honor [George Boole](https://en.wikipedia.org/wiki/George_Boole) and as opposed to other algebraic logics.)
 
-**Language**
+In class, we used mostly 
 
-Remark on parsing: Strings are trees.
+- Chapters 1.1, 1.3, 1.5, 1.6 in the [Open Logic Project](https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf) and
+- Chapters 2 and 5 in the [Open Logic Project](https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf)
 
-**Semantics**
+as our reference. Since this worked reasonably well we leave it at this for now.
 
-... 
-
+The [Introduction to Logic](./0-logic.md) contains an overview and summary of the most important big ideas that we need.

@@ -2,10 +2,11 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: content/intro
 parts:
 - caption: Logics and Their Software Tools
   chapters:
+    - file: content/0-logic
     - file: content/1-propositional-logic
     - file: content/2-satsolving
     - file: content/3-logic-programming
@@ -20,7 +21,8 @@ parts:
 
 - caption: Appendix
   chapters:
-    - file: content/puzzles
+    - file: content/appendix-puzzles
+    - file: content/appendix-hoare-logic
 
 - caption: "Appendix: On Jupyter Books"
   chapters:

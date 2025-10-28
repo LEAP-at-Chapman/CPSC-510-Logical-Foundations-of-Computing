@@ -8,7 +8,7 @@ Important:
 - Use LLMs for research, but not for writing. 
 - Do not copy LLM-output into a text intended to be read by humans. 
 - When you use LLMs to generate code, make sure that you understand the code.
-- In summary: Use LLMs for learning. Write to show what you learnt.
+- In summary: Use LLMs for your own learning. Write to show what you learnt.
 
 Then we have 11 weeks of teaching (gaps to be filled, resources to be added, etc):
 
@@ -37,6 +37,7 @@ Methodology:
   - The first class of the week (Thursday), I will present the background theory. 
   - As a homework, students install the tool until Tuesday and work through a small example.
   - The second class of the week (Tuesday), we discuss the homework and deepen our understanding.
+  - See also [lecture by lecture](./lecture-by-lecture.md) for details.
 
 ## Some Resources
 
@@ -59,7 +60,7 @@ Important logics that have not been introduced (tbc):
 
 - Linear Logic
 - Quantum Logic
-- Dynamic Logic
+- Propositional Dynamic Logic
 - Description Logics
 - Probabilistic Logics
 - HDC/VSA
