@@ -2,7 +2,7 @@
 
 Author: Alexander Kurz
 
-The purpose of this note is, on the one hand, to introduce the simplest logic that will appear in all other chapters. It is known as [propositional logic](https://en.wikipedia.org/wiki/Propositional_logic), or classical propositional logic (as opposed to variants such as [intuitionistic logic](https://en.wikipedia.org/wiki/Intuitionistic_logic)) or [Boolean logic](https://en.wikipedia.org/wiki/Boolean_algebra) (to honor [George Boole](https://en.wikipedia.org/wiki/George_Boole) and as opposed to other algebraic logics.)
+The purpose of this note is to introduce the simplest logic that will appear throughout the book. It is known as [propositional logic](https://en.wikipedia.org/wiki/Propositional_logic), or classical propositional logic (as opposed to variants such as [intuitionistic logic](https://en.wikipedia.org/wiki/Intuitionistic_logic)) or [Boolean logic](https://en.wikipedia.org/wiki/Boolean_algebra) (to honor [George Boole](https://en.wikipedia.org/wiki/George_Boole) and as opposed to other algebraic logics.)
 
 In class, we used mostly 
 

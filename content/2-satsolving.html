@@ -177,6 +177,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
@@ -661,32 +662,31 @@ c. Backtrack non-chronologically (backjump) to the decision level where the firs
 <section id="early-work">
 <h3>Early Work<a class="headerlink" href="#early-work" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Davis, Martin; Putnam, Hilary (1960). <a class="reference external" href="https://doi.org/10.1145%2F321033.321034">A Computing Procedure for Quantification Theory</a>. Journal of the ACM. 7 (3): 201–215.</p>
+<li><p>Davis, Martin; Putnam, Hilary (1960). <a class="reference external" href="https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory">A Computing Procedure for Quantification Theory</a>. Journal of the ACM. 7 (3): 201–215.</p>
 <ul>
 <li><p>The original resolution based algorithm that also gave rise to Prolog later, via (Robinson 1965).</p></li>
 </ul>
 </li>
-<li><p>Davis, Martin; Logemann, George; Loveland, Donald (1962). <a class="reference external" href="http://portal.acm.org/citation.cfm?doid=368273.368557">A Machine Program for Theorem Proving</a>. Communications of the ACM. 5 (7): 394–397.</p>
+<li><p>Davis, Martin; Logemann, George; Loveland, Donald (1962). <a class="reference external" href="https://scholar.google.com/scholar?q=A+Machine+Program+for+Theorem+Proving">A Machine Program for Theorem Proving</a>. Communications of the ACM. 5 (7): 394–397.</p>
 <ul>
 <li><p>DPLL, also sometimes called DP Backtrack Search.</p></li>
 </ul>
 </li>
-<li><p>Stallman, R. M., &amp; Sussman, G. J. (1977). Forward reasoning and dependency-directed backtracking in a system for computer-aided circuit analysis. Artificial intelligence, 9(2), 135-196. <a class="reference external" href="https://apps.dtic.mil/sti/tr/pdf/ADA035719.pdf">pdf</a></p>
+<li><p>Stallman, R. M., &amp; Sussman, G. J. (1977). <a class="reference external" href="https://scholar.google.com/scholar?q=Forward+reasoning+and+dependency-directed+backtracking+in+a+system+for+computer-aided+circuit+analysis">Forward reasoning and dependency-directed backtracking in a system for computer-aided circuit analysis</a>. Artificial intelligence, 9(2), 135-196.</p>
 <ul>
 <li><p>Widely credited for its <strong>dependency-directed backtracking</strong>.</p></li>
 </ul>
 </li>
-<li><p>Marques-Silva, J. P., &amp; Sakallah, K. A. (1999). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=GRASP%3A+A+search+algorithm+for+propositional+satisfiability&amp;amp;btnG=">GRASP: A search algorithm for propositional satisfiability</a>. IEEE Transactions on Computers, 48(5), 506-521. <a class="reference external" href="https://ieeexplore.ieee.org/iel5/12/16670/00769433.pdf">pdf</a></p>
+<li><p>Marques-Silva, J. P., &amp; Sakallah, K. A. (1999). <a class="reference external" href="https://scholar.google.com/scholar?q=GRASP+A+search+algorithm+for+propositional+satisfiability">GRASP: A search algorithm for propositional satisfiability</a>. IEEE Transactions on Computers, 48(5), 506-521.</p>
 <ul>
 <li><p>Introduces conflict-directed backtracking, an application of dependency-directed backtracking to SAT, and conflict analysis. Later this will be called <strong>conflict-driven clause learning</strong>.</p></li>
 </ul>
 </li>
-<li><p>Moskewicz, M. W., Madigan, C. F., Zhao, Y., Zhang, L., &amp; Malik, S. (2001, June). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Chaff%3A+Engineering+an+efficient+SAT+solver&amp;amp;btnG=">Chaff: Engineering an efficient SAT solver</a>. In Proceedings of the 38th annual Design Automation Conference (pp. 530-535).</p>
+<li><p>Moskewicz, M. W., Madigan, C. F., Zhao, Y., Zhang, L., &amp; Malik, S. (2001, June). <a class="reference external" href="https://scholar.google.com/scholar?q=Chaff+Engineering+an+efficient+SAT+solver">Chaff: Engineering an efficient SAT solver</a>. In Proceedings of the 38th annual Design Automation Conference (pp. 530-535).</p>
 <ul>
 <li><p>Chaff is widely considered the breakthrough SAT implementation. Section 1.2 also contains a good account of DPLL.</p></li>
 </ul>
 </li>
-<li><p>These papers should give you a good background to understand the more recent articles on SAT solvers.</p></li>
 </ul>
 </section>
 <section id="modern-developments">
