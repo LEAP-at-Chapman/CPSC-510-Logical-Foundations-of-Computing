@@ -171,4 +171,8 @@ Applications:
 - [@Scholar: Dafny Smart Contracts](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%22dafny%22+%22smart+contracts%22&btnG=)
 - [@Scholar: Dafny IronFleet](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%22dafny%22+%22IronFleet%22&btnG=)
 - [@ Scholar: Separation logic Facebook](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%22O%27Hearn%22+%22separation+logic%22+%22facebook%22&btnG=)
+  
 ## Suggestions for future work on the book
+
+...
+

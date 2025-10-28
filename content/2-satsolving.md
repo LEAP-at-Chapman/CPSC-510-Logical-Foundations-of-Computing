@@ -245,17 +245,17 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 
 ### Early Work
 
-- Davis, Martin; Putnam, Hilary (1960). [A Computing Procedure for Quantification Theory](https://doi.org/10.1145%2F321033.321034). Journal of the ACM. 7 (3): 201–215. 
+- Davis, Martin; Putnam, Hilary (1960). [A Computing Procedure for Quantification Theory](https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory). Journal of the ACM. 7 (3): 201–215. 
     - The original resolution based algorithm that also gave rise to Prolog later, via (Robinson 1965).
-- Davis, Martin; Logemann, George; Loveland, Donald (1962). [A Machine Program for Theorem Proving](http://portal.acm.org/citation.cfm?doid=368273.368557). Communications of the ACM. 5 (7): 394–397. 
+- Davis, Martin; Logemann, George; Loveland, Donald (1962). [A Machine Program for Theorem Proving](https://scholar.google.com/scholar?q=A+Machine+Program+for+Theorem+Proving). Communications of the ACM. 5 (7): 394–397. 
     - DPLL, also sometimes called DP Backtrack Search.
-- Stallman, R. M., & Sussman, G. J. (1977). Forward reasoning and dependency-directed backtracking in a system for computer-aided circuit analysis. Artificial intelligence, 9(2), 135-196. [pdf](https://apps.dtic.mil/sti/tr/pdf/ADA035719.pdf)
+- Stallman, R. M., & Sussman, G. J. (1977). [Forward reasoning and dependency-directed backtracking in a system for computer-aided circuit analysis](https://scholar.google.com/scholar?q=Forward+reasoning+and+dependency-directed+backtracking+in+a+system+for+computer-aided+circuit+analysis). Artificial intelligence, 9(2), 135-196.
     - Widely credited for its **dependency-directed backtracking**.
-- Marques-Silva, J. P., & Sakallah, K. A. (1999). [GRASP: A search algorithm for propositional satisfiability](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=GRASP%3A+A+search+algorithm+for+propositional+satisfiability&btnG=). IEEE Transactions on Computers, 48(5), 506-521. [pdf](https://ieeexplore.ieee.org/iel5/12/16670/00769433.pdf) 
+- Marques-Silva, J. P., & Sakallah, K. A. (1999). [GRASP: A search algorithm for propositional satisfiability](https://scholar.google.com/scholar?q=GRASP+A+search+algorithm+for+propositional+satisfiability). IEEE Transactions on Computers, 48(5), 506-521. 
     - Introduces conflict-directed backtracking, an application of dependency-directed backtracking to SAT, and conflict analysis. Later this will be called **conflict-driven clause learning**.
-- Moskewicz, M. W., Madigan, C. F., Zhao, Y., Zhang, L., & Malik, S. (2001, June). [Chaff: Engineering an efficient SAT solver](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Chaff%3A+Engineering+an+efficient+SAT+solver&btnG=). In Proceedings of the 38th annual Design Automation Conference (pp. 530-535). 
+- Moskewicz, M. W., Madigan, C. F., Zhao, Y., Zhang, L., & Malik, S. (2001, June). [Chaff: Engineering an efficient SAT solver](https://scholar.google.com/scholar?q=Chaff+Engineering+an+efficient+SAT+solver). In Proceedings of the 38th annual Design Automation Conference (pp. 530-535). 
     - Chaff is widely considered the breakthrough SAT implementation. Section 1.2 also contains a good account of DPLL.
-- These papers should give you a good background to understand the more recent articles on SAT solvers.
+
 
 ### Modern Developments
 

@@ -48,7 +48,7 @@ These ideas have various ramifications in programming and software engineering.
 
 ## Example
 
-Consider the following program.
+Consider the following program, see also [HL-example-1.dfy](https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/src/dafny/HL-exercise-1.dfy).
 ```
 while (x != 0) do z:=z+y;  x:= x-1 done
 ```
@@ -647,11 +647,88 @@ To get a taste of how verification is done in real world programming application
     
     But now see what happens. This conjunction implies $\mathtt z= n\cdot \mathtt y$, which is what we wanted, namely the value of $\mathtt z$ after $n$ eecutions of the loop (remember that $n$ is the value of $\mathtt x$ before the loop was entered).
 
+## Exercises
+
+### Euclidean Algorithm
+
+One of the oldest algorithms still in use is the Euclidean algorithm. We present the simplest version of Euclid's algorithm in three different formalisms. 
+
+In each case prove partial correctness by using an invariant and prove termination by using a measure function.
+
+(Remark: We set up the formal rules of Hoare logic only for the while program, but the method of proving correctness with the help of an invariant also works for recursive programs and rewriting systems.)
+
+#### With a while loop
+
+    function gcd(a, b)
+        while a ≠ b 
+            if a > b
+                a := a − b; 
+            else
+                b := b − a; 
+        return a;
+
+#### In Haskell
+
+    gcd :: Int -> Int -> Int
+    gcd x y | x > y = gcd (x-y) y
+            | x < y = gcd x (y-x)
+            | otherwise = x
+
+#### As a term rewriting system
+
+Let  $(\mathbb N\times \mathbb N,\to)$ be defined as follows:
+
+    (a,b) -> (a-b,b)  if a>b
+    (a,b) -> (a,b-a)  if b>a
+
+
+### Insertion Sort
+
+Which invariant proves that insertion sort
+```
+sort [] = []
+sort n:l  =  insert n (sort l)
+```    
+is correct? 
+
+To answer the question, you may assume that `insert` itself is inserting correctly. 
+
+**Exercise:** What do the following two programs compute? What pre and postconditions can be used to formalise this? Find a loop invariant and use it to prove the partial correctness of this program.
+
+1)
+```
+while (i < 100 ) do
+    y := y+x
+    i := i+1  
+done
+```
+2)
+```
+while  (i < k ) do
+    i := i+1 
+    y := y*i
+done
+```
+
+#### Euclid Revisited
+
+The next exercise is essentially the same as the one above on Euclid's algorithm. But this time you also need to point out which rule of Hoare logic is used to justify which step in the reasoning.
+
+Given positive integers $n,a$, we write $n|a$ for $n$ divides $a$.
+
+Using the rules of Hoare logic, show that $\{n|a \ \wedge \ n|b\}$ is an invariant of
+
+    while a ≠ b 
+        if a > b
+            a := a − b; 
+        else
+            b := b − a; 
+
+Conclude that the algorithm computes the greates common divisor of $a$ and $b$.
 
 [^looksright]: The problem with $\color{blue}{\{\mathtt{z=x*y}\}}$ is that it only gives us what we want if we take for $\mathtt x$ the value of $\mathtt x$ *before* the computation and for $\mathtt z$ the value of $\mathtt z$ *after* the computation. On the other hand, if we take for both variables their values after the computation, as we should (why?), the condition $\color{blue}{\{\mathtt{z=x*y}\}}$ is false (for almost all initial values of the variables).
 
 [^equals]: The rule of logic that allows us to replace equals by equals is often called the "congruence rule" of equational reasoning. 
-
 
 [^xis0]: The condition $\mathtt B$ that forces to execute the loop is in our example `x!=0`, that is, $\neg(x=0)$. Therefore $\neg\mathtt B$ is $\neg\neg(x=0)$, which is $x=0$.
 
