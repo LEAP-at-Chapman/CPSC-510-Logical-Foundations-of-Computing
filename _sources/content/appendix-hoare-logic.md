@@ -48,7 +48,7 @@ These ideas have various ramifications in programming and software engineering.
 
 ## Example
 
-Consider the following program, see also [HL-example-1.dfy](../src/dafny/HL-example-1.dfy).
+Consider the following program, see also [HL-example-1.dfy](https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/src/dafny/HL-exercise-1.dfy).
 ```
 while (x != 0) do z:=z+y;  x:= x-1 done
 ```
