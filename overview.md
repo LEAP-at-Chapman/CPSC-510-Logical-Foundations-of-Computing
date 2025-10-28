@@ -12,18 +12,18 @@ Important:
 
 Then we have 11 weeks of teaching (gaps to be filled, resources to be added, etc):
 
-| Week | Logic | Application (Tool) | Algorithm | Application^2 | Comments | Author | My Notes |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|2| propositional logic | SAT solver [(minisat)](https://github.com/niklasso/minisat) | semantic tableaux | satisfiability, validity | | Jake | [1](https://hackmd.io/@alexhkurz/BkZofOIcxl)
-|3 | predicate logic 1 | Logic Programming [(SWI-Prolog)](https://www.swi-prolog.org/) | unification, resolution | search with backtracking, data base querying | [[1]](https://book.simply-logical.space/src/simply-logical.html), [[2]](https://swish.swi-prolog.org/) | Brandon | [1](https://github.com/LEAP-at-Chapman/Intro-to-Logic-Programming)
-|4| predicate logic 2 | Constraint Solving [(MiniZinc)](https://www.minizinc.org/) | constraint solving | program synthesis, automated bug fixing | | Matthew |
+| Week | Logic | Application (Tool) | Algorithm | Application^2 | Comments | Author | 2nd Reader |  My Notes |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|2| propositional logic | SAT solver [(minisat)](https://github.com/niklasso/minisat) | semantic tableaux | satisfiability, validity | | Jake | Jack | [1](https://hackmd.io/@alexhkurz/BkZofOIcxl)
+|3 | predicate logic 1 | Logic Programming [(SWI-Prolog)](https://www.swi-prolog.org/) | unification, resolution | search with backtracking, data base querying | [[1]](https://book.simply-logical.space/src/simply-logical.html), [[2]](https://swish.swi-prolog.org/) | Brandon | Khoa | [1](https://github.com/LEAP-at-Chapman/Intro-to-Logic-Programming)
+|4| predicate logic 2 | Constraint Solving [(MiniZinc)](https://www.minizinc.org/) | constraint solving | program synthesis, automated bug fixing | | Matthew | Jake 
 |5| predicate logic 3 | SMT solving [(Z3)](https://github.com/Z3Prover/z3) | SMT solving | program verification, model checking | | Wayne |
 |6| modal logic | [^ml] | SCAN | computing first-order correspondents | [[1]](https://rkirsling.github.io/modallogic/), [[2]](https://www.irit.fr/Lotrec/) | Alexander |
-|7| temporal logic | [Spin](https://spinroot.com/spin/whatispin.html) | LTL model checking | distributed systems, Needham-Schroeder Key Exchange | | Jack |
-|8| epistemic logic | [SMCDEL](https://w4eg.de/malvin/illc/smcdelweb/index.html) | | social networks | [[1]](https://vezwork.github.io/modallogic/?model=;AS?formula=_) | John |
-|9| Hoare logic | [Dafny](https://github.com/dafny-lang/dafny?tab=readme-ov-file#try-dafny) | | program verification | [[1]](https://dafny.org/dafny/OnlineTutorial/guide), [[2]](https://www.youtube.com/watch?v=oLS_y842fMc), | Alex |
+|7| temporal logic | [Spin](https://spinroot.com/spin/whatispin.html) | LTL model checking | distributed systems, Needham-Schroeder Key Exchange | | Jack | John |
+|8| epistemic logic | [SMCDEL](https://w4eg.de/malvin/illc/smcdelweb/index.html) | | social networks | [[1]](https://vezwork.github.io/modallogic/?model=;AS?formula=_) | John | Brandon
+|9| Hoare logic | [Dafny](https://github.com/dafny-lang/dafny?tab=readme-ov-file#try-dafny) | | program verification | [[1]](https://dafny.org/dafny/OnlineTutorial/guide), [[2]](https://www.youtube.com/watch?v=oLS_y842fMc), | Alex | Matt
 |10| higher order logic | [Isabelle/HOL](https://isabelle.in.tum.de/) | | | [Concrete Semantics](http://www.concrete-semantics.org/) | Spencer |
-|11| dependent type theory | [Lean](https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic) | type inference | proofs as programs | | Khoa |
+|11| dependent type theory | [Lean](https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic) | type inference | proofs as programs | | Khoa | Spencer |
 
 [^ml]: Modal logic has too many applications to pick just one but see temporal logic and epistemic logic below for two examples. There are algorithms to compute corespondents. For example, SCAN has implementations that are publicly available [here](https://resources.mpi-inf.mpg.de/departments/rg1/software/scan/basic_form.html) and [here](https://resources.mpi-inf.mpg.de/departments/rg1/software/scan/corr_form.html) but they were not developed into advanced software tools. So this item will be the only one that is not primarily software tool based. I include it because of the central importance of modal logic in the landscape of computational logics.
 
