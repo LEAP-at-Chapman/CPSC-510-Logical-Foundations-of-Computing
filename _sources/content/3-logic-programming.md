@@ -115,7 +115,65 @@ X = harriet ;
 
 Here, Prolog begins by attempting to satisfy the rule for `grandparent/2`. It first matches `parent(_32210, _33508)` and discovers that arthur is a parent of george. Then it checks whether george is a parent of richard, which succeeds. As a result, Prolog concludes that arthur is indeed a grandparent of richard. It then continues to find the other grandparent to see if they are present which is found to be harriet. The [trace] output exposes the resolution process, where Prolog recursively attempts and verifies subgoals until a consistent solution is found. If we were to continue with this trace it would search the rest of the database to see if any other combinations would lead to the `grandparent/2` fact being true and when it fails it will just have the two grandparents that are present, arthur and harriet.
 
+### Basic Arithmetic
+
+While Prolog is primarily a symbolic reasoning language, it also supports arithmetic operations and numerical comparisons. Unlike traditional imperative languages where expressions are directly evaluated, Prolog treats arithmetic as part of its logical inference system. Computation occurs through the evaluation operator `is`, which forces the right-hand expression to be evaluated numerically before comparison or assignment.
+
+For example here are some simple relationships between numbers:
+
+```prolog
+% ---------- Arithmetic Facts and Rules ----------
+
+% The square of a number
+square(X, Y) :- Y is X * X.
+
+% The sum of two numbers
+sum(A, B, Result) :- Result is A + B.
+
+% The average of two numbers
+average(A, B, Avg) :- Avg is (A + B) / 2.
+
+% Check if one number is greater than another
+greater_than(A, B) :- A > B.
+
+```
+
+In this example, Prolog uses the `is` operator to evaluate arithmetic expressions. The left-hand side (like `Y or Result`) becomes bound to the numeric result of the right-hand expression. Arithmetic comparisons such as `>, <, >=, and =<` can then be used within rules to reason about numerical relationships.
+
+You can also do this directly within the terminal of swi-prolog. for example:
+
+```prolog
+?- Y is 3 +5.
+Y = 8.
+
+?- Y is 5*8.
+Y = 40.
+
+?- Y is 10/2.
+Y = 5.
+```
+
+You could also using our example from above run querys like these:
+
+```prolog
+?- square(4, Y).
+Y = 16.
+
+?- sum(5, 7, R).
+R = 12.
+
+?- average(10, 20, A).
+A = 15.0.
+
+?- greater_than(8, 5).
+true.
+```
+What's interesting is that prolog doesn’t "calculate" in the way procedural languages do, it evaluates logical truths involving numeric expressions. When you ask ?- square(4, Y)., Prolog checks if there exists a value of Y such that Y is 4 * 4 can be satisfied. Once the arithmetic succeeds, it binds Y to the result 16.
+
+
+
 
 ## References
 1. https://swish.swi-prolog.org/p/dselman.swinb
 2. https://www.geeksforgeeks.org/dsa/8-queen-problem/
+3. https://www.swi-prolog.org/pldoc/man?section=arith

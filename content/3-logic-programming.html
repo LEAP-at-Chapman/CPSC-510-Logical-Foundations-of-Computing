@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -175,6 +175,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Logic Programming with Prolog</a></li>
@@ -403,7 +404,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example">First Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">Intro Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">Intro Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-arithmetic">Basic Arithmetic</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -519,12 +523,60 @@ X = harriet ;
 </pre></div>
 </div>
 <p>Here, Prolog begins by attempting to satisfy the rule for <code class="docutils literal notranslate"><span class="pre">grandparent/2</span></code>. It first matches <code class="docutils literal notranslate"><span class="pre">parent(_32210,</span> <span class="pre">_33508)</span></code> and discovers that arthur is a parent of george. Then it checks whether george is a parent of richard, which succeeds. As a result, Prolog concludes that arthur is indeed a grandparent of richard. It then continues to find the other grandparent to see if they are present which is found to be harriet. The [trace] output exposes the resolution process, where Prolog recursively attempts and verifies subgoals until a consistent solution is found. If we were to continue with this trace it would search the rest of the database to see if any other combinations would lead to the <code class="docutils literal notranslate"><span class="pre">grandparent/2</span></code> fact being true and when it fails it will just have the two grandparents that are present, arthur and harriet.</p>
+<section id="basic-arithmetic">
+<h3>Basic Arithmetic<a class="headerlink" href="#basic-arithmetic" title="Link to this heading">#</a></h3>
+<p>While Prolog is primarily a symbolic reasoning language, it also supports arithmetic operations and numerical comparisons. Unlike traditional imperative languages where expressions are directly evaluated, Prolog treats arithmetic as part of its logical inference system. Computation occurs through the evaluation operator <code class="docutils literal notranslate"><span class="pre">is</span></code>, which forces the right-hand expression to be evaluated numerically before comparison or assignment.</p>
+<p>For example here are some simple relationships between numbers:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% ---------- Arithmetic Facts and Rules ----------</span>
+
+<span class="c1">% The square of a number</span>
+<span class="nf">square</span><span class="p">(</span><span class="nv">X</span><span class="p">,</span> <span class="nv">Y</span><span class="p">)</span> <span class="p">:-</span> <span class="nv">Y</span> <span class="o">is</span> <span class="nv">X</span> <span class="o">*</span> <span class="nv">X</span><span class="p">.</span>
+
+<span class="c1">% The sum of two numbers</span>
+<span class="nf">sum</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span><span class="p">,</span> <span class="nv">Result</span><span class="p">)</span> <span class="p">:-</span> <span class="nv">Result</span> <span class="o">is</span> <span class="nv">A</span> <span class="o">+</span> <span class="nv">B</span><span class="p">.</span>
+
+<span class="c1">% The average of two numbers</span>
+<span class="nf">average</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span><span class="p">,</span> <span class="nv">Avg</span><span class="p">)</span> <span class="p">:-</span> <span class="nv">Avg</span> <span class="o">is</span> <span class="p">(</span><span class="nv">A</span> <span class="o">+</span> <span class="nv">B</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.</span>
+
+<span class="c1">% Check if one number is greater than another</span>
+<span class="nf">greater_than</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span><span class="p">)</span> <span class="p">:-</span> <span class="nv">A</span> <span class="o">&gt;</span> <span class="nv">B</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>In this example, Prolog uses the <code class="docutils literal notranslate"><span class="pre">is</span></code> operator to evaluate arithmetic expressions. The left-hand side (like <code class="docutils literal notranslate"><span class="pre">Y</span> <span class="pre">or</span> <span class="pre">Result</span></code>) becomes bound to the numeric result of the right-hand expression. Arithmetic comparisons such as <code class="docutils literal notranslate"><span class="pre">&gt;,</span> <span class="pre">&lt;,</span> <span class="pre">&gt;=,</span> <span class="pre">and</span> <span class="pre">=&lt;</span></code> can then be used within rules to reason about numerical relationships.</p>
+<p>You can also do this directly within the terminal of swi-prolog. for example:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="s s-Atom">?-</span> <span class="nv">Y</span> <span class="o">is</span> <span class="mi">3</span> <span class="o">+</span><span class="mf">5.</span>
+<span class="nv">Y</span> <span class="o">=</span> <span class="mf">8.</span>
+
+<span class="s s-Atom">?-</span> <span class="nv">Y</span> <span class="o">is</span> <span class="mi">5</span><span class="o">*</span><span class="mf">8.</span>
+<span class="nv">Y</span> <span class="o">=</span> <span class="mf">40.</span>
+
+<span class="s s-Atom">?-</span> <span class="nv">Y</span> <span class="o">is</span> <span class="mi">10</span><span class="o">/</span><span class="mf">2.</span>
+<span class="nv">Y</span> <span class="o">=</span> <span class="mf">5.</span>
+</pre></div>
+</div>
+<p>You could also using our example from above run querys like these:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="s s-Atom">?-</span> <span class="nf">square</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="nv">Y</span><span class="p">).</span>
+<span class="nv">Y</span> <span class="o">=</span> <span class="mf">16.</span>
+
+<span class="s s-Atom">?-</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="nv">R</span><span class="p">).</span>
+<span class="nv">R</span> <span class="o">=</span> <span class="mf">12.</span>
+
+<span class="s s-Atom">?-</span> <span class="nf">average</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="nv">A</span><span class="p">).</span>
+<span class="nv">A</span> <span class="o">=</span> <span class="mf">15.0</span><span class="p">.</span>
+
+<span class="s s-Atom">?-</span> <span class="nf">greater_than</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">).</span>
+<span class="s s-Atom">true</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>What’s interesting is that prolog doesn’t “calculate” in the way procedural languages do, it evaluates logical truths involving numeric expressions. When you ask ?- square(4, Y)., Prolog checks if there exists a value of Y such that Y is 4 * 4 can be satisfied. Once the arithmetic succeeds, it binds Y to the result 16.</p>
+</section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>https://swish.swi-prolog.org/p/dselman.swinb</p></li>
 <li><p>https://www.geeksforgeeks.org/dsa/8-queen-problem/</p></li>
+<li><p>https://www.swi-prolog.org/pldoc/man?section=arith</p></li>
 </ol>
 </section>
 </section>
@@ -603,7 +655,10 @@ X = harriet ;
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example">First Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">Intro Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">Intro Examples</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-arithmetic">Basic Arithmetic</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>

@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -177,6 +177,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
@@ -400,7 +401,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-and-introduction-sec0-10-1">10.1 Idea and Introduction {#sec0-10-1}</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory-sec0-10-2">10.2 Basic Theory {#sec0-10-2}</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-logic">10.2.1 First Order Logic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-logic">10.2.2 Higher Order Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-type-system">10.2.2 (Explicit) Type System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-abstraction">10.2.3 Lambda Abstraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-of-inference">10.2.4 Rules of Inference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-schemata">10.2.5 Axiom Schemata</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-installation-first-example-first-exercise-sec0-10-3">10.3 Tool (Installation, First Example, First Exercise) {#sec0-10-3}</a><ul class="nav section-nav flex-column">
@@ -415,7 +419,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples-sec0-10-4">10.4 Introductory Examples {#sec0-10-4}</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools-sec0-10-5">10.5 The Landscape of Tools {#sec0-10-5}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools-sec0-10-5">10.5 The Landscape of Tools {#sec0-10-5}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-proof-assistants">10.5.1 Interactive Proof Assistants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-higher-order-prover">10.5.2 Automated Higher Order Prover</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms-sec0-10-6">10.6 Algorithms {#sec0-10-6}</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions-sec0-10-7">10.7 Benchmark and Competitions {#sec0-10-7}</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry-sec0-10-8">10.8 Applications in Industry {#sec0-10-8}</a></li>
@@ -514,17 +522,35 @@ document.write(`
 <h3>10.2.1 First Order Logic<a class="headerlink" href="#first-order-logic" title="Link to this heading">#</a></h3>
 <p>WIP
 <span class="math notranslate nohighlight">\( \forall x \)</span> and <span class="math notranslate nohighlight">\( \exists x\)</span> where x is a variable/individual element</p>
+<p>In higher order logic, we extend this to <span class="math notranslate nohighlight">\( \forall f(x) \)</span> and <span class="math notranslate nohighlight">\( \exists f(x) \)</span>, where x is a function that takes x as an input</p>
 </section>
-<section id="higher-order-logic">
-<h3>10.2.2 Higher Order Logic<a class="headerlink" href="#higher-order-logic" title="Link to this heading">#</a></h3>
-<p>WIP
-<span class="math notranslate nohighlight">\( \forall f(x) \)</span> and <span class="math notranslate nohighlight">\( \exists f(x) \)</span> where x is a function that takes x as an input</p>
+<section id="explicit-type-system">
+<h3>10.2.2 (Explicit) Type System<a class="headerlink" href="#explicit-type-system" title="Link to this heading">#</a></h3>
+<p>WIP</p>
+<!-- – Andrews (2002) Sections 1–2 (“Type theory basics”)
+– Church (1940) A Formulation of the Simple Theory of Types 
+Church Text is more relevant to history section-->
+</section>
+<section id="lambda-abstraction">
+<h3>10.2.3 Lambda Abstraction<a class="headerlink" href="#lambda-abstraction" title="Link to this heading">#</a></h3>
+<p>WIP</p>
+<!-- Read:
+– Paulson, Logic and Computation, ch. 2
+– Nipkow et al., Concrete Semantics, §2.1–2.3 -->
+</section>
+<section id="rules-of-inference">
+<h3>10.2.4 Rules of Inference<a class="headerlink" href="#rules-of-inference" title="Link to this heading">#</a></h3>
 <p>The basic rules of inference of <span class="math notranslate nohighlight">\(\mathcal{F}^w\)</span>, where <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a system of <span class="math notranslate nohighlight">\(\mathcal{w}\)</span>-order logic which has all finite order logics as subsystems:</p>
 <ol class="arabic simple">
 <li><p><strong>Modus Ponens</strong> From <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(A \to B\)</span> to infer <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
 <li><p><strong>Generalization</strong> From <span class="math notranslate nohighlight">\(A\)</span> to infer <span class="math notranslate nohighlight">\(\forall x\,A\)</span>, where x is a variable of any type</p></li>
 </ol>
-<p>In addition, the axiom schemata of <span class="math notranslate nohighlight">\(\mathcal{F}^w\)</span> are:</p>
+<!-- *Adapted from Andrews, 2002*[^andrews2002] using modern logic convention. -->
+<p><em>Adapted from</em> <span id="id1">[<a class="reference internal" href="markdown.html#id39" title="Peter B. Andrews. An Introduction to Mathematical Logic and Type Theory. Springer Dordrecht, 2002. ISBN 978-1-4020-0763-7. URL: https://link.springer.com/book/10.1007/978-94-015-9934-4, doi:https://doi.org/10.1007/978-94-015-9934-4.">Andrews, 2002</a>]</span> using modern logic convention.</p>
+</section>
+<section id="axiom-schemata">
+<h3>10.2.5 Axiom Schemata<a class="headerlink" href="#axiom-schemata" title="Link to this heading">#</a></h3>
+<p>The axiom schemata of <span class="math notranslate nohighlight">\(\mathcal{F}^w\)</span> are:</p>
 <ol class="arabic">
 <li><p><span class="math notranslate nohighlight">\(A \lor A \to A\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(A \to (B \lor A)\)</span></p></li>
@@ -538,54 +564,40 @@ document.write(`
 <p>This means that if <span class="math notranslate nohighlight">\((A \lor B)\)</span> holds for all <span class="math notranslate nohighlight">\(x\)</span>, and <span class="math notranslate nohighlight">\(A\)</span> does not depend on <span class="math notranslate nohighlight">\(x\)</span>, then either <span class="math notranslate nohighlight">\(A\)</span> holds or <span class="math notranslate nohighlight">\(B\)</span> holds for all <span class="math notranslate nohighlight">\(x\)</span>.</p>
 </li>
 <li><p><strong>Comprehension Axioms</strong></p>
-<p><em>0-ary case (a proposition/Boolean) that names a theorem/statement</em>.<br />
+<ul class="simple">
+<li><p><em>0-ary case (a proposition/Boolean) that names a theorem/statement</em>.<br />
 <span class="math notranslate nohighlight">\( \exists u_{\mathbf{o}}\;[\,u_{\mathbf{o}} \leftrightarrow A\,] \)</span>
-where <span class="math notranslate nohighlight">\(u_{\mathbf{o}}\)</span> does not occur free in <span class="math notranslate nohighlight">\(A\)</span>.</p>
-<p><em>n-ary case (a predicate/function of arity n) that names a property/relation</em>.<br />
+where <span class="math notranslate nohighlight">\(u_{\mathbf{o}}\)</span> does not occur free in <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+<li><p><em>n-ary case (a predicate/function of arity n) that names a property/relation</em>.<br />
 <span class="math notranslate nohighlight">\(\exists u_{(\tau_1\ldots\tau_n)}\;
- \forall v^{1}_{\tau_1}\cdots \forall v^{n}_{\tau_n}\,
- \big[\,u_{(\tau_1\ldots\tau_n)}(v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n})
- \leftrightarrow A\,\big]\)</span>
-where <span class="math notranslate nohighlight">\(u_{(\tau_1\ldots\tau_n)}\)</span> does not occur free in <span class="math notranslate nohighlight">\(A\)</span>, and <span class="math notranslate nohighlight">\(v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n}\)</span> are distinct variables.</p>
-<p>These axioms allow us to define new symbols that stand for existing formulas.<br />
+\forall v^{1}_{\tau_1}\cdots \forall v^{n}_{\tau_n}\,
+\big[\,u_{(\tau_1\ldots\tau_n)}(v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n})
+\leftrightarrow A\,\big]\)</span>
+where <span class="math notranslate nohighlight">\(u_{(\tau_1\ldots\tau_n)}\)</span> does not occur free in <span class="math notranslate nohighlight">\(A\)</span>, and <span class="math notranslate nohighlight">\(v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n}\)</span> are distinct variables.</p></li>
+<li><p>These axioms allow us to define new symbols that stand for existing formulas.<br />
 In the 0-ary case, a new propositional constant <span class="math notranslate nohighlight">\(u_{\mathbf{o}}\)</span> can name a statement <span class="math notranslate nohighlight">\(A\)</span>.<br />
-In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(u_{(\tau_1\ldots\tau_n)}\)</span> can be introduced so that <span class="math notranslate nohighlight">\(u(v^1,\ldots,v^n)\)</span> is true exactly when <span class="math notranslate nohighlight">\(A\)</span> holds for those arguments.</p>
+In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(u_{(\tau_1\ldots\tau_n)}\)</span> can be introduced so that <span class="math notranslate nohighlight">\(u(v^1,\ldots,v^n)\)</span> is true exactly when <span class="math notranslate nohighlight">\(A\)</span> holds for those arguments.</p></li>
+</ul>
+</li>
+<li><p><strong>Axioms of Extensionality</strong></p>
+<ul class="simple">
+<li><p><em>0-ary case (a proposition/Boolean) that names a theorem/statement</em>.<br />
+<span class="math notranslate nohighlight">\((x_{\mathbf{o}} \leftrightarrow y_{\mathbf{o}}) \to (x_{\mathbf{o}} = y_{\mathbf{o}})\)</span></p></li>
+<li><p><em>n-ary case (a predicate/function of arity n) that names a property/relation</em>.<br />
+<span class="math notranslate nohighlight">\(\forall w^{1}_{\tau_1} \ldots \forall w^{n}_{\tau_n} [(x_{(\tau_1 \ldots \tau_n)}w^{1}_{\tau_1}\ldots w^{n}_{\tau_n}) \leftrightarrow (y_{(\tau_1 \dots \tau_n)} w^{1}_{\tau_1} \ldots w^{n}_{\tau_n})] \to (x_{(\tau_1 \ldots \tau_n)} = y_{(\tau_1 \ldots \tau_n)}) \)</span></p></li>
+<li><p>These axioms state that two expressions are equal if and only if they behave identically in that their output result is the same in all evaluations. This formalizes the idea that in higher order logic, equality is extensional (based on meaning and behavior) rather than syntactic (based on form).</p></li>
+</ul>
 </li>
 </ol>
-<!-- 6) **Comprehension Axioms**
-    - *0-ary case (a proposition/Boolean) that names a theorem/statement*
-      $$
-        \exists u_{\mathbf{o}}\,[u_{\mathbf{o}} \leftrightarrow A]
-      $$
-      where $u_{\mathbf{o}}$ does not occur free in $A$.  
-
-    <br>
-
-    - *n-ary case (a predicate/function of arity n) that names a property/relation*
-    $$
-    \exists u_{(\tau_1\ldots\tau_n)}\; \forall v^{1}_{\tau_1}\cdots \forall v^{n}_{\tau_n}\,
-    \big[\,u_{(\tau_1\ldots\tau_n)}\,v^{1}_{\tau_1}\cdots v^{n}_{\tau_n}\;\leftrightarrow\;A\,\big]
-    $$
-    where $u_{(\tau_1\ldots\tau_n)}$ does not occur free in $A$, and $v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n}$ are distinct variables.
-    
-    <br>
-
-    These axioms allow us to define new symbols that stand for existing formulas. 
-    In the 0-ary case, a new propositional constant $u_{\mathbf{o}}$ can name a statement $A$. 
-    In the n-ary case, a new predicate $u_{(\tau_1\ldots\tau_n)}$ can be introduced so that $u(v^1,\ldots,v^n)$ is true exactly when $A$ holds for those arguments -->
-<ol class="arabic simple" start="7">
-<li><p><strong>Axioms of Extensionality</strong>
-TODO</p></li>
-</ol>
-<p><em>Adapted from Andrews, 2002</em><a class="footnote-reference brackets" href="#andrews2002" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> using modern logic convention.</p>
-<!-- *Adapted from* {cite}`Andrews2002` using modern logic convention. -->
+<!-- *Adapted from Andrews, 2002*[^andrews2002] using modern logic convention. -->
+<p><em>Adapted from</em> <span id="id2">[<a class="reference internal" href="markdown.html#id39" title="Peter B. Andrews. An Introduction to Mathematical Logic and Type Theory. Springer Dordrecht, 2002. ISBN 978-1-4020-0763-7. URL: https://link.springer.com/book/10.1007/978-94-015-9934-4, doi:https://doi.org/10.1007/978-94-015-9934-4.">Andrews, 2002</a>]</span> using modern logic convention.</p>
+<!-- [^andrews2002]: Andrews, *An Introduction to Mathematical Logic and Type Theory*, Springer 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4) -->
 </section>
 </section>
 <section id="tool-installation-first-example-first-exercise-sec0-10-3">
 <h2>10.3 Tool (Installation, First Example, First Exercise) {#sec0-10-3}<a class="headerlink" href="#tool-installation-first-example-first-exercise-sec0-10-3" title="Link to this heading">#</a></h2>
 <section id="installation">
 <h3>10.3.1 Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
-<p>WIP</p>
 <!-- Looks like isabelle is a program we can just download normally via exe/dmg etc instead of messing around with command line or using `apt/brew` -->
 <p><a class="reference external" href="https://isabelle.in.tum.de/">Installation Link for Isabelle</a></p>
 <!-- probably have detailed walkthrough for windows, macos, and ubuntu with pictures etc all that with pictures and all that pretty stuff (remove if it results in the chapter being too long) -->
@@ -645,6 +657,7 @@ TODO</p></li>
 </section>
 <section id="first-exercise">
 <h3>10.3.3 First Exercise<a class="headerlink" href="#first-exercise" title="Link to this heading">#</a></h3>
+<!-- do not need to have the explicit answer -->
 <p>For the first exercise, we will be proving the associative and commutative properties of a custom <code class="docutils literal notranslate"><span class="pre">add</span></code> function in Isabelle. This exercise comes from Exercise 2.2 of <a class="reference external" href="http://www.concrete-semantics.org/Exercises/exercises.pdf">Concrete Semantics Exercises</a></p>
 <!-- i need to change this to a footnote or something that links to references at the end -->
 <p>WIP - i’m still porting over my code in isabelle and want to refine the explanations as well as make it easy to follow and understand</p>
@@ -763,51 +776,6 @@ The expression simplifies to Suc (…) = Suc (…) and completes the inductive s
 <span class="k">qed</span>
 </pre></div>
 </div>
-<!-- This follows the same general format for inductive proofs
-```isabelle
-lemma add_0_right: "add m 0 = m"
-proof(induction m)
-  case 0
-
-``` -->
-<!-- Case 0 is the base case. In this instance, it means that we will set m = 0. Therefore, we will get `add 0 0 = 0` which is true.
-  show ?case by simp
-  (* Base: add 0 0 = 0 by add.simps(1) *)
-next
-  case (Suc m)
-  (* 
-  IH: add m 0 = m
-  Goal: add (Suc m) 0 = Suc m.
-  Expand the LHS with the recursive clause, then use the IH. 
-  *)
-  show ?case by (simp add: Suc.IH)
-  (* Step: add (Suc m) 0 = Suc (add m 0) by add.simps(2), then = Suc m by IH *)
-qed
-``` -->
-<!-- ##### add_Suc_rght Proof
-
-```isabelle
-lemma add_Suc_right: "add m (Suc n) = Suc (add m n)"
-proof(induction m)
-  case 0
-  (* 
-  Goal: add 0 (Suc n) = Suc (add 0 n).
-  By add 0 x = x, both sides become Suc n.
-  *)
-  show ?case by simp
-  (* Base: add 0 (Suc n) = Suc n and Suc (add 0 n) = Suc n *)
-next
-  case (Suc m)
-  (*
-  IH: add m (Suc n) = Suc (add m n)
-  Goal: add (Suc m) (Suc n) = Suc (add (Suc m) n).
-  Expand LHS with add.simps, then use IH, then fold once.
-  *)
-  show ?case by (simp add: Suc.IH)
-  (* Step: add (Suc m) (Suc n) = Suc (add m (Suc n)) (def), then by IH = Suc (Suc (add m n)), 
-  and simp recognizes that equals Suc (add (Suc m) n) via the def again *)
-qed
-``` -->
 <p>With the helper lemmas proven, we will use them to prove the commutative property</p>
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_comm</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m n = add n m&quot;</span>
 <span class="k">proof</span><span class="w"> </span><span class="o">(</span><span class="n">induction</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
@@ -822,14 +790,29 @@ qed
 </pre></div>
 </div>
 <p>where we use the add_0_right lemma in the base case and then the add_Suc_right lemma in the inductive step.</p>
+<p><em>This exercise was provided by Exercise 2.2 in <span id="id3">[<a class="reference internal" href="markdown.html#id41">Tobias Nipkow, 2023</a>]</span></em></p>
 </section>
 </section>
 </section>
 <section id="introductory-examples-sec0-10-4">
 <h2>10.4 Introductory Examples {#sec0-10-4}<a class="headerlink" href="#introductory-examples-sec0-10-4" title="Link to this heading">#</a></h2>
+<!-- need to talk to Kurz about what should be in first exmaple, first exercise, and in introductory examples -->
+<!-- show something interesting about tool, logic, etc and can be digested and understood with minimum experience -->
 </section>
 <section id="the-landscape-of-tools-sec0-10-5">
 <h2>10.5 The Landscape of Tools {#sec0-10-5}<a class="headerlink" href="#the-landscape-of-tools-sec0-10-5" title="Link to this heading">#</a></h2>
+<p>WIP</p>
+<section id="interactive-proof-assistants">
+<h3>10.5.1 Interactive Proof Assistants<a class="headerlink" href="#interactive-proof-assistants" title="Link to this heading">#</a></h3>
+<p>HOL4 (classic HOL)</p>
+<p>Coq (constructive higher-order/type theory)</p>
+<p>Lean 4 (modern dependent/HOL hybrid)</p>
+</section>
+<section id="automated-higher-order-prover">
+<h3>10.5.2 Automated Higher Order Prover<a class="headerlink" href="#automated-higher-order-prover" title="Link to this heading">#</a></h3>
+<p>Leo III</p>
+<p>Satallax</p>
+</section>
 </section>
 <section id="algorithms-sec0-10-6">
 <h2>10.6 Algorithms {#sec0-10-6}<a class="headerlink" href="#algorithms-sec0-10-6" title="Link to this heading">#</a></h2>
@@ -859,19 +842,10 @@ qed
 <li><p><a class="reference external" href="https://logic.berkeley.edu/colloquium/MossSlides.pdf">Syllogism Slides from Nate Moss</a></p></li>
 </ul>
 <!-- - [Andrews - An Introduction to Mathematical Logic and Type Theory](https://link.springer.com/book/10.1007/978-94-015-9934-4) -->
-<ul class="simple">
-<li><p><a id="ref-andrews2002">[1]</a> Andrews, <em>An Introduction to Mathematical Logic and Type Theory</em>, 2002. <a class="reference external" href="https://link.springer.com/book/10.1007/978-94-015-9934-4">Springer Link</a></p></li>
-</ul>
+<!-- - <a id="ref-andrews2002">[1]</a> Andrews, *An Introduction to Mathematical Logic and Type Theory*, 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4) -->
 </section>
 <section id="suggestions-for-future-work-sec0-10-13">
 <h2>10.13 Suggestions for Future Work {#sec0-10-13}<a class="headerlink" href="#suggestions-for-future-work-sec0-10-13" title="Link to this heading">#</a></h2>
-<hr class="footnotes docutils" />
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="andrews2002" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>Andrews, <em>An Introduction to Mathematical Logic and Type Theory</em>, Springer 2002. <a class="reference external" href="https://link.springer.com/book/10.1007/978-94-015-9934-4">Springer Link</a></p>
-</aside>
-</aside>
 </section>
 </section>
 
@@ -944,7 +918,10 @@ qed
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-and-introduction-sec0-10-1">10.1 Idea and Introduction {#sec0-10-1}</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory-sec0-10-2">10.2 Basic Theory {#sec0-10-2}</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-logic">10.2.1 First Order Logic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-logic">10.2.2 Higher Order Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-type-system">10.2.2 (Explicit) Type System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-abstraction">10.2.3 Lambda Abstraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-of-inference">10.2.4 Rules of Inference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-schemata">10.2.5 Axiom Schemata</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-installation-first-example-first-exercise-sec0-10-3">10.3 Tool (Installation, First Example, First Exercise) {#sec0-10-3}</a><ul class="nav section-nav flex-column">
@@ -959,7 +936,11 @@ qed
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples-sec0-10-4">10.4 Introductory Examples {#sec0-10-4}</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools-sec0-10-5">10.5 The Landscape of Tools {#sec0-10-5}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools-sec0-10-5">10.5 The Landscape of Tools {#sec0-10-5}</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-proof-assistants">10.5.1 Interactive Proof Assistants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-higher-order-prover">10.5.2 Automated Higher Order Prover</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms-sec0-10-6">10.6 Algorithms {#sec0-10-6}</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions-sec0-10-7">10.7 Benchmark and Competitions {#sec0-10-7}</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry-sec0-10-8">10.8 Applications in Industry {#sec0-10-8}</a></li>

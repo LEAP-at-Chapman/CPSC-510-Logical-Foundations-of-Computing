@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -177,6 +177,7 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
@@ -461,8 +462,8 @@ Author: Alexander Kurz</p>
 <p>There is a lot to say here, but to present the main ideas as quickly as possible I would proceed as follows (see Chapters 3.1 and 3.2 of the book referenced below).</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(Prop\)</span> be a set of ‘propositional variables’. The language of modal logic is the smallest set of ‘formulas’ containing <span class="math notranslate nohighlight">\(Prop\)</span> and closed under <span class="math notranslate nohighlight">\(\wedge\)</span> , <span class="math notranslate nohighlight">\(\vee\)</span>, <span class="math notranslate nohighlight">\(\neg\)</span>, <span class="math notranslate nohighlight">\(\Box\)</span>, <span class="math notranslate nohighlight">\(\Diamond\)</span>.</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(W\)</span> be a set of ‘worlds’ and <span class="math notranslate nohighlight">\(R\subseteq W\times W\)</span>. Let <span class="math notranslate nohighlight">\(\sem{-}:Prop\to 2^W\)</span> be a function assigning sets of worlds to each atomic proposition. Define</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3fb6d7cf-5b97-4716-99de-28e9d40fe07d">
-<span class="eqno">(1)<a class="headerlink" href="#equation-3fb6d7cf-5b97-4716-99de-28e9d40fe07d" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-eee88429-0800-43ca-97c2-d1d8fe5fe266">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eee88429-0800-43ca-97c2-d1d8fe5fe266" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sem{\phi\wedge\phi'} &amp;= \sem{\phi}\cap\sem{\phi'}\\
 \sem{\phi\vee\phi'} &amp;= \sem{\phi}\cup\sem{\phi'}\\
 \sem{\neg\phi} &amp;= W\setminus \sem{\phi}\\

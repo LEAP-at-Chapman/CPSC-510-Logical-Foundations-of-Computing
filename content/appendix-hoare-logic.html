@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -419,6 +419,19 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-references">Historical References</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-verification">Formal Verification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-algorithm">Euclidean Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#with-a-while-loop">With a while loop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#in-haskell">In Haskell</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#as-a-term-rewriting-system">As a term rewriting system</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insertion-sort">Insertion Sort</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#euclid-revisited">Euclid Revisited</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -918,6 +931,86 @@ This is a consequence of the previous item. Formal systems can be implemented an
 <h3>Formal Verification<a class="headerlink" href="#formal-verification" title="Link to this heading">#</a></h3>
 <p>We have seen that the rules of Hoare logic can be formalised in symbolic notation. It should therefore should be possible to implement software engineering tools that automate reasoning about programs.</p>
 <p>To get a taste of how verification is done in real world programming applications, have a look at the blogs by David Crocker about <em>Verifying loops in C and C++</em>, <a class="reference external" href="https://critical.eschertech.com/2010/03/22/verifying-loops-in-c/">part 1</a> and <a class="reference external" href="https://critical.eschertech.com/2010/03/29/verifying-loops-part-2/">part 2</a> and <a class="reference external" href="https://critical.eschertech.com/2010/03/31/verifying-loops-proving-termination/">part 3</a>. There is also a very short <a class="reference external" href="https://critical.eschertech.com/about/">introduction to software verification</a>.</p>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="euclidean-algorithm">
+<h3>Euclidean Algorithm<a class="headerlink" href="#euclidean-algorithm" title="Link to this heading">#</a></h3>
+<p>One of the oldest algorithms still in use is the Euclidean algorithm. We present the simplest version of Euclid’s algorithm in three different formalisms.</p>
+<p>In each case prove partial correctness by using an invariant and prove termination by using a measure function.</p>
+<p>(Remark: We set up the formal rules of Hoare logic only for the while program, but the method of proving correctness with the help of an invariant also works for recursive programs and rewriting systems.)</p>
+<section id="with-a-while-loop">
+<h4>With a while loop<a class="headerlink" href="#with-a-while-loop" title="Link to this heading">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>function gcd(a, b)
+    while a ≠ b 
+        if a &gt; b
+            a := a − b; 
+        else
+            b := b − a; 
+    return a;
+</pre></div>
+</div>
+</section>
+<section id="in-haskell">
+<h4>In Haskell<a class="headerlink" href="#in-haskell" title="Link to this heading">#</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gcd :: Int -&gt; Int -&gt; Int
+gcd x y | x &gt; y = gcd (x-y) y
+        | x &lt; y = gcd x (y-x)
+        | otherwise = x
+</pre></div>
+</div>
+</section>
+<section id="as-a-term-rewriting-system">
+<h4>As a term rewriting system<a class="headerlink" href="#as-a-term-rewriting-system" title="Link to this heading">#</a></h4>
+<p>Let  <span class="math notranslate nohighlight">\((\mathbb N\times \mathbb N,\to)\)</span> be defined as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(a,b) -&gt; (a-b,b)  if a&gt;b
+(a,b) -&gt; (a,b-a)  if b&gt;a
+</pre></div>
+</div>
+</section>
+</section>
+<section id="insertion-sort">
+<h3>Insertion Sort<a class="headerlink" href="#insertion-sort" title="Link to this heading">#</a></h3>
+<p>Which invariant proves that insertion sort</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sort</span> <span class="p">[]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">sort</span> <span class="n">n</span><span class="p">:</span><span class="n">l</span>  <span class="o">=</span>  <span class="n">insert</span> <span class="n">n</span> <span class="p">(</span><span class="n">sort</span> <span class="n">l</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>is correct?</p>
+<p>To answer the question, you may assume that <code class="docutils literal notranslate"><span class="pre">insert</span></code> itself is inserting correctly.</p>
+<p><strong>Exercise:</strong> What do the following two programs compute? What pre and postconditions can be used to formalise this? Find a loop invariant and use it to prove the partial correctness of this program.</p>
+<ol class="arabic simple">
+<li></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="p">)</span> <span class="n">do</span>
+    <span class="n">y</span> <span class="o">:=</span> <span class="n">y</span><span class="o">+</span><span class="n">x</span>
+    <span class="n">i</span> <span class="o">:=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>  
+<span class="n">done</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span>  <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="p">)</span> <span class="n">do</span>
+    <span class="n">i</span> <span class="o">:=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> 
+    <span class="n">y</span> <span class="o">:=</span> <span class="n">y</span><span class="o">*</span><span class="n">i</span>
+<span class="n">done</span>
+</pre></div>
+</div>
+<section id="euclid-revisited">
+<h4>Euclid Revisited<a class="headerlink" href="#euclid-revisited" title="Link to this heading">#</a></h4>
+<p>The next exercise is essentially the same as the one above on Euclid’s algorithm. But this time you also need to point out which rule of Hoare logic is used to justify which step in the reasoning.</p>
+<p>Given positive integers <span class="math notranslate nohighlight">\(n,a\)</span>, we write <span class="math notranslate nohighlight">\(n|a\)</span> for <span class="math notranslate nohighlight">\(n\)</span> divides <span class="math notranslate nohighlight">\(a\)</span>.</p>
+<p>Using the rules of Hoare logic, show that <span class="math notranslate nohighlight">\(\{n|a \ \wedge \ n|b\}\)</span> is an invariant of</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>while a ≠ b 
+    if a &gt; b
+        a := a − b; 
+    else
+        b := b − a; 
+</pre></div>
+</div>
+<p>Conclude that the algorithm computes the greates common divisor of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
 <aside class="footnote brackets" id="invariantwhile2" role="doc-footnote">
@@ -1025,6 +1118,7 @@ z = t * y
 </section>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1113,6 +1207,19 @@ z = t * y
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-references">Historical References</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-verification">Formal Verification</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-algorithm">Euclidean Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#with-a-while-loop">With a while loop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#in-haskell">In Haskell</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#as-a-term-rewriting-system">As a term rewriting system</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#insertion-sort">Insertion Sort</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#euclid-revisited">Euclid Revisited</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
