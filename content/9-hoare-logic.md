@@ -39,10 +39,6 @@ This logic provides partial correctness, meaning the result will be correct if t
 
 *To be added*
 
-## Algorithms
-
-*To be added*
-
 ## Benchmark and Competitions
 
 *To be added*
