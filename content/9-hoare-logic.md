@@ -19,6 +19,10 @@ Each component plays a specific role:
 
 This logic provides partial correctness, meaning the result will be correct if the program terminates. To achieve​​ total correctness, we must demonstrate that the program terminates. 
 
+## Basic Theory
+
+*To be added*
+
 ## Dafny Installation and Setup
 
 *To be added*
@@ -28,6 +32,38 @@ This logic provides partial correctness, meaning the result will be correct if t
 *To be added*
 
 ## Exercises
+
+*To be added*
+
+## The Landscape of Tools
+
+*To be added*
+
+## Algorithms
+
+*To be added*
+
+## Benchmark and Competitions
+
+*To be added*
+
+## Applications in Industry
+
+*To be added*
+
+## Case Studies
+
+*To be added*
+
+## History
+
+*To be added*
+
+## Current Development, Research Challenges, Conferences and Workshops
+
+*To be added*
+
+## Suggestions for future work on the book
 
 *To be added*
 
@@ -49,6 +85,7 @@ Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Log
 
 - **Industrial Verification Pipelines:**
 Frameworks like Dafny, Frama-C, SPARK Ada, and Coq use Hoare Logic within large organizations such as Microsoft, Airbus, and AWS. They verify encryption libraries, avionics software, and distributed systems, combining enhanced security with practical reliability.
+
 ## Resources
 
 - [Dafny](https://github.com/dafny-lang/dafny)
