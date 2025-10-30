@@ -79,6 +79,43 @@ If SPIN can verify the code, it will generate a trail file. Make sure to delete 
 
 ## The Landscape of Tools
 
+Other Model Checkers:
+1. NuSMV
+
+Link: https://nusmv.fbk.eu/
+
+A version of a model checker called SMV, but using temporal logic. Specifically uses Linear Temporal Logic or Computation Tree Logic. Programs are written in binary decision diagrams, which are data structures that can be used to represent booleans.
+
+2. PRISM
+
+Link: https://www.prismmodelchecker.org/
+
+PRISM is a probabalistic model checker using its own language, also called PRISM. It is useful for models that are contain probabilities or other randomness.
+
+3. FDR
+
+Link: https://cocotec.io/fdr/
+
+A model checker specifically designed for CSP, which itself is a language for describing concurrent systems designed by Tony Hoare. Short for Failure Divergence Refinement.
+
+4. ProB
+
+Link: https://prob.hhu.de/
+
+A model checker for B-Method and Event-B. B is designed to support turning formal specifications into code.
+
+5. Java Pathfinder
+
+Link: https://github.com/javapathfinder
+
+Model checker specifically designed for Java. It creates its own Java Virtual Machine that runs all possible combinations of paths through a given program.
+
+6. UPPAAL
+
+Link: https://uppaal.org/
+
+A model checker designed to model systems made of timed automata. Uses a simplified form of Timed TCTL.
+
 ## Algorithms
 
 ## Benchmarks
@@ -125,6 +162,7 @@ A fix was proposed by the person who found this fault. To avoid the attack, the 
 * https://spinroot.com/spin/whatispin.html
 * https://spinroot.com/courses/summer/
 * https://spinroot.com/spin/symposia/ws07/Pelanek.pdf
+* https://mluckcuck.github.io/model-checking-cheatsheet
 
 
 ## Suggestions for Future Work on this Book
