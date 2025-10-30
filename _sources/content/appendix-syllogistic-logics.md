@@ -19,19 +19,27 @@ Fortunately, this question has been asked and answered convincingly by Larry Mos
 ## Setting Up
 
 - Download the latest version of [Isabelle](https://isabelle.in.tum.de/), Isabelle 2025 at the time of writing.
-- Open [AllPAreQ_noProofs.thy](../src/AllPAreQ_noProofs.thy).
-- Open Moss's book [Logic From Language](../book/Logic-From-Language-2014.pdf) and read the introduction.
+- Open [AllPAreQ_noProofs.thy](../src/isabelle/AllPAreQ_noProofs.thy) from the Isabelle IDE.
+- Open Moss's book [Logic From Language](../src/isabelle/Logic-From-Language-2014.pdf) and read the introduction.
 - See also this [Isabelle Tutorial](../src/isabelle/Isabelle-Tutorial-2014.pdf).
   
 ## A Tutorial On Syllogistic Logics in Isabelle 
 
-In this tutorial we will be reading Section 2 of the book while at the same time formally proving its theorems in Isabelle. So do arrange the windows on your scree so that you can simultaneously see the book and the Isabelle IDE with  [AllPAreQ_noProofs.thy](../src/isabelle/AllPAreQ_noProofs.thy). 
+In this tutorial we will be reading Section 2.1-2.4 of the book while at the same time formally proving its theorems in Isabelle. The logic we will consider has only two rules
 
-Let us start with 
+![](images/2025-10-30-15-43-25.png)
+
+and the main theorem we are going to prove, the completeness theorem, is
+
+![](images/2025-10-30-15-45-52.png)
+
+Since we will implement the book in Isabelle, it is a good a idea to arrange the windows on your screen so that you can simultaneously see the book `Logic From Language` and the Isabelle IDE with the theory `AllPAreQ_noProofs.thy` (there is also a theory with the proofs but that would be spoiling it). 
+
+Let us start with the beginning of Chapter 2.1 from `Logic From Language`
 
 ![](images/2025-10-30-09-27-20.png) 
 
-which is formalized by 
+which is formalized in the Isabelle/HOL theory `AllPAreQ_noProofs.thy` by 
 
 ![](images/2025-10-30-09-42-42.png)
 
@@ -45,7 +53,7 @@ which is formalized by
 - `definition` introduces a constant by conservative definitional equality. Use for naming predicates and functions defined by equations. The left-hand side cannot pattern-match; use "where" and pattern-match inside the right-hand side (e.g., via let or case).
 - `fun` defines functions by pattern matching and (if needed) recursion, generating simplification rules automatically.
 
-**Exercise/Activity:** Add a lemma stating that `M ⊨  All p are q` iff `M p ⊆ M q`. [^lemma-allpareq-solution]
+**Exercise/Activity:** Add a lemma stating that `M ⊨ All p are q` iff `M p ⊆ M q`. [^lemma-allpareq-solution]
 
 [^lemma-allpareq-solution]: 
     ```
@@ -57,13 +65,11 @@ which is formalized by
     - `fixes` introduces type constraints
     - The unicode characters can by typeset in the IDE with `\<models>` and `\<longleftrightarrow>` 
 
----
-
-Let us now continue with
+Let us now continue in the book `Logic From Language` with
 
 ![](images/2025-10-30-09-46-10.png)
 
-which is in Isabelle
+which is in the Isabelle/HOL theory `AllPAreQ_noProofs.thy` 
 
 ![](images/2025-10-30-09-46-50.png)
 
