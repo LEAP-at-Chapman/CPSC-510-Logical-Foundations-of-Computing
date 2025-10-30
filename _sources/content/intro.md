@@ -19,6 +19,8 @@ Each chapter should by default be devided into the following sections (subject t
 - References
 - Suggestions for future work on the book
 
+[Chapter 0](content/0-logic.md) introduces the fundamental concepts of logic that form the foundation for all subsequent chapters: validity, formal languages, decidability, satisfiability, and the duality between syntax and semantics.
+
 [Chapter 1](content/1-propositional-logic.md) introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.
 
 [Chapter 2](content/2-satsolving.md) explores SAT solving using MiniSat, focusing on semantic tableaux algorithms and their applications to satisfiability and validity checking.
