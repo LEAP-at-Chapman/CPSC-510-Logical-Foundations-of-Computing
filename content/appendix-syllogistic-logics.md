@@ -23,7 +23,7 @@ Fortunately, this question has been asked and answered convincingly by Larry Mos
 - Open Moss's book [Logic From Language](../src/isabelle/Logic-From-Language-2014.pdf) and read the introduction.
 - See also this [Isabelle Tutorial](../src/isabelle/Isabelle-Tutorial-2014.pdf).
   
-## A Tutorial On Syllogistic Logics in Isabelle 
+## The Completeness Theorem
 
 In this tutorial we will be reading Section 2.1-2.4 of the book while at the same time formally proving its theorems in Isabelle. The logic we will consider has only two rules
 
@@ -33,7 +33,24 @@ and the main theorem we are going to prove, the completeness theorem, is
 
 ![](images/2025-10-30-15-45-52.png)
 
-Since we will implement the book in Isabelle, it is a good a idea to arrange the windows on your screen so that you can simultaneously see the book `Logic From Language` and the Isabelle IDE with the theory `AllPAreQ_noProofs.thy` (there is also a theory with the proofs but that would be spoiling it). 
+The strategy of the proof will be the following. Given $\Gamma$, we build a so-called canonical model $M_\Gamma$ from $\Gamma$ which, by construction, has the properties that
+- $M_\Gamma\models \Gamma$
+- $M_\Gamma\models \phi \Rightarrow \Gamma\vdash\phi$
+  
+Now the claim of theorem follows:
+
+> 1 Assumption: $\Gamma\models\phi$
+> Show: $\Gamma\vdash\phi$
+> 2 Have:  $M_\Gamma\models \Gamma$ ... (by definition of $M_\Gamma$)
+> 3 Have:  $M\models \Gamma \Rightarrow M\models\phi$ for all models $M$ ... (by definition of $\models$)
+> 4 Have:  $M_\Gamma \models \phi$ ... (from 2 and 3)
+> 5 Have:  $\Gamma\vdash\phi$ ... (by 4 and definition of $M_\Gamma$)
+
+**Remark:** Every model of $\Gamma$ satsifies all consequences of $\Gamma$. But the canonical model also refutes everything that is not derivable from $\Gamma$. This is the most important idea for completeness: If $\Gamma\not\vdash\phi$ then find a model $M$ such that $M\models\Gamma$ and $M\not\models\phi$.
+
+## The Formalization
+
+Since we will implement Chapters 2.1-2.4 of the book in Isabelle, it is a good a idea to arrange the windows on your screen so that you can simultaneously see the book `Logic From Language` and the Isabelle IDE with the theory `AllPAreQ_noProofs.thy` (there is also a theory with the proofs but that would be spoiling it). 
 
 Let us start with the beginning of Chapter 2.1 from `Logic From Language`
 
