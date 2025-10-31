@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/appendix-syllogistic-logics';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -397,7 +399,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up">Setting Up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tutorial-on-syllogistic-logics-in-isabelle">A Tutorial On Syllogistic Logics in Isabelle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-completeness-theorem">The Completeness Theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-formalization">The Formalization</a></li>
 </ul>
             </nav>
         </div>
@@ -430,13 +433,30 @@ document.write(`
 <li><p>See also this <a class="reference download internal" download="" href="../_downloads/9d62fb0944ce03331b0e779537f8690d/Isabelle-Tutorial-2014.pdf"><span class="xref download myst">Isabelle Tutorial</span></a>.</p></li>
 </ul>
 </section>
-<section id="a-tutorial-on-syllogistic-logics-in-isabelle">
-<h2>A Tutorial On Syllogistic Logics in Isabelle<a class="headerlink" href="#a-tutorial-on-syllogistic-logics-in-isabelle" title="Link to this heading">#</a></h2>
+<section id="the-completeness-theorem">
+<h2>The Completeness Theorem<a class="headerlink" href="#the-completeness-theorem" title="Link to this heading">#</a></h2>
 <p>In this tutorial we will be reading Section 2.1-2.4 of the book while at the same time formally proving its theorems in Isabelle. The logic we will consider has only two rules</p>
 <p><img alt="" src="../_images/2025-10-30-15-43-25.png" /></p>
 <p>and the main theorem we are going to prove, the completeness theorem, is</p>
 <p><img alt="" src="../_images/2025-10-30-15-45-52.png" /></p>
-<p>Since we will implement the book in Isabelle, it is a good a idea to arrange the windows on your screen so that you can simultaneously see the book <code class="docutils literal notranslate"><span class="pre">Logic</span> <span class="pre">From</span> <span class="pre">Language</span></code> and the Isabelle IDE with the theory <code class="docutils literal notranslate"><span class="pre">AllPAreQ_noProofs.thy</span></code> (there is also a theory with the proofs but that would be spoiling it).</p>
+<p>The strategy of the proof will be the following. Given <span class="math notranslate nohighlight">\(\Gamma\)</span>, we build a so-called canonical model <span class="math notranslate nohighlight">\(M_\Gamma\)</span> from <span class="math notranslate nohighlight">\(\Gamma\)</span> which, by construction, has the properties that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(M_\Gamma\models \Gamma\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M_\Gamma\models \phi \Rightarrow \Gamma\vdash\phi\)</span></p></li>
+</ul>
+<p>Now the claim follows:</p>
+<blockquote>
+<div><p>1 Assumption: <span class="math notranslate nohighlight">\(\Gamma\models\phi\)</span>
+Show: <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span>
+2 Have:  <span class="math notranslate nohighlight">\(M_\Gamma\models \Gamma\)</span> … (by definition of <span class="math notranslate nohighlight">\(M_\Gamma\)</span>)
+3 Have:  <span class="math notranslate nohighlight">\(M\models \Gamma \Rightarrow M\models\phi\)</span> for all models <span class="math notranslate nohighlight">\(M\)</span> … (by definition of <span class="math notranslate nohighlight">\(\models\)</span>)
+4 Have:  <span class="math notranslate nohighlight">\(M_\Gamma \models \phi\)</span> … (from 2 and 3)
+5 Have:  <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span> … (by 4 and definition of <span class="math notranslate nohighlight">\(M_\Gamma\)</span>)</p>
+</div></blockquote>
+</section>
+<section id="the-formalization">
+<h2>The Formalization<a class="headerlink" href="#the-formalization" title="Link to this heading">#</a></h2>
+<p>Since we will implement Chapters 2.1-2.4 of the book in Isabelle, it is a good a idea to arrange the windows on your screen so that you can simultaneously see the book <code class="docutils literal notranslate"><span class="pre">Logic</span> <span class="pre">From</span> <span class="pre">Language</span></code> and the Isabelle IDE with the theory <code class="docutils literal notranslate"><span class="pre">AllPAreQ_noProofs.thy</span></code> (there is also a theory with the proofs but that would be spoiling it).</p>
 <p>Let us start with the beginning of Chapter 2.1 from <code class="docutils literal notranslate"><span class="pre">Logic</span> <span class="pre">From</span> <span class="pre">Language</span></code></p>
 <p><img alt="" src="../_images/2025-10-30-09-27-20.png" /></p>
 <p>which is formalized in the Isabelle/HOL theory <code class="docutils literal notranslate"><span class="pre">AllPAreQ_noProofs.thy</span></code> by</p>
@@ -543,7 +563,8 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up">Setting Up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tutorial-on-syllogistic-logics-in-isabelle">A Tutorial On Syllogistic Logics in Isabelle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-completeness-theorem">The Completeness Theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-formalization">The Formalization</a></li>
 </ul>
   </nav></div>
 
