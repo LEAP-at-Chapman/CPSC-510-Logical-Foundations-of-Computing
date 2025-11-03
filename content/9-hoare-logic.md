@@ -112,3 +112,5 @@ Frameworks like Dafny, Frama-C, SPARK Ada, and Coq use Hoare Logic within large 
 - [University of Cambridge – M.J.C. Gordon: Hoare Logic Lecture Notes All Lectures (Formal Semantics, wlp, VCG, and Separation Logic)](https://www.cl.cam.ac.uk/archive/mjcg/HoareLogic/Lectures/AllLectures.pdf)
 
 - [Intro. to the Hoare Triple (Discrete Math Tutorial) - Validity, Calculating Precondition, Explained.](https://www.youtube.com/watch?v=-Bs2Uy3zGsw)
+
+- [Fifty years of Hoare’s logic](https://ir.cwi.nl/pub/29146/29146.pdf)
