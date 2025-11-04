@@ -35,13 +35,13 @@ and the main theorem we are going to prove, the completeness theorem, is
 
 ### The Idea of the Proof
 
-The strategy of the proof will be the following. Given $\Gamma$, we build a so-called canonical model $M_\Gamma$ from $\Gamma$ which, by construction, has the properties that [^phi]
+The strategy of the proof will be the following. Given $\Gamma$, we build a so-called canonical model $M_\Gamma$ from $\Gamma$ which, by construction, will have the properties that [^phi]
 - $M_\Gamma\models \Gamma$
 - $M_\Gamma\models \phi \Rightarrow \Gamma\vdash\phi$
   
-[^phi]: We are writing $\phi$ instead of "All p are q" not only as an abbreviation but also to indicate that this proof strategy applies to a wide range of other logics.
+[^phi]: We write $\phi$ instead of "All p are q" not only as an abbreviation but also to indicate that this proof strategy applies to a wide range of other logics.
 
-Now the claim of theorem follows:
+Then the claim of theorem follows:
 
 > Show: $\Gamma\models\phi \ \Rightarrow \ \Gamma\vdash\phi$
 >> Assume: $\Gamma\models\phi$  
@@ -63,7 +63,7 @@ We already showed that it suffices to prove the following.
 
 **Lemma:** Let $\Gamma$ be a set of sentences of the form "All p are q". There is a model $M_\Gamma$ such that 
 1. $M_\Gamma\models \Gamma$
-2. $M_\Gamma\models \phi \Rightarrow \Gamma\vdash\phi$
+2. $M_\Gamma\models \text{All p are q} \Rightarrow \Gamma\vdash\text{All p are q}$
 
 *Proof:*
 
