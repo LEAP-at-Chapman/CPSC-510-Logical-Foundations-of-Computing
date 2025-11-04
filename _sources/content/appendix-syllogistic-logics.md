@@ -39,11 +39,11 @@ The strategy of the proof will be the following. Given $\Gamma$, we build a so-c
   
 Now the claim of theorem follows:
 
-> 1 Assumption: $\Gamma\models\phi$
-> Show: $\Gamma\vdash\phi$
-> 2 Have:  $M_\Gamma\models \Gamma$ ... (by definition of $M_\Gamma$)
-> 3 Have:  $M\models \Gamma \Rightarrow M\models\phi$ for all models $M$ ... (by definition of $\models$)
-> 4 Have:  $M_\Gamma \models \phi$ ... (from 2 and 3)
+> 1 Assumption: $\Gamma\models\phi$  
+> Show: $\Gamma\vdash\phi$  
+> 2 Have:  $M_\Gamma\models \Gamma$ ... (by definition of $M_\Gamma$)  
+> 3 Have:  $M\models \Gamma \Rightarrow M\models\phi$ for all models $M$ ... (by definition of $\models$)  
+> 4 Have:  $M_\Gamma \models \phi$ ... (from 2 and 3)  
 > 5 Have:  $\Gamma\vdash\phi$ ... (by 4 and definition of $M_\Gamma$)
 
 **Remark:** Every model of $\Gamma$ satsifies all consequences of $\Gamma$. But the canonical model also refutes everything that is not derivable from $\Gamma$. This is the most important idea for completeness: If $\Gamma\not\vdash\phi$ then find a model $M$ such that $M\models\Gamma$ and $M\not\models\phi$.

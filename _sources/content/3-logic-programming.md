@@ -170,78 +170,6 @@ true.
 ```
 What's interesting is that prolog doesn’t "calculate" in the way procedural languages do, it evaluates logical truths involving numeric expressions. When you ask ?- square(4, Y)., Prolog checks if there exists a value of Y such that Y is 4 * 4 can be satisfied. Once the arithmetic succeeds, it binds Y to the result 16.
 
-## The Landscape Of Tools
-
-Prolog has been implemented in many different environments since its introduction in the 1970s, each designed with particular goals such as speed, interoperability, constraint solving, or educational use. Although the examples throughout this book are written using SWI-Prolog, one of the most popular and accessible implementations, it is worth going through and understanding the broader ecosystem of tools that have shaped the Prolog landscape.
-
-**SICStus Prolog** is a commercial-grade Prolog system developed at the Swedish Institute of Computer Science. Known for its robustness and performance, SICStus has been widely adopted in industrial and research environments where reliability is essential. It supports advanced features such as constraint logic programming (CLP), efficient memory management, and an extensive set of libraries for interfacing with external systems. Its stability and compliance with ISO Prolog standards make it a favorite for large-scale applications in AI, natural language processing, and expert systems.
-
-**GNU Prolog** takes a different approach, functioning as a native-code compiler rather than an interpreter. It compiles Prolog code directly into machine code via an intermediate C representation. This results in highly efficient executables compared to SICStus. GNU Prolog also includes a finite domain constraint solver and provides a C interface, allowing integration with low-level systems programming. Its minimalist design and speed make it ideal for embedding Prolog logic in performance-sensitive applications.
-
-**ECLiPSe (ECRC Logic Programming System)** extends traditional Prolog into the field of constraint logic programming (CLP). It supports solving complex combinatorial problems by allowing constraints over integers, reals, sets, and other structures to be expressed directly in logic. ECLiPSe is  strongest in operations research, scheduling, and optimization problems, offering a flexible environment for hybrid programming that blends declarative and procedural paradigms.
-
-Across these systems, the one unifying theme is Prolog’s declarative nature. Each tool preserves the language’s logical foundation while extending it for different domains and computational models. Whether one prioritizes performance, integration, or constraint solving, there exists a Prolog implementation suited to the task.
-
-## Algorithms
-
-In a logic-programming environment like SWI-Prolog, “algorithms” often looks different than in imperative languages. You don’t typically write loops or mutable state; instead you use recursion, backtracking, higher-order predicates, and built-in primitives. However, you can implement many classic algorithmic patterns (sorting, searching, aggregation, constraint-solving, graph search, etc.), or rely on libraries that provide optimized primitives. This section surveys both built-in support and user-level techniques you might use when building “algorithms” in SWI-Prolog.
-
-### Built-in / Library-Based Algorithms
-
-SWI-Prolog includes many libraries that are algorithmic in nature. A few examples are:
-
-* Sorting / Searching
-    - SWI-Prolog supports `sort/2` and `keysort/2` for sorting lists or pairs. These are often more efficient than hand-rolled sorts, and you can build on them with `maplist/3`, `foldl/4`, or other higher-order predicates.
-* Constraint Logic Programming / Optimization Libraries
-    - Prolog supports constraint-based solving via libraries such as CLP(B), CLP(FD), and simplex.
-    For example, SWI-Prolog provides a library(simplex) that lets you solve linear programming problems.
-* Engines & Aggregation
-    - SWI-Prolog includes support for engines (coroutines or goal-engines) that allow you to decouple backtracking enumeration of solutions from accumulation/aggregation logic.
-
-Now these are some prebuilt in functions that users can use for various problems. However there are almost certainly cases where there are algorithms you need that are not already implemented. So what are some samples of algorithms that you would implement yourslef?
-
-### User-Level Algorithms
-
-* List Recursion & Accumulators
-    - Many algorithms on lists (sum, maximum, mapping, flatten, filter, reverse) are best written using recursion with accumulator variables to avoid building work after recursive calls (i.e. tail-recursive style). Example:
-    ```prolog
-    sum_list([], 0).
-    sum_list([H|T], Sum) :-
-        sum_list(T, SumTail),
-        Sum is H + SumTail.
-    ```
-    Or tail-recursive version:
-
-    ```prolog
-    sum_list_acc(List, Sum) :-
-        sum_list_acc(List, 0, Sum).
-
-    sum_list_acc([], Acc, Acc).
-    sum_list_acc([H|T], Acc0, Sum) :-
-        Acc1 is Acc0 + H,
-        sum_list_acc(T, Acc1, Sum).
-    ```
-* Sorting Algorithms
-    - For a quick example, quicksort can be written with list partitioning and recursion:
-    ```prolog
-    quicksort([], []).
-    quicksort([Pivot|Rest], Sorted) :-
-        partition(Rest, Pivot, Less, Greater),
-        quicksort(Less, SortedLess),
-        quicksort(Greater, SortedGreater),
-        append(SortedLess, [Pivot|SortedGreater], Sorted).
-    ```
-    While this is less efficent than the built in `sort/2` its always good to know what other resources and capabilites are available
-
-* Graph Traversal / Search
-    - You can implement depth-first search (DFS), breadth-first search (BFS), or state-space search in Prolog. That often means defining your graph as `edge(Node, Neighbor)` facts, then writing recursive predicates that carry visited-node accumulators, path reconstruction, cycle detection, etc.
-
-* Constraint / Optimization via Recursion & CLP(FD)
-    - Suppose you want to solve a combinatorial problem (e.g. N-Queens, magic squares, scheduling) like we did in our first problem. You can combine recursion with constraints (domain variables) using libraries like clpfd.
-
-* Meta-Programming / Higher-Order Patterns
-    - You can write predicates that take other goals as parameters (using `call/1`, `maplist/2-3`, etc.), or write interpreters at runtime. This is useful if your algorithm must generate or test dynamic goals or constraints.
-
 
 
 
@@ -249,9 +177,3 @@ Now these are some prebuilt in functions that users can use for various problems
 1. https://swish.swi-prolog.org/p/dselman.swinb
 2. https://www.geeksforgeeks.org/dsa/8-queen-problem/
 3. https://www.swi-prolog.org/pldoc/man?section=arith
-4. https://sicstus.sics.se/    #SICStus Prolog
-5. https://www.researchgate.net/publication/47822182_SICStus_Prolog_--_the_first_25_years
-6. http://www.gprolog.org/     #GNU Prolog
-7. https://eclipseclp.org/     #Eclipse
-8. https://www.metalevel.at/prolog/sorting
-9. https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html
