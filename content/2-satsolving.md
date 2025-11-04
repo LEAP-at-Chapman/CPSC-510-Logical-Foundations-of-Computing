@@ -143,6 +143,26 @@ The [Davis–Putnam algorithm](https://en.wikipedia.org/wiki/Davis%E2%80%93Putna
 5. Repeat until all variables are eliminated.
 6. If the empty clause is derived, then UNSATISFIABLE, else SATISFIABLE.
 
+#### Davis-Putnam Algorithm example
+
+Given the following formula, we will use the Davis-Putnam algorithm to solve it:
+
+$$(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee \neg C)$$
+
+Step 1 of the algorithm is to select a variable, we will start with A. We see that in clause 1 A appears positively and in clause 2 A appears negatively, meaning we must use resolution. To do that, we take both clauses 1 and 2, remove each instance of A, combine the clauses, and then add it to our formula. So, our new formula is:
+
+$$(B \vee C) \wedge (\neg B \vee \neg C)$$
+
+Now, we repeat our steps with a new variable, we will pick B. Since B appears both positively and negatively, we will use resolution again. After resolution, we are left with the formula:
+
+$$(C \vee \neg C)$$
+
+As we know, this is always true, so we can remove it from our formula. Thus, no clauses are remaining, meaning the formula is satisfiable. This may be a little confusing because the 6th step of the algorithm says that if the empty clause is derived, then the formula is unsatisfiable. However, we did not derive the empty clause, and I will give a demonstration of how the empty clause is derived to clear up any confusion. Imagine this is our formula:
+
+$$(A) \wedge (\neg A)$$
+
+Using the algorithm, A appears both positively and negatively, meaning that we have to use resolution again. However, after using resolution, we are left with the empty clause (denoted as \square). This our formula is unsatisfiable. 
+
 ### Davis–Putnam–Logemann–Loveland (DPLL) algorithm
 
 [Davis–Putnam–Logemann–Loveland (DPLL) algorithm](https://en.wikipedia.org/wiki/DPLL_algorithm) 
@@ -226,7 +246,30 @@ Since $C =$ False, $B =$ False according to clause 2. (A=0 -> C=0 -> B=0).
 
 Now we have hit step 5 of the algorithm, there are no conflicts and every variable has been assigned. Thus, our formula is satisfiable.
 
+### DPLL vs CDCL example
 
+Here, we will solve an example formula using both DPLL and CDCL, and determine which algorithm is better (more efficient) and why. We will start with this formula:
+
+$$(A \vee B) \wedge (A \vee \neg B) \wedge (\neg A \vee C) \wedge (\neg A \vee \neg C) \wedge (\neg B \vee \neg C)$$
+
+First we will solve using DPLL. First, we pick a variable and decide a value. Let's try A = 0. Then, we apply unit propagation. So, in clause 1, since A = 0, B = 1. Next, in clause 2, since A = 0, B = 0. Now we have a conflict since obviously B cannot be both 0 and 1. So, we backtrack.
+
+Now, we try A = 1. Applying unit propagation on clause 3, since A = 1, C = 1. On clause 4, since A = 1, C = 0. Thus, we have another conflict, and this one cannot be solved by backtracking, so DPLL concludes UNSAT.
+
+Now let's try using CDCL. Again we will start with the same starting decision of A = 0. Again, using unit propagation, we will get the same conflict as DPLL with B from clauses 1 and 2.
+
+
+## Parallel Approaches
+
+Some SAT solvers use multiple processors at the same time to speed up problem solving. There are 2 different types of strategies tha modern parallel SAT solvers rely on.
+
+#### Portfolio
+
+The portfolio parallel approach running many solvers in parallel on the same problem. Once one of the solvers finds a solution, they all can stop. This reduces the time needed to solve because it is trying multiple at once. Many portfolio approaches implement random seeds to decrease the amount of duplicate work that the solvers are doing. Depending on the underlying algorithm behind the SAT solvers, it is possible that the different portfolios could share learned clauses amongst each other, which will decrease time taken to solve even more. A few examples of portfolio parallel SAT solvers are PPfolio and HordeSat.
+
+#### Divide-and-conquer
+
+A different parallel approach involves spitting the problem into smaller sub-problems, and then running each of those on a different processor. This can cause some processors to finish their problems much earlier than others because different sub-problems can vary in difficulty, which is suboptimal. One very benefical advance is the Cube-and-Conquer approach, which uses two phases. The first phase is the cube part where a solver "looks ahead" and breaks the problem into smaller "cubes." Phase 2 is the conquer f=part where each cube is solved using CDCL. Because of the way the cubes are calculated, if one cube is satisfiable, then the whole problem is satisfiable. One example divide-and-conquer that uses the cube-and-conquer approach is Treengeling.
 
 ## Applications in Industry
 

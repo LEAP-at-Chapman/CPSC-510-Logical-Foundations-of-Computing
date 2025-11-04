@@ -1,0 +1,19 @@
+R = 14; C = 14;
+
+akari_grid = array2d(1..R, 1..C,
+[
+  /* Row 1 */  W, W, W, W, W, W, W, W, W, B_1, W, B_1, W, W,
+  /* Row 2 */  W, B, W, B, W, W, B, W, B_1, W, W, B_1, B_1, W,
+  /* Row 3 */  B, B, W, W, B, W, B_0, W, W, W, W, W, W, W,
+  /* Row 4 */  W, W, W, W, B_0, W, W, W, W, B_0, W, W, B, W,
+  /* Row 5 */  B_2, W, W, B, W, W, W, W, B_0, W, B, B_2, W, W,
+  /* Row 6 */  W, B, W, W, B_0, W, W, W, W, W, W, W, W, W,
+  /* Row 7 */  W, W, W, W, W, W, W, W, W, W, W, B_1, B, W,
+  /* Row 8 */  W, B, B_0, W, W, W, W, W, W, W, W, W, W, W,
+  /* Row 9 */  W, W, W, W, W, W, W, W, W, B_1, W, W, B, W,
+  /* Row 10 */ W, W, B_2, B_0, W, B_2, W, W, W, W, B_0, W, W, B_1,
+  /* Row 11 */ W, B_2, W, W, B, W, W, W, W, B, W, W, W, W,
+  /* Row 12 */ W, W, W, W, W, W, W, B, W, B, W, W, B, B,
+  /* Row 13 */ W, B_1, B, W, W, B, W, B, W, W, B_1, W, B, W,
+  /* Row 14 */ W, W, B_1, W, B_1, W, W, W, W, W, W, W, W, W
+]);
