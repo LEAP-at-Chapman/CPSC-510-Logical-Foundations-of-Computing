@@ -404,13 +404,22 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sat-solvers">SAT solvers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">The Algorithm</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">Resolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">Davis–Putnam algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">Davis–Putnam algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#davis-putnam-algorithm-example">Davis-Putnam Algorithm example</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnamlogemannloveland-dpll-algorithm">Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning">Conflict-driven Clause Learning</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-propagation">Unit Propagation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implication-graphs">Implication Graphs</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dpll-vs-cdcl-example">DPLL vs CDCL example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-approaches">Parallel Approaches</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio">Portfolio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-and-conquer">Divide-and-conquer</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
@@ -577,6 +586,22 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <li><p>Repeat until all variables are eliminated.</p></li>
 <li><p>If the empty clause is derived, then UNSATISFIABLE, else SATISFIABLE.</p></li>
 </ol>
+<section id="davis-putnam-algorithm-example">
+<h4>Davis-Putnam Algorithm example<a class="headerlink" href="#davis-putnam-algorithm-example" title="Link to this heading">#</a></h4>
+<p>Given the following formula, we will use the Davis-Putnam algorithm to solve it:</p>
+<div class="math notranslate nohighlight">
+\[(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee \neg C)\]</div>
+<p>Step 1 of the algorithm is to select a variable, we will start with A. We see that in clause 1 A appears positively and in clause 2 A appears negatively, meaning we must use resolution. To do that, we take both clauses 1 and 2, remove each instance of A, combine the clauses, and then add it to our formula. So, our new formula is:</p>
+<div class="math notranslate nohighlight">
+\[(B \vee C) \wedge (\neg B \vee \neg C)\]</div>
+<p>Now, we repeat our steps with a new variable, we will pick B. Since B appears both positively and negatively, we will use resolution again. After resolution, we are left with the formula:</p>
+<div class="math notranslate nohighlight">
+\[(C \vee \neg C)\]</div>
+<p>As we know, this is always true, so we can remove it from our formula. Thus, no clauses are remaining, meaning the formula is satisfiable. This may be a little confusing because the 6th step of the algorithm says that if the empty clause is derived, then the formula is unsatisfiable. However, we did not derive the empty clause, and I will give a demonstration of how the empty clause is derived to clear up any confusion. Imagine this is our formula:</p>
+<div class="math notranslate nohighlight">
+\[(A) \wedge (\neg A)\]</div>
+<p>Using the algorithm, A appears both positively and negatively, meaning that we have to use resolution again. However, after using resolution, we are left with the empty clause (denoted as \square). This our formula is unsatisfiable.</p>
+</section>
 </section>
 <section id="davisputnamlogemannloveland-dpll-algorithm">
 <h3>Davis–Putnam–Logemann–Loveland (DPLL) algorithm<a class="headerlink" href="#davisputnamlogemannloveland-dpll-algorithm" title="Link to this heading">#</a></h3>
@@ -646,6 +671,27 @@ c. Backtrack non-chronologically (backjump) to the decision level where the firs
 <p>Since <span class="math notranslate nohighlight">\(C =\)</span> False, <span class="math notranslate nohighlight">\(B =\)</span> False according to clause 2. (A=0 -&gt; C=0 -&gt; B=0).</p>
 <p>Now we have hit step 5 of the algorithm, there are no conflicts and every variable has been assigned. Thus, our formula is satisfiable.</p>
 </section>
+</section>
+<section id="dpll-vs-cdcl-example">
+<h3>DPLL vs CDCL example<a class="headerlink" href="#dpll-vs-cdcl-example" title="Link to this heading">#</a></h3>
+<p>Here, we will solve an example formula using both DPLL and CDCL, and determine which algorithm is better (more efficient) and why. We will start with this formula:</p>
+<div class="math notranslate nohighlight">
+\[(A \vee B) \wedge (A \vee \neg B) \wedge (\neg A \vee C) \wedge (\neg A \vee \neg C) \wedge (\neg B \vee \neg C)\]</div>
+<p>First we will solve using DPLL. First, we pick a variable and decide a value. Let’s try A = 0. Then, we apply unit propagation. So, in clause 1, since A = 0, B = 1. Next, in clause 2, since A = 0, B = 0. Now we have a conflict since obviously B cannot be both 0 and 1. So, we backtrack.</p>
+<p>Now, we try A = 1. Applying unit propagation on clause 3, since A = 1, C = 1. On clause 4, since A = 1, C = 0. Thus, we have another conflict, and this one cannot be solved by backtracking, so DPLL concludes UNSAT.</p>
+<p>Now let’s try using CDCL. Again we will start with the same starting decision of A = 0. Again, using unit propagation, we will get the same conflict as DPLL with B from clauses 1 and 2.</p>
+</section>
+</section>
+<section id="parallel-approaches">
+<h2>Parallel Approaches<a class="headerlink" href="#parallel-approaches" title="Link to this heading">#</a></h2>
+<p>Some SAT solvers use multiple processors at the same time to speed up problem solving. There are 2 different types of strategies tha modern parallel SAT solvers rely on.</p>
+<section id="portfolio">
+<h3>Portfolio<a class="headerlink" href="#portfolio" title="Link to this heading">#</a></h3>
+<p>The portfolio parallel approach running many solvers in parallel on the same problem. Once one of the solvers finds a solution, they all can stop. This reduces the time needed to solve because it is trying multiple at once. Many portfolio approaches implement random seeds to decrease the amount of duplicate work that the solvers are doing. Depending on the underlying algorithm behind the SAT solvers, it is possible that the different portfolios could share learned clauses amongst each other, which will decrease time taken to solve even more. A few examples of portfolio parallel SAT solvers are PPfolio and HordeSat.</p>
+</section>
+<section id="divide-and-conquer">
+<h3>Divide-and-conquer<a class="headerlink" href="#divide-and-conquer" title="Link to this heading">#</a></h3>
+<p>A different parallel approach involves spitting the problem into smaller sub-problems, and then running each of those on a different processor. This can cause some processors to finish their problems much earlier than others because different sub-problems can vary in difficulty, which is suboptimal. One very benefical advance is the Cube-and-Conquer approach, which uses two phases. The first phase is the cube part where a solver “looks ahead” and breaks the problem into smaller “cubes.” Phase 2 is the conquer f=part where each cube is solved using CDCL. Because of the way the cubes are calculated, if one cube is satisfiable, then the whole problem is satisfiable. One example divide-and-conquer that uses the cube-and-conquer approach is Treengeling.</p>
 </section>
 </section>
 <section id="applications-in-industry">
@@ -774,13 +820,22 @@ c. Backtrack non-chronologically (backjump) to the decision level where the firs
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sat-solvers">SAT solvers</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">The Algorithm</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">Resolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">Davis–Putnam algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">Davis–Putnam algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#davis-putnam-algorithm-example">Davis-Putnam Algorithm example</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnamlogemannloveland-dpll-algorithm">Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning">Conflict-driven Clause Learning</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-propagation">Unit Propagation</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implication-graphs">Implication Graphs</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dpll-vs-cdcl-example">DPLL vs CDCL example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-approaches">Parallel Approaches</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio">Portfolio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-and-conquer">Divide-and-conquer</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>

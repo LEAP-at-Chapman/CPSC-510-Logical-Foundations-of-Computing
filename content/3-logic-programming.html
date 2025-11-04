@@ -409,6 +409,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-arithmetic">Basic Arithmetic</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">The Landscape Of Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-library-based-algorithms">Built-in / Library-Based Algorithms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-level-algorithms">User-Level Algorithms</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -572,12 +578,108 @@ X = harriet ;
 <p>What’s interesting is that prolog doesn’t “calculate” in the way procedural languages do, it evaluates logical truths involving numeric expressions. When you ask ?- square(4, Y)., Prolog checks if there exists a value of Y such that Y is 4 * 4 can be satisfied. Once the arithmetic succeeds, it binds Y to the result 16.</p>
 </section>
 </section>
+<section id="the-landscape-of-tools">
+<h2>The Landscape Of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
+<p>Prolog has been implemented in many different environments since its introduction in the 1970s, each designed with particular goals such as speed, interoperability, constraint solving, or educational use. Although the examples throughout this book are written using SWI-Prolog, one of the most popular and accessible implementations, it is worth going through and understanding the broader ecosystem of tools that have shaped the Prolog landscape.</p>
+<p><strong>SICStus Prolog</strong> is a commercial-grade Prolog system developed at the Swedish Institute of Computer Science. Known for its robustness and performance, SICStus has been widely adopted in industrial and research environments where reliability is essential. It supports advanced features such as constraint logic programming (CLP), efficient memory management, and an extensive set of libraries for interfacing with external systems. Its stability and compliance with ISO Prolog standards make it a favorite for large-scale applications in AI, natural language processing, and expert systems.</p>
+<p><strong>GNU Prolog</strong> takes a different approach, functioning as a native-code compiler rather than an interpreter. It compiles Prolog code directly into machine code via an intermediate C representation. This results in highly efficient executables compared to SICStus. GNU Prolog also includes a finite domain constraint solver and provides a C interface, allowing integration with low-level systems programming. Its minimalist design and speed make it ideal for embedding Prolog logic in performance-sensitive applications.</p>
+<p><strong>ECLiPSe (ECRC Logic Programming System)</strong> extends traditional Prolog into the field of constraint logic programming (CLP). It supports solving complex combinatorial problems by allowing constraints over integers, reals, sets, and other structures to be expressed directly in logic. ECLiPSe is  strongest in operations research, scheduling, and optimization problems, offering a flexible environment for hybrid programming that blends declarative and procedural paradigms.</p>
+<p>Across these systems, the one unifying theme is Prolog’s declarative nature. Each tool preserves the language’s logical foundation while extending it for different domains and computational models. Whether one prioritizes performance, integration, or constraint solving, there exists a Prolog implementation suited to the task.</p>
+</section>
+<section id="algorithms">
+<h2>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
+<p>In a logic-programming environment like SWI-Prolog, “algorithms” often looks different than in imperative languages. You don’t typically write loops or mutable state; instead you use recursion, backtracking, higher-order predicates, and built-in primitives. However, you can implement many classic algorithmic patterns (sorting, searching, aggregation, constraint-solving, graph search, etc.), or rely on libraries that provide optimized primitives. This section surveys both built-in support and user-level techniques you might use when building “algorithms” in SWI-Prolog.</p>
+<section id="built-in-library-based-algorithms">
+<h3>Built-in / Library-Based Algorithms<a class="headerlink" href="#built-in-library-based-algorithms" title="Link to this heading">#</a></h3>
+<p>SWI-Prolog includes many libraries that are algorithmic in nature. A few examples are:</p>
+<ul class="simple">
+<li><p>Sorting / Searching</p>
+<ul>
+<li><p>SWI-Prolog supports <code class="docutils literal notranslate"><span class="pre">sort/2</span></code> and <code class="docutils literal notranslate"><span class="pre">keysort/2</span></code> for sorting lists or pairs. These are often more efficient than hand-rolled sorts, and you can build on them with <code class="docutils literal notranslate"><span class="pre">maplist/3</span></code>, <code class="docutils literal notranslate"><span class="pre">foldl/4</span></code>, or other higher-order predicates.</p></li>
+</ul>
+</li>
+<li><p>Constraint Logic Programming / Optimization Libraries</p>
+<ul>
+<li><p>Prolog supports constraint-based solving via libraries such as CLP(B), CLP(FD), and simplex.
+For example, SWI-Prolog provides a library(simplex) that lets you solve linear programming problems.</p></li>
+</ul>
+</li>
+<li><p>Engines &amp; Aggregation</p>
+<ul>
+<li><p>SWI-Prolog includes support for engines (coroutines or goal-engines) that allow you to decouple backtracking enumeration of solutions from accumulation/aggregation logic.</p></li>
+</ul>
+</li>
+</ul>
+<p>Now these are some prebuilt in functions that users can use for various problems. However there are almost certainly cases where there are algorithms you need that are not already implemented. So what are some samples of algorithms that you would implement yourslef?</p>
+</section>
+<section id="user-level-algorithms">
+<h3>User-Level Algorithms<a class="headerlink" href="#user-level-algorithms" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>List Recursion &amp; Accumulators</p>
+<ul class="simple">
+<li><p>Many algorithms on lists (sum, maximum, mapping, flatten, filter, reverse) are best written using recursion with accumulator variables to avoid building work after recursive calls (i.e. tail-recursive style). Example:</p></li>
+</ul>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="nf">sum_list</span><span class="p">([],</span> <span class="mi">0</span><span class="p">).</span>
+<span class="nf">sum_list</span><span class="p">([</span><span class="nv">H</span><span class="p">|</span><span class="nv">T</span><span class="p">],</span> <span class="nv">Sum</span><span class="p">)</span> <span class="p">:-</span>
+    <span class="nf">sum_list</span><span class="p">(</span><span class="nv">T</span><span class="p">,</span> <span class="nv">SumTail</span><span class="p">),</span>
+    <span class="nv">Sum</span> <span class="o">is</span> <span class="nv">H</span> <span class="o">+</span> <span class="nv">SumTail</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>Or tail-recursive version:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="nf">sum_list_acc</span><span class="p">(</span><span class="nv">List</span><span class="p">,</span> <span class="nv">Sum</span><span class="p">)</span> <span class="p">:-</span>
+    <span class="nf">sum_list_acc</span><span class="p">(</span><span class="nv">List</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">Sum</span><span class="p">).</span>
+
+<span class="nf">sum_list_acc</span><span class="p">([],</span> <span class="nv">Acc</span><span class="p">,</span> <span class="nv">Acc</span><span class="p">).</span>
+<span class="nf">sum_list_acc</span><span class="p">([</span><span class="nv">H</span><span class="p">|</span><span class="nv">T</span><span class="p">],</span> <span class="nv">Acc0</span><span class="p">,</span> <span class="nv">Sum</span><span class="p">)</span> <span class="p">:-</span>
+    <span class="nv">Acc1</span> <span class="o">is</span> <span class="nv">Acc0</span> <span class="o">+</span> <span class="nv">H</span><span class="p">,</span>
+    <span class="nf">sum_list_acc</span><span class="p">(</span><span class="nv">T</span><span class="p">,</span> <span class="nv">Acc1</span><span class="p">,</span> <span class="nv">Sum</span><span class="p">).</span>
+</pre></div>
+</div>
+</li>
+<li><p>Sorting Algorithms</p>
+<ul class="simple">
+<li><p>For a quick example, quicksort can be written with list partitioning and recursion:</p></li>
+</ul>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="nf">quicksort</span><span class="p">([],</span> <span class="p">[]).</span>
+<span class="nf">quicksort</span><span class="p">([</span><span class="nv">Pivot</span><span class="p">|</span><span class="nv">Rest</span><span class="p">],</span> <span class="nv">Sorted</span><span class="p">)</span> <span class="p">:-</span>
+    <span class="nf">partition</span><span class="p">(</span><span class="nv">Rest</span><span class="p">,</span> <span class="nv">Pivot</span><span class="p">,</span> <span class="nv">Less</span><span class="p">,</span> <span class="nv">Greater</span><span class="p">),</span>
+    <span class="nf">quicksort</span><span class="p">(</span><span class="nv">Less</span><span class="p">,</span> <span class="nv">SortedLess</span><span class="p">),</span>
+    <span class="nf">quicksort</span><span class="p">(</span><span class="nv">Greater</span><span class="p">,</span> <span class="nv">SortedGreater</span><span class="p">),</span>
+    <span class="nf">append</span><span class="p">(</span><span class="nv">SortedLess</span><span class="p">,</span> <span class="p">[</span><span class="nv">Pivot</span><span class="p">|</span><span class="nv">SortedGreater</span><span class="p">],</span> <span class="nv">Sorted</span><span class="p">).</span>
+</pre></div>
+</div>
+<p>While this is less efficent than the built in <code class="docutils literal notranslate"><span class="pre">sort/2</span></code> its always good to know what other resources and capabilites are available</p>
+</li>
+<li><p>Graph Traversal / Search</p>
+<ul class="simple">
+<li><p>You can implement depth-first search (DFS), breadth-first search (BFS), or state-space search in Prolog. That often means defining your graph as <code class="docutils literal notranslate"><span class="pre">edge(Node,</span> <span class="pre">Neighbor)</span></code> facts, then writing recursive predicates that carry visited-node accumulators, path reconstruction, cycle detection, etc.</p></li>
+</ul>
+</li>
+<li><p>Constraint / Optimization via Recursion &amp; CLP(FD)</p>
+<ul class="simple">
+<li><p>Suppose you want to solve a combinatorial problem (e.g. N-Queens, magic squares, scheduling) like we did in our first problem. You can combine recursion with constraints (domain variables) using libraries like clpfd.</p></li>
+</ul>
+</li>
+<li><p>Meta-Programming / Higher-Order Patterns</p>
+<ul class="simple">
+<li><p>You can write predicates that take other goals as parameters (using <code class="docutils literal notranslate"><span class="pre">call/1</span></code>, <code class="docutils literal notranslate"><span class="pre">maplist/2-3</span></code>, etc.), or write interpreters at runtime. This is useful if your algorithm must generate or test dynamic goals or constraints.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>https://swish.swi-prolog.org/p/dselman.swinb</p></li>
 <li><p>https://www.geeksforgeeks.org/dsa/8-queen-problem/</p></li>
 <li><p>https://www.swi-prolog.org/pldoc/man?section=arith</p></li>
+<li><p>https://sicstus.sics.se/    #SICStus Prolog</p></li>
+<li><p>https://www.researchgate.net/publication/47822182_SICStus_Prolog_–_the_first_25_years</p></li>
+<li><p>http://www.gprolog.org/     #GNU Prolog</p></li>
+<li><p>https://eclipseclp.org/     #Eclipse</p></li>
+<li><p>https://www.metalevel.at/prolog/sorting</p></li>
+<li><p>https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html</p></li>
 </ol>
 </section>
 </section>
@@ -658,6 +760,12 @@ X = harriet ;
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example">First Example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">Intro Examples</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-arithmetic">Basic Arithmetic</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">The Landscape Of Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-library-based-algorithms">Built-in / Library-Based Algorithms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-level-algorithms">User-Level Algorithms</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
