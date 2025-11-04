@@ -19,10 +19,11 @@ parts:
     - file: content/10-higher-order-logic
     - file: content/11-dependent-types
 
-- caption: Appendix
+- caption: Appendices
   chapters:
     - file: content/appendix-puzzles
     - file: content/appendix-hoare-logic
+    - file: content/appendix-syllogistic-logics
 
 - caption: "Appendix: On Jupyter Books"
   chapters:

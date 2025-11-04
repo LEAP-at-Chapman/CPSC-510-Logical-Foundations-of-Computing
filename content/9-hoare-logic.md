@@ -19,6 +19,10 @@ Each component plays a specific role:
 
 This logic provides partial correctness, meaning the result will be correct if the program terminates. To achieve​​ total correctness, we must demonstrate that the program terminates. 
 
+## Basic Theory
+
+*To be added*
+
 ## Dafny Installation and Setup
 
 *To be added*
@@ -28,6 +32,43 @@ This logic provides partial correctness, meaning the result will be correct if t
 *To be added*
 
 ## Exercises
+
+*To be added*
+
+## The Landscape of Tools
+
+*To be added*
+
+## Benchmark and Competitions
+
+*To be added*
+
+## Applications in Industry
+
+*To be added*
+
+## Case Studies
+
+*To be added*
+
+## History
+
+In 1949, Alan Turing presented his paper, “Checking a Large Routine”, which was one of the first attempts to describe how programmers could verify the correctness of their code. Throughout his paper, Turing proposed the idea of using assertion statements to explain what should be true at specific points in the program, thereby verifying its correctness. Additionally, Turing introduced the concept of a termination function as a method to ensure that the presented program eventually halts. Using a factorial program, Turing showed that logical reasoning could be applied to computer programs.
+
+Throughout the 1960s, Robert Floyd built on Turing’s ideas by introducing the inductive assertion method, a systematic approach to proving the correctness of flowchart-based programs. Floyd proposed identifying key points in a program with logical statements called invariants, similar to the idea of assertion statements, which are both meant to show specific points during the program that must remain true throughout execution. Although the idea continued to build on Turing’s progress, this was limited to flowcharts rather than structured programming languages.
+
+In the year 1969, C.A.R. Hoare continued to build on these ideas by introducing the Hoare triple: {P} S {Q}. This notation states that if the execution of program P begins in a state where the precondition C holds, then upon termination, the postcondition Q will hold. Although this development seemed simple, it proved to be powerful, as it created rules for statements, loops, and sequences. This notation enabled program proofs to be both structured and easier to understand due to their improved readability. The Hoare triple enabled program verification for all types of code, not just flowcharts, transforming program reasoning into a formal, language-based discipline. 
+
+By the early 1970s, Hoare had expanded his logic to handle recursive procedures and local variables, which enabled reasoning about more complex programs. Working alongside Joseph Foley, he applied these ideas to verify the Quicksort algorithm, which was one of the first detailed proofs of correctness for a real-world program. Around the same time, Hoare began promoting the idea of programming and proving should be done simultaneously. This growing philosophy later influenced Edsger Dijkstra’s work on structured programming and program derivation, transforming Hoare Logic into a guide for creating verified software instead of verifying it after the fact.
+
+The development of Hoare Logic established a foundation in computer science by shifting the perspective from viewing programs as sequences of commands to viewing them as logical systems that can be mathematically analyzed. Building upon Turing’s conceptual groundwork, refining Floyd’s formalization, and realizing Hoare’s framework, this lineage transformed programming into a science of correctness. To this day, Hoare Logic remains a foundational method of verification, and it also serves as a symbol of the connection between logic, mathematics, and computation.
+
+
+## Current Development, Research Challenges, Conferences and Workshops
+
+*To be added*
+
+## Suggestions for future work on the book
 
 *To be added*
 
@@ -49,6 +90,7 @@ Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Log
 
 - **Industrial Verification Pipelines:**
 Frameworks like Dafny, Frama-C, SPARK Ada, and Coq use Hoare Logic within large organizations such as Microsoft, Airbus, and AWS. They verify encryption libraries, avionics software, and distributed systems, combining enhanced security with practical reliability.
+
 ## Resources
 
 - [Dafny](https://github.com/dafny-lang/dafny)
@@ -70,3 +112,5 @@ Frameworks like Dafny, Frama-C, SPARK Ada, and Coq use Hoare Logic within large 
 - [University of Cambridge – M.J.C. Gordon: Hoare Logic Lecture Notes All Lectures (Formal Semantics, wlp, VCG, and Separation Logic)](https://www.cl.cam.ac.uk/archive/mjcg/HoareLogic/Lectures/AllLectures.pdf)
 
 - [Intro. to the Hoare Triple (Discrete Math Tutorial) - Validity, Calculating Precondition, Explained.](https://www.youtube.com/watch?v=-Bs2Uy3zGsw)
+
+- [Fifty years of Hoare’s logic](https://ir.cwi.nl/pub/29146/29146.pdf)

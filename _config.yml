@@ -42,6 +42,7 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  expand_sections: true
 
 parse:
   myst_enable_extensions:

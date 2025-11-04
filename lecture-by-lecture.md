@@ -30,6 +30,9 @@
 
 **L9.1:** Epistemic Logic and SMCDEL continued, [see the Exercises](https://hackmd.io/@alexhkurz/r1C3ZYrRlg).
 
-**L9.2:** Hoare Logic in Dafny. I first gave an example of how to use an [AI-Agent](./literature/dafny-in-industry/prompts/literature-review.prompt.md) to help with a literature review. Then I gave an [introduction to Dafny](./notes/dafny.md). Finally, we looked in more detail at [Hoare logic]().
+**L9.2:** Hoare Logic in Dafny. I first gave an example of how to use an [AI-Agent](./literature/dafny-in-industry/prompts/literature-review.prompt.md) to help with a literature review. Then I gave an [introduction to Dafny](./notes/dafny.md). Finally, we looked in more detail at [Hoare logic](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/appendix-hoare-logic.html).
+
+**L10.1:** [An Introduction to Isabelle](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/appendix-syllogistic-logics.html)
+
 
 
