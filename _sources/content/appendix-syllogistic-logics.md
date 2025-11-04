@@ -102,6 +102,8 @@ We already showed that it suffices to prove the following.
 >
 > **Have**: $M_\Gamma\models \text{All p are q} \ \Rightarrow \ \Gamma\vdash \text{All p are q}$
 
+**Exercise/Activity**: Justify all steps.
+
 ## The Formalization 
 
 Since we will implement Chapters 2.1-2.4 of the book in Isabelle, it is a good a idea to arrange the windows on your screen so that you can simultaneously see the book `Logic From Language` and the Isabelle IDE with the theory `AllPAreQ_noProofs.thy` (there is also a theory with the proofs but that would be spoiling it). 
