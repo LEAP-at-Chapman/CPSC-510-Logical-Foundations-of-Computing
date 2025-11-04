@@ -33,22 +33,73 @@ and the main theorem we are going to prove, the completeness theorem, is
 
 ![](images/2025-10-30-15-45-52.png)
 
+### The Idea of the Proof
+
 The strategy of the proof will be the following. Given $\Gamma$, we build a so-called canonical model $M_\Gamma$ from $\Gamma$ which, by construction, has the properties that
 - $M_\Gamma\models \Gamma$
 - $M_\Gamma\models \phi \Rightarrow \Gamma\vdash\phi$
   
 Now the claim of theorem follows:
 
-> 1 Assumption: $\Gamma\models\phi$  
-> Show: $\Gamma\vdash\phi$  
-> 2 Have:  $M_\Gamma\models \Gamma$ ... (by definition of $M_\Gamma$)  
-> 3 Have:  $M\models \Gamma \Rightarrow M\models\phi$ for all models $M$ ... (by definition of $\models$)  
-> 4 Have:  $M_\Gamma \models \phi$ ... (from 2 and 3)  
-> 5 Have:  $\Gamma\vdash\phi$ ... (by 4 and definition of $M_\Gamma$)
+> Show: $\Gamma\models\phi \ \Rightarrow \ \Gamma\vdash\phi$
+>> Assume: $\Gamma\models\phi$  
+>> Show: $\Gamma\vdash\phi$  
+>> Have:  $M_\Gamma\models \Gamma$  
+>> Have:  $M\models \Gamma \Rightarrow M\models\phi$ for all models $M$ .
+>> Have:  $M_\Gamma \models \phi$  
+>> Have:  $\Gamma\vdash\phi$ 
+>
+> Have: $\Gamma\models\phi \ \Rightarrow \ \Gamma\vdash\phi$
+
+**Exercise/Activity**: Justify all steps.
 
 **Remark:** Every model of $\Gamma$ satsifies all consequences of $\Gamma$. But the canonical model also refutes everything that is not derivable from $\Gamma$. This is the most important idea for completeness: If $\Gamma\not\vdash\phi$ then find a model $M$ such that $M\models\Gamma$ and $M\not\models\phi$.
 
-## The Formalization
+### The Deatils of the Proof
+
+We already showed that it suffices to prove the following.
+
+**Lemma:** Let $\Gamma$ be a set of sentences of the form "All p are q". There is a model $M_\Gamma$ such that 
+1. $M_\Gamma\models \Gamma$
+2. $M_\Gamma\models \phi \Rightarrow \Gamma\vdash\phi$
+
+*Proof:*
+
+> Define $p\le q$ if $\Gamma\vdash \text{All p are q}$.
+> 
+> Claim: $\le$ is reflexive and transitive.
+> > Show $p\le p$. This follows from AXIOM.
+> > Show: $p\le q$ and $q\le r$ implies $p\le r$. This follows from BARBARA.
+> Have: $\le$ is reflexive and transitive.
+>
+> Define $M_\Gamma$ via $[\![p]\!] = \{r \mid r \le p\}$.
+>
+> Claim: $M_\Gamma\models \Gamma$.
+>
+>> Assume: All p are q in $\Gamma$.
+>> Show: $M_\Gamma\models \text{All p are q}$
+>> Show: $[\![p]\!]\subseteq [\![q]\!]$
+>> Show: $r\le p\Rightarrow r\le q$
+>> > Assume $r\le p$
+>> > Have: $p\le q$
+>> > Have: $r\le q$
+>> 
+>> Have: $r\le p\Rightarrow r\le q$
+>
+> Have: $M_\Gamma\models \Gamma$.
+>
+> Claim: $M_\Gamma\models \text{All p are q} \ \Rightarrow \ \Gamma\vdash \text{All p are q}$
+>
+>> Assume: $M_\Gamma\models \text{All p are q}$
+>> Show: $\Gamma\vdash \text{All p are q}$
+>> Have: $[\![p]\!]\subseteq [\![q]\!]$
+>> Have: $p\in [\![q]\!]$
+>> Have: $p\le q$
+>> Have: $\Gamma\vdash \text{All p are q}$
+>
+> Have: $M_\Gamma\models \text{All p are q} \ \Rightarrow \ \Gamma\vdash \text{All p are q}$
+
+## The Formalization 
 
 Since we will implement Chapters 2.1-2.4 of the book in Isabelle, it is a good a idea to arrange the windows on your screen so that you can simultaneously see the book `Logic From Language` and the Isabelle IDE with the theory `AllPAreQ_noProofs.thy` (there is also a theory with the proofs but that would be spoiling it). 
 
