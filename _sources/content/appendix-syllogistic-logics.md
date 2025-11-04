@@ -47,7 +47,7 @@ Then the claim of theorem follows:
 >> Assume: $\Gamma\models\phi$  
 >> Show: $\Gamma\vdash\phi$  
 >> Have:  $M_\Gamma\models \Gamma$  
->> Have:  $M\models \Gamma \Rightarrow M\models\phi$ for all models $M$ .
+>> Have:  $M\models \Gamma \Rightarrow M\models\phi$ for all models $M$  
 >> Have:  $M_\Gamma \models \phi$  
 >> Have:  $\Gamma\vdash\phi$ 
 >
@@ -57,49 +57,50 @@ Then the claim of theorem follows:
 
 **Remark:** Every model of $\Gamma$ satsifies all consequences of $\Gamma$. But the canonical model also refutes everything that is not derivable from $\Gamma$. This is the most important idea for completeness: If $\Gamma\not\vdash\phi$ then find a model $M$ such that $M\models\Gamma$ and $M\not\models\phi$.
 
-### The Deatils of the Proof
+### The Details of the Proof
 
 We already showed that it suffices to prove the following.
 
 **Lemma:** Let $\Gamma$ be a set of sentences of the form "All p are q". There is a model $M_\Gamma$ such that 
 1. $M_\Gamma\models \Gamma$
-2. $M_\Gamma\models \text{All p are q} \Rightarrow \Gamma\vdash\text{All p are q}$
+2. $M_\Gamma\models \text{All p are q} \ \Rightarrow \ \Gamma\vdash\text{All p are q}$
 
 *Proof:*
 
-> Define $p\le q$ if $\Gamma\vdash \text{All p are q}$.
+> **Define**: $p\le q$ if $\Gamma\vdash \text{All p are q}$
 > 
-> Claim: $\le$ is reflexive and transitive.
-> > Show $p\le p$. This follows from AXIOM.
-> > Show: $p\le q$ and $q\le r$ implies $p\le r$. This follows from BARBARA.
-> Have: $\le$ is reflexive and transitive.
+> **Claim**: $\le$ is reflexive and transitive  
+> > **Show**: $p\le p$. This follows from AXIOM    
+> > **Show**: $p\le q$ and $q\le r$ implies $p\le r$. This follows from BARBARA  
+> 
+> **Have**: $\le$ is reflexive and transitive
 >
-> Define $M_\Gamma$ via $[\![p]\!] = \{r \mid r \le p\}$.
+> **Define**: $M_\Gamma$ via $[\![p]\!] = \{r \mid r \le p\}$
 >
-> Claim: $M_\Gamma\models \Gamma$.
+> **Claim**: $M_\Gamma\models \Gamma$
 >
->> Assume: All p are q in $\Gamma$.
->> Show: $M_\Gamma\models \text{All p are q}$
->> Show: $[\![p]\!]\subseteq [\![q]\!]$
->> Show: $r\le p\Rightarrow r\le q$
->> > Assume $r\le p$
->> > Have: $p\le q$
->> > Have: $r\le q$
+>> **Assume**: All p are q in $\Gamma$  
+>> **Show**: $M_\Gamma\models \text{All p are q}$  
+>> **Show**: $[\![p]\!]\subseteq [\![q]\!]$  
+>> **Show**: $r\le p\Rightarrow r\le q$  
+>> > **Assume** $r\le p$  
+>> > **Have**: $p\le q$  
+>> > **Have**: $r\le q$  
 >> 
->> Have: $r\le p\Rightarrow r\le q$
+>> **Have**: $r\le p\Rightarrow r\le q$
 >
-> Have: $M_\Gamma\models \Gamma$.
+> **Have**: $M_\Gamma\models \Gamma$.
 >
-> Claim: $M_\Gamma\models \text{All p are q} \ \Rightarrow \ \Gamma\vdash \text{All p are q}$
+> **Claim**: $M_\Gamma\models \text{All p are q} \ \Rightarrow \ \Gamma\vdash \text{All p are q}$
 >
->> Assume: $M_\Gamma\models \text{All p are q}$
->> Show: $\Gamma\vdash \text{All p are q}$
->> Have: $[\![p]\!]\subseteq [\![q]\!]$
->> Have: $p\in [\![q]\!]$
->> Have: $p\le q$
->> Have: $\Gamma\vdash \text{All p are q}$
+>> **Assume**: $M_\Gamma\models \text{All p are q}$  
+>> **Show**: $\Gamma\vdash \text{All p are q}$  
+>> **Have**: $[\![p]\!]\subseteq [\![q]\!]$  
+>> **Have**: $p\in [\![q]\!]$  
+>> **Have**: $p\le q$  
+>> **Have**: $\Gamma\vdash \text{All p are q}$  
 >
-> Have: $M_\Gamma\models \text{All p are q} \ \Rightarrow \ \Gamma\vdash \text{All p are q}$
+> **Have**: $M_\Gamma\models \text{All p are q} \ \Rightarrow \ \Gamma\vdash \text{All p are q}$
 
 ## The Formalization 
 
