@@ -445,7 +445,7 @@ document.write(`
 <p><img alt="" src="../_images/2025-10-30-15-45-52.png" /></p>
 <section id="the-idea-of-the-proof">
 <h3>The Idea of the Proof<a class="headerlink" href="#the-idea-of-the-proof" title="Link to this heading">#</a></h3>
-<p>The strategy of the proof will be the following. Given <span class="math notranslate nohighlight">\(\Gamma\)</span>, we build a so-called canonical model <span class="math notranslate nohighlight">\(M_\Gamma\)</span> from <span class="math notranslate nohighlight">\(\Gamma\)</span> which, by construction, has the properties that</p>
+<p>The strategy of the proof will be the following. Given <span class="math notranslate nohighlight">\(\Gamma\)</span>, we build a so-called canonical model <span class="math notranslate nohighlight">\(M_\Gamma\)</span> from <span class="math notranslate nohighlight">\(\Gamma\)</span> which, by construction, has the properties that <a class="footnote-reference brackets" href="#phi" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(M_\Gamma\models \Gamma\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(M_\Gamma\models \phi \Rightarrow \Gamma\vdash\phi\)</span></p></li>
@@ -528,7 +528,7 @@ Have: <span class="math notranslate nohighlight">\(\Gamma\vdash \text{All p are 
 <li><p><code class="docutils literal notranslate"><span class="pre">definition</span></code> introduces a constant by conservative definitional equality. Use for naming predicates and functions defined by equations. The left-hand side cannot pattern-match; use “where” and pattern-match inside the right-hand side (e.g., via let or case).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">fun</span></code> defines functions by pattern matching and (if needed) recursion, generating simplification rules automatically.</p></li>
 </ul>
-<p><strong>Exercise/Activity:</strong> Add a lemma stating that <code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">⊨</span> <span class="pre">All</span> <span class="pre">p</span> <span class="pre">are</span> <span class="pre">q</span></code> iff <code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">p</span> <span class="pre">⊆</span> <span class="pre">M</span> <span class="pre">q</span></code>. <a class="footnote-reference brackets" href="#lemma-allpareq-solution" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p><strong>Exercise/Activity:</strong> Add a lemma stating that <code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">⊨</span> <span class="pre">All</span> <span class="pre">p</span> <span class="pre">are</span> <span class="pre">q</span></code> iff <code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">p</span> <span class="pre">⊆</span> <span class="pre">M</span> <span class="pre">q</span></code>. <a class="footnote-reference brackets" href="#lemma-allpareq-solution" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <p>Let us now continue in the book <code class="docutils literal notranslate"><span class="pre">Logic</span> <span class="pre">From</span> <span class="pre">Language</span></code> with</p>
 <p><img alt="" src="../_images/2025-10-30-09-46-10.png" /></p>
 <p>which is in the Isabelle/HOL theory <code class="docutils literal notranslate"><span class="pre">AllPAreQ_noProofs.thy</span></code></p>
@@ -537,8 +537,12 @@ Have: <span class="math notranslate nohighlight">\(\Gamma\vdash \text{All p are 
 <p>… tbc …</p>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="lemma-allpareq-solution" role="doc-footnote">
+<aside class="footnote brackets" id="phi" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>We are writing <span class="math notranslate nohighlight">\(\phi\)</span> instead of “All p are q” not only as an abbreviation but also to indicate that this proof strategy applies to a wide range of other logics.</p>
+</aside>
+<aside class="footnote brackets" id="lemma-allpareq-solution" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lemma</span> <span class="n">all_p_are_q</span><span class="p">:</span>
   <span class="n">fixes</span> <span class="n">M</span> <span class="p">::</span> <span class="s2">&quot;&#39;a model&quot;</span> <span class="ow">and</span> <span class="n">p</span> <span class="n">q</span> <span class="p">::</span> <span class="n">atProp</span>
   <span class="n">shows</span> <span class="s2">&quot;(M ⊨  All p are q) ⟷ (M p ⊆ M q)&quot;</span>
