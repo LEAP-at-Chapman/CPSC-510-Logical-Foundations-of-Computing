@@ -8,6 +8,12 @@ Constraint programming (CP) is a paradigm for identifying feasible solutions fro
 
 The constraint solver finds an assignment of values to the variables that satisfies all constraints. CP is based on **feasibility** (finding a feasible solution) rather than optimization, focusing on the constraints and variables rather than the objective function.
 
+### Installation
+
+```bash
+brew install minizinc
+```
+
 ### Key Characteristics
 - **Feasibility-focused**: CP emphasizes finding solutions that satisfy all constraints, not necessarily optimal ones
 - **Declarative**: You describe *what* constraints must hold, not *how* to find the solution
@@ -48,6 +54,60 @@ output [
     | i in 1..n, j in 1..n
 ] ++ ["\n"];
 ```
+
+## Working Example: N-Queens in MiniZinc
+
+A minimal, runnable model is included in this repo at `src/minizinc/nqueens/nqueens.mzn`. You can run it directly without any `.dzn` file.
+
+```{mzn}
+include "globals.mzn";
+
+% N-Queens: place n queens on an n x n board so none attack each other
+int: n = 8; % override with: -D n=10
+set of int: Q = 1..n;
+
+% q[i] is the column (1..n) of the queen in row i
+array[Q] of var Q: q;
+
+% 1) No two queens in the same column
+constraint all_different(q);
+
+% 2) No two queens on the same diagonal
+constraint forall(i, j in Q where i < j) (
+  abs(q[i] - q[j]) != j - i
+);
+
+solve satisfy;
+
+% Render a board with Q for a queen and . for empty
+output [
+  if j = 1 then "\n" else " " endif ++
+  if q[i] = j then "Q" else "." endif
+  | i in Q, j in Q
+] ++ ["\n", "Positions: ", show(q), "\n"];
+```
+
+Run:
+
+```
+minizinc src/minizinc/nqueens/nqueens.mzn
+minizinc -D n=12 src/minizinc/nqueens/nqueens.mzn
+# If needed, specify a solver explicitly (e.g., Gecode):
+minizinc --solver Gecode src/minizinc/nqueens/nqueens.mzn
+```
+
+Step-by-step how it works:
+- Parameters and sets: `n` and the index set `Q = 1..n`.
+- Decision variables: `q[i]` gives the column of the queen in row `i`.
+- Constraints:
+  - Columns: `all_different(q)` ensures all queens use different columns.
+  - Diagonals: for any rows `i<j`, if `abs(q[i]-q[j]) = j-i` they would share a diagonal; we forbid that by requiring `!=`.
+- Solve: `solve satisfy;` asks for any placement satisfying all constraints.
+- Output: pretty-prints a board and also the vector of positions.
+
+What the solver does:
+- Propagates the global constraint `all_different` and the diagonal arithmetic constraints.
+- Systematically searches (with propagation pruning) until a model is found.
 
 ## How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory
 
