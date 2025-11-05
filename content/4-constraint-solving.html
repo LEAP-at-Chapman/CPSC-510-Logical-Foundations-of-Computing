@@ -396,10 +396,12 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics">Key Characteristics</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-example-n-queens-in-minizinc">Working Example: N-Queens in MiniZinc</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory">How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-z3-and-minizinc-concepts">Connecting Z3 and MiniZinc Concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications">Example Applications</a><ul class="nav section-nav flex-column">
@@ -436,6 +438,12 @@ document.write(`
 <li><p>Optionally, an <strong>objective function</strong> to optimize</p></li>
 </ul>
 <p>The constraint solver finds an assignment of values to the variables that satisfies all constraints. CP is based on <strong>feasibility</strong> (finding a feasible solution) rather than optimization, focusing on the constraints and variables rather than the objective function.</p>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>minizinc
+</pre></div>
+</div>
+</section>
 <section id="key-characteristics">
 <h3>Key Characteristics<a class="headerlink" href="#key-characteristics" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -457,6 +465,35 @@ document.write(`
 <li><p>Output the solution parameters.</p></li>
 </ol>
 <p>Example:</p>
+</section>
+<section id="working-example-n-queens-in-minizinc">
+<h2>Working Example: N-Queens in MiniZinc<a class="headerlink" href="#working-example-n-queens-in-minizinc" title="Link to this heading">#</a></h2>
+<p>A minimal, runnable model is included in this repo at <code class="docutils literal notranslate"><span class="pre">src/minizinc/nqueens/nqueens.mzn</span></code>. You can run it directly without any <code class="docutils literal notranslate"><span class="pre">.dzn</span></code> file.</p>
+<p>Run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minizinc</span> <span class="n">src</span><span class="o">/</span><span class="n">minizinc</span><span class="o">/</span><span class="n">nqueens</span><span class="o">/</span><span class="n">nqueens</span><span class="o">.</span><span class="n">mzn</span>
+<span class="n">minizinc</span> <span class="o">-</span><span class="n">D</span> <span class="n">n</span><span class="o">=</span><span class="mi">12</span> <span class="n">src</span><span class="o">/</span><span class="n">minizinc</span><span class="o">/</span><span class="n">nqueens</span><span class="o">/</span><span class="n">nqueens</span><span class="o">.</span><span class="n">mzn</span>
+<span class="c1"># If needed, specify a solver explicitly (e.g., Gecode):</span>
+<span class="n">minizinc</span> <span class="o">--</span><span class="n">solver</span> <span class="n">Gecode</span> <span class="n">src</span><span class="o">/</span><span class="n">minizinc</span><span class="o">/</span><span class="n">nqueens</span><span class="o">/</span><span class="n">nqueens</span><span class="o">.</span><span class="n">mzn</span>
+</pre></div>
+</div>
+<p>Step-by-step how it works:</p>
+<ul class="simple">
+<li><p>Parameters and sets: <code class="docutils literal notranslate"><span class="pre">n</span></code> and the index set <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">=</span> <span class="pre">1..n</span></code>.</p></li>
+<li><p>Decision variables: <code class="docutils literal notranslate"><span class="pre">q[i]</span></code> gives the column of the queen in row <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p></li>
+<li><p>Constraints:</p>
+<ul>
+<li><p>Columns: <code class="docutils literal notranslate"><span class="pre">all_different(q)</span></code> ensures all queens use different columns.</p></li>
+<li><p>Diagonals: for any rows <code class="docutils literal notranslate"><span class="pre">i&lt;j</span></code>, if <code class="docutils literal notranslate"><span class="pre">abs(q[i]-q[j])</span> <span class="pre">=</span> <span class="pre">j-i</span></code> they would share a diagonal; we forbid that by requiring <code class="docutils literal notranslate"><span class="pre">!=</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Solve: <code class="docutils literal notranslate"><span class="pre">solve</span> <span class="pre">satisfy;</span></code> asks for any placement satisfying all constraints.</p></li>
+<li><p>Output: pretty-prints a board and also the vector of positions.</p></li>
+</ul>
+<p>What the solver does:</p>
+<ul class="simple">
+<li><p>Propagates the global constraint <code class="docutils literal notranslate"><span class="pre">all_different</span></code> and the diagonal arithmetic constraints.</p></li>
+<li><p>Systematically searches (with propagation pruning) until a model is found.</p></li>
+</ul>
 </section>
 <section id="how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory">
 <h2>How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory<a class="headerlink" href="#how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory" title="Link to this heading">#</a></h2>
@@ -629,10 +666,12 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics">Key Characteristics</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-example-n-queens-in-minizinc">Working Example: N-Queens in MiniZinc</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory">How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-z3-and-minizinc-concepts">Connecting Z3 and MiniZinc Concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications">Example Applications</a><ul class="nav section-nav flex-column">
