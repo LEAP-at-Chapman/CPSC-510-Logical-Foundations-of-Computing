@@ -12,9 +12,9 @@ Each chapter should by default be devided into the following sections (subject t
 - The Landscape of Tools
 - Algorithms
 - Benchmark and Competitions
-- Applications in Industry
-- Case Studies
-- History
+- Applications in Industry. The applications in industry section should contain clickable references to websites and research articles (as can be found on google scholar). The references should also appear in the references section of each chapter. Look for applications that have been influential and changed the direction of the field. Also look for more recent applications that point to interesting directions. In particular, find out how generative AI is changing research in formal methods. Everybody is now very much interested in how to combine (connectionist, neural network based, generative) AI with (symbolic, logic-based) AI (aka formal methods). 
+- Case Study. The case study should be code you develop that showcases an exemplary use of the tool. The ideal case study strikes a meaningful balance between being educational/explanatory but also interesting in its own right. Ideally, a reader would look at the case study and exclaim sth like: "Oh, Nice" or "That is interesting" or "Now I understand what I can do with the tool" or "great, maybe I could do sth similar for this other use case of mine".
+- History. Describe the main stepping stones in the evolution of ideas. See [here](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/2-satsolving.html#early-work) for a partial example.
 - Current Development, Research Challenges, Conferences and Workshops
 - References
 - Suggestions for future work on the book
