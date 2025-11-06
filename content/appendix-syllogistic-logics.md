@@ -80,6 +80,7 @@ We already showed that it suffices to prove the following.
 > **Claim**: $M_\Gamma\models \Gamma$
 >
 >> **Assume**: All p are q in $\Gamma$  
+>> **Have**: $p\le q$  
 >> **Show**: $M_\Gamma\models \text{All p are q}$  
 >> **Show**: $[\![p]\!]\subseteq [\![q]\!]$  
 >> **Show**: $r\le p\Rightarrow r\le q$  
