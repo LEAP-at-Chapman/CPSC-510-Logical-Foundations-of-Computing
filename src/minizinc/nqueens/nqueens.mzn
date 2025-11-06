@@ -20,6 +20,6 @@ solve satisfy;
 % Render a board with Q for a queen and . for empty
 output [
   if j = 1 then "\n" else " " endif ++
-  if q[i] = j then "Q" else "." endif
+  if fix(q[i]) = j then "Q" else "." endif
   | i in Q, j in Q
 ] ++ ["\n", "Positions: ", show(q), "\n"];
