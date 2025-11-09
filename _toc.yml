@@ -3,9 +3,9 @@
 
 format: jb-book
 root: content/title
-chapters:
-  - file: content/intro
 parts:
+- chapters:
+    - file: content/intro
 - caption: Logics and Their Software Tools
   chapters:
     - file: content/0-logic
