@@ -2,7 +2,9 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: content/intro
+root: content/title
+chapters:
+  - file: content/intro
 parts:
 - caption: Logics and Their Software Tools
   chapters:
