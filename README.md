@@ -2,7 +2,7 @@
 
 This is the repository for the course CPSC-510 Logical Foundations of Computing in Fall 2025.
 
-At the end of the course, we will have written a draft of a [book](https://LEAP-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/intro.html) that teaches the logical foundations of computing starting from state of the art software tools.
+At the end of the course, we will have written a draft of a [book](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/) that teaches the logical foundations of computing starting from state of the art software tools.
 
 ## Content
 
@@ -53,7 +53,7 @@ At the end of the course, we will have written a draft of a [book](https://LEAP-
    ghp-import -n -p -f _build/html
    ```
 
-4. **View the book**: [https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/intro.html](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/intro.html)
+4. **View the book**: [https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/)
 
 **Development**:
 - For development with Jupyter notebooks: `pip install -e ".[dev]"`
