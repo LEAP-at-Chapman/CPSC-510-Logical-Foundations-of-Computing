@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Modal Logic &#8212; Logical Foundations of Computing</title>
+    <title>Modal Logic &#8212; Logical Foundations of AI</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -144,14 +144,14 @@
     
   
 
-<a class="navbar-brand logo" href="intro.html">
+<a class="navbar-brand logo" href="title.html">
   
   
   
   
   
   
-    <p class="title logo__title">Logical Foundations of Computing</p>
+    <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -167,15 +167,10 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
-                    Introduction
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
@@ -463,8 +458,8 @@ Author: Alexander Kurz</p>
 <p>There is a lot to say here, but to present the main ideas as quickly as possible I would proceed as follows (see Chapters 3.1 and 3.2 of the book referenced below).</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(Prop\)</span> be a set of ‘propositional variables’. The language of modal logic is the smallest set of ‘formulas’ containing <span class="math notranslate nohighlight">\(Prop\)</span> and closed under <span class="math notranslate nohighlight">\(\wedge\)</span> , <span class="math notranslate nohighlight">\(\vee\)</span>, <span class="math notranslate nohighlight">\(\neg\)</span>, <span class="math notranslate nohighlight">\(\Box\)</span>, <span class="math notranslate nohighlight">\(\Diamond\)</span>.</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(W\)</span> be a set of ‘worlds’ and <span class="math notranslate nohighlight">\(R\subseteq W\times W\)</span>. Let <span class="math notranslate nohighlight">\(\sem{-}:Prop\to 2^W\)</span> be a function assigning sets of worlds to each atomic proposition. Define</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7b0cd62e-564d-493e-a797-8a219a3a66b5">
-<span class="eqno">(1)<a class="headerlink" href="#equation-7b0cd62e-564d-493e-a797-8a219a3a66b5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c183531b-a607-4e24-9d9d-5e7ca3d7d101">
+<span class="eqno">(1)<a class="headerlink" href="#equation-c183531b-a607-4e24-9d9d-5e7ca3d7d101" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sem{\phi\wedge\phi'} &amp;= \sem{\phi}\cap\sem{\phi'}\\
 \sem{\phi\vee\phi'} &amp;= \sem{\phi}\cup\sem{\phi'}\\
 \sem{\neg\phi} &amp;= W\setminus \sem{\phi}\\

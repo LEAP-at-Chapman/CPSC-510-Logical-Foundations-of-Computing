@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Logical Foundations of AI &#8212; Logical Foundations of Computing</title>
+    <title>Introduction &#8212; Logical Foundations of AI</title>
   
   
   
@@ -57,12 +57,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Introduction to Logic" href="0-logic.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="title.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -145,14 +142,14 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="title.html">
   
   
   
   
   
   
-    <p class="title logo__title">Logical Foundations of Computing</p>
+    <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -168,15 +165,10 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
-                    Logical Foundations of AI
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
@@ -388,7 +380,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Logical Foundations of AI</h1>
+    <h1>Introduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -398,7 +390,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guideline-for-contributions">Guideline for Contributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-table-of-contents">Preliminary Table of Contents</a></li>
 </ul>
             </nav>
         </div>
@@ -410,45 +403,33 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div style="text-align: center; margin-top: 10em; margin-bottom: 10em;">
-<section class="tex2jax_ignore mathjax_ignore" id="logical-foundations-of-ai">
-<h1>Logical Foundations of AI<a class="headerlink" href="#logical-foundations-of-ai" title="Link to this heading">#</a></h1>
-<div style="margin-top: 3em; margin-bottom: 3em; font-size: 1.2em; color: #666;">
-A Textbook on Logics and Their Software Tools
-</div>
-<div style="margin-top: 5em; font-size: 1.1em;">
-<strong>CPSC 510</strong><br>
-<em>Logical Foundations of Computing</em>
-</div>
-<div style="margin-top: 2em; font-size: 1em; color: #666;">
-Chapman University  
-Fall 2025
-</div>
-<div style="margin-top: 4em; font-size: 0.9em; color: #888; font-style: italic;">
-<em>Developed by the students and instructor of CPSC 510</em>
-</div>
-</div>
-<hr class="docutils" />
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <p>This book project is being developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University.</p>
-<p>Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the classes emphasize more of the theory, this book puts the tools center stage.</p>
+<p>Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the lectures emphasize more of the theory, this book puts the tools center stage.</p>
+<section id="guideline-for-contributions">
+<h2>Guideline for Contributions<a class="headerlink" href="#guideline-for-contributions" title="Link to this heading">#</a></h2>
 <p>Each chapter should by default be devided into the following sections (subject to discussion and revision):</p>
 <ul class="simple">
-<li><p>Idea</p></li>
-<li><p>Basic Theory</p></li>
-<li><p>Tool (Installation, First Example, First Exercise)</p></li>
-<li><p>Introductory Examples</p></li>
-<li><p>The Landscape of Tools</p></li>
-<li><p>Algorithms</p></li>
-<li><p>Benchmark and Competitions</p></li>
+<li><p><strong>Idea</strong>: Each tool is based on a logic. Typically there is only a small number of big ideas at the origin of each tool.</p></li>
+<li><p><strong>Basic Theory</strong>: Just enough theory to understand better how each logic provides the technology used to implement the big idea at the origin of the software tool.</p></li>
+<li><p><strong>Tool</strong>: One advantage of learning logic via tools is that one can get hands-on eperience before even digging into the mathematics. This section will be a guide to first steps with the tool (Installation, First Example, First Exercise)</p></li>
+<li><p><strong>Introductory Examples</strong>: The purpose of this section is to illustrate the big idea as well as the basic theory. Given this constraint, the examples should be as easy as possible.</p></li>
+<li><p><strong>The Landscape of Tools</strong>: A big idea together with the basic theory typically gives rise to a range of tools (such as satsolvers, model checkers, interactive theorem provers, etc). While each chapter will emphasize just one of these tools, here is the space to lay out the landscape of tools.</p></li>
+<li><p><strong>Algorithms</strong>: The basic theory needs to be implemented efficiently. Many of the breakthrough advances are not due to new big ideas, but due to careful engineering of efficient algorithms. This section will explain the main insights and implementation techniques that help tracing the development from small academic prototypes to industry scale software tools.</p></li>
+<li><p><strong>Benchmarks and Competitions</strong>: Not in all but in many cases, progress in formal methods is driven by benchmarks and competitions. Find out more what is happening on this side.</p></li>
 <li><p><strong>Applications in Industry</strong>. The applications in industry section should contain clickable references to websites and research articles (as can be found on google scholar). The references should also appear in the references section of each chapter. Look for applications that have been influential and changed the direction of the field. Also look for more recent applications that point to interesting directions. In particular, find out how generative AI is changing research in formal methods. Everybody is now very much interested in how to combine (connectionist, neural network based, generative) AI with (symbolic, logic-based) AI (aka formal methods).</p></li>
 <li><p><strong>Case Study</strong>. The case study should be code you develop that showcases an exemplary use of the tool. The ideal case study strikes a meaningful balance between being educational/explanatory but also interesting in its own right. Ideally, a reader would look at the case study and exclaim sth like: “Oh, Nice” or “That is interesting” or “Now I understand what I can do with the tool” or “great, maybe I could do sth similar for this other use case of mine”.</p></li>
-<li><p><strong>History</strong>. Describe the main stepping stones in the evolution of ideas. See this section on <a class="reference external" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/2-satsolving.html#early-work">Early Work</a> for a partial example.</p></li>
-<li><p>Current Development, Research Challenges, Conferences and Workshops</p></li>
-<li><p>References</p></li>
-<li><p>Suggestions for future work on the book</p></li>
+<li><p><strong>History</strong>. Describe the main stepping stones in the evolution of ideas, algorithms and industrial application. See this section on <a class="reference external" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/2-satsolving.html#early-work">Early Work</a> for a partial example on the development of the early work on SAT-solvers.</p></li>
+<li><p><strong>Formal Methods and AI</strong>: Under various labels such as neurosymbolic computing, all areas of formal methods are now integrating the recent advances in generative AI into their tools. Moreover, completely new tools are being built. One idea that is finding its way into many tools is to build tools based on guess (gen AI) and verify (symbolic AI).</p></li>
+<li><p><strong>Current development</strong> in the area, research challenges, conferences and workshops</p></li>
+<li><p><strong>References</strong></p></li>
+<li><p><strong>Suggestions for future work</strong> on the book</p></li>
+<li><p><strong>Contributors</strong>: Initial author (the student responsible for the chapter), peer reviewers, and other contributors with their contributions.</p></li>
 </ul>
+</section>
+<section id="preliminary-table-of-contents">
+<h2>Preliminary Table of Contents<a class="headerlink" href="#preliminary-table-of-contents" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="0-logic.html"><span class="std std-doc">Chapter 0</span></a> introduces the fundamental concepts of logic that form the foundation for all subsequent chapters: validity, formal languages, decidability, satisfiability, and the duality between syntax and semantics.</p>
 <p><a class="reference internal" href="1-propositional-logic.html"><span class="std std-doc">Chapter 1</span></a> introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.</p>
 <p><a class="reference internal" href="2-satsolving.html"><span class="std std-doc">Chapter 2</span></a> explores SAT solving using MiniSat, focusing on semantic tableaux algorithms and their applications to satisfiability and validity checking.</p>
@@ -461,24 +442,7 @@ Fall 2025
 <p><a class="reference internal" href="9-hoare-logic.html"><span class="std std-doc">Chapter 9</span></a> presents Hoare logic using Dafny, demonstrating how to formally specify and verify program correctness with preconditions, postconditions, and invariants.</p>
 <p><a class="reference internal" href="10-higher-order-logic.html"><span class="std std-doc">Chapter 10</span></a> extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.</p>
 <p><a class="reference internal" href="11-dependent-types.html"><span class="std std-doc">Chapter 11</span></a> presents dependent type theory with Lean, demonstrating how types can depend on values and enabling “proofs as programs” through the Curry-Howard correspondence.</p>
-<p>The current suggested outline for each chapter is (see <a class="reference internal" href="2-satsolving.html"><span class="std std-doc">Chapter 2</span></a> for an example):</p>
-<ul class="simple">
-<li><p>Idea: What you want to tell somebody who doesnt know anything</p></li>
-<li><p>Basic Theory: Recap of the basic theory</p></li>
-<li><p>Tool: The particular tool we will discuss. How to install it. How to run a basic toy example.</p></li>
-<li><p>Introductory Examples</p></li>
-<li><p>Tools: The landscape of tools in this area</p></li>
-<li><p>The Algorithm: Some basic algorithms on which the tools are based</p></li>
-<li><p>Applications in Industry</p></li>
-<li><p>Case Studies</p></li>
-</ul>
 </section>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -511,6 +475,15 @@ Fall 2025
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="title.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
     <a class="right-next"
        href="0-logic.html"
        title="next page">
@@ -536,7 +509,8 @@ Fall 2025
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guideline-for-contributions">Guideline for Contributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-table-of-contents">Preliminary Table of Contents</a></li>
 </ul>
   </nav></div>
 
