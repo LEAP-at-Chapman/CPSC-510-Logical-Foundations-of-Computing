@@ -169,7 +169,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Introduction
+                    Logical Foundations of Computing
                 </a>
             </li>
         </ul>
@@ -409,6 +409,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classic-cp-problems">Classic CP Problems</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-business-example-employee-shift-scheduling-minizinc">Practical Business Example: Employee Shift Scheduling (MiniZinc)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minizinc">MiniZinc</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-or-tools-cp-sat">Google OR-Tools (CP-SAT)</a></li>
@@ -441,6 +442,11 @@ document.write(`
 <section id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>minizinc
+</pre></div>
+</div>
+<p>On Windows (Git Bash), if MiniZinc is installed under your user profile, add the CLI to PATH:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/AppData/Local/Programs/MiniZinc:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+minizinc<span class="w"> </span>--version
 </pre></div>
 </div>
 </section>
@@ -505,50 +511,7 @@ document.write(`
 </section>
 <section id="connecting-z3-and-minizinc-concepts">
 <h2>Connecting Z3 and MiniZinc Concepts<a class="headerlink" href="#connecting-z3-and-minizinc-concepts" title="Link to this heading">#</a></h2>
-<p>Both Z3 and MiniZinc are declarative constraint solving tools, but with different focuses:</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Aspect</p></th>
-<th class="head"><p>Z3</p></th>
-<th class="head"><p>MiniZinc</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>Primary Use</strong></p></td>
-<td><p>SMT solving, theorem proving</p></td>
-<td><p>Constraint satisfaction, optimization</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Theory</strong></p></td>
-<td><p>SMT (Satisfiability Modulo Theories)</p></td>
-<td><p>CP (Constraint Programming)</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Strengths</strong></p></td>
-<td><p>Logical formulas, bit-vectors, arrays</p></td>
-<td><p>Scheduling, combinatorial optimization</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>Approach</strong></p></td>
-<td><p>SAT + theory solvers</p></td>
-<td><p>Propagation + search</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>Syntax</strong></p></td>
-<td><p>Python/C++ API or SMT-LIB</p></td>
-<td><p>Declarative modeling language</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Common Ground</strong>:</p>
-<ul class="simple">
-<li><p>Both use declarative problem specification</p></li>
-<li><p>Both support integer and boolean variables</p></li>
-<li><p>Both can express logical constraints</p></li>
-<li><p>Both search for satisfying assignments</p></li>
-</ul>
-<p><strong>When to use which</strong>:</p>
-<ul class="simple">
-<li><p>Use <strong>Z3</strong> for: verification, program analysis, logical reasoning</p></li>
-<li><p>Use <strong>MiniZinc</strong> for: scheduling, planning, resource allocation</p></li>
-</ul>
+<p>Briefly: MiniZinc is a high-level modeling language for constraint satisfaction and optimization with rich global constraints and multiple backend solvers; Z3 is an SMT solver aimed at logical theories and verification. If you’re building schedules, allocations, or routing, prefer MiniZinc; for program verification or bit-vector logic, prefer Z3.</p>
 </section>
 <section id="example-applications">
 <h2>Example Applications<a class="headerlink" href="#example-applications" title="Link to this heading">#</a></h2>
@@ -564,6 +527,35 @@ document.write(`
 <li><p><strong>Job Shop Scheduling</strong>: Assign jobs to machines while respecting precedence and resource constraints</p></li>
 </ul>
 </section>
+</section>
+<section id="practical-business-example-employee-shift-scheduling-minizinc">
+<h2>Practical Business Example: Employee Shift Scheduling (MiniZinc)<a class="headerlink" href="#practical-business-example-employee-shift-scheduling-minizinc" title="Link to this heading">#</a></h2>
+<p>A small, runnable scheduling model is included at <code class="docutils literal notranslate"><span class="pre">src/minizinc/employee_scheduling/shift_scheduling.mzn</span></code>. It assigns exactly one employee to each shift per day (Morning, Evening, Night), with fairness caps on how many shifts an employee can work in a week.</p>
+<p>Run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minizinc</span> <span class="n">src</span><span class="o">/</span><span class="n">minizinc</span><span class="o">/</span><span class="n">employee_scheduling</span><span class="o">/</span><span class="n">shift_scheduling</span><span class="o">.</span><span class="n">mzn</span>
+</pre></div>
+</div>
+<p>How it’s modeled:</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>: number of employees <code class="docutils literal notranslate"><span class="pre">E</span></code>, days <code class="docutils literal notranslate"><span class="pre">D</span></code>, shifts per day <code class="docutils literal notranslate"><span class="pre">S</span></code>, a coverage matrix <code class="docutils literal notranslate"><span class="pre">demand[d,s]</span></code>, and <code class="docutils literal notranslate"><span class="pre">max_shifts_per_employee</span></code>.</p></li>
+<li><p><strong>Decision variables</strong>: <code class="docutils literal notranslate"><span class="pre">x[e,d,s]</span> <span class="pre">∈</span> <span class="pre">{0,1}</span></code> indicates whether employee <code class="docutils literal notranslate"><span class="pre">e</span></code> works shift <code class="docutils literal notranslate"><span class="pre">s</span></code> on day <code class="docutils literal notranslate"><span class="pre">d</span></code>.</p></li>
+<li><p><strong>Constraints</strong>:</p>
+<ul>
+<li><p>Coverage: for each day/shift, <code class="docutils literal notranslate"><span class="pre">sum_e</span> <span class="pre">x[e,d,s]</span> <span class="pre">=</span> <span class="pre">demand[d,s]</span></code>.</p></li>
+<li><p>Per-day load: for each employee/day, <code class="docutils literal notranslate"><span class="pre">sum_s</span> <span class="pre">x[e,d,*]</span> <span class="pre">≤</span> <span class="pre">1</span></code> (no double-booking).</p></li>
+<li><p>Weekly fairness: for each employee, <code class="docutils literal notranslate"><span class="pre">sum_{d,s}</span> <span class="pre">x[e,*,*]</span> <span class="pre">≤</span> <span class="pre">max_shifts_per_employee</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Solve</strong>: <code class="docutils literal notranslate"><span class="pre">solve</span> <span class="pre">satisfy;</span></code> requests any feasible plan meeting the coverage and fairness constraints.</p></li>
+<li><p><strong>Output</strong>: a weekly roster printed by day and shift, listing assigned employees.</p></li>
+</ul>
+<p>How to think about it:</p>
+<ul class="simple">
+<li><p>Start with the business rules you cannot violate (coverage and no double-booking).</p></li>
+<li><p>Add fairness/balance rules to reflect policy (caps, min/max shifts).</p></li>
+<li><p>Keep data (e.g., <code class="docutils literal notranslate"><span class="pre">demand</span></code>) separate from decision variables, so you can scale it up later or drive it from external inputs.</p></li>
+<li><p>Prefer global and aggregate constraints (<code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">all_different</span></code>, etc.)—propagation will prune the search effectively.</p></li>
+</ul>
 </section>
 <section id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
@@ -679,6 +671,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classic-cp-problems">Classic CP Problems</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-business-example-employee-shift-scheduling-minizinc">Practical Business Example: Employee Shift Scheduling (MiniZinc)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minizinc">MiniZinc</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-or-tools-cp-sat">Google OR-Tools (CP-SAT)</a></li>
