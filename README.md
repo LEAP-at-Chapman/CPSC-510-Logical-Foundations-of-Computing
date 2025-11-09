@@ -59,7 +59,7 @@ At the end of the course, we will have written a draft of a [book](https://LEAP-
 - For development with Jupyter notebooks: `pip install -e ".[dev]"`
 - Interactive examples: [Z3 Examples](z3/z3-examples.ipynb)
 
-### Resource on Jupyter Books
+## Resources on Jupyter Books
 - [jupyterbook.org](https://jupyterbook.org/stable/)
 - Video [Jupyter Book 101](https://www.youtube.com/watch?v=lZ2FHTkyaMU) by Chris Holdgraf
 - Video Course: **Build a Jupyter Book with The Turing Way**
