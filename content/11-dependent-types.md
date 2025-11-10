@@ -6,13 +6,29 @@
 
 This chapter presents dependent type theory with Lean, demonstrating how types can depend on values and enabling "proofs as programs" through the Curry-Howard correspondence.
 
-## Topics
+## Idea
 
-- Dependent type theory foundations
-- Lean installation and setup
-- Type inference algorithms
-- Proofs as programs paradigm
-- Program verification with dependent types
+## Basic Theory
+
+## Tool
+
+## Introductory Examples
+
+## The landscape of Tools
+
+## Algorithms
+
+## Benchmarks and Competitions
+
+## Applications in Industry
+
+## Case Study
+
+## History
+
+## Formal Methods and AI
+
+## Current Development
 
 ## Resources
 
