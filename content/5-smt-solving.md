@@ -134,6 +134,10 @@ i) Prove that array access is always within bounds in a loop:
   ```
 
   Explanation: Z3 can prove safety properties like “no out-of-bounds access occurs”. This connects to static analysis and model checking.
+
+  **Applications in the industry**
+
+    *Cloud security & compliance (policy reasoning at scale)*
   
 ## References
 
