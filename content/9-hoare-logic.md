@@ -151,7 +151,20 @@ cd Source/IntegrationTests
 dotnet test -v:n
 ```
 
-### Linux Installation**
+### Linux Installation
+
+#### 1. Requirements
+
+.NET 8.0 SDK
+```bash
+sudo apt install dotnet-sdk-8.0
+```
+
+Python 3 + pip
+
+```bash
+sudo apt install python3 python3-pip
+```
 
 ## Program Verification Techniques
 
