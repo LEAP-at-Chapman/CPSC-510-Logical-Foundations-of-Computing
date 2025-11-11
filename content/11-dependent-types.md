@@ -10,10 +10,11 @@ This chapter presents dependent type theory with Lean, demonstrating how types c
 
 Dependent Type Theory (DTT) is the idea that types can depend on values. This enable us to rstablish precise relationships between data and the logical propositions that describes it.
 
-In traditional programming languages, types classify values. Int describes integers, Bool describes True or False, etc... With dependent type theory, a type itself depends on a value. For example, instead of defining a single “array” type, we define array n A, meaning “an array of length n whose elements are of type A.” This makes certain properties, like the dimension of an array, part of the type system itself. The compiler can then verify these constraints automatically.
+In traditional programming languages, types classify values. `Int` describes integers, `Bool` describes True or False, etc... With dependent type theory, a type itself depends on a value. For example, instead of defining a single `array` type, we define `array n A`, meaning “an array of length n whose elements are of type A.” This makes certain properties, like the dimension of an array, part of the type system itself. The compiler can then verify these constraints automatically.
 
 This expressiveness blurs the boundary between proofs and programs. In dependent type theory, writing a function that computes something often simultaneously constructs a proof of its correctness. For instance, a function that returns the sum of two natural numbers can be defined alongside a proof that addition is associative or commutative, proofs that Lean, Coq, or Agda can check mechanically.
 
+(To be added more)...
 
 ## Basic Theory
 
@@ -58,7 +59,9 @@ that such benchmarks are essential to meaningful progress in automated code veri
 
 ## Case Study
 
-Let's formalise and verify a transformation pipline for 3-D points in world space. Let's look at a small example where we perform a rotation in place, follow by a translation (moving the point to a different coordinate).   
+Let's formalise and verify a transformation pipline for 3-D points in world space. Let's look at a small example where we perform a rotation in place, follow by a translation (moving the point to a different coordinate). This case study will show how dependent types and theorem proving is utilized in computer graphics, like graphical engines utilized in games, movies, animation, etc...
+
+The following case study demonstrates how Lean uses dependent type system to ensures mathematical and computational correctness. By encoding vector dimensions in types and proving geometric invariants such as norm preservation, we move from abstract theory to executable verification. This approach mirrors how formal methods are being integratated into the wider industry.
 
 ## History
 
