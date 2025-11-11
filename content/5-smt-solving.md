@@ -135,13 +135,22 @@ i) Prove that array access is always within bounds in a loop:
 
   Explanation: Z3 can prove safety properties like “no out-of-bounds access occurs”. This connects to static analysis and model checking.
 
-  ## Applications in the industry
+  ## Applications in the Industry
 
-  Cloud security & compliance (policy reasoning at scale)
+  Cloud security & compliance
   
-  Public-cloud providers use SMT to prove properties about access policies. AWS’s Zelkova engine answers questions like “Is any bucket publicly readable?” by translating IAM/S3 policies into    
-  logical formulas and discharging billions of SMT queries per day using a portfolio of solvers (including Z3, CVC4/cvc5). These checks power guardrails in services such as Amazon S3 and AWS
-  Config.
+  Zelkova, AWS’s policy-analysis engine, encodes IAM/S3 policies into SMT and answers safety queries at cloud scale (e.g., “Can anything make this bucket public?”). Peer-reviewed accounts report   millions to billions of SMT queries daily, and describe how abstractions and portfolio solving (including Z3) make the service production-grade and latency-predictable.
+
+  Software security at Microsoft (whitebox fuzzing)
+
+  SAGE pioneered whitebox fuzzing: path-constraint solving with SMT to generate inputs that drive binaries down new paths. Deployed across Windows and other products, SAGE and its successors  
+  (SAGAN/JobCenter) found numerous high-impact bugs and established SMT-backed fuzzing as an industrial norm. 
+
+  Compiler correctness
+  
+  Alive2 checks that optimizations preserve semantics by asking SMT queries over the pre/post IR. Recent work blends LLMs with Alive2 to flag transformations likely to be unsound, then uses   
+  fuzzing to seek counterexamples—an early example of neuro-symbolic validation in a mature compiler toolchain.
+
   
 ## References
 
