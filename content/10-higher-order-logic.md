@@ -303,7 +303,36 @@ Xu et al. present MiniLang/IsaMini, a streamlined proof langauge for Isabelle/HO
 
 ## 10.9 Case Study - Neural Theorem Proving via IsaMini
 
+https://github.com/xqyww123/Isa-Mini
 
+trying to find where the actual code etc is?
+
+According to the authors:
+*the REPL infrastructure, MiniLang interpreter, translator,
+training data, machine learning framework, Sledgehammer,
+and parameters of the finetuned models will be open-sourced
+and are present in the submitted supplementary materials*
+
+need to talk to Kurz about finding another example; the binary analysis one seems pretty cool
+
+https://gitlab.surrey.ac.uk/isabil/isabil
+
+https://zenodo.org/records/15268251
+
+I added these lines as PATH variables to my zsh on MacOS in order to run the Isabelle CLI tool:
+`export ISABELLE_HOME="/Applications/Isabelle2025.app"`
+`export PATH="$ISABELLE_HOME/bin:$PATH"`
+
+Make sure you have correct version of the [AFP](https://www.isa-afp.org/download/) downloaded
+
+Unpack the Tar file, put it *somewhere*, and then register it via 
+`isabelle components -u PATHNAME`
+
+For example, the pathname for my AFP is: 
+`/Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys`
+
+My command is then:
+`isabelle components -u /Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys`
 
 ## 10.10 History
 
