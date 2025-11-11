@@ -32,7 +32,9 @@
 
 **L9.2:** Hoare Logic in Dafny. I first gave an example of how to use an [AI-Agent](./literature/dafny-in-industry/prompts/literature-review.prompt.md) to help with a literature review. Then I gave an [introduction to Dafny](./notes/dafny.md). Finally, we looked in more detail at [Hoare logic](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/appendix-hoare-logic.html).
 
-**L10.1:** [An Introduction to Isabelle](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/appendix-syllogistic-logics.html)
+**L10.2:** [An Introduction to Isabelle](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/appendix-syllogistic-logics.html)
+
+**L11.2:** An Introduction to Lean and Dependently Typed Programming. [The Lean Game Server](https://adam.math.hhu.de/). [Natural Deduction](https://hackmd.io/@alexhkurz/r1bYDpMybx).
 
 
 

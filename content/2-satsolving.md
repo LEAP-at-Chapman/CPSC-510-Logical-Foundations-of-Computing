@@ -143,6 +143,26 @@ The [Davis–Putnam algorithm](https://en.wikipedia.org/wiki/Davis%E2%80%93Putna
 5. Repeat until all variables are eliminated.
 6. If the empty clause is derived, then UNSATISFIABLE, else SATISFIABLE.
 
+#### Davis-Putnam Algorithm example
+
+Given the following formula, we will use the Davis-Putnam algorithm to solve it:
+
+$$(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee \neg C)$$
+
+Step 1 of the algorithm is to select a variable, we will start with A. We see that in clause 1 A appears positively and in clause 2 A appears negatively, meaning we must use resolution. To do that, we take both clauses 1 and 2, remove each instance of A, combine the clauses, and then add it to our formula. So, our new formula is:
+
+$$(B \vee C) \wedge (\neg B \vee \neg C)$$
+
+Now, we repeat our steps with a new variable, we will pick B. Since B appears both positively and negatively, we will use resolution again. After resolution, we are left with the formula:
+
+$$(C \vee \neg C)$$
+
+As we know, this is always true, so we can remove it from our formula. Thus, no clauses are remaining, meaning the formula is satisfiable. This may be a little confusing because the 6th step of the algorithm says that if the empty clause is derived, then the formula is unsatisfiable. However, we did not derive the empty clause, and I will give a demonstration of how the empty clause is derived to clear up any confusion. Imagine this is our formula:
+
+$$(A) \wedge (\neg A)$$
+
+Using the algorithm, A appears both positively and negatively, meaning that we have to use resolution again. However, after using resolution, we are left with the empty clause (denoted as \square). This our formula is unsatisfiable. 
+
 ### Davis–Putnam–Logemann–Loveland (DPLL) algorithm
 
 [Davis–Putnam–Logemann–Loveland (DPLL) algorithm](https://en.wikipedia.org/wiki/DPLL_algorithm) 
@@ -226,19 +246,70 @@ Since $C =$ False, $B =$ False according to clause 2. (A=0 -> C=0 -> B=0).
 
 Now we have hit step 5 of the algorithm, there are no conflicts and every variable has been assigned. Thus, our formula is satisfiable.
 
+### DPLL vs CDCL example
 
+Here, we will solve an example formula using both DPLL and CDCL, and determine which algorithm is better (more efficient) and why. We will start with this formula:
+
+$$(A \vee B) \wedge (A \vee \neg B) \wedge (\neg A \vee C) \wedge (\neg A \vee \neg C) \wedge (\neg B \vee \neg C)$$
+
+First we will solve using DPLL. First, we pick a variable and decide a value. Let's try A = 0. Then, we apply unit propagation. So, in clause 1, since A = 0, B = 1. Next, in clause 2, since A = 0, B = 0. Now we have a conflict since obviously B cannot be both 0 and 1. So, we backtrack.
+
+Now, we try A = 1. Applying unit propagation on clause 3, since A = 1, C = 1. On clause 4, since A = 1, C = 0. Thus, we have another conflict, and this one cannot be solved by backtracking, so DPLL concludes UNSAT.
+
+Now let's try using CDCL. Again we will start with the same starting decision of A = 0. Again, using unit propagation, we will get the same conflict as DPLL with B from clauses 1 and 2.
+
+
+## Parallel Approaches
+
+Some SAT solvers use multiple processors at the same time to speed up problem solving. There are 2 different types of strategies tha modern parallel SAT solvers rely on.
+
+#### Portfolio
+
+The portfolio parallel approach running many solvers in parallel on the same problem. Once one of the solvers finds a solution, they all can stop. This reduces the time needed to solve because it is trying multiple at once. Many portfolio approaches implement random seeds to decrease the amount of duplicate work that the solvers are doing. Depending on the underlying algorithm behind the SAT solvers, it is possible that the different portfolios could share learned clauses amongst each other, which will decrease time taken to solve even more. A few examples of portfolio parallel SAT solvers are PPfolio and HordeSat.
+
+#### Divide-and-conquer
+
+A different parallel approach involves spitting the problem into smaller sub-problems, and then running each of those on a different processor. This can cause some processors to finish their problems much earlier than others because different sub-problems can vary in difficulty, which is suboptimal. One very benefical advance is the Cube-and-Conquer approach, which uses two phases. The first phase is the cube part where a solver "looks ahead" and breaks the problem into smaller "cubes." Phase 2 is the conquer f=part where each cube is solved using CDCL. Because of the way the cubes are calculated, if one cube is satisfiable, then the whole problem is satisfiable. One example divide-and-conquer that uses the cube-and-conquer approach is Treengeling.
 
 ## Applications in Industry
 
-Typical examples are hardware verification (Intel, AMD, Apple, etc) and dependency resolution in software package installers (Debian Linux).
+SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language. These applications are central to many industrial workflows. Historically, they have moved the field from theoretical curiosity (like NP-completeness) to large-scale problem solving. Today, solvers can easily handle problems with millions of variables and tens of millions of clauses.
+
+### Established Industrial Applications
+
+One main area where SAT technology is heavily used is hardware verification. It is used to verify the pipelines of GPUs and CPUs through property checking. SMT solvers (a descendant of SAT) are especially used in hardware verification because they are able to combine the core principles of SAT with theory solvers for arithmetic and arrays.
+
+Similarly, SAT solvers are also used for software verification and program analysis. They can either provide counterexamples when a property fails or proofs for satisfiability, which is especially helpful when debugging.
+
+SAT solvers are also used for package and dependency solving and optimization. By translating domain constraints into CNF, the solvers can be used for dependency resolution (package managers), combinatorial optimization (scheduling), or other large combinatorial tasks.
+
+While not necessarily an application of use in industry, there is an annual SAT competition that is used to track the state of the art and can help lead to adoption in industry. This competition is beneficial because it leads people to find new algorithms and heuristics than can be used to improve the state of the art.
+
+### Use of Generative AI
+
+As the use of generative AI becomes more and more integrated into every industry, SAT solvers are no exception. Generative AI (LLMs) are increasingly being used to augment SAT solvers rather than replace them completely. There are a couple of different examples that show this.
+
+First, generative AI models are being used for instance generation. This is beneficial because it is used to generate SAT instaances that mimic real-world problems, which can help to study the behavior of the solvers and see how they can be improved. One example of this is G2SAT, which makes CNF formulas into bipartite graphs and learns to generate realistic SAT instances.
+
+Another example is using solvers to check proofs that are created by LLMs. For example, an LLM will propose a proof, and the solvers will check, reject, or give feedback on these proposed proofs. This is more with SMT solvers than SAT due to their proof checking abilities, but as SMT is a descendant of SAT, it has been included in the section.
+
+Solvers are also being used to reduce hallucinations and increase reliability in certain AI models. Some models, including ones from Amazon have integrated "automated reasoning checks" to constrain generative models (argument checking, verification checks on outputs of the model, rule enforcement) to improve trustworthiness.
+
+### How this affects SAT in industry
+
+Hybrid workflows are becoming much more common in industry. This means that generative AI models are proposing something, and SAT solvers are used to provide guarantees of truthfulness or unsatisfiability. This is beneficial because it is utilizing the creativity of generative AI, while confirming correctness through the rigidity of SAT solvers.
+
+
+
+<!-- Typical examples are hardware verification (Intel, AMD, Apple, etc) and dependency resolution in software package installers (Debian Linux).
 
 More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language.
 
-... tbc ... eg there could be more to say about SAT-solving at Intel and other hardware companies ... and then about applications of SAT to software engineering ...
+... tbc ... eg there could be more to say about SAT-solving at Intel and other hardware companies ... and then about applications of SAT to software engineering ... -->
 
 ## Case Studies
 
-...
+2x2 sudoku from above, 4x4 sudoku added soon
 
 
 ## References

@@ -118,6 +118,14 @@ A model checker designed to model systems made of timed automata. Uses a simplif
 
 ## Algorithms
 
+When SPIN verifies a system, several steps are taken.
+
+1. The user must describe the system in Promela (Process Meta Language), which is SPINs programming langauage.
+
+2. The statements within this program (which are expressed as Linear-Temporal Logic), are converted into Büchi Automata (https://en.wikipedia.org/wiki/B%C3%BCchi_automaton). These Automata are state machines that accepts or rejects infinite inputs. 
+
+3. SPIN generates C source code for a model checker specifically designed to verify the defined system, instead of running the verification itself.
+
 ## Benchmarks
 
 I looked into benchmarks for SPIN and other model checkers, however at the time of writing, there does not appear to have been many benchmarks of such tools available online.
@@ -127,6 +135,18 @@ I found a research paper that declared its intent to create a benchmark of model
 ## Applications in Industry
 
 One of the main applications of SPIN in the industry is model checking for concurecy or mutual exculsion problems. For example, it is often the case where two processes are running in parallel and must read and write from the same reasource. These processes cannot be allowed to access the reasource at the same time to avoid memory problems. However both processes must access the reasource *eventually*. This problem and problems like it can be modeled and checked in SPIN.
+
+https://ieeexplore.ieee.org/abstract/document/1036832?casa_token=HtU3_puherIAAAAA:kVbIgTU_2OtJXSWBKGi5bo6EcMvlnY7BroR3_0pklIX2kiyraaAulHbb6sjsMm_yN2J9G0FJ9Beg
+
+SPIN has also been used for a number of other, more specific applications in the industry. For instance, back in the early 2000s some researchers used SPIN  to verify the flight software of spacecraft. Given the risks of spaceflight, double and tripple checking everything is the norm, which is especially important for something as vital as the central flight system of a craft. 
+
+https://onlinelibrary.wiley.com/doi/abs/10.1002/stvr.1662?casa_token=5wVnXSXNcfIAAAAA%3AaciaDPfQmEw8IN8IJ0JoBZWUhAlipgCY1NFjJ2kzRIxXJUs-tW54pir6yox3XeTw8lUTVbcx08aIams
+
+Additionally the automotive industry had run into some trouble ensuring the reliability of their vehicle systems due to increasing complexity. SMT-based checking isn't very efficeny as it can't handle loops or interuptions very well. As such, SPIN was proposed as an alternative and was found to be quite efficent at verifying such systems.
+
+https://www.ros.hw.ac.uk/items/971a3d2e-8dcd-4ac3-b0fa-48dfdbcf46ea
+
+Model checkers like SPIN can also be used to help find design flaws in web applications, or to simplify their designs. The researchers in this paper, tested SPINs ability to verify web applications and compared it against another model checker (Upaal) to ensure it was correct. 
 
 ## Case Studies
 

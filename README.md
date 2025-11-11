@@ -1,8 +1,10 @@
 # CPSC-510-Logical-Foundations-of-Computing
 
-This is the repository for the course CPSC-510 Logical Foundations of Computing. 
+This is the repository for the course CPSC-510 Logical Foundations of Computing in Fall 2025.
 
-At the end of the course, we will have written a draft of a [book](https://LEAP-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/intro.html) that teaches the logical foundations of computing starting from state of the art software tools.
+At the end of the course, we will have written a draft of a [book](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/) that teaches the logical foundations of computing starting from state of the art software tools.
+
+## Content
 
 **Quick Links**:
 - Preliminary [outline](overview.md)
@@ -24,7 +26,9 @@ At the end of the course, we will have written a draft of a [book](https://LEAP-
 **Blogs, Videos, etc**:
 - Hillel Wayne: [Logical Duals in Software Engineering](https://buttondown.com/hillelwayne/archive/logical-duals-in-software-engineering/)
 
-**Setup and Installation**:
+## Jupyter Book
+
+### Setup, Installation, Etc
 
 **Quick Setup** (recommended):
 ```bash
@@ -49,8 +53,32 @@ At the end of the course, we will have written a draft of a [book](https://LEAP-
    ghp-import -n -p -f _build/html
    ```
 
-4. **View the book**: [https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/intro.html](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/intro.html)
+4. **View the book**: [https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/)
 
 **Development**:
 - For development with Jupyter notebooks: `pip install -e ".[dev]"`
 - Interactive examples: [Z3 Examples](z3/z3-examples.ipynb)
+
+## Resources on Jupyter Books
+- [jupyterbook.org](https://jupyterbook.org/stable/)
+- Video [Jupyter Book 101](https://www.youtube.com/watch?v=lZ2FHTkyaMU) by Chris Holdgraf
+- Video Course: **Build a Jupyter Book with The Turing Way**
+  - Module 2.1: [Introduction to the Turing Way](https://www.youtube.com/watch?v=JyNhPfcBxTg&list=PLBxcQEfGu3Dmdo6oKg6o9V7Q_e7WSX-vu&index=2)
+  - Module 2.2: [Overview of features](https://www.youtube.com/watch?v=PmxZywVwhP8&list=PLBxcQEfGu3Dmdo6oKg6o9V7Q_e7WSX-vu&index=3)
+  - Module 5: [NyST, Jupyter Notebooks in Jupyter Books](https://www.youtube.com/watch?v=K2LgwSbZH_Q&list=PLBxcQEfGu3Dmdo6oKg6o9V7Q_e7WSX-vu&index=6)
+  
+## Examples of Online Books
+- [Computational and Inferential Thinking: The Foundations of Data Science](https://inferentialthinking.com/chapters/intro.html)
+- [Intermediate Quantitative Economics with Python](https://python.quantecon.org/intro.html)
+- [The Turing Way](https://book.the-turing-way.org/)
+- [SciKit Learn](https://inria.github.io/scikit-learn-mooc/)
+- [Visualization Curriculum](https://idl.uw.edu/visualization-curriculum/intro.html)
+- [Geographic Data Science with Python](https://geographicdata.science/book/intro.html)
+
+The Lean Community has  been very active writing online books:
+- [Theorem Proving in Lean 4](https://lean-lang.org/theorem_proving_in_lean4/)
+- [Functional Programming in Lean](https://lean-lang.org/functional_programming_in_lean/)
+- [Mathematics in Lean](https://leanprover-community.github.io/mathematics_in_lean/)
+- [Logic and Proof](https://leanprover-community.github.io/logic_and_proof/)
+- [The Mechanics of Proof](https://hrmacbeth.github.io/math2001/)
+

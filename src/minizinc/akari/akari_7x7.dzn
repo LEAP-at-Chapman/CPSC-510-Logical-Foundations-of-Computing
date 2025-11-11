@@ -1,0 +1,12 @@
+R = 7; C = 7;
+
+akari_grid = array2d(1..R, 1..C,
+[
+    B_0, W,   W,   W, W,   W,   B_1,
+    W,   B_1, W,   W, B_1, B,   W,
+    W,   B_0, W,   W, W,   W,   W,
+    W,   W,   W,   W, W,   W,   W,
+    W,   W,   W,   W, W,   B_2, W,
+    W,   B,   B_1, W, W,   B,   W,
+    B_0, W,   W,   W, W,   W,   B
+]);
