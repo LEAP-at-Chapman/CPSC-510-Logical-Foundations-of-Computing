@@ -137,21 +137,60 @@ i) Prove that array access is always within bounds in a loop:
 
   ## Applications in the Industry
 
-  Cloud security & compliance
+  **Cloud security & compliance (billions of SMT checks at Amazon Web Services)**
   
   Zelkova, AWS’s policy-analysis engine, encodes IAM/S3 policies into SMT and answers safety queries at cloud scale (e.g., “Can anything make this bucket public?”). Peer-reviewed accounts report   millions to billions of SMT queries daily, and describe how abstractions and portfolio solving (including Z3) make the service production-grade and latency-predictable.
 
-  Software security at Microsoft (whitebox fuzzing)
+  **Software security at Microsoft (whitebox fuzzing)**
 
   SAGE pioneered whitebox fuzzing: path-constraint solving with SMT to generate inputs that drive binaries down new paths. Deployed across Windows and other products, SAGE and its successors  
   (SAGAN/JobCenter) found numerous high-impact bugs and established SMT-backed fuzzing as an industrial norm. 
 
-  Compiler correctness
+  **Compiler correctness (translation validation for LLVM)**
   
   Alive2 checks that optimizations preserve semantics by asking SMT queries over the pre/post IR. Recent work blends LLMs with Alive2 to flag transformations likely to be unsound, then uses   
   fuzzing to seek counterexamples—an early example of neuro-symbolic validation in a mature compiler toolchain.
 
-  
+  **Smart-contract analysis (blockchains)**
+
+  Tools like Mythril symbolically execute EVM bytecode and discharge path constraints to Z3 to expose reentrancy, arithmetic, and permission bugs before deployment—now routine in audits and CI 
+  for DeFi systems.
+
+  **Network correctness (pre-deployment verification)**
+
+  Industrial network verifiers translate control-plane configs (BGP/OSPF/etc.) into logical models and use SMT to validate reachability, isolation, and failure scenarios before rollout—e.g.,
+  Minesweeper/Batfish (research-to-product trajectory) and later scalable systems.
+
+  **Safety-critical AI (neural-network verification)**
+
+  The Reluplex line of work and the Marabou framework brought SMT into DNN certification (ACAS Xu case study, bound-tightening, piecewise-linear reasoning). This has shaped standards 
+  conversations for autonomy and perception stacks.
+
+
+  ## Generative AI and Formal Methods: What's Changing
+
+  **1. LLMs assisting proof and spec**
+    LeanDojo/ReProver shows that retrieval-augmented LLMs can select premises and generate Lean proofs; the suite provides datasets, tooling, and reproducible baselines, catalyzing rapid 
+    progress in ML-for-theorem-proving.
+    A 2025 survey reviews how LLMs help author formal specifications from natural-language requirements (Dafny/C/Java), with promising accuracy on assertion synthesis and “assertion completion.”
+    
+
+  **2. Neuro-symbolic invariant synthesis for verification**
+    Fresh results show LLMs can propose loop invariants that an SMT-based checker validates/refines (e.g., ASE’24 neuro-symbolic bounded model checking; 2025 benchmark studies). The emerging 
+    recipe: LLM proposes → SMT/solver checks → counterexample-guided repair.
+
+  **3. Hybrid validation pipelines in compilers and systems**
+    For LLVM, LLMs triage “hard” optimizations while Alive2 (SMT) proves the rest, using fuzzing to chase suspected unsound cases—concrete neuro-symbolic workflows shipping into compiler 
+    validation. Expect similar “LLM-first, SMT-confirm” loops in optimizers, static analyzers, and decompilers.
+
+  **4. Formal analysis of AI systems themselves**
+    Neural-network verification continues to integrate SMT with domain-specific relaxations and bound-propagation; Marabou 2.0 documents architecture and roles for solver-in-the-loop bound 
+    tightening. Coupled with LLM systems, this points to spec-driven safety cases for perception and policy components.
+
+  **5. Research directions to watch**
+    - Auto-formalization: LLMs converting NL requirements/tests into templates that SMT tools check (assertion mining and refinement).
+    - Proof-search copilots: Retrieval + tool APIs (Lean/Isabelle/Coq) to keep LLM steps sound via solver or kernel checks.
+    - Verifier-in-the-loop tooling: LLM planning; SMT establishes truth; counterexamples feed self-repair—already prototyped in compilers and invariant synthesis.
 ## References
 
 - [Reuben Martins](https://sat-group.github.io/ruben/) (part of a course on [Bug Catching: Bug Catching: Automated Program Verification](https://www.cs.cmu.edu/~15414/s22/s21/lectures/) )
