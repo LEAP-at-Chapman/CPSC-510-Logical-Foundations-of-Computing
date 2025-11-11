@@ -200,3 +200,18 @@ i) Prove that array access is always within bounds in a loop:
   - [Lecture Notes on DPLL(T) & SMT Encodings](https://www.cs.cmu.edu/~15414/s24/lectures/19-smt-encodings.pdf)
   - [Lecture Notes on SMT Solving: Nelson-Oppen](https://www.cs.cmu.edu/~15414/s24/lectures/18-smt-solving.pdf)
 - Howe, J. M., & King, A. (2012). [A pearl on SAT and SMT solving in Prolog](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=A+Pearl+on+SAT+and+SMT+Solving+in+Prolog&btnG=). Theoretical Computer Science, 435, 43-55. [pdf](https://www.staff.city.ac.uk/~jacob/solver/tcs.pdf) - - - I only read the intro and do not claim that I understand that paper. It is of interest to because it combines ideas from SAT, Prolog and SMT.
+- Backes, J., Bolignano, P., Cook, B., et al. “Semantic-based Automated Reasoning for AWS Access Policies using SMT.” FMCAD 2018
+- Rungta, N. “A Billion SMT Queries a Day.” Amazon Science (invited), 2022.
+- Godefroid, P., Levin, M., Molnar, D. “SAGE: Whitebox Fuzzing for Security Testing.” CACM 2012.
+- Bounimova, E., Godefroid, P., Molnar, D. “Billions and Billions of Constraints: Whitebox Fuzz Testing at Microsoft.” ICSE 2011/Tech Report.
+- Wang, Y., Xie, F. “Enhancing Translation Validation of Compiler Transformations with Large Language Models.” arXiv:2401.16797 (2024).
+- Cadar, C., Dunbar, D., Engler, D. “KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs.” OSDI 2008.
+- Beckett, R., et al. “A General Approach to Network Configuration Verification (Minesweeper).” SIGCOMM 2017.
+- Brown, M., et al. “Lessons from the Evolution of the Batfish Configuration Analysis Tool.” SIGCOMM 2023 (Experience).
+- Prabhu, S., et al. “Plankton: Scalable Network Configuration Verification.” NSDI 2020.
+- Katz, G., Barrett, C., Dill, D., Julian, K., Kochenderfer, M. “Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks.” CAV 2017 / arXiv:1702.01135.
+- Katz, G., et al. “The Marabou Framework for Verification and Analysis of Deep Neural Networks.” CAV 2019 / LNCS; Marabou 2.0 (2024).
+- Yang, K., et al. “LeanDojo: Theorem Proving with Retrieval-Augmented Language Models (ReProver).” NeurIPS 2023 (paper & dataset).
+- Beg, A., et al. “A Short Survey on Formalising Software Requirements with LLMs.” arXiv:2506.11874 (2025).
+- Wu, G., et al. “LLM Meets Bounded Model Checking: Neuro-symbolic Loop Invariant Inference.” ASE 2024.
+- Wei, A., et al. “InvBench: Can LLMs Accelerate Program Verification with Invariant Synthesis?” arXiv:2509.21629 (2025).
