@@ -2,6 +2,7 @@
 
 *Author: Spencer Au*
 
+
 ## Topics
 
 - Higher-order logic foundations
@@ -47,6 +48,7 @@ The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system
 
 1) **Modus Ponens** From $A$ and $A \to B$ to infer $B$.
 2) **Generalization** From $A$ to infer $\forall x\,A$, where x is a variable of any type
+
 
 *Adapted from Andrews, 2002*<sup><a href="#andrews2002">[1]</a></sup> using modern logic convention.
 

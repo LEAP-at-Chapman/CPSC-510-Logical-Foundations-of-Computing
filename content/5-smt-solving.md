@@ -134,6 +134,14 @@ i) Prove that array access is always within bounds in a loop:
   ```
 
   Explanation: Z3 can prove safety properties like “no out-of-bounds access occurs”. This connects to static analysis and model checking.
+
+  ## Applications in the industry
+
+  Cloud security & compliance (policy reasoning at scale)
+  
+  Public-cloud providers use SMT to prove properties about access policies. AWS’s Zelkova engine answers questions like “Is any bucket publicly readable?” by translating IAM/S3 policies into    
+  logical formulas and discharging billions of SMT queries per day using a portfolio of solvers (including Z3, CVC4/cvc5). These checks power guardrails in services such as Amazon S3 and AWS
+  Config.
   
 ## References
 
