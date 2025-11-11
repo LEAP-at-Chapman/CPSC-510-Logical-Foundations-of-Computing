@@ -118,6 +118,14 @@ A model checker designed to model systems made of timed automata. Uses a simplif
 
 ## Algorithms
 
+When SPIN verifies a system, several steps are taken.
+
+1. The user must describe the system in Promela (Process Meta Language), which is SPINs programming langauage.
+
+2. The statements within this program (which are expressed as Linear-Temporal Logic), are converted into Büchi Automata (https://en.wikipedia.org/wiki/B%C3%BCchi_automaton). These Automata are state machines that accepts or rejects infinite inputs. 
+
+3. SPIN generates C source code for a model checker specifically designed to verify the defined system, instead of running the verification itself.
+
 ## Benchmarks
 
 I looked into benchmarks for SPIN and other model checkers, however at the time of writing, there does not appear to have been many benchmarks of such tools available online.
