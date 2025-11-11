@@ -25,7 +25,133 @@ This logic provides partial correctness, meaning the result will be correct if t
 
 ## Dafny Installation and Setup
 
-*To be added*
+### Windows Installation
+
+#### 1. Requirements
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- **Z3 Theorem Prover v4.12.1**
+- Windows Server 2019 or 2022 (tested)
+
+---
+
+#### 2. Install Dafny (Binary)
+```bash
+# 1. Install .NET 8.0
+# 2. Download Dafny ZIP from:
+#    https://github.com/dafny-lang/dafny/releases/latest
+# 3. Right-click → Properties → Unblock → OK
+# 4. Extract to a folder, then run:
+Dafny.exe
+```
+
+#### 3. VS Code Integration (Recommended)
+- Install Visual Studio Code.
+- Open VS Code → press Ctrl+P → run:
+```bash
+ext install dafny-lang.ide-vscode
+```
+- Open a .dfy file to activate Dafny.
+
+#### 4. Compile Dafny Programs
+
+| Target     | Requirements     | Example                             |
+| ---------- | ---------------- | ----------------------------------- |
+| **C#**     | .NET 8.0 SDK     | `dafny build -t:cs MyProgram.dfy`   |
+| **Java**   | Java ≥ 8, Gradle | `dafny build -t:java MyProgram.dfy` |
+| **Python** | Python ≥ 3.7     | `dafny build -t:py MyProgram.dfy`   |
+
+Run directly:
+```bash
+dafny run MyProgram.dfy
+```
+
+#### 5. Developer Build
+```bash
+# Install dependencies
+pip install pre-commit && pre-commit install
+
+# Clone Dafny
+git clone https://github.com/dafny-lang/dafny --recurse-submodules
+
+# Build
+dotnet build dafny/Source/Dafny.sln
+
+# Add Z3
+# Place z3.exe in dafny/Binaries/z3/bin/
+```
+
+Run Tests:
+```bash
+cd dafny/Source/IntegrationTests
+dotnet test -v:n
+```
+
+### Mac Installation
+
+#### 1. Requirements
+Install .NET 8.0 SDK:
+```bash
+brew install dotnet-sdk
+```
+
+#### 2. Install Dafny (Binary)
+```bash
+brew install dafny
+```
+
+#### 3. VS Code Integration (Recommended)
+- Install Visual Studio Code.
+- Open VS Code → press Ctrl+P → run:
+```bash
+ext install dafny-lang.ide-vscode
+```
+- Open a .dfy file to activate Dafny.
+
+#### 4. Compile Dafny Programs
+
+| Target         | Requirements     | Example                             |
+| -------------- | ---------------- | ----------------------------------- |
+| **C#**         | .NET 8.0 SDK     | `dafny build -t:cs MyProgram.dfy`   |
+| **Java**       | Java ≥ 8, Gradle | `dafny build -t:java MyProgram.dfy` |
+| **Python**     | Python ≥ 3.7     | `dafny build -t:py MyProgram.dfy`   |
+| **Go**         | Go ≥ 1.18        | `dafny build -t:go MyProgram.dfy`   |
+| **JavaScript** | Node ≥ 16        | `dafny build -t:js MyProgram.dfy`   |
+
+Run:
+```bash
+dafny run MyProgram.dfy
+```
+
+#### 5. Developer Build (Source)
+```bash
+brew install python3 pre-commit wget
+git clone https://github.com/dafny-lang/dafny.git --recurse-submodules
+cd dafny
+make exe
+pre-commit install
+
+# Install Z3 4.12.1
+make z3-mac
+# or manually:
+cd Binaries
+wget https://github.com/dafny-lang/solver-builds/releases/download/snapshot-2023-08-02/z3-4.12.1-x64-macos-11-bin.zip
+unzip z3-4.12.1-x64-macos-11-bin.zip
+mv z3-4.12.1 z3
+```
+
+Run Dafny:
+```bash
+./Scripts/dafny
+./Scripts/quicktest.sh
+```
+
+Run Tests
+```bash
+cd Source/IntegrationTests
+dotnet test -v:n
+```
+
+### Linux Installation**
 
 ## Program Verification Techniques
 
