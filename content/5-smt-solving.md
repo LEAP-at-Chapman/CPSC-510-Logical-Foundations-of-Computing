@@ -135,14 +135,62 @@ i) Prove that array access is always within bounds in a loop:
 
   Explanation: Z3 can prove safety properties like “no out-of-bounds access occurs”. This connects to static analysis and model checking.
 
-  ## Applications in the industry
+  ## Applications in the Industry
 
-  Cloud security & compliance (policy reasoning at scale)
+  **Cloud security & compliance (billions of SMT checks at Amazon Web Services)**
   
-  Public-cloud providers use SMT to prove properties about access policies. AWS’s Zelkova engine answers questions like “Is any bucket publicly readable?” by translating IAM/S3 policies into    
-  logical formulas and discharging billions of SMT queries per day using a portfolio of solvers (including Z3, CVC4/cvc5). These checks power guardrails in services such as Amazon S3 and AWS
-  Config.
+  Zelkova, AWS’s policy-analysis engine, encodes IAM/S3 policies into SMT and answers safety queries at cloud scale (e.g., “Can anything make this bucket public?”). Peer-reviewed accounts report   millions to billions of SMT queries daily, and describe how abstractions and portfolio solving (including Z3) make the service production-grade and latency-predictable.
+
+  **Software security at Microsoft (whitebox fuzzing)**
+
+  SAGE pioneered whitebox fuzzing: path-constraint solving with SMT to generate inputs that drive binaries down new paths. Deployed across Windows and other products, SAGE and its successors  
+  (SAGAN/JobCenter) found numerous high-impact bugs and established SMT-backed fuzzing as an industrial norm. 
+
+  **Compiler correctness (translation validation for LLVM)**
   
+  Alive2 checks that optimizations preserve semantics by asking SMT queries over the pre/post IR. Recent work blends LLMs with Alive2 to flag transformations likely to be unsound, then uses   
+  fuzzing to seek counterexamples—an early example of neuro-symbolic validation in a mature compiler toolchain.
+
+  **Smart-contract analysis (blockchains)**
+
+  Tools like Mythril symbolically execute EVM bytecode and discharge path constraints to Z3 to expose reentrancy, arithmetic, and permission bugs before deployment—now routine in audits and CI 
+  for DeFi systems.
+
+  **Network correctness (pre-deployment verification)**
+
+  Industrial network verifiers translate control-plane configs (BGP/OSPF/etc.) into logical models and use SMT to validate reachability, isolation, and failure scenarios before rollout—e.g.,
+  Minesweeper/Batfish (research-to-product trajectory) and later scalable systems.
+
+  **Safety-critical AI (neural-network verification)**
+
+  The Reluplex line of work and the Marabou framework brought SMT into DNN certification (ACAS Xu case study, bound-tightening, piecewise-linear reasoning). This has shaped standards 
+  conversations for autonomy and perception stacks.
+
+
+  ## Generative AI and Formal Methods: What's Changing
+
+  **1. LLMs assisting proof and spec**
+    LeanDojo/ReProver shows that retrieval-augmented LLMs can select premises and generate Lean proofs; the suite provides datasets, tooling, and reproducible baselines, catalyzing rapid 
+    progress in ML-for-theorem-proving.
+    A 2025 survey reviews how LLMs help author formal specifications from natural-language requirements (Dafny/C/Java), with promising accuracy on assertion synthesis and “assertion completion.”
+    
+
+  **2. Neuro-symbolic invariant synthesis for verification**
+    Fresh results show LLMs can propose loop invariants that an SMT-based checker validates/refines (e.g., ASE’24 neuro-symbolic bounded model checking; 2025 benchmark studies). The emerging 
+    recipe: LLM proposes → SMT/solver checks → counterexample-guided repair.
+
+  **3. Hybrid validation pipelines in compilers and systems**
+    For LLVM, LLMs triage “hard” optimizations while Alive2 (SMT) proves the rest, using fuzzing to chase suspected unsound cases—concrete neuro-symbolic workflows shipping into compiler 
+    validation. Expect similar “LLM-first, SMT-confirm” loops in optimizers, static analyzers, and decompilers.
+
+  **4. Formal analysis of AI systems themselves**
+    Neural-network verification continues to integrate SMT with domain-specific relaxations and bound-propagation; Marabou 2.0 documents architecture and roles for solver-in-the-loop bound 
+    tightening. Coupled with LLM systems, this points to spec-driven safety cases for perception and policy components.
+
+  **5. Research directions to watch**
+    - Auto-formalization: LLMs converting NL requirements/tests into templates that SMT tools check (assertion mining and refinement).
+    - Proof-search copilots: Retrieval + tool APIs (Lean/Isabelle/Coq) to keep LLM steps sound via solver or kernel checks.
+    - Verifier-in-the-loop tooling: LLM planning; SMT establishes truth; counterexamples feed self-repair—already prototyped in compilers and invariant synthesis.
 ## References
 
 - [Reuben Martins](https://sat-group.github.io/ruben/) (part of a course on [Bug Catching: Bug Catching: Automated Program Verification](https://www.cs.cmu.edu/~15414/s22/s21/lectures/) )
@@ -152,3 +200,18 @@ i) Prove that array access is always within bounds in a loop:
   - [Lecture Notes on DPLL(T) & SMT Encodings](https://www.cs.cmu.edu/~15414/s24/lectures/19-smt-encodings.pdf)
   - [Lecture Notes on SMT Solving: Nelson-Oppen](https://www.cs.cmu.edu/~15414/s24/lectures/18-smt-solving.pdf)
 - Howe, J. M., & King, A. (2012). [A pearl on SAT and SMT solving in Prolog](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=A+Pearl+on+SAT+and+SMT+Solving+in+Prolog&btnG=). Theoretical Computer Science, 435, 43-55. [pdf](https://www.staff.city.ac.uk/~jacob/solver/tcs.pdf) - - - I only read the intro and do not claim that I understand that paper. It is of interest to because it combines ideas from SAT, Prolog and SMT.
+- Backes, J., Bolignano, P., Cook, B., et al. “Semantic-based Automated Reasoning for AWS Access Policies using SMT.” FMCAD 2018
+- Rungta, N. “A Billion SMT Queries a Day.” Amazon Science (invited), 2022.
+- Godefroid, P., Levin, M., Molnar, D. “SAGE: Whitebox Fuzzing for Security Testing.” CACM 2012.
+- Bounimova, E., Godefroid, P., Molnar, D. “Billions and Billions of Constraints: Whitebox Fuzz Testing at Microsoft.” ICSE 2011/Tech Report.
+- Wang, Y., Xie, F. “Enhancing Translation Validation of Compiler Transformations with Large Language Models.” arXiv:2401.16797 (2024).
+- Cadar, C., Dunbar, D., Engler, D. “KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs.” OSDI 2008.
+- Beckett, R., et al. “A General Approach to Network Configuration Verification (Minesweeper).” SIGCOMM 2017.
+- Brown, M., et al. “Lessons from the Evolution of the Batfish Configuration Analysis Tool.” SIGCOMM 2023 (Experience).
+- Prabhu, S., et al. “Plankton: Scalable Network Configuration Verification.” NSDI 2020.
+- Katz, G., Barrett, C., Dill, D., Julian, K., Kochenderfer, M. “Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks.” CAV 2017 / arXiv:1702.01135.
+- Katz, G., et al. “The Marabou Framework for Verification and Analysis of Deep Neural Networks.” CAV 2019 / LNCS; Marabou 2.0 (2024).
+- Yang, K., et al. “LeanDojo: Theorem Proving with Retrieval-Augmented Language Models (ReProver).” NeurIPS 2023 (paper & dataset).
+- Beg, A., et al. “A Short Survey on Formalising Software Requirements with LLMs.” arXiv:2506.11874 (2025).
+- Wu, G., et al. “LLM Meets Bounded Model Checking: Neuro-symbolic Loop Invariant Inference.” ASE 2024.
+- Wei, A., et al. “InvBench: Can LLMs Accelerate Program Verification with Invariant Synthesis?” arXiv:2509.21629 (2025).
