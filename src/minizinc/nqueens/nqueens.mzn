@@ -1,14 +1,14 @@
-include "globals.mzn";
-
 % N-Queens: place n queens on an n x n board so none attack each other
-int: n = 8; % you can override via: minizinc -D n=10 ...
+int: n; % provided via .dzn (e.g., nqueens.dzn) or -D n=10
 set of int: Q = 1..n;
 
 % q[i] is the column (1..n) of the queen in row i
 array[Q] of var Q: q;
 
 % 1) No two queens in the same column
-constraint all_different(q);
+constraint forall(i, j in Q where i < j) (
+  q[i] != q[j]
+);
 
 % 2) No two queens on the same diagonal
 constraint forall(i, j in Q where i < j) (
