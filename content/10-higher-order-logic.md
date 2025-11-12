@@ -305,6 +305,8 @@ Xu et al. present MiniLang/IsaMini, a streamlined proof langauge for Isabelle/HO
 
 ## 10.9 Case Study - Neural Theorem Proving via IsaMini
 
+WIP
+
 https://github.com/xqyww123/Isa-Mini
 
 trying to find where the actual code etc is?
@@ -315,7 +317,7 @@ training data, machine learning framework, Sledgehammer,
 and parameters of the finetuned models will be open-sourced
 and are present in the submitted supplementary materials*
 
-need to talk to Kurz about finding another example; the binary analysis one seems pretty cool
+<!-- need to talk to Kurz about finding another example; the binary analysis one seems pretty cool -->
 
 https://gitlab.surrey.ac.uk/isabil/isabil
 
