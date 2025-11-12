@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -418,8 +418,16 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">10.6 Algorithms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">10.7 Benchmark and Competitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">10.8 Applications in Industry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">10.9 Case Studies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">10.8 Applications in Industry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-addressing-on-real-hardware">10.8.1 Physical Addressing on Real Hardware</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-stream-processing-components">10.8.2 FOCUS - Stream Processing Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isabil-verifying-in-correctness-of-binaries">10.8.3 IsaBIL - Verifying (In)Correctness of Binaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verlso-isolation-guarantees-of-database-transactions">10.8.4 Verlso - Isolation Guarantees of Database Transactions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ieee-754-floating-point-implementation-for-mdps">10.8.5 IEEE 754 Floating Point Implementation for MDPs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isamini-isabelle-proof-language-for-machine-learning">10.8.6 IsaMini: Isabelle Proof Language for Machine Learning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-neural-theorem-proving-via-isamini">10.9 Case Study - Neural Theorem Proving via IsaMini</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">10.10 History</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-higher-order-logic">10.10.1 Origins of Higher Order Logic</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">10.10.2 Development of Isabelle/HOL</a></li>
@@ -442,23 +450,6 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="higher-order-logic-with-isabelle-hol">
 <h1>Higher-Order Logic with Isabelle/HOL<a class="headerlink" href="#higher-order-logic-with-isabelle-hol" title="Link to this heading">#</a></h1>
 <p><em>Author: Spencer Au</em></p>
-<!-- ## Contents
-
-| Section | Title |
-|---:|---|
-| **10.1** | [Idea](#sec0-10-1) |
-| **10.2** | [Basic Theory](#sec0-10-2) |
-| **10.3** | [Tool (Installation, First Example, First Exercise)](#sec0-10-3) |
-| **10.4** | [Introductory Examples](#sec0-10-4) |
-| **10.5** | [The Landscape of Tools](#sec0-10-5) |
-| **10.6** | [Algorithms](#sec0-10-6) |
-| **10.7** | [Benchmark and Competitions](#sec0-10-7) |
-| **10.8** | [Applications in Industry](#sec0-10-8) |
-| **10.9** | [Case Studies](#sec0-10-9) |
-| **10.10** | [History](#sec0-10-10) |
-| **10.11** | [Current Development, Research Challenges, Conferences and Workshops](#sec0-10-11) |
-| **10.12** | [References](#sec0-10-12) |
-| **10.13** | [Suggestions for Future Work](#sec0-10-13) | -->
 <section id="topics">
 <h2>Topics<a class="headerlink" href="#topics" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -505,7 +496,6 @@ Church Text is more relevant to history section-->
 <li><p><strong>Modus Ponens</strong> From <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(A \to B\)</span> to infer <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
 <li><p><strong>Generalization</strong> From <span class="math notranslate nohighlight">\(A\)</span> to infer <span class="math notranslate nohighlight">\(\forall x\,A\)</span>, where x is a variable of any type</p></li>
 </ol>
-<!-- *Adapted from Andrews, 2002*[^andrews2002] using modern logic convention. -->
 <p><em>Adapted from Andrews, 2002</em><sup><a href="#andrews2002">[1]</a></sup> using modern logic convention.</p>
 </section>
 <section id="axiom-schemata">
@@ -549,17 +539,14 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 </ul>
 </li>
 </ol>
-<!-- *Adapted from Andrews, 2002*[^andrews2002] using modern logic convention. -->
-<p><em>Adapted from Andrews, 2002</em><sup><a href="#andrews2002">[1]</a></sup> using modern logic convention.</p>
+<p>Adapted from <em>Andrews, 2002</em><sup><a href="#andrews2002">[1]</a></sup> using modern logic convention.</p>
 </section>
 </section>
 <section id="tool-installation-first-example-first-exercise">
 <h2>10.3 Tool (Installation, First Example, First Exercise)<a class="headerlink" href="#tool-installation-first-example-first-exercise" title="Link to this heading">#</a></h2>
 <section id="installation">
 <h3>10.3.1 Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
-<!-- Looks like isabelle is a program we can just download normally via exe/dmg etc instead of messing around with command line or using `apt/brew` -->
 <p><a class="reference external" href="https://isabelle.in.tum.de/">Installation Link for Isabelle</a></p>
-<!-- probably have detailed walkthrough for windows, macos, and ubuntu with pictures etc all that with pictures and all that pretty stuff (remove if it results in the chapter being too long) -->
 <p>Isabelle processes the theory document incrementally in the background, meaning that there is no additional “compile” or “run” step. As you type in lines and commands, the background system will check them and automatically update the proof state and any relevant error reports. Just go line by line, or command by command in order to check the related output.</p>
 <p>Isabelle uses *.thy (theory) files, and the general structure of the theory files is like this:</p>
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">theory</span><span class="w"> </span><span class="n">THEORY_NAME</span>
@@ -710,14 +697,61 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 </section>
 <section id="applications-in-industry">
 <h2>10.8 Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
-<p>this is just scaffolding template for now; will add more detail and refine later</p>
-<p>complex addressing hardware in SoCs via formal models in Isabelle/HOL</p>
-<p>HOL-based systems used to verify hardware modules and FPGA implementations</p>
-<p>Isabelle/HOL use in steam boiler system, process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System). (cite - https://arxiv.org/abs/1405.1512?)</p>
-<p>Because these tools provide mathematical assurance of correctness (rather than testing alone), they are particularly suited to safety-critical systems (avionics, automotive safety, SoC design) where fault risk must be minimized and certification standards demands high trust.</p>
+<p>In general, Isabelle/HOL appears to have a wide variety of applcation throughout industry, due to the fact that it provides a mathematical assuranace of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.</p>
+<section id="physical-addressing-on-real-hardware">
+<h3>10.8.1 Physical Addressing on Real Hardware<a class="headerlink" href="#physical-addressing-on-real-hardware" title="Link to this heading">#</a></h3>
+<p>Achermann et al. discuss how to formally model and verify physical memory address translation and remapping hardware (such as MMUs) in SoCs (Systems-on-Chip) using Isabelle/HOL. Specifically, they developed a hardware model that encodes translation units and then prove that standard memory operations preserve system invariants.<sup><a href="#Achermann_physicalAddressing">[2]</a></sup></p>
+<!-- HOL-based systems used to verify hardware modules and FPGA implementations -->
 </section>
-<section id="case-studies">
-<h2>10.9 Case Studies<a class="headerlink" href="#case-studies" title="Link to this heading">#</a></h2>
+<section id="focus-stream-processing-components">
+<h3>10.8.2 FOCUS - Stream Processing Components<a class="headerlink" href="#focus-stream-processing-components" title="Link to this heading">#</a></h3>
+<p>Spichkova proposes a new framework, FOCUS, aimed at formal specification and the application of refinement-based verification of interactive systems. In addition, FOCUS uses a stream processing component, represented by a communication history of a directed channel between components. FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).<sup><a href="#Spichkova_FOCUS">[3]</a></sup></p>
+<ul class="simple">
+<li><p>The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalised in Isabelle/HOL, translating architecture and component behaviour into higher-order logic while proving the design satisfies timing and safety requirements.</p></li>
+<li><p>The second case study is about FlexRay, which is a communication protocol for safety-critical real-time applications, specfically embedded systems in vehicles. FOCUS is used in this case to verify and prove correct static cycles, channel scheduling and properties, and node broadcast behiavor.</p></li>
+<li><p>The third case study is about the Automative-Gateway system for the Verisoft project. Basically, if the Gateway receives a vehicle crash signal, then it will initiate a call to the appropriate Emergency Service Center (ESC). The system is modelled in Isabelle/HOL, with the architecture, requirements, and refinement relations all formally specified and proven to ensure that the Gateway design meets its crash signal and data transmission requirements.</p></li>
+</ul>
+</section>
+<section id="isabil-verifying-in-correctness-of-binaries">
+<h3>10.8.3 IsaBIL - Verifying (In)Correctness of Binaries<a class="headerlink" href="#isabil-verifying-in-correctness-of-binaries" title="Link to this heading">#</a></h3>
+<p>Griffin et al. present IsaBIL, a binary analysis framework in Isabelle/HOL that is based on BAP (Binary Analysis Platform). IsaBIL formalizes BAP’s intermediate language (BIL) and integrates it with Hoare Logic (for proofs of correctness) and incorrectness logic (for proofs of incorectness). While there is a primary focus is on the RISC-V architecture and C binaries, the authors assert that IsaBIL is a flexible framework that can verify binaries for different languages (C, C++, Rust), toolchains (LLVM, Ghidra), and architectures (x86, RISC-V). The authors prove correctness through some industry level examples such as Lockheed Martin’s JSF (Joint Strike Fighter) coding standards and the MITRE ATT&amp;CK database.<sup><a href="#Griffin_IsaBIL">[4]</a></sup></p>
+</section>
+<section id="verlso-isolation-guarantees-of-database-transactions">
+<h3>10.8.4 Verlso - Isolation Guarantees of Database Transactions<a class="headerlink" href="#verlso-isolation-guarantees-of-database-transactions" title="Link to this heading">#</a></h3>
+<p>Ghasemirad et al. present VerIso, a rigorous Isabelle/HOL-based framework for verifying transaction isolation within production level databases. The authors showcase VerIso by modelling the strict two-phase locking (S2PL) protocol and prove that it provides strict serializability (transactions behave as if executed sequentially and that sequential order must match the actual time order of their invocation/commit). In addition, VerIso’s parameterised architecture supports multiple isolation levels and uncovers design-level bugs in protocols such as the TAPIR protocol and its violation of atomic visibility.<sup><a href="#Ghasemirad_VerIso">[5]</a></sup></p>
+</section>
+<section id="ieee-754-floating-point-implementation-for-mdps">
+<h3>10.8.5 IEEE 754 Floating Point Implementation for MDPs<a class="headerlink" href="#ieee-754-floating-point-implementation-for-mdps" title="Link to this heading">#</a></h3>
+<p>Kohlen et al. present a fully verified implementation of the Interval Iteration (II) Algorithm for Markov Decision Processes (MDPs). They model the II algorithm in Isabelle/HOL, use the Isabelle Refinement Framework (IRF) to carry out step-wise refinement down to LLVM bytecode, and extend Isabelle/HOL’s reasoning to support IEEE 754 floating-point arithmetic with directed rounding. Their result is a correct-by-construction floating-point implementation, competitive with industry tools and highly relevant for domains where verified numerical correctness matters, such as embedded systems, SoCs and safety-critical software.<sup><a href="#Kohlen_float">[6]</a></sup></p>
+</section>
+<section id="isamini-isabelle-proof-language-for-machine-learning">
+<h3>10.8.6 IsaMini: Isabelle Proof Language for Machine Learning<a class="headerlink" href="#isamini-isabelle-proof-language-for-machine-learning" title="Link to this heading">#</a></h3>
+<p>Xu et al. present MiniLang/IsaMini, a streamlined proof langauge for Isabelle/HOL designed to improve Large Language Model (LLM) integration in formal verification. The authors convert existing Isar proofs, such as those within Isabelle’s Archive of Formal Proofs (AFP), into MiniLang and fine-tune LLMs on this new proof representation. They then use the LLM’s macro level proof planning alongside Isabelle’s automation (such as Sledgehammer, etc) for micro level proof steps to significantly boost proof success rate. Their work is noteworthy because it brings together formal methods and AI-assisted tooling, reducing manual proof effort and enabling more scalable verification.<sup><a href="#Xu_IsaMini">[7]</a></sup></p>
+</section>
+</section>
+<section id="case-study-neural-theorem-proving-via-isamini">
+<h2>10.9 Case Study - Neural Theorem Proving via IsaMini<a class="headerlink" href="#case-study-neural-theorem-proving-via-isamini" title="Link to this heading">#</a></h2>
+<p>WIP</p>
+<p>https://github.com/xqyww123/Isa-Mini</p>
+<p>trying to find where the actual code etc is?</p>
+<p>According to the authors:
+<em>the REPL infrastructure, MiniLang interpreter, translator,
+training data, machine learning framework, Sledgehammer,
+and parameters of the finetuned models will be open-sourced
+and are present in the submitted supplementary materials</em></p>
+<!-- need to talk to Kurz about finding another example; the binary analysis one seems pretty cool -->
+<p>https://gitlab.surrey.ac.uk/isabil/isabil</p>
+<p>https://zenodo.org/records/15268251</p>
+<p>I added these lines as PATH variables to my zsh on MacOS in order to run the Isabelle CLI tool:
+<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">ISABELLE_HOME=&quot;/Applications/Isabelle2025.app&quot;</span></code>
+<code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PATH=&quot;$ISABELLE_HOME/bin:$PATH&quot;</span></code></p>
+<p>Make sure you have correct version of the <a class="reference external" href="https://www.isa-afp.org/download/">AFP</a> downloaded</p>
+<p>Unpack the Tar file, put it <em>somewhere</em>, and then register it via
+<code class="docutils literal notranslate"><span class="pre">isabelle</span> <span class="pre">components</span> <span class="pre">-u</span> <span class="pre">PATHNAME</span></code></p>
+<p>For example, the pathname for my AFP is:
+<code class="docutils literal notranslate"><span class="pre">/Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys</span></code></p>
+<p>My command is then:
+<code class="docutils literal notranslate"><span class="pre">isabelle</span> <span class="pre">components</span> <span class="pre">-u</span> <span class="pre">/Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys</span></code></p>
 </section>
 <section id="history">
 <h2>10.10 History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
@@ -751,10 +785,34 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 <li><p><a class="reference external" href="https://www.youtube.com/&#64;FDS-hs2uc/videos">Isabelle YouTube Tutorial by FDS 2020</a></p></li>
 <li><p><a class="reference external" href="https://logic.berkeley.edu/colloquium/MossSlides.pdf">Syllogism Slides from Nate Moss</a></p></li>
 </ul>
-<p><a id="andrews2002"></a>
-[1] Andrews, <em>An Introduction to Mathematical Logic and Type Theory</em>. Springer, 2002. <a class="reference external" href="https://link.springer.com/book/10.1007/978-94-015-9934-4">Springer Link</a></p>
-<!-- 
-[^andrews2002]: Andrews, *An Introduction to Mathematical Logic and Type Theory*, Springer 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4) -->
+<p><a id="andrews2002"></a></p>
+<ul class="simple">
+<li><p>[1] Andrews, <em>An Introduction to Mathematical Logic and Type Theory</em>. Springer, 2002. <a class="reference external" href="https://link.springer.com/book/10.1007/978-94-015-9934-4">Springer Link</a>.</p></li>
+</ul>
+<p><a id="Achermann_physicalAddressing"></a></p>
+<ul class="simple">
+<li><p>[2] Achermann, Reto et al. “Physical Addressing on Real Hardware in Isabelle/HOL” Department of Computer Science, ETH Zurich. <a class="reference external" href="https://people.inf.ethz.ch/troscoe/pubs/achermann_itp_2018.pdf">Paper Link</a></p></li>
+</ul>
+<p><a id="Spichkova_FOCUS"></a></p>
+<ul class="simple">
+<li><p>[3] Spichkova, Maria. “Stream processing components: Isabelle/HOL formalisation and case studies.” arXiv preprint arXiv:1405.1512 (2014). <a class="reference external" href="https://arxiv.org/abs/1405.1512">arxiv Link</a></p></li>
+</ul>
+<p><a id="Griffin_IsaBIL"></a></p>
+<ul class="simple">
+<li><p>[4] Griffin, Matt, Brijesh Dongol, and Azalea Raad. “IsaBIL: A Framework for Verifying (In) correctness of Binaries in Isabelle/HOL (Extended Version).” arXiv preprint arXiv:2504.16775 (2025). <a class="reference external" href="https://arxiv.org/abs/2504.16775v1">arixv Link</a></p></li>
+</ul>
+<p><a id="Ghasemirad_VerIso"></a></p>
+<ul class="simple">
+<li><p>[5] Ghasemirad, Shabnam, et al. “VerIso: Verifiable isolation guarantees for database transactions.” arXiv preprint arXiv:2503.06284 (2025). <a class="reference external" href="https://arxiv.org/abs/2503.06284">arxiv Link</a></p></li>
+</ul>
+<p><a id="Kohlen_float"></a></p>
+<ul class="simple">
+<li><p>[6] Kohlen, Bram, et al. “A formally verified IEEE 754 floating-point implementation of interval iteration for MDPs.” International Conference on Computer Aided Verification. Cham: Springer Nature Switzerland, 2025. <a class="reference external" href="https://arxiv.org/abs/2501.10127v3">arxiv Link</a></p></li>
+</ul>
+<p><a id="Xu_IsaMini"></a></p>
+<ul class="simple">
+<li><p>[7] Xu, Qiyuan, et al. “IsaMini: Redesigned Isabelle Proof Language for Machine Learning.” arXiv preprint arXiv:2507.18885 (2025). <a class="reference external" href="https://arxiv.org/abs/2507.18885">arxiv Link</a></p></li>
+</ul>
 </section>
 <section id="suggestions-for-future-work">
 <h2>10.13 Suggestions for Future Work<a class="headerlink" href="#suggestions-for-future-work" title="Link to this heading">#</a></h2>
@@ -850,8 +908,16 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">10.6 Algorithms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">10.7 Benchmark and Competitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">10.8 Applications in Industry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">10.9 Case Studies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">10.8 Applications in Industry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-addressing-on-real-hardware">10.8.1 Physical Addressing on Real Hardware</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-stream-processing-components">10.8.2 FOCUS - Stream Processing Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isabil-verifying-in-correctness-of-binaries">10.8.3 IsaBIL - Verifying (In)Correctness of Binaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verlso-isolation-guarantees-of-database-transactions">10.8.4 Verlso - Isolation Guarantees of Database Transactions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ieee-754-floating-point-implementation-for-mdps">10.8.5 IEEE 754 Floating Point Implementation for MDPs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isamini-isabelle-proof-language-for-machine-learning">10.8.6 IsaMini: Isabelle Proof Language for Machine Learning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-neural-theorem-proving-via-isamini">10.9 Case Study - Neural Theorem Proving via IsaMini</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">10.10 History</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-higher-order-logic">10.10.1 Origins of Higher Order Logic</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">10.10.2 Development of Isabelle/HOL</a></li>

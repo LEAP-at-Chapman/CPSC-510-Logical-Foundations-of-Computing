@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -418,7 +418,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-and-conquer">Divide-and-conquer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#established-industrial-applications">Established Industrial Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-generative-ai">Use of Generative AI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-affects-sat-in-industry">How this affects SAT in industry</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">Case Studies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#early-work">Early Work</a></li>
@@ -692,13 +697,34 @@ c. Backtrack non-chronologically (backjump) to the decision level where the firs
 </section>
 <section id="applications-in-industry">
 <h2>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
-<p>Typical examples are hardware verification (Intel, AMD, Apple, etc) and dependency resolution in software package installers (Debian Linux).</p>
-<p>More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language.</p>
-<p>… tbc … eg there could be more to say about SAT-solving at Intel and other hardware companies … and then about applications of SAT to software engineering …</p>
+<p>SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language. These applications are central to many industrial workflows. Historically, they have moved the field from theoretical curiosity (like NP-completeness) to large-scale problem solving. Today, solvers can easily handle problems with millions of variables and tens of millions of clauses.</p>
+<section id="established-industrial-applications">
+<h3>Established Industrial Applications<a class="headerlink" href="#established-industrial-applications" title="Link to this heading">#</a></h3>
+<p>One main area where SAT technology is heavily used is hardware verification. It is used to verify the pipelines of GPUs and CPUs through property checking. SMT solvers (a descendant of SAT) are especially used in hardware verification because they are able to combine the core principles of SAT with theory solvers for arithmetic and arrays.</p>
+<p>Similarly, SAT solvers are also used for software verification and program analysis. They can either provide counterexamples when a property fails or proofs for satisfiability, which is especially helpful when debugging.</p>
+<p>SAT solvers are also used for package and dependency solving and optimization. By translating domain constraints into CNF, the solvers can be used for dependency resolution (package managers), combinatorial optimization (scheduling), or other large combinatorial tasks.</p>
+<p>While not necessarily an application of use in industry, there is an annual SAT competition that is used to track the state of the art and can help lead to adoption in industry. This competition is beneficial because it leads people to find new algorithms and heuristics than can be used to improve the state of the art.</p>
+</section>
+<section id="use-of-generative-ai">
+<h3>Use of Generative AI<a class="headerlink" href="#use-of-generative-ai" title="Link to this heading">#</a></h3>
+<p>As the use of generative AI becomes more and more integrated into every industry, SAT solvers are no exception. Generative AI (LLMs) are increasingly being used to augment SAT solvers rather than replace them completely. There are a couple of different examples that show this.</p>
+<p>First, generative AI models are being used for instance generation. This is beneficial because it is used to generate SAT instaances that mimic real-world problems, which can help to study the behavior of the solvers and see how they can be improved. One example of this is G2SAT, which makes CNF formulas into bipartite graphs and learns to generate realistic SAT instances.</p>
+<p>Another example is using solvers to check proofs that are created by LLMs. For example, an LLM will propose a proof, and the solvers will check, reject, or give feedback on these proposed proofs. This is more with SMT solvers than SAT due to their proof checking abilities, but as SMT is a descendant of SAT, it has been included in the section.</p>
+<p>Solvers are also being used to reduce hallucinations and increase reliability in certain AI models. Some models, including ones from Amazon have integrated “automated reasoning checks” to constrain generative models (argument checking, verification checks on outputs of the model, rule enforcement) to improve trustworthiness.</p>
+</section>
+<section id="how-this-affects-sat-in-industry">
+<h3>How this affects SAT in industry<a class="headerlink" href="#how-this-affects-sat-in-industry" title="Link to this heading">#</a></h3>
+<p>Hybrid workflows are becoming much more common in industry. This means that generative AI models are proposing something, and SAT solvers are used to provide guarantees of truthfulness or unsatisfiability. This is beneficial because it is utilizing the creativity of generative AI, while confirming correctness through the rigidity of SAT solvers.</p>
+<!-- Typical examples are hardware verification (Intel, AMD, Apple, etc) and dependency resolution in software package installers (Debian Linux).
+
+More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language.
+
+... tbc ... eg there could be more to say about SAT-solving at Intel and other hardware companies ... and then about applications of SAT to software engineering ... -->
+</section>
 </section>
 <section id="case-studies">
 <h2>Case Studies<a class="headerlink" href="#case-studies" title="Link to this heading">#</a></h2>
-<p>…</p>
+<p>2x2 sudoku from above, 4x4 sudoku added soon</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
@@ -834,7 +860,12 @@ c. Backtrack non-chronologically (backjump) to the decision level where the firs
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-and-conquer">Divide-and-conquer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#established-industrial-applications">Established Industrial Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-generative-ai">Use of Generative AI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-affects-sat-in-industry">How this affects SAT in industry</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">Case Studies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#early-work">Early Work</a></li>

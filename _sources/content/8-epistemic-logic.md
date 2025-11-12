@@ -377,17 +377,72 @@ check w1: KB KA p;
 ```
 and so on.
 
-## 6. Current Works Using Epistemic Logic
-- Aldini, *A process algebraic framework for multi-agent dynamic epistemic systems* (2024) — system-level DEL with agents and transitions.
-- van Benthem, van Eijck, Gattinger, Su, *Symbolic Model Checking for Dynamic Epistemic Logic* — the classic symbolic SMCDEL reference.
-- Fang, *Heuristic Strategies for Accelerating Multi-Agent Epistemic Planning* (KR 2024) — fast planning toward epistemic goals.
-- Velázquez-Quesada, *Communication between agents in dynamic epistemic logic* (2022) — nice for students interested in chat-style or partial-reveal actions.
+## 6. Applications in Industry
+- In the paper [“Epistemic Temporal Logic for Information Flow Security”](https://eprints.illc.uva.nl/id/eprint/1802/1/MoL-2021-12.text.pdf), Balliu et al. apply an epistemic-temporal logic to programs to reason about what an attacker knows or doesn’t know after observing program outputs — i.e., how knowledge evolves over time as information is released. This directly maps to the “who knows what” view of epistemic logic and is a strong CS/industrial-adjacent example (secure coding, confidentiality, release of secret data).
+- In the thesis [“Epistemic Logics for Cryptographic Protocols and Zero‐Knowledge Proofs”](https://eprints.illc.uva.nl/id/eprint/1802/1/MoL-2021-12.text.pdf) (Jaramillo, 2021) the author uses epistemic logic to model multi-agent interactions in cryptographic settings — specifically for modelling zero-knowledge proofs (where a verifier is convinced of a fact but learns nothing more).
+- Aldini, [*A process algebraic framework for multi-agent dynamic epistemic systems*](https://arxiv.org/abs/2407.17537) (2024) — system-level DEL with agents and transitions.
+- Van Benthem, van Eijck, Gattinger, Su, [*Symbolic Model Checking for Dynamic Epistemic Logic*](https://staff.fnwi.uva.nl/d.j.n.vaneijck2/papers/16/pdfs/2016-05-23-del-bdd-lori-journal.pdf) — the classic symbolic SMCDEL reference.
 
-## 7 Further Reading
+## 7. Case Study: The “Rescue Drone Coordination” Problem
+
+### 7.1 Scenario Overview
+Imagine a fleet of **autonomous rescue drones** responding to a natural disaster.  
+Each drone (`A`, `B`, `C`) monitors a separate zone but must coordinate to deliver medical supplies safely.  
+However, communication links are intermittent and not every message is received by every drone.
+
+Key proposition:  
+- `p` = “Zone X has been cleared of hazards.”
+
+Initially, only `A` detects that `p` is true.  
+Drone `A` sends a **private message** to `B`, but the network drops `A`’s broadcast to `C`.  
+Then `B` issues a **public announcement** (“Zone X is safe!”) on the shared channel.
+
+### 7.2 Modeling in SMCDEL
+We can represent:
+```text
+-- Rescue Drone Coordination (approximate private-then-public) in SMCDEL
+
+VARS 1,2,3
+
+LAW  Top
+
+-- a = detected safety
+-- b = was privately informed (also sees 1)
+-- c = cannot see 1 initially so its base is 2
+OBS  a: 1
+     b: 1,3
+     c: 2
+
+TRUE?
+  {1,3}
+  a knows that 1
+  & b knows that 1
+  & ~ (c knows that 1)
+
+WHERE?
+  < ! (1) >
+  (a knows that 1)
+  & (b knows that 1)
+  & (c knows that 1)
+
+VALID?
+  [ ! (1) ]
+  (a knows that 1 & b knows that 1 & c knows that 1)
+
+```
+
+This case study tests knowledge propagation in a safety-critical network.
+You can expand upon this experiment by adding false public announcements (miscommunication), modeling message delays or dropped links, or by checking whether “everyone knows that everyone knows p” (common knowledge) ever arises.
+
+### 7.3 Why It Matters
+
+Such models help engineers verify communication protocols in distributed robotics or IoT systems:
+- Ensuring drones act only when they know an area is safe.
+- Preventing actions based on mistaken or outdated beliefs.
+- Analyzing how local updates become global knowledge—vital in swarm coordination.
+
+## 8. Referenes & Further Reading
 - Jaakko Hintikka, Knowledge and Belief (1962)
 - Hans van Ditmarsch, Wiebe van der Hoek, Barteld Kooi, Dynamic Epistemic Logic
 - Y. Halpern and Y. Moses, “Knowledge and Common Knowledge in a Distributed Environment,” Journal of the ACM, 37(3), 1990
 - SMCDEL web interface: https://w4eg.de/malvin/illc/smcdelweb
-
-## 8 Closing Thoughts
-Epistemic logic gives us a way to talk about who knows what. Dynamic epistemic logic lets us talk about how they come to know it. SMCDEL is a practical tool that makes these formalisms runnable — students can actually check their models and see whether a formula is true after a sequence of announcements or messages. This makes epistemic logic a natural, modern addition to a book on computer logic.

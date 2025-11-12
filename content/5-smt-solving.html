@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -407,6 +407,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z3-in-python">Z3 in Python</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-the-industry">Applications in the Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai-and-formal-methods-what-s-changing">Generative AI and Formal Methods: What’s Changing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -554,6 +556,46 @@ document.write(`
 <p>Explanation: Z3 can prove safety properties like “no out-of-bounds access occurs”. This connects to static analysis and model checking.</p>
 </section>
 </section>
+<section id="applications-in-the-industry">
+<h2>Applications in the Industry<a class="headerlink" href="#applications-in-the-industry" title="Link to this heading">#</a></h2>
+<p><strong>Cloud security &amp; compliance (billions of SMT checks at Amazon Web Services)</strong></p>
+<p>Zelkova, AWS’s policy-analysis engine, encodes IAM/S3 policies into SMT and answers safety queries at cloud scale (e.g., “Can anything make this bucket public?”). Peer-reviewed accounts report   millions to billions of SMT queries daily, and describe how abstractions and portfolio solving (including Z3) make the service production-grade and latency-predictable.</p>
+<p><strong>Software security at Microsoft (whitebox fuzzing)</strong></p>
+<p>SAGE pioneered whitebox fuzzing: path-constraint solving with SMT to generate inputs that drive binaries down new paths. Deployed across Windows and other products, SAGE and its successors<br />
+(SAGAN/JobCenter) found numerous high-impact bugs and established SMT-backed fuzzing as an industrial norm.</p>
+<p><strong>Compiler correctness (translation validation for LLVM)</strong></p>
+<p>Alive2 checks that optimizations preserve semantics by asking SMT queries over the pre/post IR. Recent work blends LLMs with Alive2 to flag transformations likely to be unsound, then uses<br />
+fuzzing to seek counterexamples—an early example of neuro-symbolic validation in a mature compiler toolchain.</p>
+<p><strong>Smart-contract analysis (blockchains)</strong></p>
+<p>Tools like Mythril symbolically execute EVM bytecode and discharge path constraints to Z3 to expose reentrancy, arithmetic, and permission bugs before deployment—now routine in audits and CI
+for DeFi systems.</p>
+<p><strong>Network correctness (pre-deployment verification)</strong></p>
+<p>Industrial network verifiers translate control-plane configs (BGP/OSPF/etc.) into logical models and use SMT to validate reachability, isolation, and failure scenarios before rollout—e.g.,
+Minesweeper/Batfish (research-to-product trajectory) and later scalable systems.</p>
+<p><strong>Safety-critical AI (neural-network verification)</strong></p>
+<p>The Reluplex line of work and the Marabou framework brought SMT into DNN certification (ACAS Xu case study, bound-tightening, piecewise-linear reasoning). This has shaped standards
+conversations for autonomy and perception stacks.</p>
+</section>
+<section id="generative-ai-and-formal-methods-what-s-changing">
+<h2>Generative AI and Formal Methods: What’s Changing<a class="headerlink" href="#generative-ai-and-formal-methods-what-s-changing" title="Link to this heading">#</a></h2>
+<p><strong>1. LLMs assisting proof and spec</strong>
+LeanDojo/ReProver shows that retrieval-augmented LLMs can select premises and generate Lean proofs; the suite provides datasets, tooling, and reproducible baselines, catalyzing rapid
+progress in ML-for-theorem-proving.
+A 2025 survey reviews how LLMs help author formal specifications from natural-language requirements (Dafny/C/Java), with promising accuracy on assertion synthesis and “assertion completion.”</p>
+<p><strong>2. Neuro-symbolic invariant synthesis for verification</strong>
+Fresh results show LLMs can propose loop invariants that an SMT-based checker validates/refines (e.g., ASE’24 neuro-symbolic bounded model checking; 2025 benchmark studies). The emerging
+recipe: LLM proposes → SMT/solver checks → counterexample-guided repair.</p>
+<p><strong>3. Hybrid validation pipelines in compilers and systems</strong>
+For LLVM, LLMs triage “hard” optimizations while Alive2 (SMT) proves the rest, using fuzzing to chase suspected unsound cases—concrete neuro-symbolic workflows shipping into compiler
+validation. Expect similar “LLM-first, SMT-confirm” loops in optimizers, static analyzers, and decompilers.</p>
+<p><strong>4. Formal analysis of AI systems themselves</strong>
+Neural-network verification continues to integrate SMT with domain-specific relaxations and bound-propagation; Marabou 2.0 documents architecture and roles for solver-in-the-loop bound
+tightening. Coupled with LLM systems, this points to spec-driven safety cases for perception and policy components.</p>
+<p><strong>5. Research directions to watch</strong>
+- Auto-formalization: LLMs converting NL requirements/tests into templates that SMT tools check (assertion mining and refinement).
+- Proof-search copilots: Retrieval + tool APIs (Lean/Isabelle/Coq) to keep LLM steps sound via solver or kernel checks.
+- Verifier-in-the-loop tooling: LLM planning; SMT establishes truth; counterexamples feed self-repair—already prototyped in compilers and invariant synthesis.</p>
+</section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -567,6 +609,21 @@ document.write(`
 </ul>
 </li>
 <li><p>Howe, J. M., &amp; King, A. (2012). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=A+Pearl+on+SAT+and+SMT+Solving+in+Prolog&amp;amp;btnG=">A pearl on SAT and SMT solving in Prolog</a>. Theoretical Computer Science, 435, 43-55. <a class="reference external" href="https://www.staff.city.ac.uk/~jacob/solver/tcs.pdf">pdf</a> - - - I only read the intro and do not claim that I understand that paper. It is of interest to because it combines ideas from SAT, Prolog and SMT.</p></li>
+<li><p>Backes, J., Bolignano, P., Cook, B., et al. “Semantic-based Automated Reasoning for AWS Access Policies using SMT.” FMCAD 2018</p></li>
+<li><p>Rungta, N. “A Billion SMT Queries a Day.” Amazon Science (invited), 2022.</p></li>
+<li><p>Godefroid, P., Levin, M., Molnar, D. “SAGE: Whitebox Fuzzing for Security Testing.” CACM 2012.</p></li>
+<li><p>Bounimova, E., Godefroid, P., Molnar, D. “Billions and Billions of Constraints: Whitebox Fuzz Testing at Microsoft.” ICSE 2011/Tech Report.</p></li>
+<li><p>Wang, Y., Xie, F. “Enhancing Translation Validation of Compiler Transformations with Large Language Models.” arXiv:2401.16797 (2024).</p></li>
+<li><p>Cadar, C., Dunbar, D., Engler, D. “KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs.” OSDI 2008.</p></li>
+<li><p>Beckett, R., et al. “A General Approach to Network Configuration Verification (Minesweeper).” SIGCOMM 2017.</p></li>
+<li><p>Brown, M., et al. “Lessons from the Evolution of the Batfish Configuration Analysis Tool.” SIGCOMM 2023 (Experience).</p></li>
+<li><p>Prabhu, S., et al. “Plankton: Scalable Network Configuration Verification.” NSDI 2020.</p></li>
+<li><p>Katz, G., Barrett, C., Dill, D., Julian, K., Kochenderfer, M. “Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks.” CAV 2017 / arXiv:1702.01135.</p></li>
+<li><p>Katz, G., et al. “The Marabou Framework for Verification and Analysis of Deep Neural Networks.” CAV 2019 / LNCS; Marabou 2.0 (2024).</p></li>
+<li><p>Yang, K., et al. “LeanDojo: Theorem Proving with Retrieval-Augmented Language Models (ReProver).” NeurIPS 2023 (paper &amp; dataset).</p></li>
+<li><p>Beg, A., et al. “A Short Survey on Formalising Software Requirements with LLMs.” arXiv:2506.11874 (2025).</p></li>
+<li><p>Wu, G., et al. “LLM Meets Bounded Model Checking: Neuro-symbolic Loop Invariant Inference.” ASE 2024.</p></li>
+<li><p>Wei, A., et al. “InvBench: Can LLMs Accelerate Program Verification with Invariant Synthesis?” arXiv:2509.21629 (2025).</p></li>
 </ul>
 </section>
 </section>
@@ -651,6 +708,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z3-in-python">Z3 in Python</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-the-industry">Applications in the Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai-and-formal-methods-what-s-changing">Generative AI and Formal Methods: What’s Changing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>

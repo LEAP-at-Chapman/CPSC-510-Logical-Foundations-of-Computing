@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -411,6 +411,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-level-algorithms">User-Level Algorithms</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-competitions-in-logic-formal-methods">Benchmarks &amp; Competitions in Logic / Formal Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prolog-logic-programming-benchmarks">Prolog / Logic Programming Benchmarks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#competitions-broader-formal-methods-benchmarking">Competitions &amp; Broader Formal Methods Benchmarking</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#industrial-applications-of-logic-programming">Industrial Applications of Logic Programming</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-industrial-applications">Key Industrial Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-generative-ai-is-changing-formal-methods">How Generative AI is Changing Formal Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-these-applications-influenced-the-field">Why These Applications Influenced the Field</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -581,6 +592,9 @@ X = harriet ;
 <p><strong>GNU Prolog</strong> takes a different approach, functioning as a native-code compiler rather than an interpreter. It compiles Prolog code directly into machine code via an intermediate C representation. This results in highly efficient executables compared to SICStus. GNU Prolog also includes a finite domain constraint solver and provides a C interface, allowing integration with low-level systems programming. Its minimalist design and speed make it ideal for embedding Prolog logic in performance-sensitive applications.</p>
 <p><strong>ECLiPSe (ECRC Logic Programming System)</strong> extends traditional Prolog into the field of constraint logic programming (CLP). It supports solving complex combinatorial problems by allowing constraints over integers, reals, sets, and other structures to be expressed directly in logic. ECLiPSe is  strongest in operations research, scheduling, and optimization problems, offering a flexible environment for hybrid programming that blends declarative and procedural paradigms.</p>
 <p>Across these systems, the one unifying theme is Prolog’s declarative nature. Each tool preserves the language’s logical foundation while extending it for different domains and computational models. Whether one prioritizes performance, integration, or constraint solving, there exists a Prolog implementation suited to the task.</p>
+<p>I want to put an empahsis on <strong>Datalog</strong>, while derived from Prolog, represents a specialized subset of logic programming optimized for database querying and deductive reasoning. Unlike Prolog, Datalog omits complex features such as function symbols and unrestricted recursion, making it declarative, decidable, and well-suited for large-scale data processing.</p>
+<p>Modern Datalog systems, such as <strong>Soufflé</strong> and <strong>LogicBlox</strong>, compile logical rules into efficient relational operations, bridging the gap between logic programming and database optimization. Soufflé, for example, is widely used in static program analysis, translating high-level Datalog specifications into optimized C++ code. Similarly, LogicBlox extends Datalog with constraints and aggregates, powering enterprise analytics and reasoning over massive datasets.</p>
+<p>In essence, Datalog emphasizes the data-centric dimension of logic programming. While traditional Prolog excels in symbolic AI and dynamic reasoning, Datalog’s strength lies in query optimization, parallel execution, and scalability, making it a core technology in both academic research and industrial data systems.</p>
 </section>
 <section id="algorithms">
 <h2>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
@@ -664,6 +678,142 @@ For example, SWI-Prolog provides a library(simplex) that lets you solve linear p
 </ul>
 </section>
 </section>
+<section id="benchmarks-competitions-in-logic-formal-methods">
+<h2>Benchmarks &amp; Competitions in Logic / Formal Methods<a class="headerlink" href="#benchmarks-competitions-in-logic-formal-methods" title="Link to this heading">#</a></h2>
+<p>Benchmarks and competitions play a major role in driving progress in formal methods, logic programming, automated reasoning, program verification, and related areas. They help by:</p>
+<ul class="simple">
+<li><p>Providing standardized problem sets for comparing systems</p></li>
+<li><p>Pushing tool builders to optimize for realistic workloads</p></li>
+<li><p>Raising visibility and credibility for research / tool-development</p></li>
+<li><p>Encouraging reproducibility (since benchmarks are shared)</p></li>
+<li><p>Motivating novel techniques to “win” or improve scores</p></li>
+</ul>
+<p>Below are some of the benchmarks / competitions that I found that are relevant to logic programming, Prolog-like systems, or the broader formal methods / automated reasoning world. Some are directly applicable to Prolog or logic-programming; others are less related, but suggest opportunities for Prolog / CLP / logic-based tooling to participate or be compared.</p>
+<section id="prolog-logic-programming-benchmarks">
+<h3>Prolog / Logic Programming Benchmarks<a class="headerlink" href="#prolog-logic-programming-benchmarks" title="Link to this heading">#</a></h3>
+<p>These are competitions / benchmark suites that more directly touch Prolog or logic-programming implementations.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Description &amp; Relevance</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>SWI-Prolog benchmark suite</strong></p></td>
+<td><p>SWI-Prolog hosts a benchmark set (originating from the “van Roy” benchmarks) in its repository. It supports running multiple systems (SWI, YAP, SICStus, etc.) via its compare driver. <a class="reference external" href="https://github.com/SWI-Prolog/bench">GitHub</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Logtalk benchmark suite</strong></p></td>
+<td><p>According to StackOverflow discussions, there is a classical set of Prolog benchmarks included in Logtalk. These can be used to compare Prolog backends via Logtalk wrapper. <a class="reference external" href="https://logtalk.org/">Logtalk</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CMU AI Repository — Prolog benchmark code</strong></p></td>
+<td><p>There is an older collection at CMU’s AI Repository under lang/prolog/code/bench/ that includes standard small programs (8-queens, list reversal, cryptarithm benchmarks etc.) <a class="reference external" href="https://www.cs.cmu.edu/">CMU School of Computer Science</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Mercury benchmarks</strong></p></td>
+<td><p>Although Mercury is a logic / functional-logic language rather than pure Prolog, its benchmark suite includes examples convertible to Prolog style. These benchmarks are used to compare Mercury against Prolog implementations too. <a class="reference external" href="https://mercurylang.org/">MercuryLang</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>These benchmarks tend to focus on execution-speed, memory use, or scalability of inference/unification/backtracking on small-to-medium sized logic / search programs.</p>
+</section>
+<section id="competitions-broader-formal-methods-benchmarking">
+<h3>Competitions &amp; Broader Formal Methods Benchmarking<a class="headerlink" href="#competitions-broader-formal-methods-benchmarking" title="Link to this heading">#</a></h3>
+<p>While not always Prolog-specific, these competitions shape the formal methods / logic-based reasoning tools’ landscape. They offer model languages, standardized input formats, benchmark suites, and evaluation metrics. They may present opportunities for Prolog-based tools (e.g. CLP, logic-programming-as-backend) to compete or be compared.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Competition / Benchmark</p></th>
+<th class="head"><p>Summary &amp; Relevance</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>SV-COMP</strong> (Software Verification Competition)</p></td>
+<td><p>A major international competition for software verification tools. It provides a large benchmark repository, standardized formats, and yearly contest editions. Though not Prolog per se, aspects such as verifying safety / correctness properties might be implemented using logic-based reasoning or Prolog-driven model checkers. <a class="reference external" href="https://sv-comp.sosy-lab.org/">SV-COMP</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CADE ATP / CASC</strong> (Automated Theorem Proving Competition)</p></td>
+<td><p>Annual competition for first-order logic theorem provers. Prolog may play a role in the proof engine / back-end for logic-based provers. <a class="reference external" href="https://en.wikipedia.org/wiki/CADE_ATP_System_Competition">Wikipedia</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Answer Set Programming (ASP) Competition</strong></p></td>
+<td><p>ASP is closely related to logic programming; its competitions compare ASP solvers using benchmark suites. <a class="reference external" href="https://arxiv.org/">arXiv</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>RuleML Symposium — International Rule Challenge</strong></p></td>
+<td><p>RuleML organizes an “International Rule Challenge” associated with rule-based systems &amp; reasoning engines. <a class="reference external" href="https://en.wikipedia.org/wiki/RuleML">Wikipedia</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>POPLmark challenge</strong></p></td>
+<td><p>More on the mechanized metatheory side (proofs about programming language semantics), but significant as an example of benchmarking / standardizing challenges in formal methods. <a class="reference external" href="https://en.wikipedia.org/wiki/POPLmark">Wikipedia</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Various verification / model checking competitions</strong></p></td>
+<td><p>There are many others in the formal methods / model checking space (e.g. reactive synthesis competitions, termination / SMT-Solver benchmarks).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>These competitions often expect tools to support specific input / output formats, provide standard measures (time, memory, correctness), and sometimes require strict conformance or reproducibility.</p>
+</section>
+</section>
+<section id="industrial-applications-of-logic-programming">
+<h2>Industrial Applications of Logic Programming<a class="headerlink" href="#industrial-applications-of-logic-programming" title="Link to this heading">#</a></h2>
+<p>Logic programming and its Datalog relatives have had concrete, high-impact uses in industry — from static program analysis to enterprise decision systems — and they are now interacting with generative (neural) methods in ways that are reshaping research and tooling.</p>
+<hr class="docutils" />
+<section id="key-industrial-applications">
+<h3>Key Industrial Applications<a class="headerlink" href="#key-industrial-applications" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Area</p></th>
+<th class="head"><p>Why it Mattered</p></th>
+<th class="head"><p>Representative Tools / Projects</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Static Program Analysis &amp; Security</strong></p></td>
+<td><p>Datalog enabled concise, portable specifications of whole-program analyses; compiled Datalog engines scale analyses to very large codebases.</p></td>
+<td><p>Soufflé, DOOP <br> <a class="reference external" href="https://souffle-lang.github.io/">Soufflé</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Declarative Enterprise Analytics</strong></p></td>
+<td><p>Logic/Datalog variants provided a unified, declarative backend for analytics + transactional logic, changing how complex business rules are expressed and maintained.</p></td>
+<td><p>LogicBlox / LogiQL <br> <a class="reference external" href="https://www.cs.cmu.edu/">Department of Computer Science</a></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Immutable Fact Stores &amp; Auditability</strong></p></td>
+<td><p>Datom-style immutable facts let systems expose verifiable histories and temporal queries, useful in finance and audit-focused systems.</p></td>
+<td><p>Datomic <br> <a class="reference external" href="https://www.datomic.com/">Datomic</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Program-analysis Portability &amp; Reproducibility</strong></p></td>
+<td><p>Datalog specifications made analyses portable between engines, improving reproducibility and enabling rapid experiment/production cycles.</p></td>
+<td><p>DOOP → Soufflé porting studies <br> <a class="reference external" href="https://pldi17.sigplan.org/">PLDI 2017</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section id="how-generative-ai-is-changing-formal-methods">
+<h3>How Generative AI is Changing Formal Methods<a class="headerlink" href="#how-generative-ai-is-changing-formal-methods" title="Link to this heading">#</a></h3>
+<p>Recent years have seen rapid integration of neural/generative methods with formal, symbolic tools:</p>
+<ul class="simple">
+<li><p><strong>Large language models and neural theorem provers</strong> are being used to propose proof steps, rank candidate proof actions, and generate tactics that formal provers can check</p></li>
+<li><p><strong>Reduced manual effort</strong> and exploration of new hybrid workflows</p></li>
+<li><p><strong>Surveys and recent systems</strong> report improved automation and higher proof rates when neural guidance is combined with traditional provers</p></li>
+<li><p><strong>Neural→symbolic loop</strong> is a major current research direction</p></li>
+</ul>
+<p><strong>Key Resources:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://typeset.io">SciSpace Survey</a> on deep learning for theorem proving</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="why-these-applications-influenced-the-field">
+<h3>Why These Applications Influenced the Field<a class="headerlink" href="#why-these-applications-influenced-the-field" title="Link to this heading">#</a></h3>
+<p>Scalability + Abstraction
+Datalog’s declarative nature made it easier to express large analyses; high-quality engines (Soufflé, LogicBlox) made those analyses fast and deployable, changing where and how researchers built static analyzers.</p>
+<p><a class="reference external" href="https://souffle-lang.github.io/">Soufflé Project</a></p>
+<p>Reproducibility &amp; Portability
+Porting DOOP to Soufflé demonstrated that large, real-world analyses can be expressed in compact rule sets and moved between engines — a pragmatic win for reproducible research.</p>
+<p><a class="reference external" href="https://pldi17.sigplan.org/">PLDI 2017 - Porting Doop to Soufflé</a></p>
+<p>Neural+Symbolic Synergy
+Generative models lower the barrier to producing candidate proofs or tactics; symbolic provers provide rigorous checking. Together they increase automation while maintaining correctness guarantees — a potent combination for verification and formalization workflows.</p>
+<p><a class="reference external" href="https://typeset.io">SciSpace Research</a></p>
+</section>
+</section>
+<hr class="docutils" />
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -676,6 +826,7 @@ For example, SWI-Prolog provides a library(simplex) that lets you solve linear p
 <li><p>https://eclipseclp.org/     #Eclipse</p></li>
 <li><p>https://www.metalevel.at/prolog/sorting</p></li>
 <li><p>https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html</p></li>
+<li><p>https://blogit.michelin.io/an-introduction-to-datalog/</p></li>
 </ol>
 </section>
 </section>
@@ -762,6 +913,17 @@ For example, SWI-Prolog provides a library(simplex) that lets you solve linear p
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-library-based-algorithms">Built-in / Library-Based Algorithms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#user-level-algorithms">User-Level Algorithms</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-competitions-in-logic-formal-methods">Benchmarks &amp; Competitions in Logic / Formal Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prolog-logic-programming-benchmarks">Prolog / Logic Programming Benchmarks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#competitions-broader-formal-methods-benchmarking">Competitions &amp; Broader Formal Methods Benchmarking</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#industrial-applications-of-logic-programming">Industrial Applications of Logic Programming</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-industrial-applications">Key Industrial Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-generative-ai-is-changing-formal-methods">How Generative AI is Changing Formal Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-these-applications-influenced-the-field">Why These Applications Influenced the Field</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
