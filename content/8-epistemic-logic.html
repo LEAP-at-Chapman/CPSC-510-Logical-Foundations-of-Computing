@@ -1,0 +1,1081 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Epistemic Logic with SMCDEL &#8212; Logical Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/8-epistemic-logic';</script>
+    <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/8-epistemic-logic.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hoare Logic with Dafny" href="9-hoare-logic.html" />
+    <link rel="prev" title="Temporal Logic with Spin" href="7-temporal-logic.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="title.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Logical Foundations of AI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">Dependent Type Theory with Lean</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fcontent/8-epistemic-logic.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/8-epistemic-logic.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Epistemic Logic with SMCDEL</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-chapter-we-will">In this chapter we will:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-epistemic-logic">2. Basic Epistemic Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">2.1 Syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics-possible-worlds">2.2 Semantics (Possible Worlds)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-not-knowing-even-when-its-true">2.3 Example (Not Knowing Even When It’s True)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-knowledge-s5-style">2.4 Properties of Knowledge (S5-style)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#belief">2.5 Belief</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-epistemic-logic-del">3. Dynamic Epistemic Logic (DEL)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-announcement-informal">3.1 Public Announcement (Informal)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-smcdel">4. Using SMCDEL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-illustrative">4.1 Installation (Illustrative)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-example">4.2 Model Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-public-announcement">4.3 Adding a Public Announcement</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-networks-and-epistemic-logic">5. Social Networks and Epistemic Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-mapping">5.1 Conceptual Mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rumor-spread-in-a-small-network">5.2 Example: Rumor Spread in a Small Network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#private-vs-public-why-it-matters">5.3 Private vs. Public (Why it matters)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toward-common-knowledge">5.4 Toward Common Knowledge</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">6. Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-the-rescue-drone-coordination-problem">7. Case Study: The “Rescue Drone Coordination” Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-overview">7.1 Scenario Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-in-smcdel">7.2 Modeling in SMCDEL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-matters">7.3 Why It Matters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referenes-further-reading">8. Referenes &amp; Further Reading</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="epistemic-logic-with-smcdel">
+<h1>Epistemic Logic with SMCDEL<a class="headerlink" href="#epistemic-logic-with-smcdel" title="Link to this heading">#</a></h1>
+<p>Author: <em>John Mulhern</em></p>
+<section id="idea">
+<h2>1. Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
+<p>Epistemic logic is the study of <strong>knowledge</strong> and <strong>belief</strong> using a formal logical language. Instead of only asking “is <code class="docutils literal notranslate"><span class="pre">p</span></code> true?”, we can ask:</p>
+<ul class="simple">
+<li><p>“does agent <code class="docutils literal notranslate"><span class="pre">a</span></code> know that <code class="docutils literal notranslate"><span class="pre">p</span></code> is true?” (<code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">p</span></code>)</p></li>
+<li><p>“does agent <code class="docutils literal notranslate"><span class="pre">a</span></code> believe that <code class="docutils literal notranslate"><span class="pre">p</span></code> is true?” (<code class="docutils literal notranslate"><span class="pre">B_a</span> <span class="pre">p</span></code>)</p></li>
+<li><p>“does agent <code class="docutils literal notranslate"><span class="pre">a</span></code> know that agent <code class="docutils literal notranslate"><span class="pre">b</span></code> knows that <code class="docutils literal notranslate"><span class="pre">p</span></code>?” (<code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">K_b</span> <span class="pre">p</span></code>)</p></li>
+</ul>
+<p>This is useful in computer science because many systems are <strong>multi-agent</strong> or <strong>distributed</strong>. What an individual process, user, or node <strong>knows</strong> (or does <strong>not</strong> know) affects what it can safely and effectively do.</p>
+</section>
+<section id="in-this-chapter-we-will">
+<h2>In this chapter we will:<a class="headerlink" href="#in-this-chapter-we-will" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>introduce the basics of (multi-agent) epistemic logic,</p></li>
+<li><p>introduce <em>dynamic</em> epistemic logic (DEL) to handle information change,</p></li>
+<li><p>show how to use <strong>SMCDEL</strong> (Symbolic Model Checker for Dynamic Epistemic Logic),</p></li>
+<li><p>explain <strong>social networks</strong> through the lense of epistemic logic</p></li>
+</ol>
+</section>
+<section id="basic-epistemic-logic">
+<h2>2. Basic Epistemic Logic<a class="headerlink" href="#basic-epistemic-logic" title="Link to this heading">#</a></h2>
+<section id="syntax">
+<h3>2.1 Syntax<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h3>
+<p>We assume:</p>
+<ul class="simple">
+<li><p>a set of atomic propositions: <code class="docutils literal notranslate"><span class="pre">p,</span> <span class="pre">q,</span> <span class="pre">r,</span> <span class="pre">...</span></code></p></li>
+<li><p>a finite set of agents: <code class="docutils literal notranslate"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c,</span> <span class="pre">...</span></code></p></li>
+</ul>
+<p>The language is built by:</p>
+<ul>
+<li><p>every atomic proposition <code class="docutils literal notranslate"><span class="pre">p</span></code> is a formula</p></li>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">φ</span></code> and <code class="docutils literal notranslate"><span class="pre">ψ</span></code> are formulas, then</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">¬φ</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(φ</span> <span class="pre">∧</span> <span class="pre">ψ)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(φ</span> <span class="pre">∨</span> <span class="pre">ψ)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(φ</span> <span class="pre">→</span> <span class="pre">ψ)</span></code></p></li>
+</ul>
+<p>are formulas</p>
+</li>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">φ</span></code> is a formula and <code class="docutils literal notranslate"><span class="pre">a</span></code> is an agent, then</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">φ</span></code> is a formula, read “agent <code class="docutils literal notranslate"><span class="pre">a</span></code> knows that <code class="docutils literal notranslate"><span class="pre">φ</span></code>”</p></li>
+</ul>
+</li>
+</ul>
+<p>Optionally we can also allow:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">B_a</span> <span class="pre">φ</span></code> for “agent <code class="docutils literal notranslate"><span class="pre">a</span></code> believes that <code class="docutils literal notranslate"><span class="pre">φ</span></code>”</p></li>
+</ul>
+<p>Examples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">p</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">K_b</span> <span class="pre">p</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">(p</span> <span class="pre">→</span> <span class="pre">q)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">p</span> <span class="pre">∧</span> <span class="pre">K_b</span> <span class="pre">p</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">p</span> <span class="pre">→</span> <span class="pre">B_a</span> <span class="pre">p</span></code> (knowledge implies belief)</p></li>
+</ul>
+</section>
+<section id="semantics-possible-worlds">
+<h3>2.2 Semantics (Possible Worlds)<a class="headerlink" href="#semantics-possible-worlds" title="Link to this heading">#</a></h3>
+<p>Epistemic logic uses <strong>possible worlds semantics</strong> (Kripke semantics).</p>
+<p>A model is a triple:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">=</span> <span class="pre">(W,</span> <span class="pre">{R_a}_a,</span> <span class="pre">V)</span></code></p></li>
+</ul>
+<p>where:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">W</span></code> is a nonempty set of <strong>worlds</strong></p></li>
+<li><p>for each agent <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">R_a</span></code> is a binary relation on <code class="docutils literal notranslate"><span class="pre">W</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">w')</span> <span class="pre">∈</span> <span class="pre">R_a</span></code> means: <em>at world <code class="docutils literal notranslate"><span class="pre">w</span></code>, agent <code class="docutils literal notranslate"><span class="pre">a</span></code> considers world <code class="docutils literal notranslate"><span class="pre">w'</span></code> possible</em></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">V</span></code> is a valuation assigning to every atomic proposition the set of worlds where it is true</p></li>
+</ol>
+<p>We define truth at a world <code class="docutils literal notranslate"><span class="pre">w</span></code> inductively:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">p</span></code> iff <code class="docutils literal notranslate"><span class="pre">w</span> <span class="pre">∈</span> <span class="pre">V(p)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">¬φ</span></code> iff <strong>not</strong> (<code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">φ</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">(φ</span> <span class="pre">∧</span> <span class="pre">ψ)</span></code> iff (<code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">φ</span></code> <strong>and</strong> <code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">ψ</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">(φ</span> <span class="pre">∨</span> <span class="pre">ψ)</span></code> iff (<code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">φ</span></code> <strong>or</strong> <code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">ψ</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">(φ</span> <span class="pre">→</span> <span class="pre">ψ)</span></code> iff (if <code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">φ</span></code> then <code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">ψ</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">K_a</span> <span class="pre">φ</span></code> iff for <strong>all</strong> <code class="docutils literal notranslate"><span class="pre">w'</span></code> such that <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">w')</span> <span class="pre">∈</span> <span class="pre">R_a</span></code>, we have <code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w'</span> <span class="pre">⊨</span> <span class="pre">φ</span></code></p></li>
+</ul>
+<p>Key sentence:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">φ</span></code> is true at <code class="docutils literal notranslate"><span class="pre">w</span></code> iff <code class="docutils literal notranslate"><span class="pre">φ</span></code> is true in <strong>all</strong> worlds that agent <code class="docutils literal notranslate"><span class="pre">a</span></code> considers possible from <code class="docutils literal notranslate"><span class="pre">w</span></code>.</p>
+</div></blockquote>
+</section>
+<section id="example-not-knowing-even-when-its-true">
+<h3>2.3 Example (Not Knowing Even When It’s True)<a class="headerlink" href="#example-not-knowing-even-when-its-true" title="Link to this heading">#</a></h3>
+<p>Let there be 2 worlds: <code class="docutils literal notranslate"><span class="pre">w1</span></code>, <code class="docutils literal notranslate"><span class="pre">w2</span></code>.</p>
+<ul class="simple">
+<li><p>in <code class="docutils literal notranslate"><span class="pre">w1</span></code>, <code class="docutils literal notranslate"><span class="pre">p</span></code> is true</p></li>
+<li><p>in <code class="docutils literal notranslate"><span class="pre">w2</span></code>, <code class="docutils literal notranslate"><span class="pre">p</span></code> is false</p></li>
+</ul>
+<p>Let agent <code class="docutils literal notranslate"><span class="pre">a</span></code> be <strong>uncertain</strong> between these 2 worlds:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">R_a</span> <span class="pre">=</span> <span class="pre">{(w1,w1),</span> <span class="pre">(w1,w2),</span> <span class="pre">(w2,w1),</span> <span class="pre">(w2,w2)}</span></code></p></li>
+</ul>
+<p>Then:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w1</span> <span class="pre">⊨</span> <span class="pre">p</span></code> (because <code class="docutils literal notranslate"><span class="pre">p</span></code> is true in <code class="docutils literal notranslate"><span class="pre">w1</span></code>)</p></li>
+<li><p>but <code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w1</span> <span class="pre">⊭</span> <span class="pre">K_a</span> <span class="pre">p</span></code> (because from <code class="docutils literal notranslate"><span class="pre">w1</span></code>, agent <code class="docutils literal notranslate"><span class="pre">a</span></code> also considers <code class="docutils literal notranslate"><span class="pre">w2</span></code> possible, and in <code class="docutils literal notranslate"><span class="pre">w2</span></code> <code class="docutils literal notranslate"><span class="pre">p</span></code> is false)</p></li>
+</ul>
+<p>So: <code class="docutils literal notranslate"><span class="pre">p</span></code> is actually true, but agent <code class="docutils literal notranslate"><span class="pre">a</span></code> does <strong>not</strong> know <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
+</section>
+<section id="properties-of-knowledge-s5-style">
+<h3>2.4 Properties of Knowledge (S5-style)<a class="headerlink" href="#properties-of-knowledge-s5-style" title="Link to this heading">#</a></h3>
+<p>In many CS applications, we model knowledge with S5-like properties. For each agent <code class="docutils literal notranslate"><span class="pre">a</span></code>, the relation <code class="docutils literal notranslate"><span class="pre">R_a</span></code> is:</p>
+<ul class="simple">
+<li><p>reflexive</p></li>
+<li><p>symmetric</p></li>
+<li><p>transitive</p></li>
+</ul>
+<p>This validates the following principles:</p>
+<ol class="arabic simple">
+<li><p><strong>Factivity</strong>: <code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">φ</span></code></p></li>
+<li><p><strong>Positive introspection</strong>: <code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">K_a</span> <span class="pre">K_a</span> <span class="pre">φ</span></code></p></li>
+<li><p><strong>Negative introspection</strong>: <code class="docutils literal notranslate"><span class="pre">¬K_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">K_a</span> <span class="pre">¬K_a</span> <span class="pre">φ</span></code></p></li>
+<li><p><strong>Distribution</strong>: <code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">(φ</span> <span class="pre">→</span> <span class="pre">ψ)</span> <span class="pre">→</span> <span class="pre">(K_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">K_a</span> <span class="pre">ψ)</span></code></p></li>
+</ol>
+<p>These together make knowledge quite strong.</p>
+</section>
+<section id="belief">
+<h3>2.5 Belief<a class="headerlink" href="#belief" title="Link to this heading">#</a></h3>
+<p>Belief (<code class="docutils literal notranslate"><span class="pre">B_a</span> <span class="pre">φ</span></code>) is often taken to be <strong>weaker</strong>:</p>
+<ul class="simple">
+<li><p>belief is <strong>not</strong> factive (we do <strong>not</strong> assume <code class="docutils literal notranslate"><span class="pre">B_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">φ</span></code>)</p></li>
+<li><p>we can still assume doxastic introspection (depending on the logic)</p></li>
+<li><p>often we assume: <code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">B_a</span> <span class="pre">φ</span></code> (knowledge implies belief)</p></li>
+</ul>
+<p>Belief is handy for modeling <strong>mistakes</strong> or <strong>rumors</strong> in social networks.</p>
+</section>
+</section>
+<section id="dynamic-epistemic-logic-del">
+<h2>3. Dynamic Epistemic Logic (DEL)<a class="headerlink" href="#dynamic-epistemic-logic-del" title="Link to this heading">#</a></h2>
+<p>So far: <em>static</em> epistemic logic — one model, we ask what is known.</p>
+<p>But many real situations have <strong>information change</strong>:</p>
+<ul class="simple">
+<li><p>a public announcement</p></li>
+<li><p>a private message</p></li>
+<li><p>an observation</p></li>
+<li><p>an agent discovering a fact</p></li>
+</ul>
+<p><strong>Dynamic Epistemic Logic</strong> adds <strong>events</strong> and <strong>updates</strong> to represent such changes.</p>
+<section id="public-announcement-informal">
+<h3>3.1 Public Announcement (Informal)<a class="headerlink" href="#public-announcement-informal" title="Link to this heading">#</a></h3>
+<p>Suppose we have a model <code class="docutils literal notranslate"><span class="pre">M</span></code> and we publicly announce <code class="docutils literal notranslate"><span class="pre">φ</span></code>.</p>
+<ul class="simple">
+<li><p>every agent hears the same announcement</p></li>
+<li><p>every agent trusts it (it becomes true, or was already true)</p></li>
+<li><p>so they <strong>eliminate</strong> all worlds in which <code class="docutils literal notranslate"><span class="pre">φ</span></code> was false</p></li>
+<li><p>result: a new epistemic model with fewer worlds</p></li>
+</ul>
+<p>After this, many things that were <strong>not</strong> known become <strong>known</strong>, because there are fewer possibilities left.</p>
+<p>This is exactly the kind of update SMCDEL is good at checking.</p>
+</section>
+</section>
+<section id="using-smcdel">
+<h2>4. Using SMCDEL<a class="headerlink" href="#using-smcdel" title="Link to this heading">#</a></h2>
+<p>SMCDEL (Symbolic Model Checker for Dynamic Epistemic Logic) is a tool that:</p>
+<ul class="simple">
+<li><p>lets you define agents, worlds, valuations, relations</p></li>
+<li><p>lets you define <strong>event models</strong> (for announcements, private messages, etc.)</p></li>
+<li><p>applies them with <code class="docutils literal notranslate"><span class="pre">update</span></code></p></li>
+<li><p>and then lets you <code class="docutils literal notranslate"><span class="pre">check</span></code> whether a certain epistemic formula holds</p></li>
+</ul>
+<p>You can use the <strong>web version</strong>:</p>
+<ul class="simple">
+<li><p>https://w4eg.de/malvin/illc/smcdelweb</p></li>
+</ul>
+<p>or install it locally.</p>
+<section id="installation-illustrative">
+<h3>4.1 Installation (Illustrative)<a class="headerlink" href="#installation-illustrative" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using Haskell Stack</span>
+stack<span class="w"> </span>install<span class="w"> </span>smcdel
+</pre></div>
+</div>
+<p>After installation, you can run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>smcdel<span class="w"> </span>my_model.smcdel
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">my_model.smcdel</span></code> is a text file describing your epistemic model and the formulas you want to check.</p>
+</section>
+<section id="model-example">
+<h3>4.2 Model Example<a class="headerlink" href="#model-example" title="Link to this heading">#</a></h3>
+<p>Goal: two agents, <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, one proposition <code class="docutils literal notranslate"><span class="pre">p</span></code>, two worlds, and both agents are uncertain.</p>
+<p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">simple_model.smcdel</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agents and propositions</span>
+<span class="n">agents</span> <span class="n">a</span> <span class="n">b</span><span class="p">;</span>
+<span class="n">props</span> <span class="n">p</span><span class="p">;</span>
+
+<span class="c1"># Worlds</span>
+<span class="n">worlds</span> <span class="n">w1</span> <span class="n">w2</span><span class="p">;</span>
+
+<span class="c1"># Valuation: p is true in w1, false in w2</span>
+<span class="n">val</span> <span class="n">p</span> <span class="o">=</span> <span class="p">{</span><span class="n">w1</span><span class="p">};</span>
+
+<span class="c1"># Epistemic relations: both agents can&#39;t distinguish w1 and w2</span>
+<span class="n">rel</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{(</span><span class="n">w1</span><span class="p">,</span><span class="n">w1</span><span class="p">),(</span><span class="n">w1</span><span class="p">,</span><span class="n">w2</span><span class="p">),(</span><span class="n">w2</span><span class="p">,</span><span class="n">w1</span><span class="p">),(</span><span class="n">w2</span><span class="p">,</span><span class="n">w2</span><span class="p">)};</span>
+<span class="n">rel</span> <span class="n">b</span> <span class="o">=</span> <span class="p">{(</span><span class="n">w1</span><span class="p">,</span><span class="n">w1</span><span class="p">),(</span><span class="n">w1</span><span class="p">,</span><span class="n">w2</span><span class="p">),(</span><span class="n">w2</span><span class="p">,</span><span class="n">w1</span><span class="p">),(</span><span class="n">w2</span><span class="p">,</span><span class="n">w2</span><span class="p">)};</span>
+
+<span class="c1"># Check what they know in w1</span>
+<span class="n">check</span> <span class="n">w1</span><span class="p">:</span> <span class="n">Ka</span> <span class="n">p</span><span class="p">;</span>
+<span class="n">check</span> <span class="n">w1</span><span class="p">:</span> <span class="n">Kb</span> <span class="n">p</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>What this does:</p>
+<ul class="simple">
+<li><p>declares agents, props, worlds</p></li>
+<li><p>says p is only true in w1</p></li>
+<li><p>says both agents see the two worlds as indistinguishable</p></li>
+<li><p>asks: “in world w1, does agent a know p?”, “does agent b know p?”</p></li>
+</ul>
+<p>Intuition: both answers should be false because each agent still considers the world where p is false possible.</p>
+</section>
+<section id="adding-a-public-announcement">
+<h3>4.3 Adding a Public Announcement<a class="headerlink" href="#adding-a-public-announcement" title="Link to this heading">#</a></h3>
+<p>Now we show how a Public Announcement can impact an epistemic model.</p>
+<p>We start from the previous model and then <strong>add an event</strong> where we publicly announce p.</p>
+<p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">announcement.smcdel</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">include</span> <span class="s2">&quot;simple_model.smcdel&quot;</span><span class="p">;</span>
+
+<span class="c1"># Define a public announcement event</span>
+<span class="n">event</span> <span class="n">announce_p</span> <span class="p">{</span>
+    <span class="n">pre</span>  <span class="o">=</span> <span class="n">p</span><span class="p">;</span>    <span class="c1"># only applicable in worlds where p is true</span>
+    <span class="n">post</span> <span class="o">=</span> <span class="p">{};</span>   <span class="c1"># no change to valuations</span>
+<span class="p">}</span>
+
+<span class="c1"># Apply the event</span>
+<span class="n">update</span> <span class="n">announce_p</span><span class="p">;</span>
+
+<span class="c1"># Now check again</span>
+<span class="n">check</span> <span class="n">w1</span><span class="p">:</span> <span class="n">Ka</span> <span class="n">p</span><span class="p">;</span>
+<span class="n">check</span> <span class="n">w1</span><span class="p">:</span> <span class="n">Kb</span> <span class="n">p</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>What happens:</p>
+<ul class="simple">
+<li><p>since we publicly announced <code class="docutils literal notranslate"><span class="pre">p</span></code>, all worlds where <code class="docutils literal notranslate"><span class="pre">p</span></code> was false are dropped</p></li>
+<li><p>only <code class="docutils literal notranslate"><span class="pre">w1</span></code> remains</p></li>
+<li><p>in a model with a single world, <code class="docutils literal notranslate"><span class="pre">p</span></code> is trivially known by everyone</p></li>
+<li><p>so both <code class="docutils literal notranslate"><span class="pre">Ka</span> <span class="pre">p</span></code> and <code class="docutils literal notranslate"><span class="pre">Kb</span> <span class="pre">p</span></code> should now be <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+<p>This is the dynamic piece: <strong>before</strong> the update, they did not know; <strong>after</strong> the update, they do.</p>
+</section>
+</section>
+<section id="social-networks-and-epistemic-logic">
+<h2>5. Social Networks and Epistemic Logic<a class="headerlink" href="#social-networks-and-epistemic-logic" title="Link to this heading">#</a></h2>
+<p>We can think of a social network as:</p>
+<ul class="simple">
+<li><p>a set of agents (users, accounts, processes)</p></li>
+<li><p>a set of connections (who can hear whom, who follows whom, who is in the same group chat)</p></li>
+<li><p>a sequence of information events (DMs, posts, story updates, announcements)</p></li>
+</ul>
+<p>Epistemic logic lets us ask:</p>
+<ul class="simple">
+<li><p>after this sequence of events, who knows the information?</p></li>
+<li><p>who only believes it?</p></li>
+<li><p>who knows that others know it?</p></li>
+<li><p>is it common knowledge to the group?</p></li>
+</ul>
+<section id="conceptual-mapping">
+<h3>5.1 Conceptual Mapping<a class="headerlink" href="#conceptual-mapping" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Social concept</p></th>
+<th class="head"><p>Epistemic logic counterpart</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>user / account</p></td>
+<td><p>agent (e.g. <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>follow / friend</p></td>
+<td><p>accessibility / visibility / communication link</p></td>
+</tr>
+<tr class="row-even"><td><p>public post</p></td>
+<td><p>public announcement</p></td>
+</tr>
+<tr class="row-odd"><td><p>private message</p></td>
+<td><p>private event (visible to a subset of agents)</p></td>
+</tr>
+<tr class="row-even"><td><p>rumor</p></td>
+<td><p>sequence of (possibly private) announcements</p></td>
+</tr>
+<tr class="row-odd"><td><p>“everyone knows”</p></td>
+<td><p>group knowledge (<code class="docutils literal notranslate"><span class="pre">E_G</span> <span class="pre">φ</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p>“everyone knows that everyone knows”</p></td>
+<td><p>common knowledge (<code class="docutils literal notranslate"><span class="pre">C_G</span> <span class="pre">φ</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>So: <strong>social-network reasoning is a natural application of DEL.</strong></p>
+</section>
+<hr class="docutils" />
+<section id="example-rumor-spread-in-a-small-network">
+<h3>5.2 Example: Rumor Spread in a Small Network<a class="headerlink" href="#example-rumor-spread-in-a-small-network" title="Link to this heading">#</a></h3>
+<p><strong>Agents:</strong> <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p>
+<ul class="simple">
+<li><p>only <code class="docutils literal notranslate"><span class="pre">A</span></code> initially knows proposition <code class="docutils literal notranslate"><span class="pre">p</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code> privately tells <code class="docutils literal notranslate"><span class="pre">B</span></code></p></li>
+<li><p>then <code class="docutils literal notranslate"><span class="pre">B</span></code> publicly says “I learned <code class="docutils literal notranslate"><span class="pre">p</span></code>”</p></li>
+<li><p>we want to see what <code class="docutils literal notranslate"><span class="pre">C</span></code> can now conclude</p></li>
+</ul>
+<p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">social_network.smcdel</span></code></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>agents A B C;
+props p;
+
+# two worlds: p is true / p is false
+worlds w1 w2;
+val p = {w1};
+
+# everyone initially uncertain
+rel A = {(w1,w1),(w1,w2),(w2,w1),(w2,w2)};
+rel B = {(w1,w1),(w1,w2),(w2,w1),(w2,w2)};
+rel C = {(w1,w1),(w1,w2),(w2,w1),(w2,w2)};
+
+# 1) A privately tells B
+event A_to_B {
+    pre = p;
+    rel = {
+        (A,A),
+        (B,B),
+        (C,C)
+    };
+}
+
+# 2) B publicly announces &quot;I learned p&quot;
+event B_public {
+    pre = p;
+    rel = {
+        (A,A),
+        (B,B),
+        (C,C)
+    };
+}
+
+# apply events in sequence
+update A_to_B;
+update B_public;
+
+# now ask:
+check w1: KA p;      # does A know p?
+check w1: KB p;      # does B know p?
+check w1: KC p;      # does C know p now?
+check w1: KC KB p;   # does C know that B knows p?
+check w1: KB KA p;   # does B know that A knows p?
+</pre></div>
+</div>
+<p>What’s going on:</p>
+<ul class="simple">
+<li><p>After <code class="docutils literal notranslate"><span class="pre">A_to_B</span></code>, only <code class="docutils literal notranslate"><span class="pre">B</span></code> gains the info.</p></li>
+<li><p>After <code class="docutils literal notranslate"><span class="pre">B_public</span></code>, everyone sees that <code class="docutils literal notranslate"><span class="pre">p</span></code> must be true (since <code class="docutils literal notranslate"><span class="pre">B</span></code> said so publicly and the precondition was <code class="docutils literal notranslate"><span class="pre">p</span></code>).</p></li>
+<li><p>So now <code class="docutils literal notranslate"><span class="pre">C</span></code> learns <code class="docutils literal notranslate"><span class="pre">p</span></code>, and also learns that <code class="docutils literal notranslate"><span class="pre">B</span></code> knows <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p></li>
+</ul>
+<p>This shows that the second step (public announcement) is what makes the information spread to the whole network.</p>
+</section>
+<section id="private-vs-public-why-it-matters">
+<h3>5.3 Private vs. Public (Why it matters)<a class="headerlink" href="#private-vs-public-why-it-matters" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A public announcement reduces uncertainty for every agent. It is “broadcast.”</p></li>
+<li><p>A private event reduces uncertainty only for the involved agents.</p></li>
+<li><p>If we want something to become common knowledge, it almost always needs to be public (or something equivalent to a public event — e.g. everyone hears it, and everyone hears that everyone heard it, etc.).</p></li>
+</ul>
+<p>This distinction is exactly what we need to study:</p>
+<ul class="simple">
+<li><p>partial disclosure</p></li>
+<li><p>data leaks</p></li>
+<li><p>misinformation</p></li>
+<li><p>who can deduce what after an observable action</p></li>
+</ul>
+</section>
+<section id="toward-common-knowledge">
+<h3>5.4 Toward Common Knowledge<a class="headerlink" href="#toward-common-knowledge" title="Link to this heading">#</a></h3>
+<p>In a group chat with agents <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>, we might model:</p>
+<ul class="simple">
+<li><p>a message is posted publicly: <code class="docutils literal notranslate"><span class="pre">p</span></code></p></li>
+<li><p>everyone sees it</p></li>
+<li><p>everyone knows that everyone sees it (because that’s how the channel works)</p></li>
+</ul>
+<p>In epistemic logic we often define:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_G(φ)</span></code> = everyone in group <code class="docutils literal notranslate"><span class="pre">G</span></code> knows <code class="docutils literal notranslate"><span class="pre">φ</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">E_G^2(φ)</span></code> = everyone in <code class="docutils literal notranslate"><span class="pre">G</span></code> knows that everyone in <code class="docutils literal notranslate"><span class="pre">G</span></code> knows <code class="docutils literal notranslate"><span class="pre">φ</span></code></p></li>
+<li><p>…</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C_G(φ)</span></code> = for all <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">E_G^n(φ)</span></code></p></li>
+</ul>
+<p>Public announcements are a classic way to get close to this kind of knowledge.</p>
+<p>In SMCDEL, you can check several levels explicitly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">check</span> <span class="n">w1</span><span class="p">:</span> <span class="n">KA</span> <span class="n">p</span><span class="p">;</span>
+<span class="n">check</span> <span class="n">w1</span><span class="p">:</span> <span class="n">KB</span> <span class="n">p</span><span class="p">;</span>
+<span class="n">check</span> <span class="n">w1</span><span class="p">:</span> <span class="n">KC</span> <span class="n">p</span><span class="p">;</span>
+<span class="n">check</span> <span class="n">w1</span><span class="p">:</span> <span class="n">KA</span> <span class="n">KB</span> <span class="n">p</span><span class="p">;</span>
+<span class="n">check</span> <span class="n">w1</span><span class="p">:</span> <span class="n">KB</span> <span class="n">KA</span> <span class="n">p</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>and so on.</p>
+</section>
+</section>
+<section id="applications-in-industry">
+<h2>6. Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In the paper <a class="reference external" href="https://eprints.illc.uva.nl/id/eprint/1802/1/MoL-2021-12.text.pdf">“Epistemic Temporal Logic for Information Flow Security”</a>, Balliu et al. apply an epistemic-temporal logic to programs to reason about what an attacker knows or doesn’t know after observing program outputs — i.e., how knowledge evolves over time as information is released. This directly maps to the “who knows what” view of epistemic logic and is a strong CS/industrial-adjacent example (secure coding, confidentiality, release of secret data).</p></li>
+<li><p>In the thesis <a class="reference external" href="https://eprints.illc.uva.nl/id/eprint/1802/1/MoL-2021-12.text.pdf">“Epistemic Logics for Cryptographic Protocols and Zero‐Knowledge Proofs”</a> (Jaramillo, 2021) the author uses epistemic logic to model multi-agent interactions in cryptographic settings — specifically for modelling zero-knowledge proofs (where a verifier is convinced of a fact but learns nothing more).</p></li>
+<li><p>Aldini, <a class="reference external" href="https://arxiv.org/abs/2407.17537"><em>A process algebraic framework for multi-agent dynamic epistemic systems</em></a> (2024) — system-level DEL with agents and transitions.</p></li>
+<li><p>Van Benthem, van Eijck, Gattinger, Su, <a class="reference external" href="https://staff.fnwi.uva.nl/d.j.n.vaneijck2/papers/16/pdfs/2016-05-23-del-bdd-lori-journal.pdf"><em>Symbolic Model Checking for Dynamic Epistemic Logic</em></a> — the classic symbolic SMCDEL reference.</p></li>
+</ul>
+</section>
+<section id="case-study-the-rescue-drone-coordination-problem">
+<h2>7. Case Study: The “Rescue Drone Coordination” Problem<a class="headerlink" href="#case-study-the-rescue-drone-coordination-problem" title="Link to this heading">#</a></h2>
+<section id="scenario-overview">
+<h3>7.1 Scenario Overview<a class="headerlink" href="#scenario-overview" title="Link to this heading">#</a></h3>
+<p>Imagine a fleet of <strong>autonomous rescue drones</strong> responding to a natural disaster.<br />
+Each drone (<code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>) monitors a separate zone but must coordinate to deliver medical supplies safely.<br />
+However, communication links are intermittent and not every message is received by every drone.</p>
+<p>Key proposition:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span></code> = “Zone X has been cleared of hazards.”</p></li>
+</ul>
+<p>Initially, only <code class="docutils literal notranslate"><span class="pre">A</span></code> detects that <code class="docutils literal notranslate"><span class="pre">p</span></code> is true.<br />
+Drone <code class="docutils literal notranslate"><span class="pre">A</span></code> sends a <strong>private message</strong> to <code class="docutils literal notranslate"><span class="pre">B</span></code>, but the network drops <code class="docutils literal notranslate"><span class="pre">A</span></code>’s broadcast to <code class="docutils literal notranslate"><span class="pre">C</span></code>.<br />
+Then <code class="docutils literal notranslate"><span class="pre">B</span></code> issues a <strong>public announcement</strong> (“Zone X is safe!”) on the shared channel.</p>
+</section>
+<section id="modeling-in-smcdel">
+<h3>7.2 Modeling in SMCDEL<a class="headerlink" href="#modeling-in-smcdel" title="Link to this heading">#</a></h3>
+<p>We can represent:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>-- Rescue Drone Coordination (approximate private-then-public) in SMCDEL
+
+VARS 1,2,3
+
+LAW  Top
+
+-- a = detected safety
+-- b = was privately informed (also sees 1)
+-- c = cannot see 1 initially so its base is 2
+OBS  a: 1
+     b: 1,3
+     c: 2
+
+TRUE?
+  {1,3}
+  a knows that 1
+  &amp; b knows that 1
+  &amp; ~ (c knows that 1)
+
+WHERE?
+  &lt; ! (1) &gt;
+  (a knows that 1)
+  &amp; (b knows that 1)
+  &amp; (c knows that 1)
+
+VALID?
+  [ ! (1) ]
+  (a knows that 1 &amp; b knows that 1 &amp; c knows that 1)
+</pre></div>
+</div>
+<p>This case study tests knowledge propagation in a safety-critical network.
+You can expand upon this experiment by adding false public announcements (miscommunication), modeling message delays or dropped links, or by checking whether “everyone knows that everyone knows p” (common knowledge) ever arises.</p>
+</section>
+<section id="why-it-matters">
+<h3>7.3 Why It Matters<a class="headerlink" href="#why-it-matters" title="Link to this heading">#</a></h3>
+<p>Such models help engineers verify communication protocols in distributed robotics or IoT systems:</p>
+<ul class="simple">
+<li><p>Ensuring drones act only when they know an area is safe.</p></li>
+<li><p>Preventing actions based on mistaken or outdated beliefs.</p></li>
+<li><p>Analyzing how local updates become global knowledge—vital in swarm coordination.</p></li>
+</ul>
+</section>
+</section>
+<section id="referenes-further-reading">
+<h2>8. Referenes &amp; Further Reading<a class="headerlink" href="#referenes-further-reading" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Jaakko Hintikka, Knowledge and Belief (1962)</p></li>
+<li><p>Hans van Ditmarsch, Wiebe van der Hoek, Barteld Kooi, Dynamic Epistemic Logic</p></li>
+<li><p>Y. Halpern and Y. Moses, “Knowledge and Common Knowledge in a Distributed Environment,” Journal of the ACM, 37(3), 1990</p></li>
+<li><p>SMCDEL web interface: https://w4eg.de/malvin/illc/smcdelweb</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="7-temporal-logic.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Temporal Logic with Spin</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="9-hoare-logic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Hoare Logic with Dafny</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-chapter-we-will">In this chapter we will:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-epistemic-logic">2. Basic Epistemic Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">2.1 Syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics-possible-worlds">2.2 Semantics (Possible Worlds)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-not-knowing-even-when-its-true">2.3 Example (Not Knowing Even When It’s True)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-knowledge-s5-style">2.4 Properties of Knowledge (S5-style)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#belief">2.5 Belief</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-epistemic-logic-del">3. Dynamic Epistemic Logic (DEL)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-announcement-informal">3.1 Public Announcement (Informal)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-smcdel">4. Using SMCDEL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-illustrative">4.1 Installation (Illustrative)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-example">4.2 Model Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-public-announcement">4.3 Adding a Public Announcement</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-networks-and-epistemic-logic">5. Social Networks and Epistemic Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-mapping">5.1 Conceptual Mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rumor-spread-in-a-small-network">5.2 Example: Rumor Spread in a Small Network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#private-vs-public-why-it-matters">5.3 Private vs. Public (Why it matters)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toward-common-knowledge">5.4 Toward Common Knowledge</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">6. Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-the-rescue-drone-coordination-problem">7. Case Study: The “Rescue Drone Coordination” Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-overview">7.1 Scenario Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-in-smcdel">7.2 Modeling in SMCDEL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-matters">7.3 Why It Matters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referenes-further-reading">8. Referenes &amp; Further Reading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By CPSC 510
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

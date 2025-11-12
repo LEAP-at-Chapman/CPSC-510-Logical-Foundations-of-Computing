@@ -1,0 +1,917 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Higher-Order Logic with Isabelle/HOL &#8212; Logical Foundations of AI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/10-higher-order-logic';</script>
+    <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/10-higher-order-logic.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dependent Type Theory with Lean" href="11-dependent-types.html" />
+    <link rel="prev" title="Hoare Logic with Dafny" href="9-hoare-logic.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="title.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Logical Foundations of AI</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Hoare Logic with Dafny</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">Dependent Type Theory with Lean</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fcontent/10-higher-order-logic.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/10-higher-order-logic.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Higher-Order Logic with Isabelle/HOL</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-and-introduction">10.1 Idea and Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">10.2 Basic Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-logic">10.2.1 First Order Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-type-system">10.2.2 (Explicit) Type System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-abstraction">10.2.3 Lambda Abstraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-of-inference">10.2.4 Rules of Inference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-schemata">10.2.5 Axiom Schemata</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-installation-first-example-first-exercise">10.3 Tool (Installation, First Example, First Exercise)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">10.3.1 Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-solving-via-sledgehammer">10.3.2 Proof Solving via Sledgehammer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example-add-function">10.3.3 First Example - Add Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-exercise-associativity-and-communativity-of-add">10.3.4 First Exercise - Associativity and Communativity of Add</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples-tower-of-hanoi-or-insertion-sort">10.4 Introductory Examples - Tower of Hanoi or Insertion Sort</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">10.5 The Landscape of Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-proof-assistants">10.5.1 Interactive Proof Assistants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-higher-order-prover">10.5.2 Automated Higher Order Prover</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">10.6 Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">10.7 Benchmark and Competitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">10.8 Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">10.9 Case Studies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">10.10 History</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-higher-order-logic">10.10.1 Origins of Higher Order Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">10.10.2 Development of Isabelle/HOL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">10.11 Current Development, Research Challenges, Conferences and Workshops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">10.12 References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">10.13 Suggestions for Future Work</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="higher-order-logic-with-isabelle-hol">
+<h1>Higher-Order Logic with Isabelle/HOL<a class="headerlink" href="#higher-order-logic-with-isabelle-hol" title="Link to this heading">#</a></h1>
+<p><em>Author: Spencer Au</em></p>
+<!-- ## Contents
+
+| Section | Title |
+|---:|---|
+| **10.1** | [Idea](#sec0-10-1) |
+| **10.2** | [Basic Theory](#sec0-10-2) |
+| **10.3** | [Tool (Installation, First Example, First Exercise)](#sec0-10-3) |
+| **10.4** | [Introductory Examples](#sec0-10-4) |
+| **10.5** | [The Landscape of Tools](#sec0-10-5) |
+| **10.6** | [Algorithms](#sec0-10-6) |
+| **10.7** | [Benchmark and Competitions](#sec0-10-7) |
+| **10.8** | [Applications in Industry](#sec0-10-8) |
+| **10.9** | [Case Studies](#sec0-10-9) |
+| **10.10** | [History](#sec0-10-10) |
+| **10.11** | [Current Development, Research Challenges, Conferences and Workshops](#sec0-10-11) |
+| **10.12** | [References](#sec0-10-12) |
+| **10.13** | [Suggestions for Future Work](#sec0-10-13) | -->
+<section id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Higher-order logic foundations</p></li>
+<li><p>Function types and quantification</p></li>
+<li><p>Isabelle/HOL advanced features</p></li>
+<li><p>Theorem proving strategies</p></li>
+<li><p>Industrial theorem proving</p></li>
+</ul>
+</section>
+<section id="idea-and-introduction">
+<h2>10.1 Idea and Introduction<a class="headerlink" href="#idea-and-introduction" title="Link to this heading">#</a></h2>
+<p>WIP</p>
+<p>This chapter extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.</p>
+<p>Higher-order logic (HOL) extends the capabilities of first-order logic (FOL) by allowing quantifiers (such as <span class="math notranslate nohighlight">\( \forall x \)</span> and <span class="math notranslate nohighlight">\( \exists x \)</span>) to range over functions and predicates, not just individual elements. In addition, functions can be passed as arguments to other functions, returned as results, and manipulated just like any other data type. This enables more expressive statements about the properties of functions and their relationships.</p>
+</section>
+<section id="basic-theory">
+<h2>10.2 Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
+<!-- basic setup - need to add much more but this is just basics/scaffolding -->
+<section id="first-order-logic">
+<h3>10.2.1 First Order Logic<a class="headerlink" href="#first-order-logic" title="Link to this heading">#</a></h3>
+<p>WIP
+<span class="math notranslate nohighlight">\( \forall x \)</span> and <span class="math notranslate nohighlight">\( \exists x\)</span> where x is a variable/individual element</p>
+<p>In higher order logic, we extend this to <span class="math notranslate nohighlight">\( \forall f(x) \)</span> and <span class="math notranslate nohighlight">\( \exists f(x) \)</span>, where x is a function that takes x as an input</p>
+</section>
+<section id="explicit-type-system">
+<h3>10.2.2 (Explicit) Type System<a class="headerlink" href="#explicit-type-system" title="Link to this heading">#</a></h3>
+<p>WIP</p>
+<!-- – Andrews (2002) Sections 1–2 (“Type theory basics”)
+– Church (1940) A Formulation of the Simple Theory of Types 
+Church Text is more relevant to history section-->
+</section>
+<section id="lambda-abstraction">
+<h3>10.2.3 Lambda Abstraction<a class="headerlink" href="#lambda-abstraction" title="Link to this heading">#</a></h3>
+<p>WIP</p>
+<!-- Read:
+– Paulson, Logic and Computation, ch. 2
+– Nipkow et al., Concrete Semantics, §2.1–2.3 -->
+</section>
+<section id="rules-of-inference">
+<h3>10.2.4 Rules of Inference<a class="headerlink" href="#rules-of-inference" title="Link to this heading">#</a></h3>
+<p>The basic rules of inference of <span class="math notranslate nohighlight">\(\mathcal{F}^w\)</span>, where <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a system of <span class="math notranslate nohighlight">\(\mathcal{w}\)</span>-order logic which has all finite order logics as subsystems:</p>
+<ol class="arabic simple">
+<li><p><strong>Modus Ponens</strong> From <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(A \to B\)</span> to infer <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
+<li><p><strong>Generalization</strong> From <span class="math notranslate nohighlight">\(A\)</span> to infer <span class="math notranslate nohighlight">\(\forall x\,A\)</span>, where x is a variable of any type</p></li>
+</ol>
+<!-- *Adapted from Andrews, 2002*[^andrews2002] using modern logic convention. -->
+<p><em>Adapted from Andrews, 2002</em><sup><a href="#andrews2002">[1]</a></sup> using modern logic convention.</p>
+</section>
+<section id="axiom-schemata">
+<h3>10.2.5 Axiom Schemata<a class="headerlink" href="#axiom-schemata" title="Link to this heading">#</a></h3>
+<p>The axiom schemata of <span class="math notranslate nohighlight">\(\mathcal{F}^w\)</span> are:</p>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(A \lor A \to A\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \to (B \lor A)\)</span></p></li>
+<li><p>From <span class="math notranslate nohighlight">\(A \to (B \to C)\)</span>, infer <span class="math notranslate nohighlight">\( (A \to B) \lor C\)</span></p></li>
+<li><p><strong>Universal Instantiation</strong>
+<span class="math notranslate nohighlight">\(\forall x_\tau\,A \to A[y_\tau / x_\tau]\)</span>, where <span class="math notranslate nohighlight">\(y_\tau\)</span> is a variable or constant of the same type as the variable <span class="math notranslate nohighlight">\(x_\tau\)</span>, and <span class="math notranslate nohighlight">\(y_\tau\)</span> is free for <span class="math notranslate nohighlight">\(x_\tau\)</span> in <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Basically, from <span class="math notranslate nohighlight">\(\forall x_\tau\,A\)</span>, we may infer <span class="math notranslate nohighlight">\(A[y_\tau / x_\tau]\)</span>, meaning that if <span class="math notranslate nohighlight">\(A\)</span> holds for all <span class="math notranslate nohighlight">\(x_\tau\)</span>, then it also holds for any particular instance <span class="math notranslate nohighlight">\(y_\tau\)</span> of the same type.</p>
+</li>
+<li><p><strong>Quantifier Distribution</strong>
+<span class="math notranslate nohighlight">\(\forall x(A \lor B) \to (A \lor \forall x\,B)\)</span>, where <span class="math notranslate nohighlight">\(x\)</span> is any variable not free in <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>This means that if <span class="math notranslate nohighlight">\((A \lor B)\)</span> holds for all <span class="math notranslate nohighlight">\(x\)</span>, and <span class="math notranslate nohighlight">\(A\)</span> does not depend on <span class="math notranslate nohighlight">\(x\)</span>, then either <span class="math notranslate nohighlight">\(A\)</span> holds or <span class="math notranslate nohighlight">\(B\)</span> holds for all <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</li>
+<li><p><strong>Comprehension Axioms</strong></p>
+<ul class="simple">
+<li><p><em>0-ary case (a proposition/Boolean) that names a theorem/statement</em>.<br />
+<span class="math notranslate nohighlight">\( \exists u_{\mathbf{o}}\;[\,u_{\mathbf{o}} \leftrightarrow A\,] \)</span>
+where <span class="math notranslate nohighlight">\(u_{\mathbf{o}}\)</span> does not occur free in <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+<li><p><em>n-ary case (a predicate/function of arity n) that names a property/relation</em>.<br />
+<span class="math notranslate nohighlight">\(\exists u_{(\tau_1\ldots\tau_n)}\;
+\forall v^{1}_{\tau_1}\cdots \forall v^{n}_{\tau_n}\,
+\big[\,u_{(\tau_1\ldots\tau_n)}(v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n})
+\leftrightarrow A\,\big]\)</span>
+where <span class="math notranslate nohighlight">\(u_{(\tau_1\ldots\tau_n)}\)</span> does not occur free in <span class="math notranslate nohighlight">\(A\)</span>, and <span class="math notranslate nohighlight">\(v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n}\)</span> are distinct variables.</p></li>
+<li><p>These axioms allow us to define new symbols that stand for existing formulas.<br />
+In the 0-ary case, a new propositional constant <span class="math notranslate nohighlight">\(u_{\mathbf{o}}\)</span> can name a statement <span class="math notranslate nohighlight">\(A\)</span>.<br />
+In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(u_{(\tau_1\ldots\tau_n)}\)</span> can be introduced so that <span class="math notranslate nohighlight">\(u(v^1,\ldots,v^n)\)</span> is true exactly when <span class="math notranslate nohighlight">\(A\)</span> holds for those arguments.</p></li>
+</ul>
+</li>
+<li><p><strong>Axioms of Extensionality</strong></p>
+<ul class="simple">
+<li><p><em>0-ary case (a proposition/Boolean) that names a theorem/statement</em>.<br />
+<span class="math notranslate nohighlight">\((x_{\mathbf{o}} \leftrightarrow y_{\mathbf{o}}) \to (x_{\mathbf{o}} = y_{\mathbf{o}})\)</span></p></li>
+<li><p><em>n-ary case (a predicate/function of arity n) that names a property/relation</em>.<br />
+<span class="math notranslate nohighlight">\(\forall w^{1}_{\tau_1} \ldots \forall w^{n}_{\tau_n} [(x_{(\tau_1 \ldots \tau_n)}w^{1}_{\tau_1}\ldots w^{n}_{\tau_n}) \leftrightarrow (y_{(\tau_1 \dots \tau_n)} w^{1}_{\tau_1} \ldots w^{n}_{\tau_n})] \to (x_{(\tau_1 \ldots \tau_n)} = y_{(\tau_1 \ldots \tau_n)}) \)</span></p></li>
+<li><p>These axioms state that two expressions are equal if and only if they behave identically in that their output result is the same in all evaluations. This formalizes the idea that in higher order logic, equality is extensional (based on meaning and behavior) rather than syntactic (based on form).</p></li>
+</ul>
+</li>
+</ol>
+<!-- *Adapted from Andrews, 2002*[^andrews2002] using modern logic convention. -->
+<p><em>Adapted from Andrews, 2002</em><sup><a href="#andrews2002">[1]</a></sup> using modern logic convention.</p>
+</section>
+</section>
+<section id="tool-installation-first-example-first-exercise">
+<h2>10.3 Tool (Installation, First Example, First Exercise)<a class="headerlink" href="#tool-installation-first-example-first-exercise" title="Link to this heading">#</a></h2>
+<section id="installation">
+<h3>10.3.1 Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<!-- Looks like isabelle is a program we can just download normally via exe/dmg etc instead of messing around with command line or using `apt/brew` -->
+<p><a class="reference external" href="https://isabelle.in.tum.de/">Installation Link for Isabelle</a></p>
+<!-- probably have detailed walkthrough for windows, macos, and ubuntu with pictures etc all that with pictures and all that pretty stuff (remove if it results in the chapter being too long) -->
+<p>Isabelle processes the theory document incrementally in the background, meaning that there is no additional “compile” or “run” step. As you type in lines and commands, the background system will check them and automatically update the proof state and any relevant error reports. Just go line by line, or command by command in order to check the related output.</p>
+<p>Isabelle uses *.thy (theory) files, and the general structure of the theory files is like this:</p>
+<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">theory</span><span class="w"> </span><span class="n">THEORY_NAME</span>
+<span class="w">    </span><span class="kp">imports</span><span class="w"> </span><span class="n">OTHER_THEORIES</span>
+
+<span class="k">begin</span>
+
+<span class="n">THEORY_BODY</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">theory</span> <span class="pre">THEORY_NAME</span></code> declares the theory name and <strong>must</strong> exactly match the .thy filename. For example, if the file is called test.thy, then you would have <code class="docutils literal notranslate"><span class="pre">theory</span> <span class="pre">test</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">imports</span> <span class="pre">OTHER_THEORIES</span></code> tells it to import another theory; for example, one popular theory to import is Main.thy, which includes support for natural numbers, lists, and basic arithmetic</p>
+<p><code class="docutils literal notranslate"><span class="pre">begin</span></code> is the entry point into the theory body, while <code class="docutils literal notranslate"><span class="pre">end</span></code> is the end point of the theory body</p>
+</section>
+<section id="proof-solving-via-sledgehammer">
+<h3>10.3.2 Proof Solving via Sledgehammer<a class="headerlink" href="#proof-solving-via-sledgehammer" title="Link to this heading">#</a></h3>
+</section>
+<section id="first-example-add-function">
+<h3>10.3.3 First Example - Add Function<a class="headerlink" href="#first-example-add-function" title="Link to this heading">#</a></h3>
+<p>For the first example, the goal will be to implement recursive addition via a function called “add”. The general form should be:</p>
+<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="s">&quot;nat ⇒ nat ⇒ nat&quot;</span><span class="w"> </span><span class="kp">where</span>
+<span class="w">    </span><span class="s">&quot;base case&quot;</span>
+<span class="w">    </span><span class="s">&quot;recursive case&quot;</span>
+</pre></div>
+</div>
+<p>where two natural numbers are added, and the result is a natural number that is the sum of the two input numbers. For example, <code class="docutils literal notranslate"><span class="pre">sum</span> <span class="pre">m</span> <span class="pre">n</span></code> should return the sum of m and n.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="s">&quot;nat ⇒ nat ⇒ nat&quot;</span><span class="w"> </span><span class="kp">where</span>
+<span class="w">  </span><span class="s">&quot;add 0 n = n&quot;</span><span class="w"> </span><span class="o">|</span>
+<span class="w">  </span><span class="s">&quot;add (Suc m) n = Suc (add m n)&quot;</span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</details><p>For a detailed explanation, <a class="reference internal" href="ch10_assets/10.3_exercises.html#10.3.2-First-Example"><span class="std std-ref">See Section 10.3.2 Exercises</span></a></p>
+</section>
+<section id="first-exercise-associativity-and-communativity-of-add">
+<h3>10.3.4 First Exercise - Associativity and Communativity of Add<a class="headerlink" href="#first-exercise-associativity-and-communativity-of-add" title="Link to this heading">#</a></h3>
+<p>For the first exercise, we will be proving the associative and commutative properties of a custom <code class="docutils literal notranslate"><span class="pre">add</span></code> function in Isabelle. This exercise comes from Exercise 2.2 of <a class="reference external" href="http://www.concrete-semantics.org/Exercises/exercises.pdf">Concrete Semantics Exercises</a></p>
+<p>The custom add function is defined here:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="s">&quot;nat =&gt; nat =&gt; nat&quot;</span><span class="w"> </span><span class="kp">where</span>
+<span class="w">    </span><span class="s">&quot;add 0 n = n&quot;</span><span class="w"> </span><span class="o">|</span>
+<span class="w">    </span><span class="s">&quot;add (Suc m) n = Suc(add m n)&quot;</span>
+</pre></div>
+</div>
+</div>
+</details><p>We use 2 lemmas to prove each part of the exercise, namely:</p>
+<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_assoc</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add (add m n) p = add m (add n p)&quot;</span>
+<span class="kn">lemma</span><span class="w"> </span><span class="n">add_comm</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m n = add n m&quot;</span>
+</pre></div>
+</div>
+<p>The full lemma proof for associativity is here:</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_assoc</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add (add m n) p = add m (add n p)&quot;</span>
+<span class="k">proof</span><span class="w"> </span><span class="o">(</span><span class="n">induction</span><span class="w"> </span><span class="n">m</span><span class="o">)</span><span class="w"> </span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="n">0</span>
+<span class="w">  </span><span class="k">show</span><span class="w"> </span><span class="o">?</span><span class="k">case</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">simp</span>
+<span class="k">next</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="o">(</span><span class="n">Suc</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
+<span class="w">  </span><span class="k">show</span><span class="w"> </span><span class="o">?</span><span class="k">case</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="o">(</span><span class="n">simp</span><span class="w"> </span><span class="n">add</span><span class="o">:</span><span class="w"> </span><span class="n">Suc.IH</span><span class="o">)</span>
+<span class="k">qed</span>
+</pre></div>
+</div>
+</div>
+</details><p>For a detailed explanation, <a class="reference internal" href="ch10_assets/10.3_exercises.html#Associative-Property-Proof"><span class="std std-ref">See Section 10.3.3 Associative Property</span></a></p>
+<p>Next, to prove the communative property, we will first prove 2 helper lemmas:</p>
+<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_0_right</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m 0 = m&quot;</span>
+<span class="kn">lemma</span><span class="w"> </span><span class="n">add_Suc_right</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m (Suc n) = Suc (add m n)&quot;</span>
+</pre></div>
+</div>
+<p>The helper lemma proofs for communativity</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_0_right</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m 0 = m&quot;</span>
+<span class="k">proof</span><span class="w"> </span><span class="o">(</span><span class="n">induction</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="n">0</span>
+<span class="w">  </span><span class="k">show</span><span class="w"> </span><span class="o">?</span><span class="k">case</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">simp</span>
+<span class="k">next</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="o">(</span><span class="n">Suc</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
+<span class="w">  </span><span class="k">show</span><span class="w"> </span><span class="o">?</span><span class="k">case</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="o">(</span><span class="n">simp</span><span class="w"> </span><span class="n">add</span><span class="o">:</span><span class="w"> </span><span class="n">Suc.IH</span><span class="o">)</span>
+<span class="k">qed</span>
+
+<span class="kn">lemma</span><span class="w"> </span><span class="n">add_Suc_right</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m (Suc n) = Suc (add m n)&quot;</span>
+<span class="k">proof</span><span class="w"> </span><span class="o">(</span><span class="n">induction</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="n">0</span>
+<span class="w">  </span><span class="k">show</span><span class="w"> </span><span class="o">?</span><span class="k">case</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">simp</span>
+<span class="k">next</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="o">(</span><span class="n">Suc</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
+<span class="w">  </span><span class="k">show</span><span class="w"> </span><span class="o">?</span><span class="k">case</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="o">(</span><span class="n">simp</span><span class="w"> </span><span class="n">add</span><span class="o">:</span><span class="w"> </span><span class="n">Suc.IH</span><span class="o">)</span>
+<span class="k">qed</span>
+</pre></div>
+</div>
+</div>
+</details><p>With the helper lemmas proven, we will use them to prove the commutative property</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_comm</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m n = add n m&quot;</span>
+<span class="k">proof</span><span class="w"> </span><span class="o">(</span><span class="n">induction</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="n">0</span>
+<span class="w">  </span><span class="k">show</span><span class="w"> </span><span class="o">?</span><span class="k">case</span>
+<span class="w">    </span><span class="k">by</span><span class="w"> </span><span class="o">(</span><span class="n">simp</span><span class="w"> </span><span class="n">add</span><span class="o">:</span><span class="w"> </span><span class="n">add_0_right</span><span class="o">)</span>
+<span class="k">next</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="o">(</span><span class="n">Suc</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
+<span class="w">  </span><span class="k">show</span><span class="w"> </span><span class="o">?</span><span class="k">case</span>
+<span class="w">    </span><span class="k">by</span><span class="w"> </span><span class="o">(</span><span class="n">simp</span><span class="w"> </span><span class="n">add</span><span class="o">:</span><span class="w"> </span><span class="n">Suc.IH</span><span class="w"> </span><span class="n">add_Suc_right</span><span class="o">)</span>
+<span class="k">qed</span>
+</pre></div>
+</div>
+</div>
+</details><p>For a detailed explanation, <a class="reference internal" href="ch10_assets/10.3_exercises.html#Communative-Property-Proof"><span class="std std-ref">See Section 10.3.3 Communative Property</span></a></p>
+</section>
+</section>
+<section id="introductory-examples-tower-of-hanoi-or-insertion-sort">
+<h2>10.4 Introductory Examples - Tower of Hanoi or Insertion Sort<a class="headerlink" href="#introductory-examples-tower-of-hanoi-or-insertion-sort" title="Link to this heading">#</a></h2>
+<!-- show something interesting about tool, logic, etc and can be digested and understood with minimum experience -->
+<p>Tower of Hanoi or Insertion Sort</p>
+</section>
+<section id="the-landscape-of-tools">
+<h2>10.5 The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
+<p>WIP</p>
+<section id="interactive-proof-assistants">
+<h3>10.5.1 Interactive Proof Assistants<a class="headerlink" href="#interactive-proof-assistants" title="Link to this heading">#</a></h3>
+<p>HOL4 (classic HOL)</p>
+<p>Coq (constructive higher-order/type theory)</p>
+<p>Lean 4 (modern dependent/HOL hybrid)</p>
+</section>
+<section id="automated-higher-order-prover">
+<h3>10.5.2 Automated Higher Order Prover<a class="headerlink" href="#automated-higher-order-prover" title="Link to this heading">#</a></h3>
+<p>Leo III</p>
+<p>Satallax</p>
+</section>
+</section>
+<section id="algorithms">
+<h2>10.6 Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
+</section>
+<section id="benchmark-and-competitions">
+<h2>10.7 Benchmark and Competitions<a class="headerlink" href="#benchmark-and-competitions" title="Link to this heading">#</a></h2>
+</section>
+<section id="applications-in-industry">
+<h2>10.8 Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
+<p>this is just scaffolding template for now; will add more detail and refine later</p>
+<p>complex addressing hardware in SoCs via formal models in Isabelle/HOL</p>
+<p>HOL-based systems used to verify hardware modules and FPGA implementations</p>
+<p>Isabelle/HOL use in steam boiler system, process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System). (cite - https://arxiv.org/abs/1405.1512?)</p>
+<p>Because these tools provide mathematical assurance of correctness (rather than testing alone), they are particularly suited to safety-critical systems (avionics, automotive safety, SoC design) where fault risk must be minimized and certification standards demands high trust.</p>
+</section>
+<section id="case-studies">
+<h2>10.9 Case Studies<a class="headerlink" href="#case-studies" title="Link to this heading">#</a></h2>
+</section>
+<section id="history">
+<h2>10.10 History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<!-- Church (1940) A Formulation of the Simple Theory of Types -->
+<!-- may include dates at teh beginning of each part, and include citations etc  -->
+<section id="origins-of-higher-order-logic">
+<h3>10.10.1 Origins of Higher Order Logic<a class="headerlink" href="#origins-of-higher-order-logic" title="Link to this heading">#</a></h3>
+<!-- scaffolding template for now -->
+<p>Alonzo Church’s work in the 1930s (via <span class="math notranslate nohighlight">\(\lambda\)</span>-calculus) and Leon Henkin’s work in the 1950s (on general models semantics) lay the foundation for higher order logic. From their contributions arose an extension of First Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities</p>
+<p>In the 1970s, Robert Milner develops LCF (Logic for Computable Functions) at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evovles into OCaml and Standard ML.</p>
+<p>In the early 1980s, Michael J. C. Gordon builds upon LCF in order to create the HOL system, which explicitly uses higher-order logic as its core formalism. This HOL system would become the foundation for hardware verification, paving the way and influencing later provers like HOL4 and Isabelle/HOL.</p>
+</section>
+<section id="development-of-isabelle-hol">
+<h3>10.10.2 Development of Isabelle/HOL<a class="headerlink" href="#development-of-isabelle-hol" title="Link to this heading">#</a></h3>
+<p>Developed in the late 1980’s by Lawrence C. Paulson at Cambridge, Isabelle was created as a generic theorem proving framework capable of supporting multiple logical formalisms under a single meta-logic.</p>
+<p>The HOL instantiation of Isabelle (Isabelle/HOL) became the most widely adopted version due to its strong expressiveness and balance between automation and manual control.</p>
+<p>Isabelle introduced the Isar prof language in the 2000s, allowing structured and human readable proofs, improving clarity over traditional tactic-based approaches like in LCF.</p>
+<p>Integration with automated tools such as Sledgehammer and SMT solvers further extend its power, bridging interactive reasoning and automation.</p>
+<p>The creation of the AFP (Archive of Formal Proofs) established a reusable library of formalizd mathematics and computer science, solidifying Isabelle/HOL’s role in both academia and industry.</p>
+</section>
+</section>
+<section id="current-development-research-challenges-conferences-and-workshops">
+<h2>10.11 Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Link to this heading">#</a></h2>
+</section>
+<section id="references">
+<h2>10.12 References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://isabelle.in.tum.de/">Isabelle/HOL</a></p></li>
+<li><p><a class="reference external" href="http://www.concrete-semantics.org/">Concrete Semantics</a></p></li>
+<li><p><a class="reference external" href="http://www.concrete-semantics.org/Exercises/exercises.pdf">Concrete Semantics Exercises</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/&#64;FDS-hs2uc/videos">Isabelle YouTube Tutorial by FDS 2020</a></p></li>
+<li><p><a class="reference external" href="https://logic.berkeley.edu/colloquium/MossSlides.pdf">Syllogism Slides from Nate Moss</a></p></li>
+</ul>
+<p><a id="andrews2002"></a>
+[1] Andrews, <em>An Introduction to Mathematical Logic and Type Theory</em>. Springer, 2002. <a class="reference external" href="https://link.springer.com/book/10.1007/978-94-015-9934-4">Springer Link</a></p>
+<!-- 
+[^andrews2002]: Andrews, *An Introduction to Mathematical Logic and Type Theory*, Springer 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4) -->
+</section>
+<section id="suggestions-for-future-work">
+<h2>10.13 Suggestions for Future Work<a class="headerlink" href="#suggestions-for-future-work" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="9-hoare-logic.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Hoare Logic with Dafny</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="11-dependent-types.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Dependent Type Theory with Lean</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-and-introduction">10.1 Idea and Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">10.2 Basic Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-logic">10.2.1 First Order Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-type-system">10.2.2 (Explicit) Type System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-abstraction">10.2.3 Lambda Abstraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-of-inference">10.2.4 Rules of Inference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-schemata">10.2.5 Axiom Schemata</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-installation-first-example-first-exercise">10.3 Tool (Installation, First Example, First Exercise)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">10.3.1 Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-solving-via-sledgehammer">10.3.2 Proof Solving via Sledgehammer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example-add-function">10.3.3 First Example - Add Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-exercise-associativity-and-communativity-of-add">10.3.4 First Exercise - Associativity and Communativity of Add</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples-tower-of-hanoi-or-insertion-sort">10.4 Introductory Examples - Tower of Hanoi or Insertion Sort</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">10.5 The Landscape of Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-proof-assistants">10.5.1 Interactive Proof Assistants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-higher-order-prover">10.5.2 Automated Higher Order Prover</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">10.6 Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">10.7 Benchmark and Competitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">10.8 Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">10.9 Case Studies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">10.10 History</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-higher-order-logic">10.10.1 Origins of Higher Order Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">10.10.2 Development of Isabelle/HOL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">10.11 Current Development, Research Challenges, Conferences and Workshops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">10.12 References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">10.13 Suggestions for Future Work</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By CPSC 510
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
