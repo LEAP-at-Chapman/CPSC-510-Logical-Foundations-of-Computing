@@ -2,23 +2,6 @@
 
 *Author: Spencer Au*
 
-<!-- ## Contents
-
-| Section | Title |
-|---:|---|
-| **10.1** | [Idea](#sec0-10-1) |
-| **10.2** | [Basic Theory](#sec0-10-2) |
-| **10.3** | [Tool (Installation, First Example, First Exercise)](#sec0-10-3) |
-| **10.4** | [Introductory Examples](#sec0-10-4) |
-| **10.5** | [The Landscape of Tools](#sec0-10-5) |
-| **10.6** | [Algorithms](#sec0-10-6) |
-| **10.7** | [Benchmark and Competitions](#sec0-10-7) |
-| **10.8** | [Applications in Industry](#sec0-10-8) |
-| **10.9** | [Case Studies](#sec0-10-9) |
-| **10.10** | [History](#sec0-10-10) |
-| **10.11** | [Current Development, Research Challenges, Conferences and Workshops](#sec0-10-11) |
-| **10.12** | [References](#sec0-10-12) |
-| **10.13** | [Suggestions for Future Work](#sec0-10-13) | -->
 
 ## Topics
 
@@ -66,7 +49,6 @@ The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system
 1) **Modus Ponens** From $A$ and $A \to B$ to infer $B$.
 2) **Generalization** From $A$ to infer $\forall x\,A$, where x is a variable of any type
 
-<!-- *Adapted from Andrews, 2002*[^andrews2002] using modern logic convention. -->
 
 *Adapted from Andrews, 2002*<sup><a href="#andrews2002">[1]</a></sup> using modern logic convention.
 
@@ -114,21 +96,14 @@ The axiom schemata of $\mathcal{F}^w$ are:
 
     - These axioms state that two expressions are equal if and only if they behave identically in that their output result is the same in all evaluations. This formalizes the idea that in higher order logic, equality is extensional (based on meaning and behavior) rather than syntactic (based on form).
 
-
-<!-- *Adapted from Andrews, 2002*[^andrews2002] using modern logic convention. -->
-
-*Adapted from Andrews, 2002*<sup><a href="#andrews2002">[1]</a></sup> using modern logic convention.
+Adapted from *Andrews, 2002*<sup><a href="#andrews2002">[1]</a></sup> using modern logic convention.
 
 
 ## 10.3 Tool (Installation, First Example, First Exercise)
 
 ### 10.3.1 Installation
 
-<!-- Looks like isabelle is a program we can just download normally via exe/dmg etc instead of messing around with command line or using `apt/brew` -->
-
 [Installation Link for Isabelle](https://isabelle.in.tum.de/)
-
-<!-- probably have detailed walkthrough for windows, macos, and ubuntu with pictures etc all that with pictures and all that pretty stuff (remove if it results in the chapter being too long) -->
 
 Isabelle processes the theory document incrementally in the background, meaning that there is no additional "compile" or "run" step. As you type in lines and commands, the background system will check them and automatically update the proof state and any relevant error reports. Just go line by line, or command by command in order to check the related output.
 
@@ -294,18 +269,74 @@ Satallax
 
 ## 10.8 Applications in Industry
 
-this is just scaffolding template for now; will add more detail and refine later
+In general, Isabelle/HOL appears to have a wide variety of applcation throughout industry, due to the fact that it provides a mathematical assuranace of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.
 
-complex addressing hardware in SoCs via formal models in Isabelle/HOL
+### 10.8.1 Physical Addressing on Real Hardware
 
-HOL-based systems used to verify hardware modules and FPGA implementations
+Achermann et al. discuss how to formally model and verify physical memory address translation and remapping hardware (such as MMUs) in SoCs (Systems-on-Chip) using Isabelle/HOL. Specifically, they developed a hardware model that encodes translation units and then prove that standard memory operations preserve system invariants.<sup><a href="#Achermann_physicalAddressing">[2]</a></sup>
 
-Isabelle/HOL use in steam boiler system, process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System). (cite - https://arxiv.org/abs/1405.1512?)
+<!-- HOL-based systems used to verify hardware modules and FPGA implementations -->
 
-Because these tools provide mathematical assurance of correctness (rather than testing alone), they are particularly suited to safety-critical systems (avionics, automotive safety, SoC design) where fault risk must be minimized and certification standards demands high trust.
+### 10.8.2 FOCUS - Stream Processing Components
 
-## 10.9 Case Studies
+Spichkova proposes a new framework, FOCUS, aimed at formal specification and the application of refinement-based verification of interactive systems. In addition, FOCUS uses a stream processing component, represented by a communication history of a directed channel between components. FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).<sup><a href="#Spichkova_FOCUS">[3]</a></sup>
 
+- The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalised in Isabelle/HOL, translating architecture and component behaviour into higher-order logic while proving the design satisfies timing and safety requirements.
+
+- The second case study is about FlexRay, which is a communication protocol for safety-critical real-time applications, specfically embedded systems in vehicles. FOCUS is used in this case to verify and prove correct static cycles, channel scheduling and properties, and node broadcast behiavor.
+
+- The third case study is about the Automative-Gateway system for the Verisoft project. Basically, if the Gateway receives a vehicle crash signal, then it will initiate a call to the appropriate Emergency Service Center (ESC). The system is modelled in Isabelle/HOL, with the architecture, requirements, and refinement relations all formally specified and proven to ensure that the Gateway design meets its crash signal and data transmission requirements.
+
+### 10.8.3 IsaBIL - Verifying (In)Correctness of Binaries
+
+Griffin et al. present IsaBIL, a binary analysis framework in Isabelle/HOL that is based on BAP (Binary Analysis Platform). IsaBIL formalizes BAP's intermediate language (BIL) and integrates it with Hoare Logic (for proofs of correctness) and incorrectness logic (for proofs of incorectness). While there is a primary focus is on the RISC-V architecture and C binaries, the authors assert that IsaBIL is a flexible framework that can verify binaries for different languages (C, C++, Rust), toolchains (LLVM, Ghidra), and architectures (x86, RISC-V). The authors prove correctness through some industry level examples such as Lockheed Martin's JSF (Joint Strike Fighter) coding standards and the MITRE ATT&CK database.<sup><a href="#Griffin_IsaBIL">[4]</a></sup>
+
+### 10.8.4 Verlso - Isolation Guarantees of Database Transactions
+
+Ghasemirad et al. present VerIso, a rigorous Isabelle/HOL-based framework for verifying transaction isolation within production level databases. The authors showcase VerIso by modelling the strict two-phase locking (S2PL) protocol and prove that it provides strict serializability (transactions behave as if executed sequentially and that sequential order must match the actual time order of their invocation/commit). In addition, VerIso’s parameterised architecture supports multiple isolation levels and uncovers design-level bugs in protocols such as the TAPIR protocol and its violation of atomic visibility.<sup><a href="#Ghasemirad_VerIso">[5]</a></sup>
+
+### 10.8.5 IEEE 754 Floating Point Implementation for MDPs
+
+Kohlen et al. present a fully verified implementation of the Interval Iteration (II) Algorithm for Markov Decision Processes (MDPs). They model the II algorithm in Isabelle/HOL, use the Isabelle Refinement Framework (IRF) to carry out step-wise refinement down to LLVM bytecode, and extend Isabelle/HOL’s reasoning to support IEEE 754 floating-point arithmetic with directed rounding. Their result is a correct-by-construction floating-point implementation, competitive with industry tools and highly relevant for domains where verified numerical correctness matters, such as embedded systems, SoCs and safety-critical software.<sup><a href="#Kohlen_float">[6]</a></sup>
+
+### 10.8.6 IsaMini: Isabelle Proof Language for Machine Learning
+
+Xu et al. present MiniLang/IsaMini, a streamlined proof langauge for Isabelle/HOL designed to improve Large Language Model (LLM) integration in formal verification. The authors convert existing Isar proofs, such as those within Isabelle's Archive of Formal Proofs (AFP), into MiniLang and fine-tune LLMs on this new proof representation. They then use the LLM's macro level proof planning alongside Isabelle's automation (such as Sledgehammer, etc) for micro level proof steps to significantly boost proof success rate. Their work is noteworthy because it brings together formal methods and AI-assisted tooling, reducing manual proof effort and enabling more scalable verification.<sup><a href="#Xu_IsaMini">[7]</a></sup>
+
+## 10.9 Case Study - Neural Theorem Proving via IsaMini
+
+WIP
+
+https://github.com/xqyww123/Isa-Mini
+
+trying to find where the actual code etc is?
+
+According to the authors:
+*the REPL infrastructure, MiniLang interpreter, translator,
+training data, machine learning framework, Sledgehammer,
+and parameters of the finetuned models will be open-sourced
+and are present in the submitted supplementary materials*
+
+<!-- need to talk to Kurz about finding another example; the binary analysis one seems pretty cool -->
+
+https://gitlab.surrey.ac.uk/isabil/isabil
+
+https://zenodo.org/records/15268251
+
+I added these lines as PATH variables to my zsh on MacOS in order to run the Isabelle CLI tool:
+`export ISABELLE_HOME="/Applications/Isabelle2025.app"`
+`export PATH="$ISABELLE_HOME/bin:$PATH"`
+
+Make sure you have correct version of the [AFP](https://www.isa-afp.org/download/) downloaded
+
+Unpack the Tar file, put it *somewhere*, and then register it via 
+`isabelle components -u PATHNAME`
+
+For example, the pathname for my AFP is: 
+`/Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys`
+
+My command is then:
+`isabelle components -u /Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys`
 
 ## 10.10 History
 
@@ -347,10 +378,26 @@ The creation of the AFP (Archive of Formal Proofs) established a reusable librar
 - [Syllogism Slides from Nate Moss](https://logic.berkeley.edu/colloquium/MossSlides.pdf)
 
 <a id="andrews2002"></a>
-[1] Andrews, *An Introduction to Mathematical Logic and Type Theory*. Springer, 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4)
+- [1] Andrews, *An Introduction to Mathematical Logic and Type Theory*. Springer, 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4).
 
-<!-- 
-[^andrews2002]: Andrews, *An Introduction to Mathematical Logic and Type Theory*, Springer 2002. [Springer Link](https://link.springer.com/book/10.1007/978-94-015-9934-4) -->
+<a id="Achermann_physicalAddressing"></a>
+- [2] Achermann, Reto et al. "Physical Addressing on Real Hardware in Isabelle/HOL" Department of Computer Science, ETH Zurich. [Paper Link](https://people.inf.ethz.ch/troscoe/pubs/achermann_itp_2018.pdf)
+
+<a id="Spichkova_FOCUS"></a>
+- [3] Spichkova, Maria. “Stream processing components: Isabelle/HOL formalisation and case studies.” arXiv preprint arXiv:1405.1512 (2014). [arxiv Link](https://arxiv.org/abs/1405.1512)
+
+<a id="Griffin_IsaBIL"></a>
+- [4] Griffin, Matt, Brijesh Dongol, and Azalea Raad. "IsaBIL: A Framework for Verifying (In) correctness of Binaries in Isabelle/HOL (Extended Version)." arXiv preprint arXiv:2504.16775 (2025). [arixv Link](https://arxiv.org/abs/2504.16775v1)
+
+<a id="Ghasemirad_VerIso"></a>
+- [5] Ghasemirad, Shabnam, et al. "VerIso: Verifiable isolation guarantees for database transactions." arXiv preprint arXiv:2503.06284 (2025). [arxiv Link](https://arxiv.org/abs/2503.06284)
+
+<a id="Kohlen_float"></a>
+- [6] Kohlen, Bram, et al. "A formally verified IEEE 754 floating-point implementation of interval iteration for MDPs." International Conference on Computer Aided Verification. Cham: Springer Nature Switzerland, 2025. [arxiv Link](https://arxiv.org/abs/2501.10127v3)
+
+<a id="Xu_IsaMini"></a>
+- [7] Xu, Qiyuan, et al. "IsaMini: Redesigned Isabelle Proof Language for Machine Learning." arXiv preprint arXiv:2507.18885 (2025). [arxiv Link](https://arxiv.org/abs/2507.18885)
+
 
 
 ## 10.13 Suggestions for Future Work
