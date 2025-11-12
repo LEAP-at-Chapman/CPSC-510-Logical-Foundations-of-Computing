@@ -253,3 +253,5 @@ Frameworks like Dafny, Frama-C, SPARK Ada, and Coq use Hoare Logic within large 
 - [Intro. to the Hoare Triple (Discrete Math Tutorial) - Validity, Calculating Precondition, Explained.](https://www.youtube.com/watch?v=-Bs2Uy3zGsw)
 
 - [Fifty years of Hoare’s logic](https://ir.cwi.nl/pub/29146/29146.pdf)
+
+- [Formal Methods and Their Role in Digital Systems Validation for Airborne Systems](https://ntrs.nasa.gov/api/citations/19960008816/downloads/19960008816.pdf)
