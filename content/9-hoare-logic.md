@@ -34,7 +34,7 @@ This logic provides partial correctness, meaning the result will be correct if t
 
 ---
 
-#### 2. Install Dafny (Binary)
+#### 2. Install Dafny
 ```bash
 # 1. Install .NET 8.0
 # 2. Download Dafny ZIP from:
@@ -94,7 +94,7 @@ Install .NET 8.0 SDK:
 brew install dotnet-sdk
 ```
 
-#### 2. Install Dafny (Binary)
+#### 2. Install Dafny
 ```bash
 brew install dafny
 ```
@@ -122,7 +122,7 @@ Run:
 dafny run MyProgram.dfy
 ```
 
-#### 5. Developer Build (Source)
+#### 5. Developer Build
 ```bash
 brew install python3 pre-commit wget
 git clone https://github.com/dafny-lang/dafny.git --recurse-submodules
@@ -166,6 +166,55 @@ Python 3 + pip
 sudo apt install python3 python3-pip
 ```
 
+#### 2. Install Dafny
+```bash
+wget https://github.com/dafny-lang/dafny/releases/latest/download/dafny.zip
+unzip dafny.zip
+./dafny/dafny
+```
+
+#### 3. Compile Dafny Programs
+| Target     | Requirements     | Example                             |
+| ---------- | ---------------- | ----------------------------------- |
+| **C#**     | .NET 8.0 SDK     | `dafny build -t:cs MyProgram.dfy`   |
+| **Java**   | Java ≥ 8, Gradle | `dafny build -t:java MyProgram.dfy` |
+| **Python** | Python ≥ 3.7     | `dafny build -t:py MyProgram.dfy`   |
+| **Go**     | Go ≥ 1.18        | `dafny build -t:go MyProgram.dfy`   |
+
+Run: 
+```bash
+dafny run MyProgram.dfy
+```
+
+#### 4. Developer Build
+```bash
+sudo apt install dotnet-sdk-8.0 python3 python3-pip
+git clone https://github.com/dafny-lang/dafny.git --recurse-submodules
+cd dafny
+make exe
+pip3 install pre-commit && pre-commit install
+
+# Install Z3 4.12.1
+make z3-ubuntu
+# or manually:
+cd Binaries
+wget https://github.com/dafny-lang/solver-builds/releases/download/snapshot-2023-08-02/z3-4.12.1-x64-ubuntu-20.04-bin.zip
+unzip z3-4.12.1-x64-ubuntu-20.04-bin.zip
+mv z3-4.12.1 z3
+```
+
+Run Dafny:
+```bash
+./Scripts/dafny
+./Scripts/quicktest.sh
+```
+
+Run Tests:
+```bash
+cd Source/IntegrationTests
+dotnet test -v:n
+```
+
 ## Program Verification Techniques
 
 *To be added*
@@ -184,7 +233,14 @@ sudo apt install python3 python3-pip
 
 ## Applications in Industry
 
-*To be added*
+Using preconditions, postconditions, and invariants, as Hoare Logic showcases, this reasoning is now embedded in modern tools and workflows. These principles have now influenced every layer of software reliability. Here are a few examples of how Hoare Logic has been implemented in industry:
+
+- **Safety-Critical Systems:**
+Hoare Logic enables formal verification of systems where failure is unacceptable, such as in the aerospace and medical fields. Engineers ensure that autopilot control, satellite guidance, and pacemaker timing behave safely under all possible conditions by proving correctness through preconditions, postconditions, and invariants.
+
+- **Static Analysis and Software Quality:**
+Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Logic-based reasoning to automatically detect bugs, memory leaks, and logic errors before runtime.
+
 
 ## Case Studies
 
@@ -210,25 +266,6 @@ The development of Hoare Logic established a foundation in computer science by s
 ## Suggestions for future work on the book
 
 *To be added*
-
-## Industrial Applications
-
-Using preconditions, postconditions, and invariants, as Hoare Logic showcases, this reasoning is now embedded in modern tools and workflows. These principles have now influenced every layer of software reliability. Here are a few examples of how Hoare Logic has been implemented in industry:
-
-- **Safety-Critical Systems:**
-Hoare Logic enables formal verification of systems where failure is unacceptable, such as in the aerospace and medical fields. Engineers ensure that autopilot control, satellite guidance, and pacemaker timing behave safely under all possible conditions by proving correctness through preconditions, postconditions, and invariants.
-
-
-- **Security and Cryptography:**
-Used to prove that confidential data cannot leak and that cryptographic algorithms behave exactly as specified. Using Hoare Logic, reasoning supports formal proofs of non-interference, access control, and side-channel resistance in encryption and authentication systems.
-
-
-- **Static Analysis and Software Quality:**
-Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Logic-based reasoning to automatically detect bugs, memory leaks, and logic errors before runtime.
-
-
-- **Industrial Verification Pipelines:**
-Frameworks like Dafny, Frama-C, SPARK Ada, and Coq use Hoare Logic within large organizations such as Microsoft, Airbus, and AWS. They verify encryption libraries, avionics software, and distributed systems, combining enhanced security with practical reliability.
 
 ## Resources
 
