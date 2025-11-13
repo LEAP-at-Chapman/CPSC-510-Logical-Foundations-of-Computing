@@ -236,7 +236,7 @@ dotnet test -v:n
 Using preconditions, postconditions, and invariants, as Hoare Logic showcases, this reasoning is now embedded in modern tools and workflows. These principles have now influenced every layer of software reliability. Here are a few examples of how Hoare Logic has been implemented in industry:
 
 - **Safety-Critical Systems:**
-Hoare Logic enables formal verification of systems where failure is unacceptable, such as in the aerospace and medical fields. Engineers ensure that autopilot control, satellite guidance, and pacemaker timing behave safely under all possible conditions by proving correctness through preconditions, postconditions, and invariants.
+In safety-critical systems, such as those in the aerospace and medical device industries, implement Hoare Logic through rigorous reasoning using preconditions, postconditions, and invariants. The implementation of the Hoare Triple ensures software correctness, particularly in cases where failure can be catastrophic. NASA's use of highly complex software makes testing impossible, especially when failures need to have probabilities on the order of 10⁻⁹ per hour. This highly rare, even if subtle, edge-case condition must be proven safe rather than minimally tested. Formal verification supports the validation of flight-control algorithms, redundancy management logic, timing-critical tasks, and fault-tolerant coordination across distributed systems.
 
 - **Static Analysis and Software Quality:**
 Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Logic-based reasoning to automatically detect bugs, memory leaks, and logic errors before runtime.
