@@ -1,7 +1,9 @@
 % Employee Shift Scheduling - Practical Business Example
 % Goal: Assign exactly one employee to each shift per day, with fairness caps.
 % Run:
-%   minizinc src/minizinc/employee_scheduling/shift_scheduling.mzn
+%   minizinc -s --solver coin-bc shift_scheduling_.mzn
+
+%
 
 include "globals.mzn";
 
@@ -74,7 +76,4 @@ output [
          | s in Shifts ]) ++
   (if d < D then "\n" else "" endif)
   | d in Days
-]
-;
-
-
+];

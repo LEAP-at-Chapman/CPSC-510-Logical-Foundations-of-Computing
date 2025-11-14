@@ -1,11 +1,8 @@
 % Employee Shift Scheduling 2 - Boss Request Scenario
 % Goal: Schedule 15 employees over a 2-week horizon (14 days) with 3 shifts/day.
 %
-% Run:
-%   minizinc src/minizinc/employee_scheduling/shift_scheduling_2.mzn
-%
-% You can override parameters, e.g.:
-%   minizinc -D max_shifts_per_employee=8 src/minizinc/employee_scheduling/shift_scheduling_2.mzn
+% Run (set the fairness cap from the command line, e.g. 8 shifts per employee):
+%   minizinc -s --solver coin-bc -D max_shifts_per_employee=8 shift_scheduling_2.mzn
 
 include "globals.mzn";
 
@@ -21,15 +18,31 @@ set of int: Shifts = 1..S;
 % Pretty names
 array[Shifts] of string: shift_name = ["Morning","Evening","Night"];
 array[Days] of string: day_name = [ "Day " ++ show(d) | d in Days ];
-array[Employees] of string: employee_name = [ "Emp" ++ show(i) | i in Employees ];
+array[Employees] of string: employee_name = [
+  "Matt",
+  "Spencer",
+  "John",
+  "Wayne",
+  "Alex",
+  "Brandon",
+  "Khoa",
+  "Jake",
+  "Jack",
+  "Alexander",
+  "Erik",
+  "Elizabeth",
+  "Jon",
+  "Kendall",
+  "Thomas"
+];
 
 % Demand: how many employees needed per (day, shift)
 % Default: 1 per shift across the horizon; adjust by overriding this array if needed.
 array[Days, Shifts] of int: demand =
   array2d(Days, Shifts, [ 1 | d in Days, s in Shifts ]);
 
-% Fairness / load cap across the 2-week horizon
-int: max_shifts_per_employee = 7;
+% Fairness / load cap across the 2-week horizon (set via -D or .dzn)
+int: max_shifts_per_employee;
 
 % Decision variables: x[e,d,s] = 1 if employee e works shift s on day d
 array[Employees, Days, Shifts] of var 0..1: x;
