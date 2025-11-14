@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -193,6 +193,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
@@ -409,6 +410,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-the-industry">Applications in the Industry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai-and-formal-methods-what-s-changing">Generative AI and Formal Methods: What’s Changing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-code-diet-planner">Case Study Code: Diet Planner</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -596,6 +598,234 @@ tightening. Coupled with LLM systems, this points to spec-driven safety cases fo
 - Proof-search copilots: Retrieval + tool APIs (Lean/Isabelle/Coq) to keep LLM steps sound via solver or kernel checks.
 - Verifier-in-the-loop tooling: LLM planning; SMT establishes truth; counterexamples feed self-repair—already prototyped in compilers and invariant synthesis.</p>
 </section>
+<section id="case-study-code-diet-planner">
+<h2>Case Study Code: Diet Planner<a class="headerlink" href="#case-study-code-diet-planner" title="Link to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># diet_planner.py
+# Z3 calorie &amp; macro planner 
+# Hard constraints: nonnegative servings, availability bounds
+# Soft/Optimization: hit calorie + macro targets (L1 deviation)
+# Units are 1/2 servings 
+
+import argparse
+from typing import Dict, Tuple, Set
+from z3 import *
+
+# CONFIG
+# Per serving: (Protein g, Carbs g, Fat g, Cost, MaxServings, Vegetarian?)
+FOODS: Dict[str, Tuple[int, int, int, float, int, bool]] = {
+    &quot;Bread&quot;:     (7,  25,  1, 0.4, 6,  True),
+    &quot;Rice&quot;:      (4,  45,  0, 0.3, 6,  True),
+    &quot;Pasta&quot;:     (7,  42,  1, 0.4, 6,  True),
+    &quot;Oats&quot;:      (6,  27,  3, 0.5, 6,  True),
+    &quot;Chicken&quot;:   (31, 0,   3, 1.8, 6,  False),
+    &quot;Beef&quot;:      (26, 0,  15, 2.0, 4,  False),
+    &quot;Tofu&quot;:      (18, 5,   6, 0.8, 6,  True),
+    &quot;Eggs&quot;:      (12, 1,  10, 0.6, 6,  True),
+    &quot;Beans&quot;:     (9,  27,  1, 0.4, 6,  True),
+    &quot;GreekYog&quot;:  (17, 6,   0, 0.9, 6,  True),   #Greek Yogurt
+    &quot;Milk&quot;:      (8,  12,  5, 0.5, 6,  True),
+    &quot;PB&quot;:        (8,  6,  16, 0.5, 4,  True),   # Peanut Butter
+    &quot;OliveOil&quot;:  (0,  0,  14, 0.7, 6,  True),
+    &quot;Avocado&quot;:   (3,  9,  15, 1.0, 4,  True),
+}
+MEATY = [name for name, (*_, veg) in FOODS.items() if not veg]
+
+def parse_args() -&gt; argparse.Namespace:
+    ap = argparse.ArgumentParser(description=&quot;Z3 Diet Planner / Calorie Counter&quot;)
+    ap.add_argument(&quot;--calories&quot;, type=int, default=2200, help=&quot;Target kcal&quot;)
+    ap.add_argument(&quot;--protein&quot;,  type=int, default=140,  help=&quot;Target protein grams&quot;)
+    ap.add_argument(&quot;--carbs&quot;,    type=int, default=230,  help=&quot;Target carbohydrate grams&quot;)
+    ap.add_argument(&quot;--fat&quot;,      type=int, default=70,   help=&quot;Target fat grams&quot;)
+    ap.add_argument(&quot;--cal-tol&quot;,  type=int, default=75,   help=&quot;±kcal window (soft unless --hard-calories)&quot;)
+    ap.add_argument(&quot;--unit&quot;,     type=float, default=0.5, help=&quot;serving granularity (e.g., 0.5 = half-serving)&quot;)
+    ap.add_argument(&quot;--vegetarian&quot;, action=&quot;store_true&quot;, help=&quot;disallow meat items&quot;)
+    ap.add_argument(&quot;--exclude&quot;,  type=str, default=&quot;&quot;, help=&quot;comma-separated foods to exclude&quot;)
+    ap.add_argument(&quot;--include-only&quot;, type=str, default=&quot;&quot;, help=&quot;comma-separated list; only these allowed&quot;)
+    ap.add_argument(&quot;--pareto&quot;, action=&quot;store_true&quot;, help=&quot;use Pareto priority among objectives&quot;)
+    ap.add_argument(&quot;--hard-calories&quot;, action=&quot;store_true&quot;, help=&quot;enforce calorie window as hard constraint&quot;)
+    return ap.parse_args()
+
+def select_allowed_foods(args: argparse.Namespace) -&gt; Set[str]:
+    allowed = set(FOODS.keys())
+    if args.vegetarian:
+        allowed -= set(MEATY)
+    if args.exclude:
+        allowed -= {f.strip() for f in args.exclude.split(&quot;,&quot;) if f.strip()}
+    if args.include_only:
+        allowed = {f.strip() for f in args.include_only.split(&quot;,&quot;) if f.strip()}
+    if not allowed:
+        raise SystemExit(&quot;No foods remain after filtering; relax filters or lists.&quot;)
+    return allowed
+
+def R(x: float) -&gt; ArithRef:
+    &quot;&quot;&quot;Safe RealVal from float/string for exact Z3 arithmetic.&quot;&quot;&quot;
+    return RealVal(str(x))
+
+
+# Z3 MODEL
+
+
+class ModelParts:
+    &quot;&quot;&quot;Container to pass around Z3 pieces.&quot;&quot;&quot;
+    def __init__(self):
+        self.opt: Optimize = None
+        self.x: Dict[str, IntNumRef] = {}
+        self.y: Dict[str, IntNumRef] = {}
+        self.totP: ArithRef = None
+        self.totC: ArithRef = None
+        self.totF: ArithRef = None
+        self.cal: ArithRef  = None
+        self.total_cost: ArithRef = None
+        self.in_window: BoolRef = None
+
+def build_model(args: argparse.Namespace, allowed: Set[str]) -&gt; ModelParts:
+    mp = ModelParts()
+    mp.opt = Optimize()
+    if args.pareto:
+        mp.opt.set(priority=&#39;pareto&#39;)
+
+# Decision variables: integer counts in units of `unit` servings
+unit = args.unit
+mp.x = {f: Int(f&quot;x_{f}&quot;) for f in allowed}      # quantity in units
+mp.y = {f: Int(f&quot;use_{f}&quot;) for f in allowed}    # 0/1 usage indicator
+BIG_M = 1000
+
+# Hard constraints: bounds and linking x -&gt; y
+for f in allowed:
+    P, C, F, cost, max_serv, veg = FOODS[f]
+    max_units = int(round(max_serv / unit))
+    mp.opt.add(mp.x[f] &gt;= 0, mp.x[f] &lt;= max_units)
+    mp.opt.add(mp.y[f] &gt;= 0, mp.y[f] &lt;= 1)
+    mp.opt.add(mp.x[f] &lt;= mp.y[f] * BIG_M)
+
+# Totals and cost
+mp.totP = Sum([mp.x[f] * R(FOODS[f][0] * unit) for f in allowed])
+mp.totC = Sum([mp.x[f] * R(FOODS[f][1] * unit) for f in allowed])
+mp.totF = Sum([mp.x[f] * R(FOODS[f][2] * unit) for f in allowed])
+mp.total_cost = Sum([mp.x[f] * R(FOODS[f][3] * unit) for f in allowed])
+
+# Calories from macros (exact by definition)
+mp.cal = 4*mp.totP + 4*mp.totC + 9*mp.totF
+
+# Calorie window
+mp.in_window = And(mp.cal &gt;= R(args.calories - args.cal_tol),
+                   mp.cal &lt;= R(args.calories + args.cal_tol))
+return mp
+
+
+# DEVIATIONS (L1 absolute deviations for targets)
+
+
+def add_abs_deviation(opt: Optimize, expr: ArithRef, target: float, tag: str) -&gt; ArithRef:
+    &quot;&quot;&quot;Encodes |expr - target| via pos/neg slack: expr - target = pos - neg, pos,neg &gt;= 0&quot;&quot;&quot;
+    pos = Real(f&quot;{tag}_pos&quot;)
+    neg = Real(f&quot;{tag}_neg&quot;)
+    opt.add(pos &gt;= 0, neg &gt;= 0, expr - R(target) == pos - neg)
+    return pos + neg
+
+# 4) OBJECTIVES
+
+class SolveResult:
+    def __init__(self, model: ModelRef, mp: ModelParts, allowed: Set[str], unit: float, args: argparse.Namespace):
+        self.m = model
+        self.mp = mp
+        self.allowed = allowed
+        self.unit = unit
+        self.args = args
+
+def add_objectives_and_solve(args: argparse.Namespace, mp: ModelParts, allowed: Set[str]) -&gt; SolveResult:
+    # Primary: minimize macro &amp; calorie deviations
+    W_CAL, W_PRO, W_CAR, W_FAT = 1.0, 2.0, 1.0, 1.0
+    dev_cal = add_abs_deviation(mp.opt, mp.cal,  args.calories, &quot;cal&quot;)
+    dev_pro = add_abs_deviation(mp.opt, mp.totP, args.protein,  &quot;pro&quot;)
+    dev_car = add_abs_deviation(mp.opt, mp.totC, args.carbs,    &quot;car&quot;)
+    dev_fat = add_abs_deviation(mp.opt, mp.totF, args.fat,      &quot;fat&quot;)
+    primary_loss = W_CAL*dev_cal + W_PRO*dev_pro + W_CAR*dev_car + W_FAT*dev_fat
+    h1 = mp.opt.minimize(primary_loss)
+
+# Secondary: maximize variety (#foods used)
+h2 = mp.opt.maximize(Sum([mp.y[f] for f in allowed]))
+
+# Tertiary: minimize cost
+h3 = mp.opt.minimize(mp.total_cost)
+
+# Calorie window: soft or hard
+if args.hard_calories:
+    mp.opt.add(mp.in_window)  # hard
+else:
+    mp.opt.add_soft(mp.in_window, weight=5, id_=&quot;calorie_window&quot;)  # soft
+
+# Solve
+res = mp.opt.check()
+if res != sat:
+    raise SystemExit(f&quot;Model returned {res}. Try relaxing bounds, filters, or tolerance.&quot;)
+return SolveResult(mp.opt.model(), mp, allowed, args.unit, args)
+
+
+# REPORTING
+
+def as_float(m: ModelRef, expr: ArithRef) -&gt; float:
+    s = m.eval(expr, model_completion=True).as_decimal(10)
+    return float(s if &quot;?&quot; not in s else s[:s.index(&quot;?&quot;)])
+
+def report(sr: SolveResult) -&gt; None:
+    m, mp, allowed, unit, args = sr.m, sr.mp, sr.allowed, sr.unit, sr.args
+
+tot_p = as_float(m, mp.totP)
+tot_c = as_float(m, mp.totC)
+tot_f = as_float(m, mp.totF)
+tot_kcal = as_float(m, mp.cal)
+cost_val = as_float(m, mp.total_cost)
+
+print(&quot;\n=== Z3 Diet Plan (units = {:.2f} serving) ===&quot;.format(unit))
+print(&quot;Targets: {} kcal | P {} g, C {} g, F {} g (cal tol ±{})&quot;.format(
+    args.calories, args.protein, args.carbs, args.fat, args.cal_tol
+))
+print(&quot;Dietary style: {}&quot;.format(&quot;Vegetarian&quot; if args.vegetarian else &quot;Any&quot;))
+if args.include_only:
+    print(&quot;Include-only: {}&quot;.format(&quot;, &quot;.join(sorted(allowed))))
+elif args.exclude:
+    print(&quot;Excluded: {}&quot;.format(args.exclude))
+
+print(&quot;\nServings:&quot;)
+any_food = False
+for f in sorted(allowed):
+    q = m.eval(mp.x[f]).as_long()
+    if q &gt; 0:
+        any_food = True
+        servings = q * unit
+        P, C, F, cost, *_ = FOODS[f]
+        print(f&quot;  {f:&lt;10} {servings:&gt;4.1f}  (per serving: P{P} C{C} F{F}, cost {cost:.2f})&quot;)
+if not any_food:
+    print(&quot;  (no food selected)&quot;)
+
+print(&quot;\nTotals:&quot;)
+print(f&quot;  Calories : {tot_kcal:.0f} kcal (from macros: 4P + 4C + 9F)&quot;)
+print(f&quot;  Protein  : {tot_p:.0f} g&quot;)
+print(f&quot;  Carbs    : {tot_c:.0f} g&quot;)
+print(f&quot;  Fat      : {tot_f:.0f} g&quot;)
+print(f&quot;  Cost     : {cost_val:.2f}&quot;)
+
+print(&quot;\nDeviations (absolute):&quot;)
+print(f&quot;  |Cal-Target| ~ {abs(tot_kcal - args.calories):.0f}&quot;)
+print(f&quot;  |Pro-Target| ~ {abs(tot_p   - args.protein):.0f}&quot;)
+print(f&quot;  |Car-Target| ~ {abs(tot_c   - args.carbs):.0f}&quot;)
+print(f&quot;  |Fat-Target| ~ {abs(tot_f   - args.fat):.0f}&quot;)
+
+# Main
+
+def main():
+    args = parse_args()
+    allowed = select_allowed_foods(args)
+    mp = build_model(args, allowed)
+    sr = add_objectives_and_solve(args, mp, allowed)
+    report(sr)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</pre></div>
+</div>
+</section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -710,6 +940,7 @@ tightening. Coupled with LLM systems, this points to spec-driven safety cases fo
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-the-industry">Applications in the Industry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai-and-formal-methods-what-s-changing">Generative AI and Formal Methods: What’s Changing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-code-diet-planner">Case Study Code: Diet Planner</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
