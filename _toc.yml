@@ -30,6 +30,7 @@ parts:
 - caption: "Appendix: On Jupyter Books"
   chapters:
     - file: content/how-to-create-a-jupyter-book
+    - file: content/how-to-cite
     - file: content/markdown
     - file: content/notebooks
     - file: content/markdown-notebooks
