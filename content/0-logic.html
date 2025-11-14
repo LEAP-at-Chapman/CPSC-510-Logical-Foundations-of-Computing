@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -577,15 +577,33 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 </section>
 <section id="proof-theory">
 <h2>Proof Theory<a class="headerlink" href="#proof-theory" title="Link to this heading">#</a></h2>
-<p>…</p>
+<p>Logic studies truth in general rather than what is true in the world. There are two ways of doing this.</p>
+<p>Proof theory studies truth-preserving reasoning: Assuming that my premises are true, which rules of reasoning guarantee that my conclusions will also be true. In particular, can I be sure to never contradict myself if I follow the rules of logic?</p>
+<p>In symbolic notation, one writes</p>
+<div class="math notranslate nohighlight">
+\[
+\Gamma\vdash\phi
+\]</div>
+<p>to indicate that (in a given logical calculus) one can derive <span class="math notranslate nohighlight">\(\phi\)</span> from the assumptions in the set <span class="math notranslate nohighlight">\(\Gamma\)</span>.</p>
+<p>All of the software tools we will look at in this book can be understood as implementing reasoning in a particular calculus. In the next chapter, we will briefly look at Natural Deduction and at Tableaux.</p>
 </section>
 <section id="model-theory">
 <h2>Model Theory<a class="headerlink" href="#model-theory" title="Link to this heading">#</a></h2>
-<p>…</p>
+<p>In model theory one studies truth in all possible models. Roughly speaking, a model <span class="math notranslate nohighlight">\(M\)</span> is a mathematical structure that contains enough information in order to define when a formula <span class="math notranslate nohighlight">\(\phi\)</span> in a given logic evaluates to true. As we have seen above this is written as <span class="math notranslate nohighlight">\(M\models\phi\)</span>. Now one can define semantic entailment as</p>
+<div class="math notranslate nohighlight">
+\[
+\Gamma\models\phi
+\]</div>
+<p>if all models that satisfy the assumptions in <span class="math notranslate nohighlight">\(\Gamma\)</span> also satisfy the conclusion <span class="math notranslate nohighlight">\(\phi\)</span>, or, in symbolic notation, <span class="math notranslate nohighlight">\(M\models\phi\)</span> if <span class="math notranslate nohighlight">\(M\,odels\psi\)</span> for all <span class="math notranslate nohighlight">\(\psi\in\Gamma\)</span>.</p>
 </section>
 <section id="soundness-and-completenss">
 <h2>Soundness and Completenss<a class="headerlink" href="#soundness-and-completenss" title="Link to this heading">#</a></h2>
-<p>…</p>
+<p>A hallmark of logic are its completeness theorems. For any logic, we would typically like to have a soundness and completeness theorem. While the details can be difficult, we can state soundness and completeness simply as</p>
+<div class="math notranslate nohighlight">
+\[
+\Gamma\vdash\phi\ \Leftrightarrow \ \Gamma\models\phi
+\]</div>
+<p>In other</p>
 </section>
 <section id="incompleteness">
 <h2>Incompleteness<a class="headerlink" href="#incompleteness" title="Link to this heading">#</a></h2>

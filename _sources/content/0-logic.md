@@ -175,15 +175,39 @@ In the example of satisfiability, we read this as follows:
 
 ## Proof Theory
 
-...
+Logic studies truth in general rather than what is true in the world. There are two ways of doing this. 
+
+Proof theory studies truth-preserving reasoning: Assuming that my premises are true, which rules of reasoning guarantee that my conclusions will also be true. In particular, can I be sure to never contradict myself if I follow the rules of logic?
+
+In symbolic notation, one writes
+
+$$
+\Gamma\vdash\phi
+$$
+
+to indicate that (in a given logical calculus) one can derive $\phi$ from the assumptions in the set $\Gamma$.
+
+All of the software tools we will look at in this book can be understood as implementing reasoning in a particular calculus. In the next chapter, we will briefly look at Natural Deduction and at Tableaux.
 
 ## Model Theory
 
-...
+In model theory one studies truth in all possible models. Roughly speaking, a model $M$ is a mathematical structure that contains enough information in order to define when a formula $\phi$ in a given logic evaluates to true. As we have seen above this is written as $M\models\phi$. Now one can define semantic entailment as
+
+$$
+\Gamma\models\phi
+$$
+
+if all models that satisfy the assumptions in $\Gamma$ also satisfy the conclusion $\phi$, or, in symbolic notation, $M\models\phi$ if $M\,odels\psi$ for all $\psi\in\Gamma$.
 
 ## Soundness and Completenss
 
-...
+A hallmark of logic are its completeness theorems. For any logic, we would typically like to have a soundness and completeness theorem. While the details can be difficult, we can state soundness and completeness simply as
+
+$$
+\Gamma\vdash\phi\ \Leftrightarrow \ \Gamma\models\phi
+$$
+
+In other
 
 ## Incompleteness
 
