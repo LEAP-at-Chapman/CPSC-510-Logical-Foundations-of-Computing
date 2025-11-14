@@ -431,7 +431,8 @@ i) Prove that array access is always within bounds in a loop:
   - [Lecture Notes on DPLL(T) & SMT Encodings](https://www.cs.cmu.edu/~15414/s24/lectures/19-smt-encodings.pdf)
   - [Lecture Notes on SMT Solving: Nelson-Oppen](https://www.cs.cmu.edu/~15414/s24/lectures/18-smt-solving.pdf)
 - Howe, J. M., & King, A. (2012). [A pearl on SAT and SMT solving in Prolog](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=A+Pearl+on+SAT+and+SMT+Solving+in+Prolog&btnG=). Theoretical Computer Science, 435, 43-55. [pdf](https://www.staff.city.ac.uk/~jacob/solver/tcs.pdf) - - - I only read the intro and do not claim that I understand that paper. It is of interest to because it combines ideas from SAT, Prolog and SMT.
-- Backes, J., Bolignano, P., Cook, B., et al. “Semantic-based Automated Reasoning for AWS Access Policies using SMT.” FMCAD 2018
+- Backes, Bolignano, Cook, et al. (2018) [Semantic-based Automated Reasoning for AWS Access Policies using SMT](https://ieeexplore.ieee.org/abstract/document/8602994)
+, FMCAD.
 - Rungta, N. “A Billion SMT Queries a Day.” Amazon Science (invited), 2022.
 - Godefroid, P., Levin, M., Molnar, D. “SAGE: Whitebox Fuzzing for Security Testing.” CACM 2012.
 - Bounimova, E., Godefroid, P., Molnar, D. “Billions and Billions of Constraints: Whitebox Fuzz Testing at Microsoft.” ICSE 2011/Tech Report.
