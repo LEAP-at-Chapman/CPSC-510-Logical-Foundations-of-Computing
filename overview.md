@@ -12,7 +12,7 @@ Important:
 
 Then we have 11 weeks of teaching (gaps to be filled, resources to be added, etc):
 
-| Week | Logic | Application (Tool) | Algorithm | Application^2 | Comments | Author | 2nd Reader |  My Notes |
+| Week | Logic | Application (Tool) | Algorithm | Application^2 | Comments | Author | Peer Reviewer |  My Notes |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |2| propositional logic | SAT solver [(minisat)](https://github.com/niklasso/minisat) | semantic tableaux | satisfiability, validity | | Jake | Jack | [1](https://hackmd.io/@alexhkurz/BkZofOIcxl)
 |3 | predicate logic 1 | Logic Programming [(SWI-Prolog)](https://www.swi-prolog.org/) | unification, resolution | search with backtracking, data base querying | [[1]](https://book.simply-logical.space/src/simply-logical.html), [[2]](https://swish.swi-prolog.org/) | Brandon | Khoa | [1](https://github.com/LEAP-at-Chapman/Intro-to-Logic-Programming)
