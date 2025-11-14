@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -460,8 +460,8 @@ Author: Alexander Kurz</p>
 <p>There is a lot to say here, but to present the main ideas as quickly as possible I would proceed as follows (see Chapters 3.1 and 3.2 of the book referenced below).</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(Prop\)</span> be a set of ‘propositional variables’. The language of modal logic is the smallest set of ‘formulas’ containing <span class="math notranslate nohighlight">\(Prop\)</span> and closed under <span class="math notranslate nohighlight">\(\wedge\)</span> , <span class="math notranslate nohighlight">\(\vee\)</span>, <span class="math notranslate nohighlight">\(\neg\)</span>, <span class="math notranslate nohighlight">\(\Box\)</span>, <span class="math notranslate nohighlight">\(\Diamond\)</span>.</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(W\)</span> be a set of ‘worlds’ and <span class="math notranslate nohighlight">\(R\subseteq W\times W\)</span>. Let <span class="math notranslate nohighlight">\(\sem{-}:Prop\to 2^W\)</span> be a function assigning sets of worlds to each atomic proposition. Define</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cdf03362-2ada-4a97-870e-1c5001d6b0ee">
-<span class="eqno">(1)<a class="headerlink" href="#equation-cdf03362-2ada-4a97-870e-1c5001d6b0ee" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-b44c703d-bc5f-4bee-b19c-5e87b257f07e">
+<span class="eqno">(1)<a class="headerlink" href="#equation-b44c703d-bc5f-4bee-b19c-5e87b257f07e" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sem{\phi\wedge\phi'} &amp;= \sem{\phi}\cap\sem{\phi'}\\
 \sem{\phi\vee\phi'} &amp;= \sem{\phi}\cup\sem{\phi'}\\
 \sem{\neg\phi} &amp;= W\setminus \sem{\phi}\\
@@ -514,14 +514,14 @@ w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}
 </ul>
 <p>illustrates many of the themes that make modal logic so important for computer science applications.</p>
 <ul class="simple">
-<li><p>Blackburn, de Rijke, Venema (1995) <a class="reference external" href="https://scholar.google.com/scholar?cluster=1085284409909169504&amp;amp;hl=en&amp;amp;as_sdt=0,5">Modal Logic</a>, Cambridge University Press</p></li>
+<li><p>Blackburn, de Rijke, Venema (1995) <a class="reference external" href="https://scholar.google.com/scholar?cluster=1085284409909169504&amp;amp;hl=en&amp;amp;as_sdt=0,5">Modal Logic</a></p></li>
 </ul>
 <p>is widely considered to be the standard textbook on modern mathematical modal logic.</p>
 <p>The following articles introduced the mathematical possible worlds semantics:</p>
 <ul class="simple">
-<li><p>Kripke (1959) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Saul+Kripke%3A+A+Completeness+Theorem+in+Modal+Logic.+1959.&amp;amp;btnG=">A Completeness Theorem in Modal Logic</a>, The Journal of Symbolic Logic</p></li>
-<li><p>Kripke (1963) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Kripke+1963+Semantical+Analysis+of+Modal+Logic+I&amp;amp;btnG=">Semantical Analysis of Modal Logic I</a>, Zeitschr. f. math. Logik und Grundlagen d. Math., <a class="reference external" href="http://fitelson.org/142/kripke_1.pdf">[pdf]</a> . I recommend Section 2.1, which also contains the solution to one of the exercises below.</p></li>
-<li><p>Kripke (1965) <a class="reference external" href="http://fitelson.org/142/kripke_2.pdf">Semantical Analysis of Modal Logic II</a>. 1965.</p></li>
+<li><p>Kripke (1959) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Saul+Kripke%3A+A+Completeness+Theorem+in+Modal+Logic.+1959.&amp;amp;btnG=">A Completeness Theorem in Modal Logic</a></p></li>
+<li><p>Kripke (1963) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Kripke+1963+Semantical+Analysis+of+Modal+Logic+I&amp;amp;btnG=">Semantical Analysis of Modal Logic I</a> … <a class="reference external" href="http://fitelson.org/142/kripke_1.pdf">[pdf]</a></p></li>
+<li><p>Kripke (1965) <a class="reference external" href="http://fitelson.org/142/kripke_2.pdf">Semantical Analysis of Modal Logic II</a></p></li>
 </ul>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">

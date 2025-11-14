@@ -129,13 +129,13 @@ Here is what I would consider essential for a first run through the basics of mo
 
 illustrates many of the themes that make modal logic so important for computer science applications.
 
-- Blackburn, de Rijke, Venema (1995) [Modal Logic](https://scholar.google.com/scholar?cluster=1085284409909169504&hl=en&as_sdt=0,5), Cambridge University Press 
+- Blackburn, de Rijke, Venema (1995) [Modal Logic](https://scholar.google.com/scholar?cluster=1085284409909169504&hl=en&as_sdt=0,5) 
 
 is widely considered to be the standard textbook on modern mathematical modal logic.
 
 The following articles introduced the mathematical possible worlds semantics:
 
-- Kripke (1959) [A Completeness Theorem in Modal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Saul+Kripke%3A+A+Completeness+Theorem+in+Modal+Logic.+1959.&btnG=), The Journal of Symbolic Logic
-- Kripke (1963) [Semantical Analysis of Modal Logic I](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Kripke+1963+Semantical+Analysis+of+Modal+Logic+I&btnG=), Zeitschr. f. math. Logik und Grundlagen d. Math., [[pdf]](http://fitelson.org/142/kripke_1.pdf) . I recommend Section 2.1, which also contains the solution to one of the exercises below.
-- Kripke (1965) [Semantical Analysis of Modal Logic II](http://fitelson.org/142/kripke_2.pdf). 1965. 
+- Kripke (1959) [A Completeness Theorem in Modal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Saul+Kripke%3A+A+Completeness+Theorem+in+Modal+Logic.+1959.&btnG=)
+- Kripke (1963) [Semantical Analysis of Modal Logic I](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Kripke+1963+Semantical+Analysis+of+Modal+Logic+I&btnG=) ... [[pdf]](http://fitelson.org/142/kripke_1.pdf)
+- Kripke (1965) [Semantical Analysis of Modal Logic II](http://fitelson.org/142/kripke_2.pdf)
 
