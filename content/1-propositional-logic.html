@@ -374,7 +374,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -390,6 +392,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -403,7 +413,7 @@ document.write(`
 <h1>Propositional Logic<a class="headerlink" href="#propositional-logic" title="Link to this heading">#</a></h1>
 <p>Author: Alexander Kurz</p>
 <p>The purpose of this note is to introduce the simplest logic that will appear throughout the book. It is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Propositional_logic">propositional logic</a>, or classical propositional logic (as opposed to variants such as <a class="reference external" href="https://en.wikipedia.org/wiki/Intuitionistic_logic">intuitionistic logic</a>) or <a class="reference external" href="https://en.wikipedia.org/wiki/Boolean_algebra">Boolean logic</a> (to honor <a class="reference external" href="https://en.wikipedia.org/wiki/George_Boole">George Boole</a> and as opposed to other algebraic logics.)</p>
-<p>In class, we used mostly the <a class="reference external" href="https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf">Open Logic Project</a> as our reference. In the following, I will give a quick rundown of the most important concepts.</p>
+<p>In class, we used mostly the text on <a class="reference external" href="https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf">Propositional Logic</a> by the <a class="reference external" href="https://openlogicproject.org/">Open Logic Project</a> as our reference. In the following, I will give a quick rundown of the most important concepts.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf#page=4.52">Chapter 1.2</a>: A <strong>formula</strong> is built from <strong>propositional variables</strong> and <strong>logical connectives</strong> such as <span class="math notranslate nohighlight">\(\wedge\)</span> (AND), <span class="math notranslate nohighlight">\(\vee\)</span> (OR), <span class="math notranslate nohighlight">\(\neg\)</span> (NOT).</p></li>
 <li><p><a class="reference external" href="https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf#page=9.70">Chapter 1.5</a>: A <strong>valuation</strong> assigns to each propositional variable a <strong>truth value</strong>. (I like to write truth values as <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1\)</span>, in the book it is <span class="math notranslate nohighlight">\(\mathbb F\)</span> and <span class="math notranslate nohighlight">\(\mathbb T\)</span>.) For each connective there is a <a class="reference external" href="https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf#page=10.46">truth table</a>, so that one can define inductively the notion of <strong>satisfaction</strong> <a class="reference external" href="https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf#page=11.18">of a formula <span class="math notranslate nohighlight">\(\phi\)</span> by a valuation</a>.</p></li>
@@ -412,6 +422,18 @@ document.write(`
 <li><p><a class="reference external" href="https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf#page=55.24">Chapter 5</a>: We spend more time on <strong>tableaux</strong> than on natural deduction because tableaux made there way into many logic-based reasoning tools including SAT-solvers and model checkers. We worked through the <a class="reference external" href="https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf#page=58.35">Examples in 5.4</a>.</p></li>
 </ul>
 <p>The <a class="reference internal" href="0-logic.html"><span class="std std-doc">Introduction to Logic</span></a> contains an overview and summary of the most important big ideas in logic that we need.</p>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://openlogicproject.org/">Open Logic Project</a></p>
+<ul>
+<li><p><a class="reference external" href="https://builds.openlogicproject.org/">Textbooks</a></p></li>
+<li><p><a class="reference external" href="https://builds.openlogicproject.org/open-logic-complete.pdf">The Open Logic Text, Complete Build</a></p></li>
+<li><p><a class="reference external" href="https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf">Propositional Logic</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -468,6 +490,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

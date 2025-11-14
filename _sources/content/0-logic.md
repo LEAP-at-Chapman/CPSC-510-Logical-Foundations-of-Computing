@@ -219,7 +219,7 @@ This is a profound result that has ramifications in mathematics, philosophy and,
 
 ## References
 
-- Stanford Encyclopedia of Philosophy (2024) [Aristotle's Logic](https://plato.stanford.edu/entries/aristotle-logic/), Stanford University
-- Boole (1847) [The Mathematical Analysis of Logic](https://www.gutenberg.org/files/36884/36884-pdf.pdf), Macmillan, Barclay, & Macmillan
-- Gödel (1931) [Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I](https://scholar.google.com/scholar?q=Gödel+incompleteness+theorem+1931), Monatshefte für Mathematik und Physik, 38: 173–198
-- Hofstadter (1979) [Gödel, Escher, Bach: An Eternal Golden Braid](https://scholar.google.com/scholar?q=Gödel+Escher+Bach+Hofstadter), Basic Books 
+- Stanford Encyclopedia of Philosophy (2024) [Aristotle's Logic](https://plato.stanford.edu/entries/aristotle-logic/)
+- Boole (1847) [The Mathematical Analysis of Logic](https://www.gutenberg.org/files/36884/36884-pdf.pdf)
+- Gödel (1931) [Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I](https://scholar.google.com/scholar?q=Gödel+incompleteness+theorem+1931)
+- Hofstadter (1979) [Gödel, Escher, Bach: An Eternal Golden Braid](https://scholar.google.com/scholar?q=Gödel+Escher+Bach+Hofstadter) 
