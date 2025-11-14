@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -176,6 +176,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Temporal Logic with Spin</a></li>
@@ -415,6 +416,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">History</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">Current Development, Research Challenges, Conferences and Workshops</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reasources">Further Reasources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-this-book">Suggestions for Future Work on this Book</a></li>
 </ul>
             </nav>
@@ -496,6 +498,44 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 </section>
 <section id="intro-examples">
 <h2>Intro Examples<a class="headerlink" href="#intro-examples" title="Link to this heading">#</a></h2>
+<p>A protocol written in Promela is shown below</p>
+<div class="highlight-promela notranslate"><div class="highlight"><pre><span></span><span class="kd">mtype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">a0</span><span class="p">,</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">b0</span><span class="p">,</span><span class="w"> </span><span class="n">b1</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// file ex_2.pml</span>
+
+<span class="kd">chan</span><span class="w"> </span><span class="n">a2b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kd">mtype</span><span class="w"> </span><span class="p">}</span><span class="w">	</span><span class="c1">// a rendezvous channel for messages from A to B</span>
+<span class="kd">chan</span><span class="w"> </span><span class="n">b2a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kd">mtype</span><span class="w"> </span><span class="p">}</span><span class="w">	</span><span class="c1">// a second channel for the reverse direction</span>
+
+<span class="kd">active</span><span class="w"> </span><span class="kd">proctype</span><span class="w"> </span><span class="n">A</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nl">S1</span><span class="p">:</span><span class="w">	</span><span class="n">a2b</span><span class="o">!</span><span class="n">a1</span>
+<span class="w">  </span><span class="nl">S2</span><span class="p">:</span><span class="w">	</span><span class="k">if</span>
+<span class="w">  	</span><span class="o">::</span><span class="w"> </span><span class="n">b2a</span><span class="o">?</span><span class="n">b1</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S1</span>
+<span class="w">  	</span><span class="o">::</span><span class="w"> </span><span class="n">b2a</span><span class="o">?</span><span class="n">b0</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S3</span>
+<span class="w">  	</span><span class="o">::</span><span class="w"> </span><span class="n">b2a</span><span class="o">?</span><span class="n">err</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S5</span>
+<span class="w">  	</span><span class="k">fi</span>
+<span class="w">  </span><span class="nl">S3</span><span class="p">:</span><span class="w">	</span><span class="n">a2b</span><span class="o">!</span><span class="n">a1</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S2</span>
+<span class="w">  </span><span class="nl">S4</span><span class="p">:</span><span class="w">	</span><span class="n">b2a</span><span class="o">?</span><span class="n">err</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S5</span>
+<span class="w">  </span><span class="nl">S5</span><span class="p">:</span><span class="w">	</span><span class="n">a2b</span><span class="o">!</span><span class="n">a0</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S4</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="w">  </span>
+<span class="kd">active</span><span class="w"> </span><span class="kd">proctype</span><span class="w"> </span><span class="n">B</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">  	</span><span class="k">goto</span><span class="w"> </span><span class="n">S2</span>
+<span class="w">  </span><span class="nl">S1</span><span class="p">:</span><span class="w">	</span><span class="n">b2a</span><span class="o">!</span><span class="n">b1</span>
+<span class="w">  </span><span class="nl">S2</span><span class="p">:</span><span class="w">	</span><span class="k">if</span>
+<span class="w">  	</span><span class="o">::</span><span class="w"> </span><span class="n">a2b</span><span class="o">?</span><span class="n">a0</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S3</span>
+<span class="w">  	</span><span class="o">::</span><span class="w"> </span><span class="n">a2b</span><span class="o">?</span><span class="n">a1</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S1</span>
+<span class="w">  	</span><span class="o">::</span><span class="w"> </span><span class="n">a2b</span><span class="o">?</span><span class="n">err</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S5</span>
+<span class="w"> 	</span><span class="k">fi</span>
+<span class="w">  </span><span class="nl">S3</span><span class="p">:</span><span class="w">	</span><span class="n">b2a</span><span class="o">!</span><span class="n">b0</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S2</span>
+<span class="w">  </span><span class="nl">S4</span><span class="p">:</span><span class="w">	</span><span class="n">a2b</span><span class="o">?</span><span class="nb">_</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S1</span>
+<span class="w">  </span><span class="nl">S5</span><span class="p">:</span><span class="w">	</span><span class="n">a2b</span><span class="o">!</span><span class="n">b0</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S4</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Use SPIN to verify if there are any unreachable states. Explain the result.</p></li>
+<li><p>How would you modify the model to make all states reachable?</p></li>
+</ol>
 </section>
 <section id="the-landscape-of-tools">
 <h2>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
@@ -548,12 +588,9 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 <section id="applications-in-industry">
 <h2>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
 <p>One of the main applications of SPIN in the industry is model checking for concurecy or mutual exculsion problems. For example, it is often the case where two processes are running in parallel and must read and write from the same reasource. These processes cannot be allowed to access the reasource at the same time to avoid memory problems. However both processes must access the reasource <em>eventually</em>. This problem and problems like it can be modeled and checked in SPIN.</p>
-<p>https://ieeexplore.ieee.org/abstract/document/1036832?casa_token=HtU3_puherIAAAAA:kVbIgTU_2OtJXSWBKGi5bo6EcMvlnY7BroR3_0pklIX2kiyraaAulHbb6sjsMm_yN2J9G0FJ9Beg</p>
-<p>SPIN has also been used for a number of other, more specific applications in the industry. For instance, back in the early 2000s some researchers used SPIN  to verify the flight software of spacecraft. Given the risks of spaceflight, double and tripple checking everything is the norm, which is especially important for something as vital as the central flight system of a craft.</p>
-<p>https://onlinelibrary.wiley.com/doi/abs/10.1002/stvr.1662?casa_token=5wVnXSXNcfIAAAAA%3AaciaDPfQmEw8IN8IJ0JoBZWUhAlipgCY1NFjJ2kzRIxXJUs-tW54pir6yox3XeTw8lUTVbcx08aIams</p>
-<p>Additionally the automotive industry had run into some trouble ensuring the reliability of their vehicle systems due to increasing complexity. SMT-based checking isn’t very efficeny as it can’t handle loops or interuptions very well. As such, SPIN was proposed as an alternative and was found to be quite efficent at verifying such systems.</p>
-<p>https://www.ros.hw.ac.uk/items/971a3d2e-8dcd-4ac3-b0fa-48dfdbcf46ea</p>
-<p>Model checkers like SPIN can also be used to help find design flaws in web applications, or to simplify their designs. The researchers in this paper, tested SPINs ability to verify web applications and compared it against another model checker (Upaal) to ensure it was correct.</p>
+<p>SPIN has also been used for a number of other, more specific applications in the industry. For instance, back in the early 2000s some researchers used SPIN  to verify the flight software of spacecraft (Gluck and Holtzman, 2008). Given the risks of spaceflight, double and tripple checking everything is the norm, which is especially important for something as vital as the central flight system of a craft.</p>
+<p>Additionally the automotive industry had run into some trouble ensuring the reliability of their vehicle systems due to increasing complexity (Zhang et al., 2018). SMT-based checking isn’t very efficeny as it can’t handle loops or interuptions very well (Zhang et al., 2018). As such, SPIN was proposed as an alternative and was found to be quite efficent at verifying such systems (Zhang et al., 2018).</p>
+<p>Model checkers like SPIN can also be used to help find design flaws in web applications, or to simplify their designs (Alzahrani and Mohammed Yahya, 2015). The researchers in this paper tested SPINs ability to verify web applications and compared it against another model checker (Upaal) to ensure it was correct (Alzahrani and Mohammed Yahya, 2015).</p>
 </section>
 <section id="case-studies">
 <h2>Case Studies<a class="headerlink" href="#case-studies" title="Link to this heading">#</a></h2>
@@ -581,6 +618,14 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Gluck and Holtzman (2008) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Using+SPIN+model+checking+for+flight+software+verification&amp;amp;btnG=">Using SPIN model checking for flight software verification</a>, IEEE</p></li>
+<li><p>Zhang, Li, Cheng, and Xue (2018) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&amp;amp;btnG=">Verifying OSEK/VDX automotive applications: A Spin-based model checking approach</a>, Wiley</p></li>
+<li><p>Alzahrani and Mohammed Yahya (2015) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Model+checking+web+applications+heriot+watt+university&amp;amp;btnG=">Model checking web applications</a>, Heriot Watt University</p></li>
+</ul>
+</section>
+<section id="further-reasources">
+<h2>Further Reasources<a class="headerlink" href="#further-reasources" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators</p></li>
 <li><p>https://en.wikipedia.org/wiki/SPIN_model_checker</p></li>
@@ -679,6 +724,7 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">History</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">Current Development, Research Challenges, Conferences and Workshops</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reasources">Further Reasources</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-this-book">Suggestions for Future Work on this Book</a></li>
 </ul>
   </nav></div>

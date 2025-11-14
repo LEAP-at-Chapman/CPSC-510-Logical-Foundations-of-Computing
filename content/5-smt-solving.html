@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -176,6 +176,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">SMT Solving and Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
@@ -842,21 +843,22 @@ if __name__ == &quot;__main__&quot;:
 </ul>
 </li>
 <li><p>Howe, J. M., &amp; King, A. (2012). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=A+Pearl+on+SAT+and+SMT+Solving+in+Prolog&amp;amp;btnG=">A pearl on SAT and SMT solving in Prolog</a>. Theoretical Computer Science, 435, 43-55. <a class="reference external" href="https://www.staff.city.ac.uk/~jacob/solver/tcs.pdf">pdf</a> - - - I only read the intro and do not claim that I understand that paper. It is of interest to because it combines ideas from SAT, Prolog and SMT.</p></li>
-<li><p>Backes, J., Bolignano, P., Cook, B., et al. “Semantic-based Automated Reasoning for AWS Access Policies using SMT.” FMCAD 2018</p></li>
-<li><p>Rungta, N. “A Billion SMT Queries a Day.” Amazon Science (invited), 2022.</p></li>
-<li><p>Godefroid, P., Levin, M., Molnar, D. “SAGE: Whitebox Fuzzing for Security Testing.” CACM 2012.</p></li>
-<li><p>Bounimova, E., Godefroid, P., Molnar, D. “Billions and Billions of Constraints: Whitebox Fuzz Testing at Microsoft.” ICSE 2011/Tech Report.</p></li>
-<li><p>Wang, Y., Xie, F. “Enhancing Translation Validation of Compiler Transformations with Large Language Models.” arXiv:2401.16797 (2024).</p></li>
-<li><p>Cadar, C., Dunbar, D., Engler, D. “KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs.” OSDI 2008.</p></li>
-<li><p>Beckett, R., et al. “A General Approach to Network Configuration Verification (Minesweeper).” SIGCOMM 2017.</p></li>
-<li><p>Brown, M., et al. “Lessons from the Evolution of the Batfish Configuration Analysis Tool.” SIGCOMM 2023 (Experience).</p></li>
-<li><p>Prabhu, S., et al. “Plankton: Scalable Network Configuration Verification.” NSDI 2020.</p></li>
-<li><p>Katz, G., Barrett, C., Dill, D., Julian, K., Kochenderfer, M. “Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks.” CAV 2017 / arXiv:1702.01135.</p></li>
-<li><p>Katz, G., et al. “The Marabou Framework for Verification and Analysis of Deep Neural Networks.” CAV 2019 / LNCS; Marabou 2.0 (2024).</p></li>
-<li><p>Yang, K., et al. “LeanDojo: Theorem Proving with Retrieval-Augmented Language Models (ReProver).” NeurIPS 2023 (paper &amp; dataset).</p></li>
-<li><p>Beg, A., et al. “A Short Survey on Formalising Software Requirements with LLMs.” arXiv:2506.11874 (2025).</p></li>
-<li><p>Wu, G., et al. “LLM Meets Bounded Model Checking: Neuro-symbolic Loop Invariant Inference.” ASE 2024.</p></li>
-<li><p>Wei, A., et al. “InvBench: Can LLMs Accelerate Program Verification with Invariant Synthesis?” arXiv:2509.21629 (2025).</p></li>
+<li><p>Backes, Bolignano, Cook, et al. (2018) <a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/8602994">Semantic-based Automated Reasoning for AWS Access Policies using SMT</a>
+, FMCAD.</p></li>
+<li><p>Rungta, N. <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-031-13185-1_1">A Billion SMT Queries a Day</a> Amazon Science (invited), 2022.</p></li>
+<li><p>Godefroid, P., Levin, M., Molnar, D. <a class="reference external" href="https://queue.acm.org/detail.cfm?id=2094081&amp;amp;ref=fullrss">SAGE: Whitebox Fuzzing for Security Testing</a> CACM 2012.</p></li>
+<li><p>Bounimova, E., Godefroid, P., Molnar, D. <a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/6606558">Billions and Billions of Constraints: Whitebox Fuzz Testing at Microsoft</a> ICSE 2011/Tech Report.</p></li>
+<li><p>Wang, Y., Xie, F. <a class="reference external" href="https://www.worldscientific.com/doi/abs/10.1142/S0218194024500475">Enhancing Translation Validation of Compiler Transformations with Large Language Models</a> arXiv:2401.16797 (2024).</p></li>
+<li><p>Cadar, C., Dunbar, D., Engler, D. <a class="reference external" href="https://www.usenix.org/legacy/event/osdi08/tech/full_papers/cadar/cadar.pdf">KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs</a> OSDI 2008.</p></li>
+<li><p>Beckett, R., et al. <a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3098822.3098834">A General Approach to Network Configuration Verification (Minesweeper)</a> SIGCOMM 2017.</p></li>
+<li><p>Brown, M., et al. <a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3603269.3604866">Lessons from the Evolution of the Batfish Configuration Analysis Tool</a> SIGCOMM 2023 (Experience).</p></li>
+<li><p>Prabhu, S., et al. <a class="reference external" href="https://www.usenix.org/conference/nsdi20/presentation/prabhu">Plankton: Scalable Network Configuration Verification</a> NSDI 2020.</p></li>
+<li><p>Katz, G., Barrett, C., Dill, D., Julian, K., Kochenderfer, M. <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-319-63387-9_5">Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks</a> CAV 2017 / arXiv:1702.01135.</p></li>
+<li><p>Katz, G., et al. <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-031-65630-9_13">The Marabou Framework for Verification and Analysis of Deep Neural Networks</a> CAV 2019 / LNCS; Marabou 2.0 (2024).</p></li>
+<li><p>Yang, K., et al. <a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html">LeanDojo: Theorem Proving with Retrieval-Augmented Language Models (ReProver)</a> NeurIPS 2023 (paper &amp; dataset).</p></li>
+<li><p>Beg, A., et al. <a class="reference external" href="https://arxiv.org/abs/2506.11874">A Short Survey on Formalising Software Requirements with LLMs</a> arXiv:2506.11874 (2025).</p></li>
+<li><p>Wu, G., et al. <a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/10628461">LLM Meets Bounded Model Checking: Neuro-symbolic Loop Invariant Inference</a> ASE 2024.</p></li>
+<li><p>Wei, A., et al. <a class="reference external" href="https://arxiv.org/abs/2509.21629">InvBench: Can LLMs Accelerate Program Verification with Invariant Synthesis?</a> arXiv:2509.21629 (2025).</p></li>
 </ul>
 </section>
 </section>

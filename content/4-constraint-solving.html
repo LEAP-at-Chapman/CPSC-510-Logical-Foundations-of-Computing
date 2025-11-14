@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -176,6 +176,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Constraint Programming with MiniZinc</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
@@ -395,6 +396,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Constraint Programming with MiniZinc</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics">Key Characteristics</a></li>
@@ -410,14 +412,12 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-business-example-employee-shift-scheduling-minizinc">Practical Business Example: Employee Shift Scheduling (MiniZinc)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minizinc">MiniZinc</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-or-tools-cp-sat">Google OR-Tools (CP-SAT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-cp-resources">General CP Resources</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z3-and-smt">Z3 and SMT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#translating-this-into-a-real-world-written-script">Translating this into a real-world written script</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -438,15 +438,13 @@ document.write(`
 <li><p>A set of <strong>constraints</strong> that must be satisfied</p></li>
 <li><p>Optionally, an <strong>objective function</strong> to optimize</p></li>
 </ul>
-<p>The constraint solver finds an assignment of values to the variables that satisfies all constraints. CP is based on <strong>feasibility</strong> (finding a feasible solution) rather than optimization, focusing on the constraints and variables rather than the objective function.</p>
+<p>The constraint solver finds an assignment of values to the variables that satisfies all constraints. CP is based on <strong>feasibility</strong> (finding a feasible solution) rather than optimization, focusing on the constraints and variables rather than the objective function (Rossi, Van Beek, and Walsh, 2006).</p>
 <section id="installation">
 <h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>minizinc
 </pre></div>
 </div>
-<p>On Windows (Git Bash), if MiniZinc is installed under your user profile, add the CLI to PATH:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/AppData/Local/Programs/MiniZinc:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-minizinc<span class="w"> </span>--version
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>minizinc<span class="w"> </span>--version
 </pre></div>
 </div>
 </section>
@@ -458,6 +456,7 @@ minizinc<span class="w"> </span>--version
 <li><p><strong>Powerful for scheduling</strong>: Particularly effective for problems like employee scheduling, job shop scheduling, and resource allocation</p></li>
 <li><p><strong>Handles heterogeneous constraints</strong>: Can combine different types of constraints (arithmetic, logical, global constraints)</p></li>
 </ul>
+<p>These characteristics follow the standard MiniZinc modeling approach (Nethercote et al., 2007).</p>
 <p>In this chapter we will focus on constraint programming using MiniZinc, a high-level modeling language for constraint satisfaction and optimization problems.</p>
 </section>
 </section>
@@ -470,127 +469,298 @@ minizinc<span class="w"> </span>--version
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">solve</span> <span class="pre">satisfy</span></code> command to find a solution.</p></li>
 <li><p>Output the solution parameters.</p></li>
 </ol>
+<p>These steps follow the modeling flow presented in the MiniZinc tutorial (Nethercote et al., 2007).</p>
 <p>Example:</p>
+<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span>include &quot;globals.mzn&quot;;
+
+% Parameters
+int: n
+
+% Decision variables
+array[1..10, 1..10] of var 1..10: grid
+
+% Constraints
+constraint forall(i in 1..n, j in 1..n) (
+  if ... then _value1_ else _value2_ endif
+);
+
+% Solution
+solve satisfy;
+
+output [
+    if j = 1 then &quot;\n&quot; else &quot; &quot; endif ++
+    show(grid[i,j])
+    | i in 1..n, j in 1..n
+] ++ [&quot;\n&quot;];
+</pre></div>
+</div>
 </section>
 <section id="working-example-n-queens-in-minizinc">
 <h2>Working Example: N-Queens in MiniZinc<a class="headerlink" href="#working-example-n-queens-in-minizinc" title="Link to this heading">#</a></h2>
 <p>A minimal, runnable model is included in this repo at <code class="docutils literal notranslate"><span class="pre">src/minizinc/nqueens/nqueens.mzn</span></code>. You can run it directly without any <code class="docutils literal notranslate"><span class="pre">.dzn</span></code> file.</p>
-<p>Run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minizinc</span> <span class="n">src</span><span class="o">/</span><span class="n">minizinc</span><span class="o">/</span><span class="n">nqueens</span><span class="o">/</span><span class="n">nqueens</span><span class="o">.</span><span class="n">mzn</span>
-<span class="n">minizinc</span> <span class="o">-</span><span class="n">D</span> <span class="n">n</span><span class="o">=</span><span class="mi">12</span> <span class="n">src</span><span class="o">/</span><span class="n">minizinc</span><span class="o">/</span><span class="n">nqueens</span><span class="o">/</span><span class="n">nqueens</span><span class="o">.</span><span class="n">mzn</span>
-<span class="c1"># If needed, specify a solver explicitly (e.g., Gecode):</span>
-<span class="n">minizinc</span> <span class="o">--</span><span class="n">solver</span> <span class="n">Gecode</span> <span class="n">src</span><span class="o">/</span><span class="n">minizinc</span><span class="o">/</span><span class="n">nqueens</span><span class="o">/</span><span class="n">nqueens</span><span class="o">.</span><span class="n">mzn</span>
+<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span>include &quot;globals.mzn&quot;;
+
+int: n = 8;
+set of int: Q = 1..n;
+
+array[Q] of var Q: q;
+
+constraint all_different(q);
+
+constraint forall(i, j in Q where i &lt; j) (
+  abs(q[i] - q[j]) != j - i
+);
+
+solve satisfy;
+
+output [
+  if j = 1 then &quot;\n&quot; else &quot; &quot; endif ++
+  if fix(q[i]) = j then &quot;Q&quot; else &quot;.&quot; endif
+  | i in Q, j in Q
+] ++ [&quot;\n&quot;, &quot;Positions: &quot;, show(q), &quot;\n&quot;];
 </pre></div>
 </div>
-<p>Step-by-step how it works:</p>
-<ul class="simple">
-<li><p>Parameters and sets: <code class="docutils literal notranslate"><span class="pre">n</span></code> and the index set <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">=</span> <span class="pre">1..n</span></code>.</p></li>
-<li><p>Decision variables: <code class="docutils literal notranslate"><span class="pre">q[i]</span></code> gives the column of the queen in row <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p></li>
-<li><p>Constraints:</p>
-<ul>
-<li><p>Columns: <code class="docutils literal notranslate"><span class="pre">all_different(q)</span></code> ensures all queens use different columns.</p></li>
-<li><p>Diagonals: for any rows <code class="docutils literal notranslate"><span class="pre">i&lt;j</span></code>, if <code class="docutils literal notranslate"><span class="pre">abs(q[i]-q[j])</span> <span class="pre">=</span> <span class="pre">j-i</span></code> they would share a diagonal; we forbid that by requiring <code class="docutils literal notranslate"><span class="pre">!=</span></code>.</p></li>
-</ul>
-</li>
-<li><p>Solve: <code class="docutils literal notranslate"><span class="pre">solve</span> <span class="pre">satisfy;</span></code> asks for any placement satisfying all constraints.</p></li>
-<li><p>Output: pretty-prints a board and also the vector of positions.</p></li>
-</ul>
-<p>What the solver does:</p>
-<ul class="simple">
-<li><p>Propagates the global constraint <code class="docutils literal notranslate"><span class="pre">all_different</span></code> and the diagonal arithmetic constraints.</p></li>
-<li><p>Systematically searches (with propagation pruning) until a model is found.</p></li>
-</ul>
+<p>This implementation mirrors the canonical N-Queens problem description in survey work (Bell and Stevens, 2009).</p>
 </section>
 <section id="how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory">
 <h2>How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory<a class="headerlink" href="#how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Start at the base case and work backwards</p></li>
-<li><p>Identify the recursive structure by trying to break the logic down into smaller subproblems</p></li>
-<li><p>Define the recursion functions or predicates while making sure each recursive call brings you closer to the base case</p></li>
+<li><p>Identify the recursive structure by breaking the logic into smaller subproblems</p></li>
+<li><p>Define recursion predicates ensuring each call moves closer to the base case</p></li>
 </ol>
 </section>
 <section id="connecting-z3-and-minizinc-concepts">
 <h2>Connecting Z3 and MiniZinc Concepts<a class="headerlink" href="#connecting-z3-and-minizinc-concepts" title="Link to this heading">#</a></h2>
-<p>Briefly: MiniZinc is a high-level modeling language for constraint satisfaction and optimization with rich global constraints and multiple backend solvers; Z3 is an SMT solver aimed at logical theories and verification. If you’re building schedules, allocations, or routing, prefer MiniZinc; for program verification or bit-vector logic, prefer Z3.</p>
+<p>Briefly: MiniZinc is a high-level modeling language for constraint satisfaction and optimization with rich global constraints and multiple backend solvers; Z3 is an SMT solver aimed at logical theories and verification. If you’re building schedules, allocations, or routing, prefer MiniZinc; for program verification or bit-vector logic, prefer Z3 (de Moura and Bjørner, 2008).</p>
 </section>
 <section id="example-applications">
 <h2>Example Applications<a class="headerlink" href="#example-applications" title="Link to this heading">#</a></h2>
 <section id="employee-scheduling">
 <h3>Employee Scheduling<a class="headerlink" href="#employee-scheduling" title="Link to this heading">#</a></h3>
-<p>A classic CP problem: A company runs three 8-hour shifts per day and assigns three of its four employees to different shifts each day, while giving the fourth the day off. Even with just 4 employees, there are 4! = 24 possible assignments per day, leading to 24^7 ≈ 4.5 billion possible weekly schedules. CP efficiently narrows this down by tracking which solutions remain feasible as constraints are added (e.g., minimum days worked per employee).</p>
+<p>A classic CP problem: A company runs three 8-hour shifts per day and assigns three of its four employees to different shifts each day, while giving the fourth the day off. Even with just 4 employees, there are 24 possible assignments per day, leading to 24^7 ≈ 4.5 billion possible weekly schedules (Perron and Furnon, 2019).</p>
 </section>
 <section id="classic-cp-problems">
 <h3>Classic CP Problems<a class="headerlink" href="#classic-cp-problems" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>N-Queens Problem</strong>: Place N queens on an N×N chessboard so no two queens attack each other</p></li>
-<li><p><strong>Cryptarithmetic Puzzles</strong>: Assign digits to letters to make arithmetic equations valid</p></li>
-<li><p><strong>Job Shop Scheduling</strong>: Assign jobs to machines while respecting precedence and resource constraints</p></li>
+<li><p><strong>N-Queens Problem</strong></p></li>
+<li><p><strong>Cryptarithmetic Puzzles</strong></p></li>
+<li><p><strong>Job Shop Scheduling</strong></p></li>
 </ul>
+<p>These examples correspond to the standard CP problem categories in the literature (Rossi, Van Beek, and Walsh, 2006; Perron and Furnon, 2019).</p>
 </section>
 </section>
 <section id="practical-business-example-employee-shift-scheduling-minizinc">
 <h2>Practical Business Example: Employee Shift Scheduling (MiniZinc)<a class="headerlink" href="#practical-business-example-employee-shift-scheduling-minizinc" title="Link to this heading">#</a></h2>
-<p>A small, runnable scheduling model is included at <code class="docutils literal notranslate"><span class="pre">src/minizinc/employee_scheduling/shift_scheduling.mzn</span></code>. It assigns exactly one employee to each shift per day (Morning, Evening, Night), with fairness caps on how many shifts an employee can work in a week.</p>
+<p>A runnable scheduling model lives at:
+<code class="docutils literal notranslate"><span class="pre">src/minizinc/employee_scheduling/shift_scheduling.mzn</span></code>.</p>
+<p>This modeling structure follows both MiniZinc and OR-Tools scheduling examples (Nethercote et al., 2007; Perron and Furnon, 2019).</p>
 <p>Run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minizinc</span> <span class="n">src</span><span class="o">/</span><span class="n">minizinc</span><span class="o">/</span><span class="n">employee_scheduling</span><span class="o">/</span><span class="n">shift_scheduling</span><span class="o">.</span><span class="n">mzn</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minizinc</span> <span class="o">-</span><span class="n">s</span> <span class="n">coin</span><span class="o">-</span><span class="n">bc</span> <span class="n">src</span><span class="o">/</span><span class="n">minizinc</span><span class="o">/</span><span class="n">employee_scheduling</span><span class="o">/</span><span class="n">shift_scheduling</span><span class="o">.</span><span class="n">mzn</span>
 </pre></div>
 </div>
 <p>How it’s modeled:</p>
 <ul class="simple">
-<li><p><strong>Parameters</strong>: number of employees <code class="docutils literal notranslate"><span class="pre">E</span></code>, days <code class="docutils literal notranslate"><span class="pre">D</span></code>, shifts per day <code class="docutils literal notranslate"><span class="pre">S</span></code>, a coverage matrix <code class="docutils literal notranslate"><span class="pre">demand[d,s]</span></code>, and <code class="docutils literal notranslate"><span class="pre">max_shifts_per_employee</span></code>.</p></li>
-<li><p><strong>Decision variables</strong>: <code class="docutils literal notranslate"><span class="pre">x[e,d,s]</span> <span class="pre">∈</span> <span class="pre">{0,1}</span></code> indicates whether employee <code class="docutils literal notranslate"><span class="pre">e</span></code> works shift <code class="docutils literal notranslate"><span class="pre">s</span></code> on day <code class="docutils literal notranslate"><span class="pre">d</span></code>.</p></li>
+<li><p><strong>Parameters</strong>: number of employees <code class="docutils literal notranslate"><span class="pre">E</span></code>, days <code class="docutils literal notranslate"><span class="pre">D</span></code>, shifts <code class="docutils literal notranslate"><span class="pre">S</span></code>, demand matrix, and fairness caps</p></li>
+<li><p><strong>Decision variables</strong>: binary variable <code class="docutils literal notranslate"><span class="pre">x[e,d,s]</span></code></p></li>
 <li><p><strong>Constraints</strong>:</p>
 <ul>
-<li><p>Coverage: for each day/shift, <code class="docutils literal notranslate"><span class="pre">sum_e</span> <span class="pre">x[e,d,s]</span> <span class="pre">=</span> <span class="pre">demand[d,s]</span></code>.</p></li>
-<li><p>Per-day load: for each employee/day, <code class="docutils literal notranslate"><span class="pre">sum_s</span> <span class="pre">x[e,d,*]</span> <span class="pre">≤</span> <span class="pre">1</span></code> (no double-booking).</p></li>
-<li><p>Weekly fairness: for each employee, <code class="docutils literal notranslate"><span class="pre">sum_{d,s}</span> <span class="pre">x[e,*,*]</span> <span class="pre">≤</span> <span class="pre">max_shifts_per_employee</span></code>.</p></li>
+<li><p>Coverage</p></li>
+<li><p>No double-booking</p></li>
+<li><p>Weekly fairness</p></li>
 </ul>
 </li>
-<li><p><strong>Solve</strong>: <code class="docutils literal notranslate"><span class="pre">solve</span> <span class="pre">satisfy;</span></code> requests any feasible plan meeting the coverage and fairness constraints.</p></li>
-<li><p><strong>Output</strong>: a weekly roster printed by day and shift, listing assigned employees.</p></li>
+<li><p><strong>Solve</strong>: <code class="docutils literal notranslate"><span class="pre">solve</span> <span class="pre">satisfy</span></code></p></li>
+<li><p><strong>Output</strong>: human-readable roster</p></li>
 </ul>
-<p>How to think about it:</p>
-<ul class="simple">
-<li><p>Start with the business rules you cannot violate (coverage and no double-booking).</p></li>
-<li><p>Add fairness/balance rules to reflect policy (caps, min/max shifts).</p></li>
-<li><p>Keep data (e.g., <code class="docutils literal notranslate"><span class="pre">demand</span></code>) separate from decision variables, so you can scale it up later or drive it from external inputs.</p></li>
-<li><p>Prefer global and aggregate constraints (<code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">all_different</span></code>, etc.)—propagation will prune the search effectively.</p></li>
-</ul>
+<p>MiniZinc’s aggregate and global constraints make CP extremely effective for scheduling (Nethercote et al., 2007).</p>
+<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span>
+% Employee Shift Scheduling - Practical Business Example
+% Goal: Assign exactly one employee to each shift per day, with fairness caps.
+% Run:
+%   minizinc -s --solver coin-bc shift_scheduling_.mzn
+
+%
+
+include &quot;globals.mzn&quot;;
+
+% Parameters (override via -D as needed)
+int: E = 5;                      % number of employees
+int: D = 7;                      % number of days (e.g., a week)
+int: S = 3;                      % shifts per day (e.g., Morning, Evening, Night)
+set of int: Employees = 1..E;
+set of int: Days = 1..D;
+set of int: Shifts = 1..S;
+
+% Optional: Pretty names for output
+array[Shifts] of string: shift_name = [&quot;Morning&quot;,&quot;Evening&quot;,&quot;Night&quot;];
+array[Days] of string: day_name = [&quot;Mon&quot;,&quot;Tue&quot;,&quot;Wed&quot;,&quot;Thu&quot;,&quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;];
+array[Employees] of string: employee_name =
+  if E = 5 then [&quot; Matt&quot;,&quot;Jack&quot;,&quot;Jake&quot;,&quot;Wayne&quot;,&quot;Alex&quot;] else
+  [ &quot;Emp&quot; ++ show(i) | i in Employees ]
+  endif;
+
+% Demand: how many employees needed per (day, shift)
+array[Days, Shifts] of int: demand = [|
+  1, 1, 1  % Mon
+|
+  1, 1, 1  % Tue
+|
+  1, 1, 1  % Wed
+|
+  1, 1, 1  % Thu
+|
+  1, 1, 1  % Fri
+|
+  1, 1, 1  % Sat
+|
+  1, 1, 1  % Sun
+|];
+
+% Reasonable default fairness cap
+int: max_shifts_per_employee = 5;
+
+% Decision variables: x[e,d,s] = 1 if employee e works shift s on day d
+array[Employees, Days, Shifts] of var 0..1: x;
+
+% 1) Each shift&#39;s coverage must be met exactly
+constraint forall(d in Days, s in Shifts) (
+  sum(e in Employees)(x[e,d,s]) = demand[d,s]
+);
+
+% 2) Each employee works at most one shift per day
+constraint forall(e in Employees, d in Days) (
+  sum(s in Shifts)(x[e,d,s]) &lt;= 1
+);
+
+% 3) Weekly cap for fairness/load
+constraint forall(e in Employees) (
+  sum(d in Days, s in Shifts)(x[e,d,s]) &lt;= max_shifts_per_employee
+);
+
+% Solve for any feasible assignment
+solve satisfy;
+
+% Output: readable weekly roster
+output [
+  &quot;Weekly Roster\n&quot;
+] ++
+[
+  day_name[d] ++ &quot;:\n&quot; ++
+  concat([ &quot;  &quot; ++ shift_name[s] ++ &quot;: &quot; ++
+           concat([ if fix(x[e,d,s]) = 1 then employee_name[e] ++ &quot; &quot; else &quot;&quot; endif
+                 | e in Employees ]) ++ &quot;\n&quot;
+         | s in Shifts ]) ++
+  (if d &lt; D then &quot;\n&quot; else &quot;&quot; endif)
+  | d in Days
+];
+
+</pre></div>
+</div>
 </section>
-<section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
-<section id="minizinc">
-<h3>MiniZinc<a class="headerlink" href="#minizinc" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.minizinc.org/doc-latest/en/index.html">MiniZinc Official Documentation</a></p></li>
-<li><p><a class="reference external" href="https://www.minizinc.org/doc-latest/en/part_2_tutorial.html">MiniZinc Tutorial</a></p></li>
-<li><p><a class="reference external" href="https://www.minizinc.org/handbook.html">MiniZinc Handbook</a></p></li>
-</ul>
+<section id="translating-this-into-a-real-world-written-script">
+<h2>Translating this into a real-world written script<a class="headerlink" href="#translating-this-into-a-real-world-written-script" title="Link to this heading">#</a></h2>
+<p>With the Python MiniZinc API, you can embed a model as a string and feed parameters directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">minizinc</span>
+
+<span class="n">MODEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">include &quot;globals.mzn&quot;;</span>
+
+<span class="s2">int: E;</span>
+<span class="s2">int: D;</span>
+<span class="s2">int: S;</span>
+
+<span class="s2">set of int: Employees = 1..E;</span>
+<span class="s2">set of int: Days = 1..D;</span>
+<span class="s2">set of int: Shifts = 1..S;</span>
+
+<span class="s2">array[Shifts] of string: shift_name;</span>
+<span class="s2">array[Days] of string: day_name;</span>
+<span class="s2">array[Employees] of string: employee_name;</span>
+
+<span class="s2">array[Days, Shifts] of int: demand;</span>
+<span class="s2">int: max_shifts_per_employee;</span>
+
+<span class="s2">array[Employees, Days, Shifts] of var 0..1: x;</span>
+
+<span class="s2">constraint forall(d in Days, s in Shifts) (</span>
+<span class="s2">  sum(e in Employees)(x[e,d,s]) = demand[d,s]</span>
+<span class="s2">);</span>
+
+<span class="s2">constraint forall(e in Employees, d in Days) (</span>
+<span class="s2">  sum(s in Shifts)(x[e,d,s]) &lt;= 1</span>
+<span class="s2">);</span>
+
+<span class="s2">constraint forall(e in Employees) (</span>
+<span class="s2">  sum(d in Days, s in Shifts)(x[e,d,s]) &lt;= max_shifts_per_employee</span>
+<span class="s2">);</span>
+
+<span class="s2">solve satisfy;</span>
+
+<span class="s2">output [</span>
+<span class="s2">  &quot;Weekly Roster\n&quot;</span>
+<span class="s2">] ++</span>
+<span class="s2">[</span>
+<span class="s2">  day_name[d] ++ &quot;:\n&quot; ++</span>
+<span class="s2">  concat([ &quot;  &quot; ++ shift_name[s] ++ &quot;: &quot; ++</span>
+<span class="s2">           concat([ if fix(x[e,d,s]) = 1 then employee_name[e] ++ &quot; &quot; else &quot;&quot; endif</span>
+<span class="s2">                 | e in Employees ]) ++ &quot;\n&quot;</span>
+<span class="s2">         | s in Shifts ]) ++</span>
+<span class="s2">  (if d &lt; D then &quot;\n&quot; else &quot;&quot; endif)</span>
+<span class="s2">  | d in Days</span>
+<span class="s2">];</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># ------------ Python side ------------</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">minizinc</span><span class="o">.</span><span class="n">Model</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add_string</span><span class="p">(</span><span class="n">MODEL</span><span class="p">)</span>
+
+<span class="n">solver</span> <span class="o">=</span> <span class="n">minizinc</span><span class="o">.</span><span class="n">Solver</span><span class="o">.</span><span class="n">lookup</span><span class="p">(</span><span class="s2">&quot;coin-bc&quot;</span><span class="p">)</span>
+
+<span class="n">instance</span> <span class="o">=</span> <span class="n">minizinc</span><span class="o">.</span><span class="n">Instance</span><span class="p">(</span><span class="n">solver</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># parameters</span>
+<span class="n">E</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">S</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">instance</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">E</span>
+<span class="n">instance</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">D</span>
+<span class="n">instance</span><span class="p">[</span><span class="s2">&quot;S&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span>
+
+<span class="n">instance</span><span class="p">[</span><span class="s2">&quot;shift_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Morning&quot;</span><span class="p">,</span> <span class="s2">&quot;Evening&quot;</span><span class="p">,</span> <span class="s2">&quot;Night&quot;</span><span class="p">]</span>
+<span class="n">instance</span><span class="p">[</span><span class="s2">&quot;day_name&quot;</span><span class="p">]</span>   <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mon&quot;</span><span class="p">,</span><span class="s2">&quot;Tue&quot;</span><span class="p">,</span><span class="s2">&quot;Wed&quot;</span><span class="p">,</span><span class="s2">&quot;Thu&quot;</span><span class="p">,</span><span class="s2">&quot;Fri&quot;</span><span class="p">,</span><span class="s2">&quot;Sat&quot;</span><span class="p">,</span><span class="s2">&quot;Sun&quot;</span><span class="p">]</span>
+<span class="n">instance</span><span class="p">[</span><span class="s2">&quot;employee_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Matt&quot;</span><span class="p">,</span><span class="s2">&quot;Jack&quot;</span><span class="p">,</span><span class="s2">&quot;Jake&quot;</span><span class="p">,</span><span class="s2">&quot;Wayne&quot;</span><span class="p">,</span><span class="s2">&quot;Alex&quot;</span><span class="p">]</span>
+
+<span class="n">instance</span><span class="p">[</span><span class="s2">&quot;demand&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span>
+<span class="p">]</span>
+
+<span class="n">instance</span><span class="p">[</span><span class="s2">&quot;max_shifts_per_employee&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This pipeline follows the modeling and solver interface described in MiniZinc’s core language design (Nethercote et al., 2007).</p>
 </section>
-<section id="google-or-tools-cp-sat">
-<h3>Google OR-Tools (CP-SAT)<a class="headerlink" href="#google-or-tools-cp-sat" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://developers.google.com/optimization/cp">Constraint Optimization Overview</a></p></li>
-<li><p><a class="reference external" href="https://developers.google.com/optimization/cp/cp_solver">CP-SAT Solver Documentation</a></p></li>
-<li><p><a class="reference external" href="https://developers.google.com/optimization/scheduling/employee_scheduling">Employee Scheduling Example</a></p></li>
-<li><p><a class="reference external" href="https://developers.google.com/optimization/scheduling/job_shop">Job Shop Problem Example</a></p></li>
-</ul>
 </section>
-<section id="general-cp-resources">
-<h3>General CP Resources<a class="headerlink" href="#general-cp-resources" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Constraint_programming">Constraint Programming (Wikipedia)</a></p></li>
-<li><p>CP Community: Scientific journals, conferences, and active research in planning and scheduling</p></li>
-</ul>
-</section>
-<section id="z3-and-smt">
-<h3>Z3 and SMT<a class="headerlink" href="#z3-and-smt" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/Z3Prover/z3">Z3 Theorem Prover</a></p></li>
-<li><p><a class="reference external" href="https://z3prover.github.io/papers/programmingz3.html">Z3 Guide</a></p></li>
-</ul>
-</section>
-</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<p>Nethercote et al. (2007)
+<a class="reference external" href="https://scholar.google.com/scholar?q=MiniZinc%3A+Towards+a+Standard+CP+Modelling+Language">MiniZinc: Towards a Standard CP Modelling Language</a>, CP 2007</p>
+<p>Perron and Furnon (2019)
+<a class="reference external" href="https://scholar.google.com/scholar?q=OR-Tools%3A+Google+Optimization+Tools">OR-Tools: Google Optimization Tools</a>, Google Research</p>
+<p>Rossi, Van Beek, and Walsh (2006)
+<a class="reference external" href="https://scholar.google.com/scholar?q=Handbook+of+Constraint+Programming+Rossi+Van+Beek+Walsh">Handbook of Constraint Programming</a>, Elsevier</p>
+<p>de Moura and Bjørner (2008)
+<a class="reference external" href="https://scholar.google.com/scholar?q=Z3%3A+An+Efficient+SMT+Solver">Z3: An Efficient SMT Solver</a>, TACAS</p>
+<p>Bell and Stevens (2009)
+<a class="reference external" href="https://scholar.google.com/scholar?q=A+Survey+of+the+N-Queens+Problem+Bell+Stevens">A Survey of the N-Queens Problem</a>, Discrete Mathematics</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -657,6 +827,7 @@ minizinc<span class="w"> </span>--version
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Constraint Programming with MiniZinc</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics">Key Characteristics</a></li>
@@ -672,14 +843,12 @@ minizinc<span class="w"> </span>--version
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-business-example-employee-shift-scheduling-minizinc">Practical Business Example: Employee Shift Scheduling (MiniZinc)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minizinc">MiniZinc</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-or-tools-cp-sat">Google OR-Tools (CP-SAT)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-cp-resources">General CP Resources</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z3-and-smt">Z3 and SMT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#translating-this-into-a-real-world-written-script">Translating this into a real-world written script</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
+
   </nav></div>
 
 </div></div>
