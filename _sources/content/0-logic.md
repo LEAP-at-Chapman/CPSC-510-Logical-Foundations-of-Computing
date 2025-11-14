@@ -177,7 +177,7 @@ In the example of satisfiability, we read this as follows:
 
 Logic studies truth in general rather than what is true in the world. There are two ways of doing this. 
 
-Proof theory studies truth-preserving transformations: Assuming that my premises are true, which rules of reasoning guarantee that my conclusions will also be true. In particular, can I be sure to never contradict myself if I follow the rules of logic? 
+Proof theory studies truth-preserving transformations: Assuming that my premises are true, which rules of reasoning guarantee that my conclusions will also be true? In particular, can I be sure to never contradict myself if I follow the rules of logic? 
 
 In symbolic notation, one writes
 
@@ -198,6 +198,8 @@ $$
 $$
 
 if all models that satisfy the assumptions in $\Gamma$ also satisfy the conclusion $\phi$, or, in symbolic notation, $M\models\phi$ if $M\models\psi$ for all $\psi\in\Gamma$.
+
+Many of the tools in this book can be understood from a model theoretic point of view (for example: SAT-solvers, SMT-solvers, Prolog, model checkers).
 
 ## Soundness and Completenss
 
