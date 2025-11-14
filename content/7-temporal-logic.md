@@ -77,6 +77,46 @@ If SPIN can verify the code, it will generate a trail file. Make sure to delete 
 
 ## Intro Examples
 
+ A protocol written in Promela is shown below
+
+```promela
+mtype = { a0, a1, b0, b1, err } // file ex_2.pml
+
+chan a2b = [0] of { mtype }	// a rendezvous channel for messages from A to B
+chan b2a = [0] of { mtype }	// a second channel for the reverse direction
+
+active proctype A()
+{
+  S1:	a2b!a1
+  S2:	if
+  	:: b2a?b1  -> goto S1
+  	:: b2a?b0  -> goto S3
+  	:: b2a?err -> goto S5
+  	fi
+  S3:	a2b!a1  -> goto S2
+  S4:	b2a?err -> goto S5
+  S5:	a2b!a0  -> goto S4
+ }
+  
+active proctype B()
+{
+  	goto S2
+  S1:	b2a!b1
+  S2:	if
+  	:: a2b?a0  -> goto S3
+  	:: a2b?a1  -> goto S1
+  	:: a2b?err -> goto S5
+ 	fi
+  S3:	b2a!b0 -> goto S2
+  S4:	a2b?_  -> goto S1
+  S5:	a2b!b0 -> goto S4
+}
+```
+
+1. Use SPIN to verify if there are any unreachable states. Explain the result.
+
+2. How would you modify the model to make all states reachable? 
+
 ## The Landscape of Tools
 
 Other Model Checkers:
@@ -136,17 +176,11 @@ I found a research paper that declared its intent to create a benchmark of model
 
 One of the main applications of SPIN in the industry is model checking for concurecy or mutual exculsion problems. For example, it is often the case where two processes are running in parallel and must read and write from the same reasource. These processes cannot be allowed to access the reasource at the same time to avoid memory problems. However both processes must access the reasource *eventually*. This problem and problems like it can be modeled and checked in SPIN.
 
-https://ieeexplore.ieee.org/abstract/document/1036832?casa_token=HtU3_puherIAAAAA:kVbIgTU_2OtJXSWBKGi5bo6EcMvlnY7BroR3_0pklIX2kiyraaAulHbb6sjsMm_yN2J9G0FJ9Beg
+SPIN has also been used for a number of other, more specific applications in the industry. For instance, back in the early 2000s some researchers used SPIN  to verify the flight software of spacecraft (Gluck and Holtzman, 2008). Given the risks of spaceflight, double and tripple checking everything is the norm, which is especially important for something as vital as the central flight system of a craft. 
 
-SPIN has also been used for a number of other, more specific applications in the industry. For instance, back in the early 2000s some researchers used SPIN  to verify the flight software of spacecraft. Given the risks of spaceflight, double and tripple checking everything is the norm, which is especially important for something as vital as the central flight system of a craft. 
+Additionally the automotive industry had run into some trouble ensuring the reliability of their vehicle systems due to increasing complexity (Zhang et al., 2018). SMT-based checking isn't very efficeny as it can't handle loops or interuptions very well (Zhang et al., 2018). As such, SPIN was proposed as an alternative and was found to be quite efficent at verifying such systems (Zhang et al., 2018).
 
-https://onlinelibrary.wiley.com/doi/abs/10.1002/stvr.1662?casa_token=5wVnXSXNcfIAAAAA%3AaciaDPfQmEw8IN8IJ0JoBZWUhAlipgCY1NFjJ2kzRIxXJUs-tW54pir6yox3XeTw8lUTVbcx08aIams
-
-Additionally the automotive industry had run into some trouble ensuring the reliability of their vehicle systems due to increasing complexity. SMT-based checking isn't very efficeny as it can't handle loops or interuptions very well. As such, SPIN was proposed as an alternative and was found to be quite efficent at verifying such systems.
-
-https://www.ros.hw.ac.uk/items/971a3d2e-8dcd-4ac3-b0fa-48dfdbcf46ea
-
-Model checkers like SPIN can also be used to help find design flaws in web applications, or to simplify their designs. The researchers in this paper, tested SPINs ability to verify web applications and compared it against another model checker (Upaal) to ensure it was correct. 
+Model checkers like SPIN can also be used to help find design flaws in web applications, or to simplify their designs (Alzahrani and Mohammed Yahya, 2015). The researchers in this paper tested SPINs ability to verify web applications and compared it against another model checker (Upaal) to ensure it was correct (Alzahrani and Mohammed Yahya, 2015).
 
 ## Case Studies
 
@@ -177,6 +211,13 @@ A fix was proposed by the person who found this fault. To avoid the attack, the 
 ## Current Development, Research Challenges, Conferences and Workshops
 
 ## References
+* Gluck and Holtzman (2008) [Using SPIN model checking for flight software verification](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Using+SPIN+model+checking+for+flight+software+verification&btnG=), IEEE
+
+* Zhang, Li, Cheng, and Xue (2018) [Verifying OSEK/VDX automotive applications: A Spin-based model checking approach](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=), Wiley
+
+* Alzahrani and Mohammed Yahya (2015) [Model checking web applications](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Model+checking+web+applications+heriot+watt+university&btnG=), Heriot Watt University
+
+## Further Reasources
 * https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators
 * https://en.wikipedia.org/wiki/SPIN_model_checker
 * https://spinroot.com/spin/whatispin.html
@@ -185,4 +226,4 @@ A fix was proposed by the person who found this fault. To avoid the attack, the 
 * https://mluckcuck.github.io/model-checking-cheatsheet
 
 
-## Suggestions for Future Work on this Book
+## Suggestions for Future Work on this Book 
