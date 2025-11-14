@@ -275,10 +275,6 @@ The development of Hoare Logic established a foundation in computer science by s
 
 ## References
 
-- [Northeastern University – CS2800: Logic and Computation (Spring 2023) Lecture 32: Hoare Logic](https://course.ccs.neu.edu/cs2800sp23/l32.html)
-
-- [University of Rochester – CSC 255/455: Programming Languages (Spring 2024) Lecture 25: Introduction to Hoare Logic](https://www.cs.rochester.edu/~spai4/courses/csc-255-455/spring-2024/static/25-intro-hoare-logic.pdf)
-
 - [University of Pennsylvania – Software Foundations, Volume 2: Programming Language Foundations Chapter: Hoare Logic](https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html)
 
 - [Carnegie Mellon University – 15-654 Software Engineering (Spring 2006) Lecture Notes: Hoare Logic by Jonathan Aldrich](https://www.cs.cmu.edu/~aldrich/courses/654-sp06/notes/3-hoare-notes.pdf)
@@ -286,9 +282,8 @@ The development of Hoare Logic established a foundation in computer science by s
 - [Alexander Kurz – Hoare Logic Example (HackMD) Worked example: Loop invariants and correctness proofs](https://hackmd.io/@alexhkurz/Hy135C2tH)
 
 - [University of Cambridge – M.J.C. Gordon: Hoare Logic Lecture Notes All Lectures (Formal Semantics, wlp, VCG, and Separation Logic)](https://www.cl.cam.ac.uk/archive/mjcg/HoareLogic/Lectures/AllLectures.pdf)
+5
+- Krzysztof and Ernst-Rudiger (2019) [Fifty Years of Hoare’s Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Fifty+years+of+Hoare%E2%80%99s+logic+KR+Apt%2C+ER+Olderog&btnG=), Springer
 
-- [Intro. to the Hoare Triple (Discrete Math Tutorial) - Validity, Calculating Precondition, Explained.](https://www.youtube.com/watch?v=-Bs2Uy3zGsw)
+- Josh Rushby (1995) [Formal Methods and Their Role in Digital Systems Validation for Airborne Systems](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Formal+Methods+and+Their+Role+in+Digital+Systems+Validation+for+Airborne+Systems&btnG=), NASA Contractor Report 4673 
 
-- [Fifty years of Hoare’s logic](https://ir.cwi.nl/pub/29146/29146.pdf)
-
-- [Formal Methods and Their Role in Digital Systems Validation for Airborne Systems](https://ntrs.nasa.gov/api/citations/19960008816/downloads/19960008816.pdf)
