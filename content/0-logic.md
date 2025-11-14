@@ -175,16 +175,51 @@ In the example of satisfiability, we read this as follows:
 
 ## Proof Theory
 
-...
+Logic studies truth in general rather than what is true in the world. There are two ways of doing this. 
+
+Proof theory studies truth-preserving transformations: Assuming that my premises are true, which rules of reasoning guarantee that my conclusions will also be true? In particular, can I be sure to never contradict myself if I follow the rules of logic? 
+
+In symbolic notation, one writes
+
+$$
+\Gamma\vdash\phi
+$$
+
+to indicate that (in a given logical calculus) one can derive $\phi$ from the assumptions in $\Gamma$.
+
+All of the software tools we will look at in this book can be understood as implementing reasoning in a particular calculus. In the next chapter, we will briefly look at Natural Deduction and at Tableaux.
 
 ## Model Theory
 
-...
+In model theory one studies truth in all possible models. Roughly speaking, a model $M$ is a mathematical structure that contains enough information in order to define when a formula $\phi$ in a given logic evaluates to true. As we have seen above this is written as $M\models\phi$. Now one can define semantic entailment as
+
+$$
+\Gamma\models\phi
+$$
+
+if all models that satisfy the assumptions in $\Gamma$ also satisfy the conclusion $\phi$, or, in symbolic notation, $M\models\phi$ if $M\models\psi$ for all $\psi\in\Gamma$.
+
+Many of the tools in this book can be understood from a model theoretic point of view (for example: SAT-solvers, SMT-solvers, Prolog, model checkers).
 
 ## Soundness and Completenss
 
-...
+A hallmark of logic are its completeness theorems. For any logic, we would typically like to have a soundness and completeness theorem. While the details can be difficult, we can state soundness and completeness simply as
+
+$$
+\Gamma\vdash\phi\ \Leftrightarrow \ \Gamma\models\phi
+$$
+
+In other words, a statement is true in all models if and only if it is derivable.
 
 ## Incompleteness
 
-...
+Gödel's incompleteness theorem (Gödel, 1931) states that there cannot be a proof system that derives all statements in the language of arithmetic that are true in the model of natural numbers. 
+
+This is a profound result that has ramifications in mathematics, philosophy and, of course, software engineering. A popular introduction is (Hofstadter, 1979).
+
+## References
+
+- Stanford Encyclopedia of Philosophy (2024) [Aristotle's Logic](https://plato.stanford.edu/entries/aristotle-logic/)
+- Boole (1847) [The Mathematical Analysis of Logic](https://www.gutenberg.org/files/36884/36884-pdf.pdf)
+- Gödel (1931) [Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I](https://scholar.google.com/scholar?q=Gödel+incompleteness+theorem+1931)
+- Hofstadter (1979) [Gödel, Escher, Bach: An Eternal Golden Braid](https://scholar.google.com/scholar?q=Gödel+Escher+Bach+Hofstadter) 
