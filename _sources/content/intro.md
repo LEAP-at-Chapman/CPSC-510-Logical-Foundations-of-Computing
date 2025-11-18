@@ -50,6 +50,11 @@ Each chapter should by default be devided into the following sections (subject t
 
 [Chapter 11](11-dependent-types.md) presents dependent type theory with Lean, demonstrating how types can depend on values and enabling "proofs as programs" through the Curry-Howard correspondence.
 
+## Project Ideas for 2026
 
+- A new chapters (Vampire, Prover9, ...)
+- A simple from-scratch prototype implementation of a tool (eg a Prolog interpreter)
+- A case study combining a logic-based software tool with a gen-AI tool
+- ... tbc ... 
 
 
