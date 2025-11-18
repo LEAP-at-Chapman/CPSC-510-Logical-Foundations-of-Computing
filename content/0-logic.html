@@ -178,6 +178,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
@@ -435,7 +436,7 @@ document.write(`
 </ul>
 <section id="validity">
 <h2>Validity<a class="headerlink" href="#validity" title="Link to this heading">#</a></h2>
-<p>An important idea often attributed to <a class="reference external" href="https://plato.stanford.edu/entries/aristotle-logic/">Aristotle</a> is the following: To check whether an argument is valid, one does not need to understand its content. This surprising insight is at the heart of artificial intelligence.</p>
+<p>An important idea often attributed to <a class="reference external" href="https://plato.stanford.edu/entries/aristotle-logic/">Aristotle</a> is the following: To check whether an argument is valid, one does not need to understand its content. This surprising insight is at the heart of artificial intelligence.<a class="footnote-reference brackets" href="#ai" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>The classic example is:</p>
 <blockquote>
 <div><p>All men are mortal.<br />
@@ -562,7 +563,7 @@ M\models\phi
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/2025-10-26-14-31-31.png"><img alt="../_images/2025-10-26-14-31-31.png" src="../_images/2025-10-26-14-31-31.png" style="width: 500px;" /></a>
 </figure>
-<p>between the set <span class="math notranslate nohighlight">\(\mathcal PX\)</span> of subsets of <span class="math notranslate nohighlight">\(X\)</span> and the set <span class="math notranslate nohighlight">\(\mathcal PA\)</span> of subsets of <span class="math notranslate nohighlight">\(A\)</span> defined by <a class="footnote-reference brackets" href="#powerset" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>between the set <span class="math notranslate nohighlight">\(\mathcal PX\)</span> of subsets of <span class="math notranslate nohighlight">\(X\)</span> and the set <span class="math notranslate nohighlight">\(\mathcal PA\)</span> of subsets of <span class="math notranslate nohighlight">\(A\)</span> defined by <a class="footnote-reference brackets" href="#powerset" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{gather*}
@@ -622,8 +623,18 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 </ul>
 <hr class="footnotes docutils" />
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="powerset" role="doc-footnote">
+<aside class="footnote brackets" id="ai" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>This clearly is true for <a class="reference external" href="https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence">symbolic AI</a> (aka <a class="reference external" href="https://en.wikipedia.org/wiki/GOFAI">GOFAI</a>). But it is also true for <a class="reference external" href="https://en.wikipedia.org/wiki/Connectionism">connectionist</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Neural_network_(machine_learning)">neural</a>, statistical-probabilistic-stochastic, subsymbolic AI because the Boolean circuits implemented in our silicon-based hardware are symbolic AI. In a slogan: Neural AI is compiled to symbolic AI.</p>
+<p>Btw, there does not seem to be an established meaning differentiating between statistical, stochastic and probabilistic. Here is Claude-Opus-4 on the topic (edited):</p>
+<p>The terms statistical, stochastic and probabilistic overlap significantly but have slightly different uses:</p>
+<p><strong>Statistical</strong>. Focuses on <strong>analyzing and learning from data</strong>. Emphasizes patterns, distributions, and inference from samples.</p>
+<p><strong>Stochastic</strong>. Emphasizes <strong>randomness in the process itself</strong>. The system’s behavior involves random variables or random transitions. “Stochastic gradient descent” uses random samples to update weights. Use when: the algorithm or process has inherent randomness</p>
+<p><strong>Probabilistic</strong>. Focuses on <strong>reasoning about uncertainty</strong>. Models beliefs, likelihood, and uncertainty explicitly using probability theory. Use when: uncertainty quantification is central to the approach</p>
+<p>Many AI methods are all three: neural networks learn <strong>statistical</strong> patterns from data, use <strong>stochastic</strong> optimization,  and can output <strong>probabilistic</strong> predictions.</p>
+</aside>
+<aside class="footnote brackets" id="powerset" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p><span class="math notranslate nohighlight">\(\mathcal P\)</span> stands for “powerset of”.</p>
 </aside>
 </aside>

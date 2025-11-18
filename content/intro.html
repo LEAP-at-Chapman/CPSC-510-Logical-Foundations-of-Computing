@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -176,6 +176,7 @@
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
@@ -421,7 +422,8 @@ document.write(`
 <li><p><strong>Tool</strong>: One advantage of learning logic via tools is that one can get hands-on eperience before even digging into the mathematics. This section will be a guide to first steps with the tool (Installation, First Example, First Exercise)</p></li>
 <li><p><strong>Introductory Examples</strong>: The purpose of this section is to illustrate the big idea as well as the basic theory. Given this constraint, the examples should be as easy as possible.</p></li>
 <li><p><strong>The Landscape of Tools</strong>: A big idea together with the basic theory typically gives rise to a range of tools (such as satsolvers, model checkers, interactive theorem provers, etc). While each chapter will emphasize just one of these tools, here is the space to lay out the landscape of tools.</p></li>
-<li><p><strong>Algorithms</strong>: The basic theory needs to be implemented efficiently. Many of the breakthrough advances are not due to new big ideas, but due to careful engineering of efficient algorithms. This section will explain the main insights and implementation techniques that help tracing the development from small academic prototypes to industry scale software tools.</p></li>
+<li><p><strong>Algorithms</strong>: The basic theory needs to be implemented efficiently. This section concentrates on the algorithms that run the tool.</p></li>
+<li><p><strong>Typical Use Cases</strong>: Each software tool has its own use cases. This section describes typical use cases, including algorithms that can be implemented more efficiently or more easily with the support of the tool in question.</p></li>
 <li><p><strong>Benchmarks and Competitions</strong>: Not in all but in many cases, progress in formal methods is driven by benchmarks and competitions. Find out more what is happening on this side.</p></li>
 <li><p><strong>Applications in Industry</strong>. The applications in industry section should contain clickable references to websites and research articles (as can be found on google scholar). The references should also appear in the references section of each chapter. Look for applications that have been influential and changed the direction of the field. Also look for more recent applications that point to interesting directions. In particular, find out how generative AI is changing research in formal methods. Everybody is now very much interested in how to combine (connectionist, neural network based, generative) AI with (symbolic, logic-based) AI (aka formal methods).</p></li>
 <li><p><strong>Case Study</strong>. The case study should be code you develop that showcases an exemplary use of the tool. The ideal case study strikes a meaningful balance between being educational/explanatory but also interesting in its own right. Ideally, a reader would look at the case study and exclaim sth like: “Oh, Nice” or “That is interesting” or “Now I understand what I can do with the tool” or “great, maybe I could do sth similar for this other use case of mine”.</p></li>
