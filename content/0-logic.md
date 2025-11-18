@@ -16,7 +16,9 @@ some intro to the intro ...
 
 ## Validity
 
-An important idea often attributed to [Aristotle](https://plato.stanford.edu/entries/aristotle-logic/) is the following: To check whether an argument is valid, one does not need to understand its content. This surprising insight is at the heart of artificial intelligence. 
+An important idea often attributed to [Aristotle](https://plato.stanford.edu/entries/aristotle-logic/) is the following: To check whether an argument is valid, one does not need to understand its content. This surprising insight is at the heart of artificial intelligence.[^ai]
+
+
 
 The classic example is:
 
@@ -223,3 +225,17 @@ This is a profound result that has ramifications in mathematics, philosophy and,
 - Boole (1847) [The Mathematical Analysis of Logic](https://www.gutenberg.org/files/36884/36884-pdf.pdf)
 - Gödel (1931) [Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I](https://scholar.google.com/scholar?q=Gödel+incompleteness+theorem+1931)
 - Hofstadter (1979) [Gödel, Escher, Bach: An Eternal Golden Braid](https://scholar.google.com/scholar?q=Gödel+Escher+Bach+Hofstadter) 
+
+[^ai]: This clearly is true for [symbolic AI](https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence) (aka [GOFAI](https://en.wikipedia.org/wiki/GOFAI)). But it is also true for [connectionist](https://en.wikipedia.org/wiki/Connectionism), [neural](https://en.wikipedia.org/wiki/Neural_network_(machine_learning)), statistical-probabilistic-stochastic, subsymbolic AI because the Boolean circuits implemented in our silicon-based hardware are symbolic AI. In a slogan: Neural AI is compiled to symbolic AI.
+
+    Btw, there does not seem to be an established meaning differentiating between statistical, stochastic and probabilistic. Here is Claude-Opus-4 on the topic (edited): 
+    
+    The terms statistical, stochastic and probabilistic overlap significantly but have slightly different uses:
+
+    **Statistical**. Focuses on **analyzing and learning from data**. Emphasizes patterns, distributions, and inference from samples. 
+
+    **Stochastic**. Emphasizes **randomness in the process itself**. The system's behavior involves random variables or random transitions. "Stochastic gradient descent" uses random samples to update weights. Use when: the algorithm or process has inherent randomness
+    
+    **Probabilistic**. Focuses on **reasoning about uncertainty**. Models beliefs, likelihood, and uncertainty explicitly using probability theory. Use when: uncertainty quantification is central to the approach
+     
+    Many AI methods are all three: neural networks learn **statistical** patterns from data, use **stochastic** optimization,  and can output **probabilistic** predictions. 

@@ -2,7 +2,7 @@
 
 This is the repository for the course CPSC-510 Logical Foundations of Computing in Fall 2025.
 
-At the end of the course, we will have written a draft of a [book](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/) that teaches the logical foundations of computing starting from state of the art software tools.
+At the end of the course, we will have written a draft of a [book](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/) that teaches the logical foundations of computing from the point of view of  software tools.
 
 ## Content
 
