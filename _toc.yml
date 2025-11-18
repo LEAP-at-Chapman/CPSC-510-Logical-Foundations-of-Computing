@@ -27,6 +27,10 @@ parts:
     - file: content/appendix-hoare-logic
     - file: content/appendix-syllogistic-logics
 
+- caption: "Typesetting Conventions"
+  chapters:
+    - file: content/how-to-cite
+
 - caption: "Appendix: On Jupyter Books"
   chapters:
     - file: content/how-to-create-a-jupyter-book

@@ -11,3 +11,6 @@ z3-solver
 
 # Optional: for interactive features
 sphinx-thebe
+
+# Optional: for minizinc
+minizinc
