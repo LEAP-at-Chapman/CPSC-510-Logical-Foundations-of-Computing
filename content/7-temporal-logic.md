@@ -208,6 +208,16 @@ A fix was proposed by the person who found this fault. To avoid the attack, the 
 
 ## History
 
+- 1947: Jerzy Łoś first formalizes a logic with temporal functions.
+
+- 1953: Arthur Prior begins research on Temporal Logic.
+
+- 1957: Prior publishes a book on temporal logic called *Time and Modality*.
+
+- 1958: Prior gets a letter from Saul Kripke, pointing out to him the possiblities of branching time. Prior could his advise and developed several theories of branching time.
+
+- 1967: Prior publishes *Past, Present and Future*, a collection of his most revised theories on temporal logic, before dying two years later.
+
 ## Current Development, Research Challenges, Conferences and Workshops
 
 ## References

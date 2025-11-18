@@ -4,9 +4,11 @@
 format: jb-book
 root: content/title
 parts:
-- chapters:
+- numbered: false
+  chapters:
     - file: content/intro
 - caption: Logics and Their Software Tools
+  numbered: true
   chapters:
     - file: content/0-logic
     - file: content/1-propositional-logic
@@ -22,16 +24,19 @@ parts:
     - file: content/11-dependent-types
 
 - caption: Appendices
+  numbered: false
   chapters:
     - file: content/appendix-puzzles
     - file: content/appendix-hoare-logic
     - file: content/appendix-syllogistic-logics
 
 - caption: "Typesetting Conventions"
+  numbered: false
   chapters:
     - file: content/how-to-cite
 
 - caption: "Appendix: On Jupyter Books"
+  numbered: false
   chapters:
     - file: content/how-to-create-a-jupyter-book
     - file: content/markdown

@@ -324,7 +324,7 @@ This pipeline follows the modeling and solver interface described in MiniZinc's 
 
 ---
 
-# References
+## References
 
 Nethercote et al. (2007)
 [MiniZinc: Towards a Standard CP Modelling Language](https://scholar.google.com/scholar?q=MiniZinc%3A+Towards+a+Standard+CP+Modelling+Language), CP 2007
