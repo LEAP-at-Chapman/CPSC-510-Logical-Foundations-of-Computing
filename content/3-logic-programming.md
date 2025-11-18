@@ -339,6 +339,183 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 
 ---
 
+## Case Study
+### The Water Jug Problem
+
+The Water Jug Problem is a classic puzzle that  demonstrates Prolog's strengths in state-space search and constraint satisfaction. The scenario of this problem is as follows:
+
+You have two jugs:
+
+- Jug A: Capacity of 4 liters
+
+- Jug B: Capacity of 3 liters
+
+You need to measure exactly 2 liters of water. You can:
+
+- Fill a jug completely
+
+- Empty a jug completely
+
+- Pour water from one jug to another until either the source is empty or the destination is full
+
+This seems simple, but the sequence of operations isn't immediately obvious. With Prolog we can systematically explore all possibilities to find the solution.
+
+``` prolog
+% Water Jug Problem Solver
+% Jug A: 4 liters capacity, Jug B: 3 liters capacity
+% Goal: Measure exactly 2 liters
+
+% ---------- State Representation ----------
+% state(JugA_Current, JugB_Current)
+
+% ---------- Valid Moves ----------
+
+% 1. Fill Jug A completely
+move(state(_, B), state(4, B)) :- 
+    format('Fill Jug A~n').
+
+% 2. Fill Jug B completely  
+move(state(A, _), state(A, 3)) :-
+    format('Fill Jug B~n').
+
+% 3. Empty Jug A
+move(state(_, B), state(0, B)) :-
+    format('Empty Jug A~n').
+
+% 4. Empty Jug B
+move(state(A, _), state(A, 0)) :-
+    format('Empty Jug B~n').
+
+% 5. Pour from A to B until B is full or A is empty
+move(state(A, B), state(NewA, NewB)) :-
+    A > 0, B < 3,
+    PourAmount is min(A, 3 - B),
+    NewA is A - PourAmount,
+    NewB is B + PourAmount,
+    format('Pour ~w liters from Jug A to Jug B~n', [PourAmount]).
+
+% 6. Pour from B to A until A is full or B is empty
+move(state(A, B), state(NewA, NewB)) :-
+    B > 0, A < 4,
+    PourAmount is min(B, 4 - A),
+    NewA is A + PourAmount,
+    NewB is B - PourAmount,
+    format('Pour ~w liters from Jug B to Jug A~n', [PourAmount]).
+
+% ---------- Search Algorithm ----------
+
+% Solve the water jug problem
+solve :-
+    solve_bfs([state(0,0)], [], Solution),
+    reverse(Solution, ReversedSolution),
+    nl, write('Solution Found!'), nl, nl,
+    print_solution(ReversedSolution).
+
+% Breadth-first search implementation
+solve_bfs([state(A, B)|_], Visited, [state(A, B)|Visited]) :-
+    (A =:= 2; B =:= 2),  % Goal condition: 2 liters in either jug
+    !.
+
+solve_bfs([CurrentState|RestQueue], Visited, Solution) :-
+    findall(NextState, 
+            (move(CurrentState, NextState), 
+             \+ member(NextState, Visited)),
+    NewStates),
+    append(RestQueue, NewStates, NewQueue),
+    solve_bfs(NewQueue, [CurrentState|Visited], Solution).
+
+% ---------- Solution Display ----------
+print_solution([]).
+print_solution([State]) :-
+    format_state(State), !.
+print_solution([State1, State2|Rest]) :-
+    format_state(State1),
+    print_solution([State2|Rest]).
+
+format_state(state(A, B)) :-
+    format('Jug A: ~w liters, Jug B: ~w liters~n', [A, B]).
+
+% ---------- Alternative Depth-First Search ----------
+solve_dfs :-
+    solve_dfs_path(state(0,0), [state(0,0)], Solution),
+    nl, write('DFS Solution:'), nl,
+    print_solution(Solution).
+
+solve_dfs_path(state(A, B), Path, Path) :-
+    (A =:= 2; B =:= 2), !.  % Goal reached
+
+solve_dfs_path(CurrentState, Path, Solution) :-
+    move(CurrentState, NextState),
+    \+ member(NextState, Path),
+    solve_dfs_path(NextState, [NextState|Path], Solution).
+```
+
+### To run the above code copy it a file named water_jug.pl
+
+``` bash
+swipl -f water_jug.pl
+```
+
+Then in the Prolog interpreter:
+
+```prolog
+?- solve.
+```
+
+
+### 1. Declarative State Transitions
+
+The most interesting aspect of the Prolog solution is how we describe the *nature* of valid moves rather than prescribing a specific sequence of operations. Instead of writing step-by-step instructions like "first fill jug A, then pour to jug B, then..." we simply define what constitutes a legal transition between states.
+
+Each move rule reads like a natural language description of the physical constraints. The pouring rule essentially says: "If jug B has water and jug A has space, you can transfer the smaller amount between what B contains and what A can accept." This shows how we'd explain the rules to another person, yet it's executable code.
+
+This declarative approach means we're encoding the *physics* of the problem rather than a solution strategy. Prolog then uses these fundamental rules to explore possibilities, much like how a person would mentally simulate different sequences while ensuring they never violate the physical constraints.
+
+### 2. Multiple Search Strategies
+
+Our solution demonstrates how easily Prolog can switch between different problem-solving strategies. We implemented both breadth-first search (BFS) and depth-first search (DFS) approaches, each with distinct characteristics:
+
+- **Breadth-first search** systematically explores all possible moves level by level, guaranteeing it will find the shortest solution sequence. It's methodical and complete but requires more memory to track all possibilities.
+
+- **Depth-first search** follows each path as far as it can go before backtracking. It's more memory-efficient but might stumble upon longer solutions before finding shorter ones.
+
+We're not rewriting the problem rules for each approach, we simply change how we navigate the possibility space. This separation of "what moves are possible" from "how we explore those moves" is a powerful demonstration of logic programming's flexibility.
+
+### 3. Automatic Backtracking
+
+One of Prolog's most best features that we've touched on a bit already is its built-in backtracking mechanism. When the system follows a sequence of moves that leads to a dead end, like repeatedly filling and emptying the same jug without progress,, it automatically backtracks and tries alternative paths.
+
+This eliminates the need for complex error recovery code or manual stack management that would be required in imperative languages. The programmer never writes "if this doesn't work, go back and try something else", Prolog handles that automatically as part of its fundamental execution model.
+
+This built-in exploration makes Prolog exceptionally well-suited for problems where the solution isn't obvious but the rules are clear. It continually works through combinations that a human might overlook due to frustration or cognitive bias.
+
+### 4. Visual Solution Tracing
+
+The step-by-step output reveals Prolog's reasoning process in action, transforming an abstract computational process into an understandable narrative:
+
+```
+Fill Jug A
+Jug A: 4 liters, Jug B: 0 liters
+Pour 3 liters from Jug A to Jug B
+Jug A: 1 liters, Jug B: 3 liters
+Empty Jug B
+Jug A: 1 liters, Jug B: 0 liters
+Pour 1 liters from Jug A to Jug B
+Jug A: 0 liters, Jug B: 1 liters
+Fill Jug A
+Jug A: 4 liters, Jug B: 1 liters
+Pour 2 liters from Jug A to Jug B
+Jug A: 2 liters, Jug B: 3 liters
+```
+
+Each step follows logically from the previous state, and the sequence reveals non-obvious insights—like the need to create intermediate measurements (the 1-liter state) to achieve the final goal.
+
+### The Big Picture
+
+What makes this case study interesting is how it showcases Prolog's ability to bridge human reasoning and computational execution. We describe the problem in terms that make sense to us. Prolog handles the tedious work of exploring all the different combinations.
+
+This approach scales remarkably well to more complex problems. The same pattern of defining state transitions and letting Prolog search for sequences applies to scheduling problems, route planning, configuration tasks, and many other domains where the solution isn't a simple formula but comes from following rules systematically.
+
 
 
 
@@ -353,3 +530,4 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 8. https://www.metalevel.at/prolog/sorting
 9. https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html
 10. https://blogit.michelin.io/an-introduction-to-datalog/
+11. https://leetcode.com/problems/water-and-jug-problem/description/
