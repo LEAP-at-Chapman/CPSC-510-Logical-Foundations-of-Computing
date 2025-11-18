@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Temporal Logic with Spin &#8212; Logical Foundations of AI</title>
+    <title>9. Temporal Logic with Spin &#8212; Logical Foundations of AI</title>
   
   
   
@@ -61,8 +61,8 @@
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/7-temporal-logic.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Epistemic Logic with SMCDEL" href="8-epistemic-logic.html" />
-    <link rel="prev" title="Modal Logic" href="6-modal-logic.html" />
+    <link rel="next" title="10. Epistemic Logic with SMCDEL" href="8-epistemic-logic.html" />
+    <link rel="prev" title="8. Modal Logic" href="6-modal-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -171,25 +171,25 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">1. Introduction to Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">2. Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">3. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">4. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">5. Constraint Programming with MiniZinc</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">7. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">8. Modal Logic</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">10. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">11. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">12. Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">13. Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">14. Resources on Puzzles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">15. Hoare Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">16. Syllogistic Logics in Isabelle</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
 <ul class="nav bd-sidenav">
@@ -396,28 +396,28 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool">Tool</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example">First Example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-excercise">First Excercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">9.1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">9.2. Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool">9.3. Tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">9.3.1. Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example">9.3.2. First Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-excercise">9.3.3. First Excercise</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">Intro Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">The Landscape of Tools</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks">Benchmarks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">Case Studies</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-fault-in-the-needham-schroedor-protocol">Finding the Fault in the Needham-Schroedor Protocol</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">9.4. Intro Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">9.5. The Landscape of Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">9.6. Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks">9.7. Benchmarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">9.8. Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">9.9. Case Studies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-fault-in-the-needham-schroedor-protocol">9.9.1. Finding the Fault in the Needham-Schroedor Protocol</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">History</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">Current Development, Research Challenges, Conferences and Workshops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reasources">Further Reasources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-this-book">Suggestions for Future Work on this Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">9.10. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">9.11. Current Development, Research Challenges, Conferences and Workshops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">9.12. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reasources">9.13. Further Reasources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-this-book">9.14. Suggestions for Future Work on this Book</a></li>
 </ul>
             </nav>
         </div>
@@ -430,15 +430,15 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="temporal-logic-with-spin">
-<h1>Temporal Logic with Spin<a class="headerlink" href="#temporal-logic-with-spin" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Temporal Logic with Spin<a class="headerlink" href="#temporal-logic-with-spin" title="Link to this heading">#</a></h1>
 <section id="idea">
-<h2>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
 <p>Temporal logic is a system of logic used to reason about time. A statement in temporal logic may have a truth value that changes over the course of time. It includes new qualifiers that relate to time, such as: <em>always</em>, <em>eventually</em>, <em>never</em>, <em>until</em>, <em>whenever</em> etc.</p>
 <p>For example: I will <em>eventually</em> be hungry</p>
 <p>This mode of logic can be very useful in concurrent systems where two threads must be made to <em>never</em> access the same reasource at the same time.</p>
 </section>
 <section id="basic-theory">
-<h2>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
 <p>Temporal logic is used to reason about things in terms of time. For example, a statement like “It is raining” may vary in truth throughout time. Sometimes it will be raining and sometimes it will not be raining. Temporal logic allows truth values to vary throughout time. There are many different types of temporal logic, some allow you to view the system as a single path through time, while some may involve multiple timelines.</p>
 <p>It includes all basic logical operators: and, or, not and implies.</p>
 <p>It also includes several additional modal operators:</p>
@@ -460,16 +460,16 @@ E A means that there exists at least one path starting from the current position
 </ul>
 </section>
 <section id="tool">
-<h2>Tool<a class="headerlink" href="#tool" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.3. </span>Tool<a class="headerlink" href="#tool" title="Link to this heading">#</a></h2>
 <p>The tool we will be using to explore temporal logic is called SPIN. It is primarily used to verify multithreaded software. SPIN uses a coding language called promela.</p>
 <section id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
 <p>Link: https://spinroot.com/spin/Man/README.html</p>
 <p>Some examples taken from: https://spinroot.com/courses/summer/</p>
 <p>I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">spin</span></code>.</p>
 </section>
 <section id="first-example">
-<h3>First Example<a class="headerlink" href="#first-example" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.2. </span>First Example<a class="headerlink" href="#first-example" title="Link to this heading">#</a></h3>
 <p>To test if SPIN works on your machine try run this code:</p>
 <p>Note: you will need a C compiler to run SPIN.</p>
 <p>init {	// file: ex_1a.pml
@@ -482,7 +482,7 @@ od
 <p>This should print 514 steps of increasing numbers.</p>
 </section>
 <section id="first-excercise">
-<h3>First Excercise<a class="headerlink" href="#first-excercise" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.3. </span>First Excercise<a class="headerlink" href="#first-excercise" title="Link to this heading">#</a></h3>
 <p>A farmer wants to move a cabbage, a goat, and a wolf across a river in his boat. He can only fit one thing in his boat while going across. If the farmer isn’t watching, the goat will eat the cabbage, and the wolf will eat the goat. Can you think of a way to model this problem and find it’s solution in SPIN?</p>
 <p>Note: SPIN allows you to both define the solution in the code and in the fourmula you run from the command line.</p>
 <p>To check a model with fourmulas, you must first define them in the file with <code class="docutils literal notranslate"><span class="pre">#define</span></code>. These defined fourmulas should begin with a lowercase letter.</p>
@@ -497,7 +497,7 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 </section>
 </section>
 <section id="intro-examples">
-<h2>Intro Examples<a class="headerlink" href="#intro-examples" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.4. </span>Intro Examples<a class="headerlink" href="#intro-examples" title="Link to this heading">#</a></h2>
 <p>A protocol written in Promela is shown below</p>
 <div class="highlight-promela notranslate"><div class="highlight"><pre><span></span><span class="kd">mtype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">a0</span><span class="p">,</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">b0</span><span class="p">,</span><span class="w"> </span><span class="n">b1</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// file ex_2.pml</span>
 
@@ -538,7 +538,7 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 </ol>
 </section>
 <section id="the-landscape-of-tools">
-<h2>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.5. </span>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
 <p>Other Model Checkers:</p>
 <ol class="arabic simple">
 <li><p>NuSMV</p></li>
@@ -572,7 +572,7 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 <p>A model checker designed to model systems made of timed automata. Uses a simplified form of Timed TCTL.</p>
 </section>
 <section id="algorithms">
-<h2>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.6. </span>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
 <p>When SPIN verifies a system, several steps are taken.</p>
 <ol class="arabic simple">
 <li><p>The user must describe the system in Promela (Process Meta Language), which is SPINs programming langauage.</p></li>
@@ -581,21 +581,21 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 </ol>
 </section>
 <section id="benchmarks">
-<h2>Benchmarks<a class="headerlink" href="#benchmarks" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.7. </span>Benchmarks<a class="headerlink" href="#benchmarks" title="Link to this heading">#</a></h2>
 <p>I looked into benchmarks for SPIN and other model checkers, however at the time of writing, there does not appear to have been many benchmarks of such tools available online.</p>
 <p>I found a research paper that declared its intent to create a benchmark of model checkers like SPIN, located at https://spinroot.com/spin/symposia/ws07/Pelanek.pdf. However, at the time of writing, the link contained in the paper (https://anna.fi.muni.cz/models) leads to a 404 error.</p>
 </section>
 <section id="applications-in-industry">
-<h2>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.8. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
 <p>One of the main applications of SPIN in the industry is model checking for concurecy or mutual exculsion problems. For example, it is often the case where two processes are running in parallel and must read and write from the same reasource. These processes cannot be allowed to access the reasource at the same time to avoid memory problems. However both processes must access the reasource <em>eventually</em>. This problem and problems like it can be modeled and checked in SPIN.</p>
 <p>SPIN has also been used for a number of other, more specific applications in the industry. For instance, back in the early 2000s some researchers used SPIN  to verify the flight software of spacecraft (Gluck and Holtzman, 2008). Given the risks of spaceflight, double and tripple checking everything is the norm, which is especially important for something as vital as the central flight system of a craft.</p>
 <p>Additionally the automotive industry had run into some trouble ensuring the reliability of their vehicle systems due to increasing complexity (Zhang et al., 2018). SMT-based checking isn’t very efficeny as it can’t handle loops or interuptions very well (Zhang et al., 2018). As such, SPIN was proposed as an alternative and was found to be quite efficent at verifying such systems (Zhang et al., 2018).</p>
 <p>Model checkers like SPIN can also be used to help find design flaws in web applications, or to simplify their designs (Alzahrani and Mohammed Yahya, 2015). The researchers in this paper tested SPINs ability to verify web applications and compared it against another model checker (Upaal) to ensure it was correct (Alzahrani and Mohammed Yahya, 2015).</p>
 </section>
 <section id="case-studies">
-<h2>Case Studies<a class="headerlink" href="#case-studies" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.9. </span>Case Studies<a class="headerlink" href="#case-studies" title="Link to this heading">#</a></h2>
 <section id="finding-the-fault-in-the-needham-schroedor-protocol">
-<h3>Finding the Fault in the Needham-Schroedor Protocol<a class="headerlink" href="#finding-the-fault-in-the-needham-schroedor-protocol" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.9.1. </span>Finding the Fault in the Needham-Schroedor Protocol<a class="headerlink" href="#finding-the-fault-in-the-needham-schroedor-protocol" title="Link to this heading">#</a></h3>
 <p>The Needham-Schroedor Public Key Protocol was an oft-used encryption protocol for communicating across the internet. It ustilized public key encryption to exchange a secrect between both parties. This secrect then allowed them to continue conversing securely. After 17 years, a flaw was found in the protocol that would allow an attacker to listen in on communications that were supposed to be secure. The attack was discovered using model checking.</p>
 <p>The Needham-Schroedor Protocol works as follows:</p>
 <ol class="arabic simple">
@@ -611,13 +611,20 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 </section>
 </section>
 <section id="history">
-<h2>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.10. </span>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>1947: Jerzy Łoś first formalizes a logic with temporal functions.</p></li>
+<li><p>1953: Arthur Prior begins research on Temporal Logic.</p></li>
+<li><p>1957: Prior publishes a book on temporal logic called <em>Time and Modality</em>.</p></li>
+<li><p>1958: Prior gets a letter from Saul Kripke, pointing out to him the possiblities of branching time. Prior could his advise and developed several theories of branching time.</p></li>
+<li><p>1967: Prior publishes <em>Past, Present and Future</em>, a collection of his most revised theories on temporal logic, before dying two years later.</p></li>
+</ul>
 </section>
 <section id="current-development-research-challenges-conferences-and-workshops">
-<h2>Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.11. </span>Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Link to this heading">#</a></h2>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.12. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Gluck and Holtzman (2008) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Using+SPIN+model+checking+for+flight+software+verification&amp;amp;btnG=">Using SPIN model checking for flight software verification</a>, IEEE</p></li>
 <li><p>Zhang, Li, Cheng, and Xue (2018) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&amp;amp;btnG=">Verifying OSEK/VDX automotive applications: A Spin-based model checking approach</a>, Wiley</p></li>
@@ -625,7 +632,7 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 </ul>
 </section>
 <section id="further-reasources">
-<h2>Further Reasources<a class="headerlink" href="#further-reasources" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.13. </span>Further Reasources<a class="headerlink" href="#further-reasources" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators</p></li>
 <li><p>https://en.wikipedia.org/wiki/SPIN_model_checker</p></li>
@@ -636,7 +643,7 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 </ul>
 </section>
 <section id="suggestions-for-future-work-on-this-book">
-<h2>Suggestions for Future Work on this Book<a class="headerlink" href="#suggestions-for-future-work-on-this-book" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.14. </span>Suggestions for Future Work on this Book<a class="headerlink" href="#suggestions-for-future-work-on-this-book" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -676,7 +683,7 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Modal Logic</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Modal Logic</p>
       </div>
     </a>
     <a class="right-next"
@@ -684,7 +691,7 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Epistemic Logic with SMCDEL</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Epistemic Logic with SMCDEL</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -704,28 +711,28 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool">Tool</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example">First Example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-excercise">First Excercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">9.1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">9.2. Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool">9.3. Tool</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">9.3.1. Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example">9.3.2. First Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-excercise">9.3.3. First Excercise</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">Intro Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">The Landscape of Tools</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks">Benchmarks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">Case Studies</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-fault-in-the-needham-schroedor-protocol">Finding the Fault in the Needham-Schroedor Protocol</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-examples">9.4. Intro Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">9.5. The Landscape of Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">9.6. Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks">9.7. Benchmarks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">9.8. Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">9.9. Case Studies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-fault-in-the-needham-schroedor-protocol">9.9.1. Finding the Fault in the Needham-Schroedor Protocol</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">History</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">Current Development, Research Challenges, Conferences and Workshops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reasources">Further Reasources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-this-book">Suggestions for Future Work on this Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">9.10. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">9.11. Current Development, Research Challenges, Conferences and Workshops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">9.12. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reasources">9.13. Further Reasources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-this-book">9.14. Suggestions for Future Work on this Book</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Constraint Programming with MiniZinc &#8212; Logical Foundations of AI</title>
+    <title>5. Constraint Programming with MiniZinc &#8212; Logical Foundations of AI</title>
   
   
   
@@ -61,8 +61,8 @@
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/4-constraint-solving.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="SMT Solving and Z3" href="5-smt-solving.html" />
-    <link rel="prev" title="Logic Programming with Prolog" href="3-logic-programming.html" />
+    <link rel="next" title="7. SMT Solving and Z3" href="5-smt-solving.html" />
+    <link rel="prev" title="4. Logic Programming with Prolog" href="3-logic-programming.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -171,25 +171,25 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">1. Introduction to Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">2. Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">3. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">4. Logic Programming with Prolog</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Constraint Programming with MiniZinc</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">7. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">8. Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">9. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">10. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">11. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">12. Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">13. Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">14. Resources on Puzzles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">15. Hoare Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">16. Syllogistic Logics in Isabelle</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
 <ul class="nav bd-sidenav">
@@ -396,26 +396,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Constraint Programming with MiniZinc</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics">Key Characteristics</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">5. Constraint Programming with MiniZinc</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">5.1. Idea</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">5.1.1. Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics">5.1.2. Key Characteristics</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-example-n-queens-in-minizinc">Working Example: N-Queens in MiniZinc</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory">How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-z3-and-minizinc-concepts">Connecting Z3 and MiniZinc Concepts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications">Example Applications</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#employee-scheduling">Employee Scheduling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classic-cp-problems">Classic CP Problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">5.2. Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-example-n-queens-in-minizinc">5.3. Working Example: N-Queens in MiniZinc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory">5.4. How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-z3-and-minizinc-concepts">5.5. Connecting Z3 and MiniZinc Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications">5.6. Example Applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#employee-scheduling">5.6.1. Employee Scheduling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classic-cp-problems">5.6.2. Classic CP Problems</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-business-example-employee-shift-scheduling-minizinc">Practical Business Example: Employee Shift Scheduling (MiniZinc)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#translating-this-into-a-real-world-written-script">Translating this into a real-world written script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-business-example-employee-shift-scheduling-minizinc">5.7. Practical Business Example: Employee Shift Scheduling (MiniZinc)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#translating-this-into-a-real-world-written-script">5.8. Translating this into a real-world written script</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">6. References</a></li>
 </ul>
 
             </nav>
@@ -429,9 +429,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="constraint-programming-with-minizinc">
-<h1>Constraint Programming with MiniZinc<a class="headerlink" href="#constraint-programming-with-minizinc" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Constraint Programming with MiniZinc<a class="headerlink" href="#constraint-programming-with-minizinc" title="Link to this heading">#</a></h1>
 <section id="idea">
-<h2>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.1. </span>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
 <p>Constraint programming (CP) is a paradigm for identifying feasible solutions from a very large set of candidates by modeling problems in terms of arbitrary constraints. These problems are called constraint satisfaction problems (CSPs) where you provide:</p>
 <ul class="simple">
 <li><p>A set of <strong>decision variables</strong> with their domains</p></li>
@@ -440,7 +440,7 @@ document.write(`
 </ul>
 <p>The constraint solver finds an assignment of values to the variables that satisfies all constraints. CP is based on <strong>feasibility</strong> (finding a feasible solution) rather than optimization, focusing on the constraints and variables rather than the objective function (Rossi, Van Beek, and Walsh, 2006).</p>
 <section id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.1.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>minizinc
 </pre></div>
 </div>
@@ -449,7 +449,7 @@ document.write(`
 </div>
 </section>
 <section id="key-characteristics">
-<h3>Key Characteristics<a class="headerlink" href="#key-characteristics" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.1.2. </span>Key Characteristics<a class="headerlink" href="#key-characteristics" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Feasibility-focused</strong>: CP emphasizes finding solutions that satisfy all constraints, not necessarily optimal ones</p></li>
 <li><p><strong>Declarative</strong>: You describe <em>what</em> constraints must hold, not <em>how</em> to find the solution</p></li>
@@ -461,7 +461,7 @@ document.write(`
 </section>
 </section>
 <section id="basic-theory">
-<h2>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Start in MiniZinc by defining parameters about your domain (width, height, number of colors, etc.)</p></li>
 <li><p>Define your decision variables and their domains. This will be treated as the base case of the overall recursive logic.</p></li>
@@ -496,7 +496,7 @@ output [
 </div>
 </section>
 <section id="working-example-n-queens-in-minizinc">
-<h2>Working Example: N-Queens in MiniZinc<a class="headerlink" href="#working-example-n-queens-in-minizinc" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.3. </span>Working Example: N-Queens in MiniZinc<a class="headerlink" href="#working-example-n-queens-in-minizinc" title="Link to this heading">#</a></h2>
 <p>A minimal, runnable model is included in this repo at <code class="docutils literal notranslate"><span class="pre">src/minizinc/nqueens/nqueens.mzn</span></code>. You can run it directly without any <code class="docutils literal notranslate"><span class="pre">.dzn</span></code> file.</p>
 <div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span>include &quot;globals.mzn&quot;;
 
@@ -523,7 +523,7 @@ output [
 <p>This implementation mirrors the canonical N-Queens problem description in survey work (Bell and Stevens, 2009).</p>
 </section>
 <section id="how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory">
-<h2>How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory<a class="headerlink" href="#how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.4. </span>How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory<a class="headerlink" href="#how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Start at the base case and work backwards</p></li>
 <li><p>Identify the recursive structure by breaking the logic into smaller subproblems</p></li>
@@ -531,17 +531,17 @@ output [
 </ol>
 </section>
 <section id="connecting-z3-and-minizinc-concepts">
-<h2>Connecting Z3 and MiniZinc Concepts<a class="headerlink" href="#connecting-z3-and-minizinc-concepts" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.5. </span>Connecting Z3 and MiniZinc Concepts<a class="headerlink" href="#connecting-z3-and-minizinc-concepts" title="Link to this heading">#</a></h2>
 <p>Briefly: MiniZinc is a high-level modeling language for constraint satisfaction and optimization with rich global constraints and multiple backend solvers; Z3 is an SMT solver aimed at logical theories and verification. If you’re building schedules, allocations, or routing, prefer MiniZinc; for program verification or bit-vector logic, prefer Z3 (de Moura and Bjørner, 2008).</p>
 </section>
 <section id="example-applications">
-<h2>Example Applications<a class="headerlink" href="#example-applications" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.6. </span>Example Applications<a class="headerlink" href="#example-applications" title="Link to this heading">#</a></h2>
 <section id="employee-scheduling">
-<h3>Employee Scheduling<a class="headerlink" href="#employee-scheduling" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.6.1. </span>Employee Scheduling<a class="headerlink" href="#employee-scheduling" title="Link to this heading">#</a></h3>
 <p>A classic CP problem: A company runs three 8-hour shifts per day and assigns three of its four employees to different shifts each day, while giving the fourth the day off. Even with just 4 employees, there are 24 possible assignments per day, leading to 24^7 ≈ 4.5 billion possible weekly schedules (Perron and Furnon, 2019).</p>
 </section>
 <section id="classic-cp-problems">
-<h3>Classic CP Problems<a class="headerlink" href="#classic-cp-problems" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.6.2. </span>Classic CP Problems<a class="headerlink" href="#classic-cp-problems" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>N-Queens Problem</strong></p></li>
 <li><p><strong>Cryptarithmetic Puzzles</strong></p></li>
@@ -551,7 +551,7 @@ output [
 </section>
 </section>
 <section id="practical-business-example-employee-shift-scheduling-minizinc">
-<h2>Practical Business Example: Employee Shift Scheduling (MiniZinc)<a class="headerlink" href="#practical-business-example-employee-shift-scheduling-minizinc" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.7. </span>Practical Business Example: Employee Shift Scheduling (MiniZinc)<a class="headerlink" href="#practical-business-example-employee-shift-scheduling-minizinc" title="Link to this heading">#</a></h2>
 <p>A runnable scheduling model lives at:
 <code class="docutils literal notranslate"><span class="pre">src/minizinc/employee_scheduling/shift_scheduling.mzn</span></code>.</p>
 <p>This modeling structure follows both MiniZinc and OR-Tools scheduling examples (Nethercote et al., 2007; Perron and Furnon, 2019).</p>
@@ -659,7 +659,7 @@ output [
 </div>
 </section>
 <section id="translating-this-into-a-real-world-written-script">
-<h2>Translating this into a real-world written script<a class="headerlink" href="#translating-this-into-a-real-world-written-script" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.8. </span>Translating this into a real-world written script<a class="headerlink" href="#translating-this-into-a-real-world-written-script" title="Link to this heading">#</a></h2>
 <p>With the Python MiniZinc API, you can embed a model as a string and feed parameters directly:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">minizinc</span>
 
@@ -750,7 +750,7 @@ output [
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="references">
-<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">6. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
 <p>Nethercote et al. (2007)
 <a class="reference external" href="https://scholar.google.com/scholar?q=MiniZinc%3A+Towards+a+Standard+CP+Modelling+Language">MiniZinc: Towards a Standard CP Modelling Language</a>, CP 2007</p>
 <p>Perron and Furnon (2019)
@@ -799,7 +799,7 @@ output [
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Logic Programming with Prolog</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Logic Programming with Prolog</p>
       </div>
     </a>
     <a class="right-next"
@@ -807,7 +807,7 @@ output [
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">SMT Solving and Z3</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>SMT Solving and Z3</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -827,26 +827,26 @@ output [
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Constraint Programming with MiniZinc</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics">Key Characteristics</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">5. Constraint Programming with MiniZinc</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">5.1. Idea</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">5.1.1. Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics">5.1.2. Key Characteristics</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-example-n-queens-in-minizinc">Working Example: N-Queens in MiniZinc</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory">How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-z3-and-minizinc-concepts">Connecting Z3 and MiniZinc Concepts</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications">Example Applications</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#employee-scheduling">Employee Scheduling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classic-cp-problems">Classic CP Problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">5.2. Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-example-n-queens-in-minizinc">5.3. Working Example: N-Queens in MiniZinc</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory">5.4. How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-z3-and-minizinc-concepts">5.5. Connecting Z3 and MiniZinc Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications">5.6. Example Applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#employee-scheduling">5.6.1. Employee Scheduling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classic-cp-problems">5.6.2. Classic CP Problems</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-business-example-employee-shift-scheduling-minizinc">Practical Business Example: Employee Shift Scheduling (MiniZinc)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#translating-this-into-a-real-world-written-script">Translating this into a real-world written script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-business-example-employee-shift-scheduling-minizinc">5.7. Practical Business Example: Employee Shift Scheduling (MiniZinc)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#translating-this-into-a-real-world-written-script">5.8. Translating this into a real-world written script</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">6. References</a></li>
 </ul>
 
   </nav></div>

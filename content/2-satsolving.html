@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>SAT solving with MiniSat &#8212; Logical Foundations of AI</title>
+    <title>3. SAT solving with MiniSat &#8212; Logical Foundations of AI</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -63,8 +63,8 @@
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/2-satsolving.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Logic Programming with Prolog" href="3-logic-programming.html" />
-    <link rel="prev" title="Propositional Logic" href="1-propositional-logic.html" />
+    <link rel="next" title="4. Logic Programming with Prolog" href="3-logic-programming.html" />
+    <link rel="prev" title="2. Propositional Logic" href="1-propositional-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,24 +173,25 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">1. Introduction to Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">2. Propositional Logic</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">4. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">5. Constraint Programming with MiniZinc</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">7. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">8. Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">9. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">10. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">11. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">12. Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">13. Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">14. Resources on Puzzles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">15. Hoare Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">16. Syllogistic Logics in Isabelle</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
 <ul class="nav bd-sidenav">
@@ -397,41 +398,41 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory-sat">Basic Theory: SAT</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-minisat">Tool: MiniSat</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples">Introductory Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sat-solvers">SAT solvers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">The Algorithm</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">Resolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">Davis–Putnam algorithm</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#davis-putnam-algorithm-example">Davis-Putnam Algorithm example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">3.1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory-sat">3.2. Basic Theory: SAT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-minisat">3.3. Tool: MiniSat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples">3.4. Introductory Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sat-solvers">3.5. SAT solvers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">3.6. The Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">3.6.1. Resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">3.6.2. Davis–Putnam algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#davis-putnam-algorithm-example">3.6.2.1. Davis-Putnam Algorithm example</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnamlogemannloveland-dpll-algorithm">Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning">Conflict-driven Clause Learning</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-propagation">Unit Propagation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implication-graphs">Implication Graphs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnamlogemannloveland-dpll-algorithm">3.6.3. Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning">3.6.4. Conflict-driven Clause Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-propagation">3.6.4.1. Unit Propagation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implication-graphs">3.6.4.2. Implication Graphs</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dpll-vs-cdcl-example">DPLL vs CDCL example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dpll-vs-cdcl-example">3.6.5. DPLL vs CDCL example</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-approaches">Parallel Approaches</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio">Portfolio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-and-conquer">Divide-and-conquer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-approaches">3.7. Parallel Approaches</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio">3.7.1. Portfolio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-and-conquer">3.7.2. Divide-and-conquer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#established-industrial-applications">Established Industrial Applications</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-generative-ai">Use of Generative AI</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-affects-sat-in-industry">How this affects SAT in industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">3.8. Applications in Industry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#established-industrial-applications">3.8.1. Established Industrial Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-generative-ai">3.8.2. Use of Generative AI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-affects-sat-in-industry">3.8.3. How this affects SAT in industry</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">Case Studies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#early-work">Early Work</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-developments">Modern Developments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">3.9. Case Studies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">3.10. References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#early-work">3.10.1. Early Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-developments">3.10.2. Modern Developments</a></li>
 </ul>
 </li>
 </ul>
@@ -446,14 +447,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sat-solving-with-minisat">
-<h1>SAT solving with MiniSat<a class="headerlink" href="#sat-solving-with-minisat" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">3. </span>SAT solving with MiniSat<a class="headerlink" href="#sat-solving-with-minisat" title="Link to this heading">#</a></h1>
 <p>Author: Jake Triester</p>
 <section id="idea">
-<h2>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.1. </span>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
 <p>A theory in propositional logic can be seen as a set of equations in variables that range over truth values <span class="math notranslate nohighlight">\(\{0,1\}\)</span>. A SAT-solver is a software tool that solves such equations. Even though SAT is NP-complete, modern SAT-solvers can solve propositional theories with millions of variables and tens of millions of clauses (reference?). And, as we know from the <a class="reference external" href="https://en.wikipedia.org/wiki/Cook%E2%80%93Levin_theorem">Cook-Levin theorem</a> every NP-problem can be encoded in SAT.</p>
 </section>
 <section id="basic-theory-sat">
-<h2>Basic Theory: SAT<a class="headerlink" href="#basic-theory-sat" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.2. </span>Basic Theory: SAT<a class="headerlink" href="#basic-theory-sat" title="Link to this heading">#</a></h2>
 <p>Propositional Logic.</p>
 <p>Informal Definition of satisfiability:
 SAT takes a formula and finds a satifying valuation (model).</p>
@@ -513,7 +514,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <p><strong>Exercise:</strong> Estimate the number of variables and clauses you need to encode a 9x9 Sudoku.</p>
 </section>
 <section id="tool-minisat">
-<h2>Tool: MiniSat<a class="headerlink" href="#tool-minisat" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.3. </span>Tool: MiniSat<a class="headerlink" href="#tool-minisat" title="Link to this heading">#</a></h2>
 <p>Here is what I did for installation on MacOs.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">minisat</span>
 <span class="n">echo</span> <span class="s2">&quot;p cnf 2 2</span>
@@ -554,12 +555,12 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <p><strong>Homework:</strong> Consider a Boolean circuit: (A ∧ B) ∨ (C ∧ ¬D) = True with the additional constraint that exactly 2 of {A,B,C,D} are true. Write this as a <code class="docutils literal notranslate"><span class="pre">cnf</span></code> specification and solve it with MiniSat. Explain your encoding and the solution in detail.</p>
 </section>
 <section id="introductory-examples">
-<h2>Introductory Examples<a class="headerlink" href="#introductory-examples" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.4. </span>Introductory Examples<a class="headerlink" href="#introductory-examples" title="Link to this heading">#</a></h2>
 <p>How can we one solve a regular Sudoku with MiniSat?</p>
 <p>For an answer see <a class="reference external" href="https://users.aalto.fi/~tjunttil/2020-DP-AUT/notes-sat/solving.html#solving-problems-with-cnf-sat-solvers-the-sudoku-example">Solving problems with CNF SAT solvers: The Sudoku example</a>.</p>
 </section>
 <section id="sat-solvers">
-<h2>SAT solvers<a class="headerlink" href="#sat-solvers" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.5. </span>SAT solvers<a class="headerlink" href="#sat-solvers" title="Link to this heading">#</a></h2>
 <p>Many companies such as Intel have their own SAT solvers, but the cutting edge of SAT-solvers are widely considered to the open source solvers such as:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://minisat.se/">MiniSat</a> - <a class="reference external" href="https://github.com/niklasso/minisat">&#64;Github</a> The reference implementation</p></li>
@@ -571,9 +572,9 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <p>The annual <a class="reference external" href="http://www.satcompetition.org/">SAT Competition</a> tracks the current best performers.</p>
 </section>
 <section id="the-algorithm">
-<h2>The Algorithm<a class="headerlink" href="#the-algorithm" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.6. </span>The Algorithm<a class="headerlink" href="#the-algorithm" title="Link to this heading">#</a></h2>
 <section id="resolution">
-<h3>Resolution<a class="headerlink" href="#resolution" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.6.1. </span>Resolution<a class="headerlink" href="#resolution" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Resolution_(logic)">Resolution</a> has only one inference rule:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -581,7 +582,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 \]</div>
 </section>
 <section id="davisputnam-algorithm">
-<h3>Davis–Putnam algorithm<a class="headerlink" href="#davisputnam-algorithm" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.6.2. </span>Davis–Putnam algorithm<a class="headerlink" href="#davisputnam-algorithm" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Davis%E2%80%93Putnam_algorithm">Davis–Putnam algorithm</a> uses resolution but has some additional rules to guarantee termination.</p>
 <ol class="arabic simple">
 <li><p>Select a variable</p></li>
@@ -592,7 +593,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <li><p>If the empty clause is derived, then UNSATISFIABLE, else SATISFIABLE.</p></li>
 </ol>
 <section id="davis-putnam-algorithm-example">
-<h4>Davis-Putnam Algorithm example<a class="headerlink" href="#davis-putnam-algorithm-example" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">3.6.2.1. </span>Davis-Putnam Algorithm example<a class="headerlink" href="#davis-putnam-algorithm-example" title="Link to this heading">#</a></h4>
 <p>Given the following formula, we will use the Davis-Putnam algorithm to solve it:</p>
 <div class="math notranslate nohighlight">
 \[(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee \neg C)\]</div>
@@ -609,7 +610,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 </section>
 </section>
 <section id="davisputnamlogemannloveland-dpll-algorithm">
-<h3>Davis–Putnam–Logemann–Loveland (DPLL) algorithm<a class="headerlink" href="#davisputnamlogemannloveland-dpll-algorithm" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.6.3. </span>Davis–Putnam–Logemann–Loveland (DPLL) algorithm<a class="headerlink" href="#davisputnamlogemannloveland-dpll-algorithm" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/DPLL_algorithm">Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></p>
 <p>DP can generate many new clauses. For example in</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(a ∨ x₁) ∧ (a ∨ x₂) ∧ (a ∨ x₃) ∧ (a ∨ x₄) ∧
@@ -639,7 +640,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <p><strong>Example Formula:</strong> <code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">∨</span> <span class="pre">b</span> <span class="pre">∨</span> <span class="pre">c)</span> <span class="pre">∧</span> <span class="pre">(¬a</span> <span class="pre">∨</span> <span class="pre">d)</span> <span class="pre">∧</span> <span class="pre">(¬b</span> <span class="pre">∨</span> <span class="pre">d)</span> <span class="pre">∧</span> <span class="pre">(¬c</span> <span class="pre">∨</span> <span class="pre">d)</span> <span class="pre">∧</span> <span class="pre">(¬d)</span></code></p>
 </section>
 <section id="conflict-driven-clause-learning">
-<h3>Conflict-driven Clause Learning<a class="headerlink" href="#conflict-driven-clause-learning" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.6.4. </span>Conflict-driven Clause Learning<a class="headerlink" href="#conflict-driven-clause-learning" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Conflict-driven_clause_learning">Conflict-driven Clause Learning</a>
 (CDCL) is another algorithm for solving SAT problems that is similar to DPLL but the main difference is that CDCL does not back-jump chronologically. CDCL was proposed by Marques-Silva and Karem A. Sakallah (1996, 1999) and Bayardo and Schrag (1997). The algorithm is as follows:</p>
 <ol class="arabic simple">
@@ -653,14 +654,14 @@ c. Backtrack non-chronologically (backjump) to the decision level where the firs
 <li><p>If there was no conflict, start from step 1 on a new variable until every variable has been assigned.</p></li>
 </ol>
 <section id="unit-propagation">
-<h4>Unit Propagation<a class="headerlink" href="#unit-propagation" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">3.6.4.1. </span>Unit Propagation<a class="headerlink" href="#unit-propagation" title="Link to this heading">#</a></h4>
 <p>Unit propagation is a fairly simply concept. All that it says is that if we have a clause where all but one of its literals is evaluated as False, then the last literal must be True in order for the clause to be True. For example, given the following clause:</p>
 <div class="math notranslate nohighlight">
 \[(A\vee B\vee C)\]</div>
 <p>If we have <span class="math notranslate nohighlight">\(A =\)</span> False and <span class="math notranslate nohighlight">\(B =\)</span> False, then <span class="math notranslate nohighlight">\(C\)</span> must be True in order for our clause to be True.</p>
 </section>
 <section id="implication-graphs">
-<h4>Implication Graphs<a class="headerlink" href="#implication-graphs" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">3.6.4.2. </span>Implication Graphs<a class="headerlink" href="#implication-graphs" title="Link to this heading">#</a></h4>
 <p>An implication graph is something that is drawn in step 3 of the CDCL algorithm, and it involves using your arbitrary choices, unit propagation, and implications to determine a satisfiable answer to an algorithm. To show how implication graphs work (and how the entire algorithm works), we will use this example formula:</p>
 <div class="math notranslate nohighlight">
 \[(\neg A\vee B) \wedge (\neg B\vee C) \wedge (\neg C \vee A) \wedge (\neg A\vee \neg B)\]</div>
@@ -678,7 +679,7 @@ c. Backtrack non-chronologically (backjump) to the decision level where the firs
 </section>
 </section>
 <section id="dpll-vs-cdcl-example">
-<h3>DPLL vs CDCL example<a class="headerlink" href="#dpll-vs-cdcl-example" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.6.5. </span>DPLL vs CDCL example<a class="headerlink" href="#dpll-vs-cdcl-example" title="Link to this heading">#</a></h3>
 <p>Here, we will solve an example formula using both DPLL and CDCL, and determine which algorithm is better (more efficient) and why. We will start with this formula:</p>
 <div class="math notranslate nohighlight">
 \[(A \vee B) \wedge (A \vee \neg B) \wedge (\neg A \vee C) \wedge (\neg A \vee \neg C) \wedge (\neg B \vee \neg C)\]</div>
@@ -688,36 +689,36 @@ c. Backtrack non-chronologically (backjump) to the decision level where the firs
 </section>
 </section>
 <section id="parallel-approaches">
-<h2>Parallel Approaches<a class="headerlink" href="#parallel-approaches" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.7. </span>Parallel Approaches<a class="headerlink" href="#parallel-approaches" title="Link to this heading">#</a></h2>
 <p>Some SAT solvers use multiple processors at the same time to speed up problem solving. There are 2 different types of strategies tha modern parallel SAT solvers rely on.</p>
 <section id="portfolio">
-<h3>Portfolio<a class="headerlink" href="#portfolio" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.7.1. </span>Portfolio<a class="headerlink" href="#portfolio" title="Link to this heading">#</a></h3>
 <p>The portfolio parallel approach running many solvers in parallel on the same problem. Once one of the solvers finds a solution, they all can stop. This reduces the time needed to solve because it is trying multiple at once. Many portfolio approaches implement random seeds to decrease the amount of duplicate work that the solvers are doing. Depending on the underlying algorithm behind the SAT solvers, it is possible that the different portfolios could share learned clauses amongst each other, which will decrease time taken to solve even more. A few examples of portfolio parallel SAT solvers are PPfolio and HordeSat.</p>
 </section>
 <section id="divide-and-conquer">
-<h3>Divide-and-conquer<a class="headerlink" href="#divide-and-conquer" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.7.2. </span>Divide-and-conquer<a class="headerlink" href="#divide-and-conquer" title="Link to this heading">#</a></h3>
 <p>A different parallel approach involves spitting the problem into smaller sub-problems, and then running each of those on a different processor. This can cause some processors to finish their problems much earlier than others because different sub-problems can vary in difficulty, which is suboptimal. One very benefical advance is the Cube-and-Conquer approach, which uses two phases. The first phase is the cube part where a solver “looks ahead” and breaks the problem into smaller “cubes.” Phase 2 is the conquer f=part where each cube is solved using CDCL. Because of the way the cubes are calculated, if one cube is satisfiable, then the whole problem is satisfiable. One example divide-and-conquer that uses the cube-and-conquer approach is Treengeling.</p>
 </section>
 </section>
 <section id="applications-in-industry">
-<h2>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.8. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
 <p>SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language. These applications are central to many industrial workflows. Historically, they have moved the field from theoretical curiosity (like NP-completeness) to large-scale problem solving. Today, solvers can easily handle problems with millions of variables and tens of millions of clauses.</p>
 <section id="established-industrial-applications">
-<h3>Established Industrial Applications<a class="headerlink" href="#established-industrial-applications" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.8.1. </span>Established Industrial Applications<a class="headerlink" href="#established-industrial-applications" title="Link to this heading">#</a></h3>
 <p>One main area where SAT technology is heavily used is hardware verification. It is used to verify the pipelines of GPUs and CPUs through property checking. SMT solvers (a descendant of SAT) are especially used in hardware verification because they are able to combine the core principles of SAT with theory solvers for arithmetic and arrays.</p>
 <p>Similarly, SAT solvers are also used for software verification and program analysis. They can either provide counterexamples when a property fails or proofs for satisfiability, which is especially helpful when debugging.</p>
 <p>SAT solvers are also used for package and dependency solving and optimization. By translating domain constraints into CNF, the solvers can be used for dependency resolution (package managers), combinatorial optimization (scheduling), or other large combinatorial tasks.</p>
 <p>While not necessarily an application of use in industry, there is an annual SAT competition that is used to track the state of the art and can help lead to adoption in industry. This competition is beneficial because it leads people to find new algorithms and heuristics than can be used to improve the state of the art.</p>
 </section>
 <section id="use-of-generative-ai">
-<h3>Use of Generative AI<a class="headerlink" href="#use-of-generative-ai" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.8.2. </span>Use of Generative AI<a class="headerlink" href="#use-of-generative-ai" title="Link to this heading">#</a></h3>
 <p>As the use of generative AI becomes more and more integrated into every industry, SAT solvers are no exception. Generative AI (LLMs) are increasingly being used to augment SAT solvers rather than replace them completely. There are a couple of different examples that show this.</p>
 <p>First, generative AI models are being used for instance generation. This is beneficial because it is used to generate SAT instaances that mimic real-world problems, which can help to study the behavior of the solvers and see how they can be improved. One example of this is G2SAT, which makes CNF formulas into bipartite graphs and learns to generate realistic SAT instances.</p>
 <p>Another example is using solvers to check proofs that are created by LLMs. For example, an LLM will propose a proof, and the solvers will check, reject, or give feedback on these proposed proofs. This is more with SMT solvers than SAT due to their proof checking abilities, but as SMT is a descendant of SAT, it has been included in the section.</p>
 <p>Solvers are also being used to reduce hallucinations and increase reliability in certain AI models. Some models, including ones from Amazon have integrated “automated reasoning checks” to constrain generative models (argument checking, verification checks on outputs of the model, rule enforcement) to improve trustworthiness.</p>
 </section>
 <section id="how-this-affects-sat-in-industry">
-<h3>How this affects SAT in industry<a class="headerlink" href="#how-this-affects-sat-in-industry" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.8.3. </span>How this affects SAT in industry<a class="headerlink" href="#how-this-affects-sat-in-industry" title="Link to this heading">#</a></h3>
 <p>Hybrid workflows are becoming much more common in industry. This means that generative AI models are proposing something, and SAT solvers are used to provide guarantees of truthfulness or unsatisfiability. This is beneficial because it is utilizing the creativity of generative AI, while confirming correctness through the rigidity of SAT solvers.</p>
 <!-- Typical examples are hardware verification (Intel, AMD, Apple, etc) and dependency resolution in software package installers (Debian Linux).
 
@@ -727,13 +728,13 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 </section>
 </section>
 <section id="case-studies">
-<h2>Case Studies<a class="headerlink" href="#case-studies" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.9. </span>Case Studies<a class="headerlink" href="#case-studies" title="Link to this heading">#</a></h2>
 <p>2x2 sudoku from above, 4x4 sudoku added soon</p>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.10. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <section id="early-work">
-<h3>Early Work<a class="headerlink" href="#early-work" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.10.1. </span>Early Work<a class="headerlink" href="#early-work" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Davis, Martin; Putnam, Hilary (1960). <a class="reference external" href="https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory">A Computing Procedure for Quantification Theory</a>. Journal of the ACM. 7 (3): 201–215.</p>
 <ul>
@@ -763,7 +764,7 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 </ul>
 </section>
 <section id="modern-developments">
-<h3>Modern Developments<a class="headerlink" href="#modern-developments" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">3.10.2. </span>Modern Developments<a class="headerlink" href="#modern-developments" title="Link to this heading">#</a></h3>
 <p>… this needs more work … here are some references I found …</p>
 <ul class="simple">
 <li><p>Alouneh, S., Abed, S. E., Al Shayeji, M. H., &amp; Mesleh, R. (2019). A comprehensive study and analysis on SAT-solvers: advances, usages and achievements. Artificial Intelligence Review, 52(4), 2575-2601.</p></li>
@@ -811,7 +812,7 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Propositional Logic</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Propositional Logic</p>
       </div>
     </a>
     <a class="right-next"
@@ -819,7 +820,7 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Logic Programming with Prolog</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Logic Programming with Prolog</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -839,41 +840,41 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory-sat">Basic Theory: SAT</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-minisat">Tool: MiniSat</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples">Introductory Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sat-solvers">SAT solvers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">The Algorithm</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">Resolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">Davis–Putnam algorithm</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#davis-putnam-algorithm-example">Davis-Putnam Algorithm example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">3.1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory-sat">3.2. Basic Theory: SAT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-minisat">3.3. Tool: MiniSat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples">3.4. Introductory Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sat-solvers">3.5. SAT solvers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">3.6. The Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">3.6.1. Resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">3.6.2. Davis–Putnam algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#davis-putnam-algorithm-example">3.6.2.1. Davis-Putnam Algorithm example</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnamlogemannloveland-dpll-algorithm">Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning">Conflict-driven Clause Learning</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-propagation">Unit Propagation</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implication-graphs">Implication Graphs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnamlogemannloveland-dpll-algorithm">3.6.3. Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning">3.6.4. Conflict-driven Clause Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-propagation">3.6.4.1. Unit Propagation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implication-graphs">3.6.4.2. Implication Graphs</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dpll-vs-cdcl-example">DPLL vs CDCL example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dpll-vs-cdcl-example">3.6.5. DPLL vs CDCL example</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-approaches">Parallel Approaches</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio">Portfolio</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-and-conquer">Divide-and-conquer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-approaches">3.7. Parallel Approaches</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio">3.7.1. Portfolio</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-and-conquer">3.7.2. Divide-and-conquer</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#established-industrial-applications">Established Industrial Applications</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-generative-ai">Use of Generative AI</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-affects-sat-in-industry">How this affects SAT in industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">3.8. Applications in Industry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#established-industrial-applications">3.8.1. Established Industrial Applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-generative-ai">3.8.2. Use of Generative AI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-affects-sat-in-industry">3.8.3. How this affects SAT in industry</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">Case Studies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#early-work">Early Work</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-developments">Modern Developments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">3.9. Case Studies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">3.10. References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#early-work">3.10.1. Early Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-developments">3.10.2. Modern Developments</a></li>
 </ul>
 </li>
 </ul>
