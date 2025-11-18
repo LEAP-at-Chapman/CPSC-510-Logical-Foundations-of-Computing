@@ -28,12 +28,48 @@ $ \forall x $ and $ \exists x$ where x is a variable/individual element
 
 In higher order logic, we extend this to $ \forall f(x) $ and $ \exists f(x) $, where x is a function that takes x as an input
 
-### 10.2.2 (Explicit) Type System
-WIP
+These are the principal features which are added to first-order logic in order to obtain this formulation of higher-order logic:<sup><a href="#andrews2002">[3]</a></sup>
 
-<!-- – Andrews (2002) Sections 1–2 (“Type theory basics”)
+  1. Variables of arbitrarily high orders
+
+  2. Quantification on variables of all types
+
+  3. Comprehension Axioms
+
+  4. Axioms of Extensionality
+
+### 10.2.2 (Explicit) Type System
+
+<!-- – Andrews (2002) Sections 5 (“Type theory basics”)
 – Church (1940) A Formulation of the Simple Theory of Types 
 Church Text is more relevant to history section-->
+
+*Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> provides us with $Q_0$, which is a formalization of Church's simple theory of types<sup><a href="#Church_TypeTheory">[10]</a></sup> and is a typed higher order logic. The semantics of $Q_0$ describe how types denote sets, how function types denote function spaces, and how terms receive meaning under assignments.
+
+$(\alpha, \beta, \gamma, etc )$ are syntactical variables that range over type symbols, defined inductively:
+  - $\iota$ is a type symbol for individuals
+  - $o$ is a type symbol for truth values
+  - If $\alpha$ and $\beta$ are types symbols, then ($\alpha\beta$) is a type symbol denoting the type of functions from elements of type $\beta$ to elements of type $\alpha$
+
+The primitive symbols of $Q_0$ are:
+  - Improper symbols include  `[ ]` and $\lambda$
+
+  - For each type symbol $\alpha$, a denumerable list of variables of type $\alpha$:
+    $f_\alpha, g_\alpha, h_\alpha \cdots x_\alpha, y_\alpha, z_\alpha, f^1_\alpha, g^1_\alpha \cdots z^1_\alpha, f^2_\alpha \cdots$
+
+  - Logical constants: $Q_{((o\alpha)\alpha)}$ and $u_{(\iota(o\iota))}$ where:
+    - $Q_{((o\alpha)\alpha)}$ is the equality predicate at type $\alpha$, which is a function that takes 2 $\alpha$ arguments and returns a truth value
+    - $u_{(\iota(o\iota))}$ is the description/selection operator (also known as the Hilbert $\epsilon$-operator), which returns an element of type $\iota$ that satisfies a predicate $p : \iota \to o$ if one exists
+
+  - Additional and optional nonlogical constants of various types (depending on the formalized language)
+
+A wff$_\alpha$ (a well-formed expression of type $\alpha$) is defined inductively as follows:
+
+  - Any primitive variables or constant of type $\alpha$ is a wff$_\alpha$
+
+  - If $A_{\alpha\beta}$ is a wff of function type ($\beta \to \alpha$) and $B_\beta$ is a wff$_\beta$, then [$A_{\alpha\beta} B_\beta$] is a wff$_\alpha$ (function application).
+
+  - If $A_\alpha$ is a wff and $x_\beta$ is a variable, then $\lambda x_\beta A_\alpha$ is a wff of type $\alpha\beta$ ($\lambda$-abstraction; see Section 10.2.3)
 
 ### 10.2.3 Lambda Abstraction
 WIP
@@ -323,15 +359,20 @@ https://openreview.net/forum?id=IUikebJ1Bf0
 
 https://github.com/xqyww123/Isa-Mini -->
 
+<!-- no code artifact for this paper
+
 trying to find where the actual code etc is?
 
 According to the authors:
 *the REPL infrastructure, MiniLang interpreter, translator,
 training data, machine learning framework, Sledgehammer,
 and parameters of the finetuned models will be open-sourced
-and are present in the submitted supplementary materials*
+and are present in the submitted supplementary materials* -->
 
 <!-- need to talk to Kurz about finding another example; the binary analysis one seems pretty cool -->
+<!-- 
+
+DEPRECATED SINCE THIS IS THE BINARY ANALYSIS TOOL
 
 https://gitlab.surrey.ac.uk/isabil/isabil
 
@@ -350,7 +391,7 @@ For example, the pathname for my AFP is:
 `/Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys`
 
 My command is then:
-`isabelle components -u /Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys`
+`isabelle components -u /Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys` -->
 
 ## 10.10 History
 
