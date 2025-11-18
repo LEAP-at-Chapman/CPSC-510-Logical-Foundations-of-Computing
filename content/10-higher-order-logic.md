@@ -22,8 +22,21 @@ Higher-order logic (HOL) extends the capabilities of first-order logic (FOL) by 
 
 <!-- basic setup - need to add much more but this is just basics/scaffolding -->
 
-### 10.2.1 First Order Logic 
+### 10.2.1 From First Order Logic to HOL
+
 WIP
+<!-- 
+	•	HOL is typed
+	•	Functions are first-class
+	•	Quantifiers range over all types
+	•	λ-abstraction builds function terms
+	•	Application is part of the syntax
+	•	Equality at every type
+   -->
+
+<!-- Andrews Ch 1-2, https://isabelle.in.tum.de/library/HOL/HOL/document.pdf section 2,  -->
+
+
 $ \forall x $ and $ \exists x$ where x is a variable/individual element
 
 In higher order logic, we extend this to $ \forall f(x) $ and $ \exists f(x) $, where x is a function that takes x as an input
@@ -38,30 +51,40 @@ These are the principal features which are added to first-order logic in order t
 
   4. Axioms of Extensionality
 
+conclusion line of how HOL = typed + $\lambda$ + functional programming
+
 ### 10.2.2 (Explicit) Type System
 
 <!-- – Andrews (2002) Sections 5 (“Type theory basics”)
 – Church (1940) A Formulation of the Simple Theory of Types 
 Church Text is more relevant to history section-->
 
-*Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> provides us with $Q_0$, which is a formalization of Church's simple theory of types<sup><a href="#Church_TypeTheory">[10]</a></sup> and is a typed higher order logic. The semantics of $Q_0$ describe how types denote sets, how function types denote function spaces, and how terms receive meaning under assignments.
+*Andrews, 2002 Section 5.1*<sup><a href="#andrews2002">[3]</a></sup> provides us with $Q_0$, which is a formalization of Church's simple theory of types<sup><a href="#Church_TypeTheory">[10]</a></sup> and is a typed higher order logic. The semantics of $Q_0$ describe how types denote sets, how function types denote function spaces, and how terms receive meaning under assignments. 
 
-$(\alpha, \beta, \gamma, etc )$ are syntactical variables that range over type symbols, defined inductively:
+This section introduces the purely syntactic component of simple type theory:
+the formation of types, variables, primitive symbols, and well-formed expressions.
+
+**Type Formation Rules:**
+
+$(\alpha, \beta, \gamma, \ldots )$ are syntactical variables that range over type symbols, defined inductively:
   - $\iota$ is a type symbol for individuals
   - $o$ is a type symbol for truth values
   - If $\alpha$ and $\beta$ are types symbols, then ($\alpha\beta$) is a type symbol denoting the type of functions from elements of type $\beta$ to elements of type $\alpha$
 
-The primitive symbols of $Q_0$ are:
-  - Improper symbols include  `[ ]` and $\lambda$
+**Variables Indexed by Type:**
 
   - For each type symbol $\alpha$, a denumerable list of variables of type $\alpha$:
-    $f_\alpha, g_\alpha, h_\alpha \cdots x_\alpha, y_\alpha, z_\alpha, f^1_\alpha, g^1_\alpha \cdots z^1_\alpha, f^2_\alpha \cdots$
+    $f_\alpha, g_\alpha, h_\alpha \ldots x_\alpha, y_\alpha, z_\alpha, f^1_\alpha, g^1_\alpha \ldots z^1_\alpha, f^2_\alpha \ldots$
 
-  - Logical constants: $Q_{((o\alpha)\alpha)}$ and $u_{(\iota(o\iota))}$ where:
-    - $Q_{((o\alpha)\alpha)}$ is the equality predicate at type $\alpha$, which is a function that takes 2 $\alpha$ arguments and returns a truth value
-    - $u_{(\iota(o\iota))}$ is the description/selection operator (also known as the Hilbert $\epsilon$-operator), which returns an element of type $\iota$ that satisfies a predicate $p : \iota \to o$ if one exists
+**Primitive Syntactic Forms (of $Q_0$):**
 
-  - Additional and optional nonlogical constants of various types (depending on the formalized language)
+  - Improper symbols include  [ ] and $\lambda$
+
+**Nonlogical Constants:**
+
+  - Nonlogical constants of various types may be included depending on the particular formalized language
+
+**Formation of Well-Formed Expressions (wff's):**
 
 A wff$_\alpha$ (a well-formed expression of type $\alpha$) is defined inductively as follows:
 
@@ -69,16 +92,60 @@ A wff$_\alpha$ (a well-formed expression of type $\alpha$) is defined inductivel
 
   - If $A_{\alpha\beta}$ is a wff of function type ($\beta \to \alpha$) and $B_\beta$ is a wff$_\beta$, then [$A_{\alpha\beta} B_\beta$] is a wff$_\alpha$ (function application).
 
-  - If $A_\alpha$ is a wff and $x_\beta$ is a variable, then $\lambda x_\beta A_\alpha$ is a wff of type $\alpha\beta$ ($\lambda$-abstraction; see Section 10.2.3)
+  - If $A_\alpha$ is a wff and $x_\beta$ is a variable, then $\lambda x_\beta A_\alpha$ is a wff of type $\alpha\beta$ ($\lambda$-abstraction; see Section 10.2.3).
 
-### 10.2.3 Lambda Abstraction
+### 10.2.3 Lambda Abstraction and Application
+
 WIP
 
 <!-- Read:
 – Paulson, Logic and Computation, ch. 2
 – Nipkow et al., Concrete Semantics, §2.1–2.3 -->
+<!-- 
+	•	syntax of λx. t
+	•	β-reduction
+	•	extensionality axiom (optional mention)
+	•	Isabelle example snippets (%x. t, function application precedence) -->
 
-### 10.2.4 Rules of Inference
+$\lambda$-abstraction is the syntax used to define a function by naming its argument. For example, $\lambda x .\; t$ denotes the function that takes an input x as argument input and returns the expression t as output. In other words, it is the function that maps $x$ to $t$, so $x \mapsto t$. In Isabelle/HOL, $\lambda$-abstraction is written as `%x. t` with a `%` instead of the $\lambda$ symbol
+
+HOL's $\lambda$-abstraction constructs a function. If $x:\alpha$ and $t:\beta$, then $\lambda x .\; t: \alpha \Rightarrow \beta$. 
+(Basically, If $x$ has type $\alpha$ and $t$ has type $\beta$, then $\lambda x .\; t$ has type $\alpha \Rightarrow \beta$). Function application is typed accordingly. If $f:\alpha \Rightarrow \beta$ and $x:\alpha$, then $f x:\beta$. Applying a function of type $\alpha \Rightarrow \beta$ to an argument of type $\alpha$ produces a result of type $\beta$.
+
+<!-- , namely if $x$ has type $\alpha$ and $t$ has type $\beta$, then $\lambda x .\;\; t$ has the function type of $\alpha \Rightarrow \beta$. In terms of the function application, when we formalize how $f \; x$ is typed, (the function with x as an input), if $f$ has a function type of $\alpha \Rightarrow \beta$ and $x$ has a type of $\alpha$, then $f \; x$ has a type of $\beta$. -->
+
+**Andrews uses the notation of $\alpha\beta$, which is equivalent to Isabelle/HOL's notation of $\alpha \Rightarrow \beta$. They both mean the same thing: the type of a function that takes an argument of type $\alpha$ and returns a value of type $\beta$*
+
+$\beta$-reduction semantics stuff here (just add a line or two)
+
+
+### 10.2.4 Logical Constants
+
+WIP
+
+<!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf section 2, Andrews Logical Constants of Q0	•	§51(c): Q_{(αα)o} and u_{(ιo)ι} and the explanations. ￼ -->
+
+<!-- equality: = :: α ⇒ α ⇒ bool
+
+Hilbert choice: ε :: (α ⇒ bool) ⇒ α
+
+standard connectives: ¬, ∧, ∨, ⟶, ↔
+
+quantifiers defined via λ (∀x. P x) -->
+
+Logical constants: $Q_{((o\alpha)\alpha)}$ and $u_{(\iota(o\iota))}$ where:
+  - $Q_{((o\alpha)\alpha)}$ is the equality predicate at type $\alpha$, which is a function that takes 2 $\alpha$ arguments and returns a truth value
+
+  - $u_{(\iota(o\iota))}$ is the description/selection operator (also known as the Hilbert $\epsilon$-operator), which returns an element of type $\iota$ that satisfies a predicate $p : \iota \to o$ if one exists
+
+### 10.2.5 Deductive Core of HOL
+
+WIP
+<!-- 
+	•	HOL’s small axiom set: classical logic, equality, choice
+	•	Isabelle’s kernel uses natural-deduction with λ-calculus + types
+	•	All user-introduced definitions are conservative
+	•	Isabelle proves everything from this core automatically -->
 
 The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system of $\mathcal{w}$-order logic which has all finite order logics as subsystems:
 
@@ -89,7 +156,7 @@ The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system
 *Adapted from Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> using modern logic convention.
 
 
-### 10.2.5 Axiom Schemata
+<!-- ### 10.2.5 Axiom Schemata -->
 
 The axiom schemata of $\mathcal{F}^w$ are:
 
@@ -161,6 +228,8 @@ end
 `imports OTHER_THEORIES` tells it to import another theory; for example, one popular theory to import is Main.thy, which includes support for natural numbers, lists, and basic arithmetic
 
 `begin` is the entry point into the theory body, while `end` is the end point of the theory body
+
+More detailed instructions on setup and initial use can be found in Chapters 1 and 2.1.2 of *Concrete Semantics*<sup><a href="#ConcreteSemantics">[1]</a></sup>
 
 ### 10.3.2 Proof Solving via Sledgehammer
 
@@ -403,7 +472,7 @@ My command is then:
 
 <!-- scaffolding template for now -->
 
-Alonzo Church's work in the 1930s (via $\lambda$-calculus) and Leon Henkin's work in the 1950s (on general models semantics) lay the foundation for higher order logic. From their contributions arose an extension of First Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities
+Alonzo Church's work in the 1930s (via $\lambda$-calculus) and 1940s (via type theory) and Leon Henkin's work in the 1950s (on general models semantics) lay the foundation for higher order logic. From their contributions arose an extension of First Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities
 
 In the 1970s, Robert Milner develops LCF (Logic for Computable Functions) at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evovles into OCaml and Standard ML.
 
@@ -486,6 +555,8 @@ Davis and Putnam (1960) A Computing Procedure for Quantification Theory, Journal
 
 <a id="Paulson_LCF"></a>
 - [11]: Laurence C. Paulson (1987) [Logic and Computation: Interactive Proof with Cambridge LCF](https://assets.cambridge.org/97805213/46320/sample/9780521346320ws.pdf), Cambridge University Press, USA.
+
+https://isabelle.in.tum.de/library/HOL/HOL/document.pdf
 
 
 
