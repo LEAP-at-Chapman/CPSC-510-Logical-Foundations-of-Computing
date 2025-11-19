@@ -35,9 +35,9 @@ It also includes several additional modal operators:
 The tool we will be using to explore temporal logic is called SPIN. It is primarily used to verify multithreaded software. SPIN uses a coding language called promela.
 
 ### Installation
-Link: https://spinroot.com/spin/Man/README.html
+[Link to Install](https://spinroot.com/spin/Man/README.html)
 
-Some examples taken from: https://spinroot.com/courses/summer/
+Some examples taken from [here](https://spinroot.com/courses/summer/)
 
 I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple `sudo apt-get install spin`.
 
@@ -45,14 +45,14 @@ I find it easiest to use Ubuntu or Debian to install it, as it can be done with 
 To test if SPIN works on your machine try run this code:
 
 Note: you will need a C compiler to run SPIN.
-
+```promela
 init {	// file: ex_1a.pml
 		byte i	// initialized to 0 by default
 		do	// loop forever
 		:: i++	// nondisterministic choice, only one option
 		od
 	}
-
+```
 run with `$ spin -u514 -p -l ex_1a.pml`
 
 This should print 514 steps of increasing numbers.
@@ -122,37 +122,37 @@ active proctype B()
 Other Model Checkers:
 1. NuSMV
 
-Link: https://nusmv.fbk.eu/
+[Link](https://nusmv.fbk.eu/)
 
 A version of a model checker called SMV, but using temporal logic. Specifically uses Linear Temporal Logic or Computation Tree Logic. Programs are written in binary decision diagrams, which are data structures that can be used to represent booleans.
 
 2. PRISM
 
-Link: https://www.prismmodelchecker.org/
+[Link](https://www.prismmodelchecker.org/)
 
 PRISM is a probabalistic model checker using its own language, also called PRISM. It is useful for models that are contain probabilities or other randomness.
 
 3. FDR
 
-Link: https://cocotec.io/fdr/
+[Link](https://cocotec.io/fdr/)
 
 A model checker specifically designed for CSP, which itself is a language for describing concurrent systems designed by Tony Hoare. Short for Failure Divergence Refinement.
 
 4. ProB
 
-Link: https://prob.hhu.de/
+[Link](https://prob.hhu.de/)
 
 A model checker for B-Method and Event-B. B is designed to support turning formal specifications into code.
 
 5. Java Pathfinder
 
-Link: https://github.com/javapathfinder
+[Link](https://github.com/javapathfinder)
 
 Model checker specifically designed for Java. It creates its own Java Virtual Machine that runs all possible combinations of paths through a given program.
 
 6. UPPAAL
 
-Link: https://uppaal.org/
+[Link](https://uppaal.org/)
 
 A model checker designed to model systems made of timed automata. Uses a simplified form of Timed TCTL.
 
@@ -162,7 +162,7 @@ When SPIN verifies a system, several steps are taken.
 
 1. The user must describe the system in Promela (Process Meta Language), which is SPINs programming langauage.
 
-2. The statements within this program (which are expressed as Linear-Temporal Logic), are converted into Büchi Automata (https://en.wikipedia.org/wiki/B%C3%BCchi_automaton). These Automata are state machines that accepts or rejects infinite inputs. 
+2. The statements within this program (which are expressed as Linear-Temporal Logic), are converted into [Büchi Automata](https://en.wikipedia.org/wiki/B%C3%BCchi_automaton). These Automata are state machines that accept or rejects infinite inputs. 
 
 3. SPIN generates C source code for a model checker specifically designed to verify the defined system, instead of running the verification itself.
 
@@ -170,7 +170,7 @@ When SPIN verifies a system, several steps are taken.
 
 I looked into benchmarks for SPIN and other model checkers, however at the time of writing, there does not appear to have been many benchmarks of such tools available online.
 
-I found a research paper that declared its intent to create a benchmark of model checkers like SPIN, located at https://spinroot.com/spin/symposia/ws07/Pelanek.pdf. However, at the time of writing, the link contained in the paper (https://anna.fi.muni.cz/models) leads to a 404 error.
+I found a research paper that declared its intent to create a benchmark of model checkers like SPIN, located [here](https://spinroot.com/spin/symposia/ws07/Pelanek.pdf). However, at the time of writing, the link contained in the [paper](https://anna.fi.muni.cz/models) leads to a 404 error.
 
 ## Applications in Industry
 
@@ -202,11 +202,13 @@ These messages are encoded with Public Key Encryption, which is secure but expen
 
 The following is a link to a SPIN program that can be used to find the flaw in the protocol. This program was written by Professor Kurtz.
 
-https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/blob/main/src/Needham-Schroeder/ns.pml
+[Link](https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/blob/main/src/Needham-Schroeder/ns.pml)
 
 A fix was proposed by the person who found this fault. To avoid the attack, the second message should also include Bob's address. Can you explain how this avoids the attack? Try editing the SPIN program to include this fix, does it prevent the attack?
 
 ## History
+
+All information gathered from [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=) by N Rescher and A Urquhart, as well as some additional information taken from the [wiki](https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators) on Temporal Logic.
 
 - 1947: Jerzy Łoś first formalizes a logic with temporal functions.
 
@@ -226,6 +228,8 @@ A fix was proposed by the person who found this fault. To avoid the attack, the 
 * Zhang, Li, Cheng, and Xue (2018) [Verifying OSEK/VDX automotive applications: A Spin-based model checking approach](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=), Wiley
 
 * Alzahrani and Mohammed Yahya (2015) [Model checking web applications](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Model+checking+web+applications+heriot+watt+university&btnG=), Heriot Watt University
+
+* Nicholas Rescher and Alasdair Urquhart (1971) [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=), Springer-Verlag/Wien
 
 ## Further Reasources
 * https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators
