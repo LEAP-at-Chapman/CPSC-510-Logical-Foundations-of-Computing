@@ -142,7 +142,7 @@ The software tools of Chapters [2](./2-satsolving.md), [4](./4-constraint-solvin
 
 **Remark:** Satisfiability solvers are now used everywhere in software engineering, very much like numerical methods in more traditional areas of engineering. This is a fairly recent development: Only since the beginning of the 21st century, Boole's 1847 vision of "a Calculus of Deductive Reasoning" has become mainstream engineering on a par with Newton's and Leibniz's infinitesimal calculus. 
 
-## Duality of Syntax and Semantics
+## Duality between Syntax and Semantics
 
 Satisfiability is a relation between models (semantics) and formulas (syntax). This relation is commonly written in symbolic notation as 
 

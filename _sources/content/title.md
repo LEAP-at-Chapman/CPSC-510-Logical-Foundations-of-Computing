@@ -17,8 +17,7 @@ A Textbook on Logics and Their Software Tools
 
 <div style="margin-top: 2em; font-size: 1em; color: #666;">
 Chapman University<br>
-Fall 2025<br>
-<br>
+Fall 2025
 Spencer Au, Wayne Chong, Jack de Bruyn, Matt Favela, Brandon Foley, John Mulhern, Khoa Nguyen, Jake Triester, Alex Zermeno, Alexander Kurz
 </div>
 
