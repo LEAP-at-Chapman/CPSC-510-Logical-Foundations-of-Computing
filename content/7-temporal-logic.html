@@ -28,13 +28,13 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -463,20 +463,22 @@ E A means that there exists at least one path starting from the current position
 <p>The tool we will be using to explore temporal logic is called SPIN. It is primarily used to verify multithreaded software. SPIN uses a coding language called promela.</p>
 <section id="installation">
 <h3><span class="section-number">8.3.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
-<p>Link: https://spinroot.com/spin/Man/README.html</p>
-<p>Some examples taken from: https://spinroot.com/courses/summer/</p>
+<p><a class="reference external" href="https://spinroot.com/spin/Man/README.html">Link to Install</a></p>
+<p>Some examples taken from <a class="reference external" href="https://spinroot.com/courses/summer/">here</a></p>
 <p>I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">spin</span></code>.</p>
 </section>
 <section id="first-example">
 <h3><span class="section-number">8.3.2. </span>First Example<a class="headerlink" href="#first-example" title="Link to this heading">#</a></h3>
 <p>To test if SPIN works on your machine try run this code:</p>
 <p>Note: you will need a C compiler to run SPIN.</p>
-<p>init {	// file: ex_1a.pml
-byte i	// initialized to 0 by default
-do	// loop forever
-:: i++	// nondisterministic choice, only one option
-od
-}</p>
+<div class="highlight-promela notranslate"><div class="highlight"><pre><span></span><span class="kd">init</span><span class="w"> </span><span class="p">{</span><span class="w">	</span><span class="c1">// file: ex_1a.pml</span>
+<span class="w">		</span><span class="kt">byte</span><span class="w"> </span><span class="n">i</span><span class="w">	</span><span class="c1">// initialized to 0 by default</span>
+<span class="w">		</span><span class="k">do</span><span class="w">	</span><span class="c1">// loop forever</span>
+<span class="w">		</span><span class="o">::</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="w">	</span><span class="c1">// nondisterministic choice, only one option</span>
+<span class="w">		</span><span class="k">od</span>
+<span class="w">	</span><span class="p">}</span>
+</pre></div>
+</div>
 <p>run with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">spin</span> <span class="pre">-u514</span> <span class="pre">-p</span> <span class="pre">-l</span> <span class="pre">ex_1a.pml</span></code></p>
 <p>This should print 514 steps of increasing numbers.</p>
 </section>
@@ -542,32 +544,32 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 <ol class="arabic simple">
 <li><p>NuSMV</p></li>
 </ol>
-<p>Link: https://nusmv.fbk.eu/</p>
+<p><a class="reference external" href="https://nusmv.fbk.eu/">Link</a></p>
 <p>A version of a model checker called SMV, but using temporal logic. Specifically uses Linear Temporal Logic or Computation Tree Logic. Programs are written in binary decision diagrams, which are data structures that can be used to represent booleans.</p>
 <ol class="arabic simple" start="2">
 <li><p>PRISM</p></li>
 </ol>
-<p>Link: https://www.prismmodelchecker.org/</p>
+<p><a class="reference external" href="https://www.prismmodelchecker.org/">Link</a></p>
 <p>PRISM is a probabalistic model checker using its own language, also called PRISM. It is useful for models that are contain probabilities or other randomness.</p>
 <ol class="arabic simple" start="3">
 <li><p>FDR</p></li>
 </ol>
-<p>Link: https://cocotec.io/fdr/</p>
+<p><a class="reference external" href="https://cocotec.io/fdr/">Link</a></p>
 <p>A model checker specifically designed for CSP, which itself is a language for describing concurrent systems designed by Tony Hoare. Short for Failure Divergence Refinement.</p>
 <ol class="arabic simple" start="4">
 <li><p>ProB</p></li>
 </ol>
-<p>Link: https://prob.hhu.de/</p>
+<p><a class="reference external" href="https://prob.hhu.de/">Link</a></p>
 <p>A model checker for B-Method and Event-B. B is designed to support turning formal specifications into code.</p>
 <ol class="arabic simple" start="5">
 <li><p>Java Pathfinder</p></li>
 </ol>
-<p>Link: https://github.com/javapathfinder</p>
+<p><a class="reference external" href="https://github.com/javapathfinder">Link</a></p>
 <p>Model checker specifically designed for Java. It creates its own Java Virtual Machine that runs all possible combinations of paths through a given program.</p>
 <ol class="arabic simple" start="6">
 <li><p>UPPAAL</p></li>
 </ol>
-<p>Link: https://uppaal.org/</p>
+<p><a class="reference external" href="https://uppaal.org/">Link</a></p>
 <p>A model checker designed to model systems made of timed automata. Uses a simplified form of Timed TCTL.</p>
 </section>
 <section id="algorithms">
@@ -575,14 +577,14 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 <p>When SPIN verifies a system, several steps are taken.</p>
 <ol class="arabic simple">
 <li><p>The user must describe the system in Promela (Process Meta Language), which is SPINs programming langauage.</p></li>
-<li><p>The statements within this program (which are expressed as Linear-Temporal Logic), are converted into Büchi Automata (https://en.wikipedia.org/wiki/B%C3%BCchi_automaton). These Automata are state machines that accepts or rejects infinite inputs.</p></li>
+<li><p>The statements within this program (which are expressed as Linear-Temporal Logic), are converted into <a class="reference external" href="https://en.wikipedia.org/wiki/B%C3%BCchi_automaton">Büchi Automata</a>. These Automata are state machines that accept or rejects infinite inputs.</p></li>
 <li><p>SPIN generates C source code for a model checker specifically designed to verify the defined system, instead of running the verification itself.</p></li>
 </ol>
 </section>
 <section id="benchmarks">
 <h2><span class="section-number">8.7. </span>Benchmarks<a class="headerlink" href="#benchmarks" title="Link to this heading">#</a></h2>
 <p>I looked into benchmarks for SPIN and other model checkers, however at the time of writing, there does not appear to have been many benchmarks of such tools available online.</p>
-<p>I found a research paper that declared its intent to create a benchmark of model checkers like SPIN, located at https://spinroot.com/spin/symposia/ws07/Pelanek.pdf. However, at the time of writing, the link contained in the paper (https://anna.fi.muni.cz/models) leads to a 404 error.</p>
+<p>I found a research paper that declared its intent to create a benchmark of model checkers like SPIN, located <a class="reference external" href="https://spinroot.com/spin/symposia/ws07/Pelanek.pdf">here</a>. However, at the time of writing, the link contained in the <a class="reference external" href="https://anna.fi.muni.cz/models">paper</a> leads to a 404 error.</p>
 </section>
 <section id="applications-in-industry">
 <h2><span class="section-number">8.8. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
@@ -605,12 +607,13 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 </ol>
 <p>These messages are encoded with Public Key Encryption, which is secure but expensive, hence why it isn’t used for the whole conversation.</p>
 <p>The following is a link to a SPIN program that can be used to find the flaw in the protocol. This program was written by Professor Kurtz.</p>
-<p>https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/blob/main/src/Needham-Schroeder/ns.pml</p>
+<p><a class="reference external" href="https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/blob/main/src/Needham-Schroeder/ns.pml">Link</a></p>
 <p>A fix was proposed by the person who found this fault. To avoid the attack, the second message should also include Bob’s address. Can you explain how this avoids the attack? Try editing the SPIN program to include this fix, does it prevent the attack?</p>
 </section>
 </section>
 <section id="history">
 <h2><span class="section-number">8.10. </span>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<p>All information gathered from <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=temporal+logic+N+Rescher%2C+A+Urquhart&amp;amp;btnG=">Temporal Logic</a> by N Rescher and A Urquhart, as well as some additional information taken from the <a class="reference external" href="https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators">wiki</a> on Temporal Logic.</p>
 <ul class="simple">
 <li><p>1947: Jerzy Łoś first formalizes a logic with temporal functions.</p></li>
 <li><p>1953: Arthur Prior begins research on Temporal Logic.</p></li>
@@ -628,6 +631,7 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 <li><p>Gluck and Holtzman (2008) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Using+SPIN+model+checking+for+flight+software+verification&amp;amp;btnG=">Using SPIN model checking for flight software verification</a>, IEEE</p></li>
 <li><p>Zhang, Li, Cheng, and Xue (2018) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&amp;amp;btnG=">Verifying OSEK/VDX automotive applications: A Spin-based model checking approach</a>, Wiley</p></li>
 <li><p>Alzahrani and Mohammed Yahya (2015) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Model+checking+web+applications+heriot+watt+university&amp;amp;btnG=">Model checking web applications</a>, Heriot Watt University</p></li>
+<li><p>Nicholas Rescher and Alasdair Urquhart (1971) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=temporal+logic+N+Rescher%2C+A+Urquhart&amp;amp;btnG=">Temporal Logic</a>, Springer-Verlag/Wien</p></li>
 </ul>
 </section>
 <section id="further-reasources">
