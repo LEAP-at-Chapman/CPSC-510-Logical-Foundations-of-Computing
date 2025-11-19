@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10. Epistemic Logic with SMCDEL &#8212; Logical Foundations of AI</title>
+    <title>9. Epistemic Logic with SMCDEL &#8212; Logical Foundations of AI</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -61,8 +61,8 @@
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/8-epistemic-logic.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="11. Hoare Logic with Dafny" href="9-hoare-logic.html" />
-    <link rel="prev" title="9. Temporal Logic with Spin" href="7-temporal-logic.html" />
+    <link rel="next" title="10. Hoare Logic with Dafny" href="9-hoare-logic.html" />
+    <link rel="prev" title="8. Temporal Logic with Spin" href="7-temporal-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,20 +176,19 @@
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">3. SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">4. Logic Programming with Prolog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">5. Constraint Programming with MiniZinc</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">7. SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">8. Modal Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">9. Temporal Logic with Spin</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">11. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">12. Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">13. Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">6. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">7. Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">8. Temporal Logic with Spin</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">10. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">11. Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">12. Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">14. Resources on Puzzles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">15. Hoare Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">16. Syllogistic Logics in Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
 <ul class="nav bd-sidenav">
@@ -396,41 +395,41 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">10.1. 1. Idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-chapter-we-will">10.2. In this chapter we will:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-epistemic-logic">10.3. 2. Basic Epistemic Logic</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">10.3.1. 2.1 Syntax</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics-possible-worlds">10.3.2. 2.2 Semantics (Possible Worlds)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-not-knowing-even-when-its-true">10.3.3. 2.3 Example (Not Knowing Even When It’s True)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-knowledge-s5-style">10.3.4. 2.4 Properties of Knowledge (S5-style)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#belief">10.3.5. 2.5 Belief</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">9.1. 1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-chapter-we-will">9.2. In this chapter we will:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-epistemic-logic">9.3. 2. Basic Epistemic Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">9.3.1. 2.1 Syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics-possible-worlds">9.3.2. 2.2 Semantics (Possible Worlds)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-not-knowing-even-when-its-true">9.3.3. 2.3 Example (Not Knowing Even When It’s True)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-knowledge-s5-style">9.3.4. 2.4 Properties of Knowledge (S5-style)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#belief">9.3.5. 2.5 Belief</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-epistemic-logic-del">10.4. 3. Dynamic Epistemic Logic (DEL)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-announcement-informal">10.4.1. 3.1 Public Announcement (Informal)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-epistemic-logic-del">9.4. 3. Dynamic Epistemic Logic (DEL)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-announcement-informal">9.4.1. 3.1 Public Announcement (Informal)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-smcdel">10.5. 4. Using SMCDEL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-illustrative">10.5.1. 4.1 Installation (Illustrative)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-example">10.5.2. 4.2 Model Example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-public-announcement">10.5.3. 4.3 Adding a Public Announcement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-smcdel">9.5. 4. Using SMCDEL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-illustrative">9.5.1. 4.1 Installation (Illustrative)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-example">9.5.2. 4.2 Model Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-public-announcement">9.5.3. 4.3 Adding a Public Announcement</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-networks-and-epistemic-logic">10.6. 5. Social Networks and Epistemic Logic</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-mapping">10.6.1. 5.1 Conceptual Mapping</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rumor-spread-in-a-small-network">10.6.2. 5.2 Example: Rumor Spread in a Small Network</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#private-vs-public-why-it-matters">10.6.3. 5.3 Private vs. Public (Why it matters)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toward-common-knowledge">10.6.4. 5.4 Toward Common Knowledge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-networks-and-epistemic-logic">9.6. 5. Social Networks and Epistemic Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-mapping">9.6.1. 5.1 Conceptual Mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rumor-spread-in-a-small-network">9.6.2. 5.2 Example: Rumor Spread in a Small Network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#private-vs-public-why-it-matters">9.6.3. 5.3 Private vs. Public (Why it matters)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toward-common-knowledge">9.6.4. 5.4 Toward Common Knowledge</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">10.7. 6. Applications in Industry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-the-rescue-drone-coordination-problem">10.8. 7. Case Study: The “Rescue Drone Coordination” Problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-overview">10.8.1. 7.1 Scenario Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-in-smcdel">10.8.2. 7.2 Modeling in SMCDEL</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-matters">10.8.3. 7.3 Why It Matters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">9.7. 6. Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-the-rescue-drone-coordination-problem">9.8. 7. Case Study: The “Rescue Drone Coordination” Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-overview">9.8.1. 7.1 Scenario Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-in-smcdel">9.8.2. 7.2 Modeling in SMCDEL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-matters">9.8.3. 7.3 Why It Matters</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referenes-further-reading">10.9. 8. Referenes &amp; Further Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referenes-further-reading">9.9. 8. Referenes &amp; Further Reading</a></li>
 </ul>
             </nav>
         </div>
@@ -443,10 +442,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="epistemic-logic-with-smcdel">
-<h1><span class="section-number">10. </span>Epistemic Logic with SMCDEL<a class="headerlink" href="#epistemic-logic-with-smcdel" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Epistemic Logic with SMCDEL<a class="headerlink" href="#epistemic-logic-with-smcdel" title="Link to this heading">#</a></h1>
 <p>Author: <em>John Mulhern</em></p>
 <section id="idea">
-<h2><span class="section-number">10.1. </span>1. Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>1. Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
 <p>Epistemic logic is the study of <strong>knowledge</strong> and <strong>belief</strong> using a formal logical language. Instead of only asking “is <code class="docutils literal notranslate"><span class="pre">p</span></code> true?”, we can ask:</p>
 <ul class="simple">
 <li><p>“does agent <code class="docutils literal notranslate"><span class="pre">a</span></code> know that <code class="docutils literal notranslate"><span class="pre">p</span></code> is true?” (<code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">p</span></code>)</p></li>
@@ -456,7 +455,7 @@ document.write(`
 <p>This is useful in computer science because many systems are <strong>multi-agent</strong> or <strong>distributed</strong>. What an individual process, user, or node <strong>knows</strong> (or does <strong>not</strong> know) affects what it can safely and effectively do.</p>
 </section>
 <section id="in-this-chapter-we-will">
-<h2><span class="section-number">10.2. </span>In this chapter we will:<a class="headerlink" href="#in-this-chapter-we-will" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>In this chapter we will:<a class="headerlink" href="#in-this-chapter-we-will" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>introduce the basics of (multi-agent) epistemic logic,</p></li>
 <li><p>introduce <em>dynamic</em> epistemic logic (DEL) to handle information change,</p></li>
@@ -465,9 +464,9 @@ document.write(`
 </ol>
 </section>
 <section id="basic-epistemic-logic">
-<h2><span class="section-number">10.3. </span>2. Basic Epistemic Logic<a class="headerlink" href="#basic-epistemic-logic" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.3. </span>2. Basic Epistemic Logic<a class="headerlink" href="#basic-epistemic-logic" title="Link to this heading">#</a></h2>
 <section id="syntax">
-<h3><span class="section-number">10.3.1. </span>2.1 Syntax<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.1. </span>2.1 Syntax<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h3>
 <p>We assume:</p>
 <ul class="simple">
 <li><p>a set of atomic propositions: <code class="docutils literal notranslate"><span class="pre">p,</span> <span class="pre">q,</span> <span class="pre">r,</span> <span class="pre">...</span></code></p></li>
@@ -505,7 +504,7 @@ document.write(`
 </ul>
 </section>
 <section id="semantics-possible-worlds">
-<h3><span class="section-number">10.3.2. </span>2.2 Semantics (Possible Worlds)<a class="headerlink" href="#semantics-possible-worlds" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.2. </span>2.2 Semantics (Possible Worlds)<a class="headerlink" href="#semantics-possible-worlds" title="Link to this heading">#</a></h3>
 <p>Epistemic logic uses <strong>possible worlds semantics</strong> (Kripke semantics).</p>
 <p>A model is a triple:</p>
 <ul class="simple">
@@ -536,7 +535,7 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="example-not-knowing-even-when-its-true">
-<h3><span class="section-number">10.3.3. </span>2.3 Example (Not Knowing Even When It’s True)<a class="headerlink" href="#example-not-knowing-even-when-its-true" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.3. </span>2.3 Example (Not Knowing Even When It’s True)<a class="headerlink" href="#example-not-knowing-even-when-its-true" title="Link to this heading">#</a></h3>
 <p>Let there be 2 worlds: <code class="docutils literal notranslate"><span class="pre">w1</span></code>, <code class="docutils literal notranslate"><span class="pre">w2</span></code>.</p>
 <ul class="simple">
 <li><p>in <code class="docutils literal notranslate"><span class="pre">w1</span></code>, <code class="docutils literal notranslate"><span class="pre">p</span></code> is true</p></li>
@@ -554,7 +553,7 @@ document.write(`
 <p>So: <code class="docutils literal notranslate"><span class="pre">p</span></code> is actually true, but agent <code class="docutils literal notranslate"><span class="pre">a</span></code> does <strong>not</strong> know <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
 </section>
 <section id="properties-of-knowledge-s5-style">
-<h3><span class="section-number">10.3.4. </span>2.4 Properties of Knowledge (S5-style)<a class="headerlink" href="#properties-of-knowledge-s5-style" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.4. </span>2.4 Properties of Knowledge (S5-style)<a class="headerlink" href="#properties-of-knowledge-s5-style" title="Link to this heading">#</a></h3>
 <p>In many CS applications, we model knowledge with S5-like properties. For each agent <code class="docutils literal notranslate"><span class="pre">a</span></code>, the relation <code class="docutils literal notranslate"><span class="pre">R_a</span></code> is:</p>
 <ul class="simple">
 <li><p>reflexive</p></li>
@@ -571,7 +570,7 @@ document.write(`
 <p>These together make knowledge quite strong.</p>
 </section>
 <section id="belief">
-<h3><span class="section-number">10.3.5. </span>2.5 Belief<a class="headerlink" href="#belief" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.5. </span>2.5 Belief<a class="headerlink" href="#belief" title="Link to this heading">#</a></h3>
 <p>Belief (<code class="docutils literal notranslate"><span class="pre">B_a</span> <span class="pre">φ</span></code>) is often taken to be <strong>weaker</strong>:</p>
 <ul class="simple">
 <li><p>belief is <strong>not</strong> factive (we do <strong>not</strong> assume <code class="docutils literal notranslate"><span class="pre">B_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">φ</span></code>)</p></li>
@@ -582,7 +581,7 @@ document.write(`
 </section>
 </section>
 <section id="dynamic-epistemic-logic-del">
-<h2><span class="section-number">10.4. </span>3. Dynamic Epistemic Logic (DEL)<a class="headerlink" href="#dynamic-epistemic-logic-del" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.4. </span>3. Dynamic Epistemic Logic (DEL)<a class="headerlink" href="#dynamic-epistemic-logic-del" title="Link to this heading">#</a></h2>
 <p>So far: <em>static</em> epistemic logic — one model, we ask what is known.</p>
 <p>But many real situations have <strong>information change</strong>:</p>
 <ul class="simple">
@@ -593,7 +592,7 @@ document.write(`
 </ul>
 <p><strong>Dynamic Epistemic Logic</strong> adds <strong>events</strong> and <strong>updates</strong> to represent such changes.</p>
 <section id="public-announcement-informal">
-<h3><span class="section-number">10.4.1. </span>3.1 Public Announcement (Informal)<a class="headerlink" href="#public-announcement-informal" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.4.1. </span>3.1 Public Announcement (Informal)<a class="headerlink" href="#public-announcement-informal" title="Link to this heading">#</a></h3>
 <p>Suppose we have a model <code class="docutils literal notranslate"><span class="pre">M</span></code> and we publicly announce <code class="docutils literal notranslate"><span class="pre">φ</span></code>.</p>
 <ul class="simple">
 <li><p>every agent hears the same announcement</p></li>
@@ -606,7 +605,7 @@ document.write(`
 </section>
 </section>
 <section id="using-smcdel">
-<h2><span class="section-number">10.5. </span>4. Using SMCDEL<a class="headerlink" href="#using-smcdel" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.5. </span>4. Using SMCDEL<a class="headerlink" href="#using-smcdel" title="Link to this heading">#</a></h2>
 <p>SMCDEL (Symbolic Model Checker for Dynamic Epistemic Logic) is a tool that:</p>
 <ul class="simple">
 <li><p>lets you define agents, worlds, valuations, relations</p></li>
@@ -620,7 +619,7 @@ document.write(`
 </ul>
 <p>or install it locally.</p>
 <section id="installation-illustrative">
-<h3><span class="section-number">10.5.1. </span>4.1 Installation (Illustrative)<a class="headerlink" href="#installation-illustrative" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.5.1. </span>4.1 Installation (Illustrative)<a class="headerlink" href="#installation-illustrative" title="Link to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using Haskell Stack</span>
 stack<span class="w"> </span>install<span class="w"> </span>smcdel
 </pre></div>
@@ -632,7 +631,7 @@ stack<span class="w"> </span>install<span class="w"> </span>smcdel
 <p>where <code class="docutils literal notranslate"><span class="pre">my_model.smcdel</span></code> is a text file describing your epistemic model and the formulas you want to check.</p>
 </section>
 <section id="model-example">
-<h3><span class="section-number">10.5.2. </span>4.2 Model Example<a class="headerlink" href="#model-example" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.5.2. </span>4.2 Model Example<a class="headerlink" href="#model-example" title="Link to this heading">#</a></h3>
 <p>Goal: two agents, <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, one proposition <code class="docutils literal notranslate"><span class="pre">p</span></code>, two worlds, and both agents are uncertain.</p>
 <p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">simple_model.smcdel</span></code></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Agents and propositions</span>
@@ -664,7 +663,7 @@ stack<span class="w"> </span>install<span class="w"> </span>smcdel
 <p>Intuition: both answers should be false because each agent still considers the world where p is false possible.</p>
 </section>
 <section id="adding-a-public-announcement">
-<h3><span class="section-number">10.5.3. </span>4.3 Adding a Public Announcement<a class="headerlink" href="#adding-a-public-announcement" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.5.3. </span>4.3 Adding a Public Announcement<a class="headerlink" href="#adding-a-public-announcement" title="Link to this heading">#</a></h3>
 <p>Now we show how a Public Announcement can impact an epistemic model.</p>
 <p>We start from the previous model and then <strong>add an event</strong> where we publicly announce p.</p>
 <p><strong>File:</strong> <code class="docutils literal notranslate"><span class="pre">announcement.smcdel</span></code></p>
@@ -695,7 +694,7 @@ stack<span class="w"> </span>install<span class="w"> </span>smcdel
 </section>
 </section>
 <section id="social-networks-and-epistemic-logic">
-<h2><span class="section-number">10.6. </span>5. Social Networks and Epistemic Logic<a class="headerlink" href="#social-networks-and-epistemic-logic" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.6. </span>5. Social Networks and Epistemic Logic<a class="headerlink" href="#social-networks-and-epistemic-logic" title="Link to this heading">#</a></h2>
 <p>We can think of a social network as:</p>
 <ul class="simple">
 <li><p>a set of agents (users, accounts, processes)</p></li>
@@ -710,7 +709,7 @@ stack<span class="w"> </span>install<span class="w"> </span>smcdel
 <li><p>is it common knowledge to the group?</p></li>
 </ul>
 <section id="conceptual-mapping">
-<h3><span class="section-number">10.6.1. </span>5.1 Conceptual Mapping<a class="headerlink" href="#conceptual-mapping" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.6.1. </span>5.1 Conceptual Mapping<a class="headerlink" href="#conceptual-mapping" title="Link to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Social concept</p></th>
@@ -746,7 +745,7 @@ stack<span class="w"> </span>install<span class="w"> </span>smcdel
 </section>
 <hr class="docutils" />
 <section id="example-rumor-spread-in-a-small-network">
-<h3><span class="section-number">10.6.2. </span>5.2 Example: Rumor Spread in a Small Network<a class="headerlink" href="#example-rumor-spread-in-a-small-network" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.6.2. </span>5.2 Example: Rumor Spread in a Small Network<a class="headerlink" href="#example-rumor-spread-in-a-small-network" title="Link to this heading">#</a></h3>
 <p><strong>Agents:</strong> <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p>
 <ul class="simple">
 <li><p>only <code class="docutils literal notranslate"><span class="pre">A</span></code> initially knows proposition <code class="docutils literal notranslate"><span class="pre">p</span></code></p></li>
@@ -808,7 +807,7 @@ check w1: KB KA p;   # does B know that A knows p?
 <p>This shows that the second step (public announcement) is what makes the information spread to the whole network.</p>
 </section>
 <section id="private-vs-public-why-it-matters">
-<h3><span class="section-number">10.6.3. </span>5.3 Private vs. Public (Why it matters)<a class="headerlink" href="#private-vs-public-why-it-matters" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.6.3. </span>5.3 Private vs. Public (Why it matters)<a class="headerlink" href="#private-vs-public-why-it-matters" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>A public announcement reduces uncertainty for every agent. It is “broadcast.”</p></li>
 <li><p>A private event reduces uncertainty only for the involved agents.</p></li>
@@ -823,7 +822,7 @@ check w1: KB KA p;   # does B know that A knows p?
 </ul>
 </section>
 <section id="toward-common-knowledge">
-<h3><span class="section-number">10.6.4. </span>5.4 Toward Common Knowledge<a class="headerlink" href="#toward-common-knowledge" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.6.4. </span>5.4 Toward Common Knowledge<a class="headerlink" href="#toward-common-knowledge" title="Link to this heading">#</a></h3>
 <p>In a group chat with agents <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>, we might model:</p>
 <ul class="simple">
 <li><p>a message is posted publicly: <code class="docutils literal notranslate"><span class="pre">p</span></code></p></li>
@@ -850,7 +849,7 @@ check w1: KB KA p;   # does B know that A knows p?
 </section>
 </section>
 <section id="applications-in-industry">
-<h2><span class="section-number">10.7. </span>6. Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.7. </span>6. Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>In the paper <a class="reference external" href="https://eprints.illc.uva.nl/id/eprint/1802/1/MoL-2021-12.text.pdf">“Epistemic Temporal Logic for Information Flow Security”</a>, Balliu et al. apply an epistemic-temporal logic to programs to reason about what an attacker knows or doesn’t know after observing program outputs — i.e., how knowledge evolves over time as information is released. This directly maps to the “who knows what” view of epistemic logic and is a strong CS/industrial-adjacent example (secure coding, confidentiality, release of secret data).</p></li>
 <li><p>In the thesis <a class="reference external" href="https://eprints.illc.uva.nl/id/eprint/1802/1/MoL-2021-12.text.pdf">“Epistemic Logics for Cryptographic Protocols and Zero‐Knowledge Proofs”</a> (Jaramillo, 2021) the author uses epistemic logic to model multi-agent interactions in cryptographic settings — specifically for modelling zero-knowledge proofs (where a verifier is convinced of a fact but learns nothing more).</p></li>
@@ -859,9 +858,9 @@ check w1: KB KA p;   # does B know that A knows p?
 </ul>
 </section>
 <section id="case-study-the-rescue-drone-coordination-problem">
-<h2><span class="section-number">10.8. </span>7. Case Study: The “Rescue Drone Coordination” Problem<a class="headerlink" href="#case-study-the-rescue-drone-coordination-problem" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.8. </span>7. Case Study: The “Rescue Drone Coordination” Problem<a class="headerlink" href="#case-study-the-rescue-drone-coordination-problem" title="Link to this heading">#</a></h2>
 <section id="scenario-overview">
-<h3><span class="section-number">10.8.1. </span>7.1 Scenario Overview<a class="headerlink" href="#scenario-overview" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.8.1. </span>7.1 Scenario Overview<a class="headerlink" href="#scenario-overview" title="Link to this heading">#</a></h3>
 <p>Imagine a fleet of <strong>autonomous rescue drones</strong> responding to a natural disaster.<br />
 Each drone (<code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>) monitors a separate zone but must coordinate to deliver medical supplies safely.<br />
 However, communication links are intermittent and not every message is received by every drone.</p>
@@ -874,7 +873,7 @@ Drone <code class="docutils literal notranslate"><span class="pre">A</span></cod
 Then <code class="docutils literal notranslate"><span class="pre">B</span></code> issues a <strong>public announcement</strong> (“Zone X is safe!”) on the shared channel.</p>
 </section>
 <section id="modeling-in-smcdel">
-<h3><span class="section-number">10.8.2. </span>7.2 Modeling in SMCDEL<a class="headerlink" href="#modeling-in-smcdel" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.8.2. </span>7.2 Modeling in SMCDEL<a class="headerlink" href="#modeling-in-smcdel" title="Link to this heading">#</a></h3>
 <p>We can represent:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>-- Rescue Drone Coordination (approximate private-then-public) in SMCDEL
 
@@ -910,7 +909,7 @@ VALID?
 You can expand upon this experiment by adding false public announcements (miscommunication), modeling message delays or dropped links, or by checking whether “everyone knows that everyone knows p” (common knowledge) ever arises.</p>
 </section>
 <section id="why-it-matters">
-<h3><span class="section-number">10.8.3. </span>7.3 Why It Matters<a class="headerlink" href="#why-it-matters" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.8.3. </span>7.3 Why It Matters<a class="headerlink" href="#why-it-matters" title="Link to this heading">#</a></h3>
 <p>Such models help engineers verify communication protocols in distributed robotics or IoT systems:</p>
 <ul class="simple">
 <li><p>Ensuring drones act only when they know an area is safe.</p></li>
@@ -920,7 +919,7 @@ You can expand upon this experiment by adding false public announcements (miscom
 </section>
 </section>
 <section id="referenes-further-reading">
-<h2><span class="section-number">10.9. </span>8. Referenes &amp; Further Reading<a class="headerlink" href="#referenes-further-reading" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.9. </span>8. Referenes &amp; Further Reading<a class="headerlink" href="#referenes-further-reading" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Jaakko Hintikka, Knowledge and Belief (1962)</p></li>
 <li><p>Hans van Ditmarsch, Wiebe van der Hoek, Barteld Kooi, Dynamic Epistemic Logic</p></li>
@@ -966,7 +965,7 @@ You can expand upon this experiment by adding false public announcements (miscom
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Temporal Logic with Spin</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Temporal Logic with Spin</p>
       </div>
     </a>
     <a class="right-next"
@@ -974,7 +973,7 @@ You can expand upon this experiment by adding false public announcements (miscom
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Hoare Logic with Dafny</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Hoare Logic with Dafny</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -994,41 +993,41 @@ You can expand upon this experiment by adding false public announcements (miscom
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">10.1. 1. Idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-chapter-we-will">10.2. In this chapter we will:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-epistemic-logic">10.3. 2. Basic Epistemic Logic</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">10.3.1. 2.1 Syntax</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics-possible-worlds">10.3.2. 2.2 Semantics (Possible Worlds)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-not-knowing-even-when-its-true">10.3.3. 2.3 Example (Not Knowing Even When It’s True)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-knowledge-s5-style">10.3.4. 2.4 Properties of Knowledge (S5-style)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#belief">10.3.5. 2.5 Belief</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">9.1. 1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-chapter-we-will">9.2. In this chapter we will:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-epistemic-logic">9.3. 2. Basic Epistemic Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">9.3.1. 2.1 Syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics-possible-worlds">9.3.2. 2.2 Semantics (Possible Worlds)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-not-knowing-even-when-its-true">9.3.3. 2.3 Example (Not Knowing Even When It’s True)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-knowledge-s5-style">9.3.4. 2.4 Properties of Knowledge (S5-style)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#belief">9.3.5. 2.5 Belief</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-epistemic-logic-del">10.4. 3. Dynamic Epistemic Logic (DEL)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-announcement-informal">10.4.1. 3.1 Public Announcement (Informal)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-epistemic-logic-del">9.4. 3. Dynamic Epistemic Logic (DEL)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#public-announcement-informal">9.4.1. 3.1 Public Announcement (Informal)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-smcdel">10.5. 4. Using SMCDEL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-illustrative">10.5.1. 4.1 Installation (Illustrative)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-example">10.5.2. 4.2 Model Example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-public-announcement">10.5.3. 4.3 Adding a Public Announcement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-smcdel">9.5. 4. Using SMCDEL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation-illustrative">9.5.1. 4.1 Installation (Illustrative)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-example">9.5.2. 4.2 Model Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-public-announcement">9.5.3. 4.3 Adding a Public Announcement</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-networks-and-epistemic-logic">10.6. 5. Social Networks and Epistemic Logic</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-mapping">10.6.1. 5.1 Conceptual Mapping</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rumor-spread-in-a-small-network">10.6.2. 5.2 Example: Rumor Spread in a Small Network</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#private-vs-public-why-it-matters">10.6.3. 5.3 Private vs. Public (Why it matters)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toward-common-knowledge">10.6.4. 5.4 Toward Common Knowledge</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-networks-and-epistemic-logic">9.6. 5. Social Networks and Epistemic Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-mapping">9.6.1. 5.1 Conceptual Mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rumor-spread-in-a-small-network">9.6.2. 5.2 Example: Rumor Spread in a Small Network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#private-vs-public-why-it-matters">9.6.3. 5.3 Private vs. Public (Why it matters)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toward-common-knowledge">9.6.4. 5.4 Toward Common Knowledge</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">10.7. 6. Applications in Industry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-the-rescue-drone-coordination-problem">10.8. 7. Case Study: The “Rescue Drone Coordination” Problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-overview">10.8.1. 7.1 Scenario Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-in-smcdel">10.8.2. 7.2 Modeling in SMCDEL</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-matters">10.8.3. 7.3 Why It Matters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">9.7. 6. Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-the-rescue-drone-coordination-problem">9.8. 7. Case Study: The “Rescue Drone Coordination” Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-overview">9.8.1. 7.1 Scenario Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-in-smcdel">9.8.2. 7.2 Modeling in SMCDEL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-matters">9.8.3. 7.3 Why It Matters</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referenes-further-reading">10.9. 8. Referenes &amp; Further Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referenes-further-reading">9.9. 8. Referenes &amp; Further Reading</a></li>
 </ul>
   </nav></div>
 

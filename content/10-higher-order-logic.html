@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>12. Higher-Order Logic with Isabelle/HOL &#8212; Logical Foundations of AI</title>
+    <title>11. Higher-Order Logic with Isabelle/HOL &#8212; Logical Foundations of AI</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -63,8 +63,8 @@
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/10-higher-order-logic.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="13. Dependent Type Theory with Lean" href="11-dependent-types.html" />
-    <link rel="prev" title="11. Hoare Logic with Dafny" href="9-hoare-logic.html" />
+    <link rel="next" title="12. Dependent Type Theory with Lean" href="11-dependent-types.html" />
+    <link rel="prev" title="10. Hoare Logic with Dafny" href="9-hoare-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,20 +178,19 @@
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">3. SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">4. Logic Programming with Prolog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">5. Constraint Programming with MiniZinc</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">7. SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">8. Modal Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">9. Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">10. Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">11. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">13. Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">6. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">7. Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">8. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">9. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">10. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">12. Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">14. Resources on Puzzles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">15. Hoare Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">16. Syllogistic Logics in Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
 <ul class="nav bd-sidenav">
@@ -398,49 +397,49 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">12.1. Topics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-and-introduction">12.2. 10.1 Idea and Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">12.3. 10.2 Basic Theory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-logic">12.3.1. 10.2.1 First Order Logic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-type-system">12.3.2. 10.2.2 (Explicit) Type System</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-abstraction">12.3.3. 10.2.3 Lambda Abstraction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-of-inference">12.3.4. 10.2.4 Rules of Inference</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-schemata">12.3.5. 10.2.5 Axiom Schemata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">11.1. Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-and-introduction">11.2. 10.1 Idea and Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">11.3. 10.2 Basic Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-logic">11.3.1. 10.2.1 First Order Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-type-system">11.3.2. 10.2.2 (Explicit) Type System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-abstraction">11.3.3. 10.2.3 Lambda Abstraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-of-inference">11.3.4. 10.2.4 Rules of Inference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-schemata">11.3.5. 10.2.5 Axiom Schemata</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-installation-first-example-first-exercise">12.4. 10.3 Tool (Installation, First Example, First Exercise)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">12.4.1. 10.3.1 Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-solving-via-sledgehammer">12.4.2. 10.3.2 Proof Solving via Sledgehammer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example-add-function">12.4.3. 10.3.3 First Example - Add Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-exercise-associativity-and-communativity-of-add">12.4.4. 10.3.4 First Exercise - Associativity and Communativity of Add</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-installation-first-example-first-exercise">11.4. 10.3 Tool (Installation, First Example, First Exercise)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">11.4.1. 10.3.1 Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-solving-via-sledgehammer">11.4.2. 10.3.2 Proof Solving via Sledgehammer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example-add-function">11.4.3. 10.3.3 First Example - Add Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-exercise-associativity-and-communativity-of-add">11.4.4. 10.3.4 First Exercise - Associativity and Communativity of Add</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples-tower-of-hanoi-or-insertion-sort">12.5. 10.4 Introductory Examples - Tower of Hanoi or Insertion Sort</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">12.6. 10.5 The Landscape of Tools</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-proof-assistants">12.6.1. 10.5.1 Interactive Proof Assistants</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-higher-order-prover">12.6.2. 10.5.2 Automated Higher Order Prover</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples-tower-of-hanoi-or-insertion-sort">11.5. 10.4 Introductory Examples - Tower of Hanoi or Insertion Sort</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">11.6. 10.5 The Landscape of Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-proof-assistants">11.6.1. 10.5.1 Interactive Proof Assistants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-higher-order-prover">11.6.2. 10.5.2 Automated Higher Order Prover</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">12.7. 10.6 Algorithms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">12.8. 10.7 Benchmark and Competitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">12.9. 10.8 Applications in Industry</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-addressing-on-real-hardware">12.9.1. 10.8.1 Physical Addressing on Real Hardware</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-stream-processing-components">12.9.2. 10.8.2 FOCUS - Stream Processing Components</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isabil-verifying-in-correctness-of-binaries">12.9.3. 10.8.3 IsaBIL - Verifying (In)Correctness of Binaries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verlso-isolation-guarantees-of-database-transactions">12.9.4. 10.8.4 Verlso - Isolation Guarantees of Database Transactions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ieee-754-floating-point-implementation-for-mdps">12.9.5. 10.8.5 IEEE 754 Floating Point Implementation for MDPs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isamini-isabelle-proof-language-for-machine-learning">12.9.6. 10.8.6 IsaMini: Isabelle Proof Language for Machine Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">11.7. 10.6 Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">11.8. 10.7 Benchmark and Competitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">11.9. 10.8 Applications in Industry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-addressing-on-real-hardware">11.9.1. 10.8.1 Physical Addressing on Real Hardware</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-stream-processing-components">11.9.2. 10.8.2 FOCUS - Stream Processing Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isabil-verifying-in-correctness-of-binaries">11.9.3. 10.8.3 IsaBIL - Verifying (In)Correctness of Binaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verlso-isolation-guarantees-of-database-transactions">11.9.4. 10.8.4 Verlso - Isolation Guarantees of Database Transactions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ieee-754-floating-point-implementation-for-mdps">11.9.5. 10.8.5 IEEE 754 Floating Point Implementation for MDPs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isamini-isabelle-proof-language-for-machine-learning">11.9.6. 10.8.6 IsaMini: Isabelle Proof Language for Machine Learning</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-neural-theorem-proving-via-isamini">12.10. 10.9 Case Study - Neural Theorem Proving via IsaMini</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">12.11. 10.10 History</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-higher-order-logic">12.11.1. 10.10.1 Origins of Higher Order Logic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">12.11.2. 10.10.2 Development of Isabelle/HOL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-neural-theorem-proving-via-isamini">11.10. 10.9 Case Study - Neural Theorem Proving via IsaMini</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">11.11. 10.10 History</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-higher-order-logic">11.11.1. 10.10.1 Origins of Higher Order Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">11.11.2. 10.10.2 Development of Isabelle/HOL</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">12.12. 10.11 Current Development, Research Challenges, Conferences and Workshops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">12.13. 10.12 References</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">12.14. 10.13 Suggestions for Future Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">11.12. 10.11 Current Development, Research Challenges, Conferences and Workshops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">11.13. 10.12 References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">11.14. 10.13 Suggestions for Future Work</a></li>
 </ul>
             </nav>
         </div>
@@ -453,10 +452,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="higher-order-logic-with-isabelle-hol">
-<h1><span class="section-number">12. </span>Higher-Order Logic with Isabelle/HOL<a class="headerlink" href="#higher-order-logic-with-isabelle-hol" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">11. </span>Higher-Order Logic with Isabelle/HOL<a class="headerlink" href="#higher-order-logic-with-isabelle-hol" title="Link to this heading">#</a></h1>
 <p><em>Author: Spencer Au</em></p>
 <section id="topics">
-<h2><span class="section-number">12.1. </span>Topics<a class="headerlink" href="#topics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Topics<a class="headerlink" href="#topics" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Higher-order logic foundations</p></li>
 <li><p>Function types and quantification</p></li>
@@ -466,36 +465,36 @@ document.write(`
 </ul>
 </section>
 <section id="idea-and-introduction">
-<h2><span class="section-number">12.2. </span>10.1 Idea and Introduction<a class="headerlink" href="#idea-and-introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>10.1 Idea and Introduction<a class="headerlink" href="#idea-and-introduction" title="Link to this heading">#</a></h2>
 <p>WIP</p>
 <p>This chapter extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.</p>
 <p>Higher-order logic (HOL) extends the capabilities of first-order logic (FOL) by allowing quantifiers (such as <span class="math notranslate nohighlight">\( \forall x \)</span> and <span class="math notranslate nohighlight">\( \exists x \)</span>) to range over functions and predicates, not just individual elements. In addition, functions can be passed as arguments to other functions, returned as results, and manipulated just like any other data type. This enables more expressive statements about the properties of functions and their relationships.</p>
 </section>
 <section id="basic-theory">
-<h2><span class="section-number">12.3. </span>10.2 Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>10.2 Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
 <!-- basic setup - need to add much more but this is just basics/scaffolding -->
 <section id="first-order-logic">
-<h3><span class="section-number">12.3.1. </span>10.2.1 First Order Logic<a class="headerlink" href="#first-order-logic" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.1. </span>10.2.1 First Order Logic<a class="headerlink" href="#first-order-logic" title="Link to this heading">#</a></h3>
 <p>WIP
 <span class="math notranslate nohighlight">\( \forall x \)</span> and <span class="math notranslate nohighlight">\( \exists x\)</span> where x is a variable/individual element</p>
 <p>In higher order logic, we extend this to <span class="math notranslate nohighlight">\( \forall f(x) \)</span> and <span class="math notranslate nohighlight">\( \exists f(x) \)</span>, where x is a function that takes x as an input</p>
 </section>
 <section id="explicit-type-system">
-<h3><span class="section-number">12.3.2. </span>10.2.2 (Explicit) Type System<a class="headerlink" href="#explicit-type-system" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.2. </span>10.2.2 (Explicit) Type System<a class="headerlink" href="#explicit-type-system" title="Link to this heading">#</a></h3>
 <p>WIP</p>
 <!-- – Andrews (2002) Sections 1–2 (“Type theory basics”)
 – Church (1940) A Formulation of the Simple Theory of Types 
 Church Text is more relevant to history section-->
 </section>
 <section id="lambda-abstraction">
-<h3><span class="section-number">12.3.3. </span>10.2.3 Lambda Abstraction<a class="headerlink" href="#lambda-abstraction" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.3. </span>10.2.3 Lambda Abstraction<a class="headerlink" href="#lambda-abstraction" title="Link to this heading">#</a></h3>
 <p>WIP</p>
 <!-- Read:
 – Paulson, Logic and Computation, ch. 2
 – Nipkow et al., Concrete Semantics, §2.1–2.3 -->
 </section>
 <section id="rules-of-inference">
-<h3><span class="section-number">12.3.4. </span>10.2.4 Rules of Inference<a class="headerlink" href="#rules-of-inference" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.4. </span>10.2.4 Rules of Inference<a class="headerlink" href="#rules-of-inference" title="Link to this heading">#</a></h3>
 <p>The basic rules of inference of <span class="math notranslate nohighlight">\(\mathcal{F}^w\)</span>, where <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a system of <span class="math notranslate nohighlight">\(\mathcal{w}\)</span>-order logic which has all finite order logics as subsystems:</p>
 <ol class="arabic simple">
 <li><p><strong>Modus Ponens</strong> From <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(A \to B\)</span> to infer <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
@@ -504,7 +503,7 @@ Church Text is more relevant to history section-->
 <p><em>Adapted from Andrews, 2002</em><sup><a href="#andrews2002">[1]</a></sup> using modern logic convention.</p>
 </section>
 <section id="axiom-schemata">
-<h3><span class="section-number">12.3.5. </span>10.2.5 Axiom Schemata<a class="headerlink" href="#axiom-schemata" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.5. </span>10.2.5 Axiom Schemata<a class="headerlink" href="#axiom-schemata" title="Link to this heading">#</a></h3>
 <p>The axiom schemata of <span class="math notranslate nohighlight">\(\mathcal{F}^w\)</span> are:</p>
 <ol class="arabic">
 <li><p><span class="math notranslate nohighlight">\(A \lor A \to A\)</span></p></li>
@@ -548,9 +547,9 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 </section>
 </section>
 <section id="tool-installation-first-example-first-exercise">
-<h2><span class="section-number">12.4. </span>10.3 Tool (Installation, First Example, First Exercise)<a class="headerlink" href="#tool-installation-first-example-first-exercise" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>10.3 Tool (Installation, First Example, First Exercise)<a class="headerlink" href="#tool-installation-first-example-first-exercise" title="Link to this heading">#</a></h2>
 <section id="installation">
-<h3><span class="section-number">12.4.1. </span>10.3.1 Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.4.1. </span>10.3.1 Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://isabelle.in.tum.de/">Installation Link for Isabelle</a></p>
 <p>Isabelle processes the theory document incrementally in the background, meaning that there is no additional “compile” or “run” step. As you type in lines and commands, the background system will check them and automatically update the proof state and any relevant error reports. Just go line by line, or command by command in order to check the related output.</p>
 <p>Isabelle uses *.thy (theory) files, and the general structure of the theory files is like this:</p>
@@ -569,10 +568,10 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 <p><code class="docutils literal notranslate"><span class="pre">begin</span></code> is the entry point into the theory body, while <code class="docutils literal notranslate"><span class="pre">end</span></code> is the end point of the theory body</p>
 </section>
 <section id="proof-solving-via-sledgehammer">
-<h3><span class="section-number">12.4.2. </span>10.3.2 Proof Solving via Sledgehammer<a class="headerlink" href="#proof-solving-via-sledgehammer" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.4.2. </span>10.3.2 Proof Solving via Sledgehammer<a class="headerlink" href="#proof-solving-via-sledgehammer" title="Link to this heading">#</a></h3>
 </section>
 <section id="first-example-add-function">
-<h3><span class="section-number">12.4.3. </span>10.3.3 First Example - Add Function<a class="headerlink" href="#first-example-add-function" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.4.3. </span>10.3.3 First Example - Add Function<a class="headerlink" href="#first-example-add-function" title="Link to this heading">#</a></h3>
 <p>For the first example, the goal will be to implement recursive addition via a function called “add”. The general form should be:</p>
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="s">&quot;nat ⇒ nat ⇒ nat&quot;</span><span class="w"> </span><span class="kp">where</span>
 <span class="w">    </span><span class="s">&quot;base case&quot;</span>
@@ -592,7 +591,7 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 </details><p>For a detailed explanation, <a class="reference internal" href="#./ch10_assets/10.3_exercises.md#10.3.2-First-Example"><span class="xref myst">See Section 10.3.2 Exercises</span></a></p>
 </section>
 <section id="first-exercise-associativity-and-communativity-of-add">
-<h3><span class="section-number">12.4.4. </span>10.3.4 First Exercise - Associativity and Communativity of Add<a class="headerlink" href="#first-exercise-associativity-and-communativity-of-add" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.4.4. </span>10.3.4 First Exercise - Associativity and Communativity of Add<a class="headerlink" href="#first-exercise-associativity-and-communativity-of-add" title="Link to this heading">#</a></h3>
 <p>For the first exercise, we will be proving the associative and commutative properties of a custom <code class="docutils literal notranslate"><span class="pre">add</span></code> function in Isabelle. This exercise comes from Exercise 2.2 of <a class="reference external" href="http://www.concrete-semantics.org/Exercises/exercises.pdf">Concrete Semantics Exercises</a></p>
 <p>The custom add function is defined here:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -675,41 +674,41 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 </section>
 </section>
 <section id="introductory-examples-tower-of-hanoi-or-insertion-sort">
-<h2><span class="section-number">12.5. </span>10.4 Introductory Examples - Tower of Hanoi or Insertion Sort<a class="headerlink" href="#introductory-examples-tower-of-hanoi-or-insertion-sort" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.5. </span>10.4 Introductory Examples - Tower of Hanoi or Insertion Sort<a class="headerlink" href="#introductory-examples-tower-of-hanoi-or-insertion-sort" title="Link to this heading">#</a></h2>
 <!-- show something interesting about tool, logic, etc and can be digested and understood with minimum experience -->
 <p>Tower of Hanoi or Insertion Sort</p>
 </section>
 <section id="the-landscape-of-tools">
-<h2><span class="section-number">12.6. </span>10.5 The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.6. </span>10.5 The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
 <p>WIP</p>
 <section id="interactive-proof-assistants">
-<h3><span class="section-number">12.6.1. </span>10.5.1 Interactive Proof Assistants<a class="headerlink" href="#interactive-proof-assistants" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.6.1. </span>10.5.1 Interactive Proof Assistants<a class="headerlink" href="#interactive-proof-assistants" title="Link to this heading">#</a></h3>
 <p>HOL4 (classic HOL)</p>
 <p>Coq (constructive higher-order/type theory)</p>
 <p>Lean 4 (modern dependent/HOL hybrid)</p>
 </section>
 <section id="automated-higher-order-prover">
-<h3><span class="section-number">12.6.2. </span>10.5.2 Automated Higher Order Prover<a class="headerlink" href="#automated-higher-order-prover" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.6.2. </span>10.5.2 Automated Higher Order Prover<a class="headerlink" href="#automated-higher-order-prover" title="Link to this heading">#</a></h3>
 <p>Leo III</p>
 <p>Satallax</p>
 </section>
 </section>
 <section id="algorithms">
-<h2><span class="section-number">12.7. </span>10.6 Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.7. </span>10.6 Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
 </section>
 <section id="benchmark-and-competitions">
-<h2><span class="section-number">12.8. </span>10.7 Benchmark and Competitions<a class="headerlink" href="#benchmark-and-competitions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.8. </span>10.7 Benchmark and Competitions<a class="headerlink" href="#benchmark-and-competitions" title="Link to this heading">#</a></h2>
 </section>
 <section id="applications-in-industry">
-<h2><span class="section-number">12.9. </span>10.8 Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.9. </span>10.8 Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
 <p>In general, Isabelle/HOL appears to have a wide variety of applcation throughout industry, due to the fact that it provides a mathematical assuranace of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.</p>
 <section id="physical-addressing-on-real-hardware">
-<h3><span class="section-number">12.9.1. </span>10.8.1 Physical Addressing on Real Hardware<a class="headerlink" href="#physical-addressing-on-real-hardware" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.9.1. </span>10.8.1 Physical Addressing on Real Hardware<a class="headerlink" href="#physical-addressing-on-real-hardware" title="Link to this heading">#</a></h3>
 <p>Achermann et al. discuss how to formally model and verify physical memory address translation and remapping hardware (such as MMUs) in SoCs (Systems-on-Chip) using Isabelle/HOL. Specifically, they developed a hardware model that encodes translation units and then prove that standard memory operations preserve system invariants.<sup><a href="#Achermann_physicalAddressing">[2]</a></sup></p>
 <!-- HOL-based systems used to verify hardware modules and FPGA implementations -->
 </section>
 <section id="focus-stream-processing-components">
-<h3><span class="section-number">12.9.2. </span>10.8.2 FOCUS - Stream Processing Components<a class="headerlink" href="#focus-stream-processing-components" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.9.2. </span>10.8.2 FOCUS - Stream Processing Components<a class="headerlink" href="#focus-stream-processing-components" title="Link to this heading">#</a></h3>
 <p>Spichkova proposes a new framework, FOCUS, aimed at formal specification and the application of refinement-based verification of interactive systems. In addition, FOCUS uses a stream processing component, represented by a communication history of a directed channel between components. FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).<sup><a href="#Spichkova_FOCUS">[3]</a></sup></p>
 <ul class="simple">
 <li><p>The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalised in Isabelle/HOL, translating architecture and component behaviour into higher-order logic while proving the design satisfies timing and safety requirements.</p></li>
@@ -718,24 +717,24 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 </ul>
 </section>
 <section id="isabil-verifying-in-correctness-of-binaries">
-<h3><span class="section-number">12.9.3. </span>10.8.3 IsaBIL - Verifying (In)Correctness of Binaries<a class="headerlink" href="#isabil-verifying-in-correctness-of-binaries" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.9.3. </span>10.8.3 IsaBIL - Verifying (In)Correctness of Binaries<a class="headerlink" href="#isabil-verifying-in-correctness-of-binaries" title="Link to this heading">#</a></h3>
 <p>Griffin et al. present IsaBIL, a binary analysis framework in Isabelle/HOL that is based on BAP (Binary Analysis Platform). IsaBIL formalizes BAP’s intermediate language (BIL) and integrates it with Hoare Logic (for proofs of correctness) and incorrectness logic (for proofs of incorectness). While there is a primary focus is on the RISC-V architecture and C binaries, the authors assert that IsaBIL is a flexible framework that can verify binaries for different languages (C, C++, Rust), toolchains (LLVM, Ghidra), and architectures (x86, RISC-V). The authors prove correctness through some industry level examples such as Lockheed Martin’s JSF (Joint Strike Fighter) coding standards and the MITRE ATT&amp;CK database.<sup><a href="#Griffin_IsaBIL">[4]</a></sup></p>
 </section>
 <section id="verlso-isolation-guarantees-of-database-transactions">
-<h3><span class="section-number">12.9.4. </span>10.8.4 Verlso - Isolation Guarantees of Database Transactions<a class="headerlink" href="#verlso-isolation-guarantees-of-database-transactions" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.9.4. </span>10.8.4 Verlso - Isolation Guarantees of Database Transactions<a class="headerlink" href="#verlso-isolation-guarantees-of-database-transactions" title="Link to this heading">#</a></h3>
 <p>Ghasemirad et al. present VerIso, a rigorous Isabelle/HOL-based framework for verifying transaction isolation within production level databases. The authors showcase VerIso by modelling the strict two-phase locking (S2PL) protocol and prove that it provides strict serializability (transactions behave as if executed sequentially and that sequential order must match the actual time order of their invocation/commit). In addition, VerIso’s parameterised architecture supports multiple isolation levels and uncovers design-level bugs in protocols such as the TAPIR protocol and its violation of atomic visibility.<sup><a href="#Ghasemirad_VerIso">[5]</a></sup></p>
 </section>
 <section id="ieee-754-floating-point-implementation-for-mdps">
-<h3><span class="section-number">12.9.5. </span>10.8.5 IEEE 754 Floating Point Implementation for MDPs<a class="headerlink" href="#ieee-754-floating-point-implementation-for-mdps" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.9.5. </span>10.8.5 IEEE 754 Floating Point Implementation for MDPs<a class="headerlink" href="#ieee-754-floating-point-implementation-for-mdps" title="Link to this heading">#</a></h3>
 <p>Kohlen et al. present a fully verified implementation of the Interval Iteration (II) Algorithm for Markov Decision Processes (MDPs). They model the II algorithm in Isabelle/HOL, use the Isabelle Refinement Framework (IRF) to carry out step-wise refinement down to LLVM bytecode, and extend Isabelle/HOL’s reasoning to support IEEE 754 floating-point arithmetic with directed rounding. Their result is a correct-by-construction floating-point implementation, competitive with industry tools and highly relevant for domains where verified numerical correctness matters, such as embedded systems, SoCs and safety-critical software.<sup><a href="#Kohlen_float">[6]</a></sup></p>
 </section>
 <section id="isamini-isabelle-proof-language-for-machine-learning">
-<h3><span class="section-number">12.9.6. </span>10.8.6 IsaMini: Isabelle Proof Language for Machine Learning<a class="headerlink" href="#isamini-isabelle-proof-language-for-machine-learning" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.9.6. </span>10.8.6 IsaMini: Isabelle Proof Language for Machine Learning<a class="headerlink" href="#isamini-isabelle-proof-language-for-machine-learning" title="Link to this heading">#</a></h3>
 <p>Xu et al. present MiniLang/IsaMini, a streamlined proof langauge for Isabelle/HOL designed to improve Large Language Model (LLM) integration in formal verification. The authors convert existing Isar proofs, such as those within Isabelle’s Archive of Formal Proofs (AFP), into MiniLang and fine-tune LLMs on this new proof representation. They then use the LLM’s macro level proof planning alongside Isabelle’s automation (such as Sledgehammer, etc) for micro level proof steps to significantly boost proof success rate. Their work is noteworthy because it brings together formal methods and AI-assisted tooling, reducing manual proof effort and enabling more scalable verification.<sup><a href="#Xu_IsaMini">[7]</a></sup></p>
 </section>
 </section>
 <section id="case-study-neural-theorem-proving-via-isamini">
-<h2><span class="section-number">12.10. </span>10.9 Case Study - Neural Theorem Proving via IsaMini<a class="headerlink" href="#case-study-neural-theorem-proving-via-isamini" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.10. </span>10.9 Case Study - Neural Theorem Proving via IsaMini<a class="headerlink" href="#case-study-neural-theorem-proving-via-isamini" title="Link to this heading">#</a></h2>
 <p>WIP</p>
 <p>https://github.com/xqyww123/Isa-Mini</p>
 <p>trying to find where the actual code etc is?</p>
@@ -759,18 +758,18 @@ and are present in the submitted supplementary materials</em></p>
 <code class="docutils literal notranslate"><span class="pre">isabelle</span> <span class="pre">components</span> <span class="pre">-u</span> <span class="pre">/Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys</span></code></p>
 </section>
 <section id="history">
-<h2><span class="section-number">12.11. </span>10.10 History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.11. </span>10.10 History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
 <!-- Church (1940) A Formulation of the Simple Theory of Types -->
 <!-- may include dates at teh beginning of each part, and include citations etc  -->
 <section id="origins-of-higher-order-logic">
-<h3><span class="section-number">12.11.1. </span>10.10.1 Origins of Higher Order Logic<a class="headerlink" href="#origins-of-higher-order-logic" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.11.1. </span>10.10.1 Origins of Higher Order Logic<a class="headerlink" href="#origins-of-higher-order-logic" title="Link to this heading">#</a></h3>
 <!-- scaffolding template for now -->
 <p>Alonzo Church’s work in the 1930s (via <span class="math notranslate nohighlight">\(\lambda\)</span>-calculus) and Leon Henkin’s work in the 1950s (on general models semantics) lay the foundation for higher order logic. From their contributions arose an extension of First Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities</p>
 <p>In the 1970s, Robert Milner develops LCF (Logic for Computable Functions) at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evovles into OCaml and Standard ML.</p>
 <p>In the early 1980s, Michael J. C. Gordon builds upon LCF in order to create the HOL system, which explicitly uses higher-order logic as its core formalism. This HOL system would become the foundation for hardware verification, paving the way and influencing later provers like HOL4 and Isabelle/HOL.</p>
 </section>
 <section id="development-of-isabelle-hol">
-<h3><span class="section-number">12.11.2. </span>10.10.2 Development of Isabelle/HOL<a class="headerlink" href="#development-of-isabelle-hol" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.11.2. </span>10.10.2 Development of Isabelle/HOL<a class="headerlink" href="#development-of-isabelle-hol" title="Link to this heading">#</a></h3>
 <p>Developed in the late 1980’s by Lawrence C. Paulson at Cambridge, Isabelle was created as a generic theorem proving framework capable of supporting multiple logical formalisms under a single meta-logic.</p>
 <p>The HOL instantiation of Isabelle (Isabelle/HOL) became the most widely adopted version due to its strong expressiveness and balance between automation and manual control.</p>
 <p>Isabelle introduced the Isar prof language in the 2000s, allowing structured and human readable proofs, improving clarity over traditional tactic-based approaches like in LCF.</p>
@@ -779,10 +778,10 @@ and are present in the submitted supplementary materials</em></p>
 </section>
 </section>
 <section id="current-development-research-challenges-conferences-and-workshops">
-<h2><span class="section-number">12.12. </span>10.11 Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.12. </span>10.11 Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Link to this heading">#</a></h2>
 </section>
 <section id="references">
-<h2><span class="section-number">12.13. </span>10.12 References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.13. </span>10.12 References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://isabelle.in.tum.de/">Isabelle/HOL</a></p></li>
 <li><p><a class="reference external" href="http://www.concrete-semantics.org/">Concrete Semantics</a></p></li>
@@ -820,7 +819,7 @@ and are present in the submitted supplementary materials</em></p>
 </ul>
 </section>
 <section id="suggestions-for-future-work">
-<h2><span class="section-number">12.14. </span>10.13 Suggestions for Future Work<a class="headerlink" href="#suggestions-for-future-work" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.14. </span>10.13 Suggestions for Future Work<a class="headerlink" href="#suggestions-for-future-work" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -860,7 +859,7 @@ and are present in the submitted supplementary materials</em></p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Hoare Logic with Dafny</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Hoare Logic with Dafny</p>
       </div>
     </a>
     <a class="right-next"
@@ -868,7 +867,7 @@ and are present in the submitted supplementary materials</em></p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Dependent Type Theory with Lean</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Dependent Type Theory with Lean</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -888,49 +887,49 @@ and are present in the submitted supplementary materials</em></p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">12.1. Topics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-and-introduction">12.2. 10.1 Idea and Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">12.3. 10.2 Basic Theory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-logic">12.3.1. 10.2.1 First Order Logic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-type-system">12.3.2. 10.2.2 (Explicit) Type System</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-abstraction">12.3.3. 10.2.3 Lambda Abstraction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-of-inference">12.3.4. 10.2.4 Rules of Inference</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-schemata">12.3.5. 10.2.5 Axiom Schemata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics">11.1. Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-and-introduction">11.2. 10.1 Idea and Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">11.3. 10.2 Basic Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-logic">11.3.1. 10.2.1 First Order Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-type-system">11.3.2. 10.2.2 (Explicit) Type System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-abstraction">11.3.3. 10.2.3 Lambda Abstraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-of-inference">11.3.4. 10.2.4 Rules of Inference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-schemata">11.3.5. 10.2.5 Axiom Schemata</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-installation-first-example-first-exercise">12.4. 10.3 Tool (Installation, First Example, First Exercise)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">12.4.1. 10.3.1 Installation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-solving-via-sledgehammer">12.4.2. 10.3.2 Proof Solving via Sledgehammer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example-add-function">12.4.3. 10.3.3 First Example - Add Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-exercise-associativity-and-communativity-of-add">12.4.4. 10.3.4 First Exercise - Associativity and Communativity of Add</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-installation-first-example-first-exercise">11.4. 10.3 Tool (Installation, First Example, First Exercise)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">11.4.1. 10.3.1 Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-solving-via-sledgehammer">11.4.2. 10.3.2 Proof Solving via Sledgehammer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example-add-function">11.4.3. 10.3.3 First Example - Add Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-exercise-associativity-and-communativity-of-add">11.4.4. 10.3.4 First Exercise - Associativity and Communativity of Add</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples-tower-of-hanoi-or-insertion-sort">12.5. 10.4 Introductory Examples - Tower of Hanoi or Insertion Sort</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">12.6. 10.5 The Landscape of Tools</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-proof-assistants">12.6.1. 10.5.1 Interactive Proof Assistants</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-higher-order-prover">12.6.2. 10.5.2 Automated Higher Order Prover</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples-tower-of-hanoi-or-insertion-sort">11.5. 10.4 Introductory Examples - Tower of Hanoi or Insertion Sort</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">11.6. 10.5 The Landscape of Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-proof-assistants">11.6.1. 10.5.1 Interactive Proof Assistants</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-higher-order-prover">11.6.2. 10.5.2 Automated Higher Order Prover</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">12.7. 10.6 Algorithms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">12.8. 10.7 Benchmark and Competitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">12.9. 10.8 Applications in Industry</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-addressing-on-real-hardware">12.9.1. 10.8.1 Physical Addressing on Real Hardware</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-stream-processing-components">12.9.2. 10.8.2 FOCUS - Stream Processing Components</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isabil-verifying-in-correctness-of-binaries">12.9.3. 10.8.3 IsaBIL - Verifying (In)Correctness of Binaries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verlso-isolation-guarantees-of-database-transactions">12.9.4. 10.8.4 Verlso - Isolation Guarantees of Database Transactions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ieee-754-floating-point-implementation-for-mdps">12.9.5. 10.8.5 IEEE 754 Floating Point Implementation for MDPs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isamini-isabelle-proof-language-for-machine-learning">12.9.6. 10.8.6 IsaMini: Isabelle Proof Language for Machine Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">11.7. 10.6 Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">11.8. 10.7 Benchmark and Competitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">11.9. 10.8 Applications in Industry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-addressing-on-real-hardware">11.9.1. 10.8.1 Physical Addressing on Real Hardware</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-stream-processing-components">11.9.2. 10.8.2 FOCUS - Stream Processing Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isabil-verifying-in-correctness-of-binaries">11.9.3. 10.8.3 IsaBIL - Verifying (In)Correctness of Binaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verlso-isolation-guarantees-of-database-transactions">11.9.4. 10.8.4 Verlso - Isolation Guarantees of Database Transactions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ieee-754-floating-point-implementation-for-mdps">11.9.5. 10.8.5 IEEE 754 Floating Point Implementation for MDPs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isamini-isabelle-proof-language-for-machine-learning">11.9.6. 10.8.6 IsaMini: Isabelle Proof Language for Machine Learning</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-neural-theorem-proving-via-isamini">12.10. 10.9 Case Study - Neural Theorem Proving via IsaMini</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">12.11. 10.10 History</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-higher-order-logic">12.11.1. 10.10.1 Origins of Higher Order Logic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">12.11.2. 10.10.2 Development of Isabelle/HOL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-neural-theorem-proving-via-isamini">11.10. 10.9 Case Study - Neural Theorem Proving via IsaMini</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">11.11. 10.10 History</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-higher-order-logic">11.11.1. 10.10.1 Origins of Higher Order Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">11.11.2. 10.10.2 Development of Isabelle/HOL</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">12.12. 10.11 Current Development, Research Challenges, Conferences and Workshops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">12.13. 10.12 References</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">12.14. 10.13 Suggestions for Future Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">11.12. 10.11 Current Development, Research Challenges, Conferences and Workshops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">11.13. 10.12 References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">11.14. 10.13 Suggestions for Future Work</a></li>
 </ul>
   </nav></div>
 
