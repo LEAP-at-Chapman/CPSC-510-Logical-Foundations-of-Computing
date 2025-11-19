@@ -67,7 +67,7 @@ conclusion line of how HOL = typed + $\lambda$ + functional programming
 – Church (1940) A Formulation of the Simple Theory of Types 
 Church Text is more relevant to history section-->
 
-*Andrews, 2002 Section 5.1*<sup><a href="#andrews2002">[3]</a></sup> provides us with $Q_0$, which is a formalization of Church's simple theory of types<sup><a href="#Church_TypeTheory">[10]</a></sup> and is a typed higher order logic. The semantics of $Q_0$ describe how types denote sets, how function types denote function spaces, and how terms receive meaning under assignments. 
+*Andrews, 2002 Section 5.1*<sup><a href="#andrews2002">[3]</a></sup> provides us with $Q_0$, which is a modified formalization of Church's simple theory of types<sup><a href="#Church_TypeTheory">[10]</a></sup>, in which equality is taken as the basic primitive notion. The semantics of $Q_0$ describe how types denote sets, how function types denote function spaces, and how terms receive meaning under assignments. 
 
 This section introduces the purely syntactic component of simple type theory:
 the formation of types, variables, primitive symbols, and well-formed expressions.
@@ -88,6 +88,12 @@ $(\alpha, \beta, \gamma, \ldots )$ are syntactical variables that range over typ
 
   - Improper symbols include  [ ] and $\lambda$
 
+  <!-- Andrews $Q_0$ is fairly barebones in terms of logical constants, as he only provides us with 2 main terms: $Q_{((o\alpha)\alpha)}$ and $u_{(\iota(o\iota))}$ where: -->
+
+  - $Q_{((o\alpha)\alpha)}$ is the equality predicate at type $\alpha$, which is a function that takes 2 $\alpha$ arguments and returns a truth value
+
+  - $u_{(\iota(o\iota))}$ is the description/selection operator (also known as the Hilbert $\epsilon$-operator), which returns an element of type $\iota$ that satisfies a predicate $p : \iota \to o$ if one exists
+
 **Nonlogical Constants:**
 
   - Nonlogical constants of various types may be included depending on the particular formalized language
@@ -102,9 +108,7 @@ A wff$_\alpha$ (a well-formed expression of type $\alpha$) is defined inductivel
 
   - If $A_\alpha$ is a wff and $x_\beta$ is a variable, then $\lambda x_\beta A_\alpha$ is a wff of type $\alpha\beta$ ($\lambda$-abstraction; see Section 10.2.3).
 
-### Lambda Abstraction and Application
-
-WIP
+### $\lambda$-Abstraction and Application
 
 <!-- Read:
 – Paulson, Logic and Computation, ch. 2
@@ -115,23 +119,21 @@ WIP
 	•	extensionality axiom (optional mention)
 	•	Isabelle example snippets (%x. t, function application precedence) -->
 
-$\lambda$-abstraction is the syntax used to define a function by naming its argument. For example, $\lambda x .\; t$ denotes the function that takes an input x as argument input and returns the expression t as output. In other words, it is the function that maps $x$ to $t$, so $x \mapsto t$. 
+$\lambda$-abstraction is the syntax used to define a function by naming its argument. For example, $\lambda x .\; t$ denotes the function that takes an input x as argument input and returns the expression t as output. In other words, it is the function that maps $x$ to $t$, so $x \mapsto t$. Simply put, $\lambda$ is an operator that is used to denote and represent functions. 
+
+Another example provided by the Stanford Encyclopedia of Philosophy<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> is more ingrained in natural language and may be easier to understand: $\lambda x .\; x\text{ is a Polish diplomat and } x \text{ is a great pianist}$. If we set the input of x to an arbirary person, say $x = $ Fred, then this can be read as “Fred is both a Polish diplomat and a great pianist”.
 
 **In Isabelle/HOL, $\lambda$-abstraction is written as `%x. t` with a `%` instead of the $\lambda$ symbol.*
 
-HOL's $\lambda$-abstraction constructs a function. If $x:\alpha$ and $t:\beta$, then $\lambda x .\; t: \alpha \Rightarrow \beta$. 
+HOL's $\lambda$-abstraction constructs a function. If $x:\alpha$ and $t:\beta$, then $\lambda x .\; t: \alpha \Rightarrow \beta$.
 (Basically, If $x$ has type $\alpha$ and $t$ has type $\beta$, then $\lambda x .\; t$ has type $\alpha \Rightarrow \beta$). Function application is typed accordingly. If $f:\alpha \Rightarrow \beta$ and $x:\alpha$, then $f x:\beta$. Applying a function of type $\alpha \Rightarrow \beta$ to an argument of type $\alpha$ produces a result of type $\beta$.
-
-<!-- , namely if $x$ has type $\alpha$ and $t$ has type $\beta$, then $\lambda x .\;\; t$ has the function type of $\alpha \Rightarrow \beta$. In terms of the function application, when we formalize how $f \; x$ is typed, (the function with x as an input), if $f$ has a function type of $\alpha \Rightarrow \beta$ and $x$ has a type of $\alpha$, then $f \; x$ has a type of $\beta$. -->
 
 **Andrews uses the notation of $\alpha\beta$, which is equivalent to Isabelle/HOL's notation of $\alpha \Rightarrow \beta$. They both mean the same thing: the type of a function that takes an argument of type $\alpha$ and returns a value of type $\beta$*
 
 <!-- $\beta$-reduction semantics stuff here (just add a line or two) -->
 
 
-### Logical Constants
-
-WIP
+### Logical Constants in HOL
 
 <!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf section 2, Andrews Logical Constants of Q0	•	§51(c): Q_{(αα)o} and u_{(ιo)ι} and the explanations. ￼ -->
 
@@ -143,12 +145,49 @@ standard connectives: ¬, ∧, ∨, ⟶, ↔
 
 quantifiers defined via λ (∀x. P x) -->
 
-Logical constants: $Q_{((o\alpha)\alpha)}$ and $u_{(\iota(o\iota))}$ where:
-  - $Q_{((o\alpha)\alpha)}$ is the equality predicate at type $\alpha$, which is a function that takes 2 $\alpha$ arguments and returns a truth value
+Logical constants are built in symbols that define the logical structure of the system and are not defined by the user. Isabelle/HOL provides a standard set of such constants, summarized in Sections 2.1.1 of *Concrete Semantics*.<sup><a href="#ConcreteSemantics">[1]</a></sup> 
 
-  - $u_{(\iota(o\iota))}$ is the description/selection operator (also known as the Hilbert $\epsilon$-operator), which returns an element of type $\iota$ that satisfies a predicate $p : \iota \to o$ if one exists
+<!-- base boolean constants: (true and false) -->
+- **Base Boolean Constants**: simplest terms of type bool, representing truth values
+  - *True* : bool
+  - *False* : bool
+
+<!-- logical connectives (such as not, and, or, ->, etc) -->
+- **Logical Connectives**: curried functions that return a Boolean
+  - **$\neg$**: $bool \Rightarrow bool$
+  - **$\land$**: $bool \Rightarrow bool \Rightarrow bool$
+  - **$\lor$**: $bool \Rightarrow bool \Rightarrow bool$
+  - **$\to$**: $bool \Rightarrow bool \Rightarrow bool$
+
+<!-- equality: = -->
+- **Equality**: infix function $=$ of type $\alpha \Rightarrow \alpha \Rightarrow bool$
+
+<!-- quantifiers: $\forall x$ and $\exists x$ -->
+- **Quantifiers**: $\forall x. \; Px$ and $\exists x. \; Px$
+
 
 ### Deductive Core of HOL
+
+Natural Deduction Rules
+Chapter 5 of *Isabelle/HOL: A Proof Assistant for Higher‑Order Logic* <sup><a href="#Isabelle/HOL_ProofAssistant">[13]</a></sup>
+
+<!-- Introduction and elimination rules for classical connectives and quantifiers. -->
+
+Typed $\lambda$-Calculus
+<!-- Terms are built using the simply-typed λ-calculus, with β-reduction and η-conversion (up to extensionality). -->
+
+Equality Rules
+<!-- Polymorphic equality with reflexivity + congruence/substitution; includes functional and boolean extensionality. -->
+
+Hilbert $\epsilon$ (Choice) Operator
+A choice operator $\varepsilon : (\alpha \Rightarrow bool) \Rightarrow \alpha$ with the choice axiom.
+
+Conservative Definition Principles
+<!-- New constants and types may only be introduced via mechanisms Isabelle checks as conservative (no new theorems introduced). -->
+
+Small Trusted Kernel
+<!-- Isabelle’s logical kernel is minimal; all automation reduces to this core proof system. -->
+
 
 WIP
 <!-- 
@@ -157,7 +196,7 @@ WIP
 	•	All user-introduced definitions are conservative
 	•	Isabelle proves everything from this core automatically -->
 
-The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system of $\mathcal{w}$-order logic which has all finite order logics as subsystems:
+<!-- The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system of $\mathcal{w}$-order logic which has all finite order logics as subsystems:
 
 1) **Modus Ponens** From $A$ and $A \to B$ to infer $B$.
 2) **Generalization** From $A$ to infer $\forall x\,A$, where x is a variable of any type
@@ -165,8 +204,6 @@ The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system
 
 *Adapted from Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> using modern logic convention.
 
-
-<!-- ### 10.2.5 Axiom Schemata -->
 
 The axiom schemata of $\mathcal{F}^w$ are:
 
@@ -209,7 +246,7 @@ The axiom schemata of $\mathcal{F}^w$ are:
 
     - These axioms state that two expressions are equal if and only if they behave identically in that their output result is the same in all evaluations. This formalizes the idea that in higher order logic, equality is extensional (based on meaning and behavior) rather than syntactic (based on form).
 
-Adapted from *Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> using modern logic convention.
+Adapted from *Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> using modern logic convention. -->
 
 
 ## Tool (Installation, First Example, First Exercise)
@@ -569,6 +606,13 @@ Davis and Putnam (1960) A Computing Procedure for Quantification Theory, Journal
 
 <a id="Paulson_LCF"></a>
 - [11]: Laurence C. Paulson (1987) [Logic and Computation: Interactive Proof with Cambridge LCF](https://assets.cambridge.org/97805213/46320/sample/9780521346320ws.pdf), Cambridge University Press, USA.
+
+<a id="Stanford_LambdaCalc_TypeTheory"></a>
+- [12]: Deutsch and Marshall (2025) [D. The λ-Calculus and Type Theory: Supplement to Alonzo Church](https://plato.stanford.edu/entries/church/supplementD.html), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
+
+<a id="Isabelle/HOL_ProofAssistant"></a>
+- [13]: Nipkow, Paulson, and Wenzel (2025) [Isabelle/HOL: A Proof Assistant for
+Higher-Order Logic](https://isabelle.in.tum.de/doc/tutorial.pdf), Springer-Verlag, Berlin, Heidelberg. 
 
 https://isabelle.in.tum.de/library/HOL/HOL/document.pdf
 
