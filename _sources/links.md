@@ -1,0 +1,2 @@
+https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&amp;q=temporal+logic+N+Rescher+A+Urquhart&amp;btnG=
+https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher+A+Urquhart&btnG=
