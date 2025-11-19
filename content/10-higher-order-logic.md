@@ -3,7 +3,18 @@
 *Author: Spencer Au*
 
 
-## Topics
+<!-- ## Topics
+
+- Higher-order logic foundations
+- Function types and quantification
+- Isabelle/HOL advanced features
+- Theorem proving strategies
+- Industrial theorem proving -->
+
+## Idea and Introduction
+WIP
+
+Topics
 
 - Higher-order logic foundations
 - Function types and quantification
@@ -11,18 +22,15 @@
 - Theorem proving strategies
 - Industrial theorem proving
 
-## 10.1 Idea and Introduction
-WIP
-
 This chapter extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.
 
 Higher-order logic (HOL) extends the capabilities of first-order logic (FOL) by allowing quantifiers (such as $ \forall x $ and $ \exists x $) to range over functions and predicates, not just individual elements. In addition, functions can be passed as arguments to other functions, returned as results, and manipulated just like any other data type. This enables more expressive statements about the properties of functions and their relationships.
 
-## 10.2 Basic Theory
+## Basic Theory
 
 <!-- basic setup - need to add much more but this is just basics/scaffolding -->
 
-### 10.2.1 From First Order Logic to HOL
+### From First Order Logic to HOL
 
 WIP
 <!-- 
@@ -53,7 +61,7 @@ These are the principal features which are added to first-order logic in order t
 
 conclusion line of how HOL = typed + $\lambda$ + functional programming
 
-### 10.2.2 (Explicit) Type System
+### (Explicit) Type System
 
 <!-- – Andrews (2002) Sections 5 (“Type theory basics”)
 – Church (1940) A Formulation of the Simple Theory of Types 
@@ -94,7 +102,7 @@ A wff$_\alpha$ (a well-formed expression of type $\alpha$) is defined inductivel
 
   - If $A_\alpha$ is a wff and $x_\beta$ is a variable, then $\lambda x_\beta A_\alpha$ is a wff of type $\alpha\beta$ ($\lambda$-abstraction; see Section 10.2.3).
 
-### 10.2.3 Lambda Abstraction and Application
+### Lambda Abstraction and Application
 
 WIP
 
@@ -116,10 +124,10 @@ HOL's $\lambda$-abstraction constructs a function. If $x:\alpha$ and $t:\beta$, 
 
 **Andrews uses the notation of $\alpha\beta$, which is equivalent to Isabelle/HOL's notation of $\alpha \Rightarrow \beta$. They both mean the same thing: the type of a function that takes an argument of type $\alpha$ and returns a value of type $\beta$*
 
-$\beta$-reduction semantics stuff here (just add a line or two)
+<!-- $\beta$-reduction semantics stuff here (just add a line or two) -->
 
 
-### 10.2.4 Logical Constants
+### Logical Constants
 
 WIP
 
@@ -138,7 +146,7 @@ Logical constants: $Q_{((o\alpha)\alpha)}$ and $u_{(\iota(o\iota))}$ where:
 
   - $u_{(\iota(o\iota))}$ is the description/selection operator (also known as the Hilbert $\epsilon$-operator), which returns an element of type $\iota$ that satisfies a predicate $p : \iota \to o$ if one exists
 
-### 10.2.5 Deductive Core of HOL
+### Deductive Core of HOL
 
 WIP
 <!-- 
@@ -202,9 +210,9 @@ The axiom schemata of $\mathcal{F}^w$ are:
 Adapted from *Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> using modern logic convention.
 
 
-## 10.3 Tool (Installation, First Example, First Exercise)
+## Tool (Installation, First Example, First Exercise)
 
-### 10.3.1 Installation
+### Installation
 
 [Installation Link for Isabelle](https://isabelle.in.tum.de/)
 
@@ -231,9 +239,11 @@ end
 
 More detailed instructions on setup and initial use can be found in Chapters 1 and 2.1.2 of *Concrete Semantics*<sup><a href="#ConcreteSemantics">[1]</a></sup>
 
-### 10.3.2 Proof Solving via Sledgehammer
+### Proof Solving via Sledgehammer
 
-### 10.3.3 First Example - Add Function
+WIP
+
+### First Example - Add Function
 
 For the first example, the goal will be to implement recursive addition via a function called "add". The general form should be:
 
@@ -256,7 +266,7 @@ fun add :: "nat ⇒ nat ⇒ nat" where
 For a detailed explanation, [See Section 10.3.2 Exercises](./assets-10/10.3_exercises.md#10.3.2-First-Example)
 
 
-### 10.3.4 First Exercise - Associativity and Communativity of Add
+### First Exercise - Associativity and Communativity of Add
 
 For the first exercise, we will be proving the associative and commutative properties of a custom `add` function in Isabelle. This exercise comes from Exercise 2.2 of [Concrete Semantics Exercises](http://www.concrete-semantics.org/Exercises/exercises.pdf)
 
@@ -340,20 +350,22 @@ qed
 For a detailed explanation, [See Section 10.3.3 Communative Property](./assets-10/10.3_exercises.md#Communative-Property-Proof)
 
 
-## 10.4 Introductory Examples - Tower of Hanoi or Insertion Sort
+## Introductory Examples - Tower of Hanoi or Insertion Sort
 
 <!-- show something interesting about tool, logic, etc and can be digested and understood with minimum experience -->
 
 Tower of Hanoi or Insertion Sort
 
+WIP
 
-## 10.5 The Landscape of Tools
+
+## The Landscape of Tools
 
 WIP
 
 <!-- ### 10.5.1 Interactive Proof Assistants -->
 
-### 10.5.1 Interactive Theorem Prover
+### Interactive Theorem Prover
 
 HOL4 (classic HOL)
 
@@ -361,7 +373,7 @@ Coq (constructive higher-order/type theory)
 
 Lean 4 (modern dependent/HOL hybrid)
 
-### 10.5.2 Automated Higher Order Prover
+### Automated Higher Order Prover
 
 <!-- ### 10.5.2 Automated Theorem Prover -->
 
@@ -370,23 +382,23 @@ Leo III
 Satallax
 
 
-## 10.6 Algorithms
+## Algorithms
 
 
-## 10.7 Benchmark and Competitions
+## Benchmark and Competitions
 
 
-## 10.8 Applications in Industry
+## Applications in Industry (and Academia)
 
 In general, Isabelle/HOL appears to have a wide variety of applcation throughout industry, due to the fact that it provides a mathematical assuranace of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.
 
-### 10.8.1 Physical Addressing on Real Hardware
+### Physical Addressing on Real Hardware
 
 Achermann et al.<sup><a href="#Achermann_physicalAddressing">[4]</a></sup> discuss how to formally model and verify physical memory address translation and remapping hardware (such as MMUs) in SoCs (Systems-on-Chip) using Isabelle/HOL. Specifically, they developed a hardware model that encodes translation units and then prove that standard memory operations preserve system invariants.
 
 <!-- HOL-based systems used to verify hardware modules and FPGA implementations -->
 
-### 10.8.2 FOCUS - Stream Processing Components
+### FOCUS - Stream Processing Components
 
 Spichkova<sup><a href="#Spichkova_FOCUS">[5]</a></sup> proposes a new framework, FOCUS, aimed at formal specification and the application of refinement-based verification of interactive systems. In addition, FOCUS uses a stream processing component, represented by a communication history of a directed channel between components. FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).
 
@@ -396,15 +408,15 @@ Spichkova<sup><a href="#Spichkova_FOCUS">[5]</a></sup> proposes a new framework,
 
 - The third case study is about the Automative-Gateway system for the Verisoft project. Basically, if the Gateway receives a vehicle crash signal, then it will initiate a call to the appropriate Emergency Service Center (ESC). The system is modelled in Isabelle/HOL, with the architecture, requirements, and refinement relations all formally specified and proven to ensure that the Gateway design meets its crash signal and data transmission requirements.
 
-### 10.8.3 IsaBIL - Verifying (In)Correctness of Binaries
+### IsaBIL - Verifying (In)Correctness of Binaries
 
 Griffin et al.<sup><a href="#Griffin_IsaBIL">[6]</a></sup> present IsaBIL, a binary analysis framework in Isabelle/HOL that is based on BAP (Binary Analysis Platform). IsaBIL formalizes BAP's intermediate language (BIL) and integrates it with Hoare Logic (for proofs of correctness) and incorrectness logic (for proofs of incorectness). While there is a primary focus is on the RISC-V architecture and C binaries, the authors assert that IsaBIL is a flexible framework that can verify binaries for different languages (C, C++, Rust), toolchains (LLVM, Ghidra), and architectures (x86, RISC-V). The authors prove correctness through some industry level examples such as Lockheed Martin's JSF (Joint Strike Fighter) coding standards and the MITRE ATT&CK database.
 
-### 10.8.4 Verlso - Isolation Guarantees of Database Transactions
+### Verlso - Isolation Guarantees of Database Transactions
 
 Ghasemirad et al.<sup><a href="#Ghasemirad_VerIso">[7]</a></sup> present VerIso, a rigorous Isabelle/HOL-based framework for verifying transaction isolation within production level databases. The authors showcase VerIso by modelling the strict two-phase locking (S2PL) protocol and prove that it provides strict serializability (transactions behave as if executed sequentially and that sequential order must match the actual time order of their invocation/commit). In addition, VerIso’s parameterised architecture supports multiple isolation levels and uncovers design-level bugs in protocols such as the TAPIR protocol and its violation of atomic visibility.
 
-### 10.8.5 IEEE 754 Floating Point Implementation for MDPs
+### IEEE 754 Floating Point Implementation for MDPs
 
 Kohlen et al.<sup><a href="#Kohlen_float">[8]</a></sup> present a fully verified implementation of the Interval Iteration (II) Algorithm for Markov Decision Processes (MDPs). They model the II algorithm in Isabelle/HOL, use the Isabelle Refinement Framework (IRF) to carry out step-wise refinement down to LLVM bytecode, and extend Isabelle/HOL’s reasoning to support IEEE 754 floating-point arithmetic with directed rounding. Their result is a correct-by-construction floating-point implementation, competitive with industry tools and highly relevant for domains where verified numerical correctness matters, such as embedded systems, SoCs and safety-critical software.
 
@@ -412,11 +424,11 @@ Kohlen et al.<sup><a href="#Kohlen_float">[8]</a></sup> present a fully verified
 
 Xu et al. present MiniLang/IsaMini, a streamlined proof langauge for Isabelle/HOL designed to improve Large Language Model (LLM) integration in formal verification. The authors convert existing Isar proofs, such as those within Isabelle's Archive of Formal Proofs (AFP), into MiniLang and fine-tune LLMs on this new proof representation. They then use the LLM's macro level proof planning alongside Isabelle's automation (such as Sledgehammer, etc) for micro level proof steps to significantly boost proof success rate. Their work is noteworthy because it brings together formal methods and AI-assisted tooling, reducing manual proof effort and enabling more scalable verification.<sup><a href="#Xu_IsaMini">[7]</a></sup> -->
 
-### 10.8.6 Autoformalization with Large Language Models
+### Autoformalization with Large Language Models
 
 Wu et al.<sup><a href="#Wu_LLM_Autoformat">[9]</a></sup> present WIP
 
-## 10.9 Case Study - Autoformalization with Large Language Models
+## Case Study - Autoformalization with Large Language Models
 
 WIP
 
@@ -462,13 +474,13 @@ For example, the pathname for my AFP is:
 My command is then:
 `isabelle components -u /Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys` -->
 
-## 10.10 History
+## History
 
 <!-- Church (1940) A Formulation of the Simple Theory of Types -->
 
 <!-- may include dates at teh beginning of each part, and include citations etc  -->
 
-### 10.10.1 Origins of Higher Order Logic
+### Origins of Higher Order Logic
 
 <!-- scaffolding template for now -->
 
@@ -478,7 +490,7 @@ In the 1970s, Robert Milner develops LCF (Logic for Computable Functions) at Sta
 
 In the early 1980s, Michael J. C. Gordon builds upon LCF in order to create the HOL system, which explicitly uses higher-order logic as its core formalism. This HOL system would become the foundation for hardware verification, paving the way and influencing later provers like HOL4 and Isabelle/HOL.
 
-### 10.10.2 Development of Isabelle/HOL
+### Development of Isabelle/HOL
 
 Developed in the late 1980's by Lawrence C. Paulson at Cambridge, Isabelle was created as a generic theorem proving framework capable of supporting multiple logical formalisms under a single meta-logic.
 
@@ -490,10 +502,10 @@ Integration with automated tools such as Sledgehammer and SMT solvers further ex
 
 The creation of the AFP (Archive of Formal Proofs) established a reusable library of formalizd mathematics and computer science, solidifying Isabelle/HOL's role in both academia and industry.
 
-## 10.11 Current Development, Research Challenges, Conferences and Workshops
+## Current Development, Research Challenges, Conferences and Workshops
 
 
-## 10.12 References
+## References
 
 <!-- Author(s) (Year) [Title](linkToGoogleScholarQuery), Venue
 
@@ -562,5 +574,5 @@ https://isabelle.in.tum.de/library/HOL/HOL/document.pdf
 
 
 
-## 10.13 Suggestions for Future Work
+## Suggestions for Future Work
 
