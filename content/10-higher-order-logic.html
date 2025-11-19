@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>11. Higher-Order Logic with Isabelle/HOL &#8212; Logical Foundations of AI</title>
   
@@ -28,35 +29,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/10-higher-order-logic';</script>
@@ -155,18 +160,7 @@
     <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
@@ -231,9 +225,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -374,9 +368,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -451,7 +445,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="higher-order-logic-with-isabelle-hol">
-<h1><span class="section-number">11. </span>Higher-Order Logic with Isabelle/HOL<a class="headerlink" href="#higher-order-logic-with-isabelle-hol" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">11. </span>Higher-Order Logic with Isabelle/HOL<a class="headerlink" href="#higher-order-logic-with-isabelle-hol" title="Permalink to this heading">#</a></h1>
 <p><em>Author: Spencer Au</em></p>
 <!-- ## Topics
 
@@ -461,7 +455,7 @@ document.write(`
 - Theorem proving strategies
 - Industrial theorem proving -->
 <section id="idea-and-introduction">
-<h2><span class="section-number">11.1. </span>Idea and Introduction<a class="headerlink" href="#idea-and-introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Idea and Introduction<a class="headerlink" href="#idea-and-introduction" title="Permalink to this heading">#</a></h2>
 <p>WIP</p>
 <p>Topics</p>
 <ul class="simple">
@@ -475,10 +469,10 @@ document.write(`
 <p>Higher-order logic (HOL) extends the capabilities of first-order logic (FOL) by allowing quantifiers (such as <span class="math notranslate nohighlight">\( \forall x \)</span> and <span class="math notranslate nohighlight">\( \exists x \)</span>) to range over functions and predicates, not just individual elements. In addition, functions can be passed as arguments to other functions, returned as results, and manipulated just like any other data type. This enables more expressive statements about the properties of functions and their relationships.</p>
 </section>
 <section id="basic-theory">
-<h2><span class="section-number">11.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
 <!-- basic setup - need to add much more but this is just basics/scaffolding -->
 <section id="from-first-order-logic-to-hol">
-<h3><span class="section-number">11.2.1. </span>From First Order Logic to HOL<a class="headerlink" href="#from-first-order-logic-to-hol" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.2.1. </span>From First Order Logic to HOL<a class="headerlink" href="#from-first-order-logic-to-hol" title="Permalink to this heading">#</a></h3>
 <p>WIP</p>
 <!-- 
 	•	HOL is typed
@@ -501,7 +495,7 @@ document.write(`
 <p>conclusion line of how HOL = typed + <span class="math notranslate nohighlight">\(\lambda\)</span> + functional programming</p>
 </section>
 <section id="explicit-type-system">
-<h3><span class="section-number">11.2.2. </span>(Explicit) Type System<a class="headerlink" href="#explicit-type-system" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.2.2. </span>(Explicit) Type System<a class="headerlink" href="#explicit-type-system" title="Permalink to this heading">#</a></h3>
 <!-- – Andrews (2002) Sections 5 (“Type theory basics”)
 – Church (1940) A Formulation of the Simple Theory of Types 
 Church Text is more relevant to history section-->
@@ -537,7 +531,7 @@ the formation of types, variables, primitive symbols, and well-formed expression
 </ul>
 </section>
 <section id="lambda-abstraction-and-application">
-<h3><span class="section-number">11.2.3. </span>Lambda Abstraction and Application<a class="headerlink" href="#lambda-abstraction-and-application" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.2.3. </span>Lambda Abstraction and Application<a class="headerlink" href="#lambda-abstraction-and-application" title="Permalink to this heading">#</a></h3>
 <p>WIP</p>
 <!-- Read:
 – Paulson, Logic and Computation, ch. 2
@@ -556,7 +550,7 @@ the formation of types, variables, primitive symbols, and well-formed expression
 <!-- $\beta$-reduction semantics stuff here (just add a line or two) -->
 </section>
 <section id="logical-constants">
-<h3><span class="section-number">11.2.4. </span>Logical Constants<a class="headerlink" href="#logical-constants" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.2.4. </span>Logical Constants<a class="headerlink" href="#logical-constants" title="Permalink to this heading">#</a></h3>
 <p>WIP</p>
 <!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf section 2, Andrews Logical Constants of Q0	•	§51(c): Q_{(αα)o} and u_{(ιo)ι} and the explanations. ￼ -->
 <!-- equality: = :: α ⇒ α ⇒ bool
@@ -573,7 +567,7 @@ quantifiers defined via λ (∀x. P x) -->
 </ul>
 </section>
 <section id="deductive-core-of-hol">
-<h3><span class="section-number">11.2.5. </span>Deductive Core of HOL<a class="headerlink" href="#deductive-core-of-hol" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.2.5. </span>Deductive Core of HOL<a class="headerlink" href="#deductive-core-of-hol" title="Permalink to this heading">#</a></h3>
 <p>WIP</p>
 <!-- 
 	•	HOL’s small axiom set: classical logic, equality, choice
@@ -630,9 +624,9 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 </section>
 </section>
 <section id="tool-installation-first-example-first-exercise">
-<h2><span class="section-number">11.3. </span>Tool (Installation, First Example, First Exercise)<a class="headerlink" href="#tool-installation-first-example-first-exercise" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>Tool (Installation, First Example, First Exercise)<a class="headerlink" href="#tool-installation-first-example-first-exercise" title="Permalink to this heading">#</a></h2>
 <section id="installation">
-<h3><span class="section-number">11.3.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h3>
 <p><a class="reference external" href="https://isabelle.in.tum.de/">Installation Link for Isabelle</a></p>
 <p>Isabelle processes the theory document incrementally in the background, meaning that there is no additional “compile” or “run” step. As you type in lines and commands, the background system will check them and automatically update the proof state and any relevant error reports. Just go line by line, or command by command in order to check the related output.</p>
 <p>Isabelle uses *.thy (theory) files, and the general structure of the theory files is like this:</p>
@@ -652,11 +646,11 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 <p>More detailed instructions on setup and initial use can be found in Chapters 1 and 2.1.2 of <em>Concrete Semantics</em><sup><a href="#ConcreteSemantics">[1]</a></sup></p>
 </section>
 <section id="proof-solving-via-sledgehammer">
-<h3><span class="section-number">11.3.2. </span>Proof Solving via Sledgehammer<a class="headerlink" href="#proof-solving-via-sledgehammer" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.2. </span>Proof Solving via Sledgehammer<a class="headerlink" href="#proof-solving-via-sledgehammer" title="Permalink to this heading">#</a></h3>
 <p>WIP</p>
 </section>
 <section id="first-example-add-function">
-<h3><span class="section-number">11.3.3. </span>First Example - Add Function<a class="headerlink" href="#first-example-add-function" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.3. </span>First Example - Add Function<a class="headerlink" href="#first-example-add-function" title="Permalink to this heading">#</a></h3>
 <p>For the first example, the goal will be to implement recursive addition via a function called “add”. The general form should be:</p>
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="s">&quot;nat ⇒ nat ⇒ nat&quot;</span><span class="w"> </span><span class="kp">where</span>
 <span class="w">    </span><span class="s">&quot;base case&quot;</span>
@@ -666,22 +660,30 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 <p>where two natural numbers are added, and the result is a natural number that is the sum of the two input numbers. For example, <code class="docutils literal notranslate"><span class="pre">sum</span> <span class="pre">m</span> <span class="pre">n</span></code> should return the sum of m and n.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Show Answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="s">&quot;nat ⇒ nat ⇒ nat&quot;</span><span class="w"> </span><span class="kp">where</span>
 <span class="w">  </span><span class="s">&quot;add 0 n = n&quot;</span><span class="w"> </span><span class="o">|</span>
 <span class="w">  </span><span class="s">&quot;add (Suc m) n = Suc (add m n)&quot;</span><span class="w"> </span>
 </pre></div>
 </div>
 </div>
-</details><p>For a detailed explanation, <a class="reference internal" href="assets-10/10.3_exercises.html#10.3.2-First-Example"><span class="std std-ref">See Section 10.3.2 Exercises</span></a></p>
+</details><p>For a detailed explanation, <span class="xref myst">See Section 10.3.2 Exercises</span></p>
 </section>
 <section id="first-exercise-associativity-and-communativity-of-add">
-<h3><span class="section-number">11.3.4. </span>First Exercise - Associativity and Communativity of Add<a class="headerlink" href="#first-exercise-associativity-and-communativity-of-add" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.3.4. </span>First Exercise - Associativity and Communativity of Add<a class="headerlink" href="#first-exercise-associativity-and-communativity-of-add" title="Permalink to this heading">#</a></h3>
 <p>For the first exercise, we will be proving the associative and commutative properties of a custom <code class="docutils literal notranslate"><span class="pre">add</span></code> function in Isabelle. This exercise comes from Exercise 2.2 of <a class="reference external" href="http://www.concrete-semantics.org/Exercises/exercises.pdf">Concrete Semantics Exercises</a></p>
 <p>The custom add function is defined here:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Show Answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="s">&quot;nat =&gt; nat =&gt; nat&quot;</span><span class="w"> </span><span class="kp">where</span>
 <span class="w">    </span><span class="s">&quot;add 0 n = n&quot;</span><span class="w"> </span><span class="o">|</span>
 <span class="w">    </span><span class="s">&quot;add (Suc m) n = Suc(add m n)&quot;</span>
@@ -696,7 +698,11 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 <p>The full lemma proof for associativity is here:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Show Answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_assoc</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add (add m n) p = add m (add n p)&quot;</span>
 <span class="k">proof</span><span class="w"> </span><span class="o">(</span><span class="n">induction</span><span class="w"> </span><span class="n">m</span><span class="o">)</span><span class="w"> </span>
 <span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="n">0</span>
@@ -708,7 +714,7 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 </pre></div>
 </div>
 </div>
-</details><p>For a detailed explanation, <a class="reference internal" href="assets-10/10.3_exercises.html#Associative-Property-Proof"><span class="std std-ref">See Section 10.3.3 Associative Property</span></a></p>
+</details><p>For a detailed explanation, <span class="xref myst">See Section 10.3.3 Associative Property</span></p>
 <p>Next, to prove the communative property, we will first prove 2 helper lemmas:</p>
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_0_right</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m 0 = m&quot;</span>
 <span class="kn">lemma</span><span class="w"> </span><span class="n">add_Suc_right</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m (Suc n) = Suc (add m n)&quot;</span>
@@ -717,7 +723,11 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 <p>The helper lemma proofs for communativity</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Show Answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_0_right</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m 0 = m&quot;</span>
 <span class="k">proof</span><span class="w"> </span><span class="o">(</span><span class="n">induction</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
 <span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="n">0</span>
@@ -741,7 +751,11 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 </details><p>With the helper lemmas proven, we will use them to prove the commutative property</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Show Answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_comm</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m n = add n m&quot;</span>
 <span class="k">proof</span><span class="w"> </span><span class="o">(</span><span class="n">induction</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
 <span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="n">0</span>
@@ -755,48 +769,48 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 </pre></div>
 </div>
 </div>
-</details><p>For a detailed explanation, <a class="reference internal" href="assets-10/10.3_exercises.html#Communative-Property-Proof"><span class="std std-ref">See Section 10.3.3 Communative Property</span></a></p>
+</details><p>For a detailed explanation, <span class="xref myst">See Section 10.3.3 Communative Property</span></p>
 </section>
 </section>
 <section id="introductory-examples-tower-of-hanoi-or-insertion-sort">
-<h2><span class="section-number">11.4. </span>Introductory Examples - Tower of Hanoi or Insertion Sort<a class="headerlink" href="#introductory-examples-tower-of-hanoi-or-insertion-sort" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>Introductory Examples - Tower of Hanoi or Insertion Sort<a class="headerlink" href="#introductory-examples-tower-of-hanoi-or-insertion-sort" title="Permalink to this heading">#</a></h2>
 <!-- show something interesting about tool, logic, etc and can be digested and understood with minimum experience -->
 <p>Tower of Hanoi or Insertion Sort</p>
 <p>WIP</p>
 </section>
 <section id="the-landscape-of-tools">
-<h2><span class="section-number">11.5. </span>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.5. </span>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Permalink to this heading">#</a></h2>
 <p>WIP</p>
 <!-- ### 10.5.1 Interactive Proof Assistants -->
 <section id="interactive-theorem-prover">
-<h3><span class="section-number">11.5.1. </span>Interactive Theorem Prover<a class="headerlink" href="#interactive-theorem-prover" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.5.1. </span>Interactive Theorem Prover<a class="headerlink" href="#interactive-theorem-prover" title="Permalink to this heading">#</a></h3>
 <p>HOL4 (classic HOL)</p>
 <p>Coq (constructive higher-order/type theory)</p>
 <p>Lean 4 (modern dependent/HOL hybrid)</p>
 </section>
 <section id="automated-higher-order-prover">
-<h3><span class="section-number">11.5.2. </span>Automated Higher Order Prover<a class="headerlink" href="#automated-higher-order-prover" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.5.2. </span>Automated Higher Order Prover<a class="headerlink" href="#automated-higher-order-prover" title="Permalink to this heading">#</a></h3>
 <!-- ### 10.5.2 Automated Theorem Prover -->
 <p>Leo III</p>
 <p>Satallax</p>
 </section>
 </section>
 <section id="algorithms">
-<h2><span class="section-number">11.6. </span>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.6. </span>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="benchmark-and-competitions">
-<h2><span class="section-number">11.7. </span>Benchmark and Competitions<a class="headerlink" href="#benchmark-and-competitions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.7. </span>Benchmark and Competitions<a class="headerlink" href="#benchmark-and-competitions" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="applications-in-industry-and-academia">
-<h2><span class="section-number">11.8. </span>Applications in Industry (and Academia)<a class="headerlink" href="#applications-in-industry-and-academia" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.8. </span>Applications in Industry (and Academia)<a class="headerlink" href="#applications-in-industry-and-academia" title="Permalink to this heading">#</a></h2>
 <p>In general, Isabelle/HOL appears to have a wide variety of applcation throughout industry, due to the fact that it provides a mathematical assuranace of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.</p>
 <section id="physical-addressing-on-real-hardware">
-<h3><span class="section-number">11.8.1. </span>Physical Addressing on Real Hardware<a class="headerlink" href="#physical-addressing-on-real-hardware" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.8.1. </span>Physical Addressing on Real Hardware<a class="headerlink" href="#physical-addressing-on-real-hardware" title="Permalink to this heading">#</a></h3>
 <p>Achermann et al.<sup><a href="#Achermann_physicalAddressing">[4]</a></sup> discuss how to formally model and verify physical memory address translation and remapping hardware (such as MMUs) in SoCs (Systems-on-Chip) using Isabelle/HOL. Specifically, they developed a hardware model that encodes translation units and then prove that standard memory operations preserve system invariants.</p>
 <!-- HOL-based systems used to verify hardware modules and FPGA implementations -->
 </section>
 <section id="focus-stream-processing-components">
-<h3><span class="section-number">11.8.2. </span>FOCUS - Stream Processing Components<a class="headerlink" href="#focus-stream-processing-components" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.8.2. </span>FOCUS - Stream Processing Components<a class="headerlink" href="#focus-stream-processing-components" title="Permalink to this heading">#</a></h3>
 <p>Spichkova<sup><a href="#Spichkova_FOCUS">[5]</a></sup> proposes a new framework, FOCUS, aimed at formal specification and the application of refinement-based verification of interactive systems. In addition, FOCUS uses a stream processing component, represented by a communication history of a directed channel between components. FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).</p>
 <ul class="simple">
 <li><p>The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalised in Isabelle/HOL, translating architecture and component behaviour into higher-order logic while proving the design satisfies timing and safety requirements.</p></li>
@@ -805,27 +819,27 @@ In the n-ary case, a new predicate <span class="math notranslate nohighlight">\(
 </ul>
 </section>
 <section id="isabil-verifying-in-correctness-of-binaries">
-<h3><span class="section-number">11.8.3. </span>IsaBIL - Verifying (In)Correctness of Binaries<a class="headerlink" href="#isabil-verifying-in-correctness-of-binaries" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.8.3. </span>IsaBIL - Verifying (In)Correctness of Binaries<a class="headerlink" href="#isabil-verifying-in-correctness-of-binaries" title="Permalink to this heading">#</a></h3>
 <p>Griffin et al.<sup><a href="#Griffin_IsaBIL">[6]</a></sup> present IsaBIL, a binary analysis framework in Isabelle/HOL that is based on BAP (Binary Analysis Platform). IsaBIL formalizes BAP’s intermediate language (BIL) and integrates it with Hoare Logic (for proofs of correctness) and incorrectness logic (for proofs of incorectness). While there is a primary focus is on the RISC-V architecture and C binaries, the authors assert that IsaBIL is a flexible framework that can verify binaries for different languages (C, C++, Rust), toolchains (LLVM, Ghidra), and architectures (x86, RISC-V). The authors prove correctness through some industry level examples such as Lockheed Martin’s JSF (Joint Strike Fighter) coding standards and the MITRE ATT&amp;CK database.</p>
 </section>
 <section id="verlso-isolation-guarantees-of-database-transactions">
-<h3><span class="section-number">11.8.4. </span>Verlso - Isolation Guarantees of Database Transactions<a class="headerlink" href="#verlso-isolation-guarantees-of-database-transactions" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.8.4. </span>Verlso - Isolation Guarantees of Database Transactions<a class="headerlink" href="#verlso-isolation-guarantees-of-database-transactions" title="Permalink to this heading">#</a></h3>
 <p>Ghasemirad et al.<sup><a href="#Ghasemirad_VerIso">[7]</a></sup> present VerIso, a rigorous Isabelle/HOL-based framework for verifying transaction isolation within production level databases. The authors showcase VerIso by modelling the strict two-phase locking (S2PL) protocol and prove that it provides strict serializability (transactions behave as if executed sequentially and that sequential order must match the actual time order of their invocation/commit). In addition, VerIso’s parameterised architecture supports multiple isolation levels and uncovers design-level bugs in protocols such as the TAPIR protocol and its violation of atomic visibility.</p>
 </section>
 <section id="ieee-754-floating-point-implementation-for-mdps">
-<h3><span class="section-number">11.8.5. </span>IEEE 754 Floating Point Implementation for MDPs<a class="headerlink" href="#ieee-754-floating-point-implementation-for-mdps" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.8.5. </span>IEEE 754 Floating Point Implementation for MDPs<a class="headerlink" href="#ieee-754-floating-point-implementation-for-mdps" title="Permalink to this heading">#</a></h3>
 <p>Kohlen et al.<sup><a href="#Kohlen_float">[8]</a></sup> present a fully verified implementation of the Interval Iteration (II) Algorithm for Markov Decision Processes (MDPs). They model the II algorithm in Isabelle/HOL, use the Isabelle Refinement Framework (IRF) to carry out step-wise refinement down to LLVM bytecode, and extend Isabelle/HOL’s reasoning to support IEEE 754 floating-point arithmetic with directed rounding. Their result is a correct-by-construction floating-point implementation, competitive with industry tools and highly relevant for domains where verified numerical correctness matters, such as embedded systems, SoCs and safety-critical software.</p>
 <!-- ### 10.8.6 IsaMini: Isabelle Proof Language for Machine Learning
 
 Xu et al. present MiniLang/IsaMini, a streamlined proof langauge for Isabelle/HOL designed to improve Large Language Model (LLM) integration in formal verification. The authors convert existing Isar proofs, such as those within Isabelle's Archive of Formal Proofs (AFP), into MiniLang and fine-tune LLMs on this new proof representation. They then use the LLM's macro level proof planning alongside Isabelle's automation (such as Sledgehammer, etc) for micro level proof steps to significantly boost proof success rate. Their work is noteworthy because it brings together formal methods and AI-assisted tooling, reducing manual proof effort and enabling more scalable verification.<sup><a href="#Xu_IsaMini">[7]</a></sup> -->
 </section>
 <section id="autoformalization-with-large-language-models">
-<h3><span class="section-number">11.8.6. </span>Autoformalization with Large Language Models<a class="headerlink" href="#autoformalization-with-large-language-models" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.8.6. </span>Autoformalization with Large Language Models<a class="headerlink" href="#autoformalization-with-large-language-models" title="Permalink to this heading">#</a></h3>
 <p>Wu et al.<sup><a href="#Wu_LLM_Autoformat">[9]</a></sup> present WIP</p>
 </section>
 </section>
 <section id="case-study-autoformalization-with-large-language-models">
-<h2><span class="section-number">11.9. </span>Case Study - Autoformalization with Large Language Models<a class="headerlink" href="#case-study-autoformalization-with-large-language-models" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.9. </span>Case Study - Autoformalization with Large Language Models<a class="headerlink" href="#case-study-autoformalization-with-large-language-models" title="Permalink to this heading">#</a></h2>
 <p>WIP</p>
 <p>use this one:</p>
 <p>https://openreview.net/forum?id=IUikebJ1Bf0</p>
@@ -866,18 +880,18 @@ My command is then:
 `isabelle components -u /Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys` -->
 </section>
 <section id="history">
-<h2><span class="section-number">11.10. </span>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.10. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
 <!-- Church (1940) A Formulation of the Simple Theory of Types -->
 <!-- may include dates at teh beginning of each part, and include citations etc  -->
 <section id="origins-of-higher-order-logic">
-<h3><span class="section-number">11.10.1. </span>Origins of Higher Order Logic<a class="headerlink" href="#origins-of-higher-order-logic" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.10.1. </span>Origins of Higher Order Logic<a class="headerlink" href="#origins-of-higher-order-logic" title="Permalink to this heading">#</a></h3>
 <!-- scaffolding template for now -->
 <p>Alonzo Church’s work in the 1930s (via <span class="math notranslate nohighlight">\(\lambda\)</span>-calculus) and 1940s (via type theory) and Leon Henkin’s work in the 1950s (on general models semantics) lay the foundation for higher order logic. From their contributions arose an extension of First Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities</p>
 <p>In the 1970s, Robert Milner develops LCF (Logic for Computable Functions) at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evovles into OCaml and Standard ML.</p>
 <p>In the early 1980s, Michael J. C. Gordon builds upon LCF in order to create the HOL system, which explicitly uses higher-order logic as its core formalism. This HOL system would become the foundation for hardware verification, paving the way and influencing later provers like HOL4 and Isabelle/HOL.</p>
 </section>
 <section id="development-of-isabelle-hol">
-<h3><span class="section-number">11.10.2. </span>Development of Isabelle/HOL<a class="headerlink" href="#development-of-isabelle-hol" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">11.10.2. </span>Development of Isabelle/HOL<a class="headerlink" href="#development-of-isabelle-hol" title="Permalink to this heading">#</a></h3>
 <p>Developed in the late 1980’s by Lawrence C. Paulson at Cambridge, Isabelle was created as a generic theorem proving framework capable of supporting multiple logical formalisms under a single meta-logic.</p>
 <p>The HOL instantiation of Isabelle (Isabelle/HOL) became the most widely adopted version due to its strong expressiveness and balance between automation and manual control.</p>
 <p>Isabelle introduced the Isar prof language in the 2000s, allowing structured and human readable proofs, improving clarity over traditional tactic-based approaches like in LCF.</p>
@@ -886,10 +900,10 @@ My command is then:
 </section>
 </section>
 <section id="current-development-research-challenges-conferences-and-workshops">
-<h2><span class="section-number">11.11. </span>Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.11. </span>Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="references">
-<h2><span class="section-number">11.12. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.12. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <!-- Author(s) (Year) [Title](linkToGoogleScholarQuery), Venue
 
 Components
@@ -962,7 +976,7 @@ Davis and Putnam (1960) A Computing Procedure for Quantification Theory, Journal
 <p>https://isabelle.in.tum.de/library/HOL/HOL/document.pdf</p>
 </section>
 <section id="suggestions-for-future-work">
-<h2><span class="section-number">11.13. </span>Suggestions for Future Work<a class="headerlink" href="#suggestions-for-future-work" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.13. </span>Suggestions for Future Work<a class="headerlink" href="#suggestions-for-future-work" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1096,7 +1110,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

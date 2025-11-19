@@ -208,7 +208,7 @@ A fix was proposed by the person who found this fault. To avoid the attack, the 
 
 ## History
 
-All information gathered from <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=">Temporal Logic</a> by N Rescher and A Urquhart, as well as some additional information taken from the [wiki](https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators) on Temporal Logic.
+All information gathered from [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=) by N Rescher and A Urquhart, as well as some additional information taken from the [wiki](https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators) on Temporal Logic.
 
 - 1947: Jerzy Łoś first formalizes a logic with temporal functions.
 
@@ -223,13 +223,13 @@ All information gathered from <a href="https://scholar.google.com/scholar?hl=en&
 ## Current Development, Research Challenges, Conferences and Workshops
 
 ## References
-* Gluck and Holtzman (2008) <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Using+SPIN+model+checking+for+flight+software+verification&btnG=">Using SPIN model checking for flight software verification</a>, IEEE
+* Gluck and Holtzman (2008) [Using SPIN model checking for flight software verification](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Using+SPIN+model+checking+for+flight+software+verification&btnG=), IEEE
 
-* Zhang, Li, Cheng, and Xue (2018) <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=">Verifying OSEK/VDX automotive applications: A Spin-based model checking approach</a>, Wiley
+* Zhang, Li, Cheng, and Xue (2018) [Verifying OSEK/VDX automotive applications: A Spin-based model checking approach](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=), Wiley
 
-* Alzahrani and Mohammed Yahya (2015) <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Model+checking+web+applications+heriot+watt+university&btnG=">Model checking web applications</a>, Heriot Watt University
+* Alzahrani and Mohammed Yahya (2015) [Model checking web applications](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Model+checking+web+applications+heriot+watt+university&btnG=), Heriot Watt University
 
-* Nicholas Rescher and Alasdair Urquhart (1971) <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=">Temporal Logic</a>, Springer-Verlag/Wien
+* Nicholas Rescher and Alasdair Urquhart (1971) [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=), Springer-Verlag/Wien
 
 ## Further Reasources
 * https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators

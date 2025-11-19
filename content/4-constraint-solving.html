@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>5. Constraint Programming with MiniZinc &#8212; Logical Foundations of AI</title>
   
@@ -28,35 +29,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/4-constraint-solving';</script>
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/4-constraint-solving.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -153,18 +158,7 @@
     <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
@@ -229,9 +223,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -372,9 +366,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -424,9 +418,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="constraint-programming-with-minizinc">
-<h1><span class="section-number">5. </span>Constraint Programming with MiniZinc<a class="headerlink" href="#constraint-programming-with-minizinc" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Constraint Programming with MiniZinc<a class="headerlink" href="#constraint-programming-with-minizinc" title="Permalink to this heading">#</a></h1>
 <section id="idea">
-<h2><span class="section-number">5.1. </span>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
 <p>Constraint programming (CP) is a paradigm for identifying feasible solutions from a very large set of candidates by modeling problems in terms of arbitrary constraints. These problems are called constraint satisfaction problems (CSPs) where you provide:</p>
 <ul class="simple">
 <li><p>A set of <strong>decision variables</strong> with their domains</p></li>
@@ -435,7 +429,7 @@ document.write(`
 </ul>
 <p>The constraint solver finds an assignment of values to the variables that satisfies all constraints. CP is based on <strong>feasibility</strong> (finding a feasible solution) rather than optimization, focusing on the constraints and variables rather than the objective function (Rossi, Van Beek, and Walsh, 2006).</p>
 <section id="installation">
-<h3><span class="section-number">5.1.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.1.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>minizinc
 </pre></div>
 </div>
@@ -444,7 +438,7 @@ document.write(`
 </div>
 </section>
 <section id="key-characteristics">
-<h3><span class="section-number">5.1.2. </span>Key Characteristics<a class="headerlink" href="#key-characteristics" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.1.2. </span>Key Characteristics<a class="headerlink" href="#key-characteristics" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Feasibility-focused</strong>: CP emphasizes finding solutions that satisfy all constraints, not necessarily optimal ones</p></li>
 <li><p><strong>Declarative</strong>: You describe <em>what</em> constraints must hold, not <em>how</em> to find the solution</p></li>
@@ -456,7 +450,7 @@ document.write(`
 </section>
 </section>
 <section id="basic-theory">
-<h2><span class="section-number">5.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Start in MiniZinc by defining parameters about your domain (width, height, number of colors, etc.)</p></li>
 <li><p>Define your decision variables and their domains. This will be treated as the base case of the overall recursive logic.</p></li>
@@ -491,7 +485,7 @@ output [
 </div>
 </section>
 <section id="working-example-n-queens-in-minizinc">
-<h2><span class="section-number">5.3. </span>Working Example: N-Queens in MiniZinc<a class="headerlink" href="#working-example-n-queens-in-minizinc" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.3. </span>Working Example: N-Queens in MiniZinc<a class="headerlink" href="#working-example-n-queens-in-minizinc" title="Permalink to this heading">#</a></h2>
 <p>A minimal, runnable model is included in this repo at <code class="docutils literal notranslate"><span class="pre">src/minizinc/nqueens/nqueens.mzn</span></code>. You can run it directly without any <code class="docutils literal notranslate"><span class="pre">.dzn</span></code> file.</p>
 <div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span>include &quot;globals.mzn&quot;;
 
@@ -518,7 +512,7 @@ output [
 <p>This implementation mirrors the canonical N-Queens problem description in survey work (Bell and Stevens, 2009).</p>
 </section>
 <section id="how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory">
-<h2><span class="section-number">5.4. </span>How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory<a class="headerlink" href="#how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.4. </span>How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory<a class="headerlink" href="#how-to-approach-writing-the-recursive-logic-of-some-csp-in-minizinc-syntax-and-theory" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Start at the base case and work backwards</p></li>
 <li><p>Identify the recursive structure by breaking the logic into smaller subproblems</p></li>
@@ -526,17 +520,17 @@ output [
 </ol>
 </section>
 <section id="connecting-z3-and-minizinc-concepts">
-<h2><span class="section-number">5.5. </span>Connecting Z3 and MiniZinc Concepts<a class="headerlink" href="#connecting-z3-and-minizinc-concepts" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.5. </span>Connecting Z3 and MiniZinc Concepts<a class="headerlink" href="#connecting-z3-and-minizinc-concepts" title="Permalink to this heading">#</a></h2>
 <p>Briefly: MiniZinc is a high-level modeling language for constraint satisfaction and optimization with rich global constraints and multiple backend solvers; Z3 is an SMT solver aimed at logical theories and verification. If you’re building schedules, allocations, or routing, prefer MiniZinc; for program verification or bit-vector logic, prefer Z3 (de Moura and Bjørner, 2008).</p>
 </section>
 <section id="example-applications">
-<h2><span class="section-number">5.6. </span>Example Applications<a class="headerlink" href="#example-applications" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.6. </span>Example Applications<a class="headerlink" href="#example-applications" title="Permalink to this heading">#</a></h2>
 <section id="employee-scheduling">
-<h3><span class="section-number">5.6.1. </span>Employee Scheduling<a class="headerlink" href="#employee-scheduling" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.6.1. </span>Employee Scheduling<a class="headerlink" href="#employee-scheduling" title="Permalink to this heading">#</a></h3>
 <p>A classic CP problem: A company runs three 8-hour shifts per day and assigns three of its four employees to different shifts each day, while giving the fourth the day off. Even with just 4 employees, there are 24 possible assignments per day, leading to 24^7 ≈ 4.5 billion possible weekly schedules (Perron and Furnon, 2019).</p>
 </section>
 <section id="classic-cp-problems">
-<h3><span class="section-number">5.6.2. </span>Classic CP Problems<a class="headerlink" href="#classic-cp-problems" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">5.6.2. </span>Classic CP Problems<a class="headerlink" href="#classic-cp-problems" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>N-Queens Problem</strong></p></li>
 <li><p><strong>Cryptarithmetic Puzzles</strong></p></li>
@@ -546,7 +540,7 @@ output [
 </section>
 </section>
 <section id="practical-business-example-employee-shift-scheduling-minizinc">
-<h2><span class="section-number">5.7. </span>Practical Business Example: Employee Shift Scheduling (MiniZinc)<a class="headerlink" href="#practical-business-example-employee-shift-scheduling-minizinc" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.7. </span>Practical Business Example: Employee Shift Scheduling (MiniZinc)<a class="headerlink" href="#practical-business-example-employee-shift-scheduling-minizinc" title="Permalink to this heading">#</a></h2>
 <p>A runnable scheduling model lives at:
 <code class="docutils literal notranslate"><span class="pre">src/minizinc/employee_scheduling/shift_scheduling.mzn</span></code>.</p>
 <p>This modeling structure follows both MiniZinc and OR-Tools scheduling examples (Nethercote et al., 2007; Perron and Furnon, 2019).</p>
@@ -654,7 +648,7 @@ output [
 </div>
 </section>
 <section id="translating-this-into-a-real-world-written-script">
-<h2><span class="section-number">5.8. </span>Translating this into a real-world written script<a class="headerlink" href="#translating-this-into-a-real-world-written-script" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.8. </span>Translating this into a real-world written script<a class="headerlink" href="#translating-this-into-a-real-world-written-script" title="Permalink to this heading">#</a></h2>
 <p>With the Python MiniZinc API, you can embed a model as a string and feed parameters directly:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">minizinc</span>
 
@@ -744,7 +738,7 @@ output [
 </section>
 <hr class="docutils" />
 <section id="references">
-<h2><span class="section-number">5.9. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.9. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <p>Nethercote et al. (2007)
 <a class="reference external" href="https://scholar.google.com/scholar?q=MiniZinc%3A+Towards+a+Standard+CP+Modelling+Language">MiniZinc: Towards a Standard CP Modelling Language</a>, CP 2007</p>
 <p>Perron and Furnon (2019)
@@ -863,7 +857,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
