@@ -1,0 +1,62 @@
+version: 1
+project:
+  title: Logical Foundations of AI
+  authors:
+    - name: CPSC 510
+  exclude:
+    - README.md
+    - lecture-by-lecture.md
+    - local/**
+    - overview.md
+    - notes/**
+    - .venv/**
+    - z3/**
+    - playground/**
+    - src/**
+    - notebooks/**
+    - prompts/**
+    - literature/**
+  github: LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing
+  bibliography:
+    - content/references.bib
+  exports:
+    - format: pdf
+      template: plain_latex_book
+      output: exports/book.pdf
+  toc:
+    - file: content/title.md
+    - title: Subtree 0
+      children:
+        - file: content/intro.md
+    - title: Logics and Their Software Tools
+      children:
+        - file: content/0-logic.md
+        - file: content/1-propositional-logic.md
+        - file: content/2-satsolving.md
+        - file: content/3-logic-programming.md
+        - file: content/4-constraint-solving.md
+        - file: content/5-smt-solving.md
+        - file: content/6-modal-logic.md
+        - file: content/7-temporal-logic.md
+        - file: content/8-epistemic-logic.md
+        - file: content/9-hoare-logic.md
+        - file: content/10-higher-order-logic.md
+        - file: content/11-dependent-types.md
+    - title: Appendices
+      children:
+        - file: content/appendix-puzzles.md
+        - file: content/appendix-hoare-logic.md
+        - file: content/appendix-syllogistic-logics.md
+    - title: Typesetting Conventions
+      children:
+        - file: content/how-to-cite.md
+    - title: 'Appendix: On Jupyter Books'
+      children:
+        - file: content/how-to-create-a-jupyter-book.md
+        - file: content/markdown.md
+        - file: content/notebooks.ipynb
+        - file: content/markdown-notebooks.md
+site:
+  options:
+    folders: true
+  template: book-theme

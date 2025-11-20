@@ -37,7 +37,7 @@ The tool we will be using to explore temporal logic is called SPIN. It is primar
 ### Installation
 [Link to Install](https://spinroot.com/spin/Man/README.html)
 
-Some examples taken from [here](https://spinroot.com/courses/summer/)
+Some examples taken from [here](https://spinroot.com/courses/summer/).
 
 I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple `sudo apt-get install spin`.
 
@@ -170,7 +170,7 @@ When SPIN verifies a system, several steps are taken.
 
 I looked into benchmarks for SPIN and other model checkers, however at the time of writing, there does not appear to have been many benchmarks of such tools available online.
 
-I found a research paper that declared its intent to create a benchmark of model checkers like SPIN, located [here](https://spinroot.com/spin/symposia/ws07/Pelanek.pdf). However, at the time of writing, the link contained in the [paper](https://anna.fi.muni.cz/models) leads to a 404 error.
+I found a research paper that declared its intent to create a benchmark of model checkers like SPIN, located [here](https://spinroot.com/spin/symposia/ws07/Pelanek.pdf). However, at the time of writing, the [link](https://anna.fi.muni.cz/models) contained in the paper leads to a 404 error.
 
 ## Applications in Industry
 
@@ -208,7 +208,7 @@ A fix was proposed by the person who found this fault. To avoid the attack, the 
 
 ## History
 
-All information gathered from [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=) by N Rescher and A Urquhart, as well as some additional information taken from the [wiki](https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators) on Temporal Logic.
+Most information gathered from [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=) by N Rescher and A Urquhart, as well as some additional information taken from the [wiki](https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators) on Temporal Logic.
 
 - 1947: Jerzy Łoś first formalizes a logic with temporal functions.
 
@@ -222,6 +222,18 @@ All information gathered from [Temporal Logic](https://scholar.google.com/schola
 
 ## Current Development, Research Challenges, Conferences and Workshops
 
+1. [International Symposium on Temporal Representation and Reasoning (TIME)](https://time-symposium.org/t/):
+
+TIME is not exclusively dedicated to temporal logic, but does include a number of papers on the subject. It offically began in 1994, and claims to be "the only yearly multidisciplinary international event dedicated to the topic of time in computer science" (TIME, 2022). Also includes overlap with spatial reasoning topics.
+
+2. [Motion planning with temporal-logic specifications: Progress and challenges](https://journals.sagepub.com/doi/full/10.3233/AIC-150682)
+
+This paper attempts to apply temporal logic to robot motion planning, along with some of the challenges of doing so. Motion planning has become an increasing issue with the development of machines that move through 3D space (Paku and Karaman, 2024). We've seen such issues arise with the development of self driving cars. Given the increasing prevelance of self controlled robots, solving some of these challenges may prove fruitful.
+
+3. [Stochastic Temporal Logic Abstractions: Challenges and Opportunities](https://link.springer.com/chapter/10.1007/978-3-030-00151-3_1)
+
+This paper suggests using temporal logic to model the uncertainty of an environment. The paper develves into the potential applications of such an approach, but also discusses some of the challenges associated with it.
+
 ## References
 * Gluck and Holtzman (2008) [Using SPIN model checking for flight software verification](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Using+SPIN+model+checking+for+flight+software+verification&btnG=), IEEE
 
@@ -229,7 +241,13 @@ All information gathered from [Temporal Logic](https://scholar.google.com/schola
 
 * Alzahrani and Mohammed Yahya (2015) [Model checking web applications](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Model+checking+web+applications+heriot+watt+university&btnG=), Heriot Watt University
 
-* Nicholas Rescher and Alasdair Urquhart (1971) [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=), Springer-Verlag/Wien
+* Rescher and Urquhart (1971) [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=), Springer-Verlag/Wien
+
+* TIME 2022, [International Symposium on Temporal Representation and Reasoning (TIME)](https://time-symposium.org/t/), TIME
+
+* Plaku and Karaman 2024, [Motion planning with temporal-logic specifications: Progress and challenges](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Motion+planning+with+temporal-logic+specifications%3A+Progress+and+challenges&btnG=), EurAI
+
+* Deshmukh, Kyriakis, and Bogdan 2018, [Stochastic Temporal Logic Abstractions: Challenges and Opportunities](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Stochastic+Temporal+Logic+Abstractions%3A+Challenges+and+Opportunities&btnG=), Springer
 
 ## Further Reasources
 * https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators
@@ -238,6 +256,10 @@ All information gathered from [Temporal Logic](https://scholar.google.com/schola
 * https://spinroot.com/courses/summer/
 * https://spinroot.com/spin/symposia/ws07/Pelanek.pdf
 * https://mluckcuck.github.io/model-checking-cheatsheet
-
+* https://time-symposium.org/t/
 
 ## Suggestions for Future Work on this Book 
+
+For future work on this chapter, I would suggest expanding the algorithm section. As it stands currently it only gives a brief overview of SPIN's algorithm, which could likely warrant further inspection.
+
+Additionally, it would be good to check in on the benchmarks of the various temporal logic model checkers. As mentioned in the paper there does not seem to be any available at the time of writing. I would be interested in seeing if this changes in the future.

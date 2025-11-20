@@ -52,8 +52,8 @@ Each chapter should by default be devided into the following sections (subject t
 
 ## Project Ideas for 2026
 
-- A new chapters (Vampire, Prover9, ...)
-- A simple from-scratch prototype implementation of a tool (eg a Prolog interpreter)
+- A new chapter (Separation Logic with Infer, First-Order Logic with Vampire, Prover9, ...)
+- A simple from-scratch prototype implementation of a tool (eg a SAT-solver, aProlog interpreter, etc)
 - A case study combining a logic-based software tool with a gen-AI tool
 - ... tbc ... 
 
