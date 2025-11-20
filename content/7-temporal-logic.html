@@ -458,7 +458,7 @@ E A means that there exists at least one path starting from the current position
 <section id="installation">
 <h3><span class="section-number">8.3.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h3>
 <p><a class="reference external" href="https://spinroot.com/spin/Man/README.html">Link to Install</a></p>
-<p>Some examples taken from <a class="reference external" href="https://spinroot.com/courses/summer/">here</a></p>
+<p>Some examples taken from <a class="reference external" href="https://spinroot.com/courses/summer/">here</a>.</p>
 <p>I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">spin</span></code>.</p>
 </section>
 <section id="first-example">
@@ -578,7 +578,7 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 <section id="benchmarks">
 <h2><span class="section-number">8.7. </span>Benchmarks<a class="headerlink" href="#benchmarks" title="Permalink to this heading">#</a></h2>
 <p>I looked into benchmarks for SPIN and other model checkers, however at the time of writing, there does not appear to have been many benchmarks of such tools available online.</p>
-<p>I found a research paper that declared its intent to create a benchmark of model checkers like SPIN, located <a class="reference external" href="https://spinroot.com/spin/symposia/ws07/Pelanek.pdf">here</a>. However, at the time of writing, the link contained in the <a class="reference external" href="https://anna.fi.muni.cz/models">paper</a> leads to a 404 error.</p>
+<p>I found a research paper that declared its intent to create a benchmark of model checkers like SPIN, located <a class="reference external" href="https://spinroot.com/spin/symposia/ws07/Pelanek.pdf">here</a>. However, at the time of writing, the <a class="reference external" href="https://anna.fi.muni.cz/models">link</a> contained in the paper leads to a 404 error.</p>
 </section>
 <section id="applications-in-industry">
 <h2><span class="section-number">8.8. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Permalink to this heading">#</a></h2>
@@ -607,7 +607,7 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 </section>
 <section id="history">
 <h2><span class="section-number">8.10. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
-<p>All information gathered from <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=temporal+logic+N+Rescher%2C+A+Urquhart&amp;btnG=">Temporal Logic</a> by N Rescher and A Urquhart, as well as some additional information taken from the <a class="reference external" href="https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators">wiki</a> on Temporal Logic.</p>
+<p>Most information gathered from <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=temporal+logic+N+Rescher%2C+A+Urquhart&amp;btnG=">Temporal Logic</a> by N Rescher and A Urquhart, as well as some additional information taken from the <a class="reference external" href="https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators">wiki</a> on Temporal Logic.</p>
 <ul class="simple">
 <li><p>1947: Jerzy Łoś first formalizes a logic with temporal functions.</p></li>
 <li><p>1953: Arthur Prior begins research on Temporal Logic.</p></li>
@@ -618,6 +618,18 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 </section>
 <section id="current-development-research-challenges-conferences-and-workshops">
 <h2><span class="section-number">8.11. </span>Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://time-symposium.org/t/">International Symposium on Temporal Representation and Reasoning (TIME)</a>:</p></li>
+</ol>
+<p>TIME is not exclusively dedicated to temporal logic, but does include a number of papers on the subject. It offically began in 1994, and claims to be “the only yearly multidisciplinary international event dedicated to the topic of time in computer science” (TIME, 2022). Also includes overlap with spatial reasoning topics.</p>
+<ol class="arabic simple" start="2">
+<li><p><a class="reference external" href="https://journals.sagepub.com/doi/full/10.3233/AIC-150682">Motion planning with temporal-logic specifications: Progress and challenges</a></p></li>
+</ol>
+<p>This paper attempts to apply temporal logic to robot motion planning, along with some of the challenges of doing so. Motion planning has become an increasing issue with the development of machines that move through 3D space (Paku and Karaman, 2024). We’ve seen such issues arise with the development of self driving cars. Given the increasing prevelance of self controlled robots, solving some of these challenges may prove fruitful.</p>
+<ol class="arabic simple" start="3">
+<li><p><a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-030-00151-3_1">Stochastic Temporal Logic Abstractions: Challenges and Opportunities</a></p></li>
+</ol>
+<p>This paper suggests using temporal logic to model the uncertainty of an environment. The paper develves into the potential applications of such an approach, but also discusses some of the challenges associated with it.</p>
 </section>
 <section id="references">
 <h2><span class="section-number">8.12. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
@@ -625,7 +637,10 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 <li><p>Gluck and Holtzman (2008) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Using+SPIN+model+checking+for+flight+software+verification&amp;btnG=">Using SPIN model checking for flight software verification</a>, IEEE</p></li>
 <li><p>Zhang, Li, Cheng, and Xue (2018) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&amp;btnG=">Verifying OSEK/VDX automotive applications: A Spin-based model checking approach</a>, Wiley</p></li>
 <li><p>Alzahrani and Mohammed Yahya (2015) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Model+checking+web+applications+heriot+watt+university&amp;btnG=">Model checking web applications</a>, Heriot Watt University</p></li>
-<li><p>Nicholas Rescher and Alasdair Urquhart (1971) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=temporal+logic+N+Rescher%2C+A+Urquhart&amp;btnG=">Temporal Logic</a>, Springer-Verlag/Wien</p></li>
+<li><p>Rescher and Urquhart (1971) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=temporal+logic+N+Rescher%2C+A+Urquhart&amp;btnG=">Temporal Logic</a>, Springer-Verlag/Wien</p></li>
+<li><p>TIME 2022, <a class="reference external" href="https://time-symposium.org/t/">International Symposium on Temporal Representation and Reasoning (TIME)</a>, TIME</p></li>
+<li><p>Plaku and Karaman 2024, <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Motion+planning+with+temporal-logic+specifications%3A+Progress+and+challenges&amp;btnG=">Motion planning with temporal-logic specifications: Progress and challenges</a>, EurAI</p></li>
+<li><p>Deshmukh, Kyriakis, and Bogdan 2018, <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Stochastic+Temporal+Logic+Abstractions%3A+Challenges+and+Opportunities&amp;btnG=">Stochastic Temporal Logic Abstractions: Challenges and Opportunities</a>, Springer</p></li>
 </ul>
 </section>
 <section id="further-reasources">
@@ -637,10 +652,13 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 <li><p>https://spinroot.com/courses/summer/</p></li>
 <li><p>https://spinroot.com/spin/symposia/ws07/Pelanek.pdf</p></li>
 <li><p>https://mluckcuck.github.io/model-checking-cheatsheet</p></li>
+<li><p>https://time-symposium.org/t/</p></li>
 </ul>
 </section>
 <section id="suggestions-for-future-work-on-this-book">
 <h2><span class="section-number">8.14. </span>Suggestions for Future Work on this Book<a class="headerlink" href="#suggestions-for-future-work-on-this-book" title="Permalink to this heading">#</a></h2>
+<p>For future work on this chapter, I would suggest expanding the algorithm section. As it stands currently it only gives a brief overview of SPIN’s algorithm, which could likely warrant further inspection.</p>
+<p>Additionally, it would be good to check in on the benchmarks of the various temporal logic model checkers. As mentioned in the paper there does not seem to be any available at the time of writing. I would be interested in seeing if this changes in the future.</p>
 </section>
 </section>
 

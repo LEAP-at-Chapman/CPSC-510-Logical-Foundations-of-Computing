@@ -444,6 +444,12 @@ document.write(`
 <p><em>Author: Alex</em></p>
 <section id="idea">
 <h2><span class="section-number">10.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
+<p>Hoare Logic is a mathematically based logic that focuses on proving that programs behave correctly, rather than relying on testing to determine their functionality. By treating programming as a formal reasoning process, where you specify what must be true before running a piece of code and what will be true after it finishes, the code can be verified and processed to ensure that, once correctly proven, the code satisfies this relationship.</p>
+<p>The core tool is the Hoare Triple, which consists of the following format: { Precondition } Code { Postcondition }. Through this reasoning process, the Hoare Triple can view the program fragmented into logical terms. Using a set of inference rules, developers can prove the correctness of sequences, conditionals, and loops.</p>
+<p>Hoare Logic promotes correctness by construction, aiming to ensure that programs are built with proofs and formal logic every step of the program creation process, thereby eliminating bugs from any program development. By building on the idea of viewing program verification as a formal reasoning process, code verification and testing are simplified, with Hoare Logic serving as the foundation of modern formal verification.</p>
+</section>
+<section id="basic-theory">
+<h2><span class="section-number">10.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
 <p>Hoare Logic introduced the idea that we can reason about programs the same way we reason about mathematical proofs by introducing program verification. Instead of observing program behavior through test cases, we showcase what a program should do in logical form, and then prove that it does so. At its core lies the Hoare triple:</p>
 <p>[{P}; C; {Q}]</p>
 <p>This notation captures the relationship between a precondition (P), a command (C), and a postcondition (Q). This notation reads as:</p>
@@ -455,10 +461,6 @@ document.write(`
 <li><p><strong>Q</strong> (Postcondition) - expresses what is guaranteed to be true after execution if the program halts.</p></li>
 </ul>
 <p>This logic provides partial correctness, meaning the result will be correct if the program terminates. To achieve​​ total correctness, we must demonstrate that the program terminates.</p>
-</section>
-<section id="basic-theory">
-<h2><span class="section-number">10.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
-<p><em>To be added</em></p>
 </section>
 <section id="dafny-installation-and-setup">
 <h2><span class="section-number">10.3. </span>Dafny Installation and Setup<a class="headerlink" href="#dafny-installation-and-setup" title="Permalink to this heading">#</a></h2>
