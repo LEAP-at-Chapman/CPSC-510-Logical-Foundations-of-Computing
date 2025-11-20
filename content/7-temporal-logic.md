@@ -258,7 +258,6 @@ This paper suggests using temporal logic to model the uncertainty of an environm
 * https://mluckcuck.github.io/model-checking-cheatsheet
 * https://time-symposium.org/t/
 
-
 ## Suggestions for Future Work on this Book 
 
 For future work on this chapter, I would suggest expanding the algorithm section. As it stands currently it only gives a brief overview of SPIN's algorithm, which could likely warrant further inspection.
