@@ -4,6 +4,14 @@
 
 ## Idea
 
+Hoare Logic is a mathematically based logic that focuses on proving that programs behave correctly, rather than relying on testing to determine their functionality. By treating programming as a formal reasoning process, where you specify what must be true before running a piece of code and what will be true after it finishes, the code can be verified and processed to ensure that, once correctly proven, the code satisfies this relationship.
+
+The core tool is the Hoare Triple, which consists of the following format: { Precondition } Code { Postcondition }. Through this reasoning process, the Hoare Triple can view the program fragmented into logical terms. Using a set of inference rules, developers can prove the correctness of sequences, conditionals, and loops. 
+
+Hoare Logic promotes correctness by construction, aiming to ensure that programs are built with proofs and formal logic every step of the program creation process, thereby eliminating bugs from any program development. By building on the idea of viewing program verification as a formal reasoning process, code verification and testing are simplified, with Hoare Logic serving as the foundation of modern formal verification.
+
+## Basic Theory
+
 Hoare Logic introduced the idea that we can reason about programs the same way we reason about mathematical proofs by introducing program verification. Instead of observing program behavior through test cases, we showcase what a program should do in logical form, and then prove that it does so. At its core lies the Hoare triple:
 
 [{P}; C; {Q}]
@@ -19,13 +27,198 @@ Each component plays a specific role:
 
 This logic provides partial correctness, meaning the result will be correct if the program terminates. To achieve​​ total correctness, we must demonstrate that the program terminates. 
 
-## Basic Theory
-
-*To be added*
 
 ## Dafny Installation and Setup
 
-*To be added*
+### Windows Installation
+
+#### 1. Requirements
+- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- **Z3 Theorem Prover v4.12.1**
+- Windows Server 2019 or 2022 (tested)
+
+---
+
+#### 2. Install Dafny
+```bash
+# 1. Install .NET 8.0
+# 2. Download Dafny ZIP from:
+#    https://github.com/dafny-lang/dafny/releases/latest
+# 3. Right-click → Properties → Unblock → OK
+# 4. Extract to a folder, then run:
+Dafny.exe
+```
+
+#### 3. VS Code Integration (Recommended)
+- Install Visual Studio Code.
+- Open VS Code → press Ctrl+P → run:
+```bash
+ext install dafny-lang.ide-vscode
+```
+- Open a .dfy file to activate Dafny.
+
+#### 4. Compile Dafny Programs
+
+| Target     | Requirements     | Example                             |
+| ---------- | ---------------- | ----------------------------------- |
+| **C#**     | .NET 8.0 SDK     | `dafny build -t:cs MyProgram.dfy`   |
+| **Java**   | Java ≥ 8, Gradle | `dafny build -t:java MyProgram.dfy` |
+| **Python** | Python ≥ 3.7     | `dafny build -t:py MyProgram.dfy`   |
+
+Run directly:
+```bash
+dafny run MyProgram.dfy
+```
+
+#### 5. Developer Build
+```bash
+# Install dependencies
+pip install pre-commit && pre-commit install
+
+# Clone Dafny
+git clone https://github.com/dafny-lang/dafny --recurse-submodules
+
+# Build
+dotnet build dafny/Source/Dafny.sln
+
+# Add Z3
+# Place z3.exe in dafny/Binaries/z3/bin/
+```
+
+Run Tests:
+```bash
+cd dafny/Source/IntegrationTests
+dotnet test -v:n
+```
+
+### Mac Installation
+
+#### 1. Requirements
+Install .NET 8.0 SDK:
+```bash
+brew install dotnet-sdk
+```
+
+#### 2. Install Dafny
+```bash
+brew install dafny
+```
+
+#### 3. VS Code Integration (Recommended)
+- Install Visual Studio Code.
+- Open VS Code → press Ctrl+P → run:
+```bash
+ext install dafny-lang.ide-vscode
+```
+- Open a .dfy file to activate Dafny.
+
+#### 4. Compile Dafny Programs
+
+| Target         | Requirements     | Example                             |
+| -------------- | ---------------- | ----------------------------------- |
+| **C#**         | .NET 8.0 SDK     | `dafny build -t:cs MyProgram.dfy`   |
+| **Java**       | Java ≥ 8, Gradle | `dafny build -t:java MyProgram.dfy` |
+| **Python**     | Python ≥ 3.7     | `dafny build -t:py MyProgram.dfy`   |
+| **Go**         | Go ≥ 1.18        | `dafny build -t:go MyProgram.dfy`   |
+| **JavaScript** | Node ≥ 16        | `dafny build -t:js MyProgram.dfy`   |
+
+Run:
+```bash
+dafny run MyProgram.dfy
+```
+
+#### 5. Developer Build
+```bash
+brew install python3 pre-commit wget
+git clone https://github.com/dafny-lang/dafny.git --recurse-submodules
+cd dafny
+make exe
+pre-commit install
+
+# Install Z3 4.12.1
+make z3-mac
+# or manually:
+cd Binaries
+wget https://github.com/dafny-lang/solver-builds/releases/download/snapshot-2023-08-02/z3-4.12.1-x64-macos-11-bin.zip
+unzip z3-4.12.1-x64-macos-11-bin.zip
+mv z3-4.12.1 z3
+```
+
+Run Dafny:
+```bash
+./Scripts/dafny
+./Scripts/quicktest.sh
+```
+
+Run Tests
+```bash
+cd Source/IntegrationTests
+dotnet test -v:n
+```
+
+### Linux Installation
+
+#### 1. Requirements
+
+.NET 8.0 SDK
+```bash
+sudo apt install dotnet-sdk-8.0
+```
+
+Python 3 + pip
+
+```bash
+sudo apt install python3 python3-pip
+```
+
+#### 2. Install Dafny
+```bash
+wget https://github.com/dafny-lang/dafny/releases/latest/download/dafny.zip
+unzip dafny.zip
+./dafny/dafny
+```
+
+#### 3. Compile Dafny Programs
+| Target     | Requirements     | Example                             |
+| ---------- | ---------------- | ----------------------------------- |
+| **C#**     | .NET 8.0 SDK     | `dafny build -t:cs MyProgram.dfy`   |
+| **Java**   | Java ≥ 8, Gradle | `dafny build -t:java MyProgram.dfy` |
+| **Python** | Python ≥ 3.7     | `dafny build -t:py MyProgram.dfy`   |
+| **Go**     | Go ≥ 1.18        | `dafny build -t:go MyProgram.dfy`   |
+
+Run: 
+```bash
+dafny run MyProgram.dfy
+```
+
+#### 4. Developer Build
+```bash
+sudo apt install dotnet-sdk-8.0 python3 python3-pip
+git clone https://github.com/dafny-lang/dafny.git --recurse-submodules
+cd dafny
+make exe
+pip3 install pre-commit && pre-commit install
+
+# Install Z3 4.12.1
+make z3-ubuntu
+# or manually:
+cd Binaries
+wget https://github.com/dafny-lang/solver-builds/releases/download/snapshot-2023-08-02/z3-4.12.1-x64-ubuntu-20.04-bin.zip
+unzip z3-4.12.1-x64-ubuntu-20.04-bin.zip
+mv z3-4.12.1 z3
+```
+
+Run Dafny:
+```bash
+./Scripts/dafny
+./Scripts/quicktest.sh
+```
+
+Run Tests:
+```bash
+cd Source/IntegrationTests
+dotnet test -v:n
+```
 
 ## Program Verification Techniques
 
@@ -45,7 +238,14 @@ This logic provides partial correctness, meaning the result will be correct if t
 
 ## Applications in Industry
 
-*To be added*
+Using preconditions, postconditions, and invariants, as Hoare Logic showcases, this reasoning is now embedded in modern tools and workflows. These principles have now influenced every layer of software reliability. Here are a few examples of how Hoare Logic has been implemented in industry:
+
+- **Safety-Critical Systems:**
+In safety-critical systems, such as those in the aerospace and medical device industries, implement Hoare Logic through rigorous reasoning using preconditions, postconditions, and invariants. The implementation of the Hoare Triple ensures software correctness, particularly in cases where failure can be catastrophic. NASA's use of highly complex software makes testing impossible, especially when failures need to have probabilities on the order of 10⁻⁹ per hour. This highly rare, even if subtle, edge-case condition must be proven safe rather than minimally tested. Formal verification supports the validation of flight-control algorithms, redundancy management logic, timing-critical tasks, and fault-tolerant coordination across distributed systems.
+
+- **Static Analysis and Software Quality:**
+Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Logic-based reasoning to automatically detect bugs, memory leaks, and logic errors before runtime.
+
 
 ## Case Studies
 
@@ -72,25 +272,6 @@ The development of Hoare Logic established a foundation in computer science by s
 
 *To be added*
 
-## Industrial Applications
-
-Using preconditions, postconditions, and invariants, as Hoare Logic showcases, this reasoning is now embedded in modern tools and workflows. These principles have now influenced every layer of software reliability. Here are a few examples of how Hoare Logic has been implemented in industry:
-
-- **Safety-Critical Systems:**
-Hoare Logic enables formal verification of systems where failure is unacceptable, such as in the aerospace and medical fields. Engineers ensure that autopilot control, satellite guidance, and pacemaker timing behave safely under all possible conditions by proving correctness through preconditions, postconditions, and invariants.
-
-
-- **Security and Cryptography:**
-Used to prove that confidential data cannot leak and that cryptographic algorithms behave exactly as specified. Using Hoare Logic, reasoning supports formal proofs of non-interference, access control, and side-channel resistance in encryption and authentication systems.
-
-
-- **Static Analysis and Software Quality:**
-Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Logic-based reasoning to automatically detect bugs, memory leaks, and logic errors before runtime.
-
-
-- **Industrial Verification Pipelines:**
-Frameworks like Dafny, Frama-C, SPARK Ada, and Coq use Hoare Logic within large organizations such as Microsoft, Airbus, and AWS. They verify encryption libraries, avionics software, and distributed systems, combining enhanced security with practical reliability.
-
 ## Resources
 
 - [Dafny](https://github.com/dafny-lang/dafny)
@@ -99,10 +280,6 @@ Frameworks like Dafny, Frama-C, SPARK Ada, and Coq use Hoare Logic within large 
 
 ## References
 
-- [Northeastern University – CS2800: Logic and Computation (Spring 2023) Lecture 32: Hoare Logic](https://course.ccs.neu.edu/cs2800sp23/l32.html)
-
-- [University of Rochester – CSC 255/455: Programming Languages (Spring 2024) Lecture 25: Introduction to Hoare Logic](https://www.cs.rochester.edu/~spai4/courses/csc-255-455/spring-2024/static/25-intro-hoare-logic.pdf)
-
 - [University of Pennsylvania – Software Foundations, Volume 2: Programming Language Foundations Chapter: Hoare Logic](https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html)
 
 - [Carnegie Mellon University – 15-654 Software Engineering (Spring 2006) Lecture Notes: Hoare Logic by Jonathan Aldrich](https://www.cs.cmu.edu/~aldrich/courses/654-sp06/notes/3-hoare-notes.pdf)
@@ -110,7 +287,8 @@ Frameworks like Dafny, Frama-C, SPARK Ada, and Coq use Hoare Logic within large 
 - [Alexander Kurz – Hoare Logic Example (HackMD) Worked example: Loop invariants and correctness proofs](https://hackmd.io/@alexhkurz/Hy135C2tH)
 
 - [University of Cambridge – M.J.C. Gordon: Hoare Logic Lecture Notes All Lectures (Formal Semantics, wlp, VCG, and Separation Logic)](https://www.cl.cam.ac.uk/archive/mjcg/HoareLogic/Lectures/AllLectures.pdf)
+5
+- Krzysztof and Ernst-Rudiger (2019) [Fifty Years of Hoare’s Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Fifty+years+of+Hoare%E2%80%99s+logic+KR+Apt%2C+ER+Olderog&btnG=), Springer
 
-- [Intro. to the Hoare Triple (Discrete Math Tutorial) - Validity, Calculating Precondition, Explained.](https://www.youtube.com/watch?v=-Bs2Uy3zGsw)
+- Josh Rushby (1995) [Formal Methods and Their Role in Digital Systems Validation for Airborne Systems](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Formal+Methods+and+Their+Role+in+Digital+Systems+Validation+for+Airborne+Systems&btnG=), NASA Contractor Report 4673 
 
-- [Fifty years of Hoare’s logic](https://ir.cwi.nl/pub/29146/29146.pdf)

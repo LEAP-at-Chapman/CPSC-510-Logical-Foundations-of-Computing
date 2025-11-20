@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Hoare Logic &#8212; Logical Foundations of AI</title>
   
@@ -28,35 +29,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/appendix-hoare-logic';</script>
@@ -155,42 +160,35 @@
     <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">1. Introduction to Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">2. Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">3. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">4. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">5. Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">6. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">7. Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">8. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">9. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">10. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">11. Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">12. Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Hoare Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
 <ul class="nav bd-sidenav">
@@ -227,9 +225,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -370,9 +368,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -443,11 +441,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hoare-logic">
-<h1>Hoare Logic<a class="headerlink" href="#hoare-logic" title="Link to this heading">#</a></h1>
+<h1>Hoare Logic<a class="headerlink" href="#hoare-logic" title="Permalink to this heading">#</a></h1>
 <p>“The most  important property of a program is whether it accomplishes the intentions of its user. If the intentions can be described rigorously by making assertions about the values of variables at the end of the execution of the program, then the techniques described in this paper may be used to prove the correcteness of the program.”</p>
 <p>Hoare. <a class="reference external" href="http://extras.springer.com/2002/978-3-642-63970-8/DVD3/rom/pdf/Hoare_hist.pdf">An axiomatic basis for computer programming</a>. Communications of the ACM. 12 (10): 576–580, 1969.</p>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>In Programming Languages there is an important circle of ideas including <a class="reference external" href="https://en.wikipedia.org/wiki/Hoare_logic">Hoare logic</a> and Dijkstra’s <a class="reference external" href="https://en.wikipedia.org/wiki/Predicate_transformer_semantics">predicate transformer semantics</a>, Kozen’s <a class="reference external" href="https://en.wikipedia.org/wiki/Kleene_algebra">Kleene algebra</a> and Pratt’s <a class="reference external" href="https://en.wikipedia.org/wiki/Dynamic_logic_(modal_logic)">Dynamic logic</a>, O’Hearn and Reynolds’s <a class="reference external" href="https://en.wikipedia.org/wiki/Separation_logic">Separation logic</a> and many more methods, techniques, tools, etc.</p>
 <p>This line of research grew out of the methodology of <strong>structured programming</strong>, which is something that every programmer learns today right from the start, but was a novel concept around 1970. I postpone a discussion of this to the conclusions.</p>
 <p>Here, we will just give some of the basic ideas and illustrate them with an important technique of proving the correctness of while programs.</p>
@@ -476,7 +474,7 @@ document.write(`
 </ul>
 <p><strong>Table of Contents</strong>:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="9-hoare-logic.html"><span class="std std-doc">Summary of the Rules of Hoare Logic</span></a></p></li>
+<li><p><a class="reference internal" href="9-hoare-logic.html"><span class="doc std std-doc">Summary of the Rules of Hoare Logic</span></a></p></li>
 <li><p>Introductory Example</p></li>
 <li><p>Preconditions and Postconditions</p></li>
 <li><p>Program Variables vs Mathematical Variables</p></li>
@@ -484,7 +482,7 @@ document.write(`
 </ul>
 </section>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h2>
 <p>Consider the following program, see also <a class="reference external" href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/src/dafny/HL-exercise-1.dfy">HL-example-1.dfy</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">do</span> <span class="n">z</span><span class="o">:=</span><span class="n">z</span><span class="o">+</span><span class="n">y</span><span class="p">;</span>  <span class="n">x</span><span class="o">:=</span> <span class="n">x</span><span class="o">-</span><span class="mi">1</span> <span class="n">done</span>
 </pre></div>
@@ -501,7 +499,7 @@ document.write(`
 <p>Answer. <a class="footnote-reference brackets" href="#invariantwhile2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="footnote-reference brackets" href="#invariantwhile" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="preconditions-postconditions">
-<h2>Preconditions … Postconditions …<a class="headerlink" href="#preconditions-postconditions" title="Link to this heading">#</a></h2>
+<h2>Preconditions … Postconditions …<a class="headerlink" href="#preconditions-postconditions" title="Permalink to this heading">#</a></h2>
 <p>As the example shows part of the difficulty lies in having a reliable notation that allows us to track change through a program and making statements (such as <code class="docutils literal notranslate"><span class="pre">z</span> <span class="pre">==</span> <span class="pre">x*y</span></code> ) about its properties.</p>
 <p>The first important idea is that we want express that certain assumptions are satisfied before executing the program (preconditions)  and properties that we then know after the execution of the program (postconditions)</p>
 <p>If <span class="math notranslate nohighlight">\(\mathtt S\)</span> is a program (“S” as in “Sequence of Statements”) then we write</p>
@@ -529,7 +527,7 @@ document.write(`
 <p>Answer.<a class="footnote-reference brackets" href="#looksright" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="program-variables-vs-mathematical-variables">
-<h2>Program Variables vs Mathematical Variables<a class="headerlink" href="#program-variables-vs-mathematical-variables" title="Link to this heading">#</a></h2>
+<h2>Program Variables vs Mathematical Variables<a class="headerlink" href="#program-variables-vs-mathematical-variables" title="Permalink to this heading">#</a></h2>
 <p>Our difficulty in finding the correct postcondition can be remedied using the following trick.</p>
 <p>While we allow program variables to change during the execution of a program <span class="math notranslate nohighlight">\(\mathtt S\)</span> in</p>
 <div class="math notranslate nohighlight">
@@ -559,11 +557,11 @@ document.write(`
 <p>See the footnote for a solution.<a class="footnote-reference brackets" href="#invariantznot0" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="the-rules-in-detail">
-<h2>The Rules in Detail<a class="headerlink" href="#the-rules-in-detail" title="Link to this heading">#</a></h2>
+<h2>The Rules in Detail<a class="headerlink" href="#the-rules-in-detail" title="Permalink to this heading">#</a></h2>
 <p>Hoare logic (also known as Floyd-Hoare logic) is a formal system developed by the British computer scientist C. A. R. Hoare, and subsequently refined by Hoare and other researchers. The purpose of the system is to provide a set of logical rules in order to reason about the correctness of computer programs with the rigour of mathematical logic and, therefore, the possibility of delegating such reasoning to a compiler or other verification software tools.</p>
-<p>We will describe Hoare Logic for a minimal programming language containg only assignments, conditionals and while-loops. In addition to the rules for the simple language in  Hoare’s original paper, rules for other language constructs have been developed since then by Hoare and many other researchers. There are rules for concurrency, procedures, jumps, and pointers and much more. For example, <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%22O%27Hearn%22+%22separation+logic%22+%22facebook%22&amp;amp;btnG=">Separation logic</a> is used by Facebook in verification tools.</p>
+<p>We will describe Hoare Logic for a minimal programming language containg only assignments, conditionals and while-loops. In addition to the rules for the simple language in  Hoare’s original paper, rules for other language constructs have been developed since then by Hoare and many other researchers. There are rules for concurrency, procedures, jumps, and pointers and much more. For example, <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=%22O%27Hearn%22+%22separation+logic%22+%22facebook%22&amp;btnG=">Separation logic</a> is used by Facebook in verification tools.</p>
 <section id="while-loop">
-<h3>While-loop<a class="headerlink" href="#while-loop" title="Link to this heading">#</a></h3>
+<h3>While-loop<a class="headerlink" href="#while-loop" title="Permalink to this heading">#</a></h3>
 <p>Let us go back to our leading example</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    while (x != 0 ) do z:=z+y;  x:= x-1 done
 </pre></div>
@@ -662,7 +660,7 @@ document.write(`
 <p>Here <span class="math notranslate nohighlight">\(I\)</span> is the <em><strong>loop invariant</strong></em>.</p>
 </section>
 <section id="making-hoare-logic-compositional">
-<h3>Making Hoare Logic Compositional<a class="headerlink" href="#making-hoare-logic-compositional" title="Link to this heading">#</a></h3>
+<h3>Making Hoare Logic Compositional<a class="headerlink" href="#making-hoare-logic-compositional" title="Permalink to this heading">#</a></h3>
 <p>From a practical programming point of view we already learned some important lessons from studying Hoare logic.</p>
 <p>For example, we have seen</p>
 <ul class="simple">
@@ -681,7 +679,7 @@ document.write(`
 <p>In what follows, we will look at rules for the other programming constructions.</p>
 </section>
 <section id="sequential-composition">
-<h3>Sequential Composition<a class="headerlink" href="#sequential-composition" title="Link to this heading">#</a></h3>
+<h3>Sequential Composition<a class="headerlink" href="#sequential-composition" title="Permalink to this heading">#</a></h3>
 <p>The rule of composition applies to sequentially-executed programs
 <span class="math notranslate nohighlight">\(\mathtt S\)</span> and <span class="math notranslate nohighlight">\(\mathtt T\)</span>, where <span class="math notranslate nohighlight">\(\mathtt S\)</span> executes prior to <span class="math notranslate nohighlight">\(\mathtt T\)</span> and is written</p>
 <div class="math notranslate nohighlight">
@@ -713,7 +711,7 @@ document.write(`
 \]</div>
 </section>
 <section id="assignment">
-<h3>Assignment<a class="headerlink" href="#assignment" title="Link to this heading">#</a></h3>
+<h3>Assignment<a class="headerlink" href="#assignment" title="Permalink to this heading">#</a></h3>
 <p>The assignment instruction is written as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -796,7 +794,7 @@ y:=x + 1
 <p>The above statement is not  true if <span class="math notranslate nohighlight">\(x\)</span>  and <span class="math notranslate nohighlight">\(y\)</span> refer to the same variable, because no precondition can cause y to be 3 after x is set to 2.</p>
 </section>
 <section id="exercise">
-<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
 <p>Use the red rules above to show</p>
 <div class="math notranslate nohighlight">
 \[
@@ -811,7 +809,7 @@ y:=x + 1
 <p><strong>Remark:</strong> In the second example you need to strengthen the invariant so that it expresses that <span class="math notranslate nohighlight">\(y\)</span> does not change in the loop.</p>
 </section>
 <section id="if-then-else">
-<h3>If-then-else<a class="headerlink" href="#if-then-else" title="Link to this heading">#</a></h3>
+<h3>If-then-else<a class="headerlink" href="#if-then-else" title="Permalink to this heading">#</a></h3>
 <p>Consider the following program.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -855,7 +853,7 @@ two values <span class="math notranslate nohighlight">\(x\)</span> and <span cla
 </section>
 </section>
 <section id="homework">
-<h2>Homework<a class="headerlink" href="#homework" title="Link to this heading">#</a></h2>
+<h2>Homework<a class="headerlink" href="#homework" title="Permalink to this heading">#</a></h2>
 <p>Apply the method of analysis from these notes to</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="n">x</span><span class="o">!=</span><span class="mi">0</span><span class="p">)</span> <span class="n">do</span> <span class="n">z</span><span class="o">:=</span><span class="n">z</span><span class="o">*</span><span class="n">y</span><span class="p">;</span>  <span class="n">x</span><span class="o">:=</span> <span class="n">x</span><span class="o">-</span><span class="mi">1</span> <span class="n">done</span>
 </pre></div>
@@ -864,7 +862,7 @@ two values <span class="math notranslate nohighlight">\(x\)</span> and <span cla
 <p>This exercise is very similar to what we have done above (essentially, we use now <code class="docutils literal notranslate"><span class="pre">*</span></code> instead of <code class="docutils literal notranslate"><span class="pre">+</span></code>). If you want to do something more challenging, you can instead also do the next exercise.</p>
 </section>
 <section id="further-exercises">
-<h2>Further Exercises<a class="headerlink" href="#further-exercises" title="Link to this heading">#</a></h2>
+<h2>Further Exercises<a class="headerlink" href="#further-exercises" title="Permalink to this heading">#</a></h2>
 <p>Apply the method of analysis to</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="k">while</span> <span class="p">(</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">)</span> <span class="n">do</span> <span class="n">t</span><span class="o">:=</span><span class="n">t</span><span class="o">+</span><span class="n">i</span><span class="p">;</span> <span class="n">i</span><span class="o">:=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="n">done</span>
 </pre></div>
@@ -873,11 +871,11 @@ two values <span class="math notranslate nohighlight">\(x\)</span> and <span cla
 <p>See also <a class="reference external" href="https://hackmd.io/&#64;alexhkurz/rkhVZNzjH">Exercises: Program Verification, Hoare Logic, Loop Invariants</a>.</p>
 </section>
 <section id="summary-and-outlook">
-<h2>Summary and Outlook<a class="headerlink" href="#summary-and-outlook" title="Link to this heading">#</a></h2>
+<h2>Summary and Outlook<a class="headerlink" href="#summary-and-outlook" title="Permalink to this heading">#</a></h2>
 <p>I will first summarise some of the lessons that we learned from studying Hoare logic, lessons that are relevant to programmers and software engineers far beyond the particularities of this specific approach to program correctness.</p>
 <p>Then I will briefely look at the history of ideas around “structured programming” which gave rise to Hoare logic and other approaches to program verification.</p>
 <section id="id9">
-<h3>Hoare Logic<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3>Hoare Logic<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>… the following summary is currently just a collection of random notes …</p>
 <ul class="simple">
 <li><p>The following habits can improve the practice of programming</p>
@@ -906,14 +904,14 @@ This is a consequence of the previous item. Formal systems can be implemented an
 </ul>
 </section>
 <section id="structured-programming">
-<h3>Structured Programming<a class="headerlink" href="#structured-programming" title="Link to this heading">#</a></h3>
+<h3>Structured Programming<a class="headerlink" href="#structured-programming" title="Permalink to this heading">#</a></h3>
 <p>(this section is being written as an after-thought and was not part of the semester)</p>
 <p>Early programming close to the machine relies on jumps as a basic mechanism to control flow. Accordingly, early higher level languages such as Fortran had a corresponding <span class="math notranslate nohighlight">\(\texttt{goto}\)</span> statement. Goto’s lend themselves to the writing of “unstructured” code that is difficult to read and debug, but was considered a necessary ingredient.</p>
-<p>In 1966, the article <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Flow+diagrams%2C+turing+machines+and+languages+with+only+two+formation+rules&amp;amp;btnG=">Flow diagrams, turing machines and languages with only two formation rules</a> by Boehm and  showed that jumps (gotos) are not needed and any program can be written with just three controle structures: sequential composition, conditional and iteration. This was an important result at the time as it suggested that the complex control structures (typically based on gotos, later fiving rise to so-called spaghetti code) that plagued programming at the time were not necessary.</p>
+<p>In 1966, the article <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Flow+diagrams%2C+turing+machines+and+languages+with+only+two+formation+rules&amp;btnG=">Flow diagrams, turing machines and languages with only two formation rules</a> by Boehm and  showed that jumps (gotos) are not needed and any program can be written with just three controle structures: sequential composition, conditional and iteration. This was an important result at the time as it suggested that the complex control structures (typically based on gotos, later fiving rise to so-called spaghetti code) that plagued programming at the time were not necessary.</p>
 </section>
 </section>
 <section id="historical-references">
-<h2>Historical References<a class="headerlink" href="#historical-references" title="Link to this heading">#</a></h2>
+<h2>Historical References<a class="headerlink" href="#historical-references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Reynolds: <a class="reference external" href="https://kilthub.cmu.edu/ndownloader/files/12102656">The Craft of Programming</a>. 1981.</p></li>
 </ul>
@@ -923,22 +921,22 @@ This is a consequence of the previous item. Formal systems can be implemented an
 </ul>
 </section>
 <section id="further-reading">
-<h2>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this heading">#</a></h2>
 <section id="formal-verification">
-<h3>Formal Verification<a class="headerlink" href="#formal-verification" title="Link to this heading">#</a></h3>
+<h3>Formal Verification<a class="headerlink" href="#formal-verification" title="Permalink to this heading">#</a></h3>
 <p>We have seen that the rules of Hoare logic can be formalised in symbolic notation. It should therefore should be possible to implement software engineering tools that automate reasoning about programs.</p>
 <p>To get a taste of how verification is done in real world programming applications, have a look at the blogs by David Crocker about <em>Verifying loops in C and C++</em>, <a class="reference external" href="https://critical.eschertech.com/2010/03/22/verifying-loops-in-c/">part 1</a> and <a class="reference external" href="https://critical.eschertech.com/2010/03/29/verifying-loops-part-2/">part 2</a> and <a class="reference external" href="https://critical.eschertech.com/2010/03/31/verifying-loops-proving-termination/">part 3</a>. There is also a very short <a class="reference external" href="https://critical.eschertech.com/about/">introduction to software verification</a>.</p>
 </section>
 </section>
 <section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <section id="euclidean-algorithm">
-<h3>Euclidean Algorithm<a class="headerlink" href="#euclidean-algorithm" title="Link to this heading">#</a></h3>
+<h3>Euclidean Algorithm<a class="headerlink" href="#euclidean-algorithm" title="Permalink to this heading">#</a></h3>
 <p>One of the oldest algorithms still in use is the Euclidean algorithm. We present the simplest version of Euclid’s algorithm in three different formalisms.</p>
 <p>In each case prove partial correctness by using an invariant and prove termination by using a measure function.</p>
 <p>(Remark: We set up the formal rules of Hoare logic only for the while program, but the method of proving correctness with the help of an invariant also works for recursive programs and rewriting systems.)</p>
 <section id="with-a-while-loop">
-<h4>With a while loop<a class="headerlink" href="#with-a-while-loop" title="Link to this heading">#</a></h4>
+<h4>With a while loop<a class="headerlink" href="#with-a-while-loop" title="Permalink to this heading">#</a></h4>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>function gcd(a, b)
     while a ≠ b 
         if a &gt; b
@@ -950,7 +948,7 @@ This is a consequence of the previous item. Formal systems can be implemented an
 </div>
 </section>
 <section id="in-haskell">
-<h4>In Haskell<a class="headerlink" href="#in-haskell" title="Link to this heading">#</a></h4>
+<h4>In Haskell<a class="headerlink" href="#in-haskell" title="Permalink to this heading">#</a></h4>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gcd :: Int -&gt; Int -&gt; Int
 gcd x y | x &gt; y = gcd (x-y) y
         | x &lt; y = gcd x (y-x)
@@ -959,7 +957,7 @@ gcd x y | x &gt; y = gcd (x-y) y
 </div>
 </section>
 <section id="as-a-term-rewriting-system">
-<h4>As a term rewriting system<a class="headerlink" href="#as-a-term-rewriting-system" title="Link to this heading">#</a></h4>
+<h4>As a term rewriting system<a class="headerlink" href="#as-a-term-rewriting-system" title="Permalink to this heading">#</a></h4>
 <p>Let  <span class="math notranslate nohighlight">\((\mathbb N\times \mathbb N,\to)\)</span> be defined as follows:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>(a,b) -&gt; (a-b,b)  if a&gt;b
 (a,b) -&gt; (a,b-a)  if b&gt;a
@@ -968,7 +966,7 @@ gcd x y | x &gt; y = gcd (x-y) y
 </section>
 </section>
 <section id="insertion-sort">
-<h3>Insertion Sort<a class="headerlink" href="#insertion-sort" title="Link to this heading">#</a></h3>
+<h3>Insertion Sort<a class="headerlink" href="#insertion-sort" title="Permalink to this heading">#</a></h3>
 <p>Which invariant proves that insertion sort</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sort</span> <span class="p">[]</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">sort</span> <span class="n">n</span><span class="p">:</span><span class="n">l</span>  <span class="o">=</span>  <span class="n">insert</span> <span class="n">n</span> <span class="p">(</span><span class="n">sort</span> <span class="n">l</span><span class="p">)</span>
@@ -996,7 +994,7 @@ gcd x y | x &gt; y = gcd (x-y) y
 </pre></div>
 </div>
 <section id="euclid-revisited">
-<h4>Euclid Revisited<a class="headerlink" href="#euclid-revisited" title="Link to this heading">#</a></h4>
+<h4>Euclid Revisited<a class="headerlink" href="#euclid-revisited" title="Permalink to this heading">#</a></h4>
 <p>The next exercise is essentially the same as the one above on Euclid’s algorithm. But this time you also need to point out which rule of Hoare logic is used to justify which step in the reasoning.</p>
 <p>Given positive integers <span class="math notranslate nohighlight">\(n,a\)</span>, we write <span class="math notranslate nohighlight">\(n|a\)</span> for <span class="math notranslate nohighlight">\(n\)</span> divides <span class="math notranslate nohighlight">\(a\)</span>.</p>
 <p>Using the rules of Hoare logic, show that <span class="math notranslate nohighlight">\(\{n|a \ \wedge \ n|b\}\)</span> is an invariant of</p>
@@ -1009,8 +1007,7 @@ gcd x y | x &gt; y = gcd (x-y) y
 </div>
 <p>Conclude that the algorithm computes the greates common divisor of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <hr class="footnotes docutils" />
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="invariantwhile2" role="doc-footnote">
+<aside class="footnote brackets" id="invariantwhile2" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Let us think about it.</p>
 <p>Each time the program goes through the loop, <code class="docutils literal notranslate"><span class="pre">x</span></code> will be decremented. How often does it happen? This again depends on <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
@@ -1025,7 +1022,7 @@ gcd x y | x &gt; y = gcd (x-y) y
 <p>Can you conclude from the invariant what the result of the computation is?</p>
 <p>After answering the questions yourself, you can check with my solutions below.</p>
 </aside>
-<aside class="footnote brackets" id="invariantwhile" role="doc-footnote">
+<aside class="footnote brackets" id="invariantwhile" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>Let us make a table of an execution. We assume here that the program variables are initialised as follows: <code class="docutils literal notranslate"><span class="pre">x</span></code> is 100, <code class="docutils literal notranslate"><span class="pre">y</span></code> is 2 and <code class="docutils literal notranslate"><span class="pre">z</span></code> is 0. <code class="docutils literal notranslate"><span class="pre">t</span></code> counts how often the body of the loop was executed. (We will later see how to generalize to aribtrary input <code class="docutils literal notranslate"><span class="pre">x,y,z</span></code>.)</p>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -1081,36 +1078,35 @@ z = t * y
 </div>
 <p>This is an invariant. We will see below how to make this independent of particular values such as <code class="docutils literal notranslate"><span class="pre">100</span></code>.</p>
 </aside>
-<aside class="footnote brackets" id="looksright" role="doc-footnote">
+<aside class="footnote brackets" id="looksright" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
 <p>The problem with <span class="math notranslate nohighlight">\(\color{blue}{\{\mathtt{z=x*y}\}}\)</span> is that it only gives us what we want if we take for <span class="math notranslate nohighlight">\(\mathtt x\)</span> the value of <span class="math notranslate nohighlight">\(\mathtt x\)</span> <em>before</em> the computation and for <span class="math notranslate nohighlight">\(\mathtt z\)</span> the value of <span class="math notranslate nohighlight">\(\mathtt z\)</span> <em>after</em> the computation. On the other hand, if we take for both variables their values after the computation, as we should (why?), the condition <span class="math notranslate nohighlight">\(\color{blue}{\{\mathtt{z=x*y}\}}\)</span> is false (for almost all initial values of the variables).</p>
 </aside>
-<aside class="footnote brackets" id="invariantznot0" role="doc-footnote">
+<aside class="footnote brackets" id="invariantznot0" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
 <div class="math notranslate nohighlight">
 \[\color{blue}{\{\mathtt x=n \ \wedge\  \mathtt z=m \ \wedge\  \mathtt y =k \}} \; 
 \mathtt{while \ (x \not = 0 ) \  do \ z:=z+y;  x:= x-1  \ done}  \;\color{blue}{\{\mathtt{z=n+m*k}\}}. \]</div>
 </aside>
-<aside class="footnote brackets" id="equals" role="doc-footnote">
+<aside class="footnote brackets" id="equals" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
 <p>The rule of logic that allows us to replace equals by equals is often called the “congruence rule” of equational reasoning.</p>
 </aside>
-<aside class="footnote brackets" id="xis0" role="doc-footnote">
+<aside class="footnote brackets" id="xis0" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
 <p>The condition <span class="math notranslate nohighlight">\(\mathtt B\)</span> that forces to execute the loop is in our example <code class="docutils literal notranslate"><span class="pre">x!=0</span></code>, that is, <span class="math notranslate nohighlight">\(\neg(x=0)\)</span>. Therefore <span class="math notranslate nohighlight">\(\neg\mathtt B\)</span> is <span class="math notranslate nohighlight">\(\neg\neg(x=0)\)</span>, which is <span class="math notranslate nohighlight">\(x=0\)</span>.</p>
 </aside>
-<aside class="footnote brackets" id="xge0" role="doc-footnote">
+<aside class="footnote brackets" id="xge0" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
 <p>Our first observation was that the precondition <span class="math notranslate nohighlight">\(\{x\ge 0\}\)</span> is needed for correctness. Why is it not needed in the proof of the Hoare triple? The reason is that Hoare triples only concern what is called <strong>partial correctness</strong>, that is, correctness under the assumption of termination. Indeed, <span class="math notranslate nohighlight">\(\{x\ge 0\}\)</span> is only needed in our example to argue for termination.</p>
 </aside>
-<aside class="footnote brackets" id="invariantx10" role="doc-footnote">
+<aside class="footnote brackets" id="invariantx10" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">8</a><span class="fn-bracket">]</span></span>
 <p><span class="math notranslate nohighlight">\(\color{blue}{x\le 10}\)</span> is a loop invariant.</p>
 </aside>
-<aside class="footnote brackets" id="fromposttopre" role="doc-footnote">
+<aside class="footnote brackets" id="fromposttopre" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">9</a><span class="fn-bracket">]</span></span>
 <p>Note that this goes in the opposite direction of our usual thinking about code, which is operational and proceeds from an initial state and works forward from there.</p>
-</aside>
 </aside>
 </section>
 </section>
@@ -1243,7 +1239,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

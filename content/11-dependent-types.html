@@ -1,14 +1,15 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Dependent Type Theory with Lean &#8212; Logical Foundations of AI</title>
+    <title>12. Dependent Type Theory with Lean &#8212; Logical Foundations of AI</title>
   
   
   
@@ -28,41 +29,45 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/11-dependent-types';</script>
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/11-dependent-types.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Resources on Puzzles" href="appendix-puzzles.html" />
-    <link rel="prev" title="Higher-Order Logic with Isabelle/HOL" href="10-higher-order-logic.html" />
+    <link rel="prev" title="11. Higher-Order Logic with Isabelle/HOL" href="10-higher-order-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,42 +158,35 @@
     <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">1. Introduction to Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">2. Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">3. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">4. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">5. Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">6. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">7. Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">8. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">9. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">10. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">11. Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
 <ul class="nav bd-sidenav">
@@ -225,9 +223,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -368,9 +366,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -391,25 +389,25 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool">Tool</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples">Introductory Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">The landscape of Tools</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-competitions">Benchmarks and Competitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-and-influencial-application">1. Historical and Influencial Application</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-emerging-directions">2. Recent &amp; Emerging Directions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">12.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">12.2. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">12.3. Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool">12.4. Tool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples">12.5. Introductory Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">12.6. The landscape of Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">12.7. Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-competitions">12.8. Benchmarks and Competitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">12.9. Applications in Industry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-and-influencial-application">12.9.1. 1. Historical and Influencial Application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-emerging-directions">12.9.2. 2. Recent &amp; Emerging Directions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">Case Study</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">History</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">Formal Methods and AI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">Current Development</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-works">Suggestions for Future Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">12.10. Case Study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">12.11. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">12.12. Formal Methods and AI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">12.13. Current Development</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">12.14. Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-works">12.15. Suggestions for Future Works</a></li>
 </ul>
             </nav>
         </div>
@@ -422,42 +420,42 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="dependent-type-theory-with-lean">
-<h1>Dependent Type Theory with Lean<a class="headerlink" href="#dependent-type-theory-with-lean" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">12. </span>Dependent Type Theory with Lean<a class="headerlink" href="#dependent-type-theory-with-lean" title="Permalink to this heading">#</a></h1>
 <p><em>Author: Khoa Nguyen</em></p>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>This chapter presents dependent type theory with Lean, demonstrating how types can depend on values and enabling “proofs as programs” through the Curry-Howard correspondence.</p>
 </section>
 <section id="idea">
-<h2>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
 <p>Dependent Type Theory (DTT) is the idea that types can depend on values. This enable us to rstablish precise relationships between data and the logical propositions that describes it.</p>
 <p>In traditional programming languages, types classify values. <code class="docutils literal notranslate"><span class="pre">Int</span></code> describes integers, <code class="docutils literal notranslate"><span class="pre">Bool</span></code> describes True or False, etc… With dependent type theory, a type itself depends on a value. For example, instead of defining a single <code class="docutils literal notranslate"><span class="pre">array</span></code> type, we define <code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">n</span> <span class="pre">A</span></code>, meaning “an array of length n whose elements are of type A.” This makes certain properties, like the dimension of an array, part of the type system itself. The compiler can then verify these constraints automatically.</p>
 <p>This expressiveness blurs the boundary between proofs and programs. In dependent type theory, writing a function that computes something often simultaneously constructs a proof of its correctness. For instance, a function that returns the sum of two natural numbers can be defined alongside a proof that addition is associative or commutative, proofs that Lean, Coq, or Agda can check mechanically.</p>
 <p>(To be added more)…</p>
 </section>
 <section id="basic-theory">
-<h2>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="tool">
-<h2>Tool<a class="headerlink" href="#tool" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.4. </span>Tool<a class="headerlink" href="#tool" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="introductory-examples">
-<h2>Introductory Examples<a class="headerlink" href="#introductory-examples" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.5. </span>Introductory Examples<a class="headerlink" href="#introductory-examples" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="the-landscape-of-tools">
-<h2>The landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.6. </span>The landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="algorithms">
-<h2>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.7. </span>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="benchmarks-and-competitions">
-<h2>Benchmarks and Competitions<a class="headerlink" href="#benchmarks-and-competitions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.8. </span>Benchmarks and Competitions<a class="headerlink" href="#benchmarks-and-competitions" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="applications-in-industry">
-<h2>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.9. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Permalink to this heading">#</a></h2>
 <p>In recent years, formally grounded methods for specifying and verifying software and hardware systems have undergone significant uptake. The combination of dependable “symbolic” reasoning, (i.e. logic, type-theory, theorem-proving, etc…) with the explosion of AI-driven development like machine learning, generative models, is opening up new directions for improvements. Here are briefs summaries of recent influential applications.</p>
 <section id="historical-and-influencial-application">
-<h3>1. Historical and Influencial Application<a class="headerlink" href="#historical-and-influencial-application" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.9.1. </span>1. Historical and Influencial Application<a class="headerlink" href="#historical-and-influencial-application" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Tokeneer ID Station (NSA smart-card project) is one of the early industrial successes of the “Correctness by Construction” methodology. The case is described by Janet Barnes in <a class="reference external" href="https://eceasst.org/index.php/eceasst/article/view/1885">“Experiences in the Industrial use of Formal Methods.”</a>. This article reports on industrial deployment of formal methods under the “Correctness by Construction (CbyC)” approach at Altran Praxis, including the case of the Tokeneer ID Station project for the US NSA. The work describes how formal specification in Z, refinement to code in SPARK with proof of absence of run-time errors, and proof of system-level properties were applied. The project found only five errors post-release and is cited as a rare “success story” of formal methods in industry. The article also candidly discusses challenges: training, tool usability, industrial adoption, and scaling.</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1902.01494">“Symbolic QED Pre-silicon Verification for Automotive Microcontroller Cores: Industrial Case Study”</a> presents an industrial case study applying the “Symbolic Quick Error Detection (Symbolic QED)” technique in the pre-silicon verification of automotive microcontroller cores (~1,800 flip-flops, ~70,000 logic gates). Symbolic QED detected all logic bugs found by previous industrial verification flows, plus additional ones. It significantly reduced verification effort (e.g., an 8× reduction for a new design, and up to ~60× for subsequent designs). Runtime of bug detection improved dramatically (20 seconds or less) with short counterexamples (≤10 instructions).</p></li>
@@ -466,7 +464,7 @@ document.write(`
 </ul>
 </section>
 <section id="recent-emerging-directions">
-<h3>2. Recent &amp; Emerging Directions<a class="headerlink" href="#recent-emerging-directions" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.9.2. </span>2. Recent &amp; Emerging Directions<a class="headerlink" href="#recent-emerging-directions" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>The paper <a class="reference external" href="https://par.nsf.gov/servlets/purl/10471546">“Machine learning and logic: a new frontier in artificial intelligence”</a> shows how ML/AI and formal methods (logic, automated reasoning) are increasingly tightly coupled. Both foundational pillars have largely developed independently, but novel and grand challenges demand their integration. The author identify three key paradigms:</p>
 <ol class="arabic simple">
@@ -484,21 +482,21 @@ that such benchmarks are essential to meaningful progress in automated code veri
 </section>
 </section>
 <section id="case-study">
-<h2>Case Study<a class="headerlink" href="#case-study" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.10. </span>Case Study<a class="headerlink" href="#case-study" title="Permalink to this heading">#</a></h2>
 <p>Let’s formalise and verify a transformation pipline for 3-D points in world space. Let’s look at a small example where we perform a rotation in place, follow by a translation (moving the point to a different coordinate). This case study will show how dependent types and theorem proving is utilized in computer graphics, like graphical engines utilized in games, movies, animation, etc…</p>
 <p>The following case study demonstrates how Lean uses dependent type system to ensures mathematical and computational correctness. By encoding vector dimensions in types and proving geometric invariants such as norm preservation, we move from abstract theory to executable verification. This approach mirrors how formal methods are being integratated into the wider industry.</p>
 </section>
 <section id="history">
-<h2>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.11. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="formal-methods-and-ai">
-<h2>Formal Methods and AI<a class="headerlink" href="#formal-methods-and-ai" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.12. </span>Formal Methods and AI<a class="headerlink" href="#formal-methods-and-ai" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="current-development">
-<h2>Current Development<a class="headerlink" href="#current-development" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.13. </span>Current Development<a class="headerlink" href="#current-development" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.14. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://lean-lang.org/install/">Lean4 Installation</a></p></li>
 <li><p><a class="reference external" href="https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic">Lean Game Logic</a></p></li>
@@ -519,7 +517,7 @@ that such benchmarks are essential to meaningful progress in automated code veri
 </ul>
 </section>
 <section id="suggestions-for-future-works">
-<h2>Suggestions for Future Works<a class="headerlink" href="#suggestions-for-future-works" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.15. </span>Suggestions for Future Works<a class="headerlink" href="#suggestions-for-future-works" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -559,7 +557,7 @@ that such benchmarks are essential to meaningful progress in automated code veri
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Higher-Order Logic with Isabelle/HOL</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Higher-Order Logic with Isabelle/HOL</p>
       </div>
     </a>
     <a class="right-next"
@@ -587,25 +585,25 @@ that such benchmarks are essential to meaningful progress in automated code veri
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">Basic Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool">Tool</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples">Introductory Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">The landscape of Tools</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">Algorithms</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-competitions">Benchmarks and Competitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">Applications in Industry</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-and-influencial-application">1. Historical and Influencial Application</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-emerging-directions">2. Recent &amp; Emerging Directions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">12.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">12.2. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">12.3. Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool">12.4. Tool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples">12.5. Introductory Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">12.6. The landscape of Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">12.7. Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-competitions">12.8. Benchmarks and Competitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">12.9. Applications in Industry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-and-influencial-application">12.9.1. 1. Historical and Influencial Application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-emerging-directions">12.9.2. 2. Recent &amp; Emerging Directions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">Case Study</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">History</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">Formal Methods and AI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">Current Development</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-works">Suggestions for Future Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">12.10. Case Study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">12.11. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">12.12. Formal Methods and AI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">12.13. Current Development</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">12.14. Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-works">12.15. Suggestions for Future Works</a></li>
 </ul>
   </nav></div>
 
@@ -630,7 +628,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

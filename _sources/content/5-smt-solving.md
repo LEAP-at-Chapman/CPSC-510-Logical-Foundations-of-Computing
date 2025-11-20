@@ -191,6 +191,237 @@ i) Prove that array access is always within bounds in a loop:
     - Auto-formalization: LLMs converting NL requirements/tests into templates that SMT tools check (assertion mining and refinement).
     - Proof-search copilots: Retrieval + tool APIs (Lean/Isabelle/Coq) to keep LLM steps sound via solver or kernel checks.
     - Verifier-in-the-loop tooling: LLM planning; SMT establishes truth; counterexamples feed self-repair—already prototyped in compilers and invariant synthesis.
+
+## Case Study Code: Diet Planner
+
+    # diet_planner.py
+    # Z3 calorie & macro planner 
+    # Hard constraints: nonnegative servings, availability bounds
+    # Soft/Optimization: hit calorie + macro targets (L1 deviation)
+    # Units are 1/2 servings 
+
+    import argparse
+    from typing import Dict, Tuple, Set
+    from z3 import *
+    
+    # CONFIG
+    # Per serving: (Protein g, Carbs g, Fat g, Cost, MaxServings, Vegetarian?)
+    FOODS: Dict[str, Tuple[int, int, int, float, int, bool]] = {
+        "Bread":     (7,  25,  1, 0.4, 6,  True),
+        "Rice":      (4,  45,  0, 0.3, 6,  True),
+        "Pasta":     (7,  42,  1, 0.4, 6,  True),
+        "Oats":      (6,  27,  3, 0.5, 6,  True),
+        "Chicken":   (31, 0,   3, 1.8, 6,  False),
+        "Beef":      (26, 0,  15, 2.0, 4,  False),
+        "Tofu":      (18, 5,   6, 0.8, 6,  True),
+        "Eggs":      (12, 1,  10, 0.6, 6,  True),
+        "Beans":     (9,  27,  1, 0.4, 6,  True),
+        "GreekYog":  (17, 6,   0, 0.9, 6,  True),   #Greek Yogurt
+        "Milk":      (8,  12,  5, 0.5, 6,  True),
+        "PB":        (8,  6,  16, 0.5, 4,  True),   # Peanut Butter
+        "OliveOil":  (0,  0,  14, 0.7, 6,  True),
+        "Avocado":   (3,  9,  15, 1.0, 4,  True),
+    }
+    MEATY = [name for name, (*_, veg) in FOODS.items() if not veg]
+    
+    def parse_args() -> argparse.Namespace:
+        ap = argparse.ArgumentParser(description="Z3 Diet Planner / Calorie Counter")
+        ap.add_argument("--calories", type=int, default=2200, help="Target kcal")
+        ap.add_argument("--protein",  type=int, default=140,  help="Target protein grams")
+        ap.add_argument("--carbs",    type=int, default=230,  help="Target carbohydrate grams")
+        ap.add_argument("--fat",      type=int, default=70,   help="Target fat grams")
+        ap.add_argument("--cal-tol",  type=int, default=75,   help="±kcal window (soft unless --hard-calories)")
+        ap.add_argument("--unit",     type=float, default=0.5, help="serving granularity (e.g., 0.5 = half-serving)")
+        ap.add_argument("--vegetarian", action="store_true", help="disallow meat items")
+        ap.add_argument("--exclude",  type=str, default="", help="comma-separated foods to exclude")
+        ap.add_argument("--include-only", type=str, default="", help="comma-separated list; only these allowed")
+        ap.add_argument("--pareto", action="store_true", help="use Pareto priority among objectives")
+        ap.add_argument("--hard-calories", action="store_true", help="enforce calorie window as hard constraint")
+        return ap.parse_args()
+    
+    def select_allowed_foods(args: argparse.Namespace) -> Set[str]:
+        allowed = set(FOODS.keys())
+        if args.vegetarian:
+            allowed -= set(MEATY)
+        if args.exclude:
+            allowed -= {f.strip() for f in args.exclude.split(",") if f.strip()}
+        if args.include_only:
+            allowed = {f.strip() for f in args.include_only.split(",") if f.strip()}
+        if not allowed:
+            raise SystemExit("No foods remain after filtering; relax filters or lists.")
+        return allowed
+    
+    def R(x: float) -> ArithRef:
+        """Safe RealVal from float/string for exact Z3 arithmetic."""
+        return RealVal(str(x))
+    
+    
+    # Z3 MODEL
+    
+    
+    class ModelParts:
+        """Container to pass around Z3 pieces."""
+        def __init__(self):
+            self.opt: Optimize = None
+            self.x: Dict[str, IntNumRef] = {}
+            self.y: Dict[str, IntNumRef] = {}
+            self.totP: ArithRef = None
+            self.totC: ArithRef = None
+            self.totF: ArithRef = None
+            self.cal: ArithRef  = None
+            self.total_cost: ArithRef = None
+            self.in_window: BoolRef = None
+    
+    def build_model(args: argparse.Namespace, allowed: Set[str]) -> ModelParts:
+        mp = ModelParts()
+        mp.opt = Optimize()
+        if args.pareto:
+            mp.opt.set(priority='pareto')
+
+    # Decision variables: integer counts in units of `unit` servings
+    unit = args.unit
+    mp.x = {f: Int(f"x_{f}") for f in allowed}      # quantity in units
+    mp.y = {f: Int(f"use_{f}") for f in allowed}    # 0/1 usage indicator
+    BIG_M = 1000
+
+    # Hard constraints: bounds and linking x -> y
+    for f in allowed:
+        P, C, F, cost, max_serv, veg = FOODS[f]
+        max_units = int(round(max_serv / unit))
+        mp.opt.add(mp.x[f] >= 0, mp.x[f] <= max_units)
+        mp.opt.add(mp.y[f] >= 0, mp.y[f] <= 1)
+        mp.opt.add(mp.x[f] <= mp.y[f] * BIG_M)
+
+    # Totals and cost
+    mp.totP = Sum([mp.x[f] * R(FOODS[f][0] * unit) for f in allowed])
+    mp.totC = Sum([mp.x[f] * R(FOODS[f][1] * unit) for f in allowed])
+    mp.totF = Sum([mp.x[f] * R(FOODS[f][2] * unit) for f in allowed])
+    mp.total_cost = Sum([mp.x[f] * R(FOODS[f][3] * unit) for f in allowed])
+
+    # Calories from macros (exact by definition)
+    mp.cal = 4*mp.totP + 4*mp.totC + 9*mp.totF
+
+    # Calorie window
+    mp.in_window = And(mp.cal >= R(args.calories - args.cal_tol),
+                       mp.cal <= R(args.calories + args.cal_tol))
+    return mp
+
+
+    # DEVIATIONS (L1 absolute deviations for targets)
+    
+    
+    def add_abs_deviation(opt: Optimize, expr: ArithRef, target: float, tag: str) -> ArithRef:
+        """Encodes |expr - target| via pos/neg slack: expr - target = pos - neg, pos,neg >= 0"""
+        pos = Real(f"{tag}_pos")
+        neg = Real(f"{tag}_neg")
+        opt.add(pos >= 0, neg >= 0, expr - R(target) == pos - neg)
+        return pos + neg
+    
+    # 4) OBJECTIVES
+
+    class SolveResult:
+        def __init__(self, model: ModelRef, mp: ModelParts, allowed: Set[str], unit: float, args: argparse.Namespace):
+            self.m = model
+            self.mp = mp
+            self.allowed = allowed
+            self.unit = unit
+            self.args = args
+    
+    def add_objectives_and_solve(args: argparse.Namespace, mp: ModelParts, allowed: Set[str]) -> SolveResult:
+        # Primary: minimize macro & calorie deviations
+        W_CAL, W_PRO, W_CAR, W_FAT = 1.0, 2.0, 1.0, 1.0
+        dev_cal = add_abs_deviation(mp.opt, mp.cal,  args.calories, "cal")
+        dev_pro = add_abs_deviation(mp.opt, mp.totP, args.protein,  "pro")
+        dev_car = add_abs_deviation(mp.opt, mp.totC, args.carbs,    "car")
+        dev_fat = add_abs_deviation(mp.opt, mp.totF, args.fat,      "fat")
+        primary_loss = W_CAL*dev_cal + W_PRO*dev_pro + W_CAR*dev_car + W_FAT*dev_fat
+        h1 = mp.opt.minimize(primary_loss)
+
+    # Secondary: maximize variety (#foods used)
+    h2 = mp.opt.maximize(Sum([mp.y[f] for f in allowed]))
+
+    # Tertiary: minimize cost
+    h3 = mp.opt.minimize(mp.total_cost)
+
+    # Calorie window: soft or hard
+    if args.hard_calories:
+        mp.opt.add(mp.in_window)  # hard
+    else:
+        mp.opt.add_soft(mp.in_window, weight=5, id_="calorie_window")  # soft
+
+    # Solve
+    res = mp.opt.check()
+    if res != sat:
+        raise SystemExit(f"Model returned {res}. Try relaxing bounds, filters, or tolerance.")
+    return SolveResult(mp.opt.model(), mp, allowed, args.unit, args)
+
+
+    # REPORTING
+    
+    def as_float(m: ModelRef, expr: ArithRef) -> float:
+        s = m.eval(expr, model_completion=True).as_decimal(10)
+        return float(s if "?" not in s else s[:s.index("?")])
+    
+    def report(sr: SolveResult) -> None:
+        m, mp, allowed, unit, args = sr.m, sr.mp, sr.allowed, sr.unit, sr.args
+
+    tot_p = as_float(m, mp.totP)
+    tot_c = as_float(m, mp.totC)
+    tot_f = as_float(m, mp.totF)
+    tot_kcal = as_float(m, mp.cal)
+    cost_val = as_float(m, mp.total_cost)
+
+    print("\n=== Z3 Diet Plan (units = {:.2f} serving) ===".format(unit))
+    print("Targets: {} kcal | P {} g, C {} g, F {} g (cal tol ±{})".format(
+        args.calories, args.protein, args.carbs, args.fat, args.cal_tol
+    ))
+    print("Dietary style: {}".format("Vegetarian" if args.vegetarian else "Any"))
+    if args.include_only:
+        print("Include-only: {}".format(", ".join(sorted(allowed))))
+    elif args.exclude:
+        print("Excluded: {}".format(args.exclude))
+
+    print("\nServings:")
+    any_food = False
+    for f in sorted(allowed):
+        q = m.eval(mp.x[f]).as_long()
+        if q > 0:
+            any_food = True
+            servings = q * unit
+            P, C, F, cost, *_ = FOODS[f]
+            print(f"  {f:<10} {servings:>4.1f}  (per serving: P{P} C{C} F{F}, cost {cost:.2f})")
+    if not any_food:
+        print("  (no food selected)")
+
+    print("\nTotals:")
+    print(f"  Calories : {tot_kcal:.0f} kcal (from macros: 4P + 4C + 9F)")
+    print(f"  Protein  : {tot_p:.0f} g")
+    print(f"  Carbs    : {tot_c:.0f} g")
+    print(f"  Fat      : {tot_f:.0f} g")
+    print(f"  Cost     : {cost_val:.2f}")
+
+    print("\nDeviations (absolute):")
+    print(f"  |Cal-Target| ~ {abs(tot_kcal - args.calories):.0f}")
+    print(f"  |Pro-Target| ~ {abs(tot_p   - args.protein):.0f}")
+    print(f"  |Car-Target| ~ {abs(tot_c   - args.carbs):.0f}")
+    print(f"  |Fat-Target| ~ {abs(tot_f   - args.fat):.0f}")
+
+    # Main
+    
+    def main():
+        args = parse_args()
+        allowed = select_allowed_foods(args)
+        mp = build_model(args, allowed)
+        sr = add_objectives_and_solve(args, mp, allowed)
+        report(sr)
+    
+    if __name__ == "__main__":
+        main()
+
+    
+    
+
+
 ## References
 
 - [Reuben Martins](https://sat-group.github.io/ruben/) (part of a course on [Bug Catching: Bug Catching: Automated Program Verification](https://www.cs.cmu.edu/~15414/s22/s21/lectures/) )
@@ -200,18 +431,19 @@ i) Prove that array access is always within bounds in a loop:
   - [Lecture Notes on DPLL(T) & SMT Encodings](https://www.cs.cmu.edu/~15414/s24/lectures/19-smt-encodings.pdf)
   - [Lecture Notes on SMT Solving: Nelson-Oppen](https://www.cs.cmu.edu/~15414/s24/lectures/18-smt-solving.pdf)
 - Howe, J. M., & King, A. (2012). [A pearl on SAT and SMT solving in Prolog](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=A+Pearl+on+SAT+and+SMT+Solving+in+Prolog&btnG=). Theoretical Computer Science, 435, 43-55. [pdf](https://www.staff.city.ac.uk/~jacob/solver/tcs.pdf) - - - I only read the intro and do not claim that I understand that paper. It is of interest to because it combines ideas from SAT, Prolog and SMT.
-- Backes, J., Bolignano, P., Cook, B., et al. “Semantic-based Automated Reasoning for AWS Access Policies using SMT.” FMCAD 2018
-- Rungta, N. “A Billion SMT Queries a Day.” Amazon Science (invited), 2022.
-- Godefroid, P., Levin, M., Molnar, D. “SAGE: Whitebox Fuzzing for Security Testing.” CACM 2012.
-- Bounimova, E., Godefroid, P., Molnar, D. “Billions and Billions of Constraints: Whitebox Fuzz Testing at Microsoft.” ICSE 2011/Tech Report.
-- Wang, Y., Xie, F. “Enhancing Translation Validation of Compiler Transformations with Large Language Models.” arXiv:2401.16797 (2024).
-- Cadar, C., Dunbar, D., Engler, D. “KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs.” OSDI 2008.
-- Beckett, R., et al. “A General Approach to Network Configuration Verification (Minesweeper).” SIGCOMM 2017.
-- Brown, M., et al. “Lessons from the Evolution of the Batfish Configuration Analysis Tool.” SIGCOMM 2023 (Experience).
-- Prabhu, S., et al. “Plankton: Scalable Network Configuration Verification.” NSDI 2020.
-- Katz, G., Barrett, C., Dill, D., Julian, K., Kochenderfer, M. “Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks.” CAV 2017 / arXiv:1702.01135.
-- Katz, G., et al. “The Marabou Framework for Verification and Analysis of Deep Neural Networks.” CAV 2019 / LNCS; Marabou 2.0 (2024).
-- Yang, K., et al. “LeanDojo: Theorem Proving with Retrieval-Augmented Language Models (ReProver).” NeurIPS 2023 (paper & dataset).
-- Beg, A., et al. “A Short Survey on Formalising Software Requirements with LLMs.” arXiv:2506.11874 (2025).
-- Wu, G., et al. “LLM Meets Bounded Model Checking: Neuro-symbolic Loop Invariant Inference.” ASE 2024.
-- Wei, A., et al. “InvBench: Can LLMs Accelerate Program Verification with Invariant Synthesis?” arXiv:2509.21629 (2025).
+- Backes, Bolignano, Cook, et al. (2018) [Semantic-based Automated Reasoning for AWS Access Policies using SMT](https://ieeexplore.ieee.org/abstract/document/8602994)
+, FMCAD.
+- Rungta, N. [A Billion SMT Queries a Day](https://link.springer.com/chapter/10.1007/978-3-031-13185-1_1) Amazon Science (invited), 2022.
+- Godefroid, P., Levin, M., Molnar, D. [SAGE: Whitebox Fuzzing for Security Testing](https://queue.acm.org/detail.cfm?id=2094081&ref=fullrss) CACM 2012.
+- Bounimova, E., Godefroid, P., Molnar, D. [Billions and Billions of Constraints: Whitebox Fuzz Testing at Microsoft](https://ieeexplore.ieee.org/abstract/document/6606558) ICSE 2011/Tech Report.
+- Wang, Y., Xie, F. [Enhancing Translation Validation of Compiler Transformations with Large Language Models](https://www.worldscientific.com/doi/abs/10.1142/S0218194024500475) arXiv:2401.16797 (2024).
+- Cadar, C., Dunbar, D., Engler, D. [KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs](https://www.usenix.org/legacy/event/osdi08/tech/full_papers/cadar/cadar.pdf) OSDI 2008.
+- Beckett, R., et al. [A General Approach to Network Configuration Verification (Minesweeper)](https://dl.acm.org/doi/abs/10.1145/3098822.3098834) SIGCOMM 2017.
+- Brown, M., et al. [Lessons from the Evolution of the Batfish Configuration Analysis Tool](https://dl.acm.org/doi/abs/10.1145/3603269.3604866) SIGCOMM 2023 (Experience).
+- Prabhu, S., et al. [Plankton: Scalable Network Configuration Verification](https://www.usenix.org/conference/nsdi20/presentation/prabhu) NSDI 2020.
+- Katz, G., Barrett, C., Dill, D., Julian, K., Kochenderfer, M. [Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks](https://link.springer.com/chapter/10.1007/978-3-319-63387-9_5) CAV 2017 / arXiv:1702.01135.
+- Katz, G., et al. [The Marabou Framework for Verification and Analysis of Deep Neural Networks](https://link.springer.com/chapter/10.1007/978-3-031-65630-9_13) CAV 2019 / LNCS; Marabou 2.0 (2024).
+- Yang, K., et al. [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models (ReProver)](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) NeurIPS 2023 (paper & dataset).
+- Beg, A., et al. [A Short Survey on Formalising Software Requirements with LLMs](https://arxiv.org/abs/2506.11874) arXiv:2506.11874 (2025).
+- Wu, G., et al. [LLM Meets Bounded Model Checking: Neuro-symbolic Loop Invariant Inference](https://ieeexplore.ieee.org/abstract/document/10628461) ASE 2024.
+- Wei, A., et al. [InvBench: Can LLMs Accelerate Program Verification with Invariant Synthesis?](https://arxiv.org/abs/2509.21629) arXiv:2509.21629 (2025).
