@@ -110,27 +110,25 @@ A wff$_\alpha$ (a well-formed expression of type $\alpha$) is defined inductivel
 
 ### $\lambda$-Abstraction and Application
 
-<!-- Read:
-– Paulson, Logic and Computation, ch. 2
-– Nipkow et al., Concrete Semantics, §2.1–2.3 -->
-<!-- 
-	•	syntax of λx. t
-	•	β-reduction
-	•	extensionality axiom (optional mention)
-	•	Isabelle example snippets (%x. t, function application precedence) -->
+$\lambda$-abstraction is the syntax used to define a function by naming its argument. For example, $\lambda x .\; t$ denotes the function that takes an input x as argument input and returns the expression t as output. In other words, it is the function that maps $x$ to $t$, so $x \mapsto t$. Simply put, $\lambda$ is an operator that is used to denote and represent functions.
 
-$\lambda$-abstraction is the syntax used to define a function by naming its argument. For example, $\lambda x .\; t$ denotes the function that takes an input x as argument input and returns the expression t as output. In other words, it is the function that maps $x$ to $t$, so $x \mapsto t$. Simply put, $\lambda$ is an operator that is used to denote and represent functions. 
-
-Another example provided by the Stanford Encyclopedia of Philosophy<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> is more ingrained in natural language and may be easier to understand: $\lambda x .\; x\text{ is a Polish diplomat and } x \text{ is a great pianist}$. If we set the input of x to an arbirary person, say $x = $ Fred, then this can be read as “Fred is both a Polish diplomat and a great pianist”.
-
-**In Isabelle/HOL, $\lambda$-abstraction is written as `%x. t` with a `%` instead of the $\lambda$ symbol.*
+Another example provided by the Stanford Encyclopedia of Philosophy (SEP)<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> is more ingrained in natural language and may be easier to understand: $\lambda x .\; x\text{ is a Polish diplomat and } x \text{ is a great pianist}$. If we set the input of x to an arbirary person, say $x = $ Fred, then this can be read as “Fred is both a Polish diplomat and a great pianist”.
 
 HOL's $\lambda$-abstraction constructs a function. If $x:\alpha$ and $t:\beta$, then $\lambda x .\; t: \alpha \Rightarrow \beta$.
 (Basically, If $x$ has type $\alpha$ and $t$ has type $\beta$, then $\lambda x .\; t$ has type $\alpha \Rightarrow \beta$). Function application is typed accordingly. If $f:\alpha \Rightarrow \beta$ and $x:\alpha$, then $f x:\beta$. Applying a function of type $\alpha \Rightarrow \beta$ to an argument of type $\alpha$ produces a result of type $\beta$.
 
 **Andrews uses the notation of $\alpha\beta$, which is equivalent to Isabelle/HOL's notation of $\alpha \Rightarrow \beta$. They both mean the same thing: the type of a function that takes an argument of type $\alpha$ and returns a value of type $\beta$*
 
-<!-- $\beta$-reduction semantics stuff here (just add a line or two) -->
+In $\beta$-reduction, the idea is that application is the same as substitution.
+For example, if we have $[\lambda x . \; x + 1]0$, we apply $\beta$-reduction by substituting in 0 for x, so we get $[\lambda x . \; x + 1]0 \to_\beta 0 + 1 = 1$.<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup>
+
+In a Curried function, we basically turn a multiple argument function by nested single input $\lambda$ functions; this process is referred to as "Currying" the function. For example, if we have a function add(x, y) that takes in both the inputs of x and y, then we Curry the function by turning it into $\lambda x . \; (\lambda y . \; x + y)$<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup>
+
+<!-- (Currying): To replace a function in two arguments by a function that takes one argument and returns a function that takes the second argument is called "currying" after the mathematician and logician Haskell Curry.<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup> -->
+
+**In Isabelle/HOL, $\lambda$-abstraction is written as `%x. t` with a `%` instead of the $\lambda$ symbol.*
+
+**There are a plehtora of resources to find supplementary information about $\lambda$-calculus and abstraction. In addition to the HackMD pages by Alexander Kurz<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup> <sup><a href="#Kurz_LambdaSyntax">[15]</a></sup>, other good references are Chapters 3.1 and 3.2 of **Logic and Computation**<sup><a href="#Paulson_LCF">[11]</a></sup> and the aforementioned Section D.1 of the SEP<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup>*
 
 
 ### Logical Constants in HOL
@@ -158,6 +156,10 @@ Logical constants are built in symbols that define the logical structure of the 
   - **$\land$**: $bool \Rightarrow bool \Rightarrow bool$
   - **$\lor$**: $bool \Rightarrow bool \Rightarrow bool$
   - **$\to$**: $bool \Rightarrow bool \Rightarrow bool$
+<!-- 
+Terminology (Currying): To replace a function in two arguments by a function that takes one argument and returns a function that takes the second argument is called "currying" after the mathematician and logician Haskell Curry.
+
+https://hackmd.io/@alexhkurz/H1e4Nv8Bv -->
 
 <!-- equality: = -->
 - **Equality**: infix function $=$ of type $\alpha \Rightarrow \alpha \Rightarrow bool$
@@ -402,8 +404,6 @@ WIP
 
 WIP
 
-<!-- ### 10.5.1 Interactive Proof Assistants -->
-
 ### Interactive Theorem Prover
 
 HOL4 (classic HOL)
@@ -413,8 +413,6 @@ Coq (constructive higher-order/type theory)
 Lean 4 (modern dependent/HOL hybrid)
 
 ### Automated Higher Order Prover
-
-<!-- ### 10.5.2 Automated Theorem Prover -->
 
 Leo III
 
@@ -543,33 +541,15 @@ The creation of the AFP (Archive of Formal Proofs) established a reusable librar
 
 ## Current Development, Research Challenges, Conferences and Workshops
 
+### Current Development
+
+AI/LLM stuff with NTP in Isabelle?
+
+### Research Challenges
+
+### Conferences and Workshops
 
 ## References
-
-<!-- Author(s) (Year) [Title](linkToGoogleScholarQuery), Venue
-
-Components
-
-    Author(s): Last names only. For multiple authors:
-        2 authors: Davis and Putnam
-        3-4 authors: Davis, Logemann, and Loveland
-        5+ authors: Moskewicz et al.
-
-    Year: Publication year in parentheses
-
-    Title: Full title as a clickable link (preferably to the paper, or to Google Scholar)
-
-    Venue: Journal name, conference proceedings, or publisher
-
-Examples
-
-Davis and Putnam (1960) A Computing Procedure for Quantification Theory, Journal of the ACM, 7(3): 201–215 -->
-
-<!-- - [Isabelle/HOL](https://isabelle.in.tum.de/) -->
-<!-- - [Concrete Semantics](http://www.concrete-semantics.org/)
-- [Concrete Semantics Exercises](http://www.concrete-semantics.org/Exercises/exercises.pdf) -->
-<!-- - [Isabelle YouTube Tutorial by FDS 2020](https://www.youtube.com/@FDS-hs2uc/videos)
-- [Syllogism Slides from Nate Moss](https://logic.berkeley.edu/colloquium/MossSlides.pdf) -->
 
 <a id="ConcreteSemantics"></a>
 - [1]: Nipkow and Klein (2014) [Concrete Semantics: With Isabelle/HOL](http://www.concrete-semantics.org/index.html), Springer Publishing Company, Incorporated.
@@ -595,9 +575,6 @@ Davis and Putnam (1960) A Computing Procedure for Quantification Theory, Journal
 <a id="Kohlen_float"></a>
 - [8]: Kohlen et al. (2025) [A formally verified IEEE 754 floating-point implementation of interval iteration for MDPs](https://arxiv.org/abs/2501.10127v3), International Conference on Computer Aided Verification, Cham: Springer Nature Switzerland.
 
-<!-- <a id="Xu_IsaMini"></a>
-- [7]: Xu, Qiyuan, et al. "IsaMini: Redesigned Isabelle Proof Language for Machine Learning." arXiv preprint arXiv:2507.18885 (2025). [arxiv Link](https://arxiv.org/abs/2507.18885) -->
-
 <a id="Wu_LLM_Autoformat"></a>
 - [9]: Wu et al. (2022) [Autoformalization with Large Language Models](https://openreview.net/forum?id=IUikebJ1Bf0), NeurIPS 2022 Conference.
 
@@ -614,9 +591,19 @@ Davis and Putnam (1960) A Computing Procedure for Quantification Theory, Journal
 - [13]: Nipkow, Paulson, and Wenzel (2025) [Isabelle/HOL: A Proof Assistant for
 Higher-Order Logic](https://isabelle.in.tum.de/doc/tutorial.pdf), Springer-Verlag, Berlin, Heidelberg. 
 
-https://isabelle.in.tum.de/library/HOL/HOL/document.pdf
+<a id="Kurz_LambdaSemantics"></a>
+- [14]: Alexander Kurz (2023) [Semantics of the Lambda Calculus](https://hackmd.io/@alexhkurz/H1e4Nv8Bv), CPSC 354 - Programming Languages, Chapman University
 
+<a id="Kurz_LambdaSyntax"></a>
+- [15]: Alexander Kurz (2023) [Syntax of Lambda Calculus](https://hackmd.io/@alexhkurz/S1D0yP8Bw), CPSC 354 - Programming Languages, Chapman University
 
+<a id="Xu_IsaMini"></a>
+- [16]: Xu et al. (2025) [IsaMini: Redesigned Isabelle Proof Language for Machine Learning](https://arxiv.org/abs/2507.18885) arXiv preprint arXiv:2507.18885.
+
+<a id="Teege_IntroIsabelle"></a>
+- [17]: Teege (2025) [A Gentle Introduction to Isabelle and Isabelle/HOL](https://github.com/gteege/gentle-isabelle/blob/main/man-isabelle.pdf) Universität der Bundeswehr München
+
+<!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf -->
 
 
 
