@@ -1,0 +1,42 @@
+/* Custom CSS to make the sidebar wider */
+
+/* Increase the width of the left sidebar */
+.bd-sidebar {
+    width: 350px !important;
+    min-width: 350px !important;
+}
+
+/* Adjust the main content area to accommodate wider sidebar */
+.bd-main {
+    margin-left: 370px !important; /* Slightly more than sidebar width for spacing */
+}
+
+/* Prevent line breaks in sidebar navigation items */
+.bd-sidebar .nav-link,
+.bd-sidebar a,
+.bd-sidebar .toctree-l1 > a,
+.bd-sidebar .toctree-l2 > a,
+.bd-sidebar .toctree-l3 > a {
+    white-space: nowrap !important;
+}
+
+/* Specifically target sidebar section titles to prevent breaking */
+.bd-sidebar .toctree-l1,
+.bd-sidebar .toctree-l1 > .caption,
+.bd-sidebar .toctree-l1 > .caption-text {
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+}
+
+/* For responsive design - ensure sidebar stays wide on larger screens */
+@media (min-width: 768px) {
+    .bd-sidebar {
+        width: 350px !important;
+        min-width: 350px !important;
+    }
+    
+    .bd-main {
+        margin-left: 370px !important;
+    }
+}
+

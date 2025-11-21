@@ -25,10 +25,10 @@ project:
       output: exports/book.pdf
   toc:
     - file: content/title.md
-    - title: Subtree 0
+    - title: Introduction
       children:
         - file: content/intro.md
-    - title: Logics and Their Software Tools
+    - title: Logics and Tools
       children:
         - file: content/0-logic.md
         - file: content/1-propositional-logic.md

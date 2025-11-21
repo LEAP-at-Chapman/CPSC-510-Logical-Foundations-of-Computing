@@ -30,17 +30,24 @@ jobs:
           git fetch origin jupyter-v2
           git checkout -B jupyter-v2 origin/jupyter-v2
       
-      - name: Merge main into jupyter-v2
+      - name: Sync content folder from main
         run: |
-          git merge origin/main --no-edit -m "Auto-sync: Merge main into jupyter-v2"
-          # If there are conflicts, this will fail and we'll handle it
+          git fetch origin main
+          git checkout origin/main -- content/
+          # Check if there are any changes
+          if git diff --staged --quiet; then
+            echo "No changes to content folder"
+            exit 0
+          fi
+          git add content/
+          git commit -m "Auto-sync: Sync content folder from main" || exit 0
       
       - name: Push changes
         run: |
           git push origin jupyter-v2
         continue-on-error: true
       
-      - name: Create issue on conflict
+      - name: Create issue on error
         if: failure()
         uses: actions/github-script@v7
         with:
@@ -48,8 +55,8 @@ jobs:
             github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: '⚠️ Auto-sync conflict: main → jupyter-v2',
-              body: 'The automatic merge from main to jupyter-v2 failed due to conflicts. Please resolve manually.\n\n' +
+              title: '⚠️ Auto-sync error: main → jupyter-v2',
+              body: 'The automatic sync of content folder from main to jupyter-v2 failed.\n\n' +
                     'Workflow run: ' + context.serverUrl + '/' + context.repo.owner + '/' + context.repo.repo + '/actions/runs/' + context.runId
             })
 
