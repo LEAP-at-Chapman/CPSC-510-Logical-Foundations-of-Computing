@@ -460,53 +460,53 @@ document.write(`
 </ol>
 <p>These steps follow the modeling flow presented in the MiniZinc tutorial (Nethercote et al., 2007).</p>
 <p>Example:</p>
-<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span>include &quot;globals.mzn&quot;;
+<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;globals.mzn&quot;</span><span class="p">;</span>
 
-% Parameters
-int: n
+<span class="c">% Parameters</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span>
 
-% Decision variables
-array[1..10, 1..10] of var 1..10: grid
+<span class="c">% Decision variables</span>
+<span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="m">10</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">10</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">10</span><span class="p">:</span><span class="s"> </span><span class="nv">grid</span>
 
-% Constraints
-constraint forall(i in 1..n, j in 1..n) (
-  if ... then _value1_ else _value2_ endif
-);
+<span class="c">% Constraints</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
+<span class="s">  </span><span class="k">if</span><span class="s"> ... </span><span class="k">then</span><span class="s"> _value1_ </span><span class="k">else</span><span class="s"> _value2_ </span><span class="k">endif</span>
+<span class="p">);</span>
 
-% Solution
-solve satisfy;
+<span class="c">% Solution</span>
+<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
 
-output [
-    if j = 1 then &quot;\n&quot; else &quot; &quot; endif ++
-    show(grid[i,j])
-    | i in 1..n, j in 1..n
-] ++ [&quot;\n&quot;];
+<span class="k">output</span><span class="s"> </span><span class="p">[</span>
+<span class="s">    </span><span class="k">if</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot; </span><span class="k">else</span><span class="s"> &quot; &quot; </span><span class="k">endif</span><span class="s"> </span><span class="o">++</span>
+<span class="s">    </span><span class="nb">show</span><span class="p">(</span><span class="nv">grid</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">])</span>
+<span class="s">    </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span>
+<span class="p">]</span><span class="s"> </span><span class="o">++</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span>
 </pre></div>
 </div>
 </section>
 <section id="working-example-n-queens-in-minizinc">
 <h2><span class="section-number">5.3. </span>Working Example: N-Queens in MiniZinc<a class="headerlink" href="#working-example-n-queens-in-minizinc" title="Permalink to this heading">#</a></h2>
 <p>A minimal, runnable model is included in this repo at <code class="docutils literal notranslate"><span class="pre">src/minizinc/nqueens/nqueens.mzn</span></code>. You can run it directly without any <code class="docutils literal notranslate"><span class="pre">.dzn</span></code> file.</p>
-<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span>include &quot;globals.mzn&quot;;
+<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;globals.mzn&quot;</span><span class="p">;</span>
 
-int: n = 8;
-set of int: Q = 1..n;
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">8</span><span class="p">;</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Q</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">;</span>
 
-array[Q] of var Q: q;
+<span class="kt">array</span><span class="p">[</span><span class="nv">Q</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">Q</span><span class="p">:</span><span class="s"> </span><span class="nv">q</span><span class="p">;</span>
 
-constraint all_different(q);
+<span class="k">constraint</span><span class="s"> </span><span class="bp">all_different</span><span class="p">(</span><span class="nv">q</span><span class="p">);</span>
 
-constraint forall(i, j in Q where i &lt; j) (
-  abs(q[i] - q[j]) != j - i
-);
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Q</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">j</span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
+<span class="s">  </span><span class="nb">abs</span><span class="p">(</span><span class="nv">q</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">q</span><span class="p">[</span><span class="nv">j</span><span class="p">])</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">i</span>
+<span class="p">);</span>
 
-solve satisfy;
+<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
 
-output [
-  if j = 1 then &quot;\n&quot; else &quot; &quot; endif ++
-  if fix(q[i]) = j then &quot;Q&quot; else &quot;.&quot; endif
-  | i in Q, j in Q
-] ++ [&quot;\n&quot;, &quot;Positions: &quot;, show(q), &quot;\n&quot;];
+<span class="k">output</span><span class="s"> </span><span class="p">[</span>
+<span class="s">  </span><span class="k">if</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot; </span><span class="k">else</span><span class="s"> &quot; &quot; </span><span class="k">endif</span><span class="s"> </span><span class="o">++</span>
+<span class="s">  </span><span class="k">if</span><span class="s"> </span><span class="nb">fix</span><span class="p">(</span><span class="nv">q</span><span class="p">[</span><span class="nv">i</span><span class="p">])</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;Q&quot; </span><span class="k">else</span><span class="s"> &quot;.&quot; </span><span class="k">endif</span>
+<span class="s">  </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Q</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Q</span>
+<span class="p">]</span><span class="s"> </span><span class="o">++</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="s"> &quot;Positions: &quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">q</span><span class="p">),</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span>
 </pre></div>
 </div>
 <p>This implementation mirrors the canonical N-Queens problem description in survey work (Bell and Stevens, 2009).</p>
@@ -563,87 +563,85 @@ output [
 <li><p><strong>Output</strong>: human-readable roster</p></li>
 </ul>
 <p>MiniZinc’s aggregate and global constraints make CP extremely effective for scheduling (Nethercote et al., 2007).</p>
-<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span>
-% Employee Shift Scheduling - Practical Business Example
-% Goal: Assign exactly one employee to each shift per day, with fairness caps.
-% Run:
-%   minizinc -s --solver coin-bc shift_scheduling_.mzn
+<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span><span class="c">% Employee Shift Scheduling - Practical Business Example</span>
+<span class="c">% Goal: Assign exactly one employee to each shift per day, with fairness caps.</span>
+<span class="c">% Run:</span>
+<span class="c">%   minizinc -s --solver coin-bc shift_scheduling_.mzn</span>
 
-%
+<span class="c">%</span>
 
-include &quot;globals.mzn&quot;;
+<span class="k">include</span><span class="s"> &quot;globals.mzn&quot;</span><span class="p">;</span>
 
-% Parameters (override via -D as needed)
-int: E = 5;                      % number of employees
-int: D = 7;                      % number of days (e.g., a week)
-int: S = 3;                      % shifts per day (e.g., Morning, Evening, Night)
-set of int: Employees = 1..E;
-set of int: Days = 1..D;
-set of int: Shifts = 1..S;
+<span class="c">% Parameters (override via -D as needed)</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">5</span><span class="p">;</span><span class="s">                      </span><span class="c">% number of employees</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">D</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">7</span><span class="p">;</span><span class="s">                      </span><span class="c">% number of days (e.g., a week)</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span><span class="s">                      </span><span class="c">% shifts per day (e.g., Morning, Evening, Night)</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Employees</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">E</span><span class="p">;</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Days</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">D</span><span class="p">;</span>
+<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Shifts</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">S</span><span class="p">;</span>
 
-% Optional: Pretty names for output
-array[Shifts] of string: shift_name = [&quot;Morning&quot;,&quot;Evening&quot;,&quot;Night&quot;];
-array[Days] of string: day_name = [&quot;Mon&quot;,&quot;Tue&quot;,&quot;Wed&quot;,&quot;Thu&quot;,&quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;];
-array[Employees] of string: employee_name =
-  if E = 5 then [&quot; Matt&quot;,&quot;Jack&quot;,&quot;Jake&quot;,&quot;Wayne&quot;,&quot;Alex&quot;] else
-  [ &quot;Emp&quot; ++ show(i) | i in Employees ]
-  endif;
+<span class="c">% Optional: Pretty names for output</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">Shifts</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">shift_name</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;Morning&quot;</span><span class="p">,</span><span class="s">&quot;Evening&quot;</span><span class="p">,</span><span class="s">&quot;Night&quot;</span><span class="p">];</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">Days</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">day_name</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;Mon&quot;</span><span class="p">,</span><span class="s">&quot;Tue&quot;</span><span class="p">,</span><span class="s">&quot;Wed&quot;</span><span class="p">,</span><span class="s">&quot;Thu&quot;</span><span class="p">,</span><span class="s">&quot;Fri&quot;</span><span class="p">,</span><span class="s">&quot;Sat&quot;</span><span class="p">,</span><span class="s">&quot;Sun&quot;</span><span class="p">];</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">Employees</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">string</span><span class="p">:</span><span class="s"> </span><span class="nv">employee_name</span><span class="s"> </span><span class="o">=</span>
+<span class="s">  </span><span class="k">if</span><span class="s"> </span><span class="nv">E</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">5</span><span class="s"> </span><span class="k">then</span><span class="s"> </span><span class="p">[</span><span class="s">&quot; Matt&quot;</span><span class="p">,</span><span class="s">&quot;Jack&quot;</span><span class="p">,</span><span class="s">&quot;Jake&quot;</span><span class="p">,</span><span class="s">&quot;Wayne&quot;</span><span class="p">,</span><span class="s">&quot;Alex&quot;</span><span class="p">]</span><span class="s"> </span><span class="k">else</span>
+<span class="s">  </span><span class="p">[</span><span class="s"> &quot;Emp&quot; </span><span class="o">++</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">i</span><span class="p">)</span><span class="s"> </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Employees</span><span class="s"> </span><span class="p">]</span>
+<span class="s">  </span><span class="k">endif</span><span class="p">;</span>
 
-% Demand: how many employees needed per (day, shift)
-array[Days, Shifts] of int: demand = [|
-  1, 1, 1  % Mon
-|
-  1, 1, 1  % Tue
-|
-  1, 1, 1  % Wed
-|
-  1, 1, 1  % Thu
-|
-  1, 1, 1  % Fri
-|
-  1, 1, 1  % Sat
-|
-  1, 1, 1  % Sun
-|];
+<span class="c">% Demand: how many employees needed per (day, shift)</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">Days</span><span class="p">,</span><span class="s"> </span><span class="nv">Shifts</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">demand</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="p">[|</span>
+<span class="s">  </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="s">  </span><span class="c">% Mon</span>
+<span class="p">|</span>
+<span class="s">  </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="s">  </span><span class="c">% Tue</span>
+<span class="p">|</span>
+<span class="s">  </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="s">  </span><span class="c">% Wed</span>
+<span class="p">|</span>
+<span class="s">  </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="s">  </span><span class="c">% Thu</span>
+<span class="p">|</span>
+<span class="s">  </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="s">  </span><span class="c">% Fri</span>
+<span class="p">|</span>
+<span class="s">  </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="s">  </span><span class="c">% Sat</span>
+<span class="p">|</span>
+<span class="s">  </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="s">  </span><span class="c">% Sun</span>
+<span class="p">|];</span>
 
-% Reasonable default fairness cap
-int: max_shifts_per_employee = 5;
+<span class="c">% Reasonable default fairness cap</span>
+<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">max_shifts_per_employee</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">5</span><span class="p">;</span>
 
-% Decision variables: x[e,d,s] = 1 if employee e works shift s on day d
-array[Employees, Days, Shifts] of var 0..1: x;
+<span class="c">% Decision variables: x[e,d,s] = 1 if employee e works shift s on day d</span>
+<span class="kt">array</span><span class="p">[</span><span class="nv">Employees</span><span class="p">,</span><span class="s"> </span><span class="nv">Days</span><span class="p">,</span><span class="s"> </span><span class="nv">Shifts</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">0</span><span class="o">..</span><span class="m">1</span><span class="p">:</span><span class="s"> </span><span class="nv">x</span><span class="p">;</span>
 
-% 1) Each shift&#39;s coverage must be met exactly
-constraint forall(d in Days, s in Shifts) (
-  sum(e in Employees)(x[e,d,s]) = demand[d,s]
-);
+<span class="c">% 1) Each shift&#39;s coverage must be met exactly</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">d</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Days</span><span class="p">,</span><span class="s"> </span><span class="nv">s</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Shifts</span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
+<span class="s">  </span><span class="nb">sum</span><span class="p">(</span><span class="nv">e</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Employees</span><span class="p">)(</span><span class="nv">x</span><span class="p">[</span><span class="nv">e</span><span class="p">,</span><span class="nv">d</span><span class="p">,</span><span class="nv">s</span><span class="p">])</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">demand</span><span class="p">[</span><span class="nv">d</span><span class="p">,</span><span class="nv">s</span><span class="p">]</span>
+<span class="p">);</span>
 
-% 2) Each employee works at most one shift per day
-constraint forall(e in Employees, d in Days) (
-  sum(s in Shifts)(x[e,d,s]) &lt;= 1
-);
+<span class="c">% 2) Each employee works at most one shift per day</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">e</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Employees</span><span class="p">,</span><span class="s"> </span><span class="nv">d</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Days</span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
+<span class="s">  </span><span class="nb">sum</span><span class="p">(</span><span class="nv">s</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Shifts</span><span class="p">)(</span><span class="nv">x</span><span class="p">[</span><span class="nv">e</span><span class="p">,</span><span class="nv">d</span><span class="p">,</span><span class="nv">s</span><span class="p">])</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="m">1</span>
+<span class="p">);</span>
 
-% 3) Weekly cap for fairness/load
-constraint forall(e in Employees) (
-  sum(d in Days, s in Shifts)(x[e,d,s]) &lt;= max_shifts_per_employee
-);
+<span class="c">% 3) Weekly cap for fairness/load</span>
+<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">e</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Employees</span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
+<span class="s">  </span><span class="nb">sum</span><span class="p">(</span><span class="nv">d</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Days</span><span class="p">,</span><span class="s"> </span><span class="nv">s</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Shifts</span><span class="p">)(</span><span class="nv">x</span><span class="p">[</span><span class="nv">e</span><span class="p">,</span><span class="nv">d</span><span class="p">,</span><span class="nv">s</span><span class="p">])</span><span class="s"> </span><span class="o">&lt;=</span><span class="s"> </span><span class="nv">max_shifts_per_employee</span>
+<span class="p">);</span>
 
-% Solve for any feasible assignment
-solve satisfy;
+<span class="c">% Solve for any feasible assignment</span>
+<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
 
-% Output: readable weekly roster
-output [
-  &quot;Weekly Roster\n&quot;
-] ++
-[
-  day_name[d] ++ &quot;:\n&quot; ++
-  concat([ &quot;  &quot; ++ shift_name[s] ++ &quot;: &quot; ++
-           concat([ if fix(x[e,d,s]) = 1 then employee_name[e] ++ &quot; &quot; else &quot;&quot; endif
-                 | e in Employees ]) ++ &quot;\n&quot;
-         | s in Shifts ]) ++
-  (if d &lt; D then &quot;\n&quot; else &quot;&quot; endif)
-  | d in Days
-];
-
+<span class="c">% Output: readable weekly roster</span>
+<span class="k">output</span><span class="s"> </span><span class="p">[</span>
+<span class="s">  &quot;Weekly Roster</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="p">]</span><span class="s"> </span><span class="o">++</span>
+<span class="p">[</span>
+<span class="s">  </span><span class="nv">day_name</span><span class="p">[</span><span class="nv">d</span><span class="p">]</span><span class="s"> </span><span class="o">++</span><span class="s"> &quot;:</span><span class="se">\n</span><span class="s">&quot; </span><span class="o">++</span>
+<span class="s">  </span><span class="nb">concat</span><span class="p">([</span><span class="s"> &quot;  &quot; </span><span class="o">++</span><span class="s"> </span><span class="nv">shift_name</span><span class="p">[</span><span class="nv">s</span><span class="p">]</span><span class="s"> </span><span class="o">++</span><span class="s"> &quot;: &quot; </span><span class="o">++</span>
+<span class="s">           </span><span class="nb">concat</span><span class="p">([</span><span class="s"> </span><span class="k">if</span><span class="s"> </span><span class="nb">fix</span><span class="p">(</span><span class="nv">x</span><span class="p">[</span><span class="nv">e</span><span class="p">,</span><span class="nv">d</span><span class="p">,</span><span class="nv">s</span><span class="p">])</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="s"> </span><span class="k">then</span><span class="s"> </span><span class="nv">employee_name</span><span class="p">[</span><span class="nv">e</span><span class="p">]</span><span class="s"> </span><span class="o">++</span><span class="s"> &quot; &quot; </span><span class="k">else</span><span class="s"> &quot;&quot; </span><span class="k">endif</span>
+<span class="s">                 </span><span class="p">|</span><span class="s"> </span><span class="nv">e</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Employees</span><span class="s"> </span><span class="p">])</span><span class="s"> </span><span class="o">++</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot;</span>
+<span class="s">         </span><span class="p">|</span><span class="s"> </span><span class="nv">s</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Shifts</span><span class="s"> </span><span class="p">])</span><span class="s"> </span><span class="o">++</span>
+<span class="s">  </span><span class="p">(</span><span class="k">if</span><span class="s"> </span><span class="nv">d</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">D</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot; </span><span class="k">else</span><span class="s"> &quot;&quot; </span><span class="k">endif</span><span class="p">)</span>
+<span class="s">  </span><span class="p">|</span><span class="s"> </span><span class="nv">d</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Days</span>
+<span class="p">];</span>
 </pre></div>
 </div>
 </section>

@@ -465,12 +465,12 @@ E A means that there exists at least one path starting from the current position
 <h3><span class="section-number">8.3.2. </span>First Example<a class="headerlink" href="#first-example" title="Permalink to this heading">#</a></h3>
 <p>To test if SPIN works on your machine try run this code:</p>
 <p>Note: you will need a C compiler to run SPIN.</p>
-<div class="highlight-promela notranslate"><div class="highlight"><pre><span></span><span class="kd">init</span><span class="w"> </span><span class="p">{</span><span class="w">	</span><span class="c1">// file: ex_1a.pml</span>
-<span class="w">		</span><span class="kt">byte</span><span class="w"> </span><span class="n">i</span><span class="w">	</span><span class="c1">// initialized to 0 by default</span>
-<span class="w">		</span><span class="k">do</span><span class="w">	</span><span class="c1">// loop forever</span>
-<span class="w">		</span><span class="o">::</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="w">	</span><span class="c1">// nondisterministic choice, only one option</span>
-<span class="w">		</span><span class="k">od</span>
-<span class="w">	</span><span class="p">}</span>
+<div class="highlight-promela notranslate"><div class="highlight"><pre><span></span>init {	// file: ex_1a.pml
+		byte i	// initialized to 0 by default
+		do	// loop forever
+		:: i++	// nondisterministic choice, only one option
+		od
+	}
 </pre></div>
 </div>
 <p>run with <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">spin</span> <span class="pre">-u514</span> <span class="pre">-p</span> <span class="pre">-l</span> <span class="pre">ex_1a.pml</span></code></p>
@@ -494,37 +494,37 @@ spin<span class="w"> </span>-t<span class="w"> </span>wgc.pml
 <section id="intro-examples">
 <h2><span class="section-number">8.4. </span>Intro Examples<a class="headerlink" href="#intro-examples" title="Permalink to this heading">#</a></h2>
 <p>A protocol written in Promela is shown below</p>
-<div class="highlight-promela notranslate"><div class="highlight"><pre><span></span><span class="kd">mtype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">a0</span><span class="p">,</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">b0</span><span class="p">,</span><span class="w"> </span><span class="n">b1</span><span class="p">,</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// file ex_2.pml</span>
+<div class="highlight-promela notranslate"><div class="highlight"><pre><span></span>mtype = { a0, a1, b0, b1, err } // file ex_2.pml
 
-<span class="kd">chan</span><span class="w"> </span><span class="n">a2b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kd">mtype</span><span class="w"> </span><span class="p">}</span><span class="w">	</span><span class="c1">// a rendezvous channel for messages from A to B</span>
-<span class="kd">chan</span><span class="w"> </span><span class="n">b2a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kd">mtype</span><span class="w"> </span><span class="p">}</span><span class="w">	</span><span class="c1">// a second channel for the reverse direction</span>
+chan a2b = [0] of { mtype }	// a rendezvous channel for messages from A to B
+chan b2a = [0] of { mtype }	// a second channel for the reverse direction
 
-<span class="kd">active</span><span class="w"> </span><span class="kd">proctype</span><span class="w"> </span><span class="n">A</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="nl">S1</span><span class="p">:</span><span class="w">	</span><span class="n">a2b</span><span class="o">!</span><span class="n">a1</span>
-<span class="w">  </span><span class="nl">S2</span><span class="p">:</span><span class="w">	</span><span class="k">if</span>
-<span class="w">  	</span><span class="o">::</span><span class="w"> </span><span class="n">b2a</span><span class="o">?</span><span class="n">b1</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S1</span>
-<span class="w">  	</span><span class="o">::</span><span class="w"> </span><span class="n">b2a</span><span class="o">?</span><span class="n">b0</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S3</span>
-<span class="w">  	</span><span class="o">::</span><span class="w"> </span><span class="n">b2a</span><span class="o">?</span><span class="n">err</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S5</span>
-<span class="w">  	</span><span class="k">fi</span>
-<span class="w">  </span><span class="nl">S3</span><span class="p">:</span><span class="w">	</span><span class="n">a2b</span><span class="o">!</span><span class="n">a1</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S2</span>
-<span class="w">  </span><span class="nl">S4</span><span class="p">:</span><span class="w">	</span><span class="n">b2a</span><span class="o">?</span><span class="n">err</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S5</span>
-<span class="w">  </span><span class="nl">S5</span><span class="p">:</span><span class="w">	</span><span class="n">a2b</span><span class="o">!</span><span class="n">a0</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S4</span>
-<span class="w"> </span><span class="p">}</span>
-<span class="w">  </span>
-<span class="kd">active</span><span class="w"> </span><span class="kd">proctype</span><span class="w"> </span><span class="n">B</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">  	</span><span class="k">goto</span><span class="w"> </span><span class="n">S2</span>
-<span class="w">  </span><span class="nl">S1</span><span class="p">:</span><span class="w">	</span><span class="n">b2a</span><span class="o">!</span><span class="n">b1</span>
-<span class="w">  </span><span class="nl">S2</span><span class="p">:</span><span class="w">	</span><span class="k">if</span>
-<span class="w">  	</span><span class="o">::</span><span class="w"> </span><span class="n">a2b</span><span class="o">?</span><span class="n">a0</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S3</span>
-<span class="w">  	</span><span class="o">::</span><span class="w"> </span><span class="n">a2b</span><span class="o">?</span><span class="n">a1</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S1</span>
-<span class="w">  	</span><span class="o">::</span><span class="w"> </span><span class="n">a2b</span><span class="o">?</span><span class="n">err</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S5</span>
-<span class="w"> 	</span><span class="k">fi</span>
-<span class="w">  </span><span class="nl">S3</span><span class="p">:</span><span class="w">	</span><span class="n">b2a</span><span class="o">!</span><span class="n">b0</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S2</span>
-<span class="w">  </span><span class="nl">S4</span><span class="p">:</span><span class="w">	</span><span class="n">a2b</span><span class="o">?</span><span class="nb">_</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S1</span>
-<span class="w">  </span><span class="nl">S5</span><span class="p">:</span><span class="w">	</span><span class="n">a2b</span><span class="o">!</span><span class="n">b0</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">goto</span><span class="w"> </span><span class="n">S4</span>
-<span class="p">}</span>
+active proctype A()
+{
+  S1:	a2b!a1
+  S2:	if
+  	:: b2a?b1  -&gt; goto S1
+  	:: b2a?b0  -&gt; goto S3
+  	:: b2a?err -&gt; goto S5
+  	fi
+  S3:	a2b!a1  -&gt; goto S2
+  S4:	b2a?err -&gt; goto S5
+  S5:	a2b!a0  -&gt; goto S4
+ }
+  
+active proctype B()
+{
+  	goto S2
+  S1:	b2a!b1
+  S2:	if
+  	:: a2b?a0  -&gt; goto S3
+  	:: a2b?a1  -&gt; goto S1
+  	:: a2b?err -&gt; goto S5
+ 	fi
+  S3:	b2a!b0 -&gt; goto S2
+  S4:	a2b?_  -&gt; goto S1
+  S5:	a2b!b0 -&gt; goto S4
+}
 </pre></div>
 </div>
 <ol class="arabic simple">
