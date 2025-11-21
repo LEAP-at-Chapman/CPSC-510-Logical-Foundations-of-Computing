@@ -40,3 +40,24 @@
     }
 }
 
+/* Increase footnote font size */
+.footnote,
+.footnote-reference,
+.footnote-backref,
+.footnote p,
+.footnote li {
+    font-size: 1.1em !important;
+}
+
+/* Style footnote section at bottom of page */
+.footnotes,
+.footnotes ol,
+.footnotes li {
+    font-size: 1.1em !important;
+}
+
+/* Style inline footnote references */
+a.footnote-reference {
+    font-size: 1.1em !important;
+}
+
