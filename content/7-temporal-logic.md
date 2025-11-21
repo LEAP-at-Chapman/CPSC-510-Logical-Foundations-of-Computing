@@ -183,9 +183,7 @@ Additionally the automotive industry had run into some trouble ensuring the reli
 
 Model checkers like SPIN can also be used to help find design flaws in web applications, or to simplify their designs (Alzahrani and Mohammed Yahya, 2015). The researchers in this paper tested SPINs ability to verify web applications and compared it against another model checker (Upaal) to ensure it was correct (Alzahrani and Mohammed Yahya, 2015).
 
-## Case Studies
-
-### Finding the Fault in the Needham-Schroedor Protocol
+## Case Study: Finding the Fault in the Needham-Schroedor Protocol
 
 The Needham-Schroedor Public Key Protocol was an oft-used encryption protocol for communicating across the internet. It ustilized public key encryption to exchange a secrect between both parties. This secrect then allowed them to continue conversing securely. After 17 years, a flaw was found in the protocol that would allow an attacker to listen in on communications that were supposed to be secure. The attack was discovered using model checking.
 
