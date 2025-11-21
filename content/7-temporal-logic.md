@@ -35,9 +35,9 @@ It also includes several additional modal operators:
 The tool we will be using to explore temporal logic is called SPIN. It is primarily used to verify multithreaded software. SPIN uses a coding language called promela.
 
 ### Installation
-Link: https://spinroot.com/spin/Man/README.html
+[Link to Install](https://spinroot.com/spin/Man/README.html)
 
-Some examples taken from: https://spinroot.com/courses/summer/
+Some examples taken from [here](https://spinroot.com/courses/summer/).
 
 I find it easiest to use Ubuntu or Debian to install it, as it can be done with a simple `sudo apt-get install spin`.
 
@@ -45,37 +45,19 @@ I find it easiest to use Ubuntu or Debian to install it, as it can be done with 
 To test if SPIN works on your machine try run this code:
 
 Note: you will need a C compiler to run SPIN.
-
+```promela
 init {	// file: ex_1a.pml
 		byte i	// initialized to 0 by default
 		do	// loop forever
 		:: i++	// nondisterministic choice, only one option
 		od
 	}
-
+```
 run with `$ spin -u514 -p -l ex_1a.pml`
 
 This should print 514 steps of increasing numbers.
 
 ### First Excercise
-A farmer wants to move a cabbage, a goat, and a wolf across a river in his boat. He can only fit one thing in his boat while going across. If the farmer isn't watching, the goat will eat the cabbage, and the wolf will eat the goat. Can you think of a way to model this problem and find it's solution in SPIN?
-
-Note: SPIN allows you to both define the solution in the code and in the fourmula you run from the command line.
-
-To check a model with fourmulas, you must first define them in the file with `#define`. These defined fourmulas should begin with a lowercase letter.
-
-Afterwards you may run your model with fourmulas by typing the following and replacing FOURMULA with the fourmula you wish to use (ie <>cond2):
-
-```bash
-spin -a -f 'FORMULA' wgc.pml
-gcc -o pan pan.c
-./pan -a
-spin -t wgc.pml
-```
-
-If SPIN can verify the code, it will generate a trail file. Make sure to delete any existing trail files in the folder before you run your program, as this may lead to confusion.
-
-## Intro Examples
 
  A protocol written in Promela is shown below
 
@@ -117,42 +99,63 @@ active proctype B()
 
 2. How would you modify the model to make all states reachable? 
 
+## Challenge Excercise: The Farmer and the River
+A farmer wants to move a cabbage, a goat, and a wolf across a river in his boat. He can only fit one thing in his boat while going across. If the farmer isn't watching, the goat will eat the cabbage, and the wolf will eat the goat. Can you think of a way to model this problem and find it's solution in SPIN?
+
+Note: SPIN allows you to both define the solution in the code and in the fourmula you run from the command line.
+
+To check a model with fourmulas, you must first define them in the file with `#define`. These defined fourmulas should begin with a lowercase letter.
+
+Afterwards you may run your model with fourmulas by typing the following and replacing FOURMULA with the fourmula you wish to use (ie <>cond2):
+
+```bash
+spin -a -f 'FORMULA' wgc.pml
+gcc -o pan pan.c
+./pan -a
+spin -t wgc.pml
+```
+
+If SPIN can verify the code, it will generate a trail file. Make sure to delete any existing trail files in the folder before you run your program, as this may lead to confusion.
+
+
 ## The Landscape of Tools
+
+Information below is mainly taken from [here](https://mluckcuck.github.io/model-checking-cheatsheet) as well as the websites and wikipedia pages for each model checker.
 
 Other Model Checkers:
 1. NuSMV
 
-Link: https://nusmv.fbk.eu/
+[Link](https://nusmv.fbk.eu/)
 
 A version of a model checker called SMV, but using temporal logic. Specifically uses Linear Temporal Logic or Computation Tree Logic. Programs are written in binary decision diagrams, which are data structures that can be used to represent booleans.
 
 2. PRISM
 
-Link: https://www.prismmodelchecker.org/
+[Link](https://www.prismmodelchecker.org/)
 
 PRISM is a probabalistic model checker using its own language, also called PRISM. It is useful for models that are contain probabilities or other randomness.
 
 3. FDR
 
-Link: https://cocotec.io/fdr/
+[Link](https://cocotec.io/fdr/)
 
 A model checker specifically designed for CSP, which itself is a language for describing concurrent systems designed by Tony Hoare. Short for Failure Divergence Refinement.
 
 4. ProB
 
-Link: https://prob.hhu.de/
+[Link](https://prob.hhu.de/)
 
 A model checker for B-Method and Event-B. B is designed to support turning formal specifications into code.
 
 5. Java Pathfinder
 
-Link: https://github.com/javapathfinder
+[Link](https://github.com/javapathfinder)
 
 Model checker specifically designed for Java. It creates its own Java Virtual Machine that runs all possible combinations of paths through a given program.
 
 6. UPPAAL
 
-Link: https://uppaal.org/
+[Link](https://uppaal.org/)
 
 A model checker designed to model systems made of timed automata. Uses a simplified form of Timed TCTL.
 
@@ -162,7 +165,7 @@ When SPIN verifies a system, several steps are taken.
 
 1. The user must describe the system in Promela (Process Meta Language), which is SPINs programming langauage.
 
-2. The statements within this program (which are expressed as Linear-Temporal Logic), are converted into Büchi Automata (https://en.wikipedia.org/wiki/B%C3%BCchi_automaton). These Automata are state machines that accepts or rejects infinite inputs. 
+2. The statements within this program (which are expressed as Linear-Temporal Logic), are converted into [Büchi Automata](https://en.wikipedia.org/wiki/B%C3%BCchi_automaton). These Automata are state machines that accept or rejects infinite inputs. 
 
 3. SPIN generates C source code for a model checker specifically designed to verify the defined system, instead of running the verification itself.
 
@@ -170,7 +173,7 @@ When SPIN verifies a system, several steps are taken.
 
 I looked into benchmarks for SPIN and other model checkers, however at the time of writing, there does not appear to have been many benchmarks of such tools available online.
 
-I found a research paper that declared its intent to create a benchmark of model checkers like SPIN, located at https://spinroot.com/spin/symposia/ws07/Pelanek.pdf. However, at the time of writing, the link contained in the paper (https://anna.fi.muni.cz/models) leads to a 404 error.
+I found a research paper that declared its intent to create a benchmark of model checkers like SPIN, located [here](https://spinroot.com/spin/symposia/ws07/Pelanek.pdf). However, at the time of writing, the [link](https://anna.fi.muni.cz/models) contained in the paper leads to a 404 error.
 
 ## Applications in Industry
 
@@ -182,9 +185,7 @@ Additionally the automotive industry had run into some trouble ensuring the reli
 
 Model checkers like SPIN can also be used to help find design flaws in web applications, or to simplify their designs (Alzahrani and Mohammed Yahya, 2015). The researchers in this paper tested SPINs ability to verify web applications and compared it against another model checker (Upaal) to ensure it was correct (Alzahrani and Mohammed Yahya, 2015).
 
-## Case Studies
-
-### Finding the Fault in the Needham-Schroedor Protocol
+## Case Study: Finding the Fault in the Needham-Schroedor Protocol
 
 The Needham-Schroedor Public Key Protocol was an oft-used encryption protocol for communicating across the internet. It ustilized public key encryption to exchange a secrect between both parties. This secrect then allowed them to continue conversing securely. After 17 years, a flaw was found in the protocol that would allow an attacker to listen in on communications that were supposed to be secure. The attack was discovered using model checking.
 
@@ -202,11 +203,13 @@ These messages are encoded with Public Key Encryption, which is secure but expen
 
 The following is a link to a SPIN program that can be used to find the flaw in the protocol. This program was written by Professor Kurtz.
 
-https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/blob/main/src/Needham-Schroeder/ns.pml
+[Link](https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/blob/main/src/Needham-Schroeder/ns.pml)
 
 A fix was proposed by the person who found this fault. To avoid the attack, the second message should also include Bob's address. Can you explain how this avoids the attack? Try editing the SPIN program to include this fix, does it prevent the attack?
 
 ## History
+
+Most information gathered from [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=) by N Rescher and A Urquhart, as well as some additional information taken from the [wiki](https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators) on Temporal Logic.
 
 - 1947: Jerzy Łoś first formalizes a logic with temporal functions.
 
@@ -220,12 +223,32 @@ A fix was proposed by the person who found this fault. To avoid the attack, the 
 
 ## Current Development, Research Challenges, Conferences and Workshops
 
+1. [International Symposium on Temporal Representation and Reasoning (TIME)](https://time-symposium.org/t/):
+
+TIME is not exclusively dedicated to temporal logic, but does include a number of papers on the subject. It offically began in 1994, and claims to be "the only yearly multidisciplinary international event dedicated to the topic of time in computer science" (TIME, 2022). Also includes overlap with spatial reasoning topics.
+
+2. [Motion planning with temporal-logic specifications: Progress and challenges](https://journals.sagepub.com/doi/full/10.3233/AIC-150682)
+
+This paper attempts to apply temporal logic to robot motion planning, along with some of the challenges of doing so. Motion planning has become an increasing issue with the development of machines that move through 3D space (Paku and Karaman, 2024). We've seen such issues arise with the development of self driving cars. Given the increasing prevelance of self controlled robots, solving some of these challenges may prove fruitful.
+
+3. [Stochastic Temporal Logic Abstractions: Challenges and Opportunities](https://link.springer.com/chapter/10.1007/978-3-030-00151-3_1)
+
+This paper suggests using temporal logic to model the uncertainty of an environment. The paper develves into the potential applications of such an approach, but also discusses some of the challenges associated with it.
+
 ## References
 * Gluck and Holtzman (2008) [Using SPIN model checking for flight software verification](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Using+SPIN+model+checking+for+flight+software+verification&btnG=), IEEE
 
 * Zhang, Li, Cheng, and Xue (2018) [Verifying OSEK/VDX automotive applications: A Spin-based model checking approach](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=), Wiley
 
 * Alzahrani and Mohammed Yahya (2015) [Model checking web applications](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Model+checking+web+applications+heriot+watt+university&btnG=), Heriot Watt University
+
+* Rescher and Urquhart (1971) [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=), Springer-Verlag/Wien
+
+* TIME 2022, [International Symposium on Temporal Representation and Reasoning (TIME)](https://time-symposium.org/t/), TIME
+
+* Plaku and Karaman 2024, [Motion planning with temporal-logic specifications: Progress and challenges](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Motion+planning+with+temporal-logic+specifications%3A+Progress+and+challenges&btnG=), EurAI
+
+* Deshmukh, Kyriakis, and Bogdan 2018, [Stochastic Temporal Logic Abstractions: Challenges and Opportunities](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Stochastic+Temporal+Logic+Abstractions%3A+Challenges+and+Opportunities&btnG=), Springer
 
 ## Further Reasources
 * https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators
@@ -234,6 +257,10 @@ A fix was proposed by the person who found this fault. To avoid the attack, the 
 * https://spinroot.com/courses/summer/
 * https://spinroot.com/spin/symposia/ws07/Pelanek.pdf
 * https://mluckcuck.github.io/model-checking-cheatsheet
-
+* https://time-symposium.org/t/
 
 ## Suggestions for Future Work on this Book 
+
+For future work on this chapter, I would suggest expanding the algorithm section. As it stands currently it only gives a brief overview of SPIN's algorithm, which could likely warrant further inspection.
+
+Additionally, it would be good to check in on the benchmarks of the various temporal logic model checkers. As mentioned in the paper there does not seem to be any available at the time of writing. I would be interested in seeing if this changes in the future.

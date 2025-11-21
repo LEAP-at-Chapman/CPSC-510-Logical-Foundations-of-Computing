@@ -4,6 +4,14 @@
 
 ## Idea
 
+Hoare Logic is a mathematically based logic that focuses on proving that programs behave correctly, rather than relying on testing to determine their functionality. By treating programming as a formal reasoning process, where you specify what must be true before running a piece of code and what will be true after it finishes, the code can be verified and processed to ensure that, once correctly proven, the code satisfies this relationship.
+
+The core tool is the Hoare Triple, which consists of the following format: { Precondition } Code { Postcondition }. Through this reasoning process, the Hoare Triple can view the program fragmented into logical terms. Using a set of inference rules, developers can prove the correctness of sequences, conditionals, and loops. 
+
+Hoare Logic promotes correctness by construction, aiming to ensure that programs are built with proofs and formal logic every step of the program creation process, thereby eliminating bugs from any program development. By building on the idea of viewing program verification as a formal reasoning process, code verification and testing are simplified, with Hoare Logic serving as the foundation of modern formal verification.
+
+## Basic Theory
+
 Hoare Logic introduced the idea that we can reason about programs the same way we reason about mathematical proofs by introducing program verification. Instead of observing program behavior through test cases, we showcase what a program should do in logical form, and then prove that it does so. At its core lies the Hoare triple:
 
 [{P}; C; {Q}]
@@ -19,9 +27,6 @@ Each component plays a specific role:
 
 This logic provides partial correctness, meaning the result will be correct if the program terminates. To achieve​​ total correctness, we must demonstrate that the program terminates. 
 
-## Basic Theory
-
-*To be added*
 
 ## Dafny Installation and Setup
 

@@ -19,9 +19,9 @@ Each chapter should by default be devided into the following sections (subject t
 - **Case Study**. The case study should be code you develop that showcases an exemplary use of the tool. The ideal case study strikes a meaningful balance between being educational/explanatory but also interesting in its own right. Ideally, a reader would look at the case study and exclaim sth like: "Oh, Nice" or "That is interesting" or "Now I understand what I can do with the tool" or "great, maybe I could do sth similar for this other use case of mine".
 - **History**. Describe the main stepping stones in the evolution of ideas, algorithms and industrial application. See this section on [Early Work](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/2-satsolving.html#early-work) for a partial example on the development of the early work on SAT-solvers.
 - **Formal Methods and AI**: Under various labels such as neurosymbolic computing, all areas of formal methods are now integrating the recent advances in generative AI into their tools. Moreover, completely new tools are being built. One idea that is finding its way into many tools is to build tools based on guess (gen AI) and verify (symbolic AI).
-- **Current development** in the area, research challenges, conferences and workshops
-- **References**
-- **Suggestions for future work** on the book
+- **Current Developments**: From your point of view and your literature review of the area, what do  you think are the current research challenges and at which conferences, workshops, venues should one look to stay on top of the most recent developments?
+- **References**: We agreed on the format described in [how to cite](how-to-cite.md).
+- **Future Work**: I have some general ideas below in the section "Project Ideas for 2026". More specifically, from your own point of view, what work would you like to see from somebody who would want to extend your chapter in the future?
 - **Contributors**: Initial author (the student responsible for the chapter), peer reviewers, and other contributors with their contributions.
 
 ## Preliminary Table of Contents

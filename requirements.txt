@@ -1,8 +1,8 @@
 # Jupyter Book and documentation dependencies
-jupyter-book>=1.0.0
-sphinx>=7.0.0
-myst-nb>=1.0.0
-sphinx-design
+jupyter-book==0.15.1
+sphinx<6,>=4
+myst-nb~=0.17.1
+sphinx-design~=0.3.0
 sphinx-copybutton
 sphinx-multitoc-numbering
 
