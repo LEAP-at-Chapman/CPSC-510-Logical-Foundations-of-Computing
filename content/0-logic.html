@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>1. Introduction to Logic &#8212; Logical Foundations of AI</title>
+    <title>Logic &#8212; Logical Foundations of AI</title>
   
   
   
@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2. Propositional Logic" href="1-propositional-logic.html" />
-    <link rel="prev" title="Introduction" href="intro.html" />
+    <link rel="prev" title="The Book" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,23 +162,23 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Introduction to Logic</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">2. Propositional Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">3. SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">4. Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">5. Constraint Programming with MiniZinc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">6. SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">7. Modal Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">8. Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">9. Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">10. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">11. Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">12. Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">4. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">7. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -381,7 +381,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction to Logic</h1>
+    <h1>Logic</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -391,16 +391,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validity">1.1. Validity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-language">1.2. Formal Language</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decidability">1.3. Decidability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#satisfiability">1.4. Satisfiability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality-of-syntax-and-semantics">1.5. Duality of Syntax and Semantics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-theory">1.6. Proof Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-theory">1.7. Model Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#soundness-and-completenss">1.8. Soundness and Completenss</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incompleteness">1.9. Incompleteness</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">1.10. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validity">Validity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-language">Formal Language</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decidability">Decidability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#satisfiability">Satisfiability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality-of-syntax-and-semantics">Duality of Syntax and Semantics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-theory">Proof Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-theory">Model Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#soundness-and-completenss">Soundness and Completenss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incompleteness">Incompleteness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -412,8 +412,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-logic">
-<h1><span class="section-number">1. </span>Introduction to Logic<a class="headerlink" href="#introduction-to-logic" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="logic">
+<h1>Logic<a class="headerlink" href="#logic" title="Permalink to this heading">#</a></h1>
 <p>some intro to the intro …</p>
 <p><strong>Big Ideas of Logic</strong>:</p>
 <ul class="simple">
@@ -428,7 +428,7 @@ document.write(`
 <li><p>Incompleteness</p></li>
 </ul>
 <section id="validity">
-<h2><span class="section-number">1.1. </span>Validity<a class="headerlink" href="#validity" title="Permalink to this heading">#</a></h2>
+<h2>Validity<a class="headerlink" href="#validity" title="Permalink to this heading">#</a></h2>
 <p>An important idea often attributed to <a class="reference external" href="https://plato.stanford.edu/entries/aristotle-logic/">Aristotle</a> is the following: To check whether an argument is valid, one does not need to understand its content. This surprising insight is at the heart of artificial intelligence.<a class="footnote-reference brackets" href="#ai" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>The classic example is:</p>
 <blockquote>
@@ -451,7 +451,7 @@ Therefore, Z is Y.</p>
 <p>The argument remains valid in all cases. This is the power of <strong>formal reasoning</strong>: validity depends only on the structure of the argument, not its content.</p>
 </section>
 <section id="formal-language">
-<h2><span class="section-number">1.2. </span>Formal Language<a class="headerlink" href="#formal-language" title="Permalink to this heading">#</a></h2>
+<h2>Formal Language<a class="headerlink" href="#formal-language" title="Permalink to this heading">#</a></h2>
 <p>Mathematically, a formal language is the smallest set closed under a finite number rules. Some examples:</p>
 <ul class="simple">
 <li><p>The natural numbers are the smallest set containing “zero” and closed under “plus one”.</p></li>
@@ -465,12 +465,12 @@ Therefore, Z is Y.</p>
 </ul>
 </section>
 <section id="decidability">
-<h2><span class="section-number">1.3. </span>Decidability<a class="headerlink" href="#decidability" title="Permalink to this heading">#</a></h2>
+<h2>Decidability<a class="headerlink" href="#decidability" title="Permalink to this heading">#</a></h2>
 <p>Some logical questions are <strong>decidable</strong>: There exists an algorithm that, for any input, will eventually halt and give a correct yes-or-no answer. For example, in Chapters <a class="reference internal" href="2-satsolving.html"><span class="doc std std-doc">2</span></a>, <a class="reference internal" href="4-constraint-solving.html"><span class="doc std std-doc">4</span></a>, <a class="reference internal" href="5-smt-solving.html"><span class="doc std std-doc">5</span></a>, <a class="reference internal" href="7-temporal-logic.html"><span class="doc std std-doc">7</span></a>, <a class="reference internal" href="8-epistemic-logic.html"><span class="doc std std-doc">8</span></a> we will meet software tools based on algorithms that decide the satisfiability problem of various logics.</p>
 <p>Other questions are <strong>undecidable</strong>: No algorithm exists that can always provide an answer. Famously, Turing’s <a class="reference external" href="https://en.wikipedia.org/wiki/Halting_problem">Halting Problem</a> shows that there is no algorithm that can decide, for any program, whether that program terminates on all inputs.</p>
 </section>
 <section id="satisfiability">
-<h2><span class="section-number">1.4. </span>Satisfiability<a class="headerlink" href="#satisfiability" title="Permalink to this heading">#</a></h2>
+<h2>Satisfiability<a class="headerlink" href="#satisfiability" title="Permalink to this heading">#</a></h2>
 <p>We remember from school various techniques to solve algebraic equations, maybe most famously <a class="reference external" href="https://en.wikipedia.org/wiki/Quadratic_equation">the formula for the solutions of the quadratic equation</a>. After Aristotle, the next important progress in logic was by <a class="reference external" href="https://en.wikipedia.org/wiki/George_Boole">George Boole</a> who in his groundbreaking work <a class="reference external" href="https://www.gutenberg.org/files/36884/36884-pdf.pdf">Mathematical Analysis of Logic</a> (I recommend to read at least the introduction) introduced the idea that we can calculate with logic (and probability) in much the same way we calculate with real numbers in <a class="reference external" href="https://en.wikipedia.org/wiki/Algebra">algebra</a> and the <a class="reference external" href="https://en.wikipedia.org/wiki/Calculus">infinitesimal calculus</a>.</p>
 <p>Maybe this can nowadays best be explained with the help of <a class="reference external" href="https://www.nytimes.com/puzzles/sudoku/easy">Sudoku</a>. To focus on the main idea let us look at a 2x2 Sudoku:</p>
 <div class="math notranslate nohighlight">
@@ -531,8 +531,9 @@ p&amp;= 1 &amp;\text{upper left corner is 1}
 <p>Now we encoded the puzzle</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
+\rule{0pt}{2.5ex}
 \begin{array}{|c|c|}
-\hline
+\firsthline
  1 &amp; {\ \ }  \\
 \hline
    &amp;   \\
@@ -544,7 +545,7 @@ p&amp;= 1 &amp;\text{upper left corner is 1}
 <p><strong>Remark:</strong> Satisfiability solvers are now used everywhere in software engineering, very much like numerical methods in more traditional areas of engineering. This is a fairly recent development: Only since the beginning of the 21st century, Boole’s 1847 vision of “a Calculus of Deductive Reasoning” has become mainstream engineering on a par with Newton’s and Leibniz’s infinitesimal calculus.</p>
 </section>
 <section id="duality-of-syntax-and-semantics">
-<h2><span class="section-number">1.5. </span>Duality of Syntax and Semantics<a class="headerlink" href="#duality-of-syntax-and-semantics" title="Permalink to this heading">#</a></h2>
+<h2>Duality of Syntax and Semantics<a class="headerlink" href="#duality-of-syntax-and-semantics" title="Permalink to this heading">#</a></h2>
 <p>Satisfiability is a relation between models (semantics) and formulas (syntax). This relation is commonly written in symbolic notation as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -571,7 +572,7 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 </ul>
 </section>
 <section id="proof-theory">
-<h2><span class="section-number">1.6. </span>Proof Theory<a class="headerlink" href="#proof-theory" title="Permalink to this heading">#</a></h2>
+<h2>Proof Theory<a class="headerlink" href="#proof-theory" title="Permalink to this heading">#</a></h2>
 <p>Logic studies truth in general rather than what is true in the world. There are two ways of doing this.</p>
 <p>Proof theory studies truth-preserving transformations: Assuming that my premises are true, which rules of reasoning guarantee that my conclusions will also be true? In particular, can I be sure to never contradict myself if I follow the rules of logic?</p>
 <p>In symbolic notation, one writes</p>
@@ -583,7 +584,7 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 <p>All of the software tools we will look at in this book can be understood as implementing reasoning in a particular calculus. In the next chapter, we will briefly look at Natural Deduction and at Tableaux.</p>
 </section>
 <section id="model-theory">
-<h2><span class="section-number">1.7. </span>Model Theory<a class="headerlink" href="#model-theory" title="Permalink to this heading">#</a></h2>
+<h2>Model Theory<a class="headerlink" href="#model-theory" title="Permalink to this heading">#</a></h2>
 <p>In model theory one studies truth in all possible models. Roughly speaking, a model <span class="math notranslate nohighlight">\(M\)</span> is a mathematical structure that contains enough information in order to define when a formula <span class="math notranslate nohighlight">\(\phi\)</span> in a given logic evaluates to true. As we have seen above this is written as <span class="math notranslate nohighlight">\(M\models\phi\)</span>. Now one can define semantic entailment as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -593,7 +594,7 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 <p>Many of the tools in this book can be understood from a model theoretic point of view (for example: SAT-solvers, SMT-solvers, Prolog, model checkers).</p>
 </section>
 <section id="soundness-and-completenss">
-<h2><span class="section-number">1.8. </span>Soundness and Completenss<a class="headerlink" href="#soundness-and-completenss" title="Permalink to this heading">#</a></h2>
+<h2>Soundness and Completenss<a class="headerlink" href="#soundness-and-completenss" title="Permalink to this heading">#</a></h2>
 <p>A hallmark of logic are its completeness theorems. For any logic, we would typically like to have a soundness and completeness theorem. While the details can be difficult, we can state soundness and completeness simply as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -602,12 +603,12 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 <p>In other words, a statement is true in all models if and only if it is derivable.</p>
 </section>
 <section id="incompleteness">
-<h2><span class="section-number">1.9. </span>Incompleteness<a class="headerlink" href="#incompleteness" title="Permalink to this heading">#</a></h2>
+<h2>Incompleteness<a class="headerlink" href="#incompleteness" title="Permalink to this heading">#</a></h2>
 <p>Gödel’s incompleteness theorem (Gödel, 1931) states that there cannot be a proof system that derives all statements in the language of arithmetic that are true in the model of natural numbers.</p>
 <p>This is a profound result that has ramifications in mathematics, philosophy and, of course, software engineering. A popular introduction is (Hofstadter, 1979).</p>
 </section>
 <section id="references">
-<h2><span class="section-number">1.10. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Stanford Encyclopedia of Philosophy (2024) <a class="reference external" href="https://plato.stanford.edu/entries/aristotle-logic/">Aristotle’s Logic</a></p></li>
 <li><p>Boole (1847) <a class="reference external" href="https://www.gutenberg.org/files/36884/36884-pdf.pdf">The Mathematical Analysis of Logic</a></p></li>
@@ -668,7 +669,7 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title">The Book</p>
       </div>
     </a>
     <a class="right-next"
@@ -696,16 +697,16 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validity">1.1. Validity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-language">1.2. Formal Language</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decidability">1.3. Decidability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#satisfiability">1.4. Satisfiability</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality-of-syntax-and-semantics">1.5. Duality of Syntax and Semantics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-theory">1.6. Proof Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-theory">1.7. Model Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#soundness-and-completenss">1.8. Soundness and Completenss</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incompleteness">1.9. Incompleteness</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">1.10. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validity">Validity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-language">Formal Language</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decidability">Decidability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#satisfiability">Satisfiability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duality-of-syntax-and-semantics">Duality of Syntax and Semantics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-theory">Proof Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-theory">Model Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#soundness-and-completenss">Soundness and Completenss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#incompleteness">Incompleteness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

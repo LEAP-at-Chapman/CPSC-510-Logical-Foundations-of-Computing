@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>7. Modal Logic &#8212; Logical Foundations of AI</title>
+    <title>Modal Logic &#8212; Logical Foundations of AI</title>
   
   
   
@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/6-modal-logic.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. Temporal Logic with Spin" href="7-temporal-logic.html" />
-    <link rel="prev" title="6. SMT Solving and Z3" href="5-smt-solving.html" />
+    <link rel="next" title="1. SAT solving with MiniSat" href="2-satsolving.html" />
+    <link rel="prev" title="2. Propositional Logic" href="1-propositional-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,23 +162,23 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">1. Introduction to Logic</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">2. Propositional Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">3. SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">4. Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">5. Constraint Programming with MiniZinc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">6. SMT Solving and Z3</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Modal Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">8. Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">9. Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">10. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">11. Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">12. Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modal Logic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">4. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">7. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -391,10 +391,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">7.1. Idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">7.2. Motivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-theory-of-modal-logic">7.3. The Basic Theory of Modal Logic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">7.4. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-theory">The Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -407,11 +407,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modal-logic">
-<h1><span class="section-number">7. </span>Modal Logic<a class="headerlink" href="#modal-logic" title="Permalink to this heading">#</a></h1>
+<h1>Modal Logic<a class="headerlink" href="#modal-logic" title="Permalink to this heading">#</a></h1>
 <p><span class="math notranslate nohighlight">\(\newcommand{\sem}[1]{[\![#1]\!]}\)</span>
 Author: Alexander Kurz</p>
 <section id="idea">
-<h2><span class="section-number">7.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
+<h2>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
 <p>Modal Logic (ML) is more expressive than propositional logic (PL) and less expressive than first-order logic (FOL), in informal but suggestive notation:</p>
 <div class="math notranslate nohighlight">
 \[\rm PL \subseteq ML \subseteq FOL\]</div>
@@ -424,7 +424,7 @@ Author: Alexander Kurz</p>
 </ul>
 </section>
 <section id="motivation">
-<h2><span class="section-number">7.2. </span>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
 <p>Superficially, modal logic adds to the propositional connectives <span class="math notranslate nohighlight">\(\wedge\)</span> (and), <span class="math notranslate nohighlight">\(\vee\)</span> (or), <span class="math notranslate nohighlight">\(\neg\)</span> (not) two new connectives that allow us to take any formula <span class="math notranslate nohighlight">\(\phi\)</span> and form two new formulas</p>
 <div class="math notranslate nohighlight">
 \[
@@ -454,8 +454,8 @@ Author: Alexander Kurz</p>
 <p>There is a lot to say here, but to present the main ideas as quickly as possible I would proceed as follows (see Chapters 3.1 and 3.2 of the book referenced below).</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(Prop\)</span> be a set of ‘propositional variables’. The language of modal logic is the smallest set of ‘formulas’ containing <span class="math notranslate nohighlight">\(Prop\)</span> and closed under <span class="math notranslate nohighlight">\(\wedge\)</span> , <span class="math notranslate nohighlight">\(\vee\)</span>, <span class="math notranslate nohighlight">\(\neg\)</span>, <span class="math notranslate nohighlight">\(\Box\)</span>, <span class="math notranslate nohighlight">\(\Diamond\)</span>.</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(W\)</span> be a set of ‘worlds’ and <span class="math notranslate nohighlight">\(R\subseteq W\times W\)</span>. Let <span class="math notranslate nohighlight">\(\sem{-}:Prop\to 2^W\)</span> be a function assigning sets of worlds to each atomic proposition. Define</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5f84905e-0e6b-4e74-ab68-8106bdb53b5f">
-<span class="eqno">(7.1)<a class="headerlink" href="#equation-5f84905e-0e6b-4e74-ab68-8106bdb53b5f" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-3ea1f9c1-9d07-4c9e-a06c-f78cd5d39200">
+<span class="eqno">(1)<a class="headerlink" href="#equation-3ea1f9c1-9d07-4c9e-a06c-f78cd5d39200" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sem{\phi\wedge\phi'} &amp;= \sem{\phi}\cap\sem{\phi'}\\
 \sem{\phi\vee\phi'} &amp;= \sem{\phi}\cup\sem{\phi'}\\
 \sem{\neg\phi} &amp;= W\setminus \sem{\phi}\\
@@ -483,8 +483,8 @@ w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}
 <p><strong>Remark:</strong> In the early 20th century modal logics where developed by philosophers from a syntactic and proof theoretic point of view. Axioms such as <span class="math notranslate nohighlight">\(\Box p\to p\)</span> and <span class="math notranslate nohighlight">\(\Box\phi\to\Box\Box\phi\)</span> where discovered by reading them as “necessarily p implies p” and “necessarily p implies necessarily necessarily p” and modal logics where characterised by axioms and proof rules. As far as I know the history, it came as a surprise that these axioms had such a neat semantic characterisation.</p>
 <p><strong>Exercise:</strong> Interpret <span class="math notranslate nohighlight">\(\Box p\to p\)</span> and <span class="math notranslate nohighlight">\(\Box p\to\Box\Box p\)</span> from the point of view of temporal and epistemic logic.</p>
 </section>
-<section id="the-basic-theory-of-modal-logic">
-<h2><span class="section-number">7.3. </span>The Basic Theory of Modal Logic<a class="headerlink" href="#the-basic-theory-of-modal-logic" title="Permalink to this heading">#</a></h2>
+<section id="the-basic-theory">
+<h2>The Basic Theory<a class="headerlink" href="#the-basic-theory" title="Permalink to this heading">#</a></h2>
 <p>We have seen that modal logic comprises several independent areas (temporal logic, epistemic logic, etc) and has important overlaps with others (concurrency, multi-agent systems, automated reasoning, game theory, etc). My intention here is only to sketch out the basic theory that is important in all these fields.</p>
 <p>Actually, instead of writing this out myself, I refer to the book “Modal Logic” by Blackburn, de Rijke, Venema.(The book treats also <span class="math notranslate nohighlight">\(n\)</span>-ary relations (the “general case”, as opposed to binary relations). This generalisation is interesting for some applications but should be skipped on a first reading.)</p>
 <p>Here is what I would consider essential for a first run through the basics of modal logic.</p>
@@ -502,7 +502,7 @@ w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}
 </ul>
 </section>
 <section id="references">
-<h2><span class="section-number">7.4. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Halpern and Vardi (1991) <a class="reference external" href="https://www.cs.cornell.edu/home/halpern/papers/manifesto.pdf">Model Checking v. Theorem Proving: A Manifesto</a></p></li>
 </ul>
@@ -577,20 +577,20 @@ w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="5-smt-solving.html"
+       href="1-propositional-logic.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>SMT Solving and Z3</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Propositional Logic</p>
       </div>
     </a>
     <a class="right-next"
-       href="7-temporal-logic.html"
+       href="2-satsolving.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Temporal Logic with Spin</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>SAT solving with MiniSat</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -610,10 +610,10 @@ w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">7.1. Idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">7.2. Motivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-theory-of-modal-logic">7.3. The Basic Theory of Modal Logic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">7.4. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-basic-theory">The Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

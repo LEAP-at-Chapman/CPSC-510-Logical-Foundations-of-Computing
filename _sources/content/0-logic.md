@@ -1,4 +1,4 @@
-# Introduction to Logic
+# Logic
 
 some intro to the intro ...
 
@@ -127,8 +127,9 @@ $$
 Now we encoded the puzzle
 
 $$
+\rule{0pt}{2.5ex}
 \begin{array}{|c|c|}
-\hline
+\firsthline
  1 & {\ \ }  \\
 \hline
    &   \\

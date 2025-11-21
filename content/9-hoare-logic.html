@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>10. Hoare Logic with Dafny &#8212; Logical Foundations of AI</title>
+    <title>7. Hoare Logic with Dafny &#8212; Logical Foundations of AI</title>
   
   
   
@@ -66,8 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/9-hoare-logic.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="11. Higher-Order Logic with Isabelle/HOL" href="10-higher-order-logic.html" />
-    <link rel="prev" title="9. Epistemic Logic with SMCDEL" href="8-epistemic-logic.html" />
+    <link rel="next" title="8. Higher-Order Logic with Isabelle/HOL" href="10-higher-order-logic.html" />
+    <link rel="prev" title="6. Epistemic Logic with SMCDEL" href="8-epistemic-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -161,22 +161,22 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">1. Introduction to Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">2. Propositional Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">3. SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">4. Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">5. Constraint Programming with MiniZinc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">6. SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">7. Modal Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">8. Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">9. Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">11. Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">12. Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">4. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -389,45 +389,45 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">10.1. Idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">10.2. Basic Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dafny-installation-and-setup">10.3. Dafny Installation and Setup</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-installation">10.3.1. Windows Installation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">10.3.1.1. 1. Requirements</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dafny">10.3.1.2. 2. Install Dafny</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code-integration-recommended">10.3.1.3. 3. VS Code Integration (Recommended)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compile-dafny-programs">10.3.1.4. 4. Compile Dafny Programs</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-build">10.3.1.5. 5. Developer Build</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">7.1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">7.2. Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dafny-installation-and-setup">7.3. Dafny Installation and Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-installation">7.3.1. Windows Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">7.3.1.1. 1. Requirements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dafny">7.3.1.2. 2. Install Dafny</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code-integration-recommended">7.3.1.3. 3. VS Code Integration (Recommended)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compile-dafny-programs">7.3.1.4. 4. Compile Dafny Programs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-build">7.3.1.5. 5. Developer Build</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mac-installation">10.3.2. Mac Installation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.3.2.1. 1. Requirements</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.3.2.2. 2. Install Dafny</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.3.2.3. 3. VS Code Integration (Recommended)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.3.2.4. 4. Compile Dafny Programs</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.3.2.5. 5. Developer Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mac-installation">7.3.2. Mac Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.3.2.1. 1. Requirements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.3.2.2. 2. Install Dafny</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.3.2.3. 3. VS Code Integration (Recommended)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.3.2.4. 4. Compile Dafny Programs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.3.2.5. 5. Developer Build</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-installation">10.3.3. Linux Installation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.3.3.1. 1. Requirements</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.3.3.2. 2. Install Dafny</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">10.3.3.3. 3. Compile Dafny Programs</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">10.3.3.4. 4. Developer Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-installation">7.3.3. Linux Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.3.3.1. 1. Requirements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">7.3.3.2. 2. Install Dafny</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">7.3.3.3. 3. Compile Dafny Programs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.3.3.4. 4. Developer Build</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-verification-techniques">10.4. Program Verification Techniques</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">10.5. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">10.6. The Landscape of Tools</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">10.7. Benchmark and Competitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">10.8. Applications in Industry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">10.9. Case Studies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">10.10. History</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">10.11. Current Development, Research Challenges, Conferences and Workshops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-the-book">10.12. Suggestions for future work on the book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">10.13. Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">10.14. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-verification-techniques">7.4. Program Verification Techniques</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.5. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">7.6. The Landscape of Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">7.7. Benchmark and Competitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">7.8. Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">7.9. Case Studies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">7.10. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">7.11. Current Development, Research Challenges, Conferences and Workshops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-the-book">7.12. Suggestions for future work on the book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">7.13. Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">7.14. References</a></li>
 </ul>
             </nav>
         </div>
@@ -440,16 +440,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hoare-logic-with-dafny">
-<h1><span class="section-number">10. </span>Hoare Logic with Dafny<a class="headerlink" href="#hoare-logic-with-dafny" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">7. </span>Hoare Logic with Dafny<a class="headerlink" href="#hoare-logic-with-dafny" title="Permalink to this heading">#</a></h1>
 <p><em>Author: Alex</em></p>
 <section id="idea">
-<h2><span class="section-number">10.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
 <p>Hoare Logic is a mathematically based logic that focuses on proving that programs behave correctly, rather than relying on testing to determine their functionality. By treating programming as a formal reasoning process, where you specify what must be true before running a piece of code and what will be true after it finishes, the code can be verified and processed to ensure that, once correctly proven, the code satisfies this relationship.</p>
 <p>The core tool is the Hoare Triple, which consists of the following format: { Precondition } Code { Postcondition }. Through this reasoning process, the Hoare Triple can view the program fragmented into logical terms. Using a set of inference rules, developers can prove the correctness of sequences, conditionals, and loops.</p>
 <p>Hoare Logic promotes correctness by construction, aiming to ensure that programs are built with proofs and formal logic every step of the program creation process, thereby eliminating bugs from any program development. By building on the idea of viewing program verification as a formal reasoning process, code verification and testing are simplified, with Hoare Logic serving as the foundation of modern formal verification.</p>
 </section>
 <section id="basic-theory">
-<h2><span class="section-number">10.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
 <p>Hoare Logic introduced the idea that we can reason about programs the same way we reason about mathematical proofs by introducing program verification. Instead of observing program behavior through test cases, we showcase what a program should do in logical form, and then prove that it does so. At its core lies the Hoare triple:</p>
 <p>[{P}; C; {Q}]</p>
 <p>This notation captures the relationship between a precondition (P), a command (C), and a postcondition (Q). This notation reads as:</p>
@@ -463,11 +463,11 @@ document.write(`
 <p>This logic provides partial correctness, meaning the result will be correct if the program terminates. To achieve​​ total correctness, we must demonstrate that the program terminates.</p>
 </section>
 <section id="dafny-installation-and-setup">
-<h2><span class="section-number">10.3. </span>Dafny Installation and Setup<a class="headerlink" href="#dafny-installation-and-setup" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>Dafny Installation and Setup<a class="headerlink" href="#dafny-installation-and-setup" title="Permalink to this heading">#</a></h2>
 <section id="windows-installation">
-<h3><span class="section-number">10.3.1. </span>Windows Installation<a class="headerlink" href="#windows-installation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.3.1. </span>Windows Installation<a class="headerlink" href="#windows-installation" title="Permalink to this heading">#</a></h3>
 <section id="requirements">
-<h4><span class="section-number">10.3.1.1. </span>1. Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.1.1. </span>1. Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://dotnet.microsoft.com/download/dotnet/8.0">.NET 8.0 SDK</a></p></li>
 <li><p><strong>Z3 Theorem Prover v4.12.1</strong></p></li>
@@ -476,7 +476,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="install-dafny">
-<h4><span class="section-number">10.3.1.2. </span>2. Install Dafny<a class="headerlink" href="#install-dafny" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.1.2. </span>2. Install Dafny<a class="headerlink" href="#install-dafny" title="Permalink to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Install .NET 8.0</span>
 <span class="c1"># 2. Download Dafny ZIP from:</span>
 <span class="c1">#    https://github.com/dafny-lang/dafny/releases/latest</span>
@@ -487,7 +487,7 @@ Dafny.exe
 </div>
 </section>
 <section id="vs-code-integration-recommended">
-<h4><span class="section-number">10.3.1.3. </span>3. VS Code Integration (Recommended)<a class="headerlink" href="#vs-code-integration-recommended" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.1.3. </span>3. VS Code Integration (Recommended)<a class="headerlink" href="#vs-code-integration-recommended" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Install Visual Studio Code.</p></li>
 <li><p>Open VS Code → press Ctrl+P → run:</p></li>
@@ -500,7 +500,7 @@ Dafny.exe
 </ul>
 </section>
 <section id="compile-dafny-programs">
-<h4><span class="section-number">10.3.1.4. </span>4. Compile Dafny Programs<a class="headerlink" href="#compile-dafny-programs" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.1.4. </span>4. Compile Dafny Programs<a class="headerlink" href="#compile-dafny-programs" title="Permalink to this heading">#</a></h4>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Target</p></th>
@@ -530,7 +530,7 @@ Dafny.exe
 </div>
 </section>
 <section id="developer-build">
-<h4><span class="section-number">10.3.1.5. </span>5. Developer Build<a class="headerlink" href="#developer-build" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.1.5. </span>5. Developer Build<a class="headerlink" href="#developer-build" title="Permalink to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install dependencies</span>
 pip<span class="w"> </span>install<span class="w"> </span>pre-commit<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pre-commit<span class="w"> </span>install
 
@@ -552,22 +552,22 @@ dotnet<span class="w"> </span><span class="nb">test</span><span class="w"> </spa
 </section>
 </section>
 <section id="mac-installation">
-<h3><span class="section-number">10.3.2. </span>Mac Installation<a class="headerlink" href="#mac-installation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.3.2. </span>Mac Installation<a class="headerlink" href="#mac-installation" title="Permalink to this heading">#</a></h3>
 <section id="id1">
-<h4><span class="section-number">10.3.2.1. </span>1. Requirements<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.2.1. </span>1. Requirements<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>Install .NET 8.0 SDK:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>dotnet-sdk
 </pre></div>
 </div>
 </section>
 <section id="id2">
-<h4><span class="section-number">10.3.2.2. </span>2. Install Dafny<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.2.2. </span>2. Install Dafny<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>dafny
 </pre></div>
 </div>
 </section>
 <section id="id3">
-<h4><span class="section-number">10.3.2.3. </span>3. VS Code Integration (Recommended)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.2.3. </span>3. VS Code Integration (Recommended)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Install Visual Studio Code.</p></li>
 <li><p>Open VS Code → press Ctrl+P → run:</p></li>
@@ -580,7 +580,7 @@ dotnet<span class="w"> </span><span class="nb">test</span><span class="w"> </spa
 </ul>
 </section>
 <section id="id4">
-<h4><span class="section-number">10.3.2.4. </span>4. Compile Dafny Programs<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.2.4. </span>4. Compile Dafny Programs<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Target</p></th>
@@ -618,7 +618,7 @@ dotnet<span class="w"> </span><span class="nb">test</span><span class="w"> </spa
 </div>
 </section>
 <section id="id5">
-<h4><span class="section-number">10.3.2.5. </span>5. Developer Build<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.2.5. </span>5. Developer Build<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>python3<span class="w"> </span>pre-commit<span class="w"> </span>wget
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dafny-lang/dafny.git<span class="w"> </span>--recurse-submodules
 <span class="nb">cd</span><span class="w"> </span>dafny
@@ -647,9 +647,9 @@ dotnet<span class="w"> </span><span class="nb">test</span><span class="w"> </spa
 </section>
 </section>
 <section id="linux-installation">
-<h3><span class="section-number">10.3.3. </span>Linux Installation<a class="headerlink" href="#linux-installation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.3.3. </span>Linux Installation<a class="headerlink" href="#linux-installation" title="Permalink to this heading">#</a></h3>
 <section id="id6">
-<h4><span class="section-number">10.3.3.1. </span>1. Requirements<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.3.1. </span>1. Requirements<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
 <p>.NET 8.0 SDK</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>dotnet-sdk-8.0
 </pre></div>
@@ -660,7 +660,7 @@ dotnet<span class="w"> </span><span class="nb">test</span><span class="w"> </spa
 </div>
 </section>
 <section id="id7">
-<h4><span class="section-number">10.3.3.2. </span>2. Install Dafny<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.3.2. </span>2. Install Dafny<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://github.com/dafny-lang/dafny/releases/latest/download/dafny.zip
 unzip<span class="w"> </span>dafny.zip
 ./dafny/dafny
@@ -668,7 +668,7 @@ unzip<span class="w"> </span>dafny.zip
 </div>
 </section>
 <section id="id8">
-<h4><span class="section-number">10.3.3.3. </span>3. Compile Dafny Programs<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.3.3. </span>3. Compile Dafny Programs<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Target</p></th>
@@ -702,7 +702,7 @@ unzip<span class="w"> </span>dafny.zip
 </div>
 </section>
 <section id="id9">
-<h4><span class="section-number">10.3.3.4. </span>4. Developer Build<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">7.3.3.4. </span>4. Developer Build<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>dotnet-sdk-8.0<span class="w"> </span>python3<span class="w"> </span>python3-pip
 git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dafny-lang/dafny.git<span class="w"> </span>--recurse-submodules
 <span class="nb">cd</span><span class="w"> </span>dafny
@@ -732,23 +732,23 @@ dotnet<span class="w"> </span><span class="nb">test</span><span class="w"> </spa
 </section>
 </section>
 <section id="program-verification-techniques">
-<h2><span class="section-number">10.4. </span>Program Verification Techniques<a class="headerlink" href="#program-verification-techniques" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.4. </span>Program Verification Techniques<a class="headerlink" href="#program-verification-techniques" title="Permalink to this heading">#</a></h2>
 <p><em>To be added</em></p>
 </section>
 <section id="exercises">
-<h2><span class="section-number">10.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <p><em>To be added</em></p>
 </section>
 <section id="the-landscape-of-tools">
-<h2><span class="section-number">10.6. </span>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.6. </span>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Permalink to this heading">#</a></h2>
 <p><em>To be added</em></p>
 </section>
 <section id="benchmark-and-competitions">
-<h2><span class="section-number">10.7. </span>Benchmark and Competitions<a class="headerlink" href="#benchmark-and-competitions" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.7. </span>Benchmark and Competitions<a class="headerlink" href="#benchmark-and-competitions" title="Permalink to this heading">#</a></h2>
 <p><em>To be added</em></p>
 </section>
 <section id="applications-in-industry">
-<h2><span class="section-number">10.8. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.8. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Permalink to this heading">#</a></h2>
 <p>Using preconditions, postconditions, and invariants, as Hoare Logic showcases, this reasoning is now embedded in modern tools and workflows. These principles have now influenced every layer of software reliability. Here are a few examples of how Hoare Logic has been implemented in industry:</p>
 <ul class="simple">
 <li><p><strong>Safety-Critical Systems:</strong>
@@ -758,11 +758,11 @@ Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Log
 </ul>
 </section>
 <section id="case-studies">
-<h2><span class="section-number">10.9. </span>Case Studies<a class="headerlink" href="#case-studies" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.9. </span>Case Studies<a class="headerlink" href="#case-studies" title="Permalink to this heading">#</a></h2>
 <p><em>To be added</em></p>
 </section>
 <section id="history">
-<h2><span class="section-number">10.10. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.10. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
 <p>In 1949, Alan Turing presented his paper, “Checking a Large Routine”, which was one of the first attempts to describe how programmers could verify the correctness of their code. Throughout his paper, Turing proposed the idea of using assertion statements to explain what should be true at specific points in the program, thereby verifying its correctness. Additionally, Turing introduced the concept of a termination function as a method to ensure that the presented program eventually halts. Using a factorial program, Turing showed that logical reasoning could be applied to computer programs.</p>
 <p>Throughout the 1960s, Robert Floyd built on Turing’s ideas by introducing the inductive assertion method, a systematic approach to proving the correctness of flowchart-based programs. Floyd proposed identifying key points in a program with logical statements called invariants, similar to the idea of assertion statements, which are both meant to show specific points during the program that must remain true throughout execution. Although the idea continued to build on Turing’s progress, this was limited to flowcharts rather than structured programming languages.</p>
 <p>In the year 1969, C.A.R. Hoare continued to build on these ideas by introducing the Hoare triple: {P} S {Q}. This notation states that if the execution of program P begins in a state where the precondition C holds, then upon termination, the postcondition Q will hold. Although this development seemed simple, it proved to be powerful, as it created rules for statements, loops, and sequences. This notation enabled program proofs to be both structured and easier to understand due to their improved readability. The Hoare triple enabled program verification for all types of code, not just flowcharts, transforming program reasoning into a formal, language-based discipline.</p>
@@ -770,15 +770,15 @@ Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Log
 <p>The development of Hoare Logic established a foundation in computer science by shifting the perspective from viewing programs as sequences of commands to viewing them as logical systems that can be mathematically analyzed. Building upon Turing’s conceptual groundwork, refining Floyd’s formalization, and realizing Hoare’s framework, this lineage transformed programming into a science of correctness. To this day, Hoare Logic remains a foundational method of verification, and it also serves as a symbol of the connection between logic, mathematics, and computation.</p>
 </section>
 <section id="current-development-research-challenges-conferences-and-workshops">
-<h2><span class="section-number">10.11. </span>Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.11. </span>Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Permalink to this heading">#</a></h2>
 <p><em>To be added</em></p>
 </section>
 <section id="suggestions-for-future-work-on-the-book">
-<h2><span class="section-number">10.12. </span>Suggestions for future work on the book<a class="headerlink" href="#suggestions-for-future-work-on-the-book" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.12. </span>Suggestions for future work on the book<a class="headerlink" href="#suggestions-for-future-work-on-the-book" title="Permalink to this heading">#</a></h2>
 <p><em>To be added</em></p>
 </section>
 <section id="resources">
-<h2><span class="section-number">10.13. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.13. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/dafny-lang/dafny">Dafny</a></p></li>
 <li><p><a class="reference external" href="https://dafny.org/dafny/OnlineTutorial/guide">Dafny Tutorial</a></p></li>
@@ -786,7 +786,7 @@ Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Log
 </ul>
 </section>
 <section id="references">
-<h2><span class="section-number">10.14. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.14. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html">University of Pennsylvania – Software Foundations, Volume 2: Programming Language Foundations Chapter: Hoare Logic</a></p></li>
 <li><p><a class="reference external" href="https://www.cs.cmu.edu/~aldrich/courses/654-sp06/notes/3-hoare-notes.pdf">Carnegie Mellon University – 15-654 Software Engineering (Spring 2006) Lecture Notes: Hoare Logic by Jonathan Aldrich</a></p></li>
@@ -835,7 +835,7 @@ Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Log
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Epistemic Logic with SMCDEL</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Epistemic Logic with SMCDEL</p>
       </div>
     </a>
     <a class="right-next"
@@ -843,7 +843,7 @@ Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Log
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Higher-Order Logic with Isabelle/HOL</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Higher-Order Logic with Isabelle/HOL</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -863,45 +863,45 @@ Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Log
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">10.1. Idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">10.2. Basic Theory</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dafny-installation-and-setup">10.3. Dafny Installation and Setup</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-installation">10.3.1. Windows Installation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">10.3.1.1. 1. Requirements</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dafny">10.3.1.2. 2. Install Dafny</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code-integration-recommended">10.3.1.3. 3. VS Code Integration (Recommended)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compile-dafny-programs">10.3.1.4. 4. Compile Dafny Programs</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-build">10.3.1.5. 5. Developer Build</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">7.1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">7.2. Basic Theory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dafny-installation-and-setup">7.3. Dafny Installation and Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-installation">7.3.1. Windows Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements">7.3.1.1. 1. Requirements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dafny">7.3.1.2. 2. Install Dafny</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-code-integration-recommended">7.3.1.3. 3. VS Code Integration (Recommended)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compile-dafny-programs">7.3.1.4. 4. Compile Dafny Programs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#developer-build">7.3.1.5. 5. Developer Build</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mac-installation">10.3.2. Mac Installation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">10.3.2.1. 1. Requirements</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.3.2.2. 2. Install Dafny</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.3.2.3. 3. VS Code Integration (Recommended)</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.3.2.4. 4. Compile Dafny Programs</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">10.3.2.5. 5. Developer Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mac-installation">7.3.2. Mac Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.3.2.1. 1. Requirements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.3.2.2. 2. Install Dafny</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.3.2.3. 3. VS Code Integration (Recommended)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.3.2.4. 4. Compile Dafny Programs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.3.2.5. 5. Developer Build</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-installation">10.3.3. Linux Installation</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">10.3.3.1. 1. Requirements</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">10.3.3.2. 2. Install Dafny</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">10.3.3.3. 3. Compile Dafny Programs</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">10.3.3.4. 4. Developer Build</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-installation">7.3.3. Linux Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.3.3.1. 1. Requirements</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">7.3.3.2. 2. Install Dafny</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">7.3.3.3. 3. Compile Dafny Programs</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">7.3.3.4. 4. Developer Build</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-verification-techniques">10.4. Program Verification Techniques</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">10.5. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">10.6. The Landscape of Tools</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">10.7. Benchmark and Competitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">10.8. Applications in Industry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">10.9. Case Studies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">10.10. History</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">10.11. Current Development, Research Challenges, Conferences and Workshops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-the-book">10.12. Suggestions for future work on the book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">10.13. Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">10.14. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#program-verification-techniques">7.4. Program Verification Techniques</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.5. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">7.6. The Landscape of Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">7.7. Benchmark and Competitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">7.8. Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">7.9. Case Studies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">7.10. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">7.11. Current Development, Research Challenges, Conferences and Workshops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-the-book">7.12. Suggestions for future work on the book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">7.13. Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">7.14. References</a></li>
 </ul>
   </nav></div>
 
