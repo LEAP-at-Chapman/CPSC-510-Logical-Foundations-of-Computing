@@ -58,24 +58,6 @@ run with `$ spin -u514 -p -l ex_1a.pml`
 This should print 514 steps of increasing numbers.
 
 ### First Excercise
-A farmer wants to move a cabbage, a goat, and a wolf across a river in his boat. He can only fit one thing in his boat while going across. If the farmer isn't watching, the goat will eat the cabbage, and the wolf will eat the goat. Can you think of a way to model this problem and find it's solution in SPIN?
-
-Note: SPIN allows you to both define the solution in the code and in the fourmula you run from the command line.
-
-To check a model with fourmulas, you must first define them in the file with `#define`. These defined fourmulas should begin with a lowercase letter.
-
-Afterwards you may run your model with fourmulas by typing the following and replacing FOURMULA with the fourmula you wish to use (ie <>cond2):
-
-```bash
-spin -a -f 'FORMULA' wgc.pml
-gcc -o pan pan.c
-./pan -a
-spin -t wgc.pml
-```
-
-If SPIN can verify the code, it will generate a trail file. Make sure to delete any existing trail files in the folder before you run your program, as this may lead to confusion.
-
-## Intro Examples
 
  A protocol written in Promela is shown below
 
@@ -116,6 +98,25 @@ active proctype B()
 1. Use SPIN to verify if there are any unreachable states. Explain the result.
 
 2. How would you modify the model to make all states reachable? 
+
+## Challenge Excercise: The Farmer and the River
+A farmer wants to move a cabbage, a goat, and a wolf across a river in his boat. He can only fit one thing in his boat while going across. If the farmer isn't watching, the goat will eat the cabbage, and the wolf will eat the goat. Can you think of a way to model this problem and find it's solution in SPIN?
+
+Note: SPIN allows you to both define the solution in the code and in the fourmula you run from the command line.
+
+To check a model with fourmulas, you must first define them in the file with `#define`. These defined fourmulas should begin with a lowercase letter.
+
+Afterwards you may run your model with fourmulas by typing the following and replacing FOURMULA with the fourmula you wish to use (ie <>cond2):
+
+```bash
+spin -a -f 'FORMULA' wgc.pml
+gcc -o pan pan.c
+./pan -a
+spin -t wgc.pml
+```
+
+If SPIN can verify the code, it will generate a trail file. Make sure to delete any existing trail files in the folder before you run your program, as this may lead to confusion.
+
 
 ## The Landscape of Tools
 
