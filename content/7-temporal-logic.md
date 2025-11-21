@@ -120,6 +120,8 @@ If SPIN can verify the code, it will generate a trail file. Make sure to delete 
 
 ## The Landscape of Tools
 
+Information below is mainly taken from [here](https://mluckcuck.github.io/model-checking-cheatsheet) as well as the websites and wikipedia pages for each model checker.
+
 Other Model Checkers:
 1. NuSMV
 
