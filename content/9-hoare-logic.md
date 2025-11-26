@@ -243,8 +243,8 @@ Using preconditions, postconditions, and invariants, as Hoare Logic showcases, t
 - **Safety-Critical Systems:**
 In safety-critical systems, such as those in the aerospace and medical device industries, implement Hoare Logic through rigorous reasoning using preconditions, postconditions, and invariants. The implementation of the Hoare Triple ensures software correctness, particularly in cases where failure can be catastrophic. NASA's use of highly complex software makes testing impossible, especially when failures need to have probabilities on the order of 10⁻⁹ per hour. This highly rare, even if subtle, edge-case condition must be proven safe rather than minimally tested. Formal verification supports the validation of flight-control algorithms, redundancy management logic, timing-critical tasks, and fault-tolerant coordination across distributed systems.
 
-- **Static Analysis and Software Quality:**
-Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Logic-based reasoning to automatically detect bugs, memory leaks, and logic errors before runtime.
+- **Static Analysis:**
+In static analysis, the Hoare Triple is used to reason all program states, ensuring correctness when testing alone can be insufficient. This reasoning is adjusted and adapted to work across various computational models. For synchronous languages, they are rewritten into a synchronous tuple assignment form, enabling grouped updates and macro-step boundaries to be verified through specialized axioms. Meanwhile, in quantum programs, redefined semantics, quantum predicates, and measurement-aware rules are used to handle superposition and probabilistic branching. In each case, static analysis becomes an automated form of Hoare-style reasoning adapted to the computational model, ensuring that correctness is proven.
 
 
 ## Case Studies
@@ -272,6 +272,10 @@ The development of Hoare Logic established a foundation in computer science by s
 
 *To be added*
 
+## Hoare Logic in F*
+
+*To be added*
+
 ## Resources
 
 - [Dafny](https://github.com/dafny-lang/dafny)
@@ -292,3 +296,4 @@ The development of Hoare Logic established a foundation in computer science by s
 
 - Josh Rushby (1995) [Formal Methods and Their Role in Digital Systems Validation for Airborne Systems](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Formal+Methods+and+Their+Role+in+Digital+Systems+Validation+for+Airborne+Systems&btnG=), NASA Contractor Report 4673 
 
+- https://www.cs.cmu.edu/~lblum/flac/Presentations/cappiello_project_report.pdf
