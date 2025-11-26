@@ -226,7 +226,74 @@ dotnet test -v:n
 
 ## Exercises
 
-*To be added*
+### Ex.1) Absolute Value in Dafny with Specifications
+
+Write a Dafny method called ```Abs``` that:
+
+1. Takes an integer input ```x```.
+
+2. Returns an integer result ```r``` that is the absolute value of ```x```.
+
+3. Includes postconditions (ensures clauses) that guarantee:
+
+    - The result is always non-negative.
+
+    - The result has the same magnitude as ```x```.
+
+    - The result is either ```x``` or ```-x```.
+
+**Step 1:**
+
+To begin this exercise, we can simplify it by tackling one portion of the code at a time. Initially, we can start by taking into account the header that we need to use in order to get the absolute value of an integer input ```x```.
+
+```
+method Abs(x: int) returns (r: int)
+```
+This header method is named ```Abs```, which takes an integer ```x``` and returns an integer ```r```.
+
+**Step 2:**
+
+Now that the method and input parameters have been specified, we can add the ensures clauses, which are what we need to ensure are correct when verifying our program. 
+
+```
+  ensures r >= 0
+  ensures r * r == x * x
+  ensures r == x || r == -x
+```
+
+Through these clauses, we see that they are checking that: ```r``` is never negative, ```r``` keeps the same magnitude as ```x```, and ```r``` is either ```x``` (if positive) or ```–x ```(if negative). Dafny checks these automatically.
+
+**Step 3:**
+
+Lastly, the code that needs to be verified must be added to our program along with the respective parameters. 
+
+```
+if x >= 0 {
+  r := x;
+} else {
+  r := -x;
+}
+```
+
+This code checks if ```x``` is zero or positive and returns it as is. If ```x``` is negative, it flips the sign accordingly.
+
+Once we have the entire code assembled together, we have the following program:
+
+```
+method Abs(x: int) returns (r: int)
+  ensures r >= 0
+  ensures r * r == x * x
+  ensures r == x || r == -x
+{
+  if x >= 0 {
+    r := x;
+  } else {
+    r := -x;
+  }
+}
+```
+
+This will result in the answer ```Abs(-5) = 5```.
 
 ## The Landscape of Tools
 
