@@ -8,7 +8,7 @@ This chapter presents dependent type theory with Lean, demonstrating how types c
 
 ## Idea
 
-Dependent Type Theory (DTT) is the idea that types can depend on values. This enable us to rstablish precise relationships between data and the logical propositions that describes it.
+Dependent Type Theory (DTT) is the idea that types can depend on values. This enable us to establish precise relationships between data and the logical propositions that describes it.
 
 In traditional programming languages, types classify values. `Int` describes integers, `Bool` describes True or False, etc... With dependent type theory, a type itself depends on a value. For example, instead of defining a single `array` type, we define `array n A`, meaning “an array of length n whose elements are of type A.” This makes certain properties, like the dimension of an array, part of the type system itself. The compiler can then verify these constraints automatically.
 
@@ -17,16 +17,30 @@ This expressiveness blurs the boundary between proofs and programs. In dependent
 (To be added more)...
 
 ## Basic Theory
-
+- 
 ## Tool
+The following installation is pull directly from Lean-["Install Lean"](https://lean-lang.org/install/)
+
+- Install VS Code
+- Install the official Lean 4 extension in VS Code 
+- Complete the extension by following the guideline of Lean 4 extension:
+    - Click the "∀" symbol at the top right of the window.
+    - Hover down to "Documentation..."
+    - Click on "Show Setup Guide"
+    - Follow the guide until "Install Lean" option light up
+    - Click "Install Lean"
 
 ## Introductory Examples
+- 
 
 ## The landscape of Tools
+- 
 
 ## Algorithms
+- 
 
 ## Benchmarks and Competitions
+- 
 
 ## Applications in Industry
 
@@ -34,7 +48,7 @@ In recent years, formally grounded methods for specifying and verifying software
 
 ### 1. Historical and Influencial Application
 
-- Tokeneer ID Station (NSA smart-card project) is one of the early industrial successes of the "Correctness by Construction" methodology. The case is described by Janet Barnes in [“Experiences in the Industrial use of Formal Methods.”](https://eceasst.org/index.php/eceasst/article/view/1885). This article reports on industrial deployment of formal methods under the “Correctness by Construction (CbyC)” approach at Altran Praxis, including the case of the Tokeneer ID Station project for the US NSA. The work describes how formal specification in Z, refinement to code in SPARK with proof of absence of run-time errors, and proof of system-level properties were applied. The project found only five errors post-release and is cited as a rare “success story” of formal methods in industry. The article also candidly discusses challenges: training, tool usability, industrial adoption, and scaling.
+- Tokeneer ID Station (NSA smart-card project) is one of the early industrial successes of the "Correctness by Construction" methodology. The case is described by Janet Barnes in [“Experiences in the Industrial use of Formal Methods”](https://eceasst.org/index.php/eceasst/article/view/1885). This article reports on industrial deployment of formal methods under the “Correctness by Construction (CbyC)” approach at Altran Praxis, including the case of the Tokeneer ID Station project for the US NSA. The work describes how formal specification in Z, refinement to code in SPARK with proof of absence of run-time errors, and proof of system-level properties were applied. The project found only five errors post-release and is cited as a rare “success story” of formal methods in industry. The article also candidly discusses challenges: training, tool usability, industrial adoption, and scaling.
 
 - [“Symbolic QED Pre-silicon Verification for Automotive Microcontroller Cores: Industrial Case Study”](https://arxiv.org/abs/1902.01494) presents an industrial case study applying the “Symbolic Quick Error Detection (Symbolic QED)” technique in the pre-silicon verification of automotive microcontroller cores (~1,800 flip-flops, ~70,000 logic gates). Symbolic QED detected all logic bugs found by previous industrial verification flows, plus additional ones. It significantly reduced verification effort (e.g., an 8× reduction for a new design, and up to ~60× for subsequent designs). Runtime of bug detection improved dramatically (20 seconds or less) with short counterexamples (≤10 instructions).
 
@@ -79,8 +93,9 @@ The following case study demonstrates how Lean uses dependent type system to ens
 
 - “Intuitionistic Type Theory (Stanford Encyclopedia of Philosophy).” Entry by (various) updated Sep. 23 2024. https://plato.stanford.edu/entries/type-theory-intuitionistic/
 
+- Barnes, J. “Experiences in the Industrial use of Formal Methods.” ECEASST 46 (2011). https://eceasst.org/index.php/eceasst/article/view/1885 
 
--Barnes, J. “Experiences in the Industrial use of Formal Methods.” ECEASST 46 (2011). https://eceasst.org/index.php/eceasst/article/view/1885 
+- "Install Lean". Lean (2025). https://lean-lang.org/install/
 
 - Singh, E. et al. “Symbolic QED Pre-silicon Verification for Automotive Microcontroller Cores: Industrial Case Study.” arXiv (2019). https://arxiv.org/abs/1902.01494
 
