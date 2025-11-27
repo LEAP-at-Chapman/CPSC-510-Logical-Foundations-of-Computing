@@ -16,7 +16,9 @@ some intro to the intro ...
 
 ## Validity
 
-An important idea often attributed to [Aristotle](https://plato.stanford.edu/entries/aristotle-logic/) is the following: To check whether an argument is valid, one does not need to understand its content. This surprising insight is at the heart of artificial intelligence. 
+An important idea often attributed to [Aristotle](https://plato.stanford.edu/entries/aristotle-logic/) is the following: To check whether an argument is valid, one does not need to understand its content. This surprising insight is at the heart of artificial intelligence.[^ai]
+
+
 
 The classic example is:
 
@@ -125,8 +127,9 @@ $$
 Now we encoded the puzzle
 
 $$
+\rule{0pt}{2.5ex}
 \begin{array}{|c|c|}
-\hline
+\firsthline
  1 & {\ \ }  \\
 \hline
    &   \\
@@ -140,7 +143,7 @@ The software tools of Chapters [2](./2-satsolving.md), [4](./4-constraint-solvin
 
 **Remark:** Satisfiability solvers are now used everywhere in software engineering, very much like numerical methods in more traditional areas of engineering. This is a fairly recent development: Only since the beginning of the 21st century, Boole's 1847 vision of "a Calculus of Deductive Reasoning" has become mainstream engineering on a par with Newton's and Leibniz's infinitesimal calculus. 
 
-## Duality between Syntax and Semantics
+## Duality of Syntax and Semantics
 
 Satisfiability is a relation between models (semantics) and formulas (syntax). This relation is commonly written in symbolic notation as 
 
@@ -175,16 +178,65 @@ In the example of satisfiability, we read this as follows:
 
 ## Proof Theory
 
-...
+Logic studies truth in general rather than what is true in the world. There are two ways of doing this. 
+
+Proof theory studies truth-preserving transformations: Assuming that my premises are true, which rules of reasoning guarantee that my conclusions will also be true? In particular, can I be sure to never contradict myself if I follow the rules of logic? 
+
+In symbolic notation, one writes
+
+$$
+\Gamma\vdash\phi
+$$
+
+to indicate that (in a given logical calculus) one can derive $\phi$ from the assumptions in $\Gamma$.
+
+All of the software tools we will look at in this book can be understood as implementing reasoning in a particular calculus. In the next chapter, we will briefly look at Natural Deduction and at Tableaux.
 
 ## Model Theory
 
-...
+In model theory one studies truth in all possible models. Roughly speaking, a model $M$ is a mathematical structure that contains enough information in order to define when a formula $\phi$ in a given logic evaluates to true. As we have seen above this is written as $M\models\phi$. Now one can define semantic entailment as
+
+$$
+\Gamma\models\phi
+$$
+
+if all models that satisfy the assumptions in $\Gamma$ also satisfy the conclusion $\phi$, or, in symbolic notation, $M\models\phi$ if $M\models\psi$ for all $\psi\in\Gamma$.
+
+Many of the tools in this book can be understood from a model theoretic point of view (for example: SAT-solvers, SMT-solvers, Prolog, model checkers).
 
 ## Soundness and Completenss
 
-...
+A hallmark of logic are its completeness theorems. For any logic, we would typically like to have a soundness and completeness theorem. While the details can be difficult, we can state soundness and completeness simply as
+
+$$
+\Gamma\vdash\phi\ \Leftrightarrow \ \Gamma\models\phi
+$$
+
+In other words, a statement is true in all models if and only if it is derivable.
 
 ## Incompleteness
 
-...
+Gödel's incompleteness theorem (Gödel, 1931) states that there cannot be a proof system that derives all statements in the language of arithmetic that are true in the model of natural numbers. 
+
+This is a profound result that has ramifications in mathematics, philosophy and, of course, software engineering. A popular introduction is (Hofstadter, 1979).
+
+## References
+
+- Stanford Encyclopedia of Philosophy (2024) [Aristotle's Logic](https://plato.stanford.edu/entries/aristotle-logic/)
+- Boole (1847) [The Mathematical Analysis of Logic](https://www.gutenberg.org/files/36884/36884-pdf.pdf)
+- Gödel (1931) [Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I](https://scholar.google.com/scholar?q=Gödel+incompleteness+theorem+1931)
+- Hofstadter (1979) [Gödel, Escher, Bach: An Eternal Golden Braid](https://scholar.google.com/scholar?q=Gödel+Escher+Bach+Hofstadter) 
+
+[^ai]: This clearly is true for [symbolic AI](https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence) (aka [GOFAI](https://en.wikipedia.org/wiki/GOFAI)). But it is also true for [connectionist](https://en.wikipedia.org/wiki/Connectionism), [neural](https://en.wikipedia.org/wiki/Neural_network_(machine_learning)), statistical-probabilistic-stochastic, subsymbolic AI because the Boolean circuits implemented in our silicon-based hardware are symbolic AI. In a slogan: Neural AI is compiled to symbolic AI.
+
+    Btw, there does not seem to be an established meaning differentiating between statistical, stochastic and probabilistic. Here is Claude-Opus-4 on the topic (edited): 
+    
+    The terms statistical, stochastic and probabilistic overlap significantly but have slightly different uses:
+
+    **Statistical**. Focuses on **analyzing and learning from data**. Emphasizes patterns, distributions, and inference from samples. 
+
+    **Stochastic**. Emphasizes **randomness in the process itself**. The system's behavior involves random variables or random transitions. "Stochastic gradient descent" uses random samples to update weights. Use when: the algorithm or process has inherent randomness
+    
+    **Probabilistic**. Focuses on **reasoning about uncertainty**. Models beliefs, likelihood, and uncertainty explicitly using probability theory. Use when: uncertainty quantification is central to the approach
+     
+    Many AI methods are all three: neural networks learn **statistical** patterns from data, use **stochastic** optimization,  and can output **probabilistic** predictions. 

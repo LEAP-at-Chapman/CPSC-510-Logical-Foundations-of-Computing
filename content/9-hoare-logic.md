@@ -4,6 +4,14 @@
 
 ## Idea
 
+Hoare Logic is a mathematically based logic that focuses on proving that programs behave correctly, rather than relying on testing to determine their functionality. By treating programming as a formal reasoning process, where you specify what must be true before running a piece of code and what will be true after it finishes, the code can be verified and processed to ensure that, once correctly proven, the code satisfies this relationship.
+
+The core tool is the Hoare Triple, which consists of the following format: { Precondition } Code { Postcondition }. Through this reasoning process, the Hoare Triple can view the program fragmented into logical terms. Using a set of inference rules, developers can prove the correctness of sequences, conditionals, and loops. 
+
+Hoare Logic promotes correctness by construction, aiming to ensure that programs are built with proofs and formal logic every step of the program creation process, thereby eliminating bugs from any program development. By building on the idea of viewing program verification as a formal reasoning process, code verification and testing are simplified, with Hoare Logic serving as the foundation of modern formal verification.
+
+## Basic Theory
+
 Hoare Logic introduced the idea that we can reason about programs the same way we reason about mathematical proofs by introducing program verification. Instead of observing program behavior through test cases, we showcase what a program should do in logical form, and then prove that it does so. At its core lies the Hoare triple:
 
 [{P}; C; {Q}]
@@ -19,9 +27,6 @@ Each component plays a specific role:
 
 This logic provides partial correctness, meaning the result will be correct if the program terminates. To achieve​​ total correctness, we must demonstrate that the program terminates. 
 
-## Basic Theory
-
-*To be added*
 
 ## Dafny Installation and Setup
 
@@ -221,7 +226,74 @@ dotnet test -v:n
 
 ## Exercises
 
-*To be added*
+### Ex.1) Absolute Value in Dafny with Specifications
+
+Write a Dafny method called ```Abs``` that:
+
+1. Takes an integer input ```x```.
+
+2. Returns an integer result ```r``` that is the absolute value of ```x```.
+
+3. Includes postconditions (ensures clauses) that guarantee:
+
+    - The result is always non-negative.
+
+    - The result has the same magnitude as ```x```.
+
+    - The result is either ```x``` or ```-x```.
+
+**Step 1:**
+
+To begin this exercise, we can simplify it by tackling one portion of the code at a time. Initially, we can start by taking into account the header that we need to use in order to get the absolute value of an integer input ```x```.
+
+```
+method Abs(x: int) returns (r: int)
+```
+This header method is named ```Abs```, which takes an integer ```x``` and returns an integer ```r```.
+
+**Step 2:**
+
+Now that the method and input parameters have been specified, we can add the ensures clauses, which are what we need to ensure are correct when verifying our program. 
+
+```
+  ensures r >= 0
+  ensures r * r == x * x
+  ensures r == x || r == -x
+```
+
+Through these clauses, we see that they are checking that: ```r``` is never negative, ```r``` keeps the same magnitude as ```x```, and ```r``` is either ```x``` (if positive) or ```–x ```(if negative). Dafny checks these automatically.
+
+**Step 3:**
+
+Lastly, the code that needs to be verified must be added to our program along with the respective parameters. 
+
+```
+if x >= 0 {
+  r := x;
+} else {
+  r := -x;
+}
+```
+
+This code checks if ```x``` is zero or positive and returns it as is. If ```x``` is negative, it flips the sign accordingly.
+
+Once we have the entire code assembled together, we have the following program:
+
+```
+method Abs(x: int) returns (r: int)
+  ensures r >= 0
+  ensures r * r == x * x
+  ensures r == x || r == -x
+{
+  if x >= 0 {
+    r := x;
+  } else {
+    r := -x;
+  }
+}
+```
+
+This will result in the answer ```Abs(-5) = 5```.
 
 ## The Landscape of Tools
 
@@ -238,8 +310,8 @@ Using preconditions, postconditions, and invariants, as Hoare Logic showcases, t
 - **Safety-Critical Systems:**
 In safety-critical systems, such as those in the aerospace and medical device industries, implement Hoare Logic through rigorous reasoning using preconditions, postconditions, and invariants. The implementation of the Hoare Triple ensures software correctness, particularly in cases where failure can be catastrophic. NASA's use of highly complex software makes testing impossible, especially when failures need to have probabilities on the order of 10⁻⁹ per hour. This highly rare, even if subtle, edge-case condition must be proven safe rather than minimally tested. Formal verification supports the validation of flight-control algorithms, redundancy management logic, timing-critical tasks, and fault-tolerant coordination across distributed systems.
 
-- **Static Analysis and Software Quality:**
-Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Logic-based reasoning to automatically detect bugs, memory leaks, and logic errors before runtime.
+- **Static Analysis:**
+In static analysis, the Hoare Triple is used to reason all program states, ensuring correctness when testing alone can be insufficient. This reasoning is adjusted and adapted to work across various computational models. For synchronous languages, they are rewritten into a synchronous tuple assignment form, enabling grouped updates and macro-step boundaries to be verified through specialized axioms. Meanwhile, in quantum programs, redefined semantics, quantum predicates, and measurement-aware rules are used to handle superposition and probabilistic branching. In each case, static analysis becomes an automated form of Hoare-style reasoning adapted to the computational model, ensuring that correctness is proven.
 
 
 ## Case Studies
@@ -267,6 +339,10 @@ The development of Hoare Logic established a foundation in computer science by s
 
 *To be added*
 
+## Hoare Logic in F*
+
+*To be added*
+
 ## Resources
 
 - [Dafny](https://github.com/dafny-lang/dafny)
@@ -275,10 +351,6 @@ The development of Hoare Logic established a foundation in computer science by s
 
 ## References
 
-- [Northeastern University – CS2800: Logic and Computation (Spring 2023) Lecture 32: Hoare Logic](https://course.ccs.neu.edu/cs2800sp23/l32.html)
-
-- [University of Rochester – CSC 255/455: Programming Languages (Spring 2024) Lecture 25: Introduction to Hoare Logic](https://www.cs.rochester.edu/~spai4/courses/csc-255-455/spring-2024/static/25-intro-hoare-logic.pdf)
-
 - [University of Pennsylvania – Software Foundations, Volume 2: Programming Language Foundations Chapter: Hoare Logic](https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html)
 
 - [Carnegie Mellon University – 15-654 Software Engineering (Spring 2006) Lecture Notes: Hoare Logic by Jonathan Aldrich](https://www.cs.cmu.edu/~aldrich/courses/654-sp06/notes/3-hoare-notes.pdf)
@@ -286,9 +358,9 @@ The development of Hoare Logic established a foundation in computer science by s
 - [Alexander Kurz – Hoare Logic Example (HackMD) Worked example: Loop invariants and correctness proofs](https://hackmd.io/@alexhkurz/Hy135C2tH)
 
 - [University of Cambridge – M.J.C. Gordon: Hoare Logic Lecture Notes All Lectures (Formal Semantics, wlp, VCG, and Separation Logic)](https://www.cl.cam.ac.uk/archive/mjcg/HoareLogic/Lectures/AllLectures.pdf)
+5
+- Krzysztof and Ernst-Rudiger (2019) [Fifty Years of Hoare’s Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Fifty+years+of+Hoare%E2%80%99s+logic+KR+Apt%2C+ER+Olderog&btnG=), Springer
 
-- [Intro. to the Hoare Triple (Discrete Math Tutorial) - Validity, Calculating Precondition, Explained.](https://www.youtube.com/watch?v=-Bs2Uy3zGsw)
+- Josh Rushby (1995) [Formal Methods and Their Role in Digital Systems Validation for Airborne Systems](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Formal+Methods+and+Their+Role+in+Digital+Systems+Validation+for+Airborne+Systems&btnG=), NASA Contractor Report 4673 
 
-- [Fifty years of Hoare’s logic](https://ir.cwi.nl/pub/29146/29146.pdf)
-
-- [Formal Methods and Their Role in Digital Systems Validation for Airborne Systems](https://ntrs.nasa.gov/api/citations/19960008816/downloads/19960008816.pdf)
+- https://www.cs.cmu.edu/~lblum/flac/Presentations/cappiello_project_report.pdf
