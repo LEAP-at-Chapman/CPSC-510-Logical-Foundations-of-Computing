@@ -1,4 +1,4 @@
-# Introduction to Logic
+# Logic
 
 some intro to the intro ...
 
