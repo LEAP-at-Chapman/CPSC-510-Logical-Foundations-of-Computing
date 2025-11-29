@@ -14,10 +14,43 @@ In traditional programming languages, types classify values. `Int` describes int
 
 This expressiveness blurs the boundary between proofs and programs. In dependent type theory, writing a function that computes something often simultaneously constructs a proof of its correctness. For instance, a function that returns the sum of two natural numbers can be defined alongside a proof that addition is associative or commutative, proofs that Lean, Coq, or Agda can check mechanically.
 
-(To be added more)...
+Dependent Type Theory(DTT) is a unifying foundation for:
+- Formal methematics where theorems and proofs are treated as typed objects.
+- Verified programming where correctness is guaranteed by construction.
+- Knowledge representation where logical precision replaces ad-hoc conventions.
+
+Think of DTT as the language that connects mathematics, logic, and software engineering. It transforms "what is true" into "what is computed" and vice versa.
+
+Dependenty Type Theory allows us to design systems in which the structure of code mirrors the structure of mathematics. This is the essence of the proofs-as-programs pradigm: a verified program is not something we write after designing an algorithm; it is the algorithm, expressed in a logical language rich enough to verify itself. 
 
 ## Basic Theory
-- 
+
+To understand DTT, we begin by situating it within the broader landscape of type systems and logical foundation.
+
+Type theory originated as an alternative to set theory, most famously through the work of Bertrand Russell and Alonzo Church. The simply typed lambda calculus provided a framework where every term has a type, and functions are first-class citizens. In this setting, a type may be thought of as a “set of allowable values,” and a program as a “proof that a value exists.”
+
+Dependent types generalize this by allowing types to vary depending on terms. Formally, if `A` is a type and `a : A`, then we may form another type `B a` that depends on `a`. The dependent function type is then written: $(\Pi x:A),B(x)$ which can be read as "for every `x` of type `A`, there exists a term of type `B(x)`." This construct generalizes both functions and universal quantification.
+
+### The Curry-Howard Correspondence
+
+The Curry-Howard Correspondence underlies DTT, establising a deep analogy between logic and computation:
+
+| Logic | Type Theory | Computation |
+|---|---|---|
+| Proposition | Type | Specification |
+| Proof | Term(program) | Implementation |
+| Proof normalization | Term reduction | Program execution |
+
+In this view, proving a proposition corresponds to constructing a program of a certain type.
+For example:
+- A proof of $A \rightarrow B$ corresponds to a function from `A` to `B`.
+- A proof of $A \land B$ corresponds to a pair `(a, b)`.
+- A proof of $A \lor B$ corresponds to either `inl a` (`a` belongs to left type `A`) or `inr b`(`b` belongs to right type `B`).
+
+Dependent types extend this by allowing logical quantification to range over terms, i.e. a function's return type can be determined by the value of its input, rather than just its type. Thus, "for every `n`, there exists a vector of length `n` sorted in ascending order" can be written as a dependent function type.
+
+The Curry-Howard correspondence unifies programming, mathematics, and logic into a single framework: to prove is to program.
+
 ## Tool
 The following installation is pull directly from Lean-["Install Lean"](https://lean-lang.org/install/)
 
@@ -44,7 +77,7 @@ The following installation is pull directly from Lean-["Install Lean"](https://l
 
 ## Applications in Industry
 
-In recent years, formally grounded methods for specifying and verifying software and hardware systems have undergone significant uptake. The combination of dependable "symbolic" reasoning, (i.e. logic, type-theory, theorem-proving, etc...) with the explosion of AI-driven development like machine learning, generative models, is opening up new directions for improvements. Here are briefs summaries of recent influential applications.
+In recent years, formally grounded methods for specifying and verifying software and hardware systems have undergone significant uptake. The combination of dependable "symbolic" reasoning, (i.e. logic, type-theory, theorem-proving, etc...) with the explosion of AI-driven development like machine learning, generative models, is opening up new directions for improvements. Here are briefs summaries of recent influential applications. 
 
 ### 1. Historical and Influencial Application
 
@@ -89,29 +122,27 @@ The following case study demonstrates how Lean uses dependent type system to ens
 
 - [Lean Game Logic](https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic)
 
-- Wadler, Philip. “Propositions as Types.” Communications of the ACM, Vol. 58, No. 12 (Dec. 2015), pp. 75-84. Available as PDF at https://homepages.inf.ed.ac.uk/wadler/papers/propositions-as-types/propositions-as-types.pdf
+- ["Install Lean"](https://lean-lang.org/install/). Lean (2025).
 
-- “Intuitionistic Type Theory (Stanford Encyclopedia of Philosophy).” Entry by (various) updated Sep. 23 2024. https://plato.stanford.edu/entries/type-theory-intuitionistic/
+- Wadler, Philip. “Propositions as Types.” Communications of the ACM, Vol. 58, No. 12 (Dec. 2015), pp. 75-84. Available as PDF [here](https://homepages.inf.ed.ac.uk/wadler/papers/propositions-as-types/propositions-as-types.pdf)
 
-- Barnes, J. “Experiences in the Industrial use of Formal Methods.” ECEASST 46 (2011). https://eceasst.org/index.php/eceasst/article/view/1885 
+- [“Intuitionistic Type Theory (Stanford Encyclopedia of Philosophy).”](https://plato.stanford.edu/entries/type-theory-intuitionistic/) Entry by (various) updated Sep. 23 2024.
 
-- "Install Lean". Lean (2025). https://lean-lang.org/install/
+- Barnes, J. [“Experiences in the Industrial use of Formal Methods.”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Experiences+in+the+Industrial+use+of+Formal+Methods&btnG=) ECEASST 46 (2011).
 
-- Singh, E. et al. “Symbolic QED Pre-silicon Verification for Automotive Microcontroller Cores: Industrial Case Study.” arXiv (2019). https://arxiv.org/abs/1902.01494
+- Singh, E. et al. [“Symbolic QED Pre-silicon Verification for Automotive Microcontroller Cores: Industrial Case Study.”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CSymbolic+QED+Pre-silicon+Verification+for+Automotive+Microcontroller+Cores%3A+Industrial+Case+Study.%E2%80%9D&btnG=) arXiv (2019).
 
+Iliasov, A. et al. [“Industrial-Strength Verification of Solid State Interlocking Programs.”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CIndustrial-Strength+Verification+of+Solid+State+Interlocking+Programs.%E2%80%9D&btnG=) arXiv (2021).
 
-Iliasov, A. et al. “Industrial-Strength Verification of Solid State Interlocking Programs.” arXiv (2021).https://arxiv.org/abs/2108.10091
+- Gleirscher, M., Marmsoler, D. [“Formal methods in dependable systems engineering: a survey of professionals from Europe and North America”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Formal+methods+in+dependable+systems+engineering%3A+a+survey+of+professionals+from+Europe+and+North+America&btnG=) Empir Software Eng 25 (2020).
 
-- Gleirscher, M., Marmsoler, D. “Formal methods in dependable systems engineering: a survey of professionals from Europe and North America” Empir Software Eng 25 (2020). https://doi.org/10.1007/s10664-020-09836-5
- 
+- Ganesh, V., Seshia, S. A., Jha, S. [“Machine learning and logic: a new frontier in artificial intelligence.”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CMachine+learning+and+logic%3A+a+new+frontier+in+artificial+intelligence.%E2%80%9D&btnG=) Formal Methods Systems Design 60 (2022).
 
-- Ganesh, V., Seshia, S. A., Jha, S. “Machine learning and logic: a new frontier in artificial intelligence.” Formal Methods Systems Design 60 (2022). https://doi.org/10.1007/s10703-023-00430-1
+- Stock, S., Dunkelau, J., Mashkoor, A. [“Application of AI to formal methods — an analysis of current trends.”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CApplication+of+AI+to+formal+methods+%E2%80%94+an+analysis+of+current+trends.%E2%80%9D&btnG=) Empir Software Eng (2025). 
 
-- Stock, S., Dunkelau, J., Mashkoor, A. “Application of AI to formal methods — an analysis of current trends.” Empir Software Eng (2025). https://doi.org/10.1007/s10664-025-10729-8
+- Groote, J. F., Huisman, M. [“Formal Methods for Industrial Critical Systems.”](https://scholar.google.com/scholar?q=%E2%80%9CFormal+Methods+for+Industrial+Critical+Systems%E2%80%9D&hl=en&as_sdt=0%2C5&as_ylo=2024&as_yhi=) Int J Softw Tools Technol Transfer 26 (2024). 
 
-- Groote, J. F., Huisman, M. “Formal Methods for Industrial Critical Systems.” Int J Softw Tools Technol Transfer 26 (2024). https://doi.org/10.1007/s10009-024-00744-3
-
-- Miranda, B., Zhou, Z., Nie, A., Obbad, E., Aniva, L., Fronsdal, K., Kirk, W., Soylu, D., Yu, A., Li, Y., & Koyejo, S. (2025). VeriBench: End-to-End formal verification benchmark for AI code generation in Lean 4. In Proceedings of the 42nd International Conference on Machine Learning, Vancouver, Canada (PMLR 267). https://openreview.net/pdf?id=rWkGFmnSNl
+- Miranda et al. ["VeriBench: End-to-End formal verification benchmark for AI code generation in Lean 4"](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&as_ylo=2024&q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&btnG=). In Proceedings of the 42nd International Conference on Machine Learning, Vancouver, Canada (PMLR 267) (2025).
  
 
 ## Suggestions for Future Works
