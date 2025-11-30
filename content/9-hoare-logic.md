@@ -226,7 +226,7 @@ dotnet test -v:n
 
 ## Exercises
 
-### Ex.1) Absolute Value in Dafny with Specifications
+### Ex. 1) Absolute Value in Dafny with Specifications
 
 Write a Dafny method called ```Abs``` that:
 
@@ -294,6 +294,110 @@ method Abs(x: int) returns (r: int)
 ```
 
 This will result in the answer ```Abs(-5) = 5```.
+
+### Ex. 2) Summing an Array in Dafny Using a Loop Invariant
+
+Write a Dafny method called ```ArraySum``` that:
+
+- Takes an array input ```a```.
+
+- Returns an integer result ```total``` representing the sum of all elements.
+
+- Uses a loop invariant to ensure correctness as the array is processed.
+
+**Step 1:**
+
+First, we define the method header and required input:
+
+```
+method ArraySum(a: array<int>) returns (total: int)
+  requires a != null
+```
+
+This line introduces a method named ```ArraySum```, which takes an array ```a``` and returns an integer ```total```.
+The requires clause ensures that the array must not be null before the method runs.
+
+**Step 2:**
+
+Next, we add the loop structure and initialize our variables:
+
+```
+{
+  var i := 0;
+  total := 0;
+```
+
+Through this loop structure, ```i``` starts at ```0``` and will move through the array as the total begins at 0 and will accumulate the sum.
+
+**Step 3:**
+
+We now include the loop and its invariant:
+
+```
+  while i < a.Length
+    invariant 0 <= i <= a.Length
+  {
+    total := total + a[i];
+    i := i + 1;
+  }
+}
+```
+This loop works by repeating while ```i``` is within the array bounds and adding each element to the total. As it loops, it increases ```i``` by ```1``` each iteration. The invariant ensures that ```i``` always stays between ```0``` and ```a.Length```. 
+
+**Step 4:**
+
+To verify that the method is working correctly, we can input this main method:
+```
+method Main()
+{
+  var a := new int[5];
+  a[0] := 2;
+  a[1] := 4;
+  a[2] := -1;
+  a[3] := 3;
+  a[4] := 1;
+
+  var result := ArraySum(a);
+  print "Sum of array = ", result, "\n";
+}
+```
+
+Once we have the entire code assembled together, we have the following program:
+
+```
+method ArraySum(a: array<int>) returns (total: int)
+  requires a != null
+{
+  var i := 0;
+  total := 0;
+
+  while i < a.Length
+    invariant 0 <= i <= a.Length
+  {
+    total := total + a[i];
+    i := i + 1;
+  }
+}
+
+method Main()
+{
+  var a := new int[5];
+  a[0] := 2;
+  a[1] := 4;
+  a[2] := -1;
+  a[3] := 3;
+  a[4] := 1;
+
+  var result := ArraySum(a);
+  print "Sum of array = ", result, "\n";
+}
+```
+
+Where it will result in:
+
+```
+Sum of array = 9
+```
 
 ## The Landscape of Tools
 

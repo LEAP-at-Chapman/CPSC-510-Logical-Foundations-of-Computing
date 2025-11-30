@@ -103,7 +103,7 @@ The proof can be generalised to a method applying to all so-called Sahlqvist for
 
 **Exercise:** Interpret $\Box p\to p$ and $\Box p\to\Box\Box p$ from the point of view of temporal and epistemic logic.
 
-## The Basic Theory of Modal Logic
+## The Basic Theory
 
 We have seen that modal logic comprises several independent areas (temporal logic, epistemic logic, etc) and has important overlaps with others (concurrency, multi-agent systems, automated reasoning, game theory, etc). My intention here is only to sketch out the basic theory that is important in all these fields.
 
