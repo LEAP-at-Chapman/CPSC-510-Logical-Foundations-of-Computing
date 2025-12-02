@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1. SAT solving with MiniSat &#8212; Logical Foundations of AI</title>
   
@@ -29,39 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/2-satsolving';</script>
@@ -160,13 +155,24 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
 <li class="toctree-l1"><a class="reference internal" href="0-logic.html">Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">2. Propositional Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
@@ -226,9 +232,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -369,9 +375,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -444,14 +450,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sat-solving-with-minisat">
-<h1><span class="section-number">1. </span>SAT solving with MiniSat<a class="headerlink" href="#sat-solving-with-minisat" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1. </span>SAT solving with MiniSat<a class="headerlink" href="#sat-solving-with-minisat" title="Link to this heading">#</a></h1>
 <p>Author: Jake Triester</p>
 <section id="idea">
-<h2><span class="section-number">1.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.1. </span>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
 <p>A theory in propositional logic can be seen as a set of equations in variables that range over truth values <span class="math notranslate nohighlight">\(\{0,1\}\)</span>. A SAT-solver is a software tool that solves such equations. Even though SAT is NP-complete, modern SAT-solvers can solve propositional theories with millions of variables and tens of millions of clauses (reference?). And, as we know from the <a class="reference external" href="https://en.wikipedia.org/wiki/Cook%E2%80%93Levin_theorem">Cook-Levin theorem</a> every NP-problem can be encoded in SAT.</p>
 </section>
 <section id="basic-theory-sat">
-<h2><span class="section-number">1.2. </span>Basic Theory: SAT<a class="headerlink" href="#basic-theory-sat" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.2. </span>Basic Theory: SAT<a class="headerlink" href="#basic-theory-sat" title="Link to this heading">#</a></h2>
 <p>Propositional Logic.</p>
 <p>Informal Definition of satisfiability:
 SAT takes a formula and finds a satifying valuation (model).</p>
@@ -504,7 +510,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 \end{align*}\]</div>
 <p>If no rule can be applied anymore, then the formula is in a conjunction <span class="math notranslate nohighlight">\((a_{11}\vee\ldots\vee a_{1n_1})\wedge \ldots \wedge (a_{k1}\vee \ldots \vee a_{kn_k})\)</span> of so-called clauses where each <span class="math notranslate nohighlight">\(a_{ij}\)</span> is either a propositional variable or the negation of a propositional variable.</p>
 <section id="dimacs-cnf-format">
-<h3><span class="section-number">1.2.1. </span>DIMACS CNF format<a class="headerlink" href="#dimacs-cnf-format" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.2.1. </span>DIMACS CNF format<a class="headerlink" href="#dimacs-cnf-format" title="Link to this heading">#</a></h3>
 <p>A normal DIMACS CNF file looks like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="n">cnf</span> <span class="o">&lt;</span><span class="n">num_variables</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">num_clauses</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">literal_1</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">literal_2</span><span class="o">&gt;</span> <span class="o">...</span> <span class="o">&lt;</span><span class="n">literal_n</span><span class="o">&gt;</span> <span class="mi">0</span>
@@ -522,7 +528,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 </section>
 </section>
 <section id="tool-minisat">
-<h2><span class="section-number">1.3. </span>Tool: MiniSat<a class="headerlink" href="#tool-minisat" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.3. </span>Tool: MiniSat<a class="headerlink" href="#tool-minisat" title="Link to this heading">#</a></h2>
 <p>Here is what I did for installation on MacOs.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">brew</span> <span class="n">install</span> <span class="n">minisat</span>
 <span class="n">echo</span> <span class="s2">&quot;p cnf 2 2</span>
@@ -563,7 +569,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <p><strong>Homework:</strong> Consider a Boolean circuit: (A ∧ B) ∨ (C ∧ ¬D) = True with the additional constraint that exactly 2 of {A,B,C,D} are True. Write this as a <code class="docutils literal notranslate"><span class="pre">cnf</span></code> specification and solve it with MiniSat. Explain your encoding and the solution in detail.</p>
 </section>
 <section id="sat-solvers">
-<h2><span class="section-number">1.4. </span>SAT solvers<a class="headerlink" href="#sat-solvers" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.4. </span>SAT solvers<a class="headerlink" href="#sat-solvers" title="Link to this heading">#</a></h2>
 <p>Many companies such as Intel have their own SAT solvers, but the cutting edge of SAT-solvers are widely considered to the open source solvers such as:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://minisat.se/">MiniSat</a> - <a class="reference external" href="https://github.com/niklasso/minisat">&#64;Github</a> The reference implementation</p></li>
@@ -575,9 +581,9 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <p>The annual <a class="reference external" href="http://www.satcompetition.org/">SAT Competition</a> tracks the current best performers.</p>
 </section>
 <section id="the-algorithm">
-<h2><span class="section-number">1.5. </span>The Algorithm<a class="headerlink" href="#the-algorithm" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.5. </span>The Algorithm<a class="headerlink" href="#the-algorithm" title="Link to this heading">#</a></h2>
 <section id="resolution">
-<h3><span class="section-number">1.5.1. </span>Resolution<a class="headerlink" href="#resolution" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.5.1. </span>Resolution<a class="headerlink" href="#resolution" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Resolution_(logic)">Resolution</a> has only one inference rule:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -585,7 +591,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 \]</div>
 </section>
 <section id="unit-propagation">
-<h3><span class="section-number">1.5.2. </span>Unit Propagation<a class="headerlink" href="#unit-propagation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.5.2. </span>Unit Propagation<a class="headerlink" href="#unit-propagation" title="Link to this heading">#</a></h3>
 <p>Unit propagation is a fairly simply concept. All that it says is that if we have a clause where all but one of its literals is evaluated as False, then the last literal must be True in order for the clause to be True. For example, given the following clause:</p>
 <div class="math notranslate nohighlight">
 \[(A\vee B\vee C)\]</div>
@@ -596,7 +602,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <p>We know the clause has to be true, so we apply unit propagation, meaning we set <span class="math notranslate nohighlight">\(A =\)</span> False.</p>
 </section>
 <section id="pure-literal-elimination">
-<h3><span class="section-number">1.5.3. </span>Pure Literal Elimination<a class="headerlink" href="#pure-literal-elimination" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.5.3. </span>Pure Literal Elimination<a class="headerlink" href="#pure-literal-elimination" title="Link to this heading">#</a></h3>
 <p>If a variable appears throughout the entire formula as only positive or only negative, you can set it to satisfy every clause that contains it. This means that if a variable appears only positively, you can replace it by True and remove the clause. Also, if a variable appears only negatively, you can replace it by False and remove the clause. For example, given the following formula:</p>
 <div class="math notranslate nohighlight">
 \[(\neg A \vee B) \wedge (\neg A \vee C)\]</div>
@@ -606,7 +612,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <p>Since the opposite of False is True, we are able to remove both of the clauses from our formula.</p>
 </section>
 <section id="davisputnam-algorithm">
-<h3><span class="section-number">1.5.4. </span>Davis–Putnam algorithm<a class="headerlink" href="#davisputnam-algorithm" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.5.4. </span>Davis–Putnam algorithm<a class="headerlink" href="#davisputnam-algorithm" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Davis%E2%80%93Putnam_algorithm">Davis–Putnam algorithm</a> uses resolution but has some additional rules to guarantee termination.</p>
 <ol class="arabic simple">
 <li><p>Select a variable</p></li>
@@ -616,7 +622,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <li><p>If the empty clause is derived, then UNSATISFIABLE, else SATISFIABLE.</p></li>
 </ol>
 <section id="davis-putnam-algorithm-example">
-<h4><span class="section-number">1.5.4.1. </span>Davis-Putnam Algorithm example<a class="headerlink" href="#davis-putnam-algorithm-example" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">1.5.4.1. </span>Davis-Putnam Algorithm example<a class="headerlink" href="#davis-putnam-algorithm-example" title="Link to this heading">#</a></h4>
 <p>Given the following formula, we will use the Davis-Putnam algorithm to solve it:</p>
 <div class="math notranslate nohighlight">
 \[(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee \neg C)\]</div>
@@ -634,7 +640,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 </section>
 </section>
 <section id="davisputnamlogemannloveland-dpll-algorithm">
-<h3><span class="section-number">1.5.5. </span>Davis–Putnam–Logemann–Loveland (DPLL) algorithm<a class="headerlink" href="#davisputnamlogemannloveland-dpll-algorithm" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.5.5. </span>Davis–Putnam–Logemann–Loveland (DPLL) algorithm<a class="headerlink" href="#davisputnamlogemannloveland-dpll-algorithm" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/DPLL_algorithm">Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></p>
 <p>DP can generate many new clauses. For example in</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(a ∨ x₁) ∧ (a ∨ x₂) ∧ (a ∨ x₃) ∧ (a ∨ x₄) ∧
@@ -684,7 +690,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <p>This leads to a contradiction, because <code class="docutils literal notranslate"><span class="pre">c</span></code> cannot be both True and False. Thus, our formula is <code class="docutils literal notranslate"><span class="pre">UNSAT</span></code></p>
 </section>
 <section id="conflict-driven-clause-learning-cdcl-algorithm">
-<h3><span class="section-number">1.5.6. </span>Conflict-driven Clause Learning (CDCL) algorithm<a class="headerlink" href="#conflict-driven-clause-learning-cdcl-algorithm" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.5.6. </span>Conflict-driven Clause Learning (CDCL) algorithm<a class="headerlink" href="#conflict-driven-clause-learning-cdcl-algorithm" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Conflict-driven_clause_learning">Conflict-driven Clause Learning</a>
 (CDCL) is another algorithm for solving SAT problems that is similar to DPLL but the main difference is that CDCL does not back-jump chronologically. CDCL was proposed by Marques-Silva and Karem A. Sakallah (1996, 1999) and Bayardo and Schrag (1997). The algorithm is as follows:</p>
 <ol class="arabic">
@@ -699,7 +705,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 <li><p>If there was no conflict, start from step 1 on a new variable until every variable has been assigned.</p></li>
 </ol>
 <section id="implication-graphs">
-<h4><span class="section-number">1.5.6.1. </span>Implication Graphs<a class="headerlink" href="#implication-graphs" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">1.5.6.1. </span>Implication Graphs<a class="headerlink" href="#implication-graphs" title="Link to this heading">#</a></h4>
 <p>An implication graph is something that is drawn in step 3 of the CDCL algorithm, and it involves using your arbitrary choices, unit propagation, and implications to determine a satisfiable answer to an algorithm. To show how implication graphs work (and how the entire algorithm works), we will use this example formula:</p>
 <div class="math notranslate nohighlight">
 \[(\neg A\vee B) \wedge (\neg B\vee C) \wedge (\neg C \vee A) \wedge (\neg A\vee \neg B)\]</div>
@@ -735,7 +741,7 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 </section>
 </section>
 <section id="dpll-vs-cdcl-example">
-<h3><span class="section-number">1.5.7. </span>DPLL vs CDCL example<a class="headerlink" href="#dpll-vs-cdcl-example" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.5.7. </span>DPLL vs CDCL example<a class="headerlink" href="#dpll-vs-cdcl-example" title="Link to this heading">#</a></h3>
 <p>Here, we will solve an example formula using both DPLL and CDCL, and determine which algorithm is better (more efficient) and why. We will start with this formula:</p>
 <div class="math notranslate nohighlight">
 \[(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)\]</div>
@@ -799,36 +805,36 @@ a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \tex
 </section>
 </section>
 <section id="parallel-approaches">
-<h2><span class="section-number">1.6. </span>Parallel Approaches<a class="headerlink" href="#parallel-approaches" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.6. </span>Parallel Approaches<a class="headerlink" href="#parallel-approaches" title="Link to this heading">#</a></h2>
 <p>Some SAT solvers use multiple processors at the same time to speed up problem solving. There are 2 different types of strategies tha modern parallel SAT solvers rely on.</p>
 <section id="portfolio">
-<h3><span class="section-number">1.6.1. </span>Portfolio<a class="headerlink" href="#portfolio" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.6.1. </span>Portfolio<a class="headerlink" href="#portfolio" title="Link to this heading">#</a></h3>
 <p>The portfolio parallel approach running many solvers in parallel on the same problem. Once one of the solvers finds a solution, they all can stop. This reduces the time needed to solve because it is trying multiple at once. Many portfolio approaches implement random seeds to decrease the amount of duplicate work that the solvers are doing. Depending on the underlying algorithm behind the SAT solvers, it is possible that the different portfolios could share learned clauses amongst each other, which will decrease time taken to solve even more. A few examples of portfolio parallel SAT solvers are PPfolio and HordeSat.</p>
 </section>
 <section id="divide-and-conquer">
-<h3><span class="section-number">1.6.2. </span>Divide-and-conquer<a class="headerlink" href="#divide-and-conquer" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.6.2. </span>Divide-and-conquer<a class="headerlink" href="#divide-and-conquer" title="Link to this heading">#</a></h3>
 <p>A different parallel approach involves spitting the problem into smaller sub-problems, and then running each of those on a different processor. This can cause some processors to finish their problems much earlier than others because different sub-problems can vary in difficulty, which is suboptimal. One very benefical advance is the Cube-and-Conquer approach, which uses two phases. The first phase is the cube part where a solver “looks ahead” and breaks the problem into smaller “cubes.” Phase 2 is the conquer f=part where each cube is solved using CDCL. Because of the way the cubes are calculated, if one cube is satisfiable, then the whole problem is satisfiable. One example divide-and-conquer that uses the cube-and-conquer approach is Treengeling.</p>
 </section>
 </section>
 <section id="applications-in-industry">
-<h2><span class="section-number">1.7. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.7. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
 <p>SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language. These applications are central to many industrial workflows. Historically, they have moved the field from theoretical curiosity (like NP-completeness) to large-scale problem solving. Today, solvers can easily handle problems with millions of variables and tens of millions of clauses.</p>
 <section id="established-industrial-applications">
-<h3><span class="section-number">1.7.1. </span>Established Industrial Applications<a class="headerlink" href="#established-industrial-applications" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.7.1. </span>Established Industrial Applications<a class="headerlink" href="#established-industrial-applications" title="Link to this heading">#</a></h3>
 <p>One main area where SAT technology is heavily used is hardware verification. It is used to verify the pipelines of GPUs and CPUs through property checking. SMT solvers (a descendant of SAT) are especially used in hardware verification because they are able to combine the core principles of SAT with theory solvers for arithmetic and arrays.</p>
 <p>Similarly, SAT solvers are also used for software verification and program analysis. They can either provide counterexamples when a property fails or proofs for satisfiability, which is especially helpful when debugging.</p>
 <p>SAT solvers are also used for package and dependency solving and optimization. By translating domain constraints into CNF, the solvers can be used for dependency resolution (package managers), combinatorial optimization (scheduling), or other large combinatorial tasks.</p>
 <p>While not necessarily an application of use in industry, there is an annual SAT competition that is used to track the state of the art and can help lead to adoption in industry. This competition is beneficial because it leads people to find new algorithms and heuristics than can be used to improve the state of the art.</p>
 </section>
 <section id="use-of-generative-ai">
-<h3><span class="section-number">1.7.2. </span>Use of Generative AI<a class="headerlink" href="#use-of-generative-ai" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.7.2. </span>Use of Generative AI<a class="headerlink" href="#use-of-generative-ai" title="Link to this heading">#</a></h3>
 <p>As the use of generative AI becomes more and more integrated into every industry, SAT solvers are no exception. Generative AI (LLMs) are increasingly being used to augment SAT solvers rather than replace them completely. There are a couple of different examples that show this.</p>
 <p>First, generative AI models are being used for instance generation. This is beneficial because it is used to generate SAT instaances that mimic real-world problems, which can help to study the behavior of the solvers and see how they can be improved. One example of this is G2SAT, which makes CNF formulas into bipartite graphs and learns to generate realistic SAT instances.</p>
 <p>Another example is using solvers to check proofs that are created by LLMs. For example, an LLM will propose a proof, and the solvers will check, reject, or give feedback on these proposed proofs. This is more with SMT solvers than SAT due to their proof checking abilities, but as SMT is a descendant of SAT, it has been included in the section.</p>
 <p>Solvers are also being used to reduce hallucinations and increase reliability in certain AI models. Some models, including ones from Amazon have integrated “automated reasoning checks” to constrain generative models (argument checking, verification checks on outputs of the model, rule enforcement) to improve trustworthiness.</p>
 </section>
 <section id="how-this-affects-sat-in-industry">
-<h3><span class="section-number">1.7.3. </span>How this affects SAT in industry<a class="headerlink" href="#how-this-affects-sat-in-industry" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.7.3. </span>How this affects SAT in industry<a class="headerlink" href="#how-this-affects-sat-in-industry" title="Link to this heading">#</a></h3>
 <p>Hybrid workflows are becoming much more common in industry. This means that generative AI models are proposing something, and SAT solvers are used to provide guarantees of truthfulness or unsatisfiability. This is beneficial because it is utilizing the creativity of generative AI, while confirming correctness through the rigidity of SAT solvers.</p>
 <!-- Typical examples are hardware verification (Intel, AMD, Apple, etc) and dependency resolution in software package installers (Debian Linux).
 
@@ -838,7 +844,7 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 </section>
 </section>
 <section id="case-studies">
-<h2><span class="section-number">1.8. </span>Case Studies<a class="headerlink" href="#case-studies" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.8. </span>Case Studies<a class="headerlink" href="#case-studies" title="Link to this heading">#</a></h2>
 <p>At the beginning of this chapter, we looked at an example of a 2x2 sudoku and how to solve it using SAT. Now, we will look at a normal 9x9 sudoku and see how to solve that using SAT. Unlike our 2x2 sudoku which had a very small number of variables and clauses, 9x9 sudoku needs 729 variables and about 12000 clauses. Because of this, we cannot simply write the DIMACS CNF file on our own, we need to create a script that will create the file for us. Similarly to the 2x2 example, we need to create a cnf file that has the following constraints:</p>
 <ol class="arabic simple">
 <li><p>Each entry has at least one value</p></li>
@@ -850,7 +856,7 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 </ol>
 <p>In order to create the necessary cnf file, we will use the following script taken from this <a class="reference external" href="https://users.aalto.fi/~tjunttil/2020-DP-AUT/notes-sat/solving.html#solving-problems-with-cnf-sat-solvers-the-sudoku-example">website</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="n">D</span> <span class="o">=</span> <span class="mi">3</span>    <span class="c1"># Subgrid dimension</span>
 <span class="n">N</span> <span class="o">=</span> <span class="n">D</span><span class="o">*</span><span class="n">D</span>  <span class="c1"># Grid dimension</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -868,7 +874,7 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 
     <span class="c1"># A helper: get the Dimacs CNF variable number for the variable v_{r,c,v}</span>
     <span class="c1"># encoding the fact that the cell at (r,c) has the value v</span>
-    <span class="k">def</span> <span class="nf">var</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
         <span class="k">assert</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">r</span> <span class="ow">and</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">v</span> <span class="ow">and</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="o">+</span><span class="p">(</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">N</span><span class="o">+</span><span class="p">(</span><span class="n">v</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
 
@@ -926,12 +932,12 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 <p><code class="docutils literal notranslate"><span class="pre">minisat</span> <span class="pre">puzzle.cnf</span> <span class="pre">output.txt</span></code></p>
 <p>In the terminal, it will tell you whether or not the puzzle was satisfiable, and in the <code class="docutils literal notranslate"><span class="pre">output.txt</span></code> file, it will tell you the assignment values of each of the 729 variables, but it will not show the actual solution to the sudoku puzzle. In order to do that we must use a decoder script such as this one:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
 <span class="n">D</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">N</span> <span class="o">=</span> <span class="n">D</span><span class="o">*</span><span class="n">D</span>  <span class="c1"># 9</span>
 
-<span class="k">def</span> <span class="nf">inv_var</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">inv_var</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">x</span> <span class="o">//</span> <span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">x</span> <span class="o">%=</span> <span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
@@ -966,9 +972,9 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 <p>This will show us the final solution of our sudoku puzzle with our given constraints. Now, we can edit our <code class="docutils literal notranslate"><span class="pre">puzzle.txt</span></code> to be able to determine if any 9x9 sudoku with any given values is satisfiable, and then use <code class="docutils literal notranslate"><span class="pre">decoder.py</span></code> to output the solution of that puzzle. Also, given the way we created our <code class="docutils literal notranslate"><span class="pre">sudoku.py</span></code> and <code class="docutils literal notranslate"><span class="pre">decoder.py</span></code> files, we can try this with any size sudoku by simply changing a few numbers.</p>
 </section>
 <section id="references">
-<h2><span class="section-number">1.9. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.9. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <section id="early-work">
-<h3><span class="section-number">1.9.1. </span>Early Work<a class="headerlink" href="#early-work" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.9.1. </span>Early Work<a class="headerlink" href="#early-work" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Davis, Martin; Putnam, Hilary (1960). <a class="reference external" href="https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory">A Computing Procedure for Quantification Theory</a>. Journal of the ACM. 7 (3): 201–215.</p>
 <ul>
@@ -998,12 +1004,12 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 </ul>
 </section>
 <section id="modern-developments">
-<h3><span class="section-number">1.9.2. </span>Modern Developments<a class="headerlink" href="#modern-developments" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.9.2. </span>Modern Developments<a class="headerlink" href="#modern-developments" title="Link to this heading">#</a></h3>
 <p>… this needs more work … here are some references I found …</p>
 <ul class="simple">
 <li><p>Alouneh, S., Abed, S. E., Al Shayeji, M. H., &amp; Mesleh, R. (2019). A comprehensive study and analysis on SAT-solvers: advances, usages and achievements. Artificial Intelligence Review, 52(4), 2575-2601.</p></li>
 <li><p>Froleyks, N., Yu, E., &amp; Biere, A. (2023, October). BIG backbones. In 2023 Formal Methods in Computer-Aided Design (FMCAD) (pp. 162-167). IEEE.</p></li>
-<li><p>Heule, M. J., Iser, M., Järvisalo, M., &amp; Suda, M. (2024). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=%22SAT+Competition+2024%22+&amp;btnG=">Proceedings of SAT Competition 2024: Solver, Benchmark and Proof Checker Descriptions</a>. <a class="reference external" href="https://researchportal.helsinki.fi/files/324666039/sc2024-proceedings.pdf">pdf</a></p></li>
+<li><p>Heule, M. J., Iser, M., Järvisalo, M., &amp; Suda, M. (2024). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%22SAT+Competition+2024%22+&amp;amp;btnG=">Proceedings of SAT Competition 2024: Solver, Benchmark and Proof Checker Descriptions</a>. <a class="reference external" href="https://researchportal.helsinki.fi/files/324666039/sc2024-proceedings.pdf">pdf</a></p></li>
 <li><p>…</p></li>
 </ul>
 </section>
@@ -1138,7 +1144,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Syllogistic Logics in Isabelle &#8212; Logical Foundations of AI</title>
   
@@ -29,39 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/appendix-syllogistic-logics';</script>
@@ -160,26 +155,37 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Their Software Tools</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraint Programming with MiniZinc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">4. SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">7. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Introduction to Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">Constraint Programming with MiniZinc</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="current nav bd-sidenav">
@@ -226,9 +232,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -369,9 +375,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -412,9 +418,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="syllogistic-logics-in-isabelle">
-<h1>Syllogistic Logics in Isabelle<a class="headerlink" href="#syllogistic-logics-in-isabelle" title="Permalink to this heading">#</a></h1>
+<h1>Syllogistic Logics in Isabelle<a class="headerlink" href="#syllogistic-logics-in-isabelle" title="Link to this heading">#</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>The purpose of this tutorial is to give a first introduction to the proof assistant and interactive theorem prover (ITP) Isabelle.</p>
 <p>An ITP is used to help humans to formalize proofs. You can think of an ITP as a programming language in which programs are mathematical proofs. There are many different ITPs and Isabelle is one of the most widely used ones and has been at the cutting edge of the field for many decades. So it is definitely worth seeing an example of Isabelle in practice.</p>
 <p>This leaves open the question of what to prove. One typical choice would be to apply Isabelle to proving the correctness of programs. This is a very good way to learn about ITPs in general and Isabelle in particular. For this I recommend the book <a class="reference external" href="http://concrete-semantics.org/">Concrete Semantics</a>.</p>
@@ -424,7 +430,7 @@ document.write(`
 <p>Fortunately, this question has been asked and answered convincingly by Larry Moss in his work on syllogistic logics.</p>
 </section>
 <section id="setting-up">
-<h2>Setting Up<a class="headerlink" href="#setting-up" title="Permalink to this heading">#</a></h2>
+<h2>Setting Up<a class="headerlink" href="#setting-up" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Download the latest version of <a class="reference external" href="https://isabelle.in.tum.de/">Isabelle</a>, Isabelle 2025 at the time of writing.</p></li>
 <li><p>Open <a class="reference download internal" download="" href="../_downloads/7d9b49e880fe4c6a871f3f94c621c84b/AllPAreQ_noProofs.thy"><span class="xref download myst">AllPAreQ_noProofs.thy</span></a> from the Isabelle IDE.</p></li>
@@ -433,13 +439,13 @@ document.write(`
 </ul>
 </section>
 <section id="the-completeness-theorem">
-<h2>The Completeness Theorem<a class="headerlink" href="#the-completeness-theorem" title="Permalink to this heading">#</a></h2>
+<h2>The Completeness Theorem<a class="headerlink" href="#the-completeness-theorem" title="Link to this heading">#</a></h2>
 <p>In this tutorial we will be reading Section 2.1-2.4 of the book while at the same time formally proving its theorems in Isabelle. The logic we will consider has only two rules</p>
 <p><img alt="" src="../_images/2025-10-30-15-43-25.png" /></p>
 <p>and the main theorem we are going to prove, the completeness theorem, is</p>
 <p><img alt="" src="../_images/2025-10-30-15-45-52.png" /></p>
 <section id="the-idea-of-the-proof">
-<h3>The Idea of the Proof<a class="headerlink" href="#the-idea-of-the-proof" title="Permalink to this heading">#</a></h3>
+<h3>The Idea of the Proof<a class="headerlink" href="#the-idea-of-the-proof" title="Link to this heading">#</a></h3>
 <p>The strategy of the proof will be the following. Given <span class="math notranslate nohighlight">\(\Gamma\)</span>, we build a so-called canonical model <span class="math notranslate nohighlight">\(M_\Gamma\)</span> from <span class="math notranslate nohighlight">\(\Gamma\)</span> which, by construction, will have the properties that <a class="footnote-reference brackets" href="#phi" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(M_\Gamma\models \Gamma\)</span></p></li>
@@ -462,7 +468,7 @@ Have:  <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span></p
 <p><strong>Remark:</strong> Every model of <span class="math notranslate nohighlight">\(\Gamma\)</span> satsifies all consequences of <span class="math notranslate nohighlight">\(\Gamma\)</span>. But the canonical model also refutes everything that is not derivable from <span class="math notranslate nohighlight">\(\Gamma\)</span>. This is the most important idea for completeness: If <span class="math notranslate nohighlight">\(\Gamma\not\vdash\phi\)</span> then find a model <span class="math notranslate nohighlight">\(M\)</span> such that <span class="math notranslate nohighlight">\(M\models\Gamma\)</span> and <span class="math notranslate nohighlight">\(M\not\models\phi\)</span>.</p>
 </section>
 <section id="the-details-of-the-proof">
-<h3>The Details of the Proof<a class="headerlink" href="#the-details-of-the-proof" title="Permalink to this heading">#</a></h3>
+<h3>The Details of the Proof<a class="headerlink" href="#the-details-of-the-proof" title="Link to this heading">#</a></h3>
 <p>We already showed that it suffices to prove the following.</p>
 <p><strong>Lemma:</strong> Let <span class="math notranslate nohighlight">\(\Gamma\)</span> be a set of sentences of the form “All p are q”. There is a model <span class="math notranslate nohighlight">\(M_\Gamma\)</span> such that</p>
 <ol class="arabic simple">
@@ -509,7 +515,7 @@ Have:  <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span></p
 </section>
 </section>
 <section id="the-formalization">
-<h2>The Formalization<a class="headerlink" href="#the-formalization" title="Permalink to this heading">#</a></h2>
+<h2>The Formalization<a class="headerlink" href="#the-formalization" title="Link to this heading">#</a></h2>
 <p>Since we will implement Chapters 2.1-2.4 of the book in Isabelle, it is a good a idea to arrange the windows on your screen so that you can simultaneously see the book <code class="docutils literal notranslate"><span class="pre">Logic</span> <span class="pre">From</span> <span class="pre">Language</span></code> and the Isabelle IDE with the theory <code class="docutils literal notranslate"><span class="pre">AllPAreQ_noProofs.thy</span></code> (there is also a theory with the proofs but that would be spoiling it).</p>
 <p>Let us start with the beginning of Chapter 2.1 from <code class="docutils literal notranslate"><span class="pre">Logic</span> <span class="pre">From</span> <span class="pre">Language</span></code></p>
 <p><img alt="" src="../_images/2025-10-30-09-27-20.png" /></p>
@@ -533,11 +539,12 @@ Have:  <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span></p
 <p><strong>Exercise/Activity:</strong> Prove the lemma using sledgehammer.</p>
 <p>… tbc …</p>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="phi" role="note">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="phi" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>We write <span class="math notranslate nohighlight">\(\phi\)</span> instead of “All p are q” not only as an abbreviation but also to indicate that this proof strategy applies to a wide range of other logics.</p>
 </aside>
-<aside class="footnote brackets" id="lemma-allpareq-solution" role="note">
+<aside class="footnote brackets" id="lemma-allpareq-solution" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lemma</span> <span class="n">all_p_are_q</span><span class="p">:</span>
   <span class="n">fixes</span> <span class="n">M</span> <span class="p">::</span> <span class="s2">&quot;&#39;a model&quot;</span> <span class="ow">and</span> <span class="n">p</span> <span class="n">q</span> <span class="p">::</span> <span class="n">atProp</span>
@@ -549,6 +556,7 @@ Have:  <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span></p
 <li><p><code class="docutils literal notranslate"><span class="pre">fixes</span></code> introduces type constraints</p></li>
 <li><p>The unicode characters can by typeset in the IDE with <code class="docutils literal notranslate"><span class="pre">\&lt;models&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">\&lt;longleftrightarrow&gt;</span></code></p></li>
 </ul>
+</aside>
 </aside>
 </section>
 </section>
@@ -649,7 +657,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
