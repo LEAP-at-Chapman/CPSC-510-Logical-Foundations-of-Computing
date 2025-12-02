@@ -36,6 +36,8 @@ The tool that I will mainly be focusing on is Prolog, a unique coding language d
 ### Installing The Tool
 [download and install](https://www.swi-prolog.org/download/stable) Prolog. On MacOS, after moving SWI-Prolog to the Applications folder, you may have to run `echo 'export PATH="/Applications/SWI-Prolog.app/Contents/MacOS:$PATH"' >> ~/.zshrc` to add `swipl` to your path. Then, running `swipl` in your terminal should start the Prolog interpreter.
 
+There is also a web version available at [tio](https://tio.run/##KyjKz8lP1y0uz/wPBMX5OaUlmfl5GhGaegA) that is a great alternative if you do not want to download the tool!
+
 ## First Example
 The eight queens problem is a logic problem in where a user attempts to place all 8 queens on a chess board such that none threaten another.
 
@@ -83,7 +85,10 @@ Use Ctrl-d to exit Prolog.
 
 If we enter `trace.` and enter `solution(S).` again. Use the `return` key to look into the execution of a predicate and use `s` to skip directly to the end of the execution of a predicate. Enter `a` to abort the execution. That is useful when you got lost in the execution and want to start over again.
 
+Here is a link to the code to test on the free swi-prolog server: [eight-queens](https://tio.run/##jVJLS8QwEL73V8wxwaSQmwg9eV0q7mlhLUuUsA2miTYpBfG/r9M86u6iaC7NfI/5ZmjeRmfckftZn07emSloZ8njpJT1FO44VICnbW5ZvBhlj6HPPIOWJvg91gVuaV1VGdp37IBlqeKXbN3M4N4ZCp/wEHo1@g5Na1oWJ4aVjByd0ezbRDArsC1of8HADYhE2mkw2gcicGoGG7xm16CGZzUSHOcCtk6GIF9eydXIJXnZcdUcGOw7RH43fW8uIiTOdl82j5mIQ/PURJ7BD6eoBC/SpSGPOX@oeIz@92qD1LaMdf0sUpd51EGtEFiT4F6agH78l9rqoKXRHzKal460PntkO1p/AQ)
+
 ## Intro Examples
+
 In logic programming, a Prolog database is composed of facts and rules that describe relationships between entities in a declarative way. Rather than specifying how to compute something, the programmer defines what is true about the problem domain. This allows Prolog to act as a powerful tool for database querying, where relationships can be inferred rather than explicitly stored. Queries are made by posing logical questions to the database then uses backtracking to search through known facts and rules to find all possible solutions to the query.
 
 In a simple family database, the database models a small family tree using facts such as `parent(arthur, george)` and `parent(george, amelia)`, which record direct parent-child relationships. Rules like `grandparent/2`, `sibling/2`, and `ancestor/2` define how more complex family relationships can be logically derived. For instance, `grandparent(X, Z) :- parent(X, Y)`, `parent(Y, Z)` states that X is a grandparent of Z if X is a parent of Y and Y is a parent of Z. The sibling rule ensures that two people are considered siblings if they share a parent but are not the same person. The gender facts, combined with the `father/2` and `mother/2` rules, extends the database by categorizing parents according to gender, allowing for more natural queries like `father(X, Y)` or `mother(X, Y)`.
@@ -92,10 +97,9 @@ When a query such as
 
 `?- grandparent(X, richard).`
 
-
 is executed, Prolog searches through the database to find all individuals X who satisfy the condition of being a grandparent of richard. The trace output reveals Prolog’s reasoning process step by step:
 
-```
+``` prolog
    Call: (12) grandparent(_32210, richard) ? creep
    Call: (13) parent(_32210, _33508) ? creep
    Exit: (13) parent(arthur, george) ? creep
@@ -168,11 +172,16 @@ A = 15.0.
 ?- greater_than(8, 5).
 true.
 ```
+
 What's interesting is that prolog doesn’t "calculate" in the way procedural languages do, it evaluates logical truths involving numeric expressions. When you ask ?- square(4, Y)., Prolog checks if there exists a value of Y such that Y is 4 * 4 can be satisfied. Once the arithmetic succeeds, it binds Y to the result 16.
+
+tio run: [code](https://tio.run/##XY/BisIwFEX3/Yq7EVp9dlQUBxdC6x8MLupKojzbMtpokurn1ySNgq5yueQc3r0qeZblWD/qrhtgWzH0rRWKIU8QaNrLgVXUV3FB2CVYjbFDrVFgiCKNokC1F4eYhwyQjmwVZ4Sc8Me6PRuP9tHxGUbI37y4sxIlfztCHTzZvfQS@zpD7BUJfjDznk3Fx3/UJ8iGg8F9KxULY6OpRAPRSFPZSaHcu9LbezHW9qauC4PnlCWp37GgJeU2v@6ZTmg2oY1tPkS/tEjSJw)
 
 ## The Landscape Of Tools
 
 Prolog has been implemented in many different environments since its introduction in the 1970s, each designed with particular goals such as speed, interoperability, constraint solving, or educational use. Although the examples throughout this book are written using SWI-Prolog, one of the most popular and accessible implementations, it is worth going through and understanding the broader ecosystem of tools that have shaped the Prolog landscape.
+
+**SWI-Prolog** stands as one of the most widely-used and versatile open-source implementations. Its primary strengths lie in its extensive library support, robust development tools, and strong focus on interoperability and web technologies. SWI-Prolog features a rich ecosystem that includes built-in support for HTTP servers, JSON, RDF data management, and seamless interfaces to languages like C, C++, Java, and Python. This, combined with a powerful development environment and a proactive user community, makes it an excellent choice for a wide range of applications, from academic research and rapid prototyping to complex knowledge-intensive systems and semantic web applications.
 
 **SICStus Prolog** is a commercial-grade Prolog system developed at the Swedish Institute of Computer Science. Known for its robustness and performance, SICStus has been widely adopted in industrial and research environments where reliability is essential. It supports advanced features such as constraint logic programming (CLP), efficient memory management, and an extensive set of libraries for interfacing with external systems. Its stability and compliance with ISO Prolog standards make it a favorite for large-scale applications in AI, natural language processing, and expert systems.
 
@@ -190,88 +199,50 @@ In essence, Datalog emphasizes the data-centric dimension of logic programming. 
 
 ## Algorithms
 
-In a logic-programming environment like SWI-Prolog, “algorithms” often looks different than in imperative languages. You don’t typically write loops or mutable state; instead you use recursion, backtracking, higher-order predicates, and built-in primitives. However, you can implement many classic algorithmic patterns (sorting, searching, aggregation, constraint-solving, graph search, etc.), or rely on libraries that provide optimized primitives. This section surveys both built-in support and user-level techniques you might use when building “algorithms” in SWI-Prolog.
+In a logic-programming environment like SWI-Prolog, "algorithms" refer to the fundamental computational mechanisms that transform logical declarations into executable programs. Unlike imperative languages where algorithms are primarily written by the programmer, Prolog's core algorithms are built into the language itself and automatically handle the execution of logical predicates.
 
-### Built-in / Library-Based Algorithms
+### Algorithms: Core Computational Mechanisms
 
-SWI-Prolog includes many libraries that are algorithmic in nature. A few examples are:
+The following are the fundamental algorithms that power Prolog's execution model, enabling logical inference and problem-solving.
 
-* Sorting / Searching
-    - SWI-Prolog supports `sort/2` and `keysort/2` for sorting lists or pairs. These are often more efficient than hand-rolled sorts, and you can build on them with `maplist/3`, `foldl/4`, or other higher-order predicates.
-* Constraint Logic Programming / Optimization Libraries
-    - Prolog supports constraint-based solving via libraries such as CLP(B), CLP(FD), and simplex.
-    For example, SWI-Prolog provides a library(simplex) that lets you solve linear programming problems.
-* Engines & Aggregation
-    - SWI-Prolog includes support for engines (coroutines or goal-engines) that allow you to decouple backtracking enumeration of solutions from accumulation/aggregation logic.
+*   **Unification**
+    - Unification is the pattern-matching algorithm at the heart of Prolog. It determines whether two terms can be made identical by substituting variables with appropriate values. This algorithm is used for parameter passing, fact matching, and rule application. Unification enables Prolog to match query terms with database facts and heads of rules without explicit assignment operations.
 
-Now these are some prebuilt in functions that users can use for various problems. However there are almost certainly cases where there are algorithms you need that are not already implemented. So what are some samples of algorithms that you would implement yourslef?
+*   **Resolution and Backtracking**
+    - Resolution is the inference algorithm that combines unification with logical deduction. When Prolog attempts to satisfy a goal, it searches for a matching clause in the database. If the clause is a rule, resolution recursively attempts to satisfy the subgoals in its body. Backtracking is the systematic search algorithm that explores alternative execution paths when unification fails or when multiple solutions are requested. It automatically unwinds variable bindings and tries the next possible match.
 
-### User-Level Algorithms
+*   **Depth-First Search with Chronological Backtracking**
+    - Prolog implements a specific search strategy for exploring the solution space: depth-first search with chronological backtracking. The algorithm always explores the most recent choice point first, diving deep into one branch of the possibility tree before systematically backtracking to explore alternatives. This provides the predictable left-to-right, depth-first execution order that characterizes Prolog programs.
 
-* List Recursion & Accumulators
-    - Many algorithms on lists (sum, maximum, mapping, flatten, filter, reverse) are best written using recursion with accumulator variables to avoid building work after recursive calls (i.e. tail-recursive style). Example:
-    ```prolog
-    sum_list([], 0).
-    sum_list([H|T], Sum) :-
-        sum_list(T, SumTail),
-        Sum is H + SumTail.
-    ```
-    Or tail-recursive version:
+*   **Constraint Solving Algorithms**
+    - When using libraries like CLP(FD), specialized constraint solving algorithms operate alongside unification. These include domain consistency algorithms (like arc consistency), propagation techniques, and intelligent labeling strategies that work together to efficiently prune impossible values from variable domains before and during search.
 
-    ```prolog
-    sum_list_acc(List, Sum) :-
-        sum_list_acc(List, 0, Sum).
+*   **Term Manipulation and Structure Sharing**
+    - Prolog implementations use sophisticated algorithms for term representation and manipulation, often employing structure sharing to efficiently handle variable binding environments during backtracking. These algorithms manage the creation, copying, and destruction of logical terms while maintaining execution efficiency.
 
-    sum_list_acc([], Acc, Acc).
-    sum_list_acc([H|T], Acc0, Sum) :-
-        Acc1 is Acc0 + H,
-        sum_list_acc(T, Acc1, Sum).
-    ```
-* Sorting Algorithms
-    - For a quick example, quicksort can be written with list partitioning and recursion:
-    ```prolog
-    quicksort([], []).
-    quicksort([Pivot|Rest], Sorted) :-
-        partition(Rest, Pivot, Less, Greater),
-        quicksort(Less, SortedLess),
-        quicksort(Greater, SortedGreater),
-        append(SortedLess, [Pivot|SortedGreater], Sorted).
-    ```
-    While this is less efficent than the built in `sort/2` its always good to know what other resources and capabilites are available
+### Typical Use Cases
 
-* Graph Traversal / Search
-    - You can implement depth-first search (DFS), breadth-first search (BFS), or state-space search in Prolog. That often means defining your graph as `edge(Node, Neighbor)` facts, then writing recursive predicates that carry visited-node accumulators, path reconstruction, cycle detection, etc.
+Each software tool has its own use cases. This section describes typical use cases, including algorithms that can be implemented more efficiently or more easily with the support of the tool in question.
 
-* Constraint / Optimization via Recursion & CLP(FD)
-    - Suppose you want to solve a combinatorial problem (e.g. N-Queens, magic squares, scheduling) like we did in our first problem. You can combine recursion with constraints (domain variables) using libraries like clpfd.
+*   **Rule-Based Systems and Expert Systems**
+    - *Use Case:* Building diagnostic tools, configuration systems, or intelligent assistants that reason through complex rule sets.
+    - *Tool Support:* Prolog's built-in resolution algorithm automatically handles the forward or backward chaining through rules. The programmer declares the knowledge as facts and rules, and Prolog's inference engine automatically applies unification and backtracking to find conclusions.
 
-* Meta-Programming / Higher-Order Patterns
-    - You can write predicates that take other goals as parameters (using `call/1`, `maplist/2-3`, etc.), or write interpreters at runtime. This is useful if your algorithm must generate or test dynamic goals or constraints.
+*   **Natural Language Processing**
+    - *Use Case:* Implementing parsers, grammar checkers, or semantic analysis tools.
+    - *Tool Support:* Definite Clause Grammars (DCGs) leverage Prolog's unification algorithm to match syntactic structures, while backtracking automatically handles ambiguous parses by exploring alternative grammatical interpretations.
 
-## Benchmarks & Competitions in Logic / Formal Methods
+*   **Combinatorial Problem Solving**
+    - *Use Case:* Solving scheduling problems, puzzle solving (N-Queens, Sudoku), or resource allocation.
+    - *Tool Support:* The combination of Prolog's depth-first search with constraint solving algorithms (via CLP libraries) provides a complete solution framework. Programmers declare variables, domains, and constraints, while the system's algorithms handle the complex search and propagation.
 
-Benchmarks and competitions play a major role in driving progress in formal methods, logic programming, automated reasoning, program verification, and related areas. They help by:
+*   **Protocol Analysis and Formal Verification**
+    - *Use Case:* Analyzing communication protocols, model checking, or verifying system properties.
+    - *Tool Support:* Prolog's unification algorithm can match protocol state patterns, while backtracking systematically explores all possible execution paths or state sequences to identify violations of desired properties.
 
-- Providing standardized problem sets for comparing systems
-- Pushing tool builders to optimize for realistic workloads
-- Raising visibility and credibility for research / tool-development
-- Encouraging reproducibility (since benchmarks are shared)
-- Motivating novel techniques to "win" or improve scores
-
-Below are some of the benchmarks / competitions that I found that are relevant to logic programming, Prolog-like systems, or the broader formal methods / automated reasoning world. Some are directly applicable to Prolog or logic-programming; others are less related, but suggest opportunities for Prolog / CLP / logic-based tooling to participate or be compared.
-
-### Prolog / Logic Programming Benchmarks
-
-These are competitions / benchmark suites that more directly touch Prolog or logic-programming implementations.
-
-| Name | Description & Relevance |
-|------|------------------------|
-| **SWI-Prolog benchmark suite** | SWI-Prolog hosts a benchmark set (originating from the "van Roy" benchmarks) in its repository. It supports running multiple systems (SWI, YAP, SICStus, etc.) via its compare driver. [GitHub](https://github.com/SWI-Prolog/bench) |
-| **Logtalk benchmark suite** | According to StackOverflow discussions, there is a classical set of Prolog benchmarks included in Logtalk. These can be used to compare Prolog backends via Logtalk wrapper. [Logtalk](https://logtalk.org/) |
-| **CMU AI Repository — Prolog benchmark code** | There is an older collection at CMU's AI Repository under lang/prolog/code/bench/ that includes standard small programs (8-queens, list reversal, cryptarithm benchmarks etc.) [CMU School of Computer Science](https://www.cs.cmu.edu/) |
-| **Mercury benchmarks** | Although Mercury is a logic / functional-logic language rather than pure Prolog, its benchmark suite includes examples convertible to Prolog style. These benchmarks are used to compare Mercury against Prolog implementations too. [MercuryLang](https://mercurylang.org/) |
-
-These benchmarks tend to focus on execution-speed, memory use, or scalability of inference/unification/backtracking on small-to-medium sized logic / search programs.
+*   **Database Query Optimization and Deductive Databases**
+    - *Use Case:* Implementing intelligent query systems that combine database facts with logical rules for deductive reasoning.
+    - *Tool Support:* The resolution algorithm processes recursive queries and logical inferences that would require complex joins and recursive SQL in traditional databases. Systems like Datalog optimize this further by applying database-style query optimization to logical resolution.
 
 ### Competitions & Broader Formal Methods Benchmarking
 
@@ -289,7 +260,6 @@ While not always Prolog-specific, these competitions shape the formal methods / 
 These competitions often expect tools to support specific input / output formats, provide standard measures (time, memory, correctness), and sometimes require strict conformance or reproducibility.
 
 ## Industrial Applications of Logic Programming
-
 
 Logic programming and its Datalog relatives have had concrete, high-impact uses in industry — from static program analysis to enterprise decision systems — and they are now interacting with generative (neural) methods in ways that are reshaping research and tooling.
 
@@ -462,6 +432,8 @@ Then in the Prolog interpreter:
 ?- solve.
 ```
 
+Tio code is also available: [code](https://tio.run/##nVZtb9owEP7Or7h@qAhqQC2wfWDrpGQdkyZ16lqp@8AQSokpnpwX2ckoUtW/zs4vcUwCSFskaOw7P3fP47ujOc9Y9twXG7rbncPPqCAcvpXPcMezJ0YSeMjYH8I752ozmMAYGEUfAcsoj5a02PrKEk5g1LTgoa9ZxCZwSyJRcgLkJVoWbAtD49lBj7594KHA6HBPck4ESXFBs9Sxo7OQHh7GCxafS87RSUUPq1WvgfgYMRrDbfaHCBcIna4GMKWMaVawzJKckYKwbSdBZ0/HWfgQ9nwTdCwXPZj0oQP4rDKeRIXXrUHe0m5vIKGHDnToQAO44IEPCwuOi5ECP4wdWuzRAL4kebHVIY8me1klu4fnnLSAYxcwPJXg5SnAOsN3A7jLSg4rniWobJGhBmVaUIZ/qYBViZwyjhZcEHm@EbMm8Z1scI3fDpUAPoEkBx9h5KsdGSxIMgwhEROaKjGhL4GUg4SRpgD3amdrU1mFcNGyVSQVm7dNVdyKl64a5FZx92FWn59rJd67SoTSOzBKBK4S4f8pEWolAlRifEyJ0Md27UPQUuLihBL9f1YirJQIjijh9jiJ@HINAXvOOC3WSaMt1bSBYk1goybRb0TN9STqCGUz9NVi8bQS3qwq@cveHIPjB0FKOTsMbU5wgAniVds@jhi1EzccU@bDBrMiXreywBRpxGddvAppxY/yzDlNi4UwTl4LT7EOOYniYt1fUS4KEJo4ldMgqaZbp0VD3fvrAlk8UoGpxEjJtZjdua0DL4DryTUMP@A1qBdMFfTgxdmTxlTGmdiRCzQFgsJrbRXCGWbr5GFGqRrGr/dEFD9KUhI3IUvTzgOaxhFjWKcv@pyvh2T1eKqwXWBZzca313CGXxeQkOSJcBfPBO/VpawMwqyjPCdp7Nl0/dpDvapN41tzrQyo8R7rSmSHaquOqwK5oSJn0dat40Z1zGQXNPdUoHljoi70TVeynB05duXrn8qhup5TIFe9g/U62zuO1PZOOuXWmvjmnwA7BOyPv93RI0Cebjd/wNAjxcrHPr4hOfbGVPWGGQqOhPqO4pXY73fcWORRsfbqnrf9YQbA8Z6@mT5Y68R09CF13Ds/GNbM5jvc0d8nm/FsYPsRB8JyTeIW7H5naNxWk53uoc7RzlEJ@odEdJxm9v1V@u9V/m6nzg3@Ag)
+
 
 ### 1. Declarative State Transitions
 
@@ -516,10 +488,107 @@ What makes this case study interesting is how it showcases Prolog's ability to b
 
 This approach scales remarkably well to more complex problems. The same pattern of defining state transitions and letting Prolog search for sequences applies to scheduling problems, route planning, configuration tasks, and many other domains where the solution isn't a simple formula but comes from following rules systematically.
 
+## History
 
+Logic programming, with Prolog as its flagship language, experienced a surge of use in the 1970s–80s as part of the broader AI wave. Its declarative nature—specifying *what* rather than *how*, was on course to revolutionize software development, particularly for knowledge-intensive applications like expert systems, natural language processing, and symbolic AI. During this period, Prolog was seen as a direct embodiment of the “fifth-generation computer” vision, where logic would serve as the universal foundation for advanced computing systems.
 
+### The Golden Age (1970s–1980s)
+
+- **Foundations**: Prolog emerged from automated theorem proving and resolution-based inference. Its core execution model—unification, depth-first search with backtracking, and Horn clause resolution—was both elegant and powerful for symbolic reasoning.
+- **Rise of Expert Systems**: Tools like IBM’s Watson predecessors, XCON (for configuring DEC computers), and medical diagnostic systems often used Prolog or similar rule-based engines. Logic programming’s strength in encoding domain knowledge made it a natural fit.
+- **Academic Dominance**: In Europe and Japan, logic programming was central to AI research. The Japanese Fifth Generation Computer Project (1982–1992) aimed to build massively parallel logic machines, further propelling Prolog into the spotlight. ([Stanford](https://stacks.stanford.edu/file/druid:kv359wz9060/kv359wz9060.pdf))
+
+### The Decline and Niche Survival (1990s–2000s)
+
+- **Performance Concerns**: Prolog’s interpretive execution and unbounded search struggled with the scale and efficiency demands of growing software systems. Imperative and object-oriented languages (C++, Java) dominated industry.
+- **Shift in AI**: The “AI winter” and the rise of statistical machine learning moved focus away from symbolic approaches. Prolog remained strong in specific niches: computational linguistics, formal verification, and combinatorial search problems.
+- **Tool Specialization**: While general-purpose Prolog use declined, specialized logic-based tools still used prolog:
+  - **Datalog** emerged as a tractable subset for database querying and program analysis.
+  - **Answer Set Programming (ASP)** gained traction for declarative problem solving.
+  - **Constraint Logic Programming (CLP)** integrated finite-domain solvers for scheduling and optimization.
+
+### The Modern Renaissance: Ideas Diffused and Recombined
+
+The core ideas of logic programming didn’t fully disappear rather they diffused into new contexts and hybrid systems:
+
+1. **Deductive Databases and Big Data**
+   - Datalog engines like **Soufflé** and **LogicBlox** scaled logic programming to billions of facts, enabling industrial-scale program analysis, security auditing, and enterprise rule systems.
+   - **Datomic** brought immutable fact databases with temporal queries to modern web applications.
+
+2. **Formal Methods and Verification**
+   - Prolog’s unification and backtracking are embedded in many model checkers, theorem provers (e.g., Coq’s Ltac, Isabelle’s simplifier), and SAT/SMT solvers.
+   - Logic programming’s declarative style lives on in specification languages like Alloy and TLA⁺.
+
+3. **Domain-Specific Languages (DSLs)**
+   - Many configuration languages, packet-filtering rules (e.g., iptables), and business-rule engines are essentially restricted logic languages.
+   - Prolog’s grammar-definition facilities (DCGs) inspired parser generators and data-validation frameworks.
+
+4. **Knowledge Graphs and Semantic Web**
+   - RDF and OWL are fundamentally logic-based reasoning engines like SWI-Prolog’s **semweb** library apply Prolog inference to linked data.
+   - Graph query languages (Cypher, Gremlin) incorporate pattern-matching ideas from logic programming.
+
+## Formal Methods and AI
+
+Recent advances in generative AI have sparked a renewed synergy between neural and symbolic methods, often called *neurosymbolic AI*. The dominant pattern is **guess (neural) and verify (symbolic)**:
+
+- **Neural Guidance for Symbolic Reasoning**: Large language models (LLMs) propose candidate proofs, lemmas, or tactic sequences that traditional provers (like Vampire, E, or Lean) then verify. Systems like **GPT-f** (for Metamath) and **Thor** show that neural models can dramatically reduce search branching in theorem proving.
+- **Symbolic Backends for Neural Outputs**: When LLMs generate code or logical statements, symbolic tools (type checkers, static analyzers, SMT solvers) validate correctness, providing a safety net for generative systems.
+- **Hybrid Toolchains**: New pipelines combine:
+  1. LLMs for informal-to-formal translation (natural language to specification),
+  2. Logic engines for constraint solving and verification,
+  3. Gradient-based methods for tuning heuristics or learning search policies.
+
+This hybrid approach leverages the creativity and pattern recognition of neural networks while retaining the rigor and guarantees of symbolic reasoning—making formal methods more accessible and scalable.
+
+## Current Developments
+
+1. **Scalable Neuro-Symbolic Integration**
+   - How to jointly train neural and symbolic components end-to-end?
+   - How to represent symbolic structures (logic terms, proofs, constraints) in vector spaces effectively?
+
+2. **Explainable and Verifiable AI**
+   - Using logic programming to extract interpretable rules from neural models.
+   - Building *verification-aware* training where models satisfy formal constraints.
+
+3. **Efficient Inference at Scale**
+   - Parallelizing Prolog/Datalog evaluation on modern hardware (GPUs, distributed clusters).
+   - Incremental reasoning for streaming data and dynamic knowledge bases.
+
+4. **Usability and Tooling**
+   - Better IDEs, debuggers, and profiling tools for logic programs.
+   - Seamless interoperability with Python, Rust, and other mainstream ecosystems.
+
+5. **Broadening Application Domains**
+   - Applying logic programming to new areas: reinforcement learning (symbolic reward shaping), cybersecurity (attack-tree analysis), and scientific discovery (hypothesis generation from data).
+
+---
+
+## How its being used today
+
+### Conferences & Workshops
+
+- **ICLP (International Conference on Logic Programming)** – The flagship conference for traditional logic programming.
+- **PPDP (Principles and Practice of Declarative Programming)** – Covers logic, functional, and constraint programming.
+- **LPAR (Logic for Programming, Artificial Intelligence and Reasoning)** – Focus on logic in AI and verification.
+- **CAV (Computer-Aided Verification)** and **FM (Formal Methods)** – For formal methods integrations.
+- **NeurIPS / ICML workshops** on Neurosymbolic AI, Knowledge Representation, and Reasoning.
+- **PADL (Practical Aspects of Declarative Languages)** – Emphasis on practical implementations and tools.
+
+### Journals
+
+- *Theory and Practice of Logic Programming*
+- *Journal of Automated Reasoning*
+- *Artificial Intelligence*
+- *ACM Transactions on Computational Logic*
+
+### Online Resources & Communities
+
+- **SWI-Prolog Discourse** and **Stack Overflow** (Prolog tag) – Active user communities.
+- **arXiv** sections: cs.AI, cs.LO, cs.PL, cs.SE.
+- **GitHub** organizations: SWI-Prolog, Soufflé-lang, Datalog-educators.
 
 ## References
+
 1. https://swish.swi-prolog.org/p/dselman.swinb
 2. https://www.geeksforgeeks.org/dsa/8-queen-problem/
 3. https://www.swi-prolog.org/pldoc/man?section=arith

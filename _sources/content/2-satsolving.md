@@ -50,6 +50,16 @@ a\vee(b\wedge c) &= (a\vee b)\wedge (a\vee c) & \text{move } \wedge \text{ outsi
 
 If no rule can be applied anymore, then the formula is in a conjunction $(a_{11}\vee\ldots\vee a_{1n_1})\wedge \ldots \wedge (a_{k1}\vee \ldots \vee a_{kn_k})$ of so-called clauses where each $a_{ij}$ is either a propositional variable or the negation of a propositional variable.
 
+### DIMACS CNF format
+A normal DIMACS CNF file looks like this:
+```
+p cnf <num_variables> <num_clauses>
+<literal_1> <literal_2> ... <literal_n> 0
+...
+c This is a comment line
+```
+You start the file with `p cnf n m` where n is the number of variables and m is the number of clauses. Each literal is an integer; if it is positive it means it is true, if it is negative it means it is false. Each clause is a list of literals separated by spaces and ending with a `0`. A line can be commented out of the file by starting the line with a `c`.
+
 **Exercise:** Encode the following 2x2 Sudoku in conjunctive normal form.
 ```
 [1][?]
@@ -101,14 +111,7 @@ minisat sudoku2x2.cnf solution.txt
 
 **Exercise:** Either reconstruct the encoding in `sudoku_2x2.cnf` and explain the solution. Or create your own encoding of `sudoku_2x2.cnf`, run it, and interpret the solution. 
 
-**Homework:** Consider a Boolean circuit: (A ∧ B) ∨ (C ∧ ¬D) = True with the additional constraint that exactly 2 of {A,B,C,D} are true. Write this as a `cnf` specification and solve it with MiniSat. Explain your encoding and the solution in detail.
-
-## Introductory Examples
-
-How can we one solve a regular Sudoku with MiniSat?
-
-For an answer see [Solving problems with CNF SAT solvers: The Sudoku example](https://users.aalto.fi/~tjunttil/2020-DP-AUT/notes-sat/solving.html#solving-problems-with-cnf-sat-solvers-the-sudoku-example).
-
+**Homework:** Consider a Boolean circuit: (A ∧ B) ∨ (C ∧ ¬D) = True with the additional constraint that exactly 2 of {A,B,C,D} are True. Write this as a `cnf` specification and solve it with MiniSat. Explain your encoding and the solution in detail.
 
 ## SAT solvers
 
@@ -132,16 +135,41 @@ $$
 \frac{p_1\vee\ldots\vee p_m\vee a\quad\quad\quad\quad q_1\vee\ldots\vee q_n\vee \neg a }{p_1\vee\ldots\vee p_m\vee q_1\vee\ldots\vee q_n}
 $$
 
+### Unit Propagation
+Unit propagation is a fairly simply concept. All that it says is that if we have a clause where all but one of its literals is evaluated as False, then the last literal must be True in order for the clause to be True. For example, given the following clause:
+
+$$(A\vee B\vee C)$$
+
+If we have $A =$ False and $B =$ False, then $C$ must be True in order for our clause to be True.
+
+Unit propagation can also be used in the case of a clause having only one variable, because if there is only one variable then it has to be true. For example, given the following clause:
+
+$$(\neg A)$$
+
+We know the clause has to be true, so we apply unit propagation, meaning we set $A =$ False.
+
+### Pure Literal Elimination
+
+If a variable appears throughout the entire formula as only positive or only negative, you can set it to satisfy every clause that contains it. This means that if a variable appears only positively, you can replace it by True and remove the clause. Also, if a variable appears only negatively, you can replace it by False and remove the clause. For example, given the following formula:
+
+$$(\neg A \vee B) \wedge (\neg A \vee C)$$
+
+We see that A appears only negatively. Thus we replace A with False and our new formula becomes:
+
+$$(\neg False \vee B) \wedge (\neg False \vee C)$$
+
+Since the opposite of False is True, we are able to remove both of the clauses from our formula.
+
+
 ### Davis–Putnam algorithm
 
 The [Davis–Putnam algorithm](https://en.wikipedia.org/wiki/Davis%E2%80%93Putnam_algorithm) uses resolution but has some additional rules to guarantee termination. 
 
 1. Select a variable
-2. If the variable appears only positively, replace it by true and remove the clause.
-3. If the variable appears only negatively, replace it by false and remove the clause. 
-4. If it appears positively and negatively, use resolution to eliminate all occurrences. 
-5. Repeat until all variables are eliminated.
-6. If the empty clause is derived, then UNSATISFIABLE, else SATISFIABLE.
+2. Apply Pure Literal Elimination to the variable
+3. If a variable appears positively and negatively, use resolution to eliminate all occurrences. 
+4. Repeat until all variables are eliminated.
+5. If the empty clause is derived, then UNSATISFIABLE, else SATISFIABLE.
 
 #### Davis-Putnam Algorithm example
 
@@ -149,7 +177,7 @@ Given the following formula, we will use the Davis-Putnam algorithm to solve it:
 
 $$(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee \neg C)$$
 
-Step 1 of the algorithm is to select a variable, we will start with A. We see that in clause 1 A appears positively and in clause 2 A appears negatively, meaning we must use resolution. To do that, we take both clauses 1 and 2, remove each instance of A, combine the clauses, and then add it to our formula. So, our new formula is:
+Step 1 of the algorithm is to select a variable, we will start with A. We see that in clause 1, A appears positively and in clause 2, A appears negatively, meaning we must use resolution. To do that, we take both clauses 1 and 2, remove each instance of A, combine the clauses, and then add it to our formula. So, our new formula is:
 
 $$(B \vee C) \wedge (\neg B \vee \neg C)$$
 
@@ -157,11 +185,13 @@ Now, we repeat our steps with a new variable, we will pick B. Since B appears bo
 
 $$(C \vee \neg C)$$
 
-As we know, this is always true, so we can remove it from our formula. Thus, no clauses are remaining, meaning the formula is satisfiable. This may be a little confusing because the 6th step of the algorithm says that if the empty clause is derived, then the formula is unsatisfiable. However, we did not derive the empty clause, and I will give a demonstration of how the empty clause is derived to clear up any confusion. Imagine this is our formula:
+As we know, this is always true, so we can remove it from our formula. Thus, no clauses are remaining, meaning the formula is satisfiable. 
+
+This may be a little confusing because the 5th step of the algorithm says that if the empty clause is derived, then the formula is unsatisfiable. However, we did not derive the empty clause, and I will give a demonstration of how the empty clause is derived to clear up any confusion. Imagine this is our formula:
 
 $$(A) \wedge (\neg A)$$
 
-Using the algorithm, A appears both positively and negatively, meaning that we have to use resolution again. However, after using resolution, we are left with the empty clause (denoted as \square). This our formula is unsatisfiable. 
+Using the algorithm, A appears both positively and negatively, meaning that we have to use resolution again. However, after using resolution, we are left with the empty clause (denoted as $\square$). Thus our formula is unsatisfiable. 
 
 ### Davis–Putnam–Logemann–Loveland (DPLL) algorithm
 
@@ -172,7 +202,7 @@ DP can generate many new clauses. For example in
 (a ∨ x₁) ∧ (a ∨ x₂) ∧ (a ∨ x₃) ∧ (a ∨ x₄) ∧
 (¬a ∨ y₁) ∧ (¬a ∨ y₂) ∧ (¬a ∨ y₃) ∧ (¬a ∨ y₄)
 ```
-DP resolves every clause with 'a' against every clause with `¬a`
+DP resolves every clause with `a` against every clause with `¬a`
 ```
 (a ∨ x₁) + (¬a ∨ y₁) → (x₁ ∨ y₁)
 (a ∨ x₁) + (¬a ∨ y₂) → (x₁ ∨ y₂)  
@@ -195,30 +225,53 @@ Try a = True:
 
 Both DP and DPLL have exponential time complexity in the worst case. But in practice DPLL is much better. One difference is that due to backtracking DPLL is linear in memory. 
 
+The algorithm for DPLL follows these steps:
+1. Apply Unit Propagation
+2. Apply Pure Literal Elimination
+3. If the empty clause appears, return UNSAT
+4. If no clauses are left, return SAT
+5. Choose a variable
+6. Recursively try both assignments on that variable
+
+    a. Assign that variable to True
+
+    b. If that fails, assign it to False
+
+    c. If either step a or b succeeds, return SAT, otherwise, return UNSAT
+
 **Example Formula:** `(a ∨ b ∨ c) ∧ (¬a ∨ d) ∧ (¬b ∨ d) ∧ (¬c ∨ d) ∧ (¬d)`
 
-### Conflict-driven Clause Learning
+First we apply unit propagation. Since the last clause has only one variable, we know that `d` = False. Then, we simplify so that our new formula is:
+
+`(a ∨ b ∨ c) ∧ (¬a) ∧ (¬b) ∧ (¬c)`
+
+Now, we apply unit propagation again, this time setting `a` equal to False. Our new formula is:
+
+`(b ∨ c) ∧ (¬b) ∧ (¬c)`
+
+One more time, we apply unit propagation, setting `b` equal to False. Our new formula is:
+
+`(c) ∧ (¬c)`
+
+This leads to a contradiction, because `c` cannot be both True and False. Thus, our formula is `UNSAT`
+
+### Conflict-driven Clause Learning (CDCL) algorithm
 
 [Conflict-driven Clause Learning](https://en.wikipedia.org/wiki/Conflict-driven_clause_learning)
 (CDCL) is another algorithm for solving SAT problems that is similar to DPLL but the main difference is that CDCL does not back-jump chronologically. CDCL was proposed by Marques-Silva and Karem A. Sakallah (1996, 1999) and Bayardo and Schrag (1997). The algorithm is as follows:
 
-1. Choose a variable and assign it with either true or false (called the decision state).
-2. Apply Unit Propagation (this will be explained below).
-3. Construct the Implication Graph (this will also be explained below).
+1. Choose a variable and assign it with either True or False (called the decision state).
+2. Apply Unit Propagation.
+3. Construct the Implication Graph (this will be explained below).
 4. If there is any conflict in the graph, do the following:
+
     a. Determine where in the graph the break that caused the conflict is.
+
     b. Make a new clause that is the negation of the assignments that caused the conflict.
+
     c. Backtrack non-chronologically (backjump) to the decision level where the first assigned variable in the conflict was assigned.
+
 5. If there was no conflict, start from step 1 on a new variable until every variable has been assigned.
-
-#### Unit Propagation
-
-Unit propagation is a fairly simply concept. All that it says is that if we have a clause where all but one of its literals is evaluated as False, then the last literal must be True in order for the clause to be True. For example, given the following clause:
-
-$$(A\vee B\vee C)$$
-
-If we have $A =$ False and $B =$ False, then $C$ must be True in order for our clause to be True.
-
 
 #### Implication Graphs
 
@@ -226,23 +279,40 @@ An implication graph is something that is drawn in step 3 of the CDCL algorithm,
 
 $$(\neg A\vee B) \wedge (\neg B\vee C) \wedge (\neg C \vee A) \wedge (\neg A\vee \neg B)$$
 
-Step 1 of the algorithm says to choose a variable and assign it either True or False. For this example, we will start by assigning $A =$ True. (A=1)
+Step 1 of the algorithm says to choose a variable and assign it either True or False. For this example, we will start by assigning $A =$ True.
+```
+(A = 1)
+```
 
-Now we move on to step 2 of the algorithm, using unit propagation to assign other variables. In the first clause, since we have $A =$ True, we must have $B =$ True. (A=1 -> B=1)
+Now we move on to step 2 of the algorithm, using unit propagation to assign other variables. In the first clause, since we have $A =$ True, we must have $B =$ True. 
+```
+(A = 1) -> (B = 1)
+```
 
-Now since $B =$ True, in the second clause we must have $C =$ True. (A=1 -> B=1 -> C=1)
-
-In the fourth clause, since $A =$ True, $B$ must be False. (A=1 -> (B=0) and (B=1 -> C=1))
+In the fourth clause, since $A =$ True, $B$ must be False. 
+```
+(A = 1) -> (B = 1) 
+        -> (B = 0)
+```
 
 Now we have a conflict, since $B$ cannot be both True and False. According to the algorithm, once we have a conflict we must first determine in the graph the break that caused the conflict. In our graph, it is simple to see that the conflict is solely caused by $A =$ True. Thus, according to the algorithm, we must add a new clause that is the negation of the conflict. So, our new formula is:
 
 $$(\neg A\vee B) \wedge (\neg B\vee C) \wedge (\neg C \vee A) \wedge (\neg A\vee \neg B) \wedge (\neg A)$$
 
-Now we backjump back to where our problem was (in this case, the beginning of the graph) and start again. This time, we will assign $A =$ False. (A=0)
+Now we backjump back to where our problem was (in this case, the beginning of the graph) and start again. This time, we will assign $A =$ False. 
+```
+(A = 0)
+```
 
-Using unit propagation, since $A =$ False, C must be False according to clause 3. (A=0 -> C=0)
+Using unit propagation, since $A =$ False, C must be False according to clause 3. 
+```
+(A = 0) -> (C = 0)
+```
 
-Since $C =$ False, $B =$ False according to clause 2. (A=0 -> C=0 -> B=0).
+Since $C =$ False, $B =$ False according to clause 2. 
+```
+(A = 0) -> (C = 0) -> (B = 0)
+```
 
 Now we have hit step 5 of the algorithm, there are no conflicts and every variable has been assigned. Thus, our formula is satisfiable.
 
@@ -250,14 +320,80 @@ Now we have hit step 5 of the algorithm, there are no conflicts and every variab
 
 Here, we will solve an example formula using both DPLL and CDCL, and determine which algorithm is better (more efficient) and why. We will start with this formula:
 
-$$(A \vee B) \wedge (A \vee \neg B) \wedge (\neg A \vee C) \wedge (\neg A \vee \neg C) \wedge (\neg B \vee \neg C)$$
+$$(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)$$
 
-First we will solve using DPLL. First, we pick a variable and decide a value. Let's try A = 0. Then, we apply unit propagation. So, in clause 1, since A = 0, B = 1. Next, in clause 2, since A = 0, B = 0. Now we have a conflict since obviously B cannot be both 0 and 1. So, we backtrack.
+Since there is no way to apply unit propagation or pure literal elimination, we start by choosing a variable `A` and recursively trying both assignments. First we will assign `A` the value of True. That makes our equation:
 
-Now, we try A = 1. Applying unit propagation on clause 3, since A = 1, C = 1. On clause 4, since A = 1, C = 0. Thus, we have another conflict, and this one cannot be solved by backtracking, so DPLL concludes UNSAT.
+$$(C) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)$$
 
-Now let's try using CDCL. Again we will start with the same starting decision of A = 0. Again, using unit propagation, we will get the same conflict as DPLL with B from clauses 1 and 2.
+From here we can apply unit propagation to `C`, since we know from the first clause that `C` must be True, leaving us with:
 
+$$(D) \wedge (E) \wedge (F) \wedge (G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)$$
+
+From here we would apply unit propagation on `D`, `E`, `F`, and `G`, setting them all equal to True. This leads us to a contradiction since the final clause will be False. From here, we have to backtrack to our assigned variable, meaning we set `A` to False in our original equation. That makes our formula the following:
+
+$$(B) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)$$
+
+From here, we can apply unit propagation, setting `B` equal to True. This makes our equation:
+
+$$(C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)$$
+
+Now we can apply unit propagation one more time, setting `C` equal to True, which brings us back to this formula:
+
+$$(D) \wedge (E) \wedge (F) \wedge (G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)$$
+
+Again, we would apply unit propagation to `D`, `E`, `F`, and `G`, which we know will not be satisfiable from earlier. This means we have recursively tried both assignments on the variable `A`, and they both failed, making this equation `UNSAT`.
+
+As we can see, the DPLL algorithm took a long time and energy because it had to go through every possible branch to confirm that the formula was `UNSAT`. We even combined a few branches (`D`, `E`, `F`, and `G`) and it still took awhile. In comparison, we will now solve this equation with CDCL. As a reminder, here is our original formula:
+
+$$(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)$$
+
+The first step of CDCL is to choose a variable and assign it a value. To mirror our DPLL implementation, we will also assign `A` the value of True. As a reminder, we also will be constructing an implication graph.
+```
+(A = 1)
+```
+Our new equation becomes:
+
+$$(C) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)$$
+
+We apply unit propagation setting `C` equal to True, making our implication graph:
+```
+(A = 1) -> (C = 1)
+```
+And our new formula:
+
+$$(D) \wedge (E) \wedge (F) \wedge (G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)$$
+
+By applying unit propagation to `D`, `E`, `F`, and `G`, we cause a conflict, and our implication graph looks like this:
+```
+(A = 1) -> (C = 1) -> (D = 1) -|
+                   -> (E = 1) -| -> (¬D1 ∨ ¬D2 ∨ ¬D3 ∨ ¬D4)
+                   -> (F = 1) -|
+                   -> (G = 1) -|
+```
+
+From our implication graph, we can determine the break that caused the conflict is at `(C = 1)`, so we can backjump to the beginning and add a new learned clause of $(\neg C)$, making our formula:
+
+$$(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G) \wedge (\neg C)$$
+
+Now we can apply unit propagation to our learned clause and set `C` equal to False.
+```
+(C = 0)
+```
+
+This makes our new equation:
+
+$$(A \vee B) \wedge (\neg A) \wedge (\neg B) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G) \wedge (\neg C)$$
+
+From here, we can unit propagate `A` and `B` and set them each equal to False. This will lead to a conflict in clause 1, and our impliation graph looks like this:
+```
+(C = 0) -> (A = 0) -| -> (A ∨ B)
+        -> (B = 0) -|
+```
+
+The break that caused the conflict is at `(C = 0)`. Since that is the beginning of our implication graph, we can't backjump anymore. Therefore, the formula is `UNSAT`.
+
+From this example, we can see how much quicker CDCL is than DPLL, and how that speed will only exponentially increase with a greater number of variables and clauses. DPLL had to go through every possible branch, while CDCL learns from each branch that it goes through so it doesn't end up searching through something that it already searched through, making it much more optimal.
 
 ## Parallel Approaches
 
@@ -309,8 +445,142 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 
 ## Case Studies
 
-2x2 sudoku from above, 4x4 sudoku added soon
+At the beginning of this chapter, we looked at an example of a 2x2 sudoku and how to solve it using SAT. Now, we will look at a normal 9x9 sudoku and see how to solve that using SAT. Unlike our 2x2 sudoku which had a very small number of variables and clauses, 9x9 sudoku needs 729 variables and about 12000 clauses. Because of this, we cannot simply write the DIMACS CNF file on our own, we need to create a script that will create the file for us. Similarly to the 2x2 example, we need to create a cnf file that has the following constraints:
 
+1. Each entry has at least one value
+2. Each entry has at most one value
+3. Each row contains all numbers (1-9)
+4. Each column contains all numbers (1-9)
+5. Each block contains all numbers (1-9)
+6. The solution respects the given clues
+
+In order to create the necessary cnf file, we will use the following script taken from this [website](https://users.aalto.fi/~tjunttil/2020-DP-AUT/notes-sat/solving.html#solving-problems-with-cnf-sat-solvers-the-sudoku-example):
+```
+#!/usr/bin/python3
+import sys
+D = 3    # Subgrid dimension
+N = D*D  # Grid dimension
+if __name__ == '__main__':
+    # Read the clues from the file given as the first argument
+    file_name = sys.argv[1]
+    clues = []
+    digits = {'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9}
+    with open(file_name, "r") as f:
+        for line in f.readlines():
+            assert len(line.strip()) == N, "'"+line+"'"
+            for c in range(0, N):
+                assert(line[c] in digits.keys() or line[c] == '.')
+            clues.append(line.strip())
+    assert(len(clues) == N)
+
+    # A helper: get the Dimacs CNF variable number for the variable v_{r,c,v}
+    # encoding the fact that the cell at (r,c) has the value v
+    def var(r, c, v):
+        assert(1 <= r and r <= N and 1 <= c and c <= N and 1 <= v and v <= N)
+        return (r-1)*N*N+(c-1)*N+(v-1)+1
+
+    # Build the clauses in a list
+    cls = []  # The clauses: a list of integer lists
+    for r in range(1,N+1): # r runs over 1,...,N
+        for c in range(1, N+1):
+            # The cell at (r,c) has at least one value
+            cls.append([var(r,c,v) for v in range(1,N+1)])
+            # The cell at (r,c) has at most one value
+            for v in range(1, N+1):
+                for w in range(v+1,N+1):
+                    cls.append([-var(r,c,v), -var(r,c,w)])
+    for v in range(1, N+1):
+        # Each row has the value v
+        for r in range(1, N+1): cls.append([var(r,c,v) for c in range(1,N+1)])
+        # Each column has the value v
+        for c in range(1, N+1): cls.append([var(r,c,v) for r in range(1,N+1)])
+        # Each subgrid has the value v
+        for sr in range(0,D):
+            for sc in range(0,D):
+                cls.append([var(sr*D+rd,sc*D+cd,v)
+                            for rd in range(1,D+1) for cd in range(1,D+1)])
+    # The clues must be respected
+    for r in range(1, N+1):
+        for c in range(1, N+1):
+            if clues[r-1][c-1] in digits.keys():
+                cls.append([var(r,c,digits[clues[r-1][c-1]])])
+
+    # Output the DIMACS CNF representation
+    # Print the header line
+    print("p cnf %d %d" % (N*N*N, len(cls)))
+    # Print the clauses
+    for c in cls:
+        print(" ".join([str(l) for l in c])+" 0")
+```
+
+This script will create a cnf representation given an example sudoku board. I created this file named puzzle.txt and used it as my input:
+```
+53..7....
+6..195...
+.98....6.
+8...6...3
+4..8.3..1
+7...2...6
+.6....28.
+...419..5
+....8..79
+```
+
+In order to run these files on Linux (Ubuntu) I did this:
+
+`python3 sudoku.py puzzle.txt`
+
+This will print out the example cnf, but if you want to put it into a file you can run:
+
+`python3 sudoku.py puzzle.txt > puzzle.cnf`
+
+From there, we can use minisat to see if the puzzle is satisfiable and we can output the solution into a `.txt` file by running:
+
+`minisat puzzle.cnf output.txt`
+
+In the terminal, it will tell you whether or not the puzzle was satisfiable, and in the `output.txt` file, it will tell you the assignment values of each of the 729 variables, but it will not show the actual solution to the sudoku puzzle. In order to do that we must use a decoder script such as this one:
+```
+#!/usr/bin/python3
+import sys
+
+D = 3
+N = D*D  # 9
+
+def inv_var(x):
+    x -= 1
+    r = x // (N*N) + 1
+    x %= (N*N)
+    c = x // N + 1
+    v = x % N + 1
+    return r, c, v
+
+# read SAT solver output file
+model = []
+with open(sys.argv[1], "r") as f:
+    for line in f:
+        if line.startswith("SAT") or line.startswith("UNSAT"):
+            continue
+        model.extend(map(int, line.split()))
+
+# grid to fill
+grid = [[0]*N for _ in range(N)]
+
+# use only positive literals
+for literal in model:
+    if literal > 0:
+        r, c, v = inv_var(literal)
+        grid[r-1][c-1] = v
+
+# print sudoku
+for row in grid:
+    print(" ".join(str(x) for x in row))
+```
+
+With this script, we can run:
+
+`python3 decoder.py output.txt`
+
+This will show us the final solution of our sudoku puzzle with our given constraints. Now, we can edit our `puzzle.txt` to be able to determine if any 9x9 sudoku with any given values is satisfiable, and then use `decoder.py` to output the solution of that puzzle. Also, given the way we created our `sudoku.py` and `decoder.py` files, we can try this with any size sudoku by simply changing a few numbers.
 
 ## References
 
