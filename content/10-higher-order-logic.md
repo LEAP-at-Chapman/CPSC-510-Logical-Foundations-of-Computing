@@ -112,7 +112,7 @@ A wff$_\alpha$ (a well-formed expression of type $\alpha$) is defined inductivel
 
 $\lambda$-abstraction is the syntax used to define a function by naming its argument. For example, $\lambda x .\; t$ denotes the function that takes an input x as argument input and returns the expression t as output. In other words, it is the function that maps $x$ to $t$, so $x \mapsto t$. Simply put, $\lambda$ is an operator that is used to denote and represent functions.
 
-Another example provided by the Stanford Encyclopedia of Philosophy (SEP)<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> is more ingrained in natural language and may be easier to understand: $\lambda x .\; x\text{ is a Polish diplomat and } x \text{ is a great pianist}$. If we set the input of x to an arbirary person, say $x = $ Fred, then this can be read as “Fred is both a Polish diplomat and a great pianist”.
+Another example provided by the Stanford Encyclopedia of Philosophy (SEP)<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> is more ingrained in natural language and may be easier to understand: $\lambda x .\; x\text{ is a Polish diplomat and } x \text{ is a great pianist}$. If we set the input of x to an arbitrary person, say $x = $ Fred, then this can be read as “Fred is both a Polish diplomat and a great pianist”.
 
 HOL's $\lambda$-abstraction constructs a function. If $x:\alpha$ and $t:\beta$, then $\lambda x .\; t: \alpha \Rightarrow \beta$.
 (Basically, If $x$ has type $\alpha$ and $t$ has type $\beta$, then $\lambda x .\; t$ has type $\alpha \Rightarrow \beta$). Function application is typed accordingly. If $f:\alpha \Rightarrow \beta$ and $x:\alpha$, then $f x:\beta$. Applying a function of type $\alpha \Rightarrow \beta$ to an argument of type $\alpha$ produces a result of type $\beta$.
@@ -402,24 +402,27 @@ WIP
 
 ## The Landscape of Tools
 
-WIP
+### Interactive Theorem Provers
 
-### Interactive Theorem Prover
+**HOL4** is part of the "HOL" family of interactive theorem provers, using classical higher order logic and following the LCF approach to ensure soundness. Developed by Michael J.C. Gordon, the system is implemented in ML, and is a direct descendent of the original HOL88 system. Because HOL4 shares the same underlying logic as Isabelle/HOL, many thoeries and proof patterns are generally portable between the two tools.
 
-HOL4 (classic HOL)
+**Rocq** (formerly named Coq) is an interactive theorem prover based on the *Calculus of Inductive Constructions*, which is a derivative of the calculus of constructions, and is a higher order typed lambda calculus that adds inductive types. It is mainly implemented in OCaml with some C. Compared with Isabelle/HOL, Rocq uses higher order type theory, which allows it to have greater expressive power.
 
-Coq (constructive higher-order/type theory)
+**Lean (4)** is another proof assistant and, similar to Rocq, is based on dependent type theory, which is a version of the calculus of constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Compared to Isabelle/HOL's classic higher order logic, Lean's dependent type theory offers greater expressive power, similar to Rocq.
 
-Lean 4 (modern dependent/HOL hybrid)
+### Automated Theorem Prover
 
-### Automated Higher Order Prover
+**Leo III** is an automated theorem prover for classical higher order logic that supports all common TPTP input dialects and is based on paramodulation calculus with ordering constraints for reasoning. Leo III is written in Scala and runs on the JVM (Java Virtual Machine). Compared with ITPs (interactive theorem provers) like Isabelle/HOL, Leo III trades human-guided proof structuring and granular control for full automation, allowing it to rapidly discharge proof obligations.<sup><a href="#LeoIII">[18]</a></sup>
 
-Leo III
 
-Satallax
+**Satallax** is another automated theorem prover for classical higher order logic and is based on Church's simple type theory with extensionality and choice operators. It is implemented in OCaml and uses the SAT solver MiniSat for its proof search. Basically, Satallax generates propositional clauses corresponding to the rules of a complete tableau calculus and calls MiniSat periodically to test the satisfiability of these clauses.<sup><a href="#Satallax">[19]</a></sup>
 
 
 ## Algorithms
+
+WIP 
+
+<!-- (may need to strip some of the stuff from basic theory for this?) -->
 
 
 ## Benchmark and Competitions
@@ -427,7 +430,7 @@ Satallax
 
 ## Applications in Industry (and Academia)
 
-In general, Isabelle/HOL appears to have a wide variety of applcation throughout industry, due to the fact that it provides a mathematical assuranace of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.
+In general, Isabelle/HOL appears to have a wide variety of applcation throughout industry and academia due to the fact that it provides a mathematical assuranace of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.
 
 ### Physical Addressing on Real Hardware
 
@@ -603,7 +606,30 @@ Higher-Order Logic](https://isabelle.in.tum.de/doc/tutorial.pdf), Springer-Verla
 <a id="Teege_IntroIsabelle"></a>
 - [17]: Teege (2025) [A Gentle Introduction to Isabelle and Isabelle/HOL](https://github.com/gteege/gentle-isabelle/blob/main/man-isabelle.pdf) Universität der Bundeswehr München
 
+<a id="LeoIII"></a>
+- [18]: [Leo III Repository](https://github.com/leoprover/Leo-III) GitHub
+
+<a id="Satallax"></a>
+- [19]: Michael Färber, [Satallax](https://satallaxprover.org/) 
+
+https://plato.stanford.edu/entries/logic-higher-order/
+
+https://plato.stanford.edu/entries/reasoning-automated/#HigOrdLog
+
+https://plato.stanford.edu/entries/type-theory-church/
+
+https://www.youtube.com/watch?v=VS_GK-9xUO4
+
+https://www.youtube.com/watch?si=ocR0HnYDEQLAneym&v=TrYosPPCQAY&feature=youtu.be
+
+https://www.youtube.com/watch?v=yAi3XWCBkDo
+
+SEP Category Theory - https://plato.stanford.edu/entries/category-theory/
+
 <!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf -->
+
+https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html
+
 
 
 
