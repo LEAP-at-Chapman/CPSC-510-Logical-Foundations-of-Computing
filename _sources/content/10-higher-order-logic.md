@@ -30,7 +30,7 @@ Higher-order logic (HOL) extends the capabilities of first-order logic (FOL) by 
 
 <!-- basic setup - need to add much more but this is just basics/scaffolding -->
 
-### From First-Order Logic to HOL
+### From First Order Logic to HOL
 
 WIP
 <!-- 
@@ -46,12 +46,6 @@ WIP
 
 
 $ \forall x $ and $ \exists x$ where x is a variable/individual element
-
-First Order Logic
-
-Second Order Logic 
-
-Third Order Logic -> Higher Order Logic
 
 In higher order logic, we extend this to $ \forall f(x) $ and $ \exists f(x) $, where x is a function that takes x as an input
 
@@ -73,7 +67,7 @@ conclusion line of how HOL = typed + $\lambda$ + functional programming
 – Church (1940) A Formulation of the Simple Theory of Types 
 Church Text is more relevant to history section-->
 
-*Andrews, 2002 Section 5.1*<sup><a href="#andrews2002">[3]</a></sup> provides us with $Q_0$, which is a modified formalization of Church's simple theory of types<sup><a href="#Church_TypeTheory">[10]</a></sup>, in which equality is taken as the basic primitive notion. The semantics of $Q_0$ describe how types denote sets, how function types denote function spaces, and how terms receive meaning under assignments. 
+*Andrews, 2002 Section 5.1*<sup><a href="#andrews2002">[3]</a></sup> provides us with $Q_0$, which is a formalization of Church's simple theory of types<sup><a href="#Church_TypeTheory">[10]</a></sup> and is a typed higher order logic. The semantics of $Q_0$ describe how types denote sets, how function types denote function spaces, and how terms receive meaning under assignments. 
 
 This section introduces the purely syntactic component of simple type theory:
 the formation of types, variables, primitive symbols, and well-formed expressions.
@@ -94,12 +88,6 @@ $(\alpha, \beta, \gamma, \ldots )$ are syntactical variables that range over typ
 
   - Improper symbols include  [ ] and $\lambda$
 
-  <!-- Andrews $Q_0$ is fairly barebones in terms of logical constants, as he only provides us with 2 main terms: $Q_{((o\alpha)\alpha)}$ and $u_{(\iota(o\iota))}$ where: -->
-
-  - $Q_{((o\alpha)\alpha)}$ is the equality predicate at type $\alpha$, which is a function that takes 2 $\alpha$ arguments and returns a truth value
-
-  - $u_{(\iota(o\iota))}$ is the description/selection operator (also known as the Hilbert $\epsilon$-operator), which returns an element of type $\iota$ that satisfies a predicate $p : \iota \to o$ if one exists
-
 **Nonlogical Constants:**
 
   - Nonlogical constants of various types may be included depending on the particular formalized language
@@ -114,30 +102,36 @@ A wff$_\alpha$ (a well-formed expression of type $\alpha$) is defined inductivel
 
   - If $A_\alpha$ is a wff and $x_\beta$ is a variable, then $\lambda x_\beta A_\alpha$ is a wff of type $\alpha\beta$ ($\lambda$-abstraction; see Section 10.2.3).
 
-### $\lambda$-Abstraction and Application
+### Lambda Abstraction and Application
 
-$\lambda$-abstraction is the syntax used to define a function by naming its argument. For example, $\lambda x .\; t$ denotes the function that takes an input x as argument input and returns the expression t as output. In other words, it is the function that maps $x$ to $t$, so $x \mapsto t$. Simply put, $\lambda$ is an operator that is used to denote and represent functions.
+WIP
 
-Another example provided by the Stanford Encyclopedia of Philosophy (SEP)<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> is more ingrained in natural language and may be easier to understand: $\lambda x .\; x\text{ is a Polish diplomat and } x \text{ is a great pianist}$. If we set the input of x to an arbitrary person, say $x = $ Fred, then this can be read as “Fred is both a Polish diplomat and a great pianist”.
+<!-- Read:
+– Paulson, Logic and Computation, ch. 2
+– Nipkow et al., Concrete Semantics, §2.1–2.3 -->
+<!-- 
+	•	syntax of λx. t
+	•	β-reduction
+	•	extensionality axiom (optional mention)
+	•	Isabelle example snippets (%x. t, function application precedence) -->
 
-HOL's $\lambda$-abstraction constructs a function. If $x:\alpha$ and $t:\beta$, then $\lambda x .\; t: \alpha \Rightarrow \beta$.
-(Basically, If $x$ has type $\alpha$ and $t$ has type $\beta$, then $\lambda x .\; t$ has type $\alpha \Rightarrow \beta$). Function application is typed accordingly. If $f:\alpha \Rightarrow \beta$ and $x:\alpha$, then $f x:\beta$. Applying a function of type $\alpha \Rightarrow \beta$ to an argument of type $\alpha$ produces a result of type $\beta$.
-
-**Andrews uses the notation of $\alpha\beta$, which is equivalent to Isabelle/HOL's notation of $\alpha \Rightarrow \beta$. They both mean the same thing: the type of a function that takes an argument of type $\alpha$ and returns a value of type $\beta$*
-
-In $\beta$-reduction, the idea is that application is the same as substitution.
-For example, if we have $[\lambda x . \; x + 1]0$, we apply $\beta$-reduction by substituting in 0 for x, so we get $[\lambda x . \; x + 1]0 \to_\beta 0 + 1 = 1$.<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup>
-
-In a Curried function, we basically turn a multiple argument function by nested single input $\lambda$ functions; this process is referred to as "Currying" the function. For example, if we have a function add(x, y) that takes in both the inputs of x and y, then we Curry the function by turning it into $\lambda x . \; (\lambda y . \; x + y)$<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup>
-
-<!-- (Currying): To replace a function in two arguments by a function that takes one argument and returns a function that takes the second argument is called "currying" after the mathematician and logician Haskell Curry.<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup> -->
+$\lambda$-abstraction is the syntax used to define a function by naming its argument. For example, $\lambda x .\; t$ denotes the function that takes an input x as argument input and returns the expression t as output. In other words, it is the function that maps $x$ to $t$, so $x \mapsto t$. 
 
 **In Isabelle/HOL, $\lambda$-abstraction is written as `%x. t` with a `%` instead of the $\lambda$ symbol.*
 
-**There are a plehtora of resources to find supplementary information about $\lambda$-calculus and abstraction. In addition to the HackMD pages by Alexander Kurz<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup> <sup><a href="#Kurz_LambdaSyntax">[15]</a></sup>, other good references are Chapters 3.1 and 3.2 of **Logic and Computation**<sup><a href="#Paulson_LCF">[11]</a></sup> and the aforementioned Section D.1 of the SEP<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup>*
+HOL's $\lambda$-abstraction constructs a function. If $x:\alpha$ and $t:\beta$, then $\lambda x .\; t: \alpha \Rightarrow \beta$. 
+(Basically, If $x$ has type $\alpha$ and $t$ has type $\beta$, then $\lambda x .\; t$ has type $\alpha \Rightarrow \beta$). Function application is typed accordingly. If $f:\alpha \Rightarrow \beta$ and $x:\alpha$, then $f x:\beta$. Applying a function of type $\alpha \Rightarrow \beta$ to an argument of type $\alpha$ produces a result of type $\beta$.
+
+<!-- , namely if $x$ has type $\alpha$ and $t$ has type $\beta$, then $\lambda x .\;\; t$ has the function type of $\alpha \Rightarrow \beta$. In terms of the function application, when we formalize how $f \; x$ is typed, (the function with x as an input), if $f$ has a function type of $\alpha \Rightarrow \beta$ and $x$ has a type of $\alpha$, then $f \; x$ has a type of $\beta$. -->
+
+**Andrews uses the notation of $\alpha\beta$, which is equivalent to Isabelle/HOL's notation of $\alpha \Rightarrow \beta$. They both mean the same thing: the type of a function that takes an argument of type $\alpha$ and returns a value of type $\beta$*
+
+<!-- $\beta$-reduction semantics stuff here (just add a line or two) -->
 
 
-### Logical Constants in HOL
+### Logical Constants
+
+WIP
 
 <!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf section 2, Andrews Logical Constants of Q0	•	§51(c): Q_{(αα)o} and u_{(ιo)ι} and the explanations. ￼ -->
 
@@ -149,53 +143,12 @@ standard connectives: ¬, ∧, ∨, ⟶, ↔
 
 quantifiers defined via λ (∀x. P x) -->
 
-Logical constants are built in symbols that define the logical structure of the system and are not defined by the user. Isabelle/HOL provides a standard set of such constants, summarized in Sections 2.1.1 of *Concrete Semantics*.<sup><a href="#ConcreteSemantics">[1]</a></sup> 
+Logical constants: $Q_{((o\alpha)\alpha)}$ and $u_{(\iota(o\iota))}$ where:
+  - $Q_{((o\alpha)\alpha)}$ is the equality predicate at type $\alpha$, which is a function that takes 2 $\alpha$ arguments and returns a truth value
 
-<!-- base boolean constants: (true and false) -->
-- **Base Boolean Constants**: simplest terms of type bool, representing truth values
-  - *True* : bool
-  - *False* : bool
-
-<!-- logical connectives (such as not, and, or, ->, etc) -->
-- **Logical Connectives**: curried functions that return a Boolean
-  - **$\neg$**: $bool \Rightarrow bool$
-  - **$\land$**: $bool \Rightarrow bool \Rightarrow bool$
-  - **$\lor$**: $bool \Rightarrow bool \Rightarrow bool$
-  - **$\to$**: $bool \Rightarrow bool \Rightarrow bool$
-<!-- 
-Terminology (Currying): To replace a function in two arguments by a function that takes one argument and returns a function that takes the second argument is called "currying" after the mathematician and logician Haskell Curry.
-
-https://hackmd.io/@alexhkurz/H1e4Nv8Bv -->
-
-<!-- equality: = -->
-- **Equality**: infix function $=$ of type $\alpha \Rightarrow \alpha \Rightarrow bool$
-
-<!-- quantifiers: $\forall x$ and $\exists x$ -->
-- **Quantifiers**: $\forall x. \; Px$ and $\exists x. \; Px$
-
+  - $u_{(\iota(o\iota))}$ is the description/selection operator (also known as the Hilbert $\epsilon$-operator), which returns an element of type $\iota$ that satisfies a predicate $p : \iota \to o$ if one exists
 
 ### Deductive Core of HOL
-
-Natural Deduction Rules
-Chapter 5 of *Isabelle/HOL: A Proof Assistant for Higher‑Order Logic* <sup><a href="#Isabelle/HOL_ProofAssistant">[13]</a></sup>
-
-<!-- Introduction and elimination rules for classical connectives and quantifiers. -->
-
-Typed $\lambda$-Calculus
-<!-- Terms are built using the simply-typed λ-calculus, with β-reduction and η-conversion (up to extensionality). -->
-
-Equality Rules
-<!-- Polymorphic equality with reflexivity + congruence/substitution; includes functional and boolean extensionality. -->
-
-Hilbert $\epsilon$ (Choice) Operator
-A choice operator $\varepsilon : (\alpha \Rightarrow bool) \Rightarrow \alpha$ with the choice axiom.
-
-Conservative Definition Principles
-<!-- New constants and types may only be introduced via mechanisms Isabelle checks as conservative (no new theorems introduced). -->
-
-Small Trusted Kernel
-<!-- Isabelle’s logical kernel is minimal; all automation reduces to this core proof system. -->
-
 
 WIP
 <!-- 
@@ -204,7 +157,7 @@ WIP
 	•	All user-introduced definitions are conservative
 	•	Isabelle proves everything from this core automatically -->
 
-<!-- The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system of $\mathcal{w}$-order logic which has all finite order logics as subsystems:
+The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system of $\mathcal{w}$-order logic which has all finite order logics as subsystems:
 
 1) **Modus Ponens** From $A$ and $A \to B$ to infer $B$.
 2) **Generalization** From $A$ to infer $\forall x\,A$, where x is a variable of any type
@@ -212,6 +165,8 @@ WIP
 
 *Adapted from Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> using modern logic convention.
 
+
+<!-- ### 10.2.5 Axiom Schemata -->
 
 The axiom schemata of $\mathcal{F}^w$ are:
 
@@ -254,7 +209,7 @@ The axiom schemata of $\mathcal{F}^w$ are:
 
     - These axioms state that two expressions are equal if and only if they behave identically in that their output result is the same in all evaluations. This formalizes the idea that in higher order logic, equality is extensional (based on meaning and behavior) rather than syntactic (based on form).
 
-Adapted from *Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> using modern logic convention. -->
+Adapted from *Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> using modern logic convention.
 
 
 ## Tool (Installation, First Example, First Exercise)
@@ -408,42 +363,36 @@ WIP
 
 ## The Landscape of Tools
 
-### Interactive Theorem Provers
+WIP
 
-**HOL4** is part of the "HOL" family of interactive theorem provers, using classical higher-order logic and following the LCF approach to ensure soundness. Developed by Michael J. C. Gordon, the system is implemented in ML, and is a direct descendent of the original HOL88 system. Because HOL4 shares the same underlying logic as Isabelle/HOL, many theories and proof patterns are generally portable between the two tools.
+<!-- ### 10.5.1 Interactive Proof Assistants -->
 
-**Rocq** (formerly named Coq) is an interactive theorem prover based on the *Calculus of Inductive Constructions*, which is a derivative of the calculus of constructions, and is a higher-order typed lambda calculus that adds inductive types. It is mainly implemented in OCaml with some C. Compared with Isabelle/HOL, Rocq uses higher-order type theory, which allows it to have greater expressive power.
+### Interactive Theorem Prover
 
-**Lean (4)** is another proof assistant and, similar to Rocq, is based on dependent type theory, which is a version of the calculus of constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Compared to Isabelle/HOL's classic higher-order logic, Lean's dependent type theory offers greater expressive power, similar to Rocq.
+HOL4 (classic HOL)
 
-### Automated Theorem Prover
+Coq (constructive higher-order/type theory)
 
-**Leo III** is an automated theorem prover for classical higher-order logic that supports all common TPTP input dialects and is based on paramodulation calculus with ordering constraints for reasoning. Leo III is written in Scala and runs on the JVM (Java Virtual Machine). Compared with ITPs (interactive theorem provers) like Isabelle/HOL, Leo III trades human-guided proof structuring and granular control for full automation, allowing it to rapidly discharge proof obligations.<sup><a href="#LeoIII">[18]</a></sup>
+Lean 4 (modern dependent/HOL hybrid)
 
+### Automated Higher Order Prover
 
-**Satallax** is another automated theorem prover for classical higher-order logic and is based on Church's simple type theory with extensionality and choice operators. It is implemented in OCaml and uses the SAT solver MiniSat for its proof search. Basically, Satallax generates propositional clauses corresponding to the rules of a complete tableau calculus and calls MiniSat periodically to test the satisfiability of these clauses.<sup><a href="#Satallax">[19]</a></sup>
+<!-- ### 10.5.2 Automated Theorem Prover -->
+
+Leo III
+
+Satallax
 
 
 ## Algorithms
 
-WIP 
 
-<!-- (may need to strip some of the stuff from basic theory for this?) -->
-
-
-## Benchmarks and Competitions
-
-**miniF2F** is a cross-system benchmark of 488 problem statements drawn from both mathematical competitions (IME, AMC and the International Mathematical Olympiad) and high school and undergraduate level mathematics courses. The benchmark targets theorem provers such as Lean, Metamath, Isabelle, and HOL Light in order to enable cross-system comparison of theorem provers and proof automation tools. The goal is to serve as a benchmark for automated and neural theorem proving systems. A formal problem statement is fed into system and the prover must output a fully machine-verifiable proof.<sup><a href="#MiniF2F">[20]</a></sup>
-
-**TPTP** (Thousands of Problems for Theorem Provers) is a library of test problems for testing and evaluating ATPs. Problems are expressed in a simple text-based format for either first-order logic or higher-order logic. TPTP provides a common benchmark with a single, umambiguous reference set of problems so that different ATP systems can be both evaluated and compared with reproducible results.<sup><a href="#TPTP">[21]</a></sup>
-
-**CASC** (The CADE ATP System Competition) is an annual competition of fully automatic, classical logic, ATP systems. The purpose of CASC is to provide a public evaluation of relative capabilities of ATP systems as well as to stimulate research and development of ATP systems. At CASC, ATP system performane is evaluated in terms of the total number of problems solved with an acceptable solution output within a specified time limit, as well as the average time taken for problems solved. CASC is hosted at each CADE and IJCAR conference, both forums for automated deduction.<sup><a href="#CASC">[22]</a></sup>
+## Benchmark and Competitions
 
 
+## Applications in Industry (and Academia)
 
-## Applications in Industry and Academia
-
-In general, Isabelle/HOL appears to have a wide variety of applcation throughout industry and academia due to the fact that it provides a mathematical assuranace of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.
+In general, Isabelle/HOL appears to have a wide variety of applcation throughout industry, due to the fact that it provides a mathematical assuranace of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.
 
 ### Physical Addressing on Real Hardware
 
@@ -489,18 +438,55 @@ use this one:
 
 https://openreview.net/forum?id=IUikebJ1Bf0
 
+<!-- https://arxiv.org/html/2408.11172v1
+
+https://github.com/xqyww123/Isa-Mini -->
+
+<!-- no code artifact for this paper
+
+trying to find where the actual code etc is?
+
+According to the authors:
+*the REPL infrastructure, MiniLang interpreter, translator,
+training data, machine learning framework, Sledgehammer,
+and parameters of the finetuned models will be open-sourced
+and are present in the submitted supplementary materials* -->
+
+<!-- need to talk to Kurz about finding another example; the binary analysis one seems pretty cool -->
+<!-- 
+
+DEPRECATED SINCE THIS IS THE BINARY ANALYSIS TOOL
+
+https://gitlab.surrey.ac.uk/isabil/isabil
+
+https://zenodo.org/records/15268251
+
+I added these lines as PATH variables to my zsh on MacOS in order to run the Isabelle CLI tool:
+`export ISABELLE_HOME="/Applications/Isabelle2025.app"`
+`export PATH="$ISABELLE_HOME/bin:$PATH"`
+
+Make sure you have correct version of the [AFP](https://www.isa-afp.org/download/) downloaded
+
+Unpack the Tar file, put it *somewhere*, and then register it via 
+`isabelle components -u PATHNAME`
+
+For example, the pathname for my AFP is: 
+`/Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys`
+
+My command is then:
+`isabelle components -u /Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys` -->
 
 ## History
 
 <!-- Church (1940) A Formulation of the Simple Theory of Types -->
 
-<!-- may include dates at the beginning of each part, and include citations etc  -->
+<!-- may include dates at teh beginning of each part, and include citations etc  -->
 
-### Origins of Higher-Order Logic
+### Origins of Higher Order Logic
 
 <!-- scaffolding template for now -->
 
-Alonzo Church's work in the 1930s (via $\lambda$-calculus) and 1940s (via type theory) and Leon Henkin's work in the 1950s (on general models semantics) lay the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities
+Alonzo Church's work in the 1930s (via $\lambda$-calculus) and 1940s (via type theory) and Leon Henkin's work in the 1950s (on general models semantics) lay the foundation for higher order logic. From their contributions arose an extension of First Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities
 
 In the 1970s, Robert Milner develops LCF (Logic for Computable Functions) at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evovles into OCaml and Standard ML.
 
@@ -520,15 +506,33 @@ The creation of the AFP (Archive of Formal Proofs) established a reusable librar
 
 ## Current Development, Research Challenges, Conferences and Workshops
 
-### Current Development
-
-AI/LLM stuff with NTP in Isabelle?
-
-### Research Challenges
-
-### Conferences and Workshops
 
 ## References
+
+<!-- Author(s) (Year) [Title](linkToGoogleScholarQuery), Venue
+
+Components
+
+    Author(s): Last names only. For multiple authors:
+        2 authors: Davis and Putnam
+        3-4 authors: Davis, Logemann, and Loveland
+        5+ authors: Moskewicz et al.
+
+    Year: Publication year in parentheses
+
+    Title: Full title as a clickable link (preferably to the paper, or to Google Scholar)
+
+    Venue: Journal name, conference proceedings, or publisher
+
+Examples
+
+Davis and Putnam (1960) A Computing Procedure for Quantification Theory, Journal of the ACM, 7(3): 201–215 -->
+
+<!-- - [Isabelle/HOL](https://isabelle.in.tum.de/) -->
+<!-- - [Concrete Semantics](http://www.concrete-semantics.org/)
+- [Concrete Semantics Exercises](http://www.concrete-semantics.org/Exercises/exercises.pdf) -->
+<!-- - [Isabelle YouTube Tutorial by FDS 2020](https://www.youtube.com/@FDS-hs2uc/videos)
+- [Syllogism Slides from Nate Moss](https://logic.berkeley.edu/colloquium/MossSlides.pdf) -->
 
 <a id="ConcreteSemantics"></a>
 - [1]: Nipkow and Klein (2014) [Concrete Semantics: With Isabelle/HOL](http://www.concrete-semantics.org/index.html), Springer Publishing Company, Incorporated.
@@ -554,6 +558,9 @@ AI/LLM stuff with NTP in Isabelle?
 <a id="Kohlen_float"></a>
 - [8]: Kohlen et al. (2025) [A formally verified IEEE 754 floating-point implementation of interval iteration for MDPs](https://arxiv.org/abs/2501.10127v3), International Conference on Computer Aided Verification, Cham: Springer Nature Switzerland.
 
+<!-- <a id="Xu_IsaMini"></a>
+- [7]: Xu, Qiyuan, et al. "IsaMini: Redesigned Isabelle Proof Language for Machine Learning." arXiv preprint arXiv:2507.18885 (2025). [arxiv Link](https://arxiv.org/abs/2507.18885) -->
+
 <a id="Wu_LLM_Autoformat"></a>
 - [9]: Wu et al. (2022) [Autoformalization with Large Language Models](https://openreview.net/forum?id=IUikebJ1Bf0), NeurIPS 2022 Conference.
 
@@ -563,60 +570,9 @@ AI/LLM stuff with NTP in Isabelle?
 <a id="Paulson_LCF"></a>
 - [11]: Laurence C. Paulson (1987) [Logic and Computation: Interactive Proof with Cambridge LCF](https://assets.cambridge.org/97805213/46320/sample/9780521346320ws.pdf), Cambridge University Press, USA.
 
-<a id="Stanford_LambdaCalc_TypeTheory"></a>
-- [12]: Deutsch and Marshall (2025) [D. The λ-Calculus and Type Theory: Supplement to Alonzo Church](https://plato.stanford.edu/entries/church/supplementD.html), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
-
-<a id="Isabelle/HOL_ProofAssistant"></a>
-- [13]: Nipkow, Paulson, and Wenzel (2025) [Isabelle/HOL: A Proof Assistant for
-Higher-Order Logic](https://isabelle.in.tum.de/doc/tutorial.pdf), Springer-Verlag, Berlin, Heidelberg. 
-
-<a id="Kurz_LambdaSemantics"></a>
-- [14]: Alexander Kurz (2023) [Semantics of the Lambda Calculus](https://hackmd.io/@alexhkurz/H1e4Nv8Bv), CPSC 354 - Programming Languages, Chapman University
-
-<a id="Kurz_LambdaSyntax"></a>
-- [15]: Alexander Kurz (2023) [Syntax of Lambda Calculus](https://hackmd.io/@alexhkurz/S1D0yP8Bw), CPSC 354 - Programming Languages, Chapman University
-
-<a id="Xu_IsaMini"></a>
-- [16]: Xu et al. (2025) [IsaMini: Redesigned Isabelle Proof Language for Machine Learning](https://arxiv.org/abs/2507.18885), arXiv preprint arXiv:2507.18885.
-
-<a id="Teege_IntroIsabelle"></a>
-- [17]: Teege (2025) [A Gentle Introduction to Isabelle and Isabelle/HOL](https://github.com/gteege/gentle-isabelle/blob/main/man-isabelle.pdf), Universität der Bundeswehr München
-
-<a id="LeoIII"></a>
-- [18]: [Leo III Repository](https://github.com/leoprover/Leo-III) GitHub
-
-<a id="Satallax"></a>
-- [19]: Michael Färber, [Satallax](https://satallaxprover.org/) 
-
-<a id="MiniF2F"></a>
-- [20]: Zheng, Han, and Polu (2022) [MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics](https://arxiv.org/abs/2109.00110), ICLR 2022
-
-<a id="TPTP"></a>
-- [21]: Sutcliffe (2017) [The TPTP Problem Library and Associated Infrastructure: From CNF to TH0, TPTP v6.4.0](https://tptp.org/TPTP/), Journal of Automated Reasoning, 59(4): 483–502
-
-<a id="CASC"></a>
-- [22]: Sutcliffe (2016) [The CADE ATP System Competition - CASC](https://tptp.org/CASC/), AI Magazine, 37(2): 99–101
+https://isabelle.in.tum.de/library/HOL/HOL/document.pdf
 
 
-https://plato.stanford.edu/entries/logic-higher-order/
-
-https://plato.stanford.edu/entries/reasoning-automated/#HigOrdLog
-
-https://plato.stanford.edu/entries/type-theory-church/
-
-https://plato.stanford.edu/entries/type-theory/
-
-https://www.youtube.com/watch?v=VS_GK-9xUO4
-
-https://www.youtube.com/watch?si=ocR0HnYDEQLAneym&v=TrYosPPCQAY&feature=youtu.be
-
-https://www.youtube.com/watch?v=yAi3XWCBkDo
-
-SEP Category Theory - https://plato.stanford.edu/entries/category-theory/
-
-<!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf -->
-
-https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html
 
 
 

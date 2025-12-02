@@ -31,7 +31,7 @@ Type theory originated as an alternative to set theory, most famously through th
 
 Dependent types generalize this by allowing types to vary depending on terms. Formally, if `A` is a type and `a : A`, then we may form another type `B a` that depends on `a`. The dependent function type is then written: $(\Pi x:A),B(x)$ which can be read as "for every `x` of type `A`, there exists a term of type `B(x)`." This construct generalizes both functions and universal quantification.
 
-### The Curry-Howard Correspondence
+**The Curry-Howard Correspondence**
 
 The Curry-Howard Correspondence underlies DTT, establising a deep analogy between logic and computation:
 
