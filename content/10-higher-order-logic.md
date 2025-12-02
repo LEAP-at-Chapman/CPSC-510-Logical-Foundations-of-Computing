@@ -30,7 +30,7 @@ Higher-order logic (HOL) extends the capabilities of first-order logic (FOL) by 
 
 <!-- basic setup - need to add much more but this is just basics/scaffolding -->
 
-### From First Order Logic to HOL
+### From First-Order Logic to HOL
 
 WIP
 <!-- 
@@ -404,18 +404,18 @@ WIP
 
 ### Interactive Theorem Provers
 
-**HOL4** is part of the "HOL" family of interactive theorem provers, using classical higher order logic and following the LCF approach to ensure soundness. Developed by Michael J.C. Gordon, the system is implemented in ML, and is a direct descendent of the original HOL88 system. Because HOL4 shares the same underlying logic as Isabelle/HOL, many thoeries and proof patterns are generally portable between the two tools.
+**HOL4** is part of the "HOL" family of interactive theorem provers, using classical higher-order logic and following the LCF approach to ensure soundness. Developed by Michael J.C. Gordon, the system is implemented in ML, and is a direct descendent of the original HOL88 system. Because HOL4 shares the same underlying logic as Isabelle/HOL, many thoeries and proof patterns are generally portable between the two tools.
 
-**Rocq** (formerly named Coq) is an interactive theorem prover based on the *Calculus of Inductive Constructions*, which is a derivative of the calculus of constructions, and is a higher order typed lambda calculus that adds inductive types. It is mainly implemented in OCaml with some C. Compared with Isabelle/HOL, Rocq uses higher order type theory, which allows it to have greater expressive power.
+**Rocq** (formerly named Coq) is an interactive theorem prover based on the *Calculus of Inductive Constructions*, which is a derivative of the calculus of constructions, and is a higher-order typed lambda calculus that adds inductive types. It is mainly implemented in OCaml with some C. Compared with Isabelle/HOL, Rocq uses higher-order type theory, which allows it to have greater expressive power.
 
-**Lean (4)** is another proof assistant and, similar to Rocq, is based on dependent type theory, which is a version of the calculus of constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Compared to Isabelle/HOL's classic higher order logic, Lean's dependent type theory offers greater expressive power, similar to Rocq.
+**Lean (4)** is another proof assistant and, similar to Rocq, is based on dependent type theory, which is a version of the calculus of constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Compared to Isabelle/HOL's classic higher-order logic, Lean's dependent type theory offers greater expressive power, similar to Rocq.
 
 ### Automated Theorem Prover
 
-**Leo III** is an automated theorem prover for classical higher order logic that supports all common TPTP input dialects and is based on paramodulation calculus with ordering constraints for reasoning. Leo III is written in Scala and runs on the JVM (Java Virtual Machine). Compared with ITPs (interactive theorem provers) like Isabelle/HOL, Leo III trades human-guided proof structuring and granular control for full automation, allowing it to rapidly discharge proof obligations.<sup><a href="#LeoIII">[18]</a></sup>
+**Leo III** is an automated theorem prover for classical higher-order logic that supports all common TPTP input dialects and is based on paramodulation calculus with ordering constraints for reasoning. Leo III is written in Scala and runs on the JVM (Java Virtual Machine). Compared with ITPs (interactive theorem provers) like Isabelle/HOL, Leo III trades human-guided proof structuring and granular control for full automation, allowing it to rapidly discharge proof obligations.<sup><a href="#LeoIII">[18]</a></sup>
 
 
-**Satallax** is another automated theorem prover for classical higher order logic and is based on Church's simple type theory with extensionality and choice operators. It is implemented in OCaml and uses the SAT solver MiniSat for its proof search. Basically, Satallax generates propositional clauses corresponding to the rules of a complete tableau calculus and calls MiniSat periodically to test the satisfiability of these clauses.<sup><a href="#Satallax">[19]</a></sup>
+**Satallax** is another automated theorem prover for classical higher-order logic and is based on Church's simple type theory with extensionality and choice operators. It is implemented in OCaml and uses the SAT solver MiniSat for its proof search. Basically, Satallax generates propositional clauses corresponding to the rules of a complete tableau calculus and calls MiniSat periodically to test the satisfiability of these clauses.<sup><a href="#Satallax">[19]</a></sup>
 
 
 ## Algorithms
@@ -425,10 +425,17 @@ WIP
 <!-- (may need to strip some of the stuff from basic theory for this?) -->
 
 
-## Benchmark and Competitions
+## Benchmarks and Competitions
+
+**miniF2F** is a cross-system benchmark of 488 problem statements drawn from both mathematical competitions (IME, AMC and the International Mathematical Olympiad) and high school and undergraduate level mathematics courses. The benchmark targets theorem provers such as Lean, Metamath, Isabelle, and HOL Light in order to enable cross-system comparison of theorem provers and proof automation tools. The goal is to serve as a benchmark for automated and neural theorem proving systems. A formal problem statement is fed into system and the prover must output a fully machine-verifiable proof.<sup><a href="#MiniF2F">[20]</a></sup>
+
+**TPTP** (Thousands of Problems for Theorem Provers) is library of test problems for testing and evaluating ATPs. Problems are expressed in a simple text-based format for either first-order logic or higher-order logic. TPTP provides a common benchmark with a single, umambiguous reference set of problems so that different ATP systems can be both evaluated and compared with reproducible results.<sup><a href="#TPTP">[21]</a></sup>
+
+**CASC** (The CADE ATP System Competition) is an annual competition of fully automatic, classical logic, ATP systems. The purpose of CASC is to provide a public evaluation of relative capabilities of ATP systems as well as to stimulate research and development of ATP systems. At CASC, ATP system performane is evaluated in terms of the total number of problems solved with an acceptable solution output within a specified time limit, as well as the average time taken for problems solved. CASC is hosted at each CADE and IJCAR conference, both forums for automated deduction.<sup><a href="#CASC">[22]</a></sup>
 
 
-## Applications in Industry (and Academia)
+
+## Applications in Industry and Academia
 
 In general, Isabelle/HOL appears to have a wide variety of applcation throughout industry and academia due to the fact that it provides a mathematical assuranace of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.
 
@@ -476,55 +483,18 @@ use this one:
 
 https://openreview.net/forum?id=IUikebJ1Bf0
 
-<!-- https://arxiv.org/html/2408.11172v1
-
-https://github.com/xqyww123/Isa-Mini -->
-
-<!-- no code artifact for this paper
-
-trying to find where the actual code etc is?
-
-According to the authors:
-*the REPL infrastructure, MiniLang interpreter, translator,
-training data, machine learning framework, Sledgehammer,
-and parameters of the finetuned models will be open-sourced
-and are present in the submitted supplementary materials* -->
-
-<!-- need to talk to Kurz about finding another example; the binary analysis one seems pretty cool -->
-<!-- 
-
-DEPRECATED SINCE THIS IS THE BINARY ANALYSIS TOOL
-
-https://gitlab.surrey.ac.uk/isabil/isabil
-
-https://zenodo.org/records/15268251
-
-I added these lines as PATH variables to my zsh on MacOS in order to run the Isabelle CLI tool:
-`export ISABELLE_HOME="/Applications/Isabelle2025.app"`
-`export PATH="$ISABELLE_HOME/bin:$PATH"`
-
-Make sure you have correct version of the [AFP](https://www.isa-afp.org/download/) downloaded
-
-Unpack the Tar file, put it *somewhere*, and then register it via 
-`isabelle components -u PATHNAME`
-
-For example, the pathname for my AFP is: 
-`/Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys`
-
-My command is then:
-`isabelle components -u /Users/spencerau/Documents/Isabelle/afp-2025-10-25/thys` -->
 
 ## History
 
 <!-- Church (1940) A Formulation of the Simple Theory of Types -->
 
-<!-- may include dates at teh beginning of each part, and include citations etc  -->
+<!-- may include dates at the beginning of each part, and include citations etc  -->
 
-### Origins of Higher Order Logic
+### Origins of Higher-Order Logic
 
 <!-- scaffolding template for now -->
 
-Alonzo Church's work in the 1930s (via $\lambda$-calculus) and 1940s (via type theory) and Leon Henkin's work in the 1950s (on general models semantics) lay the foundation for higher order logic. From their contributions arose an extension of First Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities
+Alonzo Church's work in the 1930s (via $\lambda$-calculus) and 1940s (via type theory) and Leon Henkin's work in the 1950s (on general models semantics) lay the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities
 
 In the 1970s, Robert Milner develops LCF (Logic for Computable Functions) at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evovles into OCaml and Standard ML.
 
@@ -601,10 +571,10 @@ Higher-Order Logic](https://isabelle.in.tum.de/doc/tutorial.pdf), Springer-Verla
 - [15]: Alexander Kurz (2023) [Syntax of Lambda Calculus](https://hackmd.io/@alexhkurz/S1D0yP8Bw), CPSC 354 - Programming Languages, Chapman University
 
 <a id="Xu_IsaMini"></a>
-- [16]: Xu et al. (2025) [IsaMini: Redesigned Isabelle Proof Language for Machine Learning](https://arxiv.org/abs/2507.18885) arXiv preprint arXiv:2507.18885.
+- [16]: Xu et al. (2025) [IsaMini: Redesigned Isabelle Proof Language for Machine Learning](https://arxiv.org/abs/2507.18885), arXiv preprint arXiv:2507.18885.
 
 <a id="Teege_IntroIsabelle"></a>
-- [17]: Teege (2025) [A Gentle Introduction to Isabelle and Isabelle/HOL](https://github.com/gteege/gentle-isabelle/blob/main/man-isabelle.pdf) Universität der Bundeswehr München
+- [17]: Teege (2025) [A Gentle Introduction to Isabelle and Isabelle/HOL](https://github.com/gteege/gentle-isabelle/blob/main/man-isabelle.pdf), Universität der Bundeswehr München
 
 <a id="LeoIII"></a>
 - [18]: [Leo III Repository](https://github.com/leoprover/Leo-III) GitHub
@@ -612,11 +582,23 @@ Higher-Order Logic](https://isabelle.in.tum.de/doc/tutorial.pdf), Springer-Verla
 <a id="Satallax"></a>
 - [19]: Michael Färber, [Satallax](https://satallaxprover.org/) 
 
+<a id="MiniF2F"></a>
+- [20]: Zheng, Han, and Polu (2022) [MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics](https://arxiv.org/abs/2109.00110), ICLR 2022
+
+<a id="TPTP"></a>
+- [21]: Sutcliffe (2017) [The TPTP Problem Library and Associated Infrastructure: From CNF to TH0, TPTP v6.4.0](https://tptp.org/TPTP/), Journal of Automated Reasoning, 59(4): 483–502
+
+<a id="CASC"></a>
+- [22]: Sutcliffe (2016) [The CADE ATP System Competition - CASC](https://tptp.org/CASC/), AI Magazine, 37(2): 99–101
+
+
 https://plato.stanford.edu/entries/logic-higher-order/
 
 https://plato.stanford.edu/entries/reasoning-automated/#HigOrdLog
 
 https://plato.stanford.edu/entries/type-theory-church/
+
+https://plato.stanford.edu/entries/type-theory/
 
 https://www.youtube.com/watch?v=VS_GK-9xUO4
 
@@ -629,6 +611,10 @@ SEP Category Theory - https://plato.stanford.edu/entries/category-theory/
 <!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf -->
 
 https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html
+
+https://en.wikipedia.org/wiki/Thousands_of_Problems_for_Theorem_Provers
+
+https://tptp.org/CASC/
 
 
 
