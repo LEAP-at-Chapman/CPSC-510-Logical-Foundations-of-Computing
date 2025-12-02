@@ -67,25 +67,25 @@ The following installation is pull directly from Lean-["Install Lean"](https://l
 
 One of the most effective ways to begin learning Lean is through the [Lean Game Server](https://adam.math.hhu.de/). These games remove setup overhead, eliminate the intimidation factor of reading large formal libraries, and instead invite learners to explore Lean through hands-on examples. Two of the most valuable games for beginners are the [Logic Games](https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic) and the [Natural Number Games](https://adam.math.hhu.de/#/g/leanprover-community/nng4). Both games illustrate the power of formal methids in a setting that is playful and intellectually rigorous.
 
-### 1. Logic Game
+### Logic Game
 
 The Logic Game introduces users to the foundational rules of formal logic such as implication, negation, conjunction, disjunction, quantifiers, etc... through short, progressively challenging proof puzzles. Its educational value comes from several key features:
 
-#### 1.1 Immediate Feedback Loop
+#### Immediate Feedback Loop
 
 Unlike traditional textbooks, the Logic Game responds instantly to every tactic command:
 - If a tactic is correct, Lean advances the goal state.
 - If a tactic is wrong, Lean explains why.
 This tight feedback loop mirrors the experience of interacting with an automated proof assistant in real industrial or research settings, lowering the learning curve dramatically.
 
-#### 1.2 The "Mental Model" of Lean
+#### The "Mental Model" of Lean
 
 The Logic Game is explicitly designed to teach users how Lean thinks about logic:
 - Every tactic corresponds to a precise logical rule.
 - Users see how Lean's kernel enforces correctness step by step.
 This builds intuition for dependent type theory and Curry–Howard correspondence (propositions-as-types), but without requiring the learner to know any theory beforehand.
 
-#### 1.3 Encourages Experimentation
+#### Encourages Experimentation
 
 Players can try tactics freely without risk. This experimentation fosters:
 - pattern recognition
@@ -93,13 +93,13 @@ Players can try tactics freely without risk. This experimentation fosters:
 - an understanding of proof search strategies
 These habits carry directly over to real software verification tasks.
 
-### 2. Natural Number Game
+### Natural Number Game
 
 The Natural Number Game (NNG) has become one of the most popular introductions to Lean worldwide. The educational value stems from how it blends mathematics, computation, and logic.
 
 You will prove fundamental facts such as `0 != succ n`, addition is associative and commutative, `succ` is injective, multiplication distributes over addition, etc...
 
-#### 2.1 How Mathematics Can Be Built From Axiom
+#### How Mathematics Can Be Built From Axiom
 
 Students are often familiar with these results from prior coursework, but they rarely see how foundational proofs look at the axiomatic level. The NNG demonstrates: 
 - How definitions induce computation rules
@@ -108,11 +108,11 @@ Students are often familiar with these results from prior coursework, but they r
 
 This concreteness demystifies dependent type theory: users experience how a simple inductive type gives rise to a rich structure.
 
-#### 2.2 Inductive Reasoing Through Direct Interaction
+#### Inductive Reasoing Through Direct Interaction
 
 Induction is not merely stated, it is performed repeatedly. Lean forces the user to spell out base cases, induction hypotheses, goals and recursive patterns. This active engagement builds intuition for proof assistants handle recursion and induction which are core tools in both methematics and formal verfication.
 
-#### 2.3 Motivates Algorithmic Thinking
+#### Motivates Algorithmic Thinking
 
 Because natural number definitions are computational, players quickly see how rewriting works, pattern matching influences evaluation, recursive structures behave algorithmically. This bridges the gap between formal mathematics and computer science practice, showing why proof assistants can serve as both logical frameworks and programming languages.
 
@@ -140,7 +140,7 @@ When selecting among tools, you should weigh:
 In implementing and using a dependently typed language or proof assistant (like Lean, Coq, Agda, Idris, etc.), a number of non-trivial algorithms lie at the foundation. These algorithms handle typing, type checking/inference, equality checking, unification or normalization, and elaboration. Understanding them gives insight into why dependent types are powerful and why they are hard.
 
 ### Key algorithms and concepts:
-#### 1. Bidirectional typechecking / type-inference + type-checking separation
+#### Bidirectional typechecking / type-inference + type-checking separation
 
 Instead of trying to infer types for all expressions (type inference) or requiring full type annotations everywhere, bidirectional typing splits the typing judgment into two modes:
 
@@ -153,7 +153,7 @@ The generic construction yields a type-checking algorithm for a broad class of D
 
 The necessity of type annotations in places where inference is impossible (e.g., lambda abstractions returning dependent types, complex implicit arguments). The complexity of designing good elaboration strategies so that user-facing syntax remains ergonomic even when underlying types are rich and dependent. The burden shifts from runtime safety to compile-time/type-check-time; the user (or tool) must supply sufficient information for checking.
 
-### 2. Equality / Normalization / Conversion / Extensionality Checking
+### Equality / Normalization / Conversion / Extensionality Checking
 
 In dependent type theory, type equality (and term equality) is not just "are they syntactically identical?". It often involves computation (normalization), conversion rules (β-reduction), and user-defined equality/extension rules (e.g., extensionality, definitional equalities). Implementations need an algorithm to decide or check when two types or terms are equal.
 
@@ -162,7 +162,7 @@ arXiv
 
 Without a robust equality/normalization algorithm, dependent types, especially those involving dependent functions or indexed types,become unwieldy. Many trivial-looking equalities (e.g., rewriting with definitional reduction, simplification) would need to be proven manually. A good algorithm reduces overhead and makes proofs manageable.
 
-#### 3. Elaboration
+#### Elaboration
 
 In proof assistants or dependently typed languages, users write code in a friendly high-level syntax (with type annotations optional, implicit arguments, etc.). The elaboration phase translates that syntax into the core type theory: resolves implicit arguments, performs type inference/checking, adds coercions, resolves overloading, etc.
 
@@ -170,7 +170,7 @@ Without a powerful elaboration engine, the user would be burdened with writing f
 
 The designers of Lean highlight that its "powerful elaboration engine", combined with a small trusted kernel and support for mixed declarative and tactic proof style, make it a mature system for real-world development. 
 
-#### 4. Combined algorithmic stack → Decidability + Trust
+#### Combined algorithmic stack → Decidability + Trust
 
 Bidirectional typing + equality/normalization + elaboration + a small trusted kernel yields a system where:
 - Type checking and proof checking remain decidable (modulo normalization / termination constraints),
@@ -187,7 +187,7 @@ This is the algorithmic backbone that makes modern DTT-based proof assistants us
 
 In recent years, formally grounded methods for specifying and verifying software and hardware systems have undergone significant uptake. The combination of dependable "symbolic" reasoning, (i.e. logic, type-theory, theorem-proving, etc...) with the explosion of AI-driven development like machine learning, generative models, is opening up new directions for improvements. Here are briefs summaries of recent influential applications. 
 
-### 1. Historical and Influencial Application
+### Historical and Influencial Application
 
 - Tokeneer ID Station (NSA smart-card project) is one of the early industrial successes of the "Correctness by Construction" methodology. The case is described by Janet Barnes in [“Experiences in the Industrial use of Formal Methods”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Experiences+in+the+Industrial+use+of+Formal+Methods&btnG=). This article reports on industrial deployment of formal methods under the “Correctness by Construction (CbyC)” approach at Altran Praxis, including the case of the Tokeneer ID Station project for the US NSA. The work describes how formal specification in Z, refinement to code in SPARK with proof of absence of run-time errors, and proof of system-level properties were applied. The project found only five errors post-release and is cited as a rare “success story” of formal methods in industry. The article also candidly discusses challenges: training, tool usability, industrial adoption, and scaling.
 
@@ -197,7 +197,7 @@ In recent years, formally grounded methods for specifying and verifying software
 
 - [“Industrial-Strength Verification of Solid State Interlocking Programs”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CIndustrial-Strength+Verification+of+Solid+State+Interlocking+Programs.%E2%80%9D&btnG=) describes a tool used on 26 real-world interlockings and used to aument existing testing/inspection processes. It describes an end-to-end workflow that consumes engineering artefacts as produced by signalling designers, automatically encodes safety properties, runs automated theorm provers and SMT solvers, then produces diagnostics so the results are actionable.
 
-### 2. Recent & Emerging Directions
+### Recent & Emerging Directions
 
 - The paper [“Machine learning and logic: a new frontier in artificial intelligence”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CMachine+learning+and+logic%3A+a+new+frontier+in+artificial+intelligence.%E2%80%9D&btnG=) shows how ML/AI and formal methods (logic, automated reasoning) are increasingly tightly coupled. Both foundational pillars have largely developed independently, but novel and grand challenges demand their integration. The author identify three key paradigms:
     1. Using learning methods for proof-rule selection, solver heuristic and initialization.
@@ -219,6 +219,18 @@ Let's formalise and verify a transformation pipline for 3-D points in world spac
 The following case study demonstrates how Lean uses dependent type system to ensures mathematical and computational correctness. By encoding vector dimensions in types and proving geometric invariants such as norm preservation, we move from abstract theory to executable verification. This approach mirrors how formal methods are being integratated into the wider industry.
 
 ## History
+
+Type theory and the idea of types as a foundation for mathematics and computation have a long pedigree that connects philosophical logic, lambda calculus, and modern proof assistants.
+
+The story begins with early efforts to avoid paradoxes in naive set theory and logic (Russell, Frege), which motivated ramified and then simple type theories in the first half of the 20th century. Alonzo Church’s formulation of the simple theory of types and the simply-typed lambda calculus provided the computational backbone that later researchers built on. ([Wiki](https://en.wikipedia.org/wiki/History_of_type_theory))
+
+A decisive shift toward dependent types occurred with Per Martin-Löf’s intuitionistic type theory (1970s–1980s). Martin-Löf introduced dependent function ($\Pi$) and dependent pair ($\Sigma$) types, giving a constructive foundation in which types can quantify over values. This made it possible to represent propositions as types and proofs as programs in a very expressive way. The Curry–Howard correspondence, the observation that proofs correspond to programs and propositions to types, fused logic and computation and underpins modern dependently-typed systems. ([See here](https://plato.stanford.edu/entries/type-theory)) 
+
+A decisive shift toward dependent types occurred with Per Martin-Löf’s intuitionistic type theory (1970s–1980s). Martin-Löf introduced dependent function ($\Pi$) and dependent pair ($\Sigma$) types, giving a constructive foundation in which types can quantify over values. This made it possible to represent propositions as types and proofs as programs in a very expressive way. The Curry–Howard correspondence, the observation that proofs correspond to programs and propositions to types, fused logic and computation and underpins modern dependently-typed systems. ([See here](https://plato.stanford.edu/entries/type-theory))
+
+In the 1980s and 1990s the field consolidated around a handful of influential calculi and systems. The Calculus of Constructions (Coquand & Huet) and the later Calculus of Inductive Constructions became the basis for the Coq proof assistant; Agda and other systems explored dependently typed programming more directly; and the so-called lambda-cube classified a spectrum of type systems. Over the last two decades these theoretical advances have been implemented in robust systems (Coq, Agda, Lean, Idris) and large collaborative libraries (e.g., Lean’s mathlib), enabling both deep mathematical formalization and practical verification projects. ([See here](https://plato.stanford.edu/entries/type-theory))
+
+
 
 ## Formal Methods and AI
 
@@ -254,7 +266,10 @@ The following case study demonstrates how Lean uses dependent type system to ens
 
 - Groote, J. F., Huisman, M. [“Formal Methods for Industrial Critical Systems.”](https://scholar.google.com/scholar?q=%E2%80%9CFormal+Methods+for+Industrial+Critical+Systems%E2%80%9D&hl=en&as_sdt=0%2C5&as_ylo=2024&as_yhi=) Int J Softw Tools Technol Transfer 26 (2024). 
 
-- Miranda et al. ["VeriBench: End-to-End formal verification benchmark for AI code generation in Lean 4"](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&as_ylo=2024&q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&btnG=). In Proceedings of the 42nd International Conference on Machine Learning, Vancouver, Canada (PMLR 267) (2025).
- 
+- Miranda et al. ["VeriBench: End-to-End formal verification benchmark for AI code generation in Lean 4"](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&as_ylo=2024&q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&btnG=). In Proceedings of the 42nd International Conference on Machine Learning, Vancouver, Canada (PMLR 267) (2025). 
+
+- Wikipedia contributors. (2025, November 28). [History of type theory](https://en.wikipedia.org/wiki/History_of_type_theory). Wikipedia. 
+
+- [Type Theory (Stanford Encyclopedia of Philosophy)]( https://plato.stanford.edu/entries/type-theory). (2022, September 6).
 
 ## Suggestions for Future Works
