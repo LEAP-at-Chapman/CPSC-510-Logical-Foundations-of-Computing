@@ -226,7 +226,178 @@ dotnet test -v:n
 
 ## Exercises
 
-*To be added*
+### Ex. 1) Absolute Value in Dafny with Specifications
+
+Write a Dafny method called ```Abs``` that:
+
+1. Takes an integer input ```x```.
+
+2. Returns an integer result ```r``` that is the absolute value of ```x```.
+
+3. Includes postconditions (ensures clauses) that guarantee:
+
+    - The result is always non-negative.
+
+    - The result has the same magnitude as ```x```.
+
+    - The result is either ```x``` or ```-x```.
+
+**Step 1:**
+
+To begin this exercise, we can simplify it by tackling one portion of the code at a time. Initially, we can start by taking into account the header that we need to use in order to get the absolute value of an integer input ```x```.
+
+```
+method Abs(x: int) returns (r: int)
+```
+This header method is named ```Abs```, which takes an integer ```x``` and returns an integer ```r```.
+
+**Step 2:**
+
+Now that the method and input parameters have been specified, we can add the ensures clauses, which are what we need to ensure are correct when verifying our program. 
+
+```
+  ensures r >= 0
+  ensures r * r == x * x
+  ensures r == x || r == -x
+```
+
+Through these clauses, we see that they are checking that: ```r``` is never negative, ```r``` keeps the same magnitude as ```x```, and ```r``` is either ```x``` (if positive) or ```–x ```(if negative). Dafny checks these automatically.
+
+**Step 3:**
+
+Lastly, the code that needs to be verified must be added to our program along with the respective parameters. 
+
+```
+if x >= 0 {
+  r := x;
+} else {
+  r := -x;
+}
+```
+
+This code checks if ```x``` is zero or positive and returns it as is. If ```x``` is negative, it flips the sign accordingly.
+
+Once we have the entire code assembled together, we have the following program:
+
+```
+method Abs(x: int) returns (r: int)
+  ensures r >= 0
+  ensures r * r == x * x
+  ensures r == x || r == -x
+{
+  if x >= 0 {
+    r := x;
+  } else {
+    r := -x;
+  }
+}
+```
+
+This will result in the answer ```Abs(-5) = 5```.
+
+### Ex. 2) Summing an Array in Dafny Using a Loop Invariant
+
+Write a Dafny method called ```ArraySum``` that:
+
+- Takes an array input ```a```.
+
+- Returns an integer result ```total``` representing the sum of all elements.
+
+- Uses a loop invariant to ensure correctness as the array is processed.
+
+**Step 1:**
+
+First, we define the method header and required input:
+
+```
+method ArraySum(a: array<int>) returns (total: int)
+  requires a != null
+```
+
+This line introduces a method named ```ArraySum```, which takes an array ```a``` and returns an integer ```total```.
+The requires clause ensures that the array must not be null before the method runs.
+
+**Step 2:**
+
+Next, we add the loop structure and initialize our variables:
+
+```
+{
+  var i := 0;
+  total := 0;
+```
+
+Through this loop structure, ```i``` starts at ```0``` and will move through the array as the total begins at 0 and will accumulate the sum.
+
+**Step 3:**
+
+We now include the loop and its invariant:
+
+```
+  while i < a.Length
+    invariant 0 <= i <= a.Length
+  {
+    total := total + a[i];
+    i := i + 1;
+  }
+}
+```
+This loop works by repeating while ```i``` is within the array bounds and adding each element to the total. As it loops, it increases ```i``` by ```1``` each iteration. The invariant ensures that ```i``` always stays between ```0``` and ```a.Length```. 
+
+**Step 4:**
+
+To verify that the method is working correctly, we can input this main method:
+```
+method Main()
+{
+  var a := new int[5];
+  a[0] := 2;
+  a[1] := 4;
+  a[2] := -1;
+  a[3] := 3;
+  a[4] := 1;
+
+  var result := ArraySum(a);
+  print "Sum of array = ", result, "\n";
+}
+```
+
+Once we have the entire code assembled together, we have the following program:
+
+```
+method ArraySum(a: array<int>) returns (total: int)
+  requires a != null
+{
+  var i := 0;
+  total := 0;
+
+  while i < a.Length
+    invariant 0 <= i <= a.Length
+  {
+    total := total + a[i];
+    i := i + 1;
+  }
+}
+
+method Main()
+{
+  var a := new int[5];
+  a[0] := 2;
+  a[1] := 4;
+  a[2] := -1;
+  a[3] := 3;
+  a[4] := 1;
+
+  var result := ArraySum(a);
+  print "Sum of array = ", result, "\n";
+}
+```
+
+Where it will result in:
+
+```
+Sum of array = 9
+```
 
 ## The Landscape of Tools
 
@@ -243,8 +414,8 @@ Using preconditions, postconditions, and invariants, as Hoare Logic showcases, t
 - **Safety-Critical Systems:**
 In safety-critical systems, such as those in the aerospace and medical device industries, implement Hoare Logic through rigorous reasoning using preconditions, postconditions, and invariants. The implementation of the Hoare Triple ensures software correctness, particularly in cases where failure can be catastrophic. NASA's use of highly complex software makes testing impossible, especially when failures need to have probabilities on the order of 10⁻⁹ per hour. This highly rare, even if subtle, edge-case condition must be proven safe rather than minimally tested. Formal verification supports the validation of flight-control algorithms, redundancy management logic, timing-critical tasks, and fault-tolerant coordination across distributed systems.
 
-- **Static Analysis and Software Quality:**
-Modern tools such as Facebook Infer and Microsoft Code Contracts apply Hoare Logic-based reasoning to automatically detect bugs, memory leaks, and logic errors before runtime.
+- **Static Analysis:**
+In static analysis, the Hoare Triple is used to reason all program states, ensuring correctness when testing alone can be insufficient. This reasoning is adjusted and adapted to work across various computational models. For synchronous languages, they are rewritten into a synchronous tuple assignment form, enabling grouped updates and macro-step boundaries to be verified through specialized axioms. Meanwhile, in quantum programs, redefined semantics, quantum predicates, and measurement-aware rules are used to handle superposition and probabilistic branching. In each case, static analysis becomes an automated form of Hoare-style reasoning adapted to the computational model, ensuring that correctness is proven.
 
 
 ## Case Studies
@@ -272,6 +443,10 @@ The development of Hoare Logic established a foundation in computer science by s
 
 *To be added*
 
+## Hoare Logic in F*
+
+*To be added*
+
 ## Resources
 
 - [Dafny](https://github.com/dafny-lang/dafny)
@@ -292,3 +467,4 @@ The development of Hoare Logic established a foundation in computer science by s
 
 - Josh Rushby (1995) [Formal Methods and Their Role in Digital Systems Validation for Airborne Systems](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Formal+Methods+and+Their+Role+in+Digital+Systems+Validation+for+Airborne+Systems&btnG=), NASA Contractor Report 4673 
 
+- https://www.cs.cmu.edu/~lblum/flac/Presentations/cappiello_project_report.pdf

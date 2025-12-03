@@ -4,19 +4,21 @@
 format: jb-book
 root: content/title
 parts:
-- numbered: false
+- caption: Introduction
+  numbered: false
   chapters:
     - file: content/intro
-- caption: Logics and Their Software Tools
-  numbered: true
-  chapters:
     - file: content/0-logic
     - file: content/1-propositional-logic
+    - file: content/6-modal-logic
+
+- caption: Logics and Tools
+  numbered: true
+  chapters:
     - file: content/2-satsolving
     - file: content/3-logic-programming
     - file: content/4-constraint-solving
     - file: content/5-smt-solving
-    - file: content/6-modal-logic
     - file: content/7-temporal-logic
     - file: content/8-epistemic-logic
     - file: content/9-hoare-logic
