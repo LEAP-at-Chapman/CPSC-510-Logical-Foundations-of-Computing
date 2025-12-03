@@ -12,7 +12,6 @@
 - Industrial theorem proving -->
 
 ## Idea and Introduction
-WIP
 
 Topics
 
@@ -496,6 +495,8 @@ https://openreview.net/forum?id=IUikebJ1Bf0
 
 <!-- may include dates at the beginning of each part, and include citations etc  -->
 
+WIP - need to refine/add more detail and add citations
+
 ### Origins of Higher-Order Logic
 
 <!-- scaffolding template for now -->
@@ -543,7 +544,7 @@ AI/LLM stuff with NTP in Isabelle?
 - [4]: Achermann, Humbel, Cock, and Roscoe (2018) [Physical Addressing on Real Hardware in Isabelle/HOL](https://people.inf.ethz.ch/troscoe/pubs/achermann_itp_2018.pdf), Department of Computer Science, ETH Zurich.
 
 <a id="Spichkova_FOCUS"></a>
-- [5]: Spichkova (2014) [Stream processing components: Isabelle/HOL formalisation and case studies](https://arxiv.org/abs/1405.1512), arXiv preprint arXiv:1405.1512. 
+- [5]: Maria Spichkova (2014) [Stream processing components: Isabelle/HOL formalisation and case studies](https://arxiv.org/abs/1405.1512), arXiv preprint arXiv:1405.1512. 
 
 <a id="Griffin_IsaBIL"></a>
 - [6]: Griffin, Dongol, and Raad. (2025) [IsaBIL: A Framework for Verifying (In) correctness of Binaries in Isabelle/HOL (Extended Version)](https://arxiv.org/abs/2504.16775v1), arXiv preprint arXiv:2504.16775.
@@ -564,7 +565,7 @@ AI/LLM stuff with NTP in Isabelle?
 - [11]: Laurence C. Paulson (1987) [Logic and Computation: Interactive Proof with Cambridge LCF](https://assets.cambridge.org/97805213/46320/sample/9780521346320ws.pdf), Cambridge University Press, USA.
 
 <a id="Stanford_LambdaCalc_TypeTheory"></a>
-- [12]: Deutsch and Marshall (2025) [D. The λ-Calculus and Type Theory: Supplement to Alonzo Church](https://plato.stanford.edu/entries/church/supplementD.html), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
+- [12]: Deutsch and Marshall (2025) [Supplement to Alonzo Church > D. The λ-Calculus and Type Theory: Supplement to Alonzo Church](https://plato.stanford.edu/entries/church/supplementD.html), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
 
 <a id="Isabelle/HOL_ProofAssistant"></a>
 - [13]: Nipkow, Paulson, and Wenzel (2025) [Isabelle/HOL: A Proof Assistant for
@@ -580,43 +581,55 @@ Higher-Order Logic](https://isabelle.in.tum.de/doc/tutorial.pdf), Springer-Verla
 - [16]: Xu et al. (2025) [IsaMini: Redesigned Isabelle Proof Language for Machine Learning](https://arxiv.org/abs/2507.18885), arXiv preprint arXiv:2507.18885.
 
 <a id="Teege_IntroIsabelle"></a>
-- [17]: Teege (2025) [A Gentle Introduction to Isabelle and Isabelle/HOL](https://github.com/gteege/gentle-isabelle/blob/main/man-isabelle.pdf), Universität der Bundeswehr München
+- [17]: Gunnar Teege (2025) [A Gentle Introduction to Isabelle and Isabelle/HOL](https://github.com/gteege/gentle-isabelle/blob/main/man-isabelle.pdf), Universität der Bundeswehr München
 
 <a id="LeoIII"></a>
-- [18]: [Leo III Repository](https://github.com/leoprover/Leo-III) GitHub
+- [18]: Steen and Benzmüller (2018) [The Higher-Order Prover Leo-III (Extended Version)](https://arxiv.org/abs/1802.02732) 9th International Joint Conference on Automated Reasoning, IJCAR 2018, Oxford, UK, July 14-17, 2018, Proceedings, Springer
 
 <a id="Satallax"></a>
-- [19]: Michael Färber, [Satallax](https://satallaxprover.org/) 
+- [19]: Chad E. Brown, [Satallax: An Automatic Higher-Order Prover](https://ps.uni-saarland.de/Publications/documents/Brown2012b.pdf), Saarland University, Saarbr¨ucken, Germany
 
 <a id="MiniF2F"></a>
 - [20]: Zheng, Han, and Polu (2022) [MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics](https://arxiv.org/abs/2109.00110), ICLR 2022
 
 <a id="TPTP"></a>
-- [21]: Sutcliffe (2017) [The TPTP Problem Library and Associated Infrastructure: From CNF to TH0, TPTP v6.4.0](https://tptp.org/TPTP/), Journal of Automated Reasoning, 59(4): 483–502
+- [21]: Geoff Sutcliffe (2017) [The TPTP Problem Library and Associated Infrastructure: From CNF to TH0, TPTP v6.4.0](https://tptp.org/TPTP/), Journal of Automated Reasoning, 59(4): 483–502
 
 <a id="CASC"></a>
-- [22]: Sutcliffe (2016) [The CADE ATP System Competition - CASC](https://tptp.org/CASC/), AI Magazine, 37(2): 99–101
+- [22]: Geoff Sutcliffe (2016) [The CADE ATP System Competition - CASC](https://tptp.org/CASC/), AI Magazine, 37(2): 99–101
 
+<a id="SEP_HOL"></a>
+- [23]: Jouko Väänänen (2024) [Second-order and Higher-order Logic](https://plato.stanford.edu/entries/logic-higher-order/), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
 
-https://plato.stanford.edu/entries/logic-higher-order/
+<a id="SEP_AutomatedReasoning_HOL"></a>
+- [24]: Frederic Portoraro (2025) [Automated Reasoning: Section 3.1 on Higher Order Logic](https://plato.stanford.edu/entries/reasoning-automated/#HigOrdLog), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
 
-https://plato.stanford.edu/entries/reasoning-automated/#HigOrdLog
+<a id="SEP_ChurchTypeTheory"></a>
+- [25]: Benzmüller and Andrews (2025) [Church’s Type Theory](https://plato.stanford.edu/entries/type-theory-church/), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
 
-https://plato.stanford.edu/entries/type-theory-church/
+<a id="SEP_TypeTheory"></a>
+- [26]: Thierry Coquand (2022) [Type Theory](https://plato.stanford.edu/entries/type-theory/), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
 
-https://plato.stanford.edu/entries/type-theory/
+<a id="SEP_CategTheory"></a>
+- [27]: Jean-Pierre Marquis (2023) [Category Theory](https://plato.stanford.edu/entries/category-theory/), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
 
-https://www.youtube.com/watch?v=VS_GK-9xUO4
+<a id="LigerLearn_LambdaPrimer"></a>
+- [28]: LigerLearn (2023) [Lambda (λ) Calculus Primer](https://www.youtube.com/watch?v=9MtE5ONrQyk
+), YouTube
 
-https://www.youtube.com/watch?si=ocR0HnYDEQLAneym&v=TrYosPPCQAY&feature=youtu.be
+<a id="LigerLearn_LambdaEval"></a>
+- [29]: LigerLearn (2023) [Lambda (λ) calculus evaluation rules (δ, β, α, η conversion/reduction)](
+https://www.youtube.com/watch?v=VS_GK-9xUO4), YouTube
 
-https://www.youtube.com/watch?v=yAi3XWCBkDo
+<a id="TypeTheory_Youtube"></a>
+- [30]: Mark Jago/Attic Philosophy (2025) [Type Theory in Computer Science, Linguistics, Logic](https://www.youtube.com/watch?v=TrYosPPCQAY), YouTube
 
-SEP Category Theory - https://plato.stanford.edu/entries/category-theory/
+- [31]: Oliver Lugg (2022) [A Sensible Introduction to Category Theory](https://www.youtube.com/watch?v=yAi3XWCBkDo), YouTube
 
 <!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf -->
 
-https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html
+<!-- calculus of inductive constants (in coq)
+https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html -->
 
 
 
