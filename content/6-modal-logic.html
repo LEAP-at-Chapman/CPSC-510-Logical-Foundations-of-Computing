@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Modal Logic &#8212; Logical Foundations of AI</title>
   
@@ -29,39 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/6-modal-logic';</script>
@@ -69,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="1. SAT solving with MiniSat" href="2-satsolving.html" />
-    <link rel="prev" title="Propositional Logic" href="1-propositional-logic.html" />
+    <link rel="prev" title="2. Propositional Logic" href="1-propositional-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,13 +155,24 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Short Intro to Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">2. Propositional Logic</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Modal Logic</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
@@ -226,9 +232,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -369,9 +375,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -408,11 +414,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modal-logic">
-<h1>Modal Logic<a class="headerlink" href="#modal-logic" title="Permalink to this heading">#</a></h1>
+<h1>Modal Logic<a class="headerlink" href="#modal-logic" title="Link to this heading">#</a></h1>
 <p><span class="math notranslate nohighlight">\(\newcommand{\sem}[1]{[\![#1]\!]}\)</span>
 Author: Alexander Kurz</p>
 <section id="idea">
-<h2>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
+<h2>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
 <p>Modal Logic (ML) is more expressive than propositional logic (PL) and less expressive than first-order logic (FOL), in informal but suggestive notation:</p>
 <div class="math notranslate nohighlight">
 \[\rm PL \subseteq ML \subseteq FOL\]</div>
@@ -425,7 +431,7 @@ Author: Alexander Kurz</p>
 </ul>
 </section>
 <section id="motivation">
-<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading">#</a></h2>
 <p>Superficially, modal logic adds to the propositional connectives <span class="math notranslate nohighlight">\(\wedge\)</span> (and), <span class="math notranslate nohighlight">\(\vee\)</span> (or), <span class="math notranslate nohighlight">\(\neg\)</span> (not) two new connectives that allow us to take any formula <span class="math notranslate nohighlight">\(\phi\)</span> and form two new formulas</p>
 <div class="math notranslate nohighlight">
 \[
@@ -444,19 +450,19 @@ Author: Alexander Kurz</p>
 <li><p>Modal logic is a decidable fragment of first-order logic.</p></li>
 <li><p>Modal logic is the bisimulation invariant fragment of first-order logic.</p></li>
 </ul>
-<p>The first point has given rise to various generalisations of modal logic, in particular in the area of automated theorem proving. Search for <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=%22guarded+fragment%22+%22modal+logic%22&amp;btnG=">guarded fragment</a> for references.</p>
+<p>The first point has given rise to various generalisations of modal logic, in particular in the area of automated theorem proving. Search for <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%22guarded+fragment%22+%22modal+logic%22&amp;amp;btnG=">guarded fragment</a> for references.</p>
 <p>In the second point bisimulation refers to a relation of observational or behavioural equivalence of dynamic systems, which are themselves considered as “black boxes”. In fact, bisimulation is the natural notion of behavioural equivalence for non-determinstic transition systems in which the states themselves are not observable but choices are. This leads us to the next item.</p>
 <p><strong>(Possible Worlds Semantics)</strong> The idea that something is necessarily true if it is true in all possible worlds is an old one. The turning point for modal logic was the mathematical formalisation of possible world semantics by Kripke:</p>
 <ul class="simple">
-<li><p>Kripke (1959) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Saul+Kripke%3A+A+Completeness+Theorem+in+Modal+Logic.+1959.&amp;btnG=">A Completeness Theorem in Modal Logic</a>, The Journal of Symbolic Logic.</p></li>
-<li><p>Kripke (1963) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Kripke+1963+Semantical+Analysis+of+Modal+Logic+I&amp;btnG=">Semantical Analysis of Modal Logic I</a>, Zeitschr. f. math. Logik und Grundlagen d. Math., <a class="reference external" href="http://fitelson.org/142/kripke_1.pdf">[pdf]</a> . I recommend Section 2.1, which also contains the solution to one of the exercises below.</p></li>
+<li><p>Kripke (1959) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Saul+Kripke%3A+A+Completeness+Theorem+in+Modal+Logic.+1959.&amp;amp;btnG=">A Completeness Theorem in Modal Logic</a>, The Journal of Symbolic Logic.</p></li>
+<li><p>Kripke (1963) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Kripke+1963+Semantical+Analysis+of+Modal+Logic+I&amp;amp;btnG=">Semantical Analysis of Modal Logic I</a>, Zeitschr. f. math. Logik und Grundlagen d. Math., <a class="reference external" href="http://fitelson.org/142/kripke_1.pdf">[pdf]</a> . I recommend Section 2.1, which also contains the solution to one of the exercises below.</p></li>
 <li><p>Kripke (1965) <a class="reference external" href="http://fitelson.org/142/kripke_2.pdf">Semantical Analysis of Modal Logic II</a>. 1965.</p></li>
 </ul>
 <p>There is a lot to say here, but to present the main ideas as quickly as possible I would proceed as follows (see Chapters 3.1 and 3.2 of the book referenced below).</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(Prop\)</span> be a set of ‘propositional variables’. The language of modal logic is the smallest set of ‘formulas’ containing <span class="math notranslate nohighlight">\(Prop\)</span> and closed under <span class="math notranslate nohighlight">\(\wedge\)</span> , <span class="math notranslate nohighlight">\(\vee\)</span>, <span class="math notranslate nohighlight">\(\neg\)</span>, <span class="math notranslate nohighlight">\(\Box\)</span>, <span class="math notranslate nohighlight">\(\Diamond\)</span>.</p>
 <p><strong>Definition:</strong> Let <span class="math notranslate nohighlight">\(W\)</span> be a set of ‘worlds’ and <span class="math notranslate nohighlight">\(R\subseteq W\times W\)</span>. Let <span class="math notranslate nohighlight">\(\sem{-}:Prop\to 2^W\)</span> be a function assigning sets of worlds to each atomic proposition. Define</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d608c234-3cb4-486a-8020-b2650233ac71">
-<span class="eqno">(1)<a class="headerlink" href="#equation-d608c234-3cb4-486a-8020-b2650233ac71" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ff018873-8cb2-42c3-b999-f29b26734308">
+<span class="eqno">(1)<a class="headerlink" href="#equation-ff018873-8cb2-42c3-b999-f29b26734308" title="Permalink to this equation">#</a></span>\[\begin{align}
 \sem{\phi\wedge\phi'} &amp;= \sem{\phi}\cap\sem{\phi'}\\
 \sem{\phi\vee\phi'} &amp;= \sem{\phi}\cup\sem{\phi'}\\
 \sem{\neg\phi} &amp;= W\setminus \sem{\phi}\\
@@ -485,7 +491,7 @@ w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}
 <p><strong>Exercise:</strong> Interpret <span class="math notranslate nohighlight">\(\Box p\to p\)</span> and <span class="math notranslate nohighlight">\(\Box p\to\Box\Box p\)</span> from the point of view of temporal and epistemic logic.</p>
 </section>
 <section id="the-basic-theory">
-<h2>The Basic Theory<a class="headerlink" href="#the-basic-theory" title="Permalink to this heading">#</a></h2>
+<h2>The Basic Theory<a class="headerlink" href="#the-basic-theory" title="Link to this heading">#</a></h2>
 <p>We have seen that modal logic comprises several independent areas (temporal logic, epistemic logic, etc) and has important overlaps with others (concurrency, multi-agent systems, automated reasoning, game theory, etc). My intention here is only to sketch out the basic theory that is important in all these fields.</p>
 <p>Actually, instead of writing this out myself, I refer to the book “Modal Logic” by Blackburn, de Rijke, Venema.(The book treats also <span class="math notranslate nohighlight">\(n\)</span>-ary relations (the “general case”, as opposed to binary relations). This generalisation is interesting for some applications but should be skipped on a first reading.)</p>
 <p>Here is what I would consider essential for a first run through the basics of modal logic.</p>
@@ -503,27 +509,28 @@ w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}
 </ul>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Halpern and Vardi (1991) <a class="reference external" href="https://www.cs.cornell.edu/home/halpern/papers/manifesto.pdf">Model Checking v. Theorem Proving: A Manifesto</a></p></li>
 </ul>
 <p>illustrates many of the themes that make modal logic so important for computer science applications.</p>
 <ul class="simple">
-<li><p>Blackburn, de Rijke, Venema (1995) <a class="reference external" href="https://scholar.google.com/scholar?cluster=1085284409909169504&amp;hl=en&amp;as_sdt=0,5">Modal Logic</a></p></li>
+<li><p>Blackburn, de Rijke, Venema (1995) <a class="reference external" href="https://scholar.google.com/scholar?cluster=1085284409909169504&amp;amp;hl=en&amp;amp;as_sdt=0,5">Modal Logic</a></p></li>
 </ul>
 <p>is widely considered to be the standard textbook on modern mathematical modal logic.</p>
 <p>The following articles introduced the mathematical possible worlds semantics:</p>
 <ul class="simple">
-<li><p>Kripke (1959) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Saul+Kripke%3A+A+Completeness+Theorem+in+Modal+Logic.+1959.&amp;btnG=">A Completeness Theorem in Modal Logic</a></p></li>
-<li><p>Kripke (1963) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Kripke+1963+Semantical+Analysis+of+Modal+Logic+I&amp;btnG=">Semantical Analysis of Modal Logic I</a> … <a class="reference external" href="http://fitelson.org/142/kripke_1.pdf">[pdf]</a></p></li>
+<li><p>Kripke (1959) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Saul+Kripke%3A+A+Completeness+Theorem+in+Modal+Logic.+1959.&amp;amp;btnG=">A Completeness Theorem in Modal Logic</a></p></li>
+<li><p>Kripke (1963) <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Kripke+1963+Semantical+Analysis+of+Modal+Logic+I&amp;amp;btnG=">Semantical Analysis of Modal Logic I</a> … <a class="reference external" href="http://fitelson.org/142/kripke_1.pdf">[pdf]</a></p></li>
 <li><p>Kripke (1965) <a class="reference external" href="http://fitelson.org/142/kripke_2.pdf">Semantical Analysis of Modal Logic II</a></p></li>
 </ul>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="pp" role="note">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="pp" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>We follow here a convention in much of the literature to denote atomic propositions in ML by lower case letters and one-place predicates in FOL by upper-case letters. Thus <span class="math notranslate nohighlight">\(p\)</span> is translated to <span class="math notranslate nohighlight">\(Pv\)</span>.</p>
 </aside>
-<aside class="footnote brackets" id="decidable" role="note">
+<aside class="footnote brackets" id="decidable" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p>A logic is decidable if there is an algorithm <span class="math notranslate nohighlight">\(A\)</span> that can takes formulas <span class="math notranslate nohighlight">\(\phi\)</span> of the logic as input and</p>
 <ul class="simple">
@@ -532,17 +539,18 @@ w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}
 <li><p>returns 0 if <span class="math notranslate nohighlight">\(\phi\)</span> is not valid.</p></li>
 </ul>
 </aside>
-<aside class="footnote brackets" id="observational" role="note">
+<aside class="footnote brackets" id="observational" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
 <p>Two models <span class="math notranslate nohighlight">\(M,M'\)</span> are logically equivalent if for all formulas <span class="math notranslate nohighlight">\(\phi\)</span> it holds that <span class="math notranslate nohighlight">\(M\)</span> satisfies <span class="math notranslate nohighlight">\(\phi\)</span> if and only if <span class="math notranslate nohighlight">\(M'\)</span> satisfies <span class="math notranslate nohighlight">\(\phi\)</span>. If <span class="math notranslate nohighlight">\(M,M'\)</span> are models of computation there are various notions of equivalence motivated by computational consdirations. Some of these equivalences are called “obserational”. Roughly speaking, two models are observationally equivalent if they cannot be distinguished by running them an only observing their outputs (as opposed to looking at how they are implemented).</p>
 </aside>
-<aside class="footnote brackets" id="philosophical" role="note">
+<aside class="footnote brackets" id="philosophical" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
 <p>In this notes we only mention the question of the meaning of “necessary” and “possible”. For a study of time from the point of view of modal logic, I recommend van Benthem, The Logic of Time. The work of David Lewis on Counterfactuals is another good example. I plan to add more references along these lines in the future …</p>
 </aside>
-<aside class="footnote brackets" id="proof" role="note">
+<aside class="footnote brackets" id="proof" role="doc-footnote">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
 <p><em>Proof:</em> Let <span class="math notranslate nohighlight">\(w\in W\)</span>. Let <span class="math notranslate nohighlight">\(\sem{p}=\{v \mid wRv\}\)</span>. We know <span class="math notranslate nohighlight">\(w\Vdash\Box p\)</span> by definition of <span class="math notranslate nohighlight">\(\sem{\Box p}\)</span> and <span class="math notranslate nohighlight">\(w\Vdash \Box p\to p\)</span> by assumption. It follows <span class="math notranslate nohighlight">\(w\Vdash p\)</span>, which implies <span class="math notranslate nohighlight">\(wRw\)</span> by definition of <span class="math notranslate nohighlight">\(\sem{p}\)</span>.</p>
+</aside>
 </aside>
 </section>
 </section>
@@ -583,7 +591,7 @@ w\Vdash \phi \quad \stackrel{\rm  def}{\Longleftrightarrow} \quad w\in\sem{\phi}
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Propositional Logic</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Propositional Logic</p>
       </div>
     </a>
     <a class="right-next"
@@ -639,7 +647,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

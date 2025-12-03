@@ -31,8 +31,9 @@ Type theory originated as an alternative to set theory, most famously through th
 
 Dependent types generalize this by allowing types to vary depending on terms. Formally, if `A` is a type and `a : A`, then we may form another type `B a` that depends on `a`. The dependent function type is then written: $(\Pi x:A),B(x)$ which can be read as "for every `x` of type `A`, there exists a term of type `B(x)`." This construct generalizes both functions and universal quantification.
 
+### The Curry-Howard Correspondence
 
-The **Curry-Howard Correspondence** underlies DTT, establising a deep analogy between logic and computation:
+The Curry-Howard Correspondence underlies DTT, establising a deep analogy between logic and computation:
 
 | Logic | Type Theory | Computation |
 |---|---|---|
@@ -228,8 +229,6 @@ A decisive shift toward dependent types occurred with Per Martin-Löf’s intuit
 A decisive shift toward dependent types occurred with Per Martin-Löf’s intuitionistic type theory (1970s–1980s). Martin-Löf introduced dependent function ($\Pi$) and dependent pair ($\Sigma$) types, giving a constructive foundation in which types can quantify over values. This made it possible to represent propositions as types and proofs as programs in a very expressive way. The Curry–Howard correspondence, the observation that proofs correspond to programs and propositions to types, fused logic and computation and underpins modern dependently-typed systems. ([See here](https://plato.stanford.edu/entries/type-theory))
 
 In the 1980s and 1990s the field consolidated around a handful of influential calculi and systems. The Calculus of Constructions (Coquand & Huet) and the later Calculus of Inductive Constructions became the basis for the Coq proof assistant; Agda and other systems explored dependently typed programming more directly; and the so-called lambda-cube classified a spectrum of type systems. Over the last two decades these theoretical advances have been implemented in robust systems (Coq, Agda, Lean, Idris) and large collaborative libraries (e.g., Lean’s mathlib), enabling both deep mathematical formalization and practical verification projects. ([See here](https://plato.stanford.edu/entries/type-theory))
-
-
 
 ## Formal Methods and AI
 

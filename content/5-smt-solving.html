@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4. SMT Solving and Z3 &#8212; Logical Foundations of AI</title>
   
@@ -29,39 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/5-smt-solving';</script>
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/5-smt-solving.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -158,13 +153,24 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Short Intro to Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">2. Propositional Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
@@ -224,9 +230,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -367,9 +373,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -422,9 +428,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="smt-solving-and-z3">
-<h1><span class="section-number">4. </span>SMT Solving and Z3<a class="headerlink" href="#smt-solving-and-z3" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>SMT Solving and Z3<a class="headerlink" href="#smt-solving-and-z3" title="Link to this heading">#</a></h1>
 <section id="idea">
-<h2><span class="section-number">4.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
 <p>SMT, satisfiability modulo theories, extends propositional satisfiability (SAT) by adding interpreted functions and predicates from various decidable first-order theories. For example, instead of just Boolean variables, we can have:</p>
 <ul class="simple">
 <li><p>Linear arithmetic: variables like <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> with constraints <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span> <span class="pre">&gt;</span> <span class="pre">10</span></code>, <code class="docutils literal notranslate"><span class="pre">2x</span> <span class="pre">-</span> <span class="pre">3y</span> <span class="pre">≤</span> <span class="pre">5</span></code></p></li>
@@ -435,10 +441,10 @@ document.write(`
 <p><strong>Remark:</strong> This looks very similar to constraint programming. So what is the difference? MiniZinc can call Z3 as a backend and SMT-solvers are used in CP competitions. The answer to the question may well be how different communities in computer science research evolved historically. We should add a section that explores this history.</p>
 </section>
 <section id="basic-theory">
-<h2><span class="section-number">4.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
 <p>First-order logic is not decidable, but it does contain some decidable theories. SMT leverages special solvers for decidable first-order theories. Moreover, under certain conditions different decidable theories can be combined into larger ones.</p>
 <section id="decidable-first-order-theories">
-<h3><span class="section-number">4.2.1. </span>Decidable First-Order Theories<a class="headerlink" href="#decidable-first-order-theories" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.1. </span>Decidable First-Order Theories<a class="headerlink" href="#decidable-first-order-theories" title="Link to this heading">#</a></h3>
 <p>Typically, decidability requires that the formulas have to by quantifier-free (QF) but there are exceptions, most famously the theory of real closed fields.</p>
 <p><strong>Real Closed Fields</strong> (RCF) have a decidable theory due to Tarski’s quantifier elimination (1930s) which shows that any first-order formula over reals can be reduced to a quantifier-free formula:</p>
 <ul class="simple">
@@ -478,18 +484,18 @@ document.write(`
 </ul>
 </section>
 <section id="theory-combination-the-nelson-oppen-method">
-<h3><span class="section-number">4.2.2. </span>Theory Combination: The Nelson-Oppen Method<a class="headerlink" href="#theory-combination-the-nelson-oppen-method" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.2. </span>Theory Combination: The Nelson-Oppen Method<a class="headerlink" href="#theory-combination-the-nelson-oppen-method" title="Link to this heading">#</a></h3>
 <p>See Martin’s <a class="reference external" href="https://www.cs.cmu.edu/~15414/s24/lectures/18-smt-solving.pdf">Lecture Notes on SMT Solving: Nelson-Oppen</a>.</p>
 </section>
 </section>
 <section id="z3">
-<h2><span class="section-number">4.3. </span>Z3<a class="headerlink" href="#z3" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>Z3<a class="headerlink" href="#z3" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://microsoft.github.io/z3guide/docs/logic/intro/">Z3 Tutorial</a></p>
 <p>There are different ways to use Z3. We start with the playground and then learn how to call Z3 from Python.</p>
 <section id="z3-playground">
-<h3><span class="section-number">4.3.1. </span>Z3 Playground<a class="headerlink" href="#z3-playground" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.1. </span>Z3 Playground<a class="headerlink" href="#z3-playground" title="Link to this heading">#</a></h3>
 <section id="array-bounds">
-<h4><span class="section-number">4.3.1.1. </span>Array bounds<a class="headerlink" href="#array-bounds" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.3.1.1. </span>Array bounds<a class="headerlink" href="#array-bounds" title="Link to this heading">#</a></h4>
 <p>Read the following program written in <a class="reference external" href="https://smt-lib.org/language.shtml">SMT-LIB</a>. For background, I recommend to read Chapter 2 as well as pages 22, 55-56, 76 of the <a class="reference external" href="https://smt-lib.org/papers/smt-lib-reference-v2.7-r2025-07-07.pdf">SMT-LIB Standard</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">const</span> <span class="n">i</span> <span class="n">Int</span><span class="p">)</span>
 <span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">const</span> <span class="n">array_size</span> <span class="n">Int</span><span class="p">)</span>
@@ -509,7 +515,7 @@ document.write(`
 <p>Answer the question by keep changing the code and predicting the results you expect.</p>
 </section>
 <section id="guessing-a-number">
-<h4><span class="section-number">4.3.1.2. </span>Guessing a number<a class="headerlink" href="#guessing-a-number" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">4.3.1.2. </span>Guessing a number<a class="headerlink" href="#guessing-a-number" title="Link to this heading">#</a></h4>
 <p>Here’s a more interesting example where we let Z3 find values for variables:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">const</span> <span class="n">x</span> <span class="n">Int</span><span class="p">)</span>
 <span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">const</span> <span class="n">y</span> <span class="n">Int</span><span class="p">)</span>
@@ -525,7 +531,7 @@ document.write(`
 </section>
 </section>
 <section id="more-solvers">
-<h3><span class="section-number">4.3.2. </span>More Solvers<a class="headerlink" href="#more-solvers" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.2. </span>More Solvers<a class="headerlink" href="#more-solvers" title="Link to this heading">#</a></h3>
 <p><strong>SMT-LIB</strong> is a standardized language used by many SMT solvers, not just Z3. Try the programs above with:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cvc4.github.io/app/">CVC4/CVC5</a>: Carnegie Mellon University</p></li>
@@ -539,11 +545,11 @@ document.write(`
 </ul>
 </section>
 <section id="z3-in-python">
-<h3><span class="section-number">4.3.3. </span>Z3 in Python<a class="headerlink" href="#z3-in-python" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.3.3. </span>Z3 in Python<a class="headerlink" href="#z3-in-python" title="Link to this heading">#</a></h3>
 <p>Interactive Z3 examples are available below via Colab or Binder or download a copy <a class="reference external" href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/z3/z3-examples.ipynb">here</a>.</p>
 <p><strong>Try it interactively:</strong></p>
 <p><a class="reference external" href="https://colab.research.google.com/github/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/z3/z3-examples.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a> <strong>🚀 Google Colab (Recommended - Fast &amp; Reliable)</strong></p>
-<p><a class="reference external" href="https://mybinder.org/v2/gh/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/main?filepath=content%2Frequirements.txt&amp;labpath=../z3%2Fz3-examples.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a> <strong>🐳 Binder (Alternative)</strong></p>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/main?filepath=content%2Frequirements.txt&amp;amp;labpath=../z3%2Fz3-examples.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a> <strong>🐳 Binder (Alternative)</strong></p>
 <p>Practical Examples:</p>
 <p>i) Prove that array access is always within bounds in a loop:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">fun</span> <span class="n">i</span> <span class="p">()</span> <span class="n">Int</span><span class="p">)</span>
@@ -557,7 +563,7 @@ document.write(`
 </section>
 </section>
 <section id="applications-in-the-industry">
-<h2><span class="section-number">4.4. </span>Applications in the Industry<a class="headerlink" href="#applications-in-the-industry" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.4. </span>Applications in the Industry<a class="headerlink" href="#applications-in-the-industry" title="Link to this heading">#</a></h2>
 <p><strong>Cloud security &amp; compliance (billions of SMT checks at Amazon Web Services)</strong></p>
 <p>Zelkova, AWS’s policy-analysis engine, encodes IAM/S3 policies into SMT and answers safety queries at cloud scale (e.g., “Can anything make this bucket public?”). Peer-reviewed accounts report   millions to billions of SMT queries daily, and describe how abstractions and portfolio solving (including Z3) make the service production-grade and latency-predictable.</p>
 <p><strong>Software security at Microsoft (whitebox fuzzing)</strong></p>
@@ -577,7 +583,7 @@ Minesweeper/Batfish (research-to-product trajectory) and later scalable systems.
 conversations for autonomy and perception stacks.</p>
 </section>
 <section id="generative-ai-and-formal-methods-what-s-changing">
-<h2><span class="section-number">4.5. </span>Generative AI and Formal Methods: What’s Changing<a class="headerlink" href="#generative-ai-and-formal-methods-what-s-changing" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.5. </span>Generative AI and Formal Methods: What’s Changing<a class="headerlink" href="#generative-ai-and-formal-methods-what-s-changing" title="Link to this heading">#</a></h2>
 <p><strong>1. LLMs assisting proof and spec</strong>
 LeanDojo/ReProver shows that retrieval-augmented LLMs can select premises and generate Lean proofs; the suite provides datasets, tooling, and reproducible baselines, catalyzing rapid
 progress in ML-for-theorem-proving.
@@ -597,7 +603,7 @@ tightening. Coupled with LLM systems, this points to spec-driven safety cases fo
 - Verifier-in-the-loop tooling: LLM planning; SMT establishes truth; counterexamples feed self-repair—already prototyped in compilers and invariant synthesis.</p>
 </section>
 <section id="case-study-code-diet-planner">
-<h2><span class="section-number">4.6. </span>Case Study Code: Diet Planner<a class="headerlink" href="#case-study-code-diet-planner" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.6. </span>Case Study Code: Diet Planner<a class="headerlink" href="#case-study-code-diet-planner" title="Link to this heading">#</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># diet_planner.py
 # Z3 calorie &amp; macro planner 
 # Hard constraints: nonnegative servings, availability bounds
@@ -825,7 +831,7 @@ if __name__ == &quot;__main__&quot;:
 </div>
 </section>
 <section id="references">
-<h2><span class="section-number">4.7. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.7. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://sat-group.github.io/ruben/">Reuben Martins</a> (part of a course on <a class="reference external" href="https://www.cs.cmu.edu/~15414/s22/s21/lectures/">Bug Catching: Bug Catching: Automated Program Verification</a> )</p>
 <ul>
@@ -836,11 +842,11 @@ if __name__ == &quot;__main__&quot;:
 <li><p><a class="reference external" href="https://www.cs.cmu.edu/~15414/s24/lectures/18-smt-solving.pdf">Lecture Notes on SMT Solving: Nelson-Oppen</a></p></li>
 </ul>
 </li>
-<li><p>Howe, J. M., &amp; King, A. (2012). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=A+Pearl+on+SAT+and+SMT+Solving+in+Prolog&amp;btnG=">A pearl on SAT and SMT solving in Prolog</a>. Theoretical Computer Science, 435, 43-55. <a class="reference external" href="https://www.staff.city.ac.uk/~jacob/solver/tcs.pdf">pdf</a> - - - I only read the intro and do not claim that I understand that paper. It is of interest to because it combines ideas from SAT, Prolog and SMT.</p></li>
+<li><p>Howe, J. M., &amp; King, A. (2012). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=A+Pearl+on+SAT+and+SMT+Solving+in+Prolog&amp;amp;btnG=">A pearl on SAT and SMT solving in Prolog</a>. Theoretical Computer Science, 435, 43-55. <a class="reference external" href="https://www.staff.city.ac.uk/~jacob/solver/tcs.pdf">pdf</a> - - - I only read the intro and do not claim that I understand that paper. It is of interest to because it combines ideas from SAT, Prolog and SMT.</p></li>
 <li><p>Backes, Bolignano, Cook, et al. (2018) <a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/8602994">Semantic-based Automated Reasoning for AWS Access Policies using SMT</a>
 , FMCAD.</p></li>
 <li><p>Rungta, N. <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-031-13185-1_1">A Billion SMT Queries a Day</a> Amazon Science (invited), 2022.</p></li>
-<li><p>Godefroid, P., Levin, M., Molnar, D. <a class="reference external" href="https://queue.acm.org/detail.cfm?id=2094081&amp;ref=fullrss">SAGE: Whitebox Fuzzing for Security Testing</a> CACM 2012.</p></li>
+<li><p>Godefroid, P., Levin, M., Molnar, D. <a class="reference external" href="https://queue.acm.org/detail.cfm?id=2094081&amp;amp;ref=fullrss">SAGE: Whitebox Fuzzing for Security Testing</a> CACM 2012.</p></li>
 <li><p>Bounimova, E., Godefroid, P., Molnar, D. <a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/6606558">Billions and Billions of Constraints: Whitebox Fuzz Testing at Microsoft</a> ICSE 2011/Tech Report.</p></li>
 <li><p>Wang, Y., Xie, F. <a class="reference external" href="https://www.worldscientific.com/doi/abs/10.1142/S0218194024500475">Enhancing Translation Validation of Compiler Transformations with Large Language Models</a> arXiv:2401.16797 (2024).</p></li>
 <li><p>Cadar, C., Dunbar, D., Engler, D. <a class="reference external" href="https://www.usenix.org/legacy/event/osdi08/tech/full_papers/cadar/cadar.pdf">KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs</a> OSDI 2008.</p></li>
@@ -965,7 +971,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
