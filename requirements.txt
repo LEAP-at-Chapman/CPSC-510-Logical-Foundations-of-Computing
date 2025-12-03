@@ -9,6 +9,9 @@ sphinx-multitoc-numbering
 # Python packages for examples
 z3-solver
 
+# Plotting for example notebooks
+matplotlib
+
 # Optional: for interactive features
 sphinx-thebe
 
