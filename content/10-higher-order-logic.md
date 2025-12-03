@@ -47,6 +47,12 @@ WIP
 
 $ \forall x $ and $ \exists x$ where x is a variable/individual element
 
+First Order Logic
+
+Second Order Logic 
+
+Third Order Logic -> Higher Order Logic
+
 In higher order logic, we extend this to $ \forall f(x) $ and $ \exists f(x) $, where x is a function that takes x as an input
 
 These are the principal features which are added to first-order logic in order to obtain this formulation of higher-order logic:<sup><a href="#andrews2002">[3]</a></sup>
@@ -404,7 +410,7 @@ WIP
 
 ### Interactive Theorem Provers
 
-**HOL4** is part of the "HOL" family of interactive theorem provers, using classical higher-order logic and following the LCF approach to ensure soundness. Developed by Michael J.C. Gordon, the system is implemented in ML, and is a direct descendent of the original HOL88 system. Because HOL4 shares the same underlying logic as Isabelle/HOL, many thoeries and proof patterns are generally portable between the two tools.
+**HOL4** is part of the "HOL" family of interactive theorem provers, using classical higher-order logic and following the LCF approach to ensure soundness. Developed by Michael J. C. Gordon, the system is implemented in ML, and is a direct descendent of the original HOL88 system. Because HOL4 shares the same underlying logic as Isabelle/HOL, many theories and proof patterns are generally portable between the two tools.
 
 **Rocq** (formerly named Coq) is an interactive theorem prover based on the *Calculus of Inductive Constructions*, which is a derivative of the calculus of constructions, and is a higher-order typed lambda calculus that adds inductive types. It is mainly implemented in OCaml with some C. Compared with Isabelle/HOL, Rocq uses higher-order type theory, which allows it to have greater expressive power.
 
@@ -429,7 +435,7 @@ WIP
 
 **miniF2F** is a cross-system benchmark of 488 problem statements drawn from both mathematical competitions (IME, AMC and the International Mathematical Olympiad) and high school and undergraduate level mathematics courses. The benchmark targets theorem provers such as Lean, Metamath, Isabelle, and HOL Light in order to enable cross-system comparison of theorem provers and proof automation tools. The goal is to serve as a benchmark for automated and neural theorem proving systems. A formal problem statement is fed into system and the prover must output a fully machine-verifiable proof.<sup><a href="#MiniF2F">[20]</a></sup>
 
-**TPTP** (Thousands of Problems for Theorem Provers) is library of test problems for testing and evaluating ATPs. Problems are expressed in a simple text-based format for either first-order logic or higher-order logic. TPTP provides a common benchmark with a single, umambiguous reference set of problems so that different ATP systems can be both evaluated and compared with reproducible results.<sup><a href="#TPTP">[21]</a></sup>
+**TPTP** (Thousands of Problems for Theorem Provers) is a library of test problems for testing and evaluating ATPs. Problems are expressed in a simple text-based format for either first-order logic or higher-order logic. TPTP provides a common benchmark with a single, umambiguous reference set of problems so that different ATP systems can be both evaluated and compared with reproducible results.<sup><a href="#TPTP">[21]</a></sup>
 
 **CASC** (The CADE ATP System Competition) is an annual competition of fully automatic, classical logic, ATP systems. The purpose of CASC is to provide a public evaluation of relative capabilities of ATP systems as well as to stimulate research and development of ATP systems. At CASC, ATP system performane is evaluated in terms of the total number of problems solved with an acceptable solution output within a specified time limit, as well as the average time taken for problems solved. CASC is hosted at each CADE and IJCAR conference, both forums for automated deduction.<sup><a href="#CASC">[22]</a></sup>
 
@@ -611,11 +617,6 @@ SEP Category Theory - https://plato.stanford.edu/entries/category-theory/
 <!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf -->
 
 https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html
-
-https://en.wikipedia.org/wiki/Thousands_of_Problems_for_Theorem_Provers
-
-https://tptp.org/CASC/
-
 
 
 
