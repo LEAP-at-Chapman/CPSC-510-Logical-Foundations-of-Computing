@@ -230,8 +230,6 @@ A decisive shift toward dependent types occurred with Per Martin-Löf’s intuit
 
 In the 1980s and 1990s the field consolidated around a handful of influential calculi and systems. The Calculus of Constructions (Coquand & Huet) and the later Calculus of Inductive Constructions became the basis for the Coq proof assistant; Agda and other systems explored dependently typed programming more directly; and the so-called lambda-cube classified a spectrum of type systems. Over the last two decades these theoretical advances have been implemented in robust systems (Coq, Agda, Lean, Idris) and large collaborative libraries (e.g., Lean’s mathlib), enabling both deep mathematical formalization and practical verification projects. ([See here](https://plato.stanford.edu/entries/type-theory))
 
-
-
 ## Formal Methods and AI
 
 ## Current Development
