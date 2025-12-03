@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>9. Dependent Type Theory with Lean &#8212; Logical Foundations of AI</title>
   
@@ -28,35 +29,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/11-dependent-types';</script>
@@ -155,24 +160,13 @@
     <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
 <li class="toctree-l1"><a class="reference internal" href="0-logic.html">Short Intro to Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">2. Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
@@ -232,9 +226,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -375,9 +369,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -457,14 +451,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="dependent-type-theory-with-lean">
-<h1><span class="section-number">9. </span>Dependent Type Theory with Lean<a class="headerlink" href="#dependent-type-theory-with-lean" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Dependent Type Theory with Lean<a class="headerlink" href="#dependent-type-theory-with-lean" title="Permalink to this heading">#</a></h1>
 <p><em>Author: Khoa Nguyen</em></p>
 <section id="introduction">
-<h2><span class="section-number">9.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>This chapter presents dependent type theory with Lean, demonstrating how types can depend on values and enabling “proofs as programs” through the Curry-Howard correspondence.</p>
 </section>
 <section id="idea">
-<h2><span class="section-number">9.2. </span>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.2. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
 <p>Dependent Type Theory (DTT) is the idea that types can depend on values. This enable us to establish precise relationships between data and the logical propositions that describes it.</p>
 <p>In traditional programming languages, types classify values. <code class="docutils literal notranslate"><span class="pre">Int</span></code> describes integers, <code class="docutils literal notranslate"><span class="pre">Bool</span></code> describes True or False, etc… With dependent type theory, a type itself depends on a value. For example, instead of defining a single <code class="docutils literal notranslate"><span class="pre">array</span></code> type, we define <code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">n</span> <span class="pre">A</span></code>, meaning “an array of length n whose elements are of type A.” This makes certain properties, like the dimension of an array, part of the type system itself. The compiler can then verify these constraints automatically.</p>
 <p>This expressiveness blurs the boundary between proofs and programs. In dependent type theory, writing a function that computes something often simultaneously constructs a proof of its correctness. For instance, a function that returns the sum of two natural numbers can be defined alongside a proof that addition is associative or commutative, proofs that Lean, Coq, or Agda can check mechanically.</p>
@@ -478,12 +472,12 @@ document.write(`
 <p>Dependenty Type Theory allows us to design systems in which the structure of code mirrors the structure of mathematics. This is the essence of the proofs-as-programs pradigm: a verified program is not something we write after designing an algorithm; it is the algorithm, expressed in a logical language rich enough to verify itself.</p>
 </section>
 <section id="basic-theory">
-<h2><span class="section-number">9.3. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.3. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
 <p>To understand DTT, we begin by situating it within the broader landscape of type systems and logical foundation.</p>
 <p>Type theory originated as an alternative to set theory, most famously through the work of Bertrand Russell and Alonzo Church. The simply typed lambda calculus provided a framework where every term has a type, and functions are first-class citizens. In this setting, a type may be thought of as a “set of allowable values,” and a program as a “proof that a value exists.”</p>
 <p>Dependent types generalize this by allowing types to vary depending on terms. Formally, if <code class="docutils literal notranslate"><span class="pre">A</span></code> is a type and <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">:</span> <span class="pre">A</span></code>, then we may form another type <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">a</span></code> that depends on <code class="docutils literal notranslate"><span class="pre">a</span></code>. The dependent function type is then written: <span class="math notranslate nohighlight">\((\Pi x:A),B(x)\)</span> which can be read as “for every <code class="docutils literal notranslate"><span class="pre">x</span></code> of type <code class="docutils literal notranslate"><span class="pre">A</span></code>, there exists a term of type <code class="docutils literal notranslate"><span class="pre">B(x)</span></code>.” This construct generalizes both functions and universal quantification.</p>
 <section id="the-curry-howard-correspondence">
-<h3><span class="section-number">9.3.1. </span>The Curry-Howard Correspondence<a class="headerlink" href="#the-curry-howard-correspondence" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.3.1. </span>The Curry-Howard Correspondence<a class="headerlink" href="#the-curry-howard-correspondence" title="Permalink to this heading">#</a></h3>
 <p>The Curry-Howard Correspondence underlies DTT, establising a deep analogy between logic and computation:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -520,7 +514,7 @@ For example:</p>
 </section>
 </section>
 <section id="tool">
-<h2><span class="section-number">9.4. </span>Tool<a class="headerlink" href="#tool" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.4. </span>Tool<a class="headerlink" href="#tool" title="Permalink to this heading">#</a></h2>
 <p>The following installation is pull directly from Lean-<a class="reference external" href="https://lean-lang.org/install/">“Install Lean”</a></p>
 <ul class="simple">
 <li><p>Install VS Code</p></li>
@@ -537,13 +531,13 @@ For example:</p>
 </ul>
 </section>
 <section id="introductory-examples">
-<h2><span class="section-number">9.5. </span>Introductory Examples<a class="headerlink" href="#introductory-examples" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.5. </span>Introductory Examples<a class="headerlink" href="#introductory-examples" title="Permalink to this heading">#</a></h2>
 <p>One of the most effective ways to begin learning Lean is through the <a class="reference external" href="https://adam.math.hhu.de/">Lean Game Server</a>. These games remove setup overhead, eliminate the intimidation factor of reading large formal libraries, and instead invite learners to explore Lean through hands-on examples. Two of the most valuable games for beginners are the <a class="reference external" href="https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic">Logic Games</a> and the <a class="reference external" href="https://adam.math.hhu.de/#/g/leanprover-community/nng4">Natural Number Games</a>. Both games illustrate the power of formal methids in a setting that is playful and intellectually rigorous.</p>
 <section id="logic-game">
-<h3><span class="section-number">9.5.1. </span>Logic Game<a class="headerlink" href="#logic-game" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.5.1. </span>Logic Game<a class="headerlink" href="#logic-game" title="Permalink to this heading">#</a></h3>
 <p>The Logic Game introduces users to the foundational rules of formal logic such as implication, negation, conjunction, disjunction, quantifiers, etc… through short, progressively challenging proof puzzles. Its educational value comes from several key features:</p>
 <section id="immediate-feedback-loop">
-<h4><span class="section-number">9.5.1.1. </span>Immediate Feedback Loop<a class="headerlink" href="#immediate-feedback-loop" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">9.5.1.1. </span>Immediate Feedback Loop<a class="headerlink" href="#immediate-feedback-loop" title="Permalink to this heading">#</a></h4>
 <p>Unlike traditional textbooks, the Logic Game responds instantly to every tactic command:</p>
 <ul class="simple">
 <li><p>If a tactic is correct, Lean advances the goal state.</p></li>
@@ -552,7 +546,7 @@ This tight feedback loop mirrors the experience of interacting with an automated
 </ul>
 </section>
 <section id="the-mental-model-of-lean">
-<h4><span class="section-number">9.5.1.2. </span>The “Mental Model” of Lean<a class="headerlink" href="#the-mental-model-of-lean" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">9.5.1.2. </span>The “Mental Model” of Lean<a class="headerlink" href="#the-mental-model-of-lean" title="Permalink to this heading">#</a></h4>
 <p>The Logic Game is explicitly designed to teach users how Lean thinks about logic:</p>
 <ul class="simple">
 <li><p>Every tactic corresponds to a precise logical rule.</p></li>
@@ -561,7 +555,7 @@ This builds intuition for dependent type theory and Curry–Howard correspondenc
 </ul>
 </section>
 <section id="encourages-experimentation">
-<h4><span class="section-number">9.5.1.3. </span>Encourages Experimentation<a class="headerlink" href="#encourages-experimentation" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">9.5.1.3. </span>Encourages Experimentation<a class="headerlink" href="#encourages-experimentation" title="Permalink to this heading">#</a></h4>
 <p>Players can try tactics freely without risk. This experimentation fosters:</p>
 <ul class="simple">
 <li><p>pattern recognition</p></li>
@@ -572,11 +566,11 @@ These habits carry directly over to real software verification tasks.</p></li>
 </section>
 </section>
 <section id="natural-number-game">
-<h3><span class="section-number">9.5.2. </span>Natural Number Game<a class="headerlink" href="#natural-number-game" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.5.2. </span>Natural Number Game<a class="headerlink" href="#natural-number-game" title="Permalink to this heading">#</a></h3>
 <p>The Natural Number Game (NNG) has become one of the most popular introductions to Lean worldwide. The educational value stems from how it blends mathematics, computation, and logic.</p>
 <p>You will prove fundamental facts such as <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">!=</span> <span class="pre">succ</span> <span class="pre">n</span></code>, addition is associative and commutative, <code class="docutils literal notranslate"><span class="pre">succ</span></code> is injective, multiplication distributes over addition, etc…</p>
 <section id="how-mathematics-can-be-built-from-axiom">
-<h4><span class="section-number">9.5.2.1. </span>How Mathematics Can Be Built From Axiom<a class="headerlink" href="#how-mathematics-can-be-built-from-axiom" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">9.5.2.1. </span>How Mathematics Can Be Built From Axiom<a class="headerlink" href="#how-mathematics-can-be-built-from-axiom" title="Permalink to this heading">#</a></h4>
 <p>Students are often familiar with these results from prior coursework, but they rarely see how foundational proofs look at the axiomatic level. The NNG demonstrates:</p>
 <ul class="simple">
 <li><p>How definitions induce computation rules</p></li>
@@ -586,17 +580,17 @@ These habits carry directly over to real software verification tasks.</p></li>
 <p>This concreteness demystifies dependent type theory: users experience how a simple inductive type gives rise to a rich structure.</p>
 </section>
 <section id="inductive-reasoing-through-direct-interaction">
-<h4><span class="section-number">9.5.2.2. </span>Inductive Reasoing Through Direct Interaction<a class="headerlink" href="#inductive-reasoing-through-direct-interaction" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">9.5.2.2. </span>Inductive Reasoing Through Direct Interaction<a class="headerlink" href="#inductive-reasoing-through-direct-interaction" title="Permalink to this heading">#</a></h4>
 <p>Induction is not merely stated, it is performed repeatedly. Lean forces the user to spell out base cases, induction hypotheses, goals and recursive patterns. This active engagement builds intuition for proof assistants handle recursion and induction which are core tools in both methematics and formal verfication.</p>
 </section>
 <section id="motivates-algorithmic-thinking">
-<h4><span class="section-number">9.5.2.3. </span>Motivates Algorithmic Thinking<a class="headerlink" href="#motivates-algorithmic-thinking" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">9.5.2.3. </span>Motivates Algorithmic Thinking<a class="headerlink" href="#motivates-algorithmic-thinking" title="Permalink to this heading">#</a></h4>
 <p>Because natural number definitions are computational, players quickly see how rewriting works, pattern matching influences evaluation, recursive structures behave algorithmically. This bridges the gap between formal mathematics and computer science practice, showing why proof assistants can serve as both logical frameworks and programming languages.</p>
 </section>
 </section>
 </section>
 <section id="the-landscape-of-tools">
-<h2><span class="section-number">9.6. </span>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.6. </span>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Permalink to this heading">#</a></h2>
 <p>This section presents a landscape view of major tools in the DTT ecosystem as of 2025. It will breakdown their design trade-offs, typical use-cases, and relative strengths or weaknesses.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -639,36 +633,36 @@ These habits carry directly over to real software verification tasks.</p></li>
 </ul>
 </section>
 <section id="algorithms">
-<h2><span class="section-number">9.7. </span>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.7. </span>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h2>
 <p>In implementing and using a dependently typed language or proof assistant (like Lean, Coq, Agda, Idris, etc.), a number of non-trivial algorithms lie at the foundation. These algorithms handle typing, type checking/inference, equality checking, unification or normalization, and elaboration. Understanding them gives insight into why dependent types are powerful and why they are hard.</p>
 <section id="key-algorithms-and-concepts">
-<h3><span class="section-number">9.7.1. </span>Key algorithms and concepts:<a class="headerlink" href="#key-algorithms-and-concepts" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.7.1. </span>Key algorithms and concepts:<a class="headerlink" href="#key-algorithms-and-concepts" title="Permalink to this heading">#</a></h3>
 <section id="bidirectional-typechecking-type-inference-type-checking-separation">
-<h4><span class="section-number">9.7.1.1. </span>Bidirectional typechecking / type-inference + type-checking separation<a class="headerlink" href="#bidirectional-typechecking-type-inference-type-checking-separation" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">9.7.1.1. </span>Bidirectional typechecking / type-inference + type-checking separation<a class="headerlink" href="#bidirectional-typechecking-type-inference-type-checking-separation" title="Permalink to this heading">#</a></h4>
 <p>Instead of trying to infer types for all expressions (type inference) or requiring full type annotations everywhere, bidirectional typing splits the typing judgment into two modes:</p>
 <ol class="arabic simple">
 <li><p>Synthesis (or inference): from a term <code class="docutils literal notranslate"><span class="pre">t</span></code>, compute (synthesize) a type <code class="docutils literal notranslate"><span class="pre">A</span></code>, written informally <span class="math notranslate nohighlight">\(t \Rightarrow A\)</span>.</p></li>
 <li><p>Checking: given a term <code class="docutils literal notranslate"><span class="pre">t</span></code> and a desired type <code class="docutils literal notranslate"><span class="pre">A</span></code>, check that <code class="docutils literal notranslate"><span class="pre">t</span></code> indeed has type <code class="docutils literal notranslate"><span class="pre">A</span></code>, written <span class="math notranslate nohighlight">\(t \Leftarrow A\)</span>.</p></li>
 </ol>
-<p>This matters because full type inference in a dependently typed setting tends to be undecidable or requires heavy annotation, due to types themselves may depend on values. By adopting a bidirectional discipline, one can recover a decidable, predictable algorithmic core for a large class of dependent type theories. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Generic+bidirectional+typing+for+dependent+type+theories&amp;amp;btnG=">“Generic bidirectional typing for dependent type theories</a> paper gives a generic account of bidirectional typing for a wide class of dependent type theories, showing that for many theories, a sound and complete bidirectional checker can be derived.</p>
+<p>This matters because full type inference in a dependently typed setting tends to be undecidable or requires heavy annotation, due to types themselves may depend on values. By adopting a bidirectional discipline, one can recover a decidable, predictable algorithmic core for a large class of dependent type theories. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Generic+bidirectional+typing+for+dependent+type+theories&amp;btnG=">“Generic bidirectional typing for dependent type theories</a> paper gives a generic account of bidirectional typing for a wide class of dependent type theories, showing that for many theories, a sound and complete bidirectional checker can be derived.</p>
 <p>The generic construction yields a type-checking algorithm for a broad class of DTTs, implemented in a prototype tool. This ensures that the type checker for a dependently typed language can remain decidable (under suitable normalization/termination assumptions) while supporting expressive dependent types.</p>
 <p>The necessity of type annotations in places where inference is impossible (e.g., lambda abstractions returning dependent types, complex implicit arguments). The complexity of designing good elaboration strategies so that user-facing syntax remains ergonomic even when underlying types are rich and dependent. The burden shifts from runtime safety to compile-time/type-check-time; the user (or tool) must supply sufficient information for checking.</p>
 </section>
 </section>
 <section id="equality-normalization-conversion-extensionality-checking">
-<h3><span class="section-number">9.7.2. </span>Equality / Normalization / Conversion / Extensionality Checking<a class="headerlink" href="#equality-normalization-conversion-extensionality-checking" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.7.2. </span>Equality / Normalization / Conversion / Extensionality Checking<a class="headerlink" href="#equality-normalization-conversion-extensionality-checking" title="Permalink to this heading">#</a></h3>
 <p>In dependent type theory, type equality (and term equality) is not just “are they syntactically identical?”. It often involves computation (normalization), conversion rules (β-reduction), and user-defined equality/extension rules (e.g., extensionality, definitional equalities). Implementations need an algorithm to decide or check when two types or terms are equal.</p>
-<p>The paper <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=An+extensible+equality+checking+algorithm+for+dependent+type+theories&amp;amp;btnG=">“An extensible equality checking algorithm for dependent type theories”</a> introduces a general algorithm combining type-directed extensionality rules with normalization by computation rules, and shows how to classify rules as computational or extensional in a user-definable way. The algorithm is implemented in a proof assistant prototype that supports custom dependent type theories.
+<p>The paper <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=An+extensible+equality+checking+algorithm+for+dependent+type+theories&amp;btnG=">“An extensible equality checking algorithm for dependent type theories”</a> introduces a general algorithm combining type-directed extensionality rules with normalization by computation rules, and shows how to classify rules as computational or extensional in a user-definable way. The algorithm is implemented in a proof assistant prototype that supports custom dependent type theories.
 arXiv</p>
 <p>Without a robust equality/normalization algorithm, dependent types, especially those involving dependent functions or indexed types,become unwieldy. Many trivial-looking equalities (e.g., rewriting with definitional reduction, simplification) would need to be proven manually. A good algorithm reduces overhead and makes proofs manageable.</p>
 <section id="elaboration">
-<h4><span class="section-number">9.7.2.1. </span>Elaboration<a class="headerlink" href="#elaboration" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">9.7.2.1. </span>Elaboration<a class="headerlink" href="#elaboration" title="Permalink to this heading">#</a></h4>
 <p>In proof assistants or dependently typed languages, users write code in a friendly high-level syntax (with type annotations optional, implicit arguments, etc.). The elaboration phase translates that syntax into the core type theory: resolves implicit arguments, performs type inference/checking, adds coercions, resolves overloading, etc.</p>
 <p>Without a powerful elaboration engine, the user would be burdened with writing full explicit dependent types everywhere. A good elaborator makes dependent typing practical, hiding complexity while retaining guarantees.</p>
 <p>The designers of Lean highlight that its “powerful elaboration engine”, combined with a small trusted kernel and support for mixed declarative and tactic proof style, make it a mature system for real-world development.</p>
 </section>
 <section id="combined-algorithmic-stack-decidability-trust">
-<h4><span class="section-number">9.7.2.2. </span>Combined algorithmic stack → Decidability + Trust<a class="headerlink" href="#combined-algorithmic-stack-decidability-trust" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">9.7.2.2. </span>Combined algorithmic stack → Decidability + Trust<a class="headerlink" href="#combined-algorithmic-stack-decidability-trust" title="Permalink to this heading">#</a></h4>
 <p>Bidirectional typing + equality/normalization + elaboration + a small trusted kernel yields a system where:</p>
 <ul class="simple">
 <li><p>Type checking and proof checking remain decidable (modulo normalization / termination constraints),</p></li>
@@ -681,27 +675,27 @@ arXiv</p>
 </section>
 </section>
 <section id="benchmarks-and-competitions">
-<h2><span class="section-number">9.8. </span>Benchmarks and Competitions<a class="headerlink" href="#benchmarks-and-competitions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.8. </span>Benchmarks and Competitions<a class="headerlink" href="#benchmarks-and-competitions" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li></li>
 </ul>
 </section>
 <section id="applications-in-industry">
-<h2><span class="section-number">9.9. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.9. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Permalink to this heading">#</a></h2>
 <p>In recent years, formally grounded methods for specifying and verifying software and hardware systems have undergone significant uptake. The combination of dependable “symbolic” reasoning, (i.e. logic, type-theory, theorem-proving, etc…) with the explosion of AI-driven development like machine learning, generative models, is opening up new directions for improvements. Here are briefs summaries of recent influential applications.</p>
 <section id="historical-and-influencial-application">
-<h3><span class="section-number">9.9.1. </span>Historical and Influencial Application<a class="headerlink" href="#historical-and-influencial-application" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.9.1. </span>Historical and Influencial Application<a class="headerlink" href="#historical-and-influencial-application" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Tokeneer ID Station (NSA smart-card project) is one of the early industrial successes of the “Correctness by Construction” methodology. The case is described by Janet Barnes in <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Experiences+in+the+Industrial+use+of+Formal+Methods&amp;amp;btnG=">“Experiences in the Industrial use of Formal Methods”</a>. This article reports on industrial deployment of formal methods under the “Correctness by Construction (CbyC)” approach at Altran Praxis, including the case of the Tokeneer ID Station project for the US NSA. The work describes how formal specification in Z, refinement to code in SPARK with proof of absence of run-time errors, and proof of system-level properties were applied. The project found only five errors post-release and is cited as a rare “success story” of formal methods in industry. The article also candidly discusses challenges: training, tool usability, industrial adoption, and scaling.</p></li>
-<li><p><a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%E2%80%9CSymbolic+QED+Pre-silicon+Verification+for+Automotive+Microcontroller+Cores%3A+Industrial+Case+Study.%E2%80%9D&amp;amp;btnG=">“Symbolic QED Pre-silicon Verification for Automotive Microcontroller Cores: Industrial Case Study”</a> presents an industrial case study applying the “Symbolic Quick Error Detection (Symbolic QED)” technique in the pre-silicon verification of automotive microcontroller cores (~1,800 flip-flops, ~70,000 logic gates). Symbolic QED detected all logic bugs found by previous industrial verification flows, plus additional ones. It significantly reduced verification effort (e.g., an 8× reduction for a new design, and up to ~60× for subsequent designs). Runtime of bug detection improved dramatically (20 seconds or less) with short counterexamples (≤10 instructions).</p></li>
-<li><p><a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Formal+methods+in+dependable+systems+engineering%3A+a+survey+of+professionals+from+Europe+and+North+America&amp;amp;btnG=">“Formal methods in dependable systems engineering: a survey of professionals from Europe and North America”</a> presents survey results from mission-critical software engineering practitioners, investigating how they use formal methods, their intentions to use them, and perceived challenges. Intrinsic motivation drives use more than regulation. Experienced practitioners plan to use more extensively. Major obstacles remain such as: scalability, skills, education, process compatibility, tool reputation. The survey highlights that despite promising case studies, broad industrial adoption remains constrained.</p></li>
-<li><p><a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%E2%80%9CIndustrial-Strength+Verification+of+Solid+State+Interlocking+Programs.%E2%80%9D&amp;amp;btnG=">“Industrial-Strength Verification of Solid State Interlocking Programs”</a> describes a tool used on 26 real-world interlockings and used to aument existing testing/inspection processes. It describes an end-to-end workflow that consumes engineering artefacts as produced by signalling designers, automatically encodes safety properties, runs automated theorm provers and SMT solvers, then produces diagnostics so the results are actionable.</p></li>
+<li><p>Tokeneer ID Station (NSA smart-card project) is one of the early industrial successes of the “Correctness by Construction” methodology. The case is described by Janet Barnes in <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Experiences+in+the+Industrial+use+of+Formal+Methods&amp;btnG=">“Experiences in the Industrial use of Formal Methods”</a>. This article reports on industrial deployment of formal methods under the “Correctness by Construction (CbyC)” approach at Altran Praxis, including the case of the Tokeneer ID Station project for the US NSA. The work describes how formal specification in Z, refinement to code in SPARK with proof of absence of run-time errors, and proof of system-level properties were applied. The project found only five errors post-release and is cited as a rare “success story” of formal methods in industry. The article also candidly discusses challenges: training, tool usability, industrial adoption, and scaling.</p></li>
+<li><p><a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=%E2%80%9CSymbolic+QED+Pre-silicon+Verification+for+Automotive+Microcontroller+Cores%3A+Industrial+Case+Study.%E2%80%9D&amp;btnG=">“Symbolic QED Pre-silicon Verification for Automotive Microcontroller Cores: Industrial Case Study”</a> presents an industrial case study applying the “Symbolic Quick Error Detection (Symbolic QED)” technique in the pre-silicon verification of automotive microcontroller cores (~1,800 flip-flops, ~70,000 logic gates). Symbolic QED detected all logic bugs found by previous industrial verification flows, plus additional ones. It significantly reduced verification effort (e.g., an 8× reduction for a new design, and up to ~60× for subsequent designs). Runtime of bug detection improved dramatically (20 seconds or less) with short counterexamples (≤10 instructions).</p></li>
+<li><p><a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Formal+methods+in+dependable+systems+engineering%3A+a+survey+of+professionals+from+Europe+and+North+America&amp;btnG=">“Formal methods in dependable systems engineering: a survey of professionals from Europe and North America”</a> presents survey results from mission-critical software engineering practitioners, investigating how they use formal methods, their intentions to use them, and perceived challenges. Intrinsic motivation drives use more than regulation. Experienced practitioners plan to use more extensively. Major obstacles remain such as: scalability, skills, education, process compatibility, tool reputation. The survey highlights that despite promising case studies, broad industrial adoption remains constrained.</p></li>
+<li><p><a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=%E2%80%9CIndustrial-Strength+Verification+of+Solid+State+Interlocking+Programs.%E2%80%9D&amp;btnG=">“Industrial-Strength Verification of Solid State Interlocking Programs”</a> describes a tool used on 26 real-world interlockings and used to aument existing testing/inspection processes. It describes an end-to-end workflow that consumes engineering artefacts as produced by signalling designers, automatically encodes safety properties, runs automated theorm provers and SMT solvers, then produces diagnostics so the results are actionable.</p></li>
 </ul>
 </section>
 <section id="recent-emerging-directions">
-<h3><span class="section-number">9.9.2. </span>Recent &amp; Emerging Directions<a class="headerlink" href="#recent-emerging-directions" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.9.2. </span>Recent &amp; Emerging Directions<a class="headerlink" href="#recent-emerging-directions" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
-<li><p>The paper <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%E2%80%9CMachine+learning+and+logic%3A+a+new+frontier+in+artificial+intelligence.%E2%80%9D&amp;amp;btnG=">“Machine learning and logic: a new frontier in artificial intelligence”</a> shows how ML/AI and formal methods (logic, automated reasoning) are increasingly tightly coupled. Both foundational pillars have largely developed independently, but novel and grand challenges demand their integration. The author identify three key paradigms:</p>
+<li><p>The paper <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=%E2%80%9CMachine+learning+and+logic%3A+a+new+frontier+in+artificial+intelligence.%E2%80%9D&amp;btnG=">“Machine learning and logic: a new frontier in artificial intelligence”</a> shows how ML/AI and formal methods (logic, automated reasoning) are increasingly tightly coupled. Both foundational pillars have largely developed independently, but novel and grand challenges demand their integration. The author identify three key paradigms:</p>
 <ol class="arabic simple">
 <li><p>Using learning methods for proof-rule selection, solver heuristic and initialization.</p></li>
 <li><p>Combining inductive learning and deductive reasoning for programming-by-example, synthesis, and verification.</p></li>
@@ -709,20 +703,20 @@ arXiv</p>
 They posit that this convergent direction will have major impact on future AI and verification.</p></li>
 </ol>
 </li>
-<li><p><a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%E2%80%9CApplication+of+AI+to+formal+methods+%E2%80%94+an+analysis+of+current+trends.%E2%80%9D&amp;amp;btnG=">“Application of AI to formal methods — an analysis of current trends”</a> is a systematic mapping of how AI techniques (including generative models) are being applied to formal methods (and vice versa). It charts emerging directions such as automated invariant generation via ML, proof-assistant tactic synthesis using neural networks, and formal verification of AI/ML system themselves. The analysis highlights both promise of increased automation and reduced annotation and caution.</p></li>
-<li><p>Special issue <a class="reference external" href="https://scholar.google.com/scholar?q=%E2%80%9CFormal+Methods+for+Industrial+Critical+Systems%E2%80%9D&amp;amp;hl=en&amp;amp;as_sdt=0%2C5&amp;amp;as_ylo=2024&amp;amp;as_yhi=">“Formal Methods for Industrial Critical Systems”</a> compile recent tools and experience reports from industry/critical systems. The issue contributions cover a range of domains and emphasize the needs of improving formal tools and publishing empirical experience showing how formal methods integrate with industrial processes.</p></li>
-<li><p><a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;as_ylo=2024&amp;amp;q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&amp;amp;btnG=">VeriBench: End-to-End Formal Verification Benchmark for AI Code Generation in Lean</a> presents a benchmark suite called VeriBench, designed to evaluate how well large language models (LLMs) can generate complete formal verification artifacts in Lean 4. The experiments show that current frontier LLMs compile and pass only a small fraction of these tasks out of the box. It explicitly highlights how Lean 4’s dependent-type system enables encoding deep invariants. The author argues
+<li><p><a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=%E2%80%9CApplication+of+AI+to+formal+methods+%E2%80%94+an+analysis+of+current+trends.%E2%80%9D&amp;btnG=">“Application of AI to formal methods — an analysis of current trends”</a> is a systematic mapping of how AI techniques (including generative models) are being applied to formal methods (and vice versa). It charts emerging directions such as automated invariant generation via ML, proof-assistant tactic synthesis using neural networks, and formal verification of AI/ML system themselves. The analysis highlights both promise of increased automation and reduced annotation and caution.</p></li>
+<li><p>Special issue <a class="reference external" href="https://scholar.google.com/scholar?q=%E2%80%9CFormal+Methods+for+Industrial+Critical+Systems%E2%80%9D&amp;hl=en&amp;as_sdt=0%2C5&amp;as_ylo=2024&amp;as_yhi=">“Formal Methods for Industrial Critical Systems”</a> compile recent tools and experience reports from industry/critical systems. The issue contributions cover a range of domains and emphasize the needs of improving formal tools and publishing empirical experience showing how formal methods integrate with industrial processes.</p></li>
+<li><p><a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;as_ylo=2024&amp;q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&amp;btnG=">VeriBench: End-to-End Formal Verification Benchmark for AI Code Generation in Lean</a> presents a benchmark suite called VeriBench, designed to evaluate how well large language models (LLMs) can generate complete formal verification artifacts in Lean 4. The experiments show that current frontier LLMs compile and pass only a small fraction of these tasks out of the box. It explicitly highlights how Lean 4’s dependent-type system enables encoding deep invariants. The author argues
 that such benchmarks are essential to meaningful progress in automated code verification &amp; provably correct code generation, especially as generative AI becomes more widely used in software engineering.</p></li>
 </ul>
 </section>
 </section>
 <section id="case-study">
-<h2><span class="section-number">9.10. </span>Case Study<a class="headerlink" href="#case-study" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.10. </span>Case Study<a class="headerlink" href="#case-study" title="Permalink to this heading">#</a></h2>
 <p>Let’s formalise and verify a transformation pipline for 3-D points in world space. Let’s look at a small example where we perform a rotation in place, follow by a translation (moving the point to a different coordinate). This case study will show how dependent types and theorem proving is utilized in computer graphics, like graphical engines utilized in games, movies, animation, etc…</p>
 <p>The following case study demonstrates how Lean uses dependent type system to ensures mathematical and computational correctness. By encoding vector dimensions in types and proving geometric invariants such as norm preservation, we move from abstract theory to executable verification. This approach mirrors how formal methods are being integratated into the wider industry.</p>
 </section>
 <section id="history">
-<h2><span class="section-number">9.11. </span>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.11. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
 <p>Type theory and the idea of types as a foundation for mathematics and computation have a long pedigree that connects philosophical logic, lambda calculus, and modern proof assistants.</p>
 <p>The story begins with early efforts to avoid paradoxes in naive set theory and logic (Russell, Frege), which motivated ramified and then simple type theories in the first half of the 20th century. Alonzo Church’s formulation of the simple theory of types and the simply-typed lambda calculus provided the computational backbone that later researchers built on. (<a class="reference external" href="https://en.wikipedia.org/wiki/History_of_type_theory">Wiki</a>)</p>
 <p>A decisive shift toward dependent types occurred with Per Martin-Löf’s intuitionistic type theory (1970s–1980s). Martin-Löf introduced dependent function (<span class="math notranslate nohighlight">\(\Pi\)</span>) and dependent pair (<span class="math notranslate nohighlight">\(\Sigma\)</span>) types, giving a constructive foundation in which types can quantify over values. This made it possible to represent propositions as types and proofs as programs in a very expressive way. The Curry–Howard correspondence, the observation that proofs correspond to programs and propositions to types, fused logic and computation and underpins modern dependently-typed systems. (<a class="reference external" href="https://plato.stanford.edu/entries/type-theory">See here</a>)</p>
@@ -730,35 +724,35 @@ that such benchmarks are essential to meaningful progress in automated code veri
 <p>In the 1980s and 1990s the field consolidated around a handful of influential calculi and systems. The Calculus of Constructions (Coquand &amp; Huet) and the later Calculus of Inductive Constructions became the basis for the Coq proof assistant; Agda and other systems explored dependently typed programming more directly; and the so-called lambda-cube classified a spectrum of type systems. Over the last two decades these theoretical advances have been implemented in robust systems (Coq, Agda, Lean, Idris) and large collaborative libraries (e.g., Lean’s mathlib), enabling both deep mathematical formalization and practical verification projects. (<a class="reference external" href="https://plato.stanford.edu/entries/type-theory">See here</a>)</p>
 </section>
 <section id="formal-methods-and-ai">
-<h2><span class="section-number">9.12. </span>Formal Methods and AI<a class="headerlink" href="#formal-methods-and-ai" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.12. </span>Formal Methods and AI<a class="headerlink" href="#formal-methods-and-ai" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="current-development">
-<h2><span class="section-number">9.13. </span>Current Development<a class="headerlink" href="#current-development" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.13. </span>Current Development<a class="headerlink" href="#current-development" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="resources">
-<h2><span class="section-number">9.14. </span>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.14. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://lean-lang.org/install/">Lean4 Installation</a></p></li>
 <li><p><a class="reference external" href="https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic">Lean Game Logic</a></p></li>
 <li><p><a class="reference external" href="https://lean-lang.org/install/">“Install Lean”</a>. Lean (2025).</p></li>
-<li><p>Felicissimo, T. (2025). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Generic+bidirectional+typing+for+dependent+type+theories&amp;amp;btnG=">“Generic bidirectional typing for dependent type theories”</a>. ACM Transactions on Programming Languages and Systems, 47(1), 1-42.</p></li>
-<li><p>Bauer, A., &amp; Komel, A. P. (2022). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=An+extensible+equality+checking+algorithm+for+dependent+type+theories&amp;amp;btnG=#d=gs_cit&amp;amp;t=1764487303518&amp;amp;u=%2Fscholar%3Fq%3Dinfo%3AGG4bRcIQJBgJ%3Ascholar.google.com%2F%26output%3Dcite%26scirp%3D0%26hl%3Den">“An extensible equality checking algorithm for dependent type theories”</a>. Logical Methods in Computer Science, 18.</p></li>
+<li><p>Felicissimo, T. (2025). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Generic+bidirectional+typing+for+dependent+type+theories&amp;btnG=">“Generic bidirectional typing for dependent type theories”</a>. ACM Transactions on Programming Languages and Systems, 47(1), 1-42.</p></li>
+<li><p>Bauer, A., &amp; Komel, A. P. (2022). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=An+extensible+equality+checking+algorithm+for+dependent+type+theories&amp;btnG=#d=gs_cit&amp;t=1764487303518&amp;u=%2Fscholar%3Fq%3Dinfo%3AGG4bRcIQJBgJ%3Ascholar.google.com%2F%26output%3Dcite%26scirp%3D0%26hl%3Den">“An extensible equality checking algorithm for dependent type theories”</a>. Logical Methods in Computer Science, 18.</p></li>
 <li><p>Wadler, Philip. “Propositions as Types.” Communications of the ACM, Vol. 58, No. 12 (Dec. 2015), pp. 75-84. Available as PDF <a class="reference external" href="https://homepages.inf.ed.ac.uk/wadler/papers/propositions-as-types/propositions-as-types.pdf">here</a></p></li>
 <li><p><a class="reference external" href="https://plato.stanford.edu/entries/type-theory-intuitionistic/">“Intuitionistic Type Theory (Stanford Encyclopedia of Philosophy).”</a> Entry by (various) updated Sep. 23 2024.</p></li>
-<li><p>Barnes, J. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Experiences+in+the+Industrial+use+of+Formal+Methods&amp;amp;btnG=">“Experiences in the Industrial use of Formal Methods.”</a> ECEASST 46 (2011).</p></li>
-<li><p>Singh, E. et al. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%E2%80%9CSymbolic+QED+Pre-silicon+Verification+for+Automotive+Microcontroller+Cores%3A+Industrial+Case+Study.%E2%80%9D&amp;amp;btnG=">“Symbolic QED Pre-silicon Verification for Automotive Microcontroller Cores: Industrial Case Study.”</a> arXiv (2019).</p></li>
-<li><p>Iliasov, A. et al. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%E2%80%9CIndustrial-Strength+Verification+of+Solid+State+Interlocking+Programs.%E2%80%9D&amp;amp;btnG=">“Industrial-Strength Verification of Solid State Interlocking Programs.”</a> arXiv (2021).</p></li>
-<li><p>Gleirscher, M., Marmsoler, D. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=Formal+methods+in+dependable+systems+engineering%3A+a+survey+of+professionals+from+Europe+and+North+America&amp;amp;btnG=">“Formal methods in dependable systems engineering: a survey of professionals from Europe and North America”</a> Empir Software Eng 25 (2020).</p></li>
-<li><p>Ganesh, V., Seshia, S. A., Jha, S. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%E2%80%9CMachine+learning+and+logic%3A+a+new+frontier+in+artificial+intelligence.%E2%80%9D&amp;amp;btnG=">“Machine learning and logic: a new frontier in artificial intelligence.”</a> Formal Methods Systems Design 60 (2022).</p></li>
-<li><p>Stock, S., Dunkelau, J., Mashkoor, A. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=%E2%80%9CApplication+of+AI+to+formal+methods+%E2%80%94+an+analysis+of+current+trends.%E2%80%9D&amp;amp;btnG=">“Application of AI to formal methods — an analysis of current trends.”</a> Empir Software Eng (2025).</p></li>
-<li><p>Groote, J. F., Huisman, M. <a class="reference external" href="https://scholar.google.com/scholar?q=%E2%80%9CFormal+Methods+for+Industrial+Critical+Systems%E2%80%9D&amp;amp;hl=en&amp;amp;as_sdt=0%2C5&amp;amp;as_ylo=2024&amp;amp;as_yhi=">“Formal Methods for Industrial Critical Systems.”</a> Int J Softw Tools Technol Transfer 26 (2024).</p></li>
-<li><p>Miranda et al. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;as_ylo=2024&amp;amp;q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&amp;amp;btnG=">“VeriBench: End-to-End formal verification benchmark for AI code generation in Lean 4”</a>. In Proceedings of the 42nd International Conference on Machine Learning, Vancouver, Canada (PMLR 267) (2025).</p></li>
+<li><p>Barnes, J. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Experiences+in+the+Industrial+use+of+Formal+Methods&amp;btnG=">“Experiences in the Industrial use of Formal Methods.”</a> ECEASST 46 (2011).</p></li>
+<li><p>Singh, E. et al. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=%E2%80%9CSymbolic+QED+Pre-silicon+Verification+for+Automotive+Microcontroller+Cores%3A+Industrial+Case+Study.%E2%80%9D&amp;btnG=">“Symbolic QED Pre-silicon Verification for Automotive Microcontroller Cores: Industrial Case Study.”</a> arXiv (2019).</p></li>
+<li><p>Iliasov, A. et al. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=%E2%80%9CIndustrial-Strength+Verification+of+Solid+State+Interlocking+Programs.%E2%80%9D&amp;btnG=">“Industrial-Strength Verification of Solid State Interlocking Programs.”</a> arXiv (2021).</p></li>
+<li><p>Gleirscher, M., Marmsoler, D. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Formal+methods+in+dependable+systems+engineering%3A+a+survey+of+professionals+from+Europe+and+North+America&amp;btnG=">“Formal methods in dependable systems engineering: a survey of professionals from Europe and North America”</a> Empir Software Eng 25 (2020).</p></li>
+<li><p>Ganesh, V., Seshia, S. A., Jha, S. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=%E2%80%9CMachine+learning+and+logic%3A+a+new+frontier+in+artificial+intelligence.%E2%80%9D&amp;btnG=">“Machine learning and logic: a new frontier in artificial intelligence.”</a> Formal Methods Systems Design 60 (2022).</p></li>
+<li><p>Stock, S., Dunkelau, J., Mashkoor, A. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=%E2%80%9CApplication+of+AI+to+formal+methods+%E2%80%94+an+analysis+of+current+trends.%E2%80%9D&amp;btnG=">“Application of AI to formal methods — an analysis of current trends.”</a> Empir Software Eng (2025).</p></li>
+<li><p>Groote, J. F., Huisman, M. <a class="reference external" href="https://scholar.google.com/scholar?q=%E2%80%9CFormal+Methods+for+Industrial+Critical+Systems%E2%80%9D&amp;hl=en&amp;as_sdt=0%2C5&amp;as_ylo=2024&amp;as_yhi=">“Formal Methods for Industrial Critical Systems.”</a> Int J Softw Tools Technol Transfer 26 (2024).</p></li>
+<li><p>Miranda et al. <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;as_ylo=2024&amp;q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&amp;btnG=">“VeriBench: End-to-End formal verification benchmark for AI code generation in Lean 4”</a>. In Proceedings of the 42nd International Conference on Machine Learning, Vancouver, Canada (PMLR 267) (2025).</p></li>
 <li><p>Wikipedia contributors. (2025, November 28). <a class="reference external" href="https://en.wikipedia.org/wiki/History_of_type_theory">History of type theory</a>. Wikipedia.</p></li>
 <li><p><a class="reference external" href="https://plato.stanford.edu/entries/type-theory">Type Theory (Stanford Encyclopedia of Philosophy)</a>. (2022, September 6).</p></li>
 </ul>
 </section>
 <section id="suggestions-for-future-works">
-<h2><span class="section-number">9.15. </span>Suggestions for Future Works<a class="headerlink" href="#suggestions-for-future-works" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">9.15. </span>Suggestions for Future Works<a class="headerlink" href="#suggestions-for-future-works" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -897,7 +891,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
