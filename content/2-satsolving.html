@@ -850,7 +850,7 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 </ol>
 <p>In order to create the necessary cnf file, we will use the following script taken from this <a class="reference external" href="https://users.aalto.fi/~tjunttil/2020-DP-AUT/notes-sat/solving.html#solving-problems-with-cnf-sat-solvers-the-sudoku-example">website</a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">D</span> <span class="o">=</span> <span class="mi">3</span>    <span class="c1"># Subgrid dimension</span>
 <span class="n">N</span> <span class="o">=</span> <span class="n">D</span><span class="o">*</span><span class="n">D</span>  <span class="c1"># Grid dimension</span>
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
@@ -868,7 +868,7 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 
     <span class="c1"># A helper: get the Dimacs CNF variable number for the variable v_{r,c,v}</span>
     <span class="c1"># encoding the fact that the cell at (r,c) has the value v</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">var</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">var</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
         <span class="k">assert</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">r</span> <span class="ow">and</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">c</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="n">N</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">v</span> <span class="ow">and</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="o">+</span><span class="p">(</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">N</span><span class="o">+</span><span class="p">(</span><span class="n">v</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
 
@@ -926,12 +926,12 @@ More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, 
 <p><code class="docutils literal notranslate"><span class="pre">minisat</span> <span class="pre">puzzle.cnf</span> <span class="pre">output.txt</span></code></p>
 <p>In the terminal, it will tell you whether or not the puzzle was satisfiable, and in the <code class="docutils literal notranslate"><span class="pre">output.txt</span></code> file, it will tell you the assignment values of each of the 729 variables, but it will not show the actual solution to the sudoku puzzle. In order to do that we must use a decoder script such as this one:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="n">D</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">N</span> <span class="o">=</span> <span class="n">D</span><span class="o">*</span><span class="n">D</span>  <span class="c1"># 9</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">inv_var</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">inv_var</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">x</span> <span class="o">//</span> <span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="n">x</span> <span class="o">%=</span> <span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
