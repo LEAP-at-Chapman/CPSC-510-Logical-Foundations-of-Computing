@@ -416,15 +416,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">9.6. The Landscape of Tools</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">9.7. Algorithms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-algorithms-and-concepts">9.7.1. Key algorithms and concepts:</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bidirectional-typechecking-type-inference-type-checking-separation">9.7.1.1. Bidirectional typechecking / type-inference + type-checking separation</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equality-normalization-conversion-extensionality-checking">9.7.2. Equality / Normalization / Conversion / Extensionality Checking</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#elaboration">9.7.2.1. Elaboration</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-algorithmic-stack-decidability-trust">9.7.2.2. Combined algorithmic stack → Decidability + Trust</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bidirectional-typechecking-type-inference-type-checking-separation">9.7.1. Bidirectional typechecking / type-inference + type-checking separation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equality-normalization-conversion-extensionality-checking">9.7.2. Equality / Normalization / Conversion / Extensionality Checking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elaboration">9.7.3. Elaboration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-algorithmic-stack-decidability-trust">9.7.4. Combined algorithmic stack → Decidability + Trust</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-competitions">9.8. Benchmarks and Competitions</a></li>
@@ -459,14 +454,12 @@ document.write(`
 </section>
 <section id="idea">
 <h2><span class="section-number">9.2. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
-<p>Dependent Type Theory (DTT) is the idea that types can depend on values. This enable us to establish precise relationships between data and the logical propositions that describes it.</p>
-<p>In traditional programming languages, types classify values. <code class="docutils literal notranslate"><span class="pre">Int</span></code> describes integers, <code class="docutils literal notranslate"><span class="pre">Bool</span></code> describes True or False, etc… With dependent type theory, a type itself depends on a value. For example, instead of defining a single <code class="docutils literal notranslate"><span class="pre">array</span></code> type, we define <code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">n</span> <span class="pre">A</span></code>, meaning “an array of length n whose elements are of type A.” This makes certain properties, like the dimension of an array, part of the type system itself. The compiler can then verify these constraints automatically.</p>
+<p>Dependent Type Theory (DTT) is the idea that types can depend on values. In traditional programming languages, types classify values. <code class="docutils literal notranslate"><span class="pre">Int</span></code> describes integers, <code class="docutils literal notranslate"><span class="pre">Bool</span></code> describes True or False, etc… With dependent type theory, a type itself depends on a value. For example, instead of defining a single <code class="docutils literal notranslate"><span class="pre">array</span></code> type, we define <code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">n</span> <span class="pre">A</span></code>, meaning “an array of length n whose elements are of type A.” This makes certain properties, like the dimension of an array, part of the type system itself. The compiler can then verify these constraints automatically.</p>
 <p>This expressiveness blurs the boundary between proofs and programs. In dependent type theory, writing a function that computes something often simultaneously constructs a proof of its correctness. For instance, a function that returns the sum of two natural numbers can be defined alongside a proof that addition is associative or commutative, proofs that Lean, Coq, or Agda can check mechanically.</p>
 <p>Dependent Type Theory(DTT) is a unifying foundation for:</p>
 <ul class="simple">
 <li><p>Formal methematics where theorems and proofs are treated as typed objects.</p></li>
 <li><p>Verified programming where correctness is guaranteed by construction.</p></li>
-<li><p>Knowledge representation where logical precision replaces ad-hoc conventions.</p></li>
 </ul>
 <p>Think of DTT as the language that connects mathematics, logic, and software engineering. It transforms “what is true” into “what is computed” and vice versa.</p>
 <p>Dependenty Type Theory allows us to design systems in which the structure of code mirrors the structure of mathematics. This is the essence of the proofs-as-programs pradigm: a verified program is not something we write after designing an algorithm; it is the algorithm, expressed in a logical language rich enough to verify itself.</p>
@@ -541,18 +534,18 @@ For example:</p>
 <p>Unlike traditional textbooks, the Logic Game responds instantly to every tactic command:</p>
 <ul class="simple">
 <li><p>If a tactic is correct, Lean advances the goal state.</p></li>
-<li><p>If a tactic is wrong, Lean explains why.
-This tight feedback loop mirrors the experience of interacting with an automated proof assistant in real industrial or research settings, lowering the learning curve dramatically.</p></li>
+<li><p>If a tactic is wrong, Lean explains why.</p></li>
 </ul>
+<p>This tight feedback loop mirrors the experience of interacting with an automated proof assistant in real industrial or research settings, lowering the learning curve dramatically.</p>
 </section>
 <section id="the-mental-model-of-lean">
 <h4><span class="section-number">9.5.1.2. </span>The “Mental Model” of Lean<a class="headerlink" href="#the-mental-model-of-lean" title="Permalink to this heading">#</a></h4>
 <p>The Logic Game is explicitly designed to teach users how Lean thinks about logic:</p>
 <ul class="simple">
 <li><p>Every tactic corresponds to a precise logical rule.</p></li>
-<li><p>Users see how Lean’s kernel enforces correctness step by step.
-This builds intuition for dependent type theory and Curry–Howard correspondence (propositions-as-types), but without requiring the learner to know any theory beforehand.</p></li>
+<li><p>Users see how Lean’s kernel enforces correctness step by step.</p></li>
 </ul>
+<p>This builds intuition for dependent type theory and Curry–Howard correspondence (propositions-as-types), but without requiring the learner to know any theory beforehand.</p>
 </section>
 <section id="encourages-experimentation">
 <h4><span class="section-number">9.5.1.3. </span>Encourages Experimentation<a class="headerlink" href="#encourages-experimentation" title="Permalink to this heading">#</a></h4>
@@ -560,9 +553,9 @@ This builds intuition for dependent type theory and Curry–Howard correspondenc
 <ul class="simple">
 <li><p>pattern recognition</p></li>
 <li><p>tactical reasoning</p></li>
-<li><p>an understanding of proof search strategies
-These habits carry directly over to real software verification tasks.</p></li>
+<li><p>an understanding of proof search strategies</p></li>
 </ul>
+<p>These habits carry directly over to real software verification tasks.</p>
 </section>
 </section>
 <section id="natural-number-game">
@@ -617,7 +610,7 @@ These habits carry directly over to real software verification tasks.</p></li>
 <td><p>Good when you want a language with expressive types and runtime code generation for building verified-but-executable programs. Less mature than proof assistants; less library support; proofs may be more manual.</p></td>
 </tr>
 <tr class="row-even"><td><p>Haskell</p></td>
-<td><p>A general-purpose, functional programming that is statically typed with type inference and lazy evaluation. Popular in academia and industry</p></td>
+<td><p>A general-purpose, functional programming language that is statically typed with type inference and lazy evaluation. Popular in academia and industry</p></td>
 <td><p>It has practical, industrial-strength functional programming and powerful abstractions, rich ecosystem, compilers (GHC) with pluggable extensions. Typically used in high-assurance and mission-critical systems, data transformation pipelines, and systems that benefit from strong static guarantees. It has a steep learning curve; unpredictable performance due to laziness; smaller ecosystem; harder hiring pipeline; abstract debugging; less ergonomic for low-level systems</p></td>
 </tr>
 </tbody>
@@ -635,10 +628,8 @@ These habits carry directly over to real software verification tasks.</p></li>
 <section id="algorithms">
 <h2><span class="section-number">9.7. </span>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h2>
 <p>In implementing and using a dependently typed language or proof assistant (like Lean, Coq, Agda, Idris, etc.), a number of non-trivial algorithms lie at the foundation. These algorithms handle typing, type checking/inference, equality checking, unification or normalization, and elaboration. Understanding them gives insight into why dependent types are powerful and why they are hard.</p>
-<section id="key-algorithms-and-concepts">
-<h3><span class="section-number">9.7.1. </span>Key algorithms and concepts:<a class="headerlink" href="#key-algorithms-and-concepts" title="Permalink to this heading">#</a></h3>
 <section id="bidirectional-typechecking-type-inference-type-checking-separation">
-<h4><span class="section-number">9.7.1.1. </span>Bidirectional typechecking / type-inference + type-checking separation<a class="headerlink" href="#bidirectional-typechecking-type-inference-type-checking-separation" title="Permalink to this heading">#</a></h4>
+<h3><span class="section-number">9.7.1. </span>Bidirectional typechecking / type-inference + type-checking separation<a class="headerlink" href="#bidirectional-typechecking-type-inference-type-checking-separation" title="Permalink to this heading">#</a></h3>
 <p>Instead of trying to infer types for all expressions (type inference) or requiring full type annotations everywhere, bidirectional typing splits the typing judgment into two modes:</p>
 <ol class="arabic simple">
 <li><p>Synthesis (or inference): from a term <code class="docutils literal notranslate"><span class="pre">t</span></code>, compute (synthesize) a type <code class="docutils literal notranslate"><span class="pre">A</span></code>, written informally <span class="math notranslate nohighlight">\(t \Rightarrow A\)</span>.</p></li>
@@ -648,21 +639,21 @@ These habits carry directly over to real software verification tasks.</p></li>
 <p>The generic construction yields a type-checking algorithm for a broad class of DTTs, implemented in a prototype tool. This ensures that the type checker for a dependently typed language can remain decidable (under suitable normalization/termination assumptions) while supporting expressive dependent types.</p>
 <p>The necessity of type annotations in places where inference is impossible (e.g., lambda abstractions returning dependent types, complex implicit arguments). The complexity of designing good elaboration strategies so that user-facing syntax remains ergonomic even when underlying types are rich and dependent. The burden shifts from runtime safety to compile-time/type-check-time; the user (or tool) must supply sufficient information for checking.</p>
 </section>
-</section>
 <section id="equality-normalization-conversion-extensionality-checking">
 <h3><span class="section-number">9.7.2. </span>Equality / Normalization / Conversion / Extensionality Checking<a class="headerlink" href="#equality-normalization-conversion-extensionality-checking" title="Permalink to this heading">#</a></h3>
 <p>In dependent type theory, type equality (and term equality) is not just “are they syntactically identical?”. It often involves computation (normalization), conversion rules (β-reduction), and user-defined equality/extension rules (e.g., extensionality, definitional equalities). Implementations need an algorithm to decide or check when two types or terms are equal.</p>
 <p>The paper <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=An+extensible+equality+checking+algorithm+for+dependent+type+theories&amp;btnG=">“An extensible equality checking algorithm for dependent type theories”</a> introduces a general algorithm combining type-directed extensionality rules with normalization by computation rules, and shows how to classify rules as computational or extensional in a user-definable way. The algorithm is implemented in a proof assistant prototype that supports custom dependent type theories.
 arXiv</p>
 <p>Without a robust equality/normalization algorithm, dependent types, especially those involving dependent functions or indexed types,become unwieldy. Many trivial-looking equalities (e.g., rewriting with definitional reduction, simplification) would need to be proven manually. A good algorithm reduces overhead and makes proofs manageable.</p>
+</section>
 <section id="elaboration">
-<h4><span class="section-number">9.7.2.1. </span>Elaboration<a class="headerlink" href="#elaboration" title="Permalink to this heading">#</a></h4>
+<h3><span class="section-number">9.7.3. </span>Elaboration<a class="headerlink" href="#elaboration" title="Permalink to this heading">#</a></h3>
 <p>In proof assistants or dependently typed languages, users write code in a friendly high-level syntax (with type annotations optional, implicit arguments, etc.). The elaboration phase translates that syntax into the core type theory: resolves implicit arguments, performs type inference/checking, adds coercions, resolves overloading, etc.</p>
 <p>Without a powerful elaboration engine, the user would be burdened with writing full explicit dependent types everywhere. A good elaborator makes dependent typing practical, hiding complexity while retaining guarantees.</p>
 <p>The designers of Lean highlight that its “powerful elaboration engine”, combined with a small trusted kernel and support for mixed declarative and tactic proof style, make it a mature system for real-world development.</p>
 </section>
 <section id="combined-algorithmic-stack-decidability-trust">
-<h4><span class="section-number">9.7.2.2. </span>Combined algorithmic stack → Decidability + Trust<a class="headerlink" href="#combined-algorithmic-stack-decidability-trust" title="Permalink to this heading">#</a></h4>
+<h3><span class="section-number">9.7.4. </span>Combined algorithmic stack → Decidability + Trust<a class="headerlink" href="#combined-algorithmic-stack-decidability-trust" title="Permalink to this heading">#</a></h3>
 <p>Bidirectional typing + equality/normalization + elaboration + a small trusted kernel yields a system where:</p>
 <ul class="simple">
 <li><p>Type checking and proof checking remain decidable (modulo normalization / termination constraints),</p></li>
@@ -671,7 +662,6 @@ arXiv</p>
 <li><p>Automation (tactics, tactics + automation, decision procedures) can build on top to ease formalization.</p></li>
 </ul>
 <p>This is the algorithmic backbone that makes modern DTT-based proof assistants usable beyond toy examples.</p>
-</section>
 </section>
 </section>
 <section id="benchmarks-and-competitions">
@@ -719,7 +709,6 @@ that such benchmarks are essential to meaningful progress in automated code veri
 <h2><span class="section-number">9.11. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
 <p>Type theory and the idea of types as a foundation for mathematics and computation have a long pedigree that connects philosophical logic, lambda calculus, and modern proof assistants.</p>
 <p>The story begins with early efforts to avoid paradoxes in naive set theory and logic (Russell, Frege), which motivated ramified and then simple type theories in the first half of the 20th century. Alonzo Church’s formulation of the simple theory of types and the simply-typed lambda calculus provided the computational backbone that later researchers built on. (<a class="reference external" href="https://en.wikipedia.org/wiki/History_of_type_theory">Wiki</a>)</p>
-<p>A decisive shift toward dependent types occurred with Per Martin-Löf’s intuitionistic type theory (1970s–1980s). Martin-Löf introduced dependent function (<span class="math notranslate nohighlight">\(\Pi\)</span>) and dependent pair (<span class="math notranslate nohighlight">\(\Sigma\)</span>) types, giving a constructive foundation in which types can quantify over values. This made it possible to represent propositions as types and proofs as programs in a very expressive way. The Curry–Howard correspondence, the observation that proofs correspond to programs and propositions to types, fused logic and computation and underpins modern dependently-typed systems. (<a class="reference external" href="https://plato.stanford.edu/entries/type-theory">See here</a>)</p>
 <p>A decisive shift toward dependent types occurred with Per Martin-Löf’s intuitionistic type theory (1970s–1980s). Martin-Löf introduced dependent function (<span class="math notranslate nohighlight">\(\Pi\)</span>) and dependent pair (<span class="math notranslate nohighlight">\(\Sigma\)</span>) types, giving a constructive foundation in which types can quantify over values. This made it possible to represent propositions as types and proofs as programs in a very expressive way. The Curry–Howard correspondence, the observation that proofs correspond to programs and propositions to types, fused logic and computation and underpins modern dependently-typed systems. (<a class="reference external" href="https://plato.stanford.edu/entries/type-theory">See here</a>)</p>
 <p>In the 1980s and 1990s the field consolidated around a handful of influential calculi and systems. The Calculus of Constructions (Coquand &amp; Huet) and the later Calculus of Inductive Constructions became the basis for the Coq proof assistant; Agda and other systems explored dependently typed programming more directly; and the so-called lambda-cube classified a spectrum of type systems. Over the last two decades these theoretical advances have been implemented in robust systems (Coq, Agda, Lean, Idris) and large collaborative libraries (e.g., Lean’s mathlib), enabling both deep mathematical formalization and practical verification projects. (<a class="reference external" href="https://plato.stanford.edu/entries/type-theory">See here</a>)</p>
 </section>
@@ -844,15 +833,10 @@ that such benchmarks are essential to meaningful progress in automated code veri
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">9.6. The Landscape of Tools</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">9.7. Algorithms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-algorithms-and-concepts">9.7.1. Key algorithms and concepts:</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bidirectional-typechecking-type-inference-type-checking-separation">9.7.1.1. Bidirectional typechecking / type-inference + type-checking separation</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equality-normalization-conversion-extensionality-checking">9.7.2. Equality / Normalization / Conversion / Extensionality Checking</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#elaboration">9.7.2.1. Elaboration</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-algorithmic-stack-decidability-trust">9.7.2.2. Combined algorithmic stack → Decidability + Trust</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bidirectional-typechecking-type-inference-type-checking-separation">9.7.1. Bidirectional typechecking / type-inference + type-checking separation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equality-normalization-conversion-extensionality-checking">9.7.2. Equality / Normalization / Conversion / Extensionality Checking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elaboration">9.7.3. Elaboration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-algorithmic-stack-decidability-trust">9.7.4. Combined algorithmic stack → Decidability + Trust</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-competitions">9.8. Benchmarks and Competitions</a></li>
