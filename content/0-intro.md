@@ -1,6 +1,6 @@
 # The Book
 
-This book project is being developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University. 
+The first draft of this book project is being developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University. 
 
 Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the lectures emphasize more of the theory, this book puts the tools center stage.
 
@@ -50,11 +50,14 @@ Each chapter should by default be devided into the following sections (subject t
 
 [Chapter 11](11-dependent-types.md) presents dependent type theory with Lean, demonstrating how types can depend on values and enabling "proofs as programs" through the Curry-Howard correspondence.
 
-## Project Ideas for 2026
+## Ideas for 2026
 
-- A new chapters (Vampire, Prover9, ...)
-- A simple from-scratch prototype implementation of a tool (eg a Prolog interpreter)
-- A case study combining a logic-based software tool with a gen-AI tool
+- Turn this book from one one "Logical Foundations of Software Engineering" into a book on "Formal Methods and AI"
+- Give students a choice between adding a new chapter or doing a project. 
+  - Projects would apply a logic-based formal method to some engineering problem. 
+  - I would be particularly interested in projects that combine formal methods which generative AI.
+  - A great way to learn is to implement a classic algorithm from scratch. A project in this vein could be a simple from-scratch prototype implementation of a tool (eg a Prolog interpreter). The focus would be on simplicity and the educational value.
+  - A new chapter would present a logic, a formal method, a software tool. (Vampire, Prover9, ... sth on Knwoledge Representation, Semantic Web, Ontologies, Description Logics, ...).
 - ... tbc ... 
 
 

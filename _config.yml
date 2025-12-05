@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Logical Foundations of AI
+title: Logical Foundations of Software Engineering
 author: CPSC 510
 
 # Force re-execution of notebooks on each build.
