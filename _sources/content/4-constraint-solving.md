@@ -10,6 +10,13 @@ Constraint programming (CP) is a paradigm for identifying feasible solutions fro
 
 The constraint solver finds an assignment of values to the variables that satisfies all constraints. CP is based on **feasibility** (finding a feasible solution) rather than optimization, focusing on the constraints and variables rather than the objective function (Rossi, Van Beek, and Walsh, 2006).
 
+### Learning Goals
+
+By the end of this chapter, you will be able to:
+1.  **Model logic puzzles and scheduling problems** using high-level constraints in MiniZinc.
+2.  **Understand the "Rosetta Stone" advantage:** Write one model that can be solved by multiple backend technologies (CP, MIP, SMT) without rewriting code.
+3.  **Distinguish when to use MiniZinc** versus embedded libraries like Python's OR-Tools for your own projects.
+
 ### Installation
 
 ```bash
@@ -22,6 +29,8 @@ minizinc --version
 
 ### Key Characteristics
 
+Constraint programming systems generally share several defining features that distinguish them from other approaches:
+
 * **Feasibility-focused**: CP emphasizes finding solutions that satisfy all constraints, not necessarily optimal ones
 * **Declarative**: You describe *what* constraints must hold, not *how* to find the solution
 * **Powerful for scheduling**: Particularly effective for problems like employee scheduling, job shop scheduling, and resource allocation
@@ -29,9 +38,13 @@ minizinc --version
 
 These characteristics follow the standard MiniZinc modeling approach (Nethercote et al., 2007).
 
+**Why this matters:** Instead of writing imperative loops to *find* a solution, you simply declare the properties a valid solution must have. This shift in thinking allows you to solve much harder problems with much less code.
+
 In this chapter we will focus on constraint programming using MiniZinc, a high-level modeling language for constraint satisfaction and optimization problems.
 
 ## Basic Theory
+
+Modeling a problem in MiniZinc typically follows a structured process:
 
 1. Start in MiniZinc by defining parameters about your domain (width, height, number of colors, etc.)
 2. Define your decision variables and their domains. This will be treated as the base case of the overall recursive logic.
@@ -69,6 +82,8 @@ output [
 
 ## Working Example: N-Queens in MiniZinc
 
+To see these concepts in action, let's look at the "Hello World" of constraint programming: placing N queens on a chessboard so that no two queens attack each other.
+
 A minimal, runnable model is included in this repo at `src/minizinc/nqueens/nqueens.mzn`. You can run it directly without any `.dzn` file.
 
 ```mzn
@@ -94,9 +109,21 @@ output [
 ] ++ ["\n", "Positions: ", show(q), "\n"];
 ```
 
+```{button-link} ../minizinc/nqueens.mzn
+:color: primary
+:shadow:
+:target: _blank
+
+Download nqueens.mzn
+```
+
 This implementation mirrors the canonical N-Queens problem description in survey work (Bell and Stevens, 2009).
 
-## How to approach writing the recursive logic of some CSP in MiniZinc syntax and theory
+## Recursive Logic in MiniZinc
+
+Now that you've seen a flat model, how do you handle more complex logic? Building a model often feels like defining a recursive function.
+
+When approaching the recursive logic of a CSP in MiniZinc, consider these steps:
 
 1. Start at the base case and work backwards
 2. Identify the recursive structure by breaking the logic into smaller subproblems
@@ -104,7 +131,27 @@ This implementation mirrors the canonical N-Queens problem description in survey
 
 ## Connecting Z3 and MiniZinc Concepts
 
-Briefly: MiniZinc is a high-level modeling language for constraint satisfaction and optimization with rich global constraints and multiple backend solvers; Z3 is an SMT solver aimed at logical theories and verification. If you’re building schedules, allocations, or routing, prefer MiniZinc; for program verification or bit-vector logic, prefer Z3 (de Moura and Bjørner, 2008).
+MiniZinc is a high-level modeling language for constraint satisfaction and optimization with rich global constraints and multiple backend solvers; Z3 is an SMT solver aimed at logical theories and verification. If you’re building schedules, allocations, or routing, prefer MiniZinc; for program verification or bit-vector logic, prefer Z3 (de Moura and Bjørner, 2008).
+
+## Practicality: MiniZinc vs. Embedded Libraries
+
+So, why would you choose a standalone modeling language like MiniZinc over simply importing a library like OR-Tools directly into your Python or C++ project? In my experience, the main reason is the level of abstraction. MiniZinc lets you focus purely on *what* the rules are, without forcing you to commit to *how* they will be solved.
+
+### Solver Independence
+
+MiniZinc acts as a sort of "Rosetta Stone" for optimization (Nethercote et al., 2007). You can write your model once and then compile it to target completely different technologies—Constraint Programming (CP), Mixed Integer Programming (MIP), or even SMT—without changing a single line of your code.
+
+If you were working in Python, you’d typically have to lock yourself into a specific solver's API (like choosing the CP-SAT solver in OR-Tools versus a MIP solver like Gurobi). If you later realized your problem structure was better suited for a different mathematical approach, you'd likely have to rewrite your entire problem definition. In MiniZinc, a statement like `constraint all_different(x);` is automatically translated by the compiler into whatever format the backend solver needs—whether that's passing it directly to a CP solver or decomposing it into linear inequalities for a MIP solver.
+
+### High-Level Logic (Global Constraints)
+
+MiniZinc comes with a comprehensive standard library of **global constraints** that encapsulate complex logical patterns (Rossi, Van Beek, and Walsh, 2006). For example, if you're dealing with scheduling, the `cumulative` constraint handles resource overlaps that would otherwise require writing custom loops and tricky conditional logic in an imperative language. Similarly, `diffn` ensures 2D shapes don't overlap when packing.
+
+While libraries like OR-Tools certainly support many of these, MiniZinc's implementation is standardized, meaning you don't have to worry about whether your specific backend supports the constraint—the language handles the translation for you.
+
+### Workflow: Exploration vs. Production
+
+This leads to a common hybrid workflow: use MiniZinc for the **exploration** phase—rapidly modeling your problem to understand its complexity and rules—and only port it to an embedded language (like Python with OR-Tools) if you need to deploy it into a **production** environment where tight integration is critical (Perron and Furnon, 2019).
 
 ## Example Applications
 
@@ -112,7 +159,7 @@ Briefly: MiniZinc is a high-level modeling language for constraint satisfaction 
 
 A classic CP problem: A company runs three 8-hour shifts per day and assigns three of its four employees to different shifts each day, while giving the fourth the day off. Even with just 4 employees, there are 24 possible assignments per day, leading to 24^7 ≈ 4.5 billion possible weekly schedules (Perron and Furnon, 2019).
 
-### Classic CP Problems
+For Example:
 
 * **N-Queens Problem**
 * **Cryptarithmetic Puzzles**
@@ -121,6 +168,8 @@ A classic CP problem: A company runs three 8-hour shifts per day and assigns thr
 These examples correspond to the standard CP problem categories in the literature (Rossi, Van Beek, and Walsh, 2006; Perron and Furnon, 2019).
 
 ## Practical Business Example: Employee Shift Scheduling (MiniZinc)
+
+Finally, let's apply this to a real-world scenario. While N-Queens is theoretical, scheduling is a massive industry use case.
 
 A runnable scheduling model lives at:
 `src/minizinc/employee_scheduling/shift_scheduling.mzn`.
@@ -148,13 +197,8 @@ How it’s modeled:
 MiniZinc’s aggregate and global constraints make CP extremely effective for scheduling (Nethercote et al., 2007).
 
 ```mzn
-
 % Employee Shift Scheduling - Practical Business Example
 % Goal: Assign exactly one employee to each shift per day, with fairness caps.
-% Run:
-%   minizinc -s --solver coin-bc shift_scheduling_.mzn
-
-%
 
 include "globals.mzn";
 
@@ -162,136 +206,34 @@ include "globals.mzn";
 int: E = 5;                      % number of employees
 int: D = 7;                      % number of days (e.g., a week)
 int: S = 3;                      % shifts per day (e.g., Morning, Evening, Night)
-set of int: Employees = 1..E;
-set of int: Days = 1..D;
-set of int: Shifts = 1..S;
 
-% Optional: Pretty names for output
-array[Shifts] of string: shift_name = ["Morning","Evening","Night"];
-array[Days] of string: day_name = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
-array[Employees] of string: employee_name =
-  if E = 5 then [" Matt","Jack","Jake","Wayne","Alex"] else
-  [ "Emp" ++ show(i) | i in Employees ]
-  endif;
+% ... (see full file for constraints and variables) ...
 
-% Demand: how many employees needed per (day, shift)
-array[Days, Shifts] of int: demand = [|
-  1, 1, 1  % Mon
-|
-  1, 1, 1  % Tue
-|
-  1, 1, 1  % Wed
-|
-  1, 1, 1  % Thu
-|
-  1, 1, 1  % Fri
-|
-  1, 1, 1  % Sat
-|
-  1, 1, 1  % Sun
-|];
-
-% Reasonable default fairness cap
-int: max_shifts_per_employee = 5;
-
-% Decision variables: x[e,d,s] = 1 if employee e works shift s on day d
-array[Employees, Days, Shifts] of var 0..1: x;
-
-% 1) Each shift's coverage must be met exactly
-constraint forall(d in Days, s in Shifts) (
-  sum(e in Employees)(x[e,d,s]) = demand[d,s]
-);
-
-% 2) Each employee works at most one shift per day
-constraint forall(e in Employees, d in Days) (
-  sum(s in Shifts)(x[e,d,s]) <= 1
-);
-
-% 3) Weekly cap for fairness/load
-constraint forall(e in Employees) (
-  sum(d in Days, s in Shifts)(x[e,d,s]) <= max_shifts_per_employee
-);
-
-% Solve for any feasible assignment
 solve satisfy;
+```
 
-% Output: readable weekly roster
-output [
-  "Weekly Roster\n"
-] ++
-[
-  day_name[d] ++ ":\n" ++
-  concat([ "  " ++ shift_name[s] ++ ": " ++
-           concat([ if fix(x[e,d,s]) = 1 then employee_name[e] ++ " " else "" endif
-                 | e in Employees ]) ++ "\n"
-         | s in Shifts ]) ++
-  (if d < D then "\n" else "" endif)
-  | d in Days
-];
+```{button-link} ../minizinc/shift_scheduling.mzn
+:color: primary
+:shadow:
+:target: _blank
 
+Download shift_scheduling.mzn
 ```
 
 ## Translating this into a real-world written script
 
-With the Python MiniZinc API, you can embed a model as a string and feed parameters directly:
+With the Python MiniZinc API, you can load the model from a file and feed parameters directly, avoiding large inline strings:
 
 ```python
 import minizinc
+import os
 
-MODEL = r"""
-include "globals.mzn";
-
-int: E;
-int: D;
-int: S;
-
-set of int: Employees = 1..E;
-set of int: Days = 1..D;
-set of int: Shifts = 1..S;
-
-array[Shifts] of string: shift_name;
-array[Days] of string: day_name;
-array[Employees] of string: employee_name;
-
-array[Days, Shifts] of int: demand;
-int: max_shifts_per_employee;
-
-array[Employees, Days, Shifts] of var 0..1: x;
-
-constraint forall(d in Days, s in Shifts) (
-  sum(e in Employees)(x[e,d,s]) = demand[d,s]
-);
-
-constraint forall(e in Employees, d in Days) (
-  sum(s in Shifts)(x[e,d,s]) <= 1
-);
-
-constraint forall(e in Employees) (
-  sum(d in Days, s in Shifts)(x[e,d,s]) <= max_shifts_per_employee
-);
-
-solve satisfy;
-
-output [
-  "Weekly Roster\n"
-] ++
-[
-  day_name[d] ++ ":\n" ++
-  concat([ "  " ++ shift_name[s] ++ ": " ++
-           concat([ if fix(x[e,d,s]) = 1 then employee_name[e] ++ " " else "" endif
-                 | e in Employees ]) ++ "\n"
-         | s in Shifts ]) ++
-  (if d < D then "\n" else "" endif)
-  | d in Days
-];
-"""
+# Load the model from the file
+model_path = "src/minizinc/employee_scheduling/shift_scheduling.mzn"
 
 # ------------ Python side ------------
-model = minizinc.Model()
-model.add_string(MODEL)
-
+model = minizinc.Model(model_path)
 solver = minizinc.Solver.lookup("coin-bc")
-
 instance = minizinc.Instance(solver, model)
 
 # parameters

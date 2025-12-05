@@ -3,7 +3,7 @@
 Author: *John Mulhern*
 
 
-## 1. Idea
+## Idea
 
 Epistemic logic is the study of **knowledge** and **belief** using a formal logical language. Instead of only asking “is `p` true?”, we can ask:
 
@@ -13,6 +13,8 @@ Epistemic logic is the study of **knowledge** and **belief** using a formal logi
 
 This is useful in computer science because many systems are **multi-agent** or **distributed**. What an individual process, user, or node **knows** (or does **not** know) affects what it can safely and effectively do.
 
+Epistemic logic is motivated by a simple but profound observation: in many systems, what matters is not merely what is true but what agents think is true. Whether we examine human communication, negotiation between strategic players, or computation in networked software agents, the ability to reason about an entity’s informational state becomes central. Questions such as “what does the system know about its environment?” or “what can a user infer from a public disclosure?” characterize modern cybersecurity, distributed systems, and artificial intelligence. Thus epistemic logic provides a formal language to articulate and analyze these questions rigorously, giving us a way to represent knowledge differences, detect misinformation, model secrecy, and reason about what becomes knowable as communication unfolds.
+
 ## In this chapter we will:
 
 1. introduce the basics of (multi-agent) epistemic logic,
@@ -20,11 +22,13 @@ This is useful in computer science because many systems are **multi-agent** or *
 3. show how to use **SMCDEL** (Symbolic Model Checker for Dynamic Epistemic Logic),
 4. explain **social networks** through the lense of epistemic logic
 
-## 2. Basic Epistemic Logic
+## Basic Epistemic Logic
 
-### 2.1 Syntax
+### Syntax
 
-We assume:
+The syntax of epistemic logic expands propositional logic by equipping it with operators that express informational attitudes. Rather than merely stating that a fact holds, epistemic logic allows us to articulate perspectives on truth — what each agent takes to be the case, what they rule out, and how they reflect on their own knowledge state. This syntactic extension is minimalist by design: a small number of new operators yields an expressive language capable of capturing secrecy, inference, deception, and shared knowledge among distributed agents.
+
+For example, we assume:
 
 - a set of atomic propositions: `p, q, r, ...`
 - a finite set of agents: `a, b, c, ...`
@@ -58,7 +62,7 @@ Examples:
 - `K_a p → B_a p` (knowledge implies belief)
 
 
-### 2.2 Semantics (Possible Worlds)
+### Semantics (Possible Worlds)
 
 Epistemic logic uses **possible worlds semantics** (Kripke semantics).
 
@@ -86,7 +90,7 @@ Key sentence:
 
 > `K_a φ` is true at `w` iff `φ` is true in **all** worlds that agent `a` considers possible from `w`.
 
-### 2.3 Example (Not Knowing Even When It’s True)
+### Example (Not Knowing Even When It’s True)
 
 Let there be 2 worlds: `w1`, `w2`.
 
@@ -104,9 +108,10 @@ Then:
 
 So: `p` is actually true, but agent `a` does **not** know `p`.
 
-### 2.4 Properties of Knowledge (S5-style)
+### Properties of Knowledge (S5-style)
+These S5 principles constitute a kind of “idealized epistemic agent.” Knowledge is factual, agents perfectly reflect on what they know, and lacking knowledge is itself a known state. While these assumptions prove analytically convenient — particularly in security or distributed systems where local state is perfectly introspectable — they are not universally appropriate. Human reasoners, machine learning systems, and bounded computational agents often violate introspection or even factivity. Thus S5 serves as a baseline theory upon which weaker or alternative epistemic logics can be constructed. In many CS applications, we model knowledge with S5-like properties. 
 
-In many CS applications, we model knowledge with S5-like properties. For each agent `a`, the relation `R_a` is:
+For each agent `a`, the relation `R_a` is:
 
 - reflexive
 - symmetric
@@ -121,7 +126,7 @@ This validates the following principles:
 
 These together make knowledge quite strong.
 
-### 2.5 Belief
+### Belief
 
 Belief (`B_a φ`) is often taken to be **weaker**:
 
@@ -131,7 +136,7 @@ Belief (`B_a φ`) is often taken to be **weaker**:
 
 Belief is handy for modeling **mistakes** or **rumors** in social networks.
 
-## 3. Dynamic Epistemic Logic (DEL)
+## Dynamic Epistemic Logic (DEL)
 
 So far: *static* epistemic logic — one model, we ask what is known.
 
@@ -144,7 +149,9 @@ But many real situations have **information change**:
 
 **Dynamic Epistemic Logic** adds **events** and **updates** to represent such changes.
 
-### 3.1 Public Announcement (Informal)
+Dynamic epistemic logic begins from a deep insight: knowledge changes. Our epistemic state is shaped not only by what the world is but also by what we learn, observe, forget, or misinterpret. DEL formalizes information events — announcements, observations, private communication — and studies how they transform possible-world structures. DEL allows reasoning about what becomes knowable after a rumor spreads, when a protocol message is broadcast, or how shared secrets propagate through a network.
+
+### Public Announcement (Informal)
 
 Suppose we have a model `M` and we publicly announce `φ`.
 
@@ -157,7 +164,7 @@ After this, many things that were **not** known become **known**, because there 
 
 This is exactly the kind of update SMCDEL is good at checking.
 
-## 4. Using SMCDEL
+## Using SMCDEL
 
 SMCDEL (Symbolic Model Checker for Dynamic Epistemic Logic) is a tool that:
 
@@ -172,7 +179,7 @@ You can use the **web version**:
 
 or install it locally.
 
-### 4.1 Installation (Illustrative)
+### Installation 
 
 ```bash
 # Using Haskell Stack
@@ -185,7 +192,7 @@ smcdel my_model.smcdel
 ```
 where `my_model.smcdel` is a text file describing your epistemic model and the formulas you want to check.
 
-### 4.2 Model Example
+### Model Example
 Goal: two agents, `a` and `b`, one proposition `p`, two worlds, and both agents are uncertain.
 
 **File:** `simple_model.smcdel`
@@ -219,7 +226,7 @@ What this does:
 
 Intuition: both answers should be false because each agent still considers the world where p is false possible.
 
-### 4.3 Adding a Public Announcement
+### Adding a Public Announcement
 Now we show how a Public Announcement can impact an epistemic model.
 
 We start from the previous model and then **add an event** where we publicly announce p.
@@ -250,7 +257,7 @@ What happens:
 
 This is the dynamic piece: **before** the update, they did not know; **after** the update, they do.
 
-## 5. Social Networks and Epistemic Logic
+## Social Networks and Epistemic Logic
 We can think of a social network as:
 - a set of agents (users, accounts, processes)
 - a set of connections (who can hear whom, who follows whom, who is in the same group chat)
@@ -262,7 +269,7 @@ Epistemic logic lets us ask:
 - who knows that others know it?
 - is it common knowledge to the group?
 
-### 5.1 Conceptual Mapping
+### Conceptual Mapping
 
 | Social concept                              | Epistemic logic counterpart                                  |
 |---------------------------------------------|---------------------------------------------------------------|
@@ -278,7 +285,7 @@ So: **social-network reasoning is a natural application of DEL.**
 
 ---
 
-### 5.2 Example: Rumor Spread in a Small Network
+### Example: Rumor Spread in a Small Network
 
 **Agents:** `A`, `B`, `C`.
 
@@ -341,7 +348,7 @@ What’s going on:
 
 This shows that the second step (public announcement) is what makes the information spread to the whole network.
 
-### 5.3 Private vs. Public (Why it matters)
+### Private vs. Public (Why it matters)
 - A public announcement reduces uncertainty for every agent. It is “broadcast.”
 - A private event reduces uncertainty only for the involved agents.
 - If we want something to become common knowledge, it almost always needs to be public (or something equivalent to a public event — e.g. everyone hears it, and everyone hears that everyone heard it, etc.).
@@ -352,7 +359,7 @@ This distinction is exactly what we need to study:
 - misinformation
 - who can deduce what after an observable action
 
-### 5.4 Toward Common Knowledge
+### Toward Common Knowledge
 
 In a group chat with agents `A`, `B`, `C`, we might model:
 - a message is posted publicly: `p`
@@ -367,25 +374,43 @@ In epistemic logic we often define:
 
 Public announcements are a classic way to get close to this kind of knowledge.
 
-In SMCDEL, you can check several levels explicitly:
-```
-check w1: KA p;
-check w1: KB p;
-check w1: KC p;
-check w1: KA KB p;
-check w1: KB KA p;
-```
-and so on.
+## Applications in Industry
+### [“Epistemic Temporal Logic for Information Flow Security”](https://eprints.illc.uva.nl/id/eprint/1802/1/MoL-2021-12.text.pdf) 
 
-## 6. Applications in Industry
-- In the paper [“Epistemic Temporal Logic for Information Flow Security”](https://eprints.illc.uva.nl/id/eprint/1802/1/MoL-2021-12.text.pdf), Balliu et al. apply an epistemic-temporal logic to programs to reason about what an attacker knows or doesn’t know after observing program outputs — i.e., how knowledge evolves over time as information is released. This directly maps to the “who knows what” view of epistemic logic and is a strong CS/industrial-adjacent example (secure coding, confidentiality, release of secret data).
-- In the thesis [“Epistemic Logics for Cryptographic Protocols and Zero‐Knowledge Proofs”](https://eprints.illc.uva.nl/id/eprint/1802/1/MoL-2021-12.text.pdf) (Jaramillo, 2021) the author uses epistemic logic to model multi-agent interactions in cryptographic settings — specifically for modelling zero-knowledge proofs (where a verifier is convinced of a fact but learns nothing more).
-- Aldini, [*A process algebraic framework for multi-agent dynamic epistemic systems*](https://arxiv.org/abs/2407.17537) (2024) — system-level DEL with agents and transitions.
-- Van Benthem, van Eijck, Gattinger, Su, [*Symbolic Model Checking for Dynamic Epistemic Logic*](https://staff.fnwi.uva.nl/d.j.n.vaneijck2/papers/16/pdfs/2016-05-23-del-bdd-lori-journal.pdf) — the classic symbolic SMCDEL reference.
+Balliu et al. apply an epistemic-temporal logic to programs to reason about what an attacker knows or doesn’t know after observing program outputs — i.e., how knowledge evolves over time as information is released. This directly maps to the “who knows what” view of epistemic logic and is a strong CS/industrial-adjacent example (secure coding, confidentiality, release of secret data).
 
-## 7. Case Study: The “Rescue Drone Coordination” Problem
+### [“Epistemic Logics for Cryptographic Protocols and Zero‐Knowledge Proofs”](https://eprints.illc.uva.nl/id/eprint/1802/1/MoL-2021-12.text.pdf) (Jaramillo, 2021) 
 
-### 7.1 Scenario Overview
+The author uses epistemic logic to model multi-agent interactions in cryptographic settings — specifically for modelling zero-knowledge proofs (where a verifier is convinced of a fact but learns nothing more).
+
+### [*A process algebraic framework for multi-agent dynamic epistemic systems*](https://arxiv.org/abs/2407.17537) (2024) — system-level DEL with agents and transitions.
+
+
+### Van Benthem, van Eijck, Gattinger, Su, [*Symbolic Model Checking for Dynamic Epistemic Logic*](https://staff.fnwi.uva.nl/d.j.n.vaneijck2/papers/16/pdfs/2016-05-23-del-bdd-lori-journal.pdf)
+
+The classic symbolic SMCDEL reference.
+
+## Epistemic Logic and Generative AI
+
+### Targeting Theory of Mind in Large Language Models with Dynamic Epistemic Logic – Sileo et al., 2023
+  
+Uses dynamic epistemic logic (DEL) to generate controlled Theory-of-Mind tasks and test whether LLMs can reason about who knows what, when, and under which information updates. They explicitly use DEL models to construct scenarios where knowledge and belief are manipulated stepwise, then probe LLM behavior against these formal structures.
+
+### Inference-Time Scaling for Theory-of-Mind Tasks – Wu et al., 2025
+
+Builds on the same idea: ToM is framed in explicitly epistemic-logical terms, and dynamic epistemic logic is used to structure multi-agent belief/knowledge states. LLMs are then evaluated (and improved) on these tasks, showing that epistemic logic can act as a test harness for higher-order social reasoning in generative models.
+
+### Bridging Epistemology and Large Language Models – Fierro et al., EMNLP 2024
+
+Analyzes different philosophical definitions of knowledge and connects them to large language models, giving semi-formal epistemic-logic style axioms (e.g., S4/T-like systems) in an appendix. They explicitly discuss how modal operators (like those in epistemic logic) can formalize competing notions of “the model knows that p.”
+
+### An AI Safety Problem – Klassen & al., AAMAS 2023
+
+### Epistemic Artificial Intelligence is Essential for Machine Learning
+
+## Case Study: The “Rescue Drone Coordination” Problem
+
+### Scenario Overview
 Imagine a fleet of **autonomous rescue drones** responding to a natural disaster.  
 Each drone (`A`, `B`, `C`) monitors a separate zone but must coordinate to deliver medical supplies safely.  
 However, communication links are intermittent and not every message is received by every drone.
@@ -397,7 +422,7 @@ Initially, only `A` detects that `p` is true.
 Drone `A` sends a **private message** to `B`, but the network drops `A`’s broadcast to `C`.  
 Then `B` issues a **public announcement** (“Zone X is safe!”) on the shared channel.
 
-### 7.2 Modeling in SMCDEL
+### Modeling in SMCDEL
 We can represent:
 ```text
 -- Rescue Drone Coordination (approximate private-then-public) in SMCDEL
@@ -434,14 +459,14 @@ VALID?
 This case study tests knowledge propagation in a safety-critical network.
 You can expand upon this experiment by adding false public announcements (miscommunication), modeling message delays or dropped links, or by checking whether “everyone knows that everyone knows p” (common knowledge) ever arises.
 
-### 7.3 Why It Matters
+### Why It Matters
 
 Such models help engineers verify communication protocols in distributed robotics or IoT systems:
 - Ensuring drones act only when they know an area is safe.
 - Preventing actions based on mistaken or outdated beliefs.
 - Analyzing how local updates become global knowledge—vital in swarm coordination.
 
-## 8. Referenes & Further Reading
+## Referenes & Further Reading
 - Jaakko Hintikka, Knowledge and Belief (1962)
 - Hans van Ditmarsch, Wiebe van der Hoek, Barteld Kooi, Dynamic Epistemic Logic
 - Y. Halpern and Y. Moses, “Knowledge and Common Knowledge in a Distributed Environment,” Journal of the ACM, 37(3), 1990
