@@ -54,6 +54,7 @@ parse:
 
 sphinx:
   config:
+    html_title: "Logical Foundations of Software Engineering"
     html_extra_path: ["content/examples"]
     html_baseurl: https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/
     latex_elements:
