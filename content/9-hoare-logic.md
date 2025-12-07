@@ -222,7 +222,12 @@ dotnet test -v:n
 
 ## Program Verification Techniques
 
-*To be added*
+Dafny was built using the principles of Hoare Logic as a form of program verification. Through this, Dafyny integrated the Hoare Triple directly into the system language to verify what must be true before (pre-condition) and what must be true after program execution (post-condition). This integration of built-in formal reasoning enabled constructs such as ```requires``` and ```ensures``` to be part of the natural language. Additionally, Dafny development was also able to account for loops and recursions by utilizing invariants and termination conditions. 
+
+Although a majority of the verification work in Dafny is handled by an SMT solver, this automated process alleviates the stress of manually constructing corrected proofs. This automated process, however, still requires human input to provide well-selected specifications and invariants, which can be deemed challenging, especially for more complex properties. 
+
+Despite the challenges that selecting specifications and invariants may bring, Dafny has successfully demonstrated the practicality of implementing Hoare Logic. Through system-wide efforts to enforce program validations and correctness, users can develop programs without worrying about extensive testing. As a result of this constant verification, users can trust their programs, knowing that each portion of them has been thoroughly validated. Founded on the principle of ensuring that mathematical proofs function as intended, Hoare Logic provides a robust and reliable method for developing programs. 
+
 
 ## Exercises
 
