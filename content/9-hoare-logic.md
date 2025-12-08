@@ -410,7 +410,11 @@ Sum of array = 9
 
 ## Benchmark and Competitions
 
-*To be added*
+The development of Hoare Logic continues to grow, as the number of conferences and workshops around program verification tools continues to increase. Events such as ETAPS, TACAS, FM, and the Dagstuhl seminars provide a platform for individuals to test new ideas and assess how tools perform on real-world problems. The VerifyThis competition has become especially influential. Participants are given problems, create specifications, and work with their verification tools within an allotted time limit. These events often lead to the development of contract notation, improved annotation design, stronger automation, and more helpful tool feedback. These developments shape the evolution of verification tools.
+
+Additionally, these events highlight the challenges that researchers continue to face. Writing effective specifications and invariants still requires skill and insight. Even with recent advances, tools can produce confusing diagnostics or behave in ways that make it hard to understand what went wrong. When these issues arise, conferences and competitions provide researchers with a platform to discuss them directly. Comparing approaches, discussing which ideas are effective, and identifying areas where tools are still limited, enables an exchange that guides future improvements in program verification tools.
+
+The VerifyThis competition has also contributed directly to the development of modern verification tools. Through this competition, many participants have been able to develop improvements as these events push them to refine their tools, adopt new specification features, and strengthen automation strategies. Surviving past competitions show that these newly implemented improvements often stem from insights gained during competitions such as VerifyThis. These teams observe how others formalize requirements, structure invariants, and interact with their tools under pressure. This collaborative environment fosters a feedback loop that supports steady progress in deductive verification research, ensuring that Hoare Logic continues to evolve as both a theoretical framework and a practical verification method.
 
 ## Applications in Industry
 
@@ -438,11 +442,6 @@ In the year 1969, C.A.R. Hoare continued to build on these ideas by introducing 
 By the early 1970s, Hoare had expanded his logic to handle recursive procedures and local variables, which enabled reasoning about more complex programs. Working alongside Joseph Foley, he applied these ideas to verify the Quicksort algorithm, which was one of the first detailed proofs of correctness for a real-world program. Around the same time, Hoare began promoting the idea of programming and proving should be done simultaneously. This growing philosophy later influenced Edsger Dijkstra’s work on structured programming and program derivation, transforming Hoare Logic into a guide for creating verified software instead of verifying it after the fact.
 
 The development of Hoare Logic established a foundation in computer science by shifting the perspective from viewing programs as sequences of commands to viewing them as logical systems that can be mathematically analyzed. Building upon Turing’s conceptual groundwork, refining Floyd’s formalization, and realizing Hoare’s framework, this lineage transformed programming into a science of correctness. To this day, Hoare Logic remains a foundational method of verification, and it also serves as a symbol of the connection between logic, mathematics, and computation.
-
-
-## Current Development, Research Challenges, Conferences and Workshops
-
-*To be added*
 
 ## Suggestions for future work on the book
 
