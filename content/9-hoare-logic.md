@@ -426,11 +426,6 @@ In safety-critical systems, such as those in the aerospace and medical device in
 - **Static Analysis:**
 In static analysis, the Hoare Triple is used to reason all program states, ensuring correctness when testing alone can be insufficient. This reasoning is adjusted and adapted to work across various computational models. For synchronous languages, they are rewritten into a synchronous tuple assignment form, enabling grouped updates and macro-step boundaries to be verified through specialized axioms. Meanwhile, in quantum programs, redefined semantics, quantum predicates, and measurement-aware rules are used to handle superposition and probabilistic branching. In each case, static analysis becomes an automated form of Hoare-style reasoning adapted to the computational model, ensuring that correctness is proven.
 
-
-## Case Studies
-
-*To be added*
-
 ## History
 
 In 1949, Alan Turing presented his paper, “Checking a Large Routine”, which was one of the first attempts to describe how programmers could verify the correctness of their code. Throughout his paper, Turing proposed the idea of using assertion statements to explain what should be true at specific points in the program, thereby verifying its correctness. Additionally, Turing introduced the concept of a termination function as a method to ensure that the presented program eventually halts. Using a factorial program, Turing showed that logical reasoning could be applied to computer programs.
