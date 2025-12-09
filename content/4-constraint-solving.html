@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>3. Constraint Programming with MiniZinc &#8212; Logical Foundations of AI</title>
+    <title>3. Constraints with MiniZinc &#8212; Logical Foundations of Software Engineering</title>
   
   
   
@@ -148,21 +148,21 @@ const thebe_selector_output = ".output, .cell_output"
     
   
 
-<a class="navbar-brand logo" href="title.html">
+<a class="navbar-brand logo" href="0-title.html">
   
   
   
   
   
   
-    <p class="title logo__title">Logical Foundations of AI</p>
+    <p class="title logo__title">Logical Foundations of Software Engineering</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-intro.html">The Book</a></li>
 <li class="toctree-l1"><a class="reference internal" href="0-logic.html">Short Intro to Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
@@ -171,30 +171,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Constraints with MiniZinc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">4. SMT Solving and Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">7. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
 </ul>
 
     </div>
@@ -380,7 +372,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Constraint Programming with MiniZinc</h1>
+    <h1>Constraints with MiniZinc</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -424,8 +416,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="constraint-programming-with-minizinc">
-<h1><span class="section-number">3. </span>Constraint Programming with MiniZinc<a class="headerlink" href="#constraint-programming-with-minizinc" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="constraints-with-minizinc">
+<h1><span class="section-number">3. </span>Constraints with MiniZinc<a class="headerlink" href="#constraints-with-minizinc" title="Permalink to this heading">#</a></h1>
 <section id="idea">
 <h2><span class="section-number">3.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
 <p>Constraint programming (CP) is a paradigm for identifying feasible solutions from a very large set of candidates by modeling problems in terms of arbitrary constraints. These problems are called constraint satisfaction problems (CSPs) where you provide:</p>
