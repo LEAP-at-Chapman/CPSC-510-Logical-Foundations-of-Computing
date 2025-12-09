@@ -407,7 +407,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="short-intro-to-logic">
 <h1>Short Intro to Logic<a class="headerlink" href="#short-intro-to-logic" title="Permalink to this heading">#</a></h1>
-<p>some intro to the intro …</p>
+<p>This very short introduction to logic does not aim at explaining what logic is or the foundtaional role that logic plays in computing. As we will see throughout the book, many different answers can be given to these questions. Here, I only want to highlight some big ideas that underpin all these answers.</p>
 <p><strong>Big Ideas of Logic</strong>:</p>
 <ul class="simple">
 <li><p>Validity</p></li>
@@ -433,7 +433,7 @@ Therefore, Socrates is mortal.</p>
 <p>We know that it is valid because of its form, not because we know anything about Socrates, men, or mortality. The form is:</p>
 <blockquote>
 <div><p>All X are Y.<br />
-Z is an X.<br />
+Z is X.<br />
 Therefore, Z is Y.</p>
 </div></blockquote>
 <p>This pattern holds regardless of what X, Y, and Z represent. We can substitute:</p>
@@ -451,7 +451,7 @@ Therefore, Z is Y.</p>
 <li><p>A programming language is the set of strings (or abstract syntax trees) that can be derived by the <a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">context-free grammar</a> of the language, a classic example being the <a class="reference external" href="https://www.quut.com/c/ANSI-C-grammar-y.html">grammar of the C language</a> and we will see later the <a class="reference external" href="https://spinroot.com/spin/Man/grammar.html">grammar of Promela</a> in  <a class="reference internal" href="7-temporal-logic.html"><span class="doc std std-doc">Chapter 7: Temporal Logic with Spin</span></a>.</p></li>
 <li><p>The language of propositional logic is the smallest set containing a given set of atomic propositions (strings) and being closed under the operations AND (<span class="math notranslate nohighlight">\(\wedge\)</span>), OR (<span class="math notranslate nohighlight">\(\vee\)</span>), NOT (<span class="math notranslate nohighlight">\(\neg\)</span>).</p></li>
 </ul>
-<p>Formal languages can be processed by algorithms. In particular, for any given formal language there are (terminating, even efficient) algorithms that</p>
+<p>Formal languages can be processed by algorithms. In particular, for any given formal language one would expect (terminating, even efficient) algorithms that</p>
 <ul class="simple">
 <li><p>answer the yes-no-question, for any string, whether that string belongs to the language,</p></li>
 <li><p>parse a given string into an <a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax tree</a>.</p></li>
@@ -499,7 +499,7 @@ r &amp; s \\
 \end{array}
 \end{split}\]</div>
 <p>The variables <span class="math notranslate nohighlight">\(p, q, r, s\)</span> are bits taking values in <span class="math notranslate nohighlight">\(\{0,1\}\)</span>.</p>
-<p>The intended encoding is as follows. For each cell, let’s say the bit is 1 when the cell contains 1, and 0 when it contains 2. In the notation of propositional logic of Chapters <a class="reference internal" href="1-propositional-logic.html"><span class="doc std std-doc">1</span></a> and <a class="reference internal" href="2-satsolving.html"><span class="doc std std-doc">2</span></a>, a <strong>specification</strong> of the puzzle can now be expressed as follows.</p>
+<p>The intended encoding is as follows. For each cell, let’s say the bit is 1 when the cell contains 1, and 0 when it contains 2. In the notation of <a class="reference internal" href="1-propositional-logic.html"><span class="doc std std-doc">propositional logic</span></a>, a <strong>specification</strong> of the puzzle can now be expressed as follows.</p>
 <p>First, the rules of Sudoku are transformed into the following equations (writing <span class="math notranslate nohighlight">\(\vee\)</span> for OR and <span class="math notranslate nohighlight">\(\neg\)</span> for NOT)</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
