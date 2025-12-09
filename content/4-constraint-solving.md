@@ -1,4 +1,4 @@
-# Constraint Programming with MiniZinc
+# Constraints with MiniZinc
 
 ## Idea
 

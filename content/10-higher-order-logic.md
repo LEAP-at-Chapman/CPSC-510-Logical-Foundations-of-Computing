@@ -1,4 +1,4 @@
-# Higher-Order Logic with Isabelle/HOL
+# Higher-Order Logic with Isabelle
 
 *Author: Spencer Au*
 
