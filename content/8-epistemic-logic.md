@@ -24,17 +24,17 @@ Epistemic logic is motivated by a simple but profound observation: in many syste
 
 ## History
 
-The story of epistemic logic begins not in computer science, but in philosophy—specifically, in a moment when logicians first wondered whether knowledge itself could be treated with the same mathematical precision as truth. In the early 1960s, Jaakko Hintikka proposed a bold idea that reshaped the field: if we can speak formally about what is true, we should also be able to speak formally about what an agent *knows* to be true. His seminal work introduced modal operators such as `K_a φ`, and with them a logic that captured the structure of knowledge through the lens of “possible worlds.” In one stroke, Hintikka gave us a language for expressing uncertainty, inference, ignorance, and introspection—with the rigor of classical logic.
+The story of epistemic logic begins not in computer science, but in philosophy—specifically, in a moment when logicians first wondered whether knowledge itself could be treated with the same mathematical precision as truth. In the early 1960s, Jaakko Hintikka proposed a bold idea that reshaped the field: if we can speak formally about what is true, we should also be able to speak formally about what an agent knows to be true. His seminal work introduced modal operators such as K_a φ, and with them a logic that captured the structure of knowledge through the lens of “possible worlds” (Hintikka, 1962). In one stroke, Hintikka gave us a language for expressing uncertainty, inference, ignorance, and introspection—with the rigor of classical logic.
 
-Through the 1970s and 1980s, epistemic logic matured alongside another major development: the rise of **Kripke semantics**. Saul Kripke's relational semantics provided clarity and precision to modal logic, grounding Hintikka’s insights in a framework where knowledge corresponded to accessibility between worlds. These frames became powerful tools, capable of describing anything from the beliefs of a single agent to the mutual awareness of large groups. Researchers like Halpern and Moses soon recognized another profound application: distributed systems. In their influential 1990 paper, they observed that many coordination problems hinge not merely on what processes know, but on what they know *about the knowledge of others*. This insight forged the first deep connection between epistemic logic and computer science.
+Through the 1970s and 1980s, epistemic logic matured alongside another major development: the rise of Kripke semantics. Saul Kripke's relational semantics provided clarity and precision to modal logic, grounding Hintikka’s insights in a framework where knowledge corresponded to accessibility between worlds (Kripke, 1963). These frames became powerful tools, capable of describing anything from the beliefs of a single agent to the mutual awareness of large groups. Researchers like Halpern and Moses soon recognized another profound application: distributed systems. In their influential 1990 paper, they observed that many coordination problems hinge not merely on what processes know, but on what they know about the knowledge of others (Halpern and Moses, 1990). This insight forged the first deep connection between epistemic logic and computer science.
 
-While epistemic logic had established itself as a rich static theory, its dynamic nature—how knowledge *changes*—remained elusive. That changed in the 1990s. Alexandru Baltag, Lawrence Moss, and Slawomir Solecki, building on earlier work by Plaza on public announcement logic, developed what we now call **Dynamic Epistemic Logic (DEL)**. Their breakthrough was to treat communication events themselves as mathematical objects: not just “messages sent,” but structured transformations of epistemic models. A public announcement, a whispered secret, a shared observation—all could be described as actions that reshape the possibilities agents consider. The importance of this shift cannot be overstated: DEL made information flow *first-class*, allowing researchers to reason formally about communication, misinformation, secrecy, and coordinated decision-making.
+While epistemic logic had established itself as a rich static theory, its dynamic nature—how knowledge changes—remained elusive. That changed in the 1990s. Alexandru Baltag, Lawrence Moss, and Slawomir Solecki, building on earlier work by Plaza on public announcement logic (Plaza, 1989), developed what we now call Dynamic Epistemic Logic (DEL). Their breakthrough was to treat communication events themselves as mathematical objects: not just “messages sent,” but structured transformations of epistemic models. A public announcement, a whispered secret, a shared observation—all could be described as actions that reshape the possibilities agents consider. The importance of this shift cannot be overstated: DEL made information flow first-class, allowing researchers to reason formally about communication, misinformation, secrecy, and coordinated decision-making (Baltag, Moss, and Solecki, 1998; Baltag, Moss, and Solecki, 2004).
 
-With the arrival of the 2000s came a new challenge: could these elegant theories be *implemented*? Could machines reason about knowledge the way logicians did on paper? The development of explicit-state model checkers such as **MCK** and tools like **DEMO** marked the first serious attempts to bring epistemic logic into computational practice. Soon after, the logic-and-AI renaissance led by Johan van Benthem, together with Hans van Ditmarsch, Jan van Eijck, and many others, provided the theoretical and algorithmic foundation needed to make epistemic model checking more efficient, more expressive, and more widely applicable. Their work laid the groundwork for symbolic representations of epistemic structures and for a deeper understanding of dynamic logics as computational artifacts.
+With the arrival of the 2000s came a new challenge: could these elegant theories be implemented? Could machines reason about knowledge the way logicians did on paper? The development of explicit-state model checkers such as MCK and tools like DEMO marked the first serious attempts to bring epistemic logic into computational practice (Baldoni et al., 1998). Soon after, the logic-and-AI renaissance led by Johan van Benthem, together with Hans van Ditmarsch, Jan van Eijck, and many others, provided the theoretical and algorithmic foundation needed to make epistemic model checking more efficient, more expressive, and more widely applicable (van Ditmarsch, van der Hoek, and Kooi, 2007). Their work laid the groundwork for symbolic representations of epistemic structures and for a deeper understanding of dynamic logics as computational artifacts.
 
-In 2016, the field crossed a major milestone with the introduction of **SMCDEL**, the first fully symbolic model checker for Dynamic Epistemic Logic. Leveraging Binary Decision Diagrams (BDDs), SMCDEL scaled DEL reasoning to models containing thousands or millions of states—sizes previously unreachable for explicit methods. For the first time, researchers could explore nontrivial multi-agent communication scenarios interactively, observing how knowledge changed step by step, update by update. SMCDEL didn’t just implement DEL; it demonstrated its computational viability.
+In 2016, the field crossed a major milestone with the introduction of SMCDEL, the first fully symbolic model checker for Dynamic Epistemic Logic. Leveraging Binary Decision Diagrams (BDDs), SMCDEL scaled DEL reasoning to models containing thousands or millions of states—sizes previously unreachable for explicit methods. For the first time, researchers could explore nontrivial multi-agent communication scenarios interactively, observing how knowledge changed step by step, update by update. SMCDEL didn’t just implement DEL; it demonstrated its computational viability (van Benthem, van Eijck, Gattinger, and Su, 2016).
 
-The most recent chapter in this story emerges from an unexpected direction: artificial intelligence. As large language models and multi-agent AI systems proliferate, epistemic logic has found itself at the center of questions about **belief modeling**, **theory of mind**, **explainability**, and **communication among autonomous systems**. DEL-based reasoning tasks are now used to test the social inference capabilities of generative models. Neurosymbolic architectures pair generative agents that produce hypotheses with epistemic modules that verify or correct them. Meanwhile, robotics researchers use epistemic models to ensure that swarms, drones, and autonomous vehicles coordinate safely in environments saturated with partial information and unreliable communication.
+The most recent chapter in this story emerges from an unexpected direction: artificial intelligence. As large language models and multi-agent AI systems proliferate, epistemic logic has found itself at the center of questions about belief modeling, theory of mind, explainability, and communication among autonomous systems. DEL-based reasoning tasks are now used to test the social inference capabilities of generative models (Sileo et al., 2023; Wu et al., 2025). Neurosymbolic architectures pair generative agents that produce hypotheses with epistemic modules that verify or correct them (Fierro et al., 2024). Meanwhile, robotics researchers use epistemic models to ensure that swarms, drones, and autonomous vehicles coordinate safely in environments saturated with partial information and unreliable communication (Soldà et al., 2022; Gielis et al., 2022).
 
 From philosophical curiosity to formal semantics, from dynamic reasoning to symbolic computation, and now into the age of generative AI, the history of epistemic logic is a progression toward greater expressive power and deeper computational relevance. What began as an abstract theory of knowledge has grown into a foundational tool for understanding how information flows in interactive, intelligent, and increasingly autonomous systems.
 
@@ -511,64 +511,54 @@ So: **social-network reasoning is a natural application of DEL.**
 
 **Agents:** `A`, `B`, `C`.
 
-- only `A` initially knows proposition `p`
-- `A` privately tells `B`
-- then `B` publicly says “I learned `p`”
+- only `A` initially knows proposition `1`
+- `A` privately tells `1`
+- then `B` publicly says “I learned `1`”
 - we want to see what `C` can now conclude
 
-**File:** `social_network.smcdel`
+```
+VARS 1,2
 
-```text
-agents A B C;
-props p;
+LAW Top
 
-# two worlds: p is true / p is false
-worlds w1 w2;
-val p = {w1};
+OBS A: 1,2
+    B: 1,2
+    C: 2
 
-# everyone initially uncertain
-rel A = {(w1,w1),(w1,w2),(w2,w1),(w2,w2)};
-rel B = {(w1,w1),(w1,w2),(w2,w1),(w2,w2)};
-rel C = {(w1,w1),(w1,w2),(w2,w1),(w2,w2)};
+WHERE?
+  A knows that 1
+  & B knows that 1
+  & ~ (C knows that 1)
 
-# 1) A privately tells B
-event A_to_B {
-    pre = p;
-    rel = {
-        (A,A),
-        (B,B),
-        (C,C)
-    };
-}
+WHERE?
+  < ! (1) >
+  (A knows that 1
+   & B knows that 1
+   & C knows that 1
+   & C knows that (B knows that 1)
+   & B knows that (A knows that 1))
 
-# 2) B publicly announces "I learned p"
-event B_public {
-    pre = p;
-    rel = {
-        (A,A),
-        (B,B),
-        (C,C)
-    };
-}
+VALID?
+  [ ! (1) ]
+  (A knows that 1
+   & B knows that 1
+   & C knows that 1)
 
-# apply events in sequence
-update A_to_B;
-update B_public;
-
-# now ask:
-check w1: KA p;      # does A know p?
-check w1: KB p;      # does B know p?
-check w1: KC p;      # does C know p now?
-check w1: KC KB p;   # does C know that B knows p?
-check w1: KB KA p;   # does B know that A knows p?
 ```
 
 What’s going on:
-- After `A_to_B`, only `B` gains the info.
-- After `B_public`, everyone sees that `p` must be true (since `B` said so publicly and the precondition was `p`).
-- So now `C` learns `p`, and also learns that `B` knows `p`.
+`VARS 1,2`
+Two propositional variables. 1 is your “rumor is true” / p; 2 is just a dummy.
 
-This shows that the second step (public announcement) is what makes the information spread to the whole network.
+`OBS A: 1,2 and OBS B: 1,2`:
+A and B see both 1 and 2, so in the actual world they know whether 1 is true.
+
+`OBS C: 2`:
+C only sees var 2. Since there are epistemically possible worlds where 1 is true or false but 2 is the same, C cannot distinguish them → C does not know 1.
+
+The first `WHERE?` block checks the pre-announcement situation.
+
+The second `WHERE?` with `< ! (1) >` checks the post-announcement situation (everyone learns 1, plus some higher-order knowledge).
 
 ### Private vs. Public (Why it matters)
 - A public announcement reduces uncertainty for every agent. It is “broadcast.”
