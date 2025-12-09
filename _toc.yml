@@ -28,7 +28,6 @@ parts:
 - caption: Appendices
   numbered: false
   chapters:
-    - file: content/appendix-puzzles
     - file: content/appendix-hoare-logic
     - file: content/appendix-syllogistic-logics
 
@@ -37,10 +36,3 @@ parts:
   chapters:
     - file: content/how-to-cite
 
-- caption: "Appendix: On Jupyter Books"
-  numbered: false
-  chapters:
-    - file: content/how-to-create-a-jupyter-book
-    - file: content/markdown
-    - file: content/notebooks
-    - file: content/markdown-notebooks

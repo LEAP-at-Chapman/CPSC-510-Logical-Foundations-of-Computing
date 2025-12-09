@@ -32,6 +32,7 @@ exclude_patterns:
   - "notebooks/**"
   - "prompts/**"
   - "literature/**"
+  - "docs/**"
 
 # Information about where the book exists on the web
 repository:
