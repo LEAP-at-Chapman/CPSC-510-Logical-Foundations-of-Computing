@@ -35,4 +35,5 @@ parts:
   numbered: false
   chapters:
     - file: content/how-to-cite
+    - file: content/how-to-contribute
 
