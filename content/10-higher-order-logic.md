@@ -492,33 +492,26 @@ https://openreview.net/forum?id=IUikebJ1Bf0
 
 ## History
 
-<!-- Church (1940) A Formulation of the Simple Theory of Types -->
-
-<!-- may include dates at the beginning of each part, and include citations etc  -->
-
-WIP - need to refine/add more detail and add citations
-
 ### Origins of Higher-Order Logic
 
-<!-- scaffolding template for now -->
+Alonzo Church's work in the 1930s (via $\lambda$-calculus)<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> and 1940s (via type theory) and Leon Henkin's work in the 1950s (on general models/Henkin semantics)<sup><a href="#SEP_HOL">[23]</a></sup> lay the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities.
 
-Alonzo Church's work in the 1930s (via $\lambda$-calculus) and 1940s (via type theory) and Leon Henkin's work in the 1950s (on general models semantics) lay the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities
+In the 1970s, Robert Milner develops LCF (Logic for Computable Functions) at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evovles into OCaml and Standard ML.<sup><a href="#LCF_HOL_history">[33]</a></sup>
 
-In the 1970s, Robert Milner develops LCF (Logic for Computable Functions) at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evovles into OCaml and Standard ML.
-
-In the early 1980s, Michael J. C. Gordon builds upon LCF in order to create the HOL system, which explicitly uses higher-order logic as its core formalism. This HOL system would become the foundation for hardware verification, paving the way and influencing later provers like HOL4 and Isabelle/HOL.
+In the early 1980s, Michael J. C. Gordon builds upon LCF in order to create the HOL system, which explicitly uses higher-order logic as its core formalism. This HOL system would become the foundation for hardware verification, paving the way and influencing later provers like HOL4 and Isabelle/HOL.<sup><a href="#LCF_HOL_history">[33]</a></sup>
 
 ### Development of Isabelle/HOL
 
-Developed in the late 1980's by Lawrence C. Paulson at Cambridge, Isabelle was created as a generic theorem proving framework capable of supporting multiple logical formalisms under a single meta-logic.
+Developed in the late 1980's by Lawrence C. Paulson at Cambridge, Isabelle was created as a generic theorem proving framework capable of supporting multiple logical formalisms under a single meta-logic.<sup><a href="#LCF_Isabelle_History">[34]</a></sup>
 
-The HOL instantiation of Isabelle (Isabelle/HOL) became the most widely adopted version due to its strong expressiveness and balance between automation and manual control.
+The HOL instantiation of Isabelle (Isabelle/HOL) became the most widely adopted version due to its strong expressiveness and balance between automation and manual control.<sup><a href="#LCF_Isabelle_History">[34]</a></sup>
 
-Isabelle introduced the Isar prof language in the 2000s, allowing structured and human readable proofs, improving clarity over traditional tactic-based approaches like in LCF.
+Markus Wenzel proposed and develoed the Isar Proof Language for Isabelle between 1998 and 2001. Isar allowed for more structured and human readable proofs, improving clarity over traditional tactic-based approaches like in LCF.<sup><a href="#Isar_History">[36]</a></sup>
 
-Integration with automated tools such as Sledgehammer and SMT solvers further extend its power, bridging interactive reasoning and automation.
+The creation of the Archive of Formal Proofs (AFP) in 2004 established a large, community-driven library of formalizd mathematics and computer science. The establishment of the AFP solified Isabelle/HOL's role in both academia and industry.<sup><a href="#AFP_History">[35]</a></sup>
 
-The creation of the AFP (Archive of Formal Proofs) established a reusable library of formalizd mathematics and computer science, solidifying Isabelle/HOL's role in both academia and industry.
+The integration of tools such as Sledgehammer and external SMT/ATP solvers in 2007 further extend Isabelle/HOL's proof power. The bridging of interactive reasoning and automation allows user to tackle complex goals with minimal manual effort.<sup><a href="#Isabelle_Sledgehammer">[32]</a></sup>
+
 
 ## Current Development, Research Challenges, Conferences and Workshops
 
@@ -630,6 +623,19 @@ https://www.youtube.com/watch?v=VS_GK-9xUO4), YouTube
 <a id="Isabelle_Sledgehammer"></a>
 - [32]: Blanchette, Desharnais, Paulson, and Bartl (2025) [Hammering Away:
 A User’s Guide to Sledgehammer for Isabelle/HOL](https://isabelle.in.tum.de/doc/sledgehammer.pdf), Isabelle 2025 Documentation
+
+<a id="LCF_HOL_history"></a>
+- [33]: Mike Gordon (1996) [From LCF to HOL: a short history](https://www.cl.cam.ac.uk/archive/mjcg/papers/HolHistory.pdf) 
+
+<a id="LCF_Isabelle_History"></a>
+- [34]: Paulson, Nipkow, and Wenzel (2019)  [From LCF to Isabelle/HOL](https://arxiv.org/abs/1907.02836), Formal Aspects of Computing 31.6 (2019): 675-698.
+
+<a id="AFP_History"></a>
+- [35]: Makarius (Markus) Wenzel (2019) [Isabelle technology for the Archive of Formal Proofs with application to MMT](https://arxiv.org/abs/1905.07244) arXiv preprint arXiv:1905.07244 (2019).
+
+<a id="Isar_History"></a>
+- [36]: Makarius (Markus) Wenzel (1999) [Isar — a Generic Interpretative Approach
+to Readable Formal Proof Documents](https://web.cs.wpi.edu/~dd/resources_isabelle/Isar-TPHOLs99.wenzel.pdf), Theorem Proving in Higher Order Logics (TPHOLs 1999), volume 1690 of Lecture Notes in Computer Science. Springer-Verlag, 1999.
 
 <!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf -->
 
