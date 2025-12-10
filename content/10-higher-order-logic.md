@@ -479,7 +479,7 @@ Xu et al. present MiniLang/IsaMini, a streamlined proof langauge for Isabelle/HO
 
 ### Autoformalization with Large Language Models
 
-Wu et al.<sup><a href="#Wu_LLM_Autoformat">[9]</a></sup> present WIP
+Wu et al.<sup><a href="#Wu_LLM_Autoformat">[9]</a></sup> show that large language models are particularly effective at performing autoformalization, which is the process of automatically translating natural language mathetmatics into formal specifications and proofs. Specifically, they note that 25.3% of mathematical competition problems were translated *perfectly* to formal Isabelle/HOL statements. In addition, by using these autoformalized statements to finetune an existing neural theorem prover, they managed to improve achieve a 35.2% proof rate on Mini2F2, compared to a baseline proof rate of 29.6%.
 
 ## Case Study - Autoformalization with Large Language Models
 
