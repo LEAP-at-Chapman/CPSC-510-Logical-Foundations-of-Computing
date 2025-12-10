@@ -187,6 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-contribute.html">How to Contribute</a></li>
 </ul>
 
     </div>
@@ -382,8 +383,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guideline-for-contributions">Guideline for Contributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-table-of-contents">Preliminary Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-table-of-contents-for-a-typical-chapter">Suggested Table of Contents for a Typical Chapter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-table-of-contents-of-the-book">Preliminary Table of Contents of the Book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideas-for-2026">Ideas for 2026</a></li>
 </ul>
             </nav>
@@ -400,8 +401,8 @@ document.write(`
 <h1>The Book<a class="headerlink" href="#the-book" title="Permalink to this heading">#</a></h1>
 <p>The first draft of this book project is being developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University.</p>
 <p>Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the lectures emphasize more of the theory, this book puts the tools center stage.</p>
-<section id="guideline-for-contributions">
-<h2>Guideline for Contributions<a class="headerlink" href="#guideline-for-contributions" title="Permalink to this heading">#</a></h2>
+<section id="suggested-table-of-contents-for-a-typical-chapter">
+<h2>Suggested Table of Contents for a Typical Chapter<a class="headerlink" href="#suggested-table-of-contents-for-a-typical-chapter" title="Permalink to this heading">#</a></h2>
 <p>Each chapter should by default be devided into the following sections (subject to discussion and revision):</p>
 <ul class="simple">
 <li><p><strong>Idea</strong>: Each tool is based on a logic. Typically there is only a small number of big ideas at the origin of each tool.</p></li>
@@ -422,20 +423,26 @@ document.write(`
 <li><p><strong>Contributors</strong>: Initial author (the student responsible for the chapter), peer reviewers, and other contributors with their contributions.</p></li>
 </ul>
 </section>
-<section id="preliminary-table-of-contents">
-<h2>Preliminary Table of Contents<a class="headerlink" href="#preliminary-table-of-contents" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="0-logic.html"><span class="doc std std-doc">A Short Intro to Logic</span></a> introduces the fundamental concepts of logic that form the foundation for all subsequent chapters: validity, formal languages, decidability, satisfiability, and the duality between syntax and semantics.</p>
-<p><a class="reference internal" href="1-propositional-logic.html"><span class="doc std std-doc">Propositional Logic</span></a> introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.</p>
-<p><a class="reference internal" href="6-modal-logic.html"><span class="doc std std-doc">Modal Logic</span></a> introduces modal logic and the SCAN algorithm for computing first-order correspondents, exploring the mathematical foundations of modalities.</p>
-<p><a class="reference internal" href="2-satsolving.html"><span class="doc std std-doc">SAT solving with MiniSat</span></a> explores SAT solving using MiniSat, focusing on semantic tableaux algorithms and their applications to satisfiability and validity checking.</p>
-<p><a class="reference internal" href="3-logic-programming.html"><span class="doc std std-doc">Logic Programming with Prolog</span></a> introduces logic programming with SWI-Prolog, covering unification, resolution, and applications in search with backtracking and database querying.</p>
-<p><a class="reference internal" href="4-constraint-solving.html"><span class="doc std std-doc">Constraints with MiniZinc</span></a> presents constraint solving using MiniZinc, demonstrating how constraint satisfaction problems can be solved and applied to program synthesis and automated bug fixing.</p>
-<p><a class="reference internal" href="5-smt-solving.html"><span class="doc std std-doc">SMT Solving and Z3</span></a> covers SMT (Satisfiability Modulo Theories) solving with Z3, extending beyond propositional logic to handle theories like arithmetic, arrays, and bit-vectors for program verification and model checking.</p>
-<p><a class="reference internal" href="7-temporal-logic.html"><span class="doc std std-doc">Temporal Logic with Spin</span></a> examines temporal logic using the Spin model checker, focusing on LTL (Linear Temporal Logic) model checking and its applications in distributed systems and protocol verification, including the famous Needham-Schroeder Key Exchange protocol.</p>
-<p><a class="reference internal" href="8-epistemic-logic.html"><span class="doc std std-doc">Epistemic Logic with SMCDEL</span></a> explores epistemic logic with SMCDEL, investigating how knowledge and belief can be formally modeled and applied to social network analysis.</p>
-<p><a class="reference internal" href="9-hoare-logic.html"><span class="doc std std-doc">Hoare Logic with Dafny</span></a> presents Hoare logic using Dafny, demonstrating how to formally specify and verify program correctness with preconditions, postconditions, and invariants.</p>
-<p><a class="reference internal" href="10-higher-order-logic.html"><span class="doc std std-doc">Higher-Order Logic with Isabelle</span></a> extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.</p>
-<p><a class="reference internal" href="11-dependent-types.html"><span class="doc std std-doc">Type Theory with Lean</span></a> presents dependent type theory with Lean, demonstrating how types can depend on values and enabling “proofs as programs” through the Curry-Howard correspondence.</p>
+<section id="preliminary-table-of-contents-of-the-book">
+<h2>Preliminary Table of Contents of the Book<a class="headerlink" href="#preliminary-table-of-contents-of-the-book" title="Permalink to this heading">#</a></h2>
+<p><strong>Introductions</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="0-logic.html"><span class="doc std std-doc">A Short Intro to Logic</span></a> introduces the fundamental concepts of logic that form the foundation for all subsequent chapters: validity, formal languages, decidability, satisfiability, and the duality between syntax and semantics.</p></li>
+<li><p><a class="reference internal" href="1-propositional-logic.html"><span class="doc std std-doc">Propositional Logic</span></a> introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.</p></li>
+<li><p><a class="reference internal" href="6-modal-logic.html"><span class="doc std std-doc">Modal Logic</span></a> introduces modal logic and the SCAN algorithm for computing first-order correspondents, exploring the mathematical foundations of modalities.</p></li>
+</ul>
+<p><strong>Logics and Tools</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="2-satsolving.html"><span class="doc std std-doc">SAT solving with MiniSat</span></a> explores SAT solving using MiniSat, focusing on semantic tableaux algorithms and their applications to satisfiability and validity checking.</p></li>
+<li><p><a class="reference internal" href="3-logic-programming.html"><span class="doc std std-doc">Logic Programming with Prolog</span></a> introduces logic programming with SWI-Prolog, covering unification, resolution, and applications in search with backtracking and database querying.</p></li>
+<li><p><a class="reference internal" href="4-constraint-solving.html"><span class="doc std std-doc">Constraints with MiniZinc</span></a> presents constraint solving using MiniZinc, demonstrating how constraint satisfaction problems can be solved and applied to program synthesis and automated bug fixing.</p></li>
+<li><p><a class="reference internal" href="5-smt-solving.html"><span class="doc std std-doc">SMT Solving and Z3</span></a> covers SMT (Satisfiability Modulo Theories) solving with Z3, extending beyond propositional logic to handle theories like arithmetic, arrays, and bit-vectors for program verification and model checking.</p></li>
+<li><p><a class="reference internal" href="7-temporal-logic.html"><span class="doc std std-doc">Temporal Logic with Spin</span></a> examines temporal logic using the Spin model checker, focusing on LTL (Linear Temporal Logic) model checking and its applications in distributed systems and protocol verification, including the famous Needham-Schroeder Key Exchange protocol.</p></li>
+<li><p><a class="reference internal" href="8-epistemic-logic.html"><span class="doc std std-doc">Epistemic Logic with SMCDEL</span></a> explores epistemic logic with SMCDEL, investigating how knowledge and belief can be formally modeled and applied to social network analysis.</p></li>
+<li><p><a class="reference internal" href="9-hoare-logic.html"><span class="doc std std-doc">Hoare Logic with Dafny</span></a> presents Hoare logic using Dafny, demonstrating how to formally specify and verify program correctness with preconditions, postconditions, and invariants.</p></li>
+<li><p><a class="reference internal" href="10-higher-order-logic.html"><span class="doc std std-doc">Higher-Order Logic with Isabelle</span></a> extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.</p></li>
+<li><p><a class="reference internal" href="11-dependent-types.html"><span class="doc std std-doc">Type Theory with Lean</span></a> presents dependent type theory with Lean, demonstrating how types can depend on values and enabling “proofs as programs” through the Curry-Howard correspondence.</p></li>
+</ul>
 </section>
 <section id="ideas-for-2026">
 <h2>Ideas for 2026<a class="headerlink" href="#ideas-for-2026" title="Permalink to this heading">#</a></h2>
@@ -449,7 +456,7 @@ document.write(`
 <li><p>A new chapter would present a logic, a formal method, a software tool. For example:</p>
 <ul>
 <li><p>First-order theorem proving: (Vampire, Prover9, …)</p></li>
-<li><p>Knwoledge Representation, Semantic Web, Ontologies, Description Logics, … <a class="reference external" href="https://ontouml.org/">OntoUML</a></p></li>
+<li><p>Knwoledge Representation, Semantic Web, Ontologies, Description Logics, … <a class="reference external" href="https://ontouml.org/">OntoUML</a> …</p></li>
 </ul>
 </li>
 </ul>
@@ -523,8 +530,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#guideline-for-contributions">Guideline for Contributions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-table-of-contents">Preliminary Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-table-of-contents-for-a-typical-chapter">Suggested Table of Contents for a Typical Chapter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-table-of-contents-of-the-book">Preliminary Table of Contents of the Book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideas-for-2026">Ideas for 2026</a></li>
 </ul>
   </nav></div>
