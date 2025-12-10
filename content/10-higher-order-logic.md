@@ -413,9 +413,9 @@ WIP
 
 **HOL4** is part of the "HOL" family of interactive theorem provers, using classical higher-order logic and following the LCF approach to ensure soundness. Developed by Michael J. C. Gordon, the system is implemented in ML, and is a direct descendent of the original HOL88 system. Because HOL4 shares the same underlying logic as Isabelle/HOL, many theories and proof patterns are generally portable between the two tools.
 
-**Rocq** (formerly named Coq) is an interactive theorem prover based on the *Calculus of Inductive Constructions*, which is a derivative of the calculus of constructions, and is a higher-order typed lambda calculus that adds inductive types. It is mainly implemented in OCaml with some C. Compared with Isabelle/HOL, Rocq uses higher-order type theory, which allows it to have greater expressive power.
+**Rocq** (formerly Coq) is an interactive theorem prover based on the Calculus of Inductive Constructions (CIC), which is dependently typed $\lambda$-calculus that extends the Calculus of Constructions with inductive types. This extension allow propositions to be represented as types and proofs as programs, enabling highly expressive specifications.Rocq is mainly implemented in OCaml with some C, and it's dependent type theory allows it to have greater expressive power over Isabelle/HOL.
 
-**Lean (4)** is another proof assistant and, similar to Rocq, is based on dependent type theory, which is a version of the calculus of constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Compared to Isabelle/HOL's classic higher-order logic, Lean's dependent type theory offers greater expressive power, similar to Rocq.
+**Lean (4)** is another proof assistant that follows a similar but more modern varient of dependent type theory. Like Rocq, Learn also extends the Calculus of Constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Like Rocq, Lean 4's dependent type theory also supports greater expressive power compared to Isabelle/HOL.
 
 ### Automated Theorem Prover
 
@@ -448,8 +448,6 @@ In general, Isabelle/HOL appears to have a wide variety of applcation throughout
 ### Physical Addressing on Real Hardware
 
 Achermann et al.<sup><a href="#Achermann_physicalAddressing">[4]</a></sup> discuss how to formally model and verify physical memory address translation and remapping hardware (such as MMUs) in SoCs (Systems-on-Chip) using Isabelle/HOL. Specifically, they developed a hardware model that encodes translation units and then prove that standard memory operations preserve system invariants.
-
-<!-- HOL-based systems used to verify hardware modules and FPGA implementations -->
 
 ### FOCUS - Stream Processing Components
 
