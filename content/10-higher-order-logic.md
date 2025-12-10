@@ -27,6 +27,8 @@ Higher-order logic (HOL) extends the capabilities of first-order logic (FOL) by 
 
 ## Basic Theory
 
+NOTE - WIP - plan to compress this down into the basics for FOL to HOL, Lambda Abstraction, Type Theory, etc and just link supplementary reading like SEP, etc if the reader is interested
+
 <!-- basic setup - need to add much more but this is just basics/scaffolding -->
 
 ### From First-Order Logic to HOL
@@ -287,7 +289,7 @@ More detailed instructions on setup and initial use can be found in Chapters 1 a
 
 ### Proof Solving via Sledgehammer
 
-WIP
+Sledgehammer is an automated theorem prover orchestrator. It dispatches proof obligations to external provers such as Vampire via command line and returns candidate proofs that can be directly applied. Basically, it find proofs by "hammering away" at different sub-goals that would typically be tedious to construct manually. In the Isabelle GUI, Sledgehammer can be accessed by clicking on the *sledgehammer* tab on the bottom left corner of the application: select the target sub-goal, invoke Sledgehammer via apply, and then apply a suggested proof if found. Although *Concrete Semantics 4.3.1*<sup><a href="#ConcreteSemantics">[1]</a></sup> introduces the basic sledgehammer command, the GUI method is generally more convenient. The official Isabelle Sledgehammer documentation page<sup><a href="#Isabelle_Sledgehammer">[32]</a></sup> provides further detail.
 
 ### First Example - Add Function
 
@@ -393,7 +395,7 @@ qed
 ~~~
 ```
 
-For a detailed explanation, [See Section 10.3.3 Communative Property](./assets-10/10.3_exercises.md#Communative-Property-Proof)
+For a detailed explanation, [See Section 8.3.3 Communative Property](./assets-10/8.3_exercises.md#Communative-Property-Proof)
 
 
 ## Introductory Examples - Tower of Hanoi or Insertion Sort
@@ -437,7 +439,6 @@ WIP
 **TPTP** (Thousands of Problems for Theorem Provers) is a library of test problems for testing and evaluating ATPs. Problems are expressed in a simple text-based format for either first-order logic or higher-order logic. TPTP provides a common benchmark with a single, umambiguous reference set of problems so that different ATP systems can be both evaluated and compared with reproducible results.<sup><a href="#TPTP">[21]</a></sup>
 
 **CASC** (The CADE ATP System Competition) is an annual competition of fully automatic, classical logic, ATP systems. The purpose of CASC is to provide a public evaluation of relative capabilities of ATP systems as well as to stimulate research and development of ATP systems. At CASC, ATP system performane is evaluated in terms of the total number of problems solved with an acceptable solution output within a specified time limit, as well as the average time taken for problems solved. CASC is hosted at each CADE and IJCAR conference, both forums for automated deduction.<sup><a href="#CASC">[22]</a></sup>
-
 
 
 ## Applications in Industry and Academia
@@ -587,7 +588,7 @@ Higher-Order Logic](https://isabelle.in.tum.de/doc/tutorial.pdf), Springer-Verla
 - [18]: Steen and Benzmüller (2018) [The Higher-Order Prover Leo-III (Extended Version)](https://arxiv.org/abs/1802.02732) 9th International Joint Conference on Automated Reasoning, IJCAR 2018, Oxford, UK, July 14-17, 2018, Proceedings, Springer
 
 <a id="Satallax"></a>
-- [19]: Chad E. Brown, [Satallax: An Automatic Higher-Order Prover](https://ps.uni-saarland.de/Publications/documents/Brown2012b.pdf), Saarland University, Saarbr¨ucken, Germany
+- [19]: Chad E. Brown [Satallax: An Automatic Higher-Order Prover](https://ps.uni-saarland.de/Publications/documents/Brown2012b.pdf), Saarland University, Saarbr¨ucken, Germany
 
 <a id="MiniF2F"></a>
 - [20]: Zheng, Han, and Polu (2022) [MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics](https://arxiv.org/abs/2109.00110), ICLR 2022
@@ -625,6 +626,10 @@ https://www.youtube.com/watch?v=VS_GK-9xUO4), YouTube
 - [30]: Mark Jago/Attic Philosophy (2025) [Type Theory in Computer Science, Linguistics, Logic](https://www.youtube.com/watch?v=TrYosPPCQAY), YouTube
 
 - [31]: Oliver Lugg (2022) [A Sensible Introduction to Category Theory](https://www.youtube.com/watch?v=yAi3XWCBkDo), YouTube
+
+<a id="Isabelle_Sledgehammer"></a>
+- [32]: Blanchette, Desharnais, Paulson, and Bartl (2025) [Hammering Away:
+A User’s Guide to Sledgehammer for Isabelle/HOL](https://isabelle.in.tum.de/doc/sledgehammer.pdf), Isabelle 2025 Documentation
 
 <!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf -->
 
