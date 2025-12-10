@@ -31,7 +31,7 @@ parts:
     - file: content/appendix-hoare-logic
     - file: content/appendix-syllogistic-logics
 
-- caption: "Typesetting Conventions"
+- caption: "Style Guide"
   numbered: false
   chapters:
     - file: content/how-to-cite
