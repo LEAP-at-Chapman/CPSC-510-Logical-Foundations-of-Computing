@@ -236,7 +236,45 @@ WIP
 
 WIP 
 
-<!-- (may need to strip some of the stuff from basic theory for this?) -->
+### Matching and Unification
+
+<!-- This is the engine that lets the system fit rules to goals.
+Unification (especially first-order and higher-order patterns) is the key algorithm that determines how variables in rules or lemmas can be instantiated to match the current proof goal or subgoal. In Isabelle/HOL, unification drives rule application, tactic behavior, and many automation steps, linking the declarative inference rules to concrete proof steps.
+
+What to cover
+	•	First-order unification basics
+	•	Pattern unification in HOL context
+	•	How unification enables lemma instantiation and rule application
+
+Why this matters
+	•	It’s the bridge from abstract inference rules to concrete uses in proofs. -->
+
+### Simplification & Rewriting
+
+<!-- This is the core term-engine that most automated tactics rely on.
+
+The simplifier in Isabelle/HOL repeatedly applies rewrite rules — typically equational theorems — to simplify terms. This involves heuristics such as term ordering and conditional rewriting, which make it efficient and prevent infinite rewriting loops. The simplifier is used by tactics like simp and underpins many other automatic proof methods.
+
+What to cover
+	•	Term rewriting as a mechanical simplification algorithm
+	•	Conditional rewriting and simplification strategies
+	•	How this intersects with automation (simp, auto, etc.) -->
+
+### Proof Search and External Automation
+
+<!-- This covers the practical automation layer that makes Isabelle powerful in real use.
+
+Isabelle/HOL provides algorithms that integrate internal proof search with powerful external solvers. A standout example is Sledgehammer, which heuristically selects relevant facts from the context, encodes goals for external automatic theorem provers (ATPs) and SMT solvers, and reconstructs validated proofs back inside Isabelle so that trust remains intact.  ￼
+
+This class also includes:
+	•	Invocation and reconstruction of external ATP/SMT proofs
+	•	Built-in general search strategies (e.g., resolution-style search)
+	•	Tactics like auto, blast, and the Metis integration that systematically explore proof alternatives
+
+What to cover
+	•	Idea of heuristically guided search
+	•	Integration with external solvers and reconstruction
+	•	How this differs from the pure logic core -->
 
 ## Typical Use Cases
 
