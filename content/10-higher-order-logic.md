@@ -431,6 +431,10 @@ WIP
 
 <!-- (may need to strip some of the stuff from basic theory for this?) -->
 
+## Typical Use Cases
+
+WIP
+
 
 ## Benchmarks and Competitions
 
@@ -492,7 +496,7 @@ https://openreview.net/forum?id=IUikebJ1Bf0
 
 ### Origins of Higher-Order Logic
 
-Alonzo Church's work in the 1930s (via $\lambda$-calculus)<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> and 1940s (via type theory) and Leon Henkin's work in the 1950s (on general models/Henkin semantics)<sup><a href="#SEP_HOL">[23]</a></sup> lay the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities.
+Alonzo Church's work in the 1930s (via $\lambda$-calculus)<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> and 1940s (via type theory) and Leon Henkin's work in the 1950s (on general model/Henkin semantics)<sup><a href="#SEP_HOL">[23]</a></sup> lay the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities.
 
 In the 1970s, Robert Milner develops LCF (Logic for Computable Functions) at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evovles into OCaml and Standard ML.<sup><a href="#LCF_HOL_history">[33]</a></sup>
 
@@ -504,12 +508,15 @@ Developed in the late 1980's by Lawrence C. Paulson at Cambridge, Isabelle was c
 
 The HOL instantiation of Isabelle (Isabelle/HOL) became the most widely adopted version due to its strong expressiveness and balance between automation and manual control.<sup><a href="#LCF_Isabelle_History">[34]</a></sup>
 
-Markus Wenzel proposed and develoed the Isar Proof Language for Isabelle between 1998 and 2001. Isar allowed for more structured and human readable proofs, improving clarity over traditional tactic-based approaches like in LCF.<sup><a href="#Isar_History">[36]</a></sup>
+Markus Wenzel proposed and developed the Isar Proof Language for Isabelle between 1998 and 2001. Isar allows for more structured and human readable proofs, improving clarity over traditional tactic-based approaches like in LCF.<sup><a href="#Isar_History">[36]</a></sup>
 
-The creation of the Archive of Formal Proofs (AFP) in 2004 established a large, community-driven library of formalizd mathematics and computer science. The establishment of the AFP solified Isabelle/HOL's role in both academia and industry.<sup><a href="#AFP_History">[35]</a></sup>
+The creation of the Archive of Formal Proofs (AFP) in 2004 established a large, community-driven library of formalized mathematics and computer science. The establishment of the AFP solified Isabelle/HOL's role in both academia and industry.<sup><a href="#AFP_History">[35]</a></sup>
 
 The integration of tools such as Sledgehammer and external SMT/ATP solvers in 2007 further extend Isabelle/HOL's proof power. The bridging of interactive reasoning and automation allows user to tackle complex goals with minimal manual effort.<sup><a href="#Isabelle_Sledgehammer">[32]</a></sup>
 
+
+## Formal Methods and AI
+WIP
 
 ## Current Development, Research Challenges, Conferences and Workshops
 
@@ -523,117 +530,269 @@ AI/LLM stuff with NTP in Isabelle?
 
 ## References
 
-<a id="ConcreteSemantics"></a>
-- [1]: Nipkow and Klein (2014) [Concrete Semantics: With Isabelle/HOL](http://www.concrete-semantics.org/index.html), Springer Publishing Company, Incorporated.
+<style>
+.citation-entry:target {
+  background-color: rgba(201, 184, 91, 0.35);
+  padding: 4px 8px;
+  border-left: 3px solid #e0b400;
+  transition: background-color 0.25s ease;
+  scroll-margin-top: 3rem;
+}
+</style>
 
-<a id="MossSyllogism"></a>
-- [2]: Larry Moss (2015) [Natural Logic](https://logic.berkeley.edu/colloquium/MossSlides.pdf), UC Berkeley Logic Seminar.
+<ul>
 
-<a id="andrews2002"></a>
-- [3]: Peter B. Andrews (2002) [Introduction to Mathematical Logic and Type Theory: To Truth through Proof (2nd. ed.)](https://dl.acm.org/doi/10.5555/581793#), Kluwer Academic Publishers, USA.
+  <li id="ConcreteSemantics" class="citation-entry">
+    [1]: Nipkow and Klein (2014)
+    <a href="http://www.concrete-semantics.org/index.html">Concrete Semantics: With Isabelle/HOL</a>, Springer Publishing Company, Incorporated.
+  </li>
 
-<a id="Achermann_physicalAddressing"></a>
-- [4]: Achermann, Humbel, Cock, and Roscoe (2018) [Physical Addressing on Real Hardware in Isabelle/HOL](https://people.inf.ethz.ch/troscoe/pubs/achermann_itp_2018.pdf), Department of Computer Science, ETH Zurich.
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="Spichkova_FOCUS"></a>
-- [5]: Maria Spichkova (2014) [Stream processing components: Isabelle/HOL formalisation and case studies](https://arxiv.org/abs/1405.1512), arXiv preprint arXiv:1405.1512. 
+  <li id="MossSyllogism" class="citation-entry">
+    [2]: Larry Moss (2015) 
+    <a href="https://logic.berkeley.edu/colloquium/MossSlides.pdf">Natural Logic</a>, UC Berkeley Logic Seminar.
+  </li>
 
-<a id="Griffin_IsaBIL"></a>
-- [6]: Griffin, Dongol, and Raad. (2025) [IsaBIL: A Framework for Verifying (In) correctness of Binaries in Isabelle/HOL (Extended Version)](https://arxiv.org/abs/2504.16775v1), arXiv preprint arXiv:2504.16775.
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="Ghasemirad_VerIso"></a>
-- [7]: Ghasemirad, et al. (2025) [VerIso: Verifiable isolation guarantees for database transactions.](https://arxiv.org/abs/2503.06284) arXiv preprint arXiv:2503.06284.
+  <li id="andrews2002" class="citation-entry">
+    [3]: Peter B. Andrews (2002)
+    <a href="https://dl.acm.org/doi/10.5555/581793#">Introduction to Mathematical Logic and Type Theory: To Truth through Proof (2nd. ed.)</a>, Kluwer Academic Publishers, USA.
+  </li>
 
-<a id="Kohlen_float"></a>
-- [8]: Kohlen et al. (2025) [A formally verified IEEE 754 floating-point implementation of interval iteration for MDPs](https://arxiv.org/abs/2501.10127v3), International Conference on Computer Aided Verification, Cham: Springer Nature Switzerland.
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="Wu_LLM_Autoformat"></a>
-- [9]: Wu et al. (2022) [Autoformalization with Large Language Models](https://openreview.net/forum?id=IUikebJ1Bf0), NeurIPS 2022 Conference.
+  <li id="Achermann_physicalAddressing" class="citation-entry">
+    [4]: Achermann, Humbel, Cock, and Roscoe (2018)
+    <a href="https://people.inf.ethz.ch/troscoe/pubs/achermann_itp_2018.pdf">Physical Addressing on Real Hardware in Isabelle/HOL</a>, Department of Computer Science, ETH Zurich.
+  </li>
 
-<a id="Church_TypeTheory"></a>
-- [10]: Alonzo Church (1940) [A Formulation of the Simple Theory of Types](https://www.jstor.org/stable/2266170), The Journal of Symbolic Logic, Vol. 5, No. 2 (June, 1940), pp. 56-68 (13 pages).
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="Paulson_LCF"></a>
-- [11]: Laurence C. Paulson (1987) [Logic and Computation: Interactive Proof with Cambridge LCF](https://assets.cambridge.org/97805213/46320/sample/9780521346320ws.pdf), Cambridge University Press, USA.
+  <li id="Spichkova_FOCUS" class="citation-entry">
+    [5]: Maria Spichkova (2014)
+    <a href="https://arxiv.org/abs/1405.1512">Stream processing components: Isabelle/HOL formalisation and case studies</a>, arXiv preprint arXiv:1405.1512.
+  </li>
 
-<a id="Stanford_LambdaCalc_TypeTheory"></a>
-- [12]: Deutsch and Marshall (2025) [Supplement to Alonzo Church > D. The λ-Calculus and Type Theory: Supplement to Alonzo Church](https://plato.stanford.edu/entries/church/supplementD.html), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="Isabelle/HOL_ProofAssistant"></a>
-- [13]: Nipkow, Paulson, and Wenzel (2025) [Isabelle/HOL: A Proof Assistant for
-Higher-Order Logic](https://isabelle.in.tum.de/doc/tutorial.pdf), Springer-Verlag, Berlin, Heidelberg. 
+  <li id="Griffin_IsaBIL" class="citation-entry">
+    [6]: Griffin, Dongol, and Raad (2025)
+    <a href="https://arxiv.org/abs/2504.16775v1">IsaBIL: A Framework for Verifying (In)correctness of Binaries in Isabelle/HOL (Extended Version)</a>, arXiv preprint arXiv:2504.16775.
+  </li>
 
-<a id="Kurz_LambdaSemantics"></a>
-- [14]: Alexander Kurz (2023) [Semantics of the Lambda Calculus](https://hackmd.io/@alexhkurz/H1e4Nv8Bv), CPSC 354 - Programming Languages, Chapman University
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="Kurz_LambdaSyntax"></a>
-- [15]: Alexander Kurz (2023) [Syntax of Lambda Calculus](https://hackmd.io/@alexhkurz/S1D0yP8Bw), CPSC 354 - Programming Languages, Chapman University
+  <li id="Ghasemirad_VerIso" class="citation-entry">
+    [7]: Ghasemirad et al. (2025)
+    <a href="https://arxiv.org/abs/2503.06284">VerIso: Verifiable isolation guarantees for database transactions</a>, arXiv preprint arXiv:2503.06284.
+  </li>
 
-<a id="Xu_IsaMini"></a>
-- [16]: Xu et al. (2025) [IsaMini: Redesigned Isabelle Proof Language for Machine Learning](https://arxiv.org/abs/2507.18885), arXiv preprint arXiv:2507.18885.
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="Teege_IntroIsabelle"></a>
-- [17]: Gunnar Teege (2025) [A Gentle Introduction to Isabelle and Isabelle/HOL](https://github.com/gteege/gentle-isabelle/blob/main/man-isabelle.pdf), Universität der Bundeswehr München
+  <li id="Kohlen_float" class="citation-entry">
+    [8]: Kohlen et al. (2025)
+    <a href="https://arxiv.org/abs/2501.10127v3">A formally verified IEEE 754 floating-point implementation of interval iteration for MDPs</a>, International Conference on Computer Aided Verification, Cham: Springer Nature Switzerland.
+  </li>
 
-<a id="LeoIII"></a>
-- [18]: Steen and Benzmüller (2018) [The Higher-Order Prover Leo-III (Extended Version)](https://arxiv.org/abs/1802.02732) 9th International Joint Conference on Automated Reasoning, IJCAR 2018, Oxford, UK, July 14-17, 2018, Proceedings, Springer
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="Satallax"></a>
-- [19]: Chad E. Brown [Satallax: An Automatic Higher-Order Prover](https://ps.uni-saarland.de/Publications/documents/Brown2012b.pdf), Saarland University, Saarbr¨ucken, Germany
+  <li id="Wu_LLM_Autoformat" class="citation-entry">
+    [9]: Wu et al. (2022)
+    <a href="https://openreview.net/forum?id=IUikebJ1Bf0">Autoformalization with Large Language Models</a>, NeurIPS 2022 Conference.
+  </li>
 
-<a id="MiniF2F"></a>
-- [20]: Zheng, Han, and Polu (2022) [MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics](https://arxiv.org/abs/2109.00110), ICLR 2022
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="TPTP"></a>
-- [21]: Geoff Sutcliffe (2017) [The TPTP Problem Library and Associated Infrastructure: From CNF to TH0, TPTP v6.4.0](https://tptp.org/TPTP/), Journal of Automated Reasoning, 59(4): 483–502
+  <li id="Church_TypeTheory" class="citation-entry">
+    [10]: Alonzo Church (1940)
+    <a href="https://www.jstor.org/stable/2266170">A Formulation of the Simple Theory of Types</a>, The Journal of Symbolic Logic 5(2): 56–68.
+  </li>
 
-<a id="CASC"></a>
-- [22]: Geoff Sutcliffe (2016) [The CADE ATP System Competition - CASC](https://tptp.org/CASC/), AI Magazine, 37(2): 99–101
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="SEP_HOL"></a>
-- [23]: Jouko Väänänen (2024) [Second-order and Higher-order Logic](https://plato.stanford.edu/entries/logic-higher-order/), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
+  <li id="Paulson_LCF" class="citation-entry">
+    [11]: Laurence C. Paulson (1987)
+    <a href="https://assets.cambridge.org/97805213/46320/sample/9780521346320ws.pdf">Logic and Computation: Interactive Proof with Cambridge LCF</a>, Cambridge University Press, USA.
+  </li>
 
-<a id="SEP_AutomatedReasoning_HOL"></a>
-- [24]: Frederic Portoraro (2025) [Automated Reasoning: Section 3.1 on Higher Order Logic](https://plato.stanford.edu/entries/reasoning-automated/#HigOrdLog), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="SEP_ChurchTypeTheory"></a>
-- [25]: Benzmüller and Andrews (2025) [Church’s Type Theory](https://plato.stanford.edu/entries/type-theory-church/), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
+  <li id="Stanford_LambdaCalc_TypeTheory" class="citation-entry">
+    [12]: Deutsch and Marshall (2025)
+    <a href="https://plato.stanford.edu/entries/church/supplementD.html">Supplement D: The λ-Calculus and Type Theory</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
+  </li>
 
-<a id="SEP_TypeTheory"></a>
-- [26]: Thierry Coquand (2022) [Type Theory](https://plato.stanford.edu/entries/type-theory/), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="SEP_CategTheory"></a>
-- [27]: Jean-Pierre Marquis (2023) [Category Theory](https://plato.stanford.edu/entries/category-theory/), The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
+  <li id="Isabelle/HOL_ProofAssistant" class="citation-entry">
+    [13]: Nipkow, Paulson, and Wenzel (2025)
+    <a href="https://isabelle.in.tum.de/doc/tutorial.pdf">Isabelle/HOL: A Proof Assistant for Higher-Order Logic</a>, Springer-Verlag.
+  </li>
 
-<a id="LigerLearn_LambdaPrimer"></a>
-- [28]: LigerLearn (2023) [Lambda (λ) Calculus Primer](https://www.youtube.com/watch?v=9MtE5ONrQyk
-), YouTube
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="LigerLearn_LambdaEval"></a>
-- [29]: LigerLearn (2023) [Lambda (λ) calculus evaluation rules (δ, β, α, η conversion/reduction)](
-https://www.youtube.com/watch?v=VS_GK-9xUO4), YouTube
+  <li id="Kurz_LambdaSemantics" class="citation-entry">
+    [14]: Alexander Kurz (2023)
+    <a href="https://hackmd.io/@alexhkurz/H1e4Nv8Bv">Semantics of the Lambda Calculus</a>, CPSC 354 Programming Languages, Chapman University.
+  </li>
 
-<a id="TypeTheory_Youtube"></a>
-- [30]: Mark Jago/Attic Philosophy (2025) [Type Theory in Computer Science, Linguistics, Logic](https://www.youtube.com/watch?v=TrYosPPCQAY), YouTube
+  <span style="display:block; height:0.1em;"></span>
 
-- [31]: Oliver Lugg (2022) [A Sensible Introduction to Category Theory](https://www.youtube.com/watch?v=yAi3XWCBkDo), YouTube
+  <li id="Kurz_LambdaSyntax" class="citation-entry">
+    [15]: Alexander Kurz (2023)
+    <a href="https://hackmd.io/@alexhkurz/S1D0yP8Bw">Syntax of Lambda Calculus</a>, CPSC 354 Programming Languages, Chapman University.
+  </li>
 
-<a id="Isabelle_Sledgehammer"></a>
-- [32]: Blanchette, Desharnais, Paulson, and Bartl (2025) [Hammering Away:
-A User’s Guide to Sledgehammer for Isabelle/HOL](https://isabelle.in.tum.de/doc/sledgehammer.pdf), Isabelle 2025 Documentation
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="LCF_HOL_history"></a>
-- [33]: Mike Gordon (1996) [From LCF to HOL: a short history](https://www.cl.cam.ac.uk/archive/mjcg/papers/HolHistory.pdf) 
+  <li id="Xu_IsaMini" class="citation-entry">
+    [16]: Xu et al. (2025)
+    <a href="https://arxiv.org/abs/2507.18885">IsaMini: Redesigned Isabelle Proof Language for Machine Learning</a>, arXiv preprint arXiv:2507.18885.
+  </li>
 
-<a id="LCF_Isabelle_History"></a>
-- [34]: Paulson, Nipkow, and Wenzel (2019)  [From LCF to Isabelle/HOL](https://arxiv.org/abs/1907.02836), Formal Aspects of Computing 31.6 (2019): 675-698.
+  <span style="display:block; height:0.1em;"></span>
 
-<a id="AFP_History"></a>
-- [35]: Makarius (Markus) Wenzel (2019) [Isabelle technology for the Archive of Formal Proofs with application to MMT](https://arxiv.org/abs/1905.07244) arXiv preprint arXiv:1905.07244 (2019).
+  <li id="Teege_IntroIsabelle" class="citation-entry">
+    [17]: Gunnar Teege (2025)
+    <a href="https://github.com/gteege/gentle-isabelle/blob/main/man-isabelle.pdf">A Gentle Introduction to Isabelle and Isabelle/HOL</a>, Universität der Bundeswehr München.
+  </li>
 
-<a id="Isar_History"></a>
-- [36]: Makarius (Markus) Wenzel (1999) [Isar — a Generic Interpretative Approach
-to Readable Formal Proof Documents](https://web.cs.wpi.edu/~dd/resources_isabelle/Isar-TPHOLs99.wenzel.pdf), Theorem Proving in Higher Order Logics (TPHOLs 1999), volume 1690 of Lecture Notes in Computer Science. Springer-Verlag, 1999.
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="LeoIII" class="citation-entry">
+    [18]: Steen and Benzmüller (2018)
+    <a href="https://arxiv.org/abs/1802.02732">The Higher-Order Prover Leo-III (Extended Version)</a>, IJCAR 2018, Oxford, UK.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="Satallax" class="citation-entry">
+    [19]: Chad E. Brown (2012)
+    <a href="https://ps.uni-saarland.de/Publications/documents/Brown2012b.pdf">Satallax: An Automatic Higher-Order Prover</a>, Saarland University, Saarbr¨ucken, Germany.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="MiniF2F" class="citation-entry">
+    [20]: Zheng, Han, and Polu (2022)
+    <a href="https://arxiv.org/abs/2109.00110">MiniF2F: A Cross-System Benchmark for Formal Olympiad-Level Mathematics</a>, ICLR 2022.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="TPTP" class="citation-entry">
+    [21]: Geoff Sutcliffe (2017)
+    <a href="https://tptp.org/TPTP/">The TPTP Problem Library and Associated Infrastructure: From CNF to TH0</a>, Journal of Automated Reasoning 59(4): 483–502.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="CASC" class="citation-entry">
+    [22]: Geoff Sutcliffe (2016)
+    <a href="https://tptp.org/CASC/">The CADE ATP System Competition – CASC</a>, AI Magazine 37(2): 99–101.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="SEP_HOL" class="citation-entry">
+    [23]: Jouko Väänänen (2024)
+    <a href="https://plato.stanford.edu/entries/logic-higher-order/">Second-order and Higher-order Logic</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="SEP_AutomatedReasoning_HOL" class="citation-entry">
+    [24]: Frederic Portoraro (2025)
+    <a href="https://plato.stanford.edu/entries/reasoning-automated/#HigOrdLog">Automated Reasoning: Section 3.1 on Higher-Order Logic</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="SEP_ChurchTypeTheory" class="citation-entry">
+    [25]: Benzmüller and Andrews (2025)
+    <a href="https://plato.stanford.edu/entries/type-theory-church/">Church’s Type Theory</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="SEP_TypeTheory" class="citation-entry">
+    [26]: Thierry Coquand (2022)
+    <a href="https://plato.stanford.edu/entries/type-theory/">Type Theory</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="SEP_CategTheory" class="citation-entry">
+    [27]: Jean-Pierre Marquis (2023)
+    <a href="https://plato.stanford.edu/entries/category-theory/">Category Theory</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="LigerLearn_LambdaPrimer" class="citation-entry">
+    [28]: LigerLearn (2023)
+    <a href="https://www.youtube.com/watch?v=9MtE5ONrQyk">Lambda (λ) Calculus Primer</a>, YouTube.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="LigerLearn_LambdaEval" class="citation-entry">
+    [29]: LigerLearn (2023)
+    <a href="https://www.youtube.com/watch?v=VS_GK-9xUO4">Lambda (λ) calculus evaluation rules (δ, β, α, η conversion/reduction)</a>, YouTube.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="TypeTheory_Youtube" class="citation-entry">
+    [30]: Mark Jago / Attic Philosophy (2025)
+    <a href="https://www.youtube.com/watch?v=TrYosPPCQAY">Type Theory in Computer Science, Linguistics, Logic</a>, YouTube.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="Lugg_CategoryTheory" class="citation-entry">
+    [31]: Oliver Lugg (2022)
+    <a href="https://www.youtube.com/watch?v=yAi3XWCBkDo">A Sensible Introduction to Category Theory</a>, YouTube.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="Isabelle_Sledgehammer" class="citation-entry">
+    [32]: Blanchette, Desharnais, Paulson, and Bartl (2025)
+    <a href="https://isabelle.in.tum.de/doc/sledgehammer.pdf">Hammering Away: A User’s Guide to Sledgehammer for Isabelle/HOL</a>, Isabelle 2025 Documentation
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="LCF_HOL_history" class="citation-entry">
+    [33]: Mike Gordon (1996)
+    <a href="https://www.cl.cam.ac.uk/archive/mjcg/papers/HolHistory.pdf">From LCF to HOL: a short history</a>
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="LCF_Isabelle_History" class="citation-entry">
+    [34]: Paulson, Nipkow, and Wenzel (2019)  
+    <a href="https://arxiv.org/abs/1907.02836">From LCF to Isabelle/HOL</a>, Formal Aspects of Computing 31.6 (2019): 675-698.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="AFP_History" class="citation-entry">
+    [35]: Makarius (Markus) Wenzel (2019)
+    <a href="https://arxiv.org/abs/1905.07244">Isabelle technology for the Archive of Formal Proofs with application to MMT</a>, arXiv preprint arXiv:1905.07244.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="Isar_History" class="citation-entry">
+    [36]: Makarius (Markus) Wenzel (1999) 
+    <a href="https://web.cs.wpi.edu/~dd/resources_isabelle/Isar-TPHOLs99.wenzel.pdf">Isar — a Generic Interpretative Approach to Readable Formal Proof Documents</a>, Theorem Proving in Higher Order Logics (TPHOLs 1999), volume 1690 of Lecture Notes in Computer Science. Springer-Verlag.
+  </li>
+
+</ul>
 
 <!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf -->
 
@@ -644,3 +803,12 @@ https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html -->
 
 ## Suggestions for Future Work
 
+I definitely agree having an explicit chapter on both first-order logic and theorem provers related to FOL would be helpful, especially as a preceding chapter to the current one about higher-order logic and Isabelle. This chapter should also include popular Automatic Theorem Provers (ATPs), and could serve as a nice introduction into theorem proving and "stronger" tools such as Isabelle/HOL and Lean.
+
+It may also be interesting and useful to either create or find an online Isabelle/HOL program that can run in a web browser, similar to the Lean Game Server. This way users can be quickly onboarded to the tool without having to go through download, setup, version compatibility issues, and other miscellaneous problems that may arise.
+
+## Contributors
+
+Initial Author: Spencer Au
+
+Peer Reviewer: Wayne Chong
