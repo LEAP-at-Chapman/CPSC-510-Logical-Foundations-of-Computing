@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>2. Logic Programming with Prolog &#8212; Logical Foundations of Software Engineering</title>
   
@@ -28,35 +29,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/3-logic-programming';</script>
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/3-logic-programming.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -153,18 +158,7 @@
     <p class="title logo__title">Logical Foundations of Software Engineering</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
@@ -222,9 +216,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -365,9 +359,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -452,19 +446,19 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="logic-programming-with-prolog">
-<h1><span class="section-number">2. </span>Logic Programming with Prolog<a class="headerlink" href="#logic-programming-with-prolog" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">2. </span>Logic Programming with Prolog<a class="headerlink" href="#logic-programming-with-prolog" title="Permalink to this heading">#</a></h1>
 <p><em>Author: Brandon Foley</em></p>
 <section id="idea">
-<h2><span class="section-number">2.1. </span>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
 <p>Logic programming is one of the three core paradigms of programming, alongside imperative and functional approaches. While imperative programming is centered on assignments and state changes, and functional programming emphasizes the application of functions without mutable state, logic programming takes a different perspective. At its core, a logic program consists of a collection of rules and facts, and computation is driven by the process of applying these rules to arrive at conclusions. Rather than specifying how to solve a problem step by step, logic programming focuses on what relationships hold true, allowing the system to infer solutions through logical reasoning.</p>
 </section>
 <section id="basic-theory">
-<h2><span class="section-number">2.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
 <p>At the center of logic programming there is this idea that computation can be viewed as a process of logical inference. Instead of describing a sequence of operations, as in imperative programming, or composing functions, as in functional programming, a logic program is built from facts and rules that describe relationships. A fact is a basic statement that is always considered true, while a rule expresses a conditional relationship: if certain facts hold, then another fact can be inferred. When you combine these ideas, facts and rules form a knowledge base similar to a database, and running a program means asking questions (or queries) about this knowledge.</p>
 <p>The main computational step in logic programming is unification, the process of matching a query with the facts and rules in the program. When a query is issued, the system attempts to unify it with existing facts or the heads of rules. If a match is found, the body of the rule is pursued as a new subproblem. In this way, logical inference proceeds step by step, gradually building towards an answer. Here we can start to introduce an example in database querying. If you had for example a family tree and are searching for the child of a certain parent, it will start at that parent and check each child to see which one is the one that was queried.</p>
 <p>One of the most powerful aspects of this logic is its built-in support for backtracking. Since there may be many possible ways to satisfy a query, the system must explore different paths. If one path fails—meaning the inference cannot be completed—the system automatically backtracks to the most recent decision point and tries an alternative. This process continues until either a valid solution is found or all possibilities have been exhausted. Backtracking makes logic programming extremely effective for solving problems that naturally involve search and constraint satisfaction, such as puzzles, planning, or reasoning over complex data. If we go back to our family tree example, say we had a family tree that looks like this:</p>
 <section id="mini-family-tree">
-<h3><span class="section-number">2.2.1. </span>Mini Family Tree<a class="headerlink" href="#mini-family-tree" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.2.1. </span>Mini Family Tree<a class="headerlink" href="#mini-family-tree" title="Permalink to this heading">#</a></h3>
 <div class="highlight-mermaid notranslate"><div class="highlight"><pre><span></span>graph TD
     P[Parent]
     C1[Child 1]
@@ -479,16 +473,16 @@ document.write(`
 </section>
 </section>
 <section id="the-tool">
-<h2><span class="section-number">2.3. </span>The Tool<a class="headerlink" href="#the-tool" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.3. </span>The Tool<a class="headerlink" href="#the-tool" title="Permalink to this heading">#</a></h2>
 <p>The tool that I will mainly be focusing on is Prolog, a unique coding language designed for logic programming. Prolog was first created in France in 1972 by Alain Colmerauer and Philippe Roussel, with its name derived from programmation en logique (“programming in logic”). The earliest version was an interpreter built in Fortran by Gerard Battani and Henri Meloni where later, David H. D. Warren brought this work to Edinburgh, where he then developed a new front-end that established the Edinburgh Prolog syntax which is now used for most modern implementations(1).</p>
 <section id="installing-the-tool">
-<h3><span class="section-number">2.3.1. </span>Installing The Tool<a class="headerlink" href="#installing-the-tool" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.3.1. </span>Installing The Tool<a class="headerlink" href="#installing-the-tool" title="Permalink to this heading">#</a></h3>
 <p><a class="reference external" href="https://www.swi-prolog.org/download/stable">download and install</a> Prolog. On MacOS, after moving SWI-Prolog to the Applications folder, you may have to run <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">'export</span> <span class="pre">PATH=&quot;/Applications/SWI-Prolog.app/Contents/MacOS:$PATH&quot;'</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.zshrc</span></code> to add <code class="docutils literal notranslate"><span class="pre">swipl</span></code> to your path. Then, running <code class="docutils literal notranslate"><span class="pre">swipl</span></code> in your terminal should start the Prolog interpreter.</p>
 <p>There is also a web version available at <a class="reference external" href="https://tio.run/##KyjKz8lP1y0uz/wPBMX5OaUlmfl5GhGaegA">tio</a> that is a great alternative if you do not want to download the tool!</p>
 </section>
 </section>
 <section id="first-example">
-<h2><span class="section-number">2.4. </span>First Example<a class="headerlink" href="#first-example" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.4. </span>First Example<a class="headerlink" href="#first-example" title="Permalink to this heading">#</a></h2>
 <p>The eight queens problem is a logic problem in where a user attempts to place all 8 queens on a chess board such that none threaten another.</p>
 <p><strong>What this shows:</strong></p>
 <ul class="simple">
@@ -532,7 +526,7 @@ document.write(`
 <p>Here is a link to the code to test on the free swi-prolog server: <a class="reference external" href="https://tio.run/##jVJLS8QwEL73V8wxwaSQmwg9eV0q7mlhLUuUsA2miTYpBfG/r9M86u6iaC7NfI/5ZmjeRmfckftZn07emSloZ8njpJT1FO44VICnbW5ZvBhlj6HPPIOWJvg91gVuaV1VGdp37IBlqeKXbN3M4N4ZCp/wEHo1&#64;g5Na1oWJ4aVjByd0ezbRDArsC1of8HADYhE2mkw2gcicGoGG7xm16CGZzUSHOcCtk6GIF9eydXIJXnZcdUcGOw7RH43fW8uIiTOdl82j5mIQ/PURJ7BD6eoBC/SpSGPOX&#64;oeIz&#64;92qD1LaMdf0sUpd51EGtEFiT4F6agH78l9rqoKXRHzKal460PntkO1p/AQ">eight-queens</a></p>
 </section>
 <section id="intro-examples">
-<h2><span class="section-number">2.5. </span>Intro Examples<a class="headerlink" href="#intro-examples" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.5. </span>Intro Examples<a class="headerlink" href="#intro-examples" title="Permalink to this heading">#</a></h2>
 <p>In logic programming, a Prolog database is composed of facts and rules that describe relationships between entities in a declarative way. Rather than specifying how to compute something, the programmer defines what is true about the problem domain. This allows Prolog to act as a powerful tool for database querying, where relationships can be inferred rather than explicitly stored. Queries are made by posing logical questions to the database then uses backtracking to search through known facts and rules to find all possible solutions to the query.</p>
 <p>In a simple family database, the database models a small family tree using facts such as <code class="docutils literal notranslate"><span class="pre">parent(arthur,</span> <span class="pre">george)</span></code> and <code class="docutils literal notranslate"><span class="pre">parent(george,</span> <span class="pre">amelia)</span></code>, which record direct parent-child relationships. Rules like <code class="docutils literal notranslate"><span class="pre">grandparent/2</span></code>, <code class="docutils literal notranslate"><span class="pre">sibling/2</span></code>, and <code class="docutils literal notranslate"><span class="pre">ancestor/2</span></code> define how more complex family relationships can be logically derived. For instance, <code class="docutils literal notranslate"><span class="pre">grandparent(X,</span> <span class="pre">Z)</span> <span class="pre">:-</span> <span class="pre">parent(X,</span> <span class="pre">Y)</span></code>, <code class="docutils literal notranslate"><span class="pre">parent(Y,</span> <span class="pre">Z)</span></code> states that X is a grandparent of Z if X is a parent of Y and Y is a parent of Z. The sibling rule ensures that two people are considered siblings if they share a parent but are not the same person. The gender facts, combined with the <code class="docutils literal notranslate"><span class="pre">father/2</span></code> and <code class="docutils literal notranslate"><span class="pre">mother/2</span></code> rules, extends the database by categorizing parents according to gender, allowing for more natural queries like <code class="docutils literal notranslate"><span class="pre">father(X,</span> <span class="pre">Y)</span></code> or <code class="docutils literal notranslate"><span class="pre">mother(X,</span> <span class="pre">Y)</span></code>.</p>
 <p>When a query such as</p>
@@ -557,7 +551,7 @@ document.write(`
 </div>
 <p>Here, Prolog begins by attempting to satisfy the rule for <code class="docutils literal notranslate"><span class="pre">grandparent/2</span></code>. It first matches <code class="docutils literal notranslate"><span class="pre">parent(_32210,</span> <span class="pre">_33508)</span></code> and discovers that arthur is a parent of george. Then it checks whether george is a parent of richard, which succeeds. As a result, Prolog concludes that arthur is indeed a grandparent of richard. It then continues to find the other grandparent to see if they are present which is found to be harriet. The [trace] output exposes the resolution process, where Prolog recursively attempts and verifies subgoals until a consistent solution is found. If we were to continue with this trace it would search the rest of the database to see if any other combinations would lead to the <code class="docutils literal notranslate"><span class="pre">grandparent/2</span></code> fact being true and when it fails it will just have the two grandparents that are present, arthur and harriet.</p>
 <section id="basic-arithmetic">
-<h3><span class="section-number">2.5.1. </span>Basic Arithmetic<a class="headerlink" href="#basic-arithmetic" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.5.1. </span>Basic Arithmetic<a class="headerlink" href="#basic-arithmetic" title="Permalink to this heading">#</a></h3>
 <p>While Prolog is primarily a symbolic reasoning language, it also supports arithmetic operations and numerical comparisons. Unlike traditional imperative languages where expressions are directly evaluated, Prolog treats arithmetic as part of its logical inference system. Computation occurs through the evaluation operator <code class="docutils literal notranslate"><span class="pre">is</span></code>, which forces the right-hand expression to be evaluated numerically before comparison or assignment.</p>
 <p>For example here are some simple relationships between numbers:</p>
 <div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% ---------- Arithmetic Facts and Rules ----------</span>
@@ -606,7 +600,7 @@ document.write(`
 </section>
 </section>
 <section id="the-landscape-of-tools">
-<h2><span class="section-number">2.6. </span>The Landscape Of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.6. </span>The Landscape Of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Permalink to this heading">#</a></h2>
 <p>Prolog has been implemented in many different environments since its introduction in the 1970s, each designed with particular goals such as speed, interoperability, constraint solving, or educational use. Although the examples throughout this book are written using SWI-Prolog, one of the most popular and accessible implementations, it is worth going through and understanding the broader ecosystem of tools that have shaped the Prolog landscape.</p>
 <p><strong>SWI-Prolog</strong> stands as one of the most widely-used and versatile open-source implementations. Its primary strengths lie in its extensive library support, robust development tools, and strong focus on interoperability and web technologies. SWI-Prolog features a rich ecosystem that includes built-in support for HTTP servers, JSON, RDF data management, and seamless interfaces to languages like C, C++, Java, and Python. This, combined with a powerful development environment and a proactive user community, makes it an excellent choice for a wide range of applications, from academic research and rapid prototyping to complex knowledge-intensive systems and semantic web applications.</p>
 <p><strong>SICStus Prolog</strong> is a commercial-grade Prolog system developed at the Swedish Institute of Computer Science. Known for its robustness and performance, SICStus has been widely adopted in industrial and research environments where reliability is essential. It supports advanced features such as constraint logic programming (CLP), efficient memory management, and an extensive set of libraries for interfacing with external systems. Its stability and compliance with ISO Prolog standards make it a favorite for large-scale applications in AI, natural language processing, and expert systems.</p>
@@ -618,10 +612,10 @@ document.write(`
 <p>In essence, Datalog emphasizes the data-centric dimension of logic programming. While traditional Prolog excels in symbolic AI and dynamic reasoning, Datalog’s strength lies in query optimization, parallel execution, and scalability, making it a core technology in both academic research and industrial data systems.</p>
 </section>
 <section id="algorithms">
-<h2><span class="section-number">2.7. </span>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.7. </span>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h2>
 <p>In a logic-programming environment like SWI-Prolog, “algorithms” refer to the fundamental computational mechanisms that transform logical declarations into executable programs. Unlike imperative languages where algorithms are primarily written by the programmer, Prolog’s core algorithms are built into the language itself and automatically handle the execution of logical predicates.</p>
 <section id="algorithms-core-computational-mechanisms">
-<h3><span class="section-number">2.7.1. </span>Algorithms: Core Computational Mechanisms<a class="headerlink" href="#algorithms-core-computational-mechanisms" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.7.1. </span>Algorithms: Core Computational Mechanisms<a class="headerlink" href="#algorithms-core-computational-mechanisms" title="Permalink to this heading">#</a></h3>
 <p>The following are the fundamental algorithms that power Prolog’s execution model, enabling logical inference and problem-solving.</p>
 <ul class="simple">
 <li><p><strong>Unification</strong></p>
@@ -652,7 +646,7 @@ document.write(`
 </ul>
 </section>
 <section id="typical-use-cases">
-<h3><span class="section-number">2.7.2. </span>Typical Use Cases<a class="headerlink" href="#typical-use-cases" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.7.2. </span>Typical Use Cases<a class="headerlink" href="#typical-use-cases" title="Permalink to this heading">#</a></h3>
 <p>Each software tool has its own use cases. This section describes typical use cases, including algorithms that can be implemented more efficiently or more easily with the support of the tool in question.</p>
 <ul class="simple">
 <li><p><strong>Rule-Based Systems and Expert Systems</strong></p>
@@ -688,7 +682,7 @@ document.write(`
 </ul>
 </section>
 <section id="competitions-broader-formal-methods-benchmarking">
-<h3><span class="section-number">2.7.3. </span>Competitions &amp; Broader Formal Methods Benchmarking<a class="headerlink" href="#competitions-broader-formal-methods-benchmarking" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.7.3. </span>Competitions &amp; Broader Formal Methods Benchmarking<a class="headerlink" href="#competitions-broader-formal-methods-benchmarking" title="Permalink to this heading">#</a></h3>
 <p>While not always Prolog-specific, these competitions shape the formal methods / logic-based reasoning tools’ landscape. They offer model languages, standardized input formats, benchmark suites, and evaluation metrics. They may present opportunities for Prolog-based tools (e.g. CLP, logic-programming-as-backend) to compete or be compared.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -722,11 +716,11 @@ document.write(`
 </section>
 </section>
 <section id="industrial-applications-of-logic-programming">
-<h2><span class="section-number">2.8. </span>Industrial Applications of Logic Programming<a class="headerlink" href="#industrial-applications-of-logic-programming" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.8. </span>Industrial Applications of Logic Programming<a class="headerlink" href="#industrial-applications-of-logic-programming" title="Permalink to this heading">#</a></h2>
 <p>Logic programming and its Datalog relatives have had concrete, high-impact uses in industry — from static program analysis to enterprise decision systems — and they are now interacting with generative (neural) methods in ways that are reshaping research and tooling.</p>
 <hr class="docutils" />
 <section id="key-industrial-applications">
-<h3><span class="section-number">2.8.1. </span>Key Industrial Applications<a class="headerlink" href="#key-industrial-applications" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.8.1. </span>Key Industrial Applications<a class="headerlink" href="#key-industrial-applications" title="Permalink to this heading">#</a></h3>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Area</p></th>
@@ -757,7 +751,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="how-generative-ai-is-changing-formal-methods">
-<h3><span class="section-number">2.8.2. </span>How Generative AI is Changing Formal Methods<a class="headerlink" href="#how-generative-ai-is-changing-formal-methods" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.8.2. </span>How Generative AI is Changing Formal Methods<a class="headerlink" href="#how-generative-ai-is-changing-formal-methods" title="Permalink to this heading">#</a></h3>
 <p>Recent years have seen rapid integration of neural/generative methods with formal, symbolic tools:</p>
 <ul class="simple">
 <li><p><strong>Large language models and neural theorem provers</strong> are being used to propose proof steps, rank candidate proof actions, and generate tactics that formal provers can check</p></li>
@@ -772,7 +766,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="why-these-applications-influenced-the-field">
-<h3><span class="section-number">2.8.3. </span>Why These Applications Influenced the Field<a class="headerlink" href="#why-these-applications-influenced-the-field" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.8.3. </span>Why These Applications Influenced the Field<a class="headerlink" href="#why-these-applications-influenced-the-field" title="Permalink to this heading">#</a></h3>
 <p>Scalability + Abstraction
 Datalog’s declarative nature made it easier to express large analyses; high-quality engines (Soufflé, LogicBlox) made those analyses fast and deployable, changing where and how researchers built static analyzers.</p>
 <p><a class="reference external" href="https://souffle-lang.github.io/">Soufflé Project</a></p>
@@ -786,9 +780,9 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 </section>
 <hr class="docutils" />
 <section id="case-study">
-<h2><span class="section-number">2.9. </span>Case Study<a class="headerlink" href="#case-study" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.9. </span>Case Study<a class="headerlink" href="#case-study" title="Permalink to this heading">#</a></h2>
 <section id="the-water-jug-problem">
-<h3><span class="section-number">2.9.1. </span>The Water Jug Problem<a class="headerlink" href="#the-water-jug-problem" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.9.1. </span>The Water Jug Problem<a class="headerlink" href="#the-water-jug-problem" title="Permalink to this heading">#</a></h3>
 <p>The Water Jug Problem is a classic puzzle that  demonstrates Prolog’s strengths in state-space search and constraint satisfaction. The scenario of this problem is as follows:</p>
 <p>You have two jugs:</p>
 <ul class="simple">
@@ -893,7 +887,7 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 </div>
 </section>
 <section id="to-run-the-above-code-copy-it-a-file-named-water-jug-pl">
-<h3><span class="section-number">2.9.2. </span>To run the above code copy it a file named water_jug.pl<a class="headerlink" href="#to-run-the-above-code-copy-it-a-file-named-water-jug-pl" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.9.2. </span>To run the above code copy it a file named water_jug.pl<a class="headerlink" href="#to-run-the-above-code-copy-it-a-file-named-water-jug-pl" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swipl<span class="w"> </span>-f<span class="w"> </span>water_jug.pl
 </pre></div>
 </div>
@@ -904,13 +898,13 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 <p>Tio code is also available: <a class="reference external" href="https://tio.run/##nVZtb9owEP7Or7h&#64;qAhqQC2wfWDrpGQdkyZ16lqp&#64;8AQSokpnpwX2ckoUtW/zs4vcUwCSFskaOw7P3fP47ujOc9Y9twXG7rbncPPqCAcvpXPcMezJ0YSeMjYH8I752ozmMAYGEUfAcsoj5a02PrKEk5g1LTgoa9ZxCZwSyJRcgLkJVoWbAtD49lBj7594KHA6HBPck4ESXFBs9Sxo7OQHh7GCxafS87RSUUPq1WvgfgYMRrDbfaHCBcIna4GMKWMaVawzJKckYKwbSdBZ0/HWfgQ9nwTdCwXPZj0oQP4rDKeRIXXrUHe0m5vIKGHDnToQAO44IEPCwuOi5ECP4wdWuzRAL4kebHVIY8me1klu4fnnLSAYxcwPJXg5SnAOsN3A7jLSg4rniWobJGhBmVaUIZ/qYBViZwyjhZcEHm&#64;EbMm8Z1scI3fDpUAPoEkBx9h5KsdGSxIMgwhEROaKjGhL4GUg4SRpgD3amdrU1mFcNGyVSQVm7dNVdyKl64a5FZx92FWn59rJd67SoTSOzBKBK4S4f8pEWolAlRifEyJ0Md27UPQUuLihBL9f1YirJQIjijh9jiJ&#64;HINAXvOOC3WSaMt1bSBYk1goybRb0TN9STqCGUz9NVi8bQS3qwq&#64;cveHIPjB0FKOTsMbU5wgAniVds&#64;jhi1EzccU&#64;bDBrMiXreywBRpxGddvAppxY/yzDlNi4UwTl4LT7EOOYniYt1fUS4KEJo4ldMgqaZbp0VD3fvrAlk8UoGpxEjJtZjdua0DL4DryTUMP&#64;A1qBdMFfTgxdmTxlTGmdiRCzQFgsJrbRXCGWbr5GFGqRrGr/dEFD9KUhI3IUvTzgOaxhFjWKcv&#64;pyvh2T1eKqwXWBZzca313CGXxeQkOSJcBfPBO/VpawMwqyjPCdp7Nl0/dpDvapN41tzrQyo8R7rSmSHaquOqwK5oSJn0dat40Z1zGQXNPdUoHljoi70TVeynB05duXrn8qhup5TIFe9g/U62zuO1PZOOuXWmvjmnwA7BOyPv93RI0Cebjd/wNAjxcrHPr4hOfbGVPWGGQqOhPqO4pXY73fcWORRsfbqnrf9YQbA8Z6&#64;mT5Y68R09CF13Ds/GNbM5jvc0d8nm/FsYPsRB8JyTeIW7H5naNxWk53uoc7RzlEJ&#64;odEdJxm9v1V&#64;u9V/m6nzg3&#64;Ag">code</a></p>
 </section>
 <section id="declarative-state-transitions">
-<h3><span class="section-number">2.9.3. </span>1. Declarative State Transitions<a class="headerlink" href="#declarative-state-transitions" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.9.3. </span>1. Declarative State Transitions<a class="headerlink" href="#declarative-state-transitions" title="Permalink to this heading">#</a></h3>
 <p>The most interesting aspect of the Prolog solution is how we describe the <em>nature</em> of valid moves rather than prescribing a specific sequence of operations. Instead of writing step-by-step instructions like “first fill jug A, then pour to jug B, then…” we simply define what constitutes a legal transition between states.</p>
 <p>Each move rule reads like a natural language description of the physical constraints. The pouring rule essentially says: “If jug B has water and jug A has space, you can transfer the smaller amount between what B contains and what A can accept.” This shows how we’d explain the rules to another person, yet it’s executable code.</p>
 <p>This declarative approach means we’re encoding the <em>physics</em> of the problem rather than a solution strategy. Prolog then uses these fundamental rules to explore possibilities, much like how a person would mentally simulate different sequences while ensuring they never violate the physical constraints.</p>
 </section>
 <section id="multiple-search-strategies">
-<h3><span class="section-number">2.9.4. </span>2. Multiple Search Strategies<a class="headerlink" href="#multiple-search-strategies" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.9.4. </span>2. Multiple Search Strategies<a class="headerlink" href="#multiple-search-strategies" title="Permalink to this heading">#</a></h3>
 <p>Our solution demonstrates how easily Prolog can switch between different problem-solving strategies. We implemented both breadth-first search (BFS) and depth-first search (DFS) approaches, each with distinct characteristics:</p>
 <ul class="simple">
 <li><p><strong>Breadth-first search</strong> systematically explores all possible moves level by level, guaranteeing it will find the shortest solution sequence. It’s methodical and complete but requires more memory to track all possibilities.</p></li>
@@ -919,41 +913,41 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 <p>We’re not rewriting the problem rules for each approach, we simply change how we navigate the possibility space. This separation of “what moves are possible” from “how we explore those moves” is a powerful demonstration of logic programming’s flexibility.</p>
 </section>
 <section id="automatic-backtracking">
-<h3><span class="section-number">2.9.5. </span>3. Automatic Backtracking<a class="headerlink" href="#automatic-backtracking" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.9.5. </span>3. Automatic Backtracking<a class="headerlink" href="#automatic-backtracking" title="Permalink to this heading">#</a></h3>
 <p>One of Prolog’s most best features that we’ve touched on a bit already is its built-in backtracking mechanism. When the system follows a sequence of moves that leads to a dead end, like repeatedly filling and emptying the same jug without progress,, it automatically backtracks and tries alternative paths.</p>
 <p>This eliminates the need for complex error recovery code or manual stack management that would be required in imperative languages. The programmer never writes “if this doesn’t work, go back and try something else”, Prolog handles that automatically as part of its fundamental execution model.</p>
 <p>This built-in exploration makes Prolog exceptionally well-suited for problems where the solution isn’t obvious but the rules are clear. It continually works through combinations that a human might overlook due to frustration or cognitive bias.</p>
 </section>
 <section id="visual-solution-tracing">
-<h3><span class="section-number">2.9.6. </span>4. Visual Solution Tracing<a class="headerlink" href="#visual-solution-tracing" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.9.6. </span>4. Visual Solution Tracing<a class="headerlink" href="#visual-solution-tracing" title="Permalink to this heading">#</a></h3>
 <p>The step-by-step output reveals Prolog’s reasoning process in action, transforming an abstract computational process into an understandable narrative:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fill</span> <span class="n">Jug</span> <span class="n">A</span>
 <span class="n">Jug</span> <span class="n">A</span><span class="p">:</span> <span class="mi">4</span> <span class="n">liters</span><span class="p">,</span> <span class="n">Jug</span> <span class="n">B</span><span class="p">:</span> <span class="mi">0</span> <span class="n">liters</span>
-<span class="n">Pour</span> <span class="mi">3</span> <span class="n">liters</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Jug</span> <span class="n">A</span> <span class="n">to</span> <span class="n">Jug</span> <span class="n">B</span>
+<span class="n">Pour</span> <span class="mi">3</span> <span class="n">liters</span> <span class="kn">from</span> <span class="nn">Jug</span> <span class="n">A</span> <span class="n">to</span> <span class="n">Jug</span> <span class="n">B</span>
 <span class="n">Jug</span> <span class="n">A</span><span class="p">:</span> <span class="mi">1</span> <span class="n">liters</span><span class="p">,</span> <span class="n">Jug</span> <span class="n">B</span><span class="p">:</span> <span class="mi">3</span> <span class="n">liters</span>
 <span class="n">Empty</span> <span class="n">Jug</span> <span class="n">B</span>
 <span class="n">Jug</span> <span class="n">A</span><span class="p">:</span> <span class="mi">1</span> <span class="n">liters</span><span class="p">,</span> <span class="n">Jug</span> <span class="n">B</span><span class="p">:</span> <span class="mi">0</span> <span class="n">liters</span>
-<span class="n">Pour</span> <span class="mi">1</span> <span class="n">liters</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Jug</span> <span class="n">A</span> <span class="n">to</span> <span class="n">Jug</span> <span class="n">B</span>
+<span class="n">Pour</span> <span class="mi">1</span> <span class="n">liters</span> <span class="kn">from</span> <span class="nn">Jug</span> <span class="n">A</span> <span class="n">to</span> <span class="n">Jug</span> <span class="n">B</span>
 <span class="n">Jug</span> <span class="n">A</span><span class="p">:</span> <span class="mi">0</span> <span class="n">liters</span><span class="p">,</span> <span class="n">Jug</span> <span class="n">B</span><span class="p">:</span> <span class="mi">1</span> <span class="n">liters</span>
 <span class="n">Fill</span> <span class="n">Jug</span> <span class="n">A</span>
 <span class="n">Jug</span> <span class="n">A</span><span class="p">:</span> <span class="mi">4</span> <span class="n">liters</span><span class="p">,</span> <span class="n">Jug</span> <span class="n">B</span><span class="p">:</span> <span class="mi">1</span> <span class="n">liters</span>
-<span class="n">Pour</span> <span class="mi">2</span> <span class="n">liters</span> <span class="kn">from</span><span class="w"> </span><span class="nn">Jug</span> <span class="n">A</span> <span class="n">to</span> <span class="n">Jug</span> <span class="n">B</span>
+<span class="n">Pour</span> <span class="mi">2</span> <span class="n">liters</span> <span class="kn">from</span> <span class="nn">Jug</span> <span class="n">A</span> <span class="n">to</span> <span class="n">Jug</span> <span class="n">B</span>
 <span class="n">Jug</span> <span class="n">A</span><span class="p">:</span> <span class="mi">2</span> <span class="n">liters</span><span class="p">,</span> <span class="n">Jug</span> <span class="n">B</span><span class="p">:</span> <span class="mi">3</span> <span class="n">liters</span>
 </pre></div>
 </div>
 <p>Each step follows logically from the previous state, and the sequence reveals non-obvious insights—like the need to create intermediate measurements (the 1-liter state) to achieve the final goal.</p>
 </section>
 <section id="the-big-picture">
-<h3><span class="section-number">2.9.7. </span>The Big Picture<a class="headerlink" href="#the-big-picture" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.9.7. </span>The Big Picture<a class="headerlink" href="#the-big-picture" title="Permalink to this heading">#</a></h3>
 <p>What makes this case study interesting is how it showcases Prolog’s ability to bridge human reasoning and computational execution. We describe the problem in terms that make sense to us. Prolog handles the tedious work of exploring all the different combinations.</p>
 <p>This approach scales remarkably well to more complex problems. The same pattern of defining state transitions and letting Prolog search for sequences applies to scheduling problems, route planning, configuration tasks, and many other domains where the solution isn’t a simple formula but comes from following rules systematically.</p>
 </section>
 </section>
 <section id="history">
-<h2><span class="section-number">2.10. </span>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.10. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
 <p>Logic programming, with Prolog as its flagship language, experienced a surge of use in the 1970s–80s as part of the broader AI wave. Its declarative nature—specifying <em>what</em> rather than <em>how</em>, was on course to revolutionize software development, particularly for knowledge-intensive applications like expert systems, natural language processing, and symbolic AI. During this period, Prolog was seen as a direct embodiment of the “fifth-generation computer” vision, where logic would serve as the universal foundation for advanced computing systems.</p>
 <section id="the-golden-age-1970s1980s">
-<h3><span class="section-number">2.10.1. </span>The Golden Age (1970s–1980s)<a class="headerlink" href="#the-golden-age-1970s1980s" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.10.1. </span>The Golden Age (1970s–1980s)<a class="headerlink" href="#the-golden-age-1970s1980s" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Foundations</strong>: Prolog emerged from automated theorem proving and resolution-based inference. Its core execution model—unification, depth-first search with backtracking, and Horn clause resolution—was both elegant and powerful for symbolic reasoning.</p></li>
 <li><p><strong>Rise of Expert Systems</strong>: Tools like IBM’s Watson predecessors, XCON (for configuring DEC computers), and medical diagnostic systems often used Prolog or similar rule-based engines. Logic programming’s strength in encoding domain knowledge made it a natural fit.</p></li>
@@ -961,7 +955,7 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 </ul>
 </section>
 <section id="the-decline-and-niche-survival-1990s2000s">
-<h3><span class="section-number">2.10.2. </span>The Decline and Niche Survival (1990s–2000s)<a class="headerlink" href="#the-decline-and-niche-survival-1990s2000s" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.10.2. </span>The Decline and Niche Survival (1990s–2000s)<a class="headerlink" href="#the-decline-and-niche-survival-1990s2000s" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Performance Concerns</strong>: Prolog’s interpretive execution and unbounded search struggled with the scale and efficiency demands of growing software systems. Imperative and object-oriented languages (C++, Java) dominated industry.</p></li>
 <li><p><strong>Shift in AI</strong>: The “AI winter” and the rise of statistical machine learning moved focus away from symbolic approaches. Prolog remained strong in specific niches: computational linguistics, formal verification, and combinatorial search problems.</p></li>
@@ -975,7 +969,7 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 </ul>
 </section>
 <section id="the-modern-renaissance-ideas-diffused-and-recombined">
-<h3><span class="section-number">2.10.3. </span>The Modern Renaissance: Ideas Diffused and Recombined<a class="headerlink" href="#the-modern-renaissance-ideas-diffused-and-recombined" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.10.3. </span>The Modern Renaissance: Ideas Diffused and Recombined<a class="headerlink" href="#the-modern-renaissance-ideas-diffused-and-recombined" title="Permalink to this heading">#</a></h3>
 <p>The core ideas of logic programming didn’t fully disappear rather they diffused into new contexts and hybrid systems:</p>
 <ol class="arabic simple">
 <li><p><strong>Deductive Databases and Big Data</strong></p>
@@ -1006,7 +1000,7 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 </section>
 </section>
 <section id="formal-methods-and-ai">
-<h2><span class="section-number">2.11. </span>Formal Methods and AI<a class="headerlink" href="#formal-methods-and-ai" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.11. </span>Formal Methods and AI<a class="headerlink" href="#formal-methods-and-ai" title="Permalink to this heading">#</a></h2>
 <p>Recent advances in generative AI have sparked a renewed synergy between neural and symbolic methods, often called <em>neurosymbolic AI</em>. The dominant pattern is <strong>guess (neural) and verify (symbolic)</strong>:</p>
 <ul class="simple">
 <li><p><strong>Neural Guidance for Symbolic Reasoning</strong>: Large language models (LLMs) propose candidate proofs, lemmas, or tactic sequences that traditional provers (like Vampire, E, or Lean) then verify. Systems like <strong>GPT-f</strong> (for Metamath) and <strong>Thor</strong> show that neural models can dramatically reduce search branching in theorem proving.</p></li>
@@ -1022,7 +1016,7 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 <p>This hybrid approach leverages the creativity and pattern recognition of neural networks while retaining the rigor and guarantees of symbolic reasoning—making formal methods more accessible and scalable.</p>
 </section>
 <section id="current-developments">
-<h2><span class="section-number">2.12. </span>Current Developments<a class="headerlink" href="#current-developments" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.12. </span>Current Developments<a class="headerlink" href="#current-developments" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Scalable Neuro-Symbolic Integration</strong></p>
 <ul class="simple">
@@ -1057,9 +1051,9 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 </section>
 <hr class="docutils" />
 <section id="how-its-being-used-today">
-<h2><span class="section-number">2.13. </span>How its being used today<a class="headerlink" href="#how-its-being-used-today" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.13. </span>How its being used today<a class="headerlink" href="#how-its-being-used-today" title="Permalink to this heading">#</a></h2>
 <section id="conferences-workshops">
-<h3><span class="section-number">2.13.1. </span>Conferences &amp; Workshops<a class="headerlink" href="#conferences-workshops" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.13.1. </span>Conferences &amp; Workshops<a class="headerlink" href="#conferences-workshops" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>ICLP (International Conference on Logic Programming)</strong> – The flagship conference for traditional logic programming.</p></li>
 <li><p><strong>PPDP (Principles and Practice of Declarative Programming)</strong> – Covers logic, functional, and constraint programming.</p></li>
@@ -1070,7 +1064,7 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 </ul>
 </section>
 <section id="journals">
-<h3><span class="section-number">2.13.2. </span>Journals<a class="headerlink" href="#journals" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.13.2. </span>Journals<a class="headerlink" href="#journals" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><em>Theory and Practice of Logic Programming</em></p></li>
 <li><p><em>Journal of Automated Reasoning</em></p></li>
@@ -1079,7 +1073,7 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 </ul>
 </section>
 <section id="online-resources-communities">
-<h3><span class="section-number">2.13.3. </span>Online Resources &amp; Communities<a class="headerlink" href="#online-resources-communities" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.13.3. </span>Online Resources &amp; Communities<a class="headerlink" href="#online-resources-communities" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>SWI-Prolog Discourse</strong> and <strong>Stack Overflow</strong> (Prolog tag) – Active user communities.</p></li>
 <li><p><strong>arXiv</strong> sections: cs.AI, cs.LO, cs.PL, cs.SE.</p></li>
@@ -1088,7 +1082,7 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 </section>
 </section>
 <section id="references">
-<h2><span class="section-number">2.14. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.14. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>https://swish.swi-prolog.org/p/dselman.swinb</p></li>
 <li><p>https://www.geeksforgeeks.org/dsa/8-queen-problem/</p></li>
@@ -1245,7 +1239,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
