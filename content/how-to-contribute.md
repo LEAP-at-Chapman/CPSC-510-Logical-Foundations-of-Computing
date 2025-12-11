@@ -17,3 +17,8 @@ Some suggested guidelines to consider when contributing to the book:
   - Cite your references in the text. Do not list sth in the references if it is not cited.
   - There is no hard limit on the number of references. But it is important that the reader has a sense of why a particular reference is listed. 
   - For example, ask yourself: Why did you choose a particular reference and not another one? How do the chosen references relate to the rest of the chapter? What function do they accomplish? Do you list a reference as a recommendation for further reading?  Or does a reference serve the function of backing up with evidence some claim you made in the text? Etc.
+  - Can I cite Wikipedia? Short answer: "Yes, but ..." 
+    - In traditional academic writing, citations are authoritative. They provide evidence for claims and/or refer to important previous work. Wikipedia is not an authoritative source.
+    - In online writing, the use of hyperlinks changes the way references can provide value. For example, Wikipedia can be useful for general background or even just to look up a definition. 
+    - Before referring to Wikipedia, make sure that you endorse what is there. If not, consider editing the Wikipedia article (everybody can edit).
+    - As a rule of thumb, I would use Wikipedia for inline links providing further background, but not add Wikipedia to my list of authoritative references at the end of the chapter.
