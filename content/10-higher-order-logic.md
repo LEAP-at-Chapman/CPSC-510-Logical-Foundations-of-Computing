@@ -311,7 +311,7 @@ fun add :: "nat ⇒ nat ⇒ nat" where
 ~~~
 ```
 
-For a detailed explanation, [See Section 10.3.2 Exercises](./assets-10/10.3_exercises.md#10.3.2-First-Example)
+For a detailed explanation, [See Section 8.3.2 Exercises](./assets-10/8.3_exercises.md)
 
 
 ### First Exercise - Associativity and Communativity of Add
@@ -347,7 +347,7 @@ qed
 ~~~
 ```
 
-For a detailed explanation, [See Section 10.3.3 Associative Property](./assets-10/10.3_exercises.md#Associative-Property-Proof)
+For a detailed explanation, [See Section 8.3.3 Associative Property](./assets-10/8.3_exercises.md#associative-property-proof)
 
 Next, to prove the communative property, we will first prove 2 helper lemmas:
 ```isabelle
@@ -395,7 +395,7 @@ qed
 ~~~
 ```
 
-For a detailed explanation, [See Section 8.3.3 Communative Property](./assets-10/8.3_exercises.md#Communative-Property-Proof)
+For a detailed explanation, [See Section 8.3.3 Communative Property](./assets-10/8.3_exercises.md#communative-property-proof)
 
 
 ## Introductory Examples - Tower of Hanoi or Insertion Sort
@@ -415,7 +415,7 @@ WIP
 
 **Rocq** (formerly Coq) is an interactive theorem prover based on the Calculus of Inductive Constructions (CIC), which is dependently typed $\lambda$-calculus that extends the Calculus of Constructions with inductive types. This extension allow propositions to be represented as types and proofs as programs, enabling highly expressive specifications.Rocq is mainly implemented in OCaml with some C, and it's dependent type theory allows it to have greater expressive power over Isabelle/HOL.
 
-**Lean (4)** is another proof assistant that follows a similar but more modern varient of dependent type theory. Like Rocq, Learn also extends the Calculus of Constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Like Rocq, Lean 4's dependent type theory also supports greater expressive power compared to Isabelle/HOL.
+**Lean (4)** is another proof assistant that follows a similar but more modern variant of dependent type theory. Like Rocq, Learn also extends the Calculus of Constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Like Rocq, Lean 4's dependent type theory also supports greater expressive power compared to Isabelle/HOL.
 
 ### Automated Theorem Prover
 
@@ -803,7 +803,9 @@ https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html -->
 
 ## Suggestions for Future Work
 
-I definitely agree having an explicit chapter on both first-order logic and theorem provers related to FOL would be helpful, especially as a preceding chapter to the current one about higher-order logic and Isabelle. This chapter should also include popular Automatic Theorem Provers (ATPs), and could serve as a nice introduction into theorem proving and "stronger" tools such as Isabelle/HOL and Lean.
+I definitely agree having an explicit chapter on both first-order logic and theorem provers related to FOL would be helpful, especially as a preceding chapter to the current one about higher-order logic and Isabelle. This chapter should also include popular Automatic Theorem Provers (ATPs) for FOL, and could serve as a nice introduction into theorem proving and "stronger" tools such as Isabelle/HOL and Lean.
+
+It might also be interesting to see different chapters covering automatic theorem provers such as Vampire or Satallax vs interactive theorem provers such as Isabelle/HOL or Lean. In addition, there should be a clear division made between first order logic ATPs such as the aforementioned Vampire and higher-order logic ATPs such as Satallax.
 
 It may also be interesting and useful to either create or find an online Isabelle/HOL program that can run in a web browser, similar to the Lean Game Server. This way users can be quickly onboarded to the tool without having to go through download, setup, version compatibility issues, and other miscellaneous problems that may arise.
 
