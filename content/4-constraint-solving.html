@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>3. Constraints with MiniZinc &#8212; Logical Foundations of Software Engineering</title>
   
@@ -29,39 +28,35 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/4-constraint-solving';</script>
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/4-constraint-solving.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -158,7 +153,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">Logical Foundations of Software Engineering</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
@@ -216,9 +222,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -359,9 +365,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -417,9 +423,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="constraints-with-minizinc">
-<h1><span class="section-number">3. </span>Constraints with MiniZinc<a class="headerlink" href="#constraints-with-minizinc" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">3. </span>Constraints with MiniZinc<a class="headerlink" href="#constraints-with-minizinc" title="Link to this heading">#</a></h1>
 <section id="idea">
-<h2><span class="section-number">3.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.1. </span>Idea<a class="headerlink" href="#idea" title="Link to this heading">#</a></h2>
 <p>Constraint programming (CP) is a paradigm for identifying feasible solutions from a very large set of candidates by modeling problems in terms of arbitrary constraints. These problems are called constraint satisfaction problems (CSPs) where you provide:</p>
 <ul class="simple">
 <li><p>A set of <strong>decision variables</strong> with their domains</p></li>
@@ -428,7 +434,7 @@ document.write(`
 </ul>
 <p>The constraint solver finds an assignment of values to the variables that satisfies all constraints. CP is based on <strong>feasibility</strong> (finding a feasible solution) rather than optimization, focusing on the constraints and variables rather than the objective function (Rossi, Van Beek, and Walsh, 2006).</p>
 <section id="learning-goals">
-<h3><span class="section-number">3.1.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.1.1. </span>Learning Goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h3>
 <p>By the end of this chapter, you will be able to:</p>
 <ol class="arabic simple">
 <li><p><strong>Model logic puzzles and scheduling problems</strong> using high-level constraints in MiniZinc.</p></li>
@@ -437,7 +443,7 @@ document.write(`
 </ol>
 </section>
 <section id="installation">
-<h3><span class="section-number">3.1.2. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.1.2. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>minizinc
 </pre></div>
 </div>
@@ -446,7 +452,7 @@ document.write(`
 </div>
 </section>
 <section id="key-characteristics">
-<h3><span class="section-number">3.1.3. </span>Key Characteristics<a class="headerlink" href="#key-characteristics" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.1.3. </span>Key Characteristics<a class="headerlink" href="#key-characteristics" title="Link to this heading">#</a></h3>
 <p>Constraint programming systems generally share several defining features that distinguish them from other approaches:</p>
 <ul class="simple">
 <li><p><strong>Feasibility-focused</strong>: CP emphasizes finding solutions that satisfy all constraints, not necessarily optimal ones</p></li>
@@ -460,7 +466,7 @@ document.write(`
 </section>
 </section>
 <section id="basic-theory">
-<h2><span class="section-number">3.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
 <p>Modeling a problem in MiniZinc typically follows a structured process:</p>
 <ol class="arabic simple">
 <li><p>Start in MiniZinc by defining parameters about your domain (width, height, number of colors, etc.)</p></li>
@@ -471,60 +477,61 @@ document.write(`
 </ol>
 <p>These steps follow the modeling flow presented in the MiniZinc tutorial (Nethercote et al., 2007).</p>
 <p>Example:</p>
-<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;globals.mzn&quot;</span><span class="p">;</span>
+<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span>include &quot;globals.mzn&quot;;
 
-<span class="c">% Parameters</span>
-<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span>
+% Parameters
+int: n
 
-<span class="c">% Decision variables</span>
-<span class="kt">array</span><span class="p">[</span><span class="m">1</span><span class="o">..</span><span class="m">10</span><span class="p">,</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">10</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="m">10</span><span class="p">:</span><span class="s"> </span><span class="nv">grid</span>
+% Decision variables
+array[1..10, 1..10] of var 1..10: grid
 
-<span class="c">% Constraints</span>
-<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
-<span class="s">  </span><span class="k">if</span><span class="s"> ... </span><span class="k">then</span><span class="s"> _value1_ </span><span class="k">else</span><span class="s"> _value2_ </span><span class="k">endif</span>
-<span class="p">);</span>
+% Constraints
+constraint forall(i in 1..n, j in 1..n) (
+  if ... then _value1_ else _value2_ endif
+);
 
-<span class="c">% Solution</span>
-<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
+% Solution
+solve satisfy;
 
-<span class="k">output</span><span class="s"> </span><span class="p">[</span>
-<span class="s">    </span><span class="k">if</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot; </span><span class="k">else</span><span class="s"> &quot; &quot; </span><span class="k">endif</span><span class="s"> </span><span class="o">++</span>
-<span class="s">    </span><span class="nb">show</span><span class="p">(</span><span class="nv">grid</span><span class="p">[</span><span class="nv">i</span><span class="p">,</span><span class="nv">j</span><span class="p">])</span>
-<span class="s">    </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span>
-<span class="p">]</span><span class="s"> </span><span class="o">++</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span>
+output [
+    if j = 1 then &quot;\n&quot; else &quot; &quot; endif ++
+    show(grid[i,j])
+    | i in 1..n, j in 1..n
+] ++ [&quot;\n&quot;];
 </pre></div>
 </div>
 </section>
 <section id="working-example-n-queens-in-minizinc">
-<h2><span class="section-number">3.3. </span>Working Example: N-Queens in MiniZinc<a class="headerlink" href="#working-example-n-queens-in-minizinc" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3. </span>Working Example: N-Queens in MiniZinc<a class="headerlink" href="#working-example-n-queens-in-minizinc" title="Link to this heading">#</a></h2>
 <p>To see these concepts in action, let’s look at the “Hello World” of constraint programming: placing N queens on a chessboard so that no two queens attack each other.</p>
 <p>A minimal, runnable model is included in this repo at <code class="docutils literal notranslate"><span class="pre">src/minizinc/nqueens/nqueens.mzn</span></code>. You can run it directly without any <code class="docutils literal notranslate"><span class="pre">.dzn</span></code> file.</p>
-<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span><span class="k">include</span><span class="s"> &quot;globals.mzn&quot;</span><span class="p">;</span>
+<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span>include &quot;globals.mzn&quot;;
 
-<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">n</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">8</span><span class="p">;</span>
-<span class="kt">set</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">Q</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="o">..</span><span class="nv">n</span><span class="p">;</span>
+int: n = 8;
+set of int: Q = 1..n;
 
-<span class="kt">array</span><span class="p">[</span><span class="nv">Q</span><span class="p">]</span><span class="s"> </span><span class="kt">of</span><span class="s"> </span><span class="kt">var</span><span class="s"> </span><span class="nv">Q</span><span class="p">:</span><span class="s"> </span><span class="nv">q</span><span class="p">;</span>
+array[Q] of var Q: q;
 
-<span class="k">constraint</span><span class="s"> </span><span class="bp">all_different</span><span class="p">(</span><span class="nv">q</span><span class="p">);</span>
+constraint all_different(q);
 
-<span class="k">constraint</span><span class="s"> </span><span class="k">forall</span><span class="p">(</span><span class="nv">i</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Q</span><span class="s"> </span><span class="k">where</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">&lt;</span><span class="s"> </span><span class="nv">j</span><span class="p">)</span><span class="s"> </span><span class="p">(</span>
-<span class="s">  </span><span class="nb">abs</span><span class="p">(</span><span class="nv">q</span><span class="p">[</span><span class="nv">i</span><span class="p">]</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">q</span><span class="p">[</span><span class="nv">j</span><span class="p">])</span><span class="s"> </span><span class="o">!=</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">-</span><span class="s"> </span><span class="nv">i</span>
-<span class="p">);</span>
+constraint forall(i, j in Q where i &lt; j) (
+  abs(q[i] - q[j]) != j - i
+);
 
-<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
+solve satisfy;
 
-<span class="k">output</span><span class="s"> </span><span class="p">[</span>
-<span class="s">  </span><span class="k">if</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">1</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot; </span><span class="k">else</span><span class="s"> &quot; &quot; </span><span class="k">endif</span><span class="s"> </span><span class="o">++</span>
-<span class="s">  </span><span class="k">if</span><span class="s"> </span><span class="nb">fix</span><span class="p">(</span><span class="nv">q</span><span class="p">[</span><span class="nv">i</span><span class="p">])</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="k">then</span><span class="s"> &quot;Q&quot; </span><span class="k">else</span><span class="s"> &quot;.&quot; </span><span class="k">endif</span>
-<span class="s">  </span><span class="p">|</span><span class="s"> </span><span class="nv">i</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Q</span><span class="p">,</span><span class="s"> </span><span class="nv">j</span><span class="s"> </span><span class="o">in</span><span class="s"> </span><span class="nv">Q</span>
-<span class="p">]</span><span class="s"> </span><span class="o">++</span><span class="s"> </span><span class="p">[</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="s"> &quot;Positions: &quot;</span><span class="p">,</span><span class="s"> </span><span class="nb">show</span><span class="p">(</span><span class="nv">q</span><span class="p">),</span><span class="s"> &quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">];</span>
+output [
+  if j = 1 then &quot;\n&quot; else &quot; &quot; endif ++
+  if fix(q[i]) = j then &quot;Q&quot; else &quot;.&quot; endif
+  | i in Q, j in Q
+] ++ [&quot;\n&quot;, &quot;Positions: &quot;, show(q), &quot;\n&quot;];
 </pre></div>
 </div>
+<p><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary sd-shadow-sm reference external" href="../minizinc/nqueens.mzn"><span>Download nqueens.mzn</span></a></p>
 <p>This implementation mirrors the canonical N-Queens problem description in survey work (Bell and Stevens, 2009).</p>
 </section>
 <section id="recursive-logic-in-minizinc">
-<h2><span class="section-number">3.4. </span>Recursive Logic in MiniZinc<a class="headerlink" href="#recursive-logic-in-minizinc" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.4. </span>Recursive Logic in MiniZinc<a class="headerlink" href="#recursive-logic-in-minizinc" title="Link to this heading">#</a></h2>
 <p>Now that you’ve seen a flat model, how do you handle more complex logic? Building a model often feels like defining a recursive function.</p>
 <p>When approaching the recursive logic of a CSP in MiniZinc, consider these steps:</p>
 <ol class="arabic simple">
@@ -534,31 +541,31 @@ document.write(`
 </ol>
 </section>
 <section id="connecting-z3-and-minizinc-concepts">
-<h2><span class="section-number">3.5. </span>Connecting Z3 and MiniZinc Concepts<a class="headerlink" href="#connecting-z3-and-minizinc-concepts" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.5. </span>Connecting Z3 and MiniZinc Concepts<a class="headerlink" href="#connecting-z3-and-minizinc-concepts" title="Link to this heading">#</a></h2>
 <p>MiniZinc is a high-level modeling language for constraint satisfaction and optimization with rich global constraints and multiple backend solvers; Z3 is an SMT solver aimed at logical theories and verification. If you’re building schedules, allocations, or routing, prefer MiniZinc; for program verification or bit-vector logic, prefer Z3 (de Moura and Bjørner, 2008).</p>
 </section>
 <section id="practicality-minizinc-vs-embedded-libraries">
-<h2><span class="section-number">3.6. </span>Practicality: MiniZinc vs. Embedded Libraries<a class="headerlink" href="#practicality-minizinc-vs-embedded-libraries" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.6. </span>Practicality: MiniZinc vs. Embedded Libraries<a class="headerlink" href="#practicality-minizinc-vs-embedded-libraries" title="Link to this heading">#</a></h2>
 <p>So, why would you choose a standalone modeling language like MiniZinc over simply importing a library like OR-Tools directly into your Python or C++ project? In my experience, the main reason is the level of abstraction. MiniZinc lets you focus purely on <em>what</em> the rules are, without forcing you to commit to <em>how</em> they will be solved.</p>
 <section id="solver-independence">
-<h3><span class="section-number">3.6.1. </span>Solver Independence<a class="headerlink" href="#solver-independence" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.6.1. </span>Solver Independence<a class="headerlink" href="#solver-independence" title="Link to this heading">#</a></h3>
 <p>MiniZinc acts as a sort of “Rosetta Stone” for optimization (Nethercote et al., 2007). You can write your model once and then compile it to target completely different technologies—Constraint Programming (CP), Mixed Integer Programming (MIP), or even SMT—without changing a single line of your code.</p>
 <p>If you were working in Python, you’d typically have to lock yourself into a specific solver’s API (like choosing the CP-SAT solver in OR-Tools versus a MIP solver like Gurobi). If you later realized your problem structure was better suited for a different mathematical approach, you’d likely have to rewrite your entire problem definition. In MiniZinc, a statement like <code class="docutils literal notranslate"><span class="pre">constraint</span> <span class="pre">all_different(x);</span></code> is automatically translated by the compiler into whatever format the backend solver needs—whether that’s passing it directly to a CP solver or decomposing it into linear inequalities for a MIP solver.</p>
 </section>
 <section id="high-level-logic-global-constraints">
-<h3><span class="section-number">3.6.2. </span>High-Level Logic (Global Constraints)<a class="headerlink" href="#high-level-logic-global-constraints" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.6.2. </span>High-Level Logic (Global Constraints)<a class="headerlink" href="#high-level-logic-global-constraints" title="Link to this heading">#</a></h3>
 <p>MiniZinc comes with a comprehensive standard library of <strong>global constraints</strong> that encapsulate complex logical patterns (Rossi, Van Beek, and Walsh, 2006). For example, if you’re dealing with scheduling, the <code class="docutils literal notranslate"><span class="pre">cumulative</span></code> constraint handles resource overlaps that would otherwise require writing custom loops and tricky conditional logic in an imperative language. Similarly, <code class="docutils literal notranslate"><span class="pre">diffn</span></code> ensures 2D shapes don’t overlap when packing.</p>
 <p>While libraries like OR-Tools certainly support many of these, MiniZinc’s implementation is standardized, meaning you don’t have to worry about whether your specific backend supports the constraint—the language handles the translation for you.</p>
 </section>
 <section id="workflow-exploration-vs-production">
-<h3><span class="section-number">3.6.3. </span>Workflow: Exploration vs. Production<a class="headerlink" href="#workflow-exploration-vs-production" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.6.3. </span>Workflow: Exploration vs. Production<a class="headerlink" href="#workflow-exploration-vs-production" title="Link to this heading">#</a></h3>
 <p>This leads to a common hybrid workflow: use MiniZinc for the <strong>exploration</strong> phase—rapidly modeling your problem to understand its complexity and rules—and only port it to an embedded language (like Python with OR-Tools) if you need to deploy it into a <strong>production</strong> environment where tight integration is critical (Perron and Furnon, 2019).</p>
 </section>
 </section>
 <section id="example-applications">
-<h2><span class="section-number">3.7. </span>Example Applications<a class="headerlink" href="#example-applications" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.7. </span>Example Applications<a class="headerlink" href="#example-applications" title="Link to this heading">#</a></h2>
 <section id="employee-scheduling">
-<h3><span class="section-number">3.7.1. </span>Employee Scheduling<a class="headerlink" href="#employee-scheduling" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.7.1. </span>Employee Scheduling<a class="headerlink" href="#employee-scheduling" title="Link to this heading">#</a></h3>
 <p>A classic CP problem: A company runs three 8-hour shifts per day and assigns three of its four employees to different shifts each day, while giving the fourth the day off. Even with just 4 employees, there are 24 possible assignments per day, leading to 24^7 ≈ 4.5 billion possible weekly schedules (Perron and Furnon, 2019).</p>
 <p>For Example:</p>
 <ul class="simple">
@@ -570,7 +577,7 @@ document.write(`
 </section>
 </section>
 <section id="practical-business-example-employee-shift-scheduling-minizinc">
-<h2><span class="section-number">3.8. </span>Practical Business Example: Employee Shift Scheduling (MiniZinc)<a class="headerlink" href="#practical-business-example-employee-shift-scheduling-minizinc" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.8. </span>Practical Business Example: Employee Shift Scheduling (MiniZinc)<a class="headerlink" href="#practical-business-example-employee-shift-scheduling-minizinc" title="Link to this heading">#</a></h2>
 <p>Finally, let’s apply this to a real-world scenario. While N-Queens is theoretical, scheduling is a massive industry use case.</p>
 <p>A runnable scheduling model lives at:
 <code class="docutils literal notranslate"><span class="pre">src/minizinc/employee_scheduling/shift_scheduling.mzn</span></code>.</p>
@@ -594,27 +601,28 @@ document.write(`
 <li><p><strong>Output</strong>: human-readable roster</p></li>
 </ul>
 <p>MiniZinc’s aggregate and global constraints make CP extremely effective for scheduling (Nethercote et al., 2007).</p>
-<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span><span class="c">% Employee Shift Scheduling - Practical Business Example</span>
-<span class="c">% Goal: Assign exactly one employee to each shift per day, with fairness caps.</span>
+<div class="highlight-mzn notranslate"><div class="highlight"><pre><span></span>% Employee Shift Scheduling - Practical Business Example
+% Goal: Assign exactly one employee to each shift per day, with fairness caps.
 
-<span class="k">include</span><span class="s"> &quot;globals.mzn&quot;</span><span class="p">;</span>
+include &quot;globals.mzn&quot;;
 
-<span class="c">% Parameters (override via -D as needed)</span>
-<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">E</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">5</span><span class="p">;</span><span class="s">                      </span><span class="c">% number of employees</span>
-<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">D</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">7</span><span class="p">;</span><span class="s">                      </span><span class="c">% number of days (e.g., a week)</span>
-<span class="kt">int</span><span class="p">:</span><span class="s"> </span><span class="nv">S</span><span class="s"> </span><span class="o">=</span><span class="s"> </span><span class="m">3</span><span class="p">;</span><span class="s">                      </span><span class="c">% shifts per day (e.g., Morning, Evening, Night)</span>
+% Parameters (override via -D as needed)
+int: E = 5;                      % number of employees
+int: D = 7;                      % number of days (e.g., a week)
+int: S = 3;                      % shifts per day (e.g., Morning, Evening, Night)
 
-<span class="c">% ... (see full file for constraints and variables) ...</span>
+% ... (see full file for constraints and variables) ...
 
-<span class="k">solve</span><span class="s"> </span><span class="k">satisfy</span><span class="p">;</span>
+solve satisfy;
 </pre></div>
 </div>
+<p><a class="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary sd-shadow-sm reference external" href="../minizinc/shift_scheduling.mzn"><span>Download shift_scheduling.mzn</span></a></p>
 </section>
 <section id="translating-this-into-a-real-world-written-script">
-<h2><span class="section-number">3.9. </span>Translating this into a real-world written script<a class="headerlink" href="#translating-this-into-a-real-world-written-script" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.9. </span>Translating this into a real-world written script<a class="headerlink" href="#translating-this-into-a-real-world-written-script" title="Link to this heading">#</a></h2>
 <p>With the Python MiniZinc API, you can load the model from a file and feed parameters directly, avoiding large inline strings:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">minizinc</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">minizinc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="c1"># Load the model from the file</span>
 <span class="n">model_path</span> <span class="o">=</span> <span class="s2">&quot;src/minizinc/employee_scheduling/shift_scheduling.mzn&quot;</span>
@@ -654,7 +662,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="references">
-<h2><span class="section-number">3.10. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.10. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <p>Nethercote et al. (2007)
 <a class="reference external" href="https://scholar.google.com/scholar?q=MiniZinc%3A+Towards+a+Standard+CP+Modelling+Language">MiniZinc: Towards a Standard CP Modelling Language</a>, CP 2007</p>
 <p>Perron and Furnon (2019)
@@ -779,7 +787,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
