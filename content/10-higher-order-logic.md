@@ -27,235 +27,42 @@ Higher-order logic (HOL) extends the capabilities of first-order logic (FOL) by 
 
 ## Basic Theory
 
-NOTE - WIP - plan to compress this down into the basics for FOL to HOL, Lambda Abstraction, Type Theory, etc and just link supplementary reading like SEP, etc if the reader is interested
+### From First-Order Logic to Higher-Order Logic
 
-<!-- basic setup - need to add much more but this is just basics/scaffolding -->
+First-order logic (FOL) restricts quantification to individual elements of a domain, without quantifying over predicates or functions. Second-order logic extends FOL by allowing quantification over relations, sets, and functions of that domain. Higher-order logic (HOL) generalizes this extension by allowing quantification over predicates and functions of arbitrary finite types, not just individuals or sets.<sup><a href="#SEP_HOL">[23]</a></sup>
 
-### From First-Order Logic to HOL
+### The HOL Type System
 
-WIP
-<!-- 
-	•	HOL is typed
-	•	Functions are first-class
-	•	Quantifiers range over all types
-	•	λ-abstraction builds function terms
-	•	Application is part of the syntax
-	•	Equality at every type
-   -->
+In Isabelle/HOL, the underlying higher-order logic is built upon Church's simple type theory, which is a disciplined type system in which every term is asigned a type and compound types are formed using function type constructors. This simple type theory extends first-order logic by classifying individuals, predicates, and functions into an explicit hiearchy of types, enabling quantification over functions and predicates while avoiding the semantic paradoxes of untyped systems, such as an expression that may refer to itself in a problematic way. In HOL, the type system both guarantees well-formed expressions and organizes how functions of any finite type can be combined and applied. Church’s type theory is widely adopted in proof assistants implementing HOL, such as Isabelle/HOL, and offers a foundation for formalizing mathematics and computations.<sup><a href="#SEP_ChurchTypeTheory">[25]</a></sup> <sup><a href="#Isabelle_Logics">[37]</a></sup>
 
-<!-- Andrews Ch 1-2, https://isabelle.in.tum.de/library/HOL/HOL/document.pdf section 2,  -->
+*For further resources about type theory, SEP provides an excellent article on Type Theory<sup><a href="#SEP_TypeTheory">[26]</a></sup>. While more difficult to digest, there is also the original paper where Alonzo Church introduced his simple theory of types<sup><a href="#Church_TypeTheory">[10]</a></sup>. There is also a solid YouTube video for those that would prefer a different medium.<sup><a href="#TypeTheory_Youtube">[30]</a></sup>*
 
+### Lambda ($\lambda$) Abstraction
 
-$ \forall x $ and $ \exists x$ where x is a variable/individual element
+In higher-order logic, $\lambda$-abstraction provides a formal way to define anonymous functions by binding variables in expressions. We write this as $\lambda x.\; t$, where x is a paramter and t is the body of the function. A $\lambda$-term defines a function by binding a variable in an expression, and $\beta$-reduction is the rule that implements function application. Basically, when you apply a $\lambda$-term to an argument, you substitue that argument for the bound variable in the function body. For example, the abstraction $\lambda x. \; x * x$ represents the square function, and applying it to an arbitrary number $a$ yields $a * a$ by replacing $x$ with $a$.<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup> <sup><a href="#Kurz_LambdaSyntax">[15]</a></sup>
 
-First Order Logic
+In Isabelle/HOL, $\lambda$-abstraction is part of the underlying simply typed $\lambda$-calculus, where terms consist of variables, constants, applications, and abstractions. Applying a $\lambda$-term to an argument substitutes the argument for the bound variable in the body, and Isabelle treats the original application and its $\beta$-reduced form as equivalent. This mechanism makes functions first-class citizens in HOL, supports the construction of higher-order functions, and enables logical constructs to be expressed uniformly.<sup><a href="#Isabelle_Logics">[37]</a></sup>
 
-Second Order Logic 
-
-Third Order Logic -> Higher Order Logic
-
-In higher order logic, we extend this to $ \forall f(x) $ and $ \exists f(x) $, where x is a function that takes x as an input
-
-These are the principal features which are added to first-order logic in order to obtain this formulation of higher-order logic:<sup><a href="#andrews2002">[3]</a></sup>
-
-  1. Variables of arbitrarily high orders
-
-  2. Quantification on variables of all types
-
-  3. Comprehension Axioms
-
-  4. Axioms of Extensionality
-
-conclusion line of how HOL = typed + $\lambda$ + functional programming
-
-### (Explicit) Type System
-
-<!-- – Andrews (2002) Sections 5 (“Type theory basics”)
-– Church (1940) A Formulation of the Simple Theory of Types 
-Church Text is more relevant to history section-->
-
-*Andrews, 2002 Section 5.1*<sup><a href="#andrews2002">[3]</a></sup> provides us with $Q_0$, which is a modified formalization of Church's simple theory of types<sup><a href="#Church_TypeTheory">[10]</a></sup>, in which equality is taken as the basic primitive notion. The semantics of $Q_0$ describe how types denote sets, how function types denote function spaces, and how terms receive meaning under assignments. 
-
-This section introduces the purely syntactic component of simple type theory:
-the formation of types, variables, primitive symbols, and well-formed expressions.
-
-**Type Formation Rules:**
-
-$(\alpha, \beta, \gamma, \ldots )$ are syntactical variables that range over type symbols, defined inductively:
-  - $\iota$ is a type symbol for individuals
-  - $o$ is a type symbol for truth values
-  - If $\alpha$ and $\beta$ are types symbols, then ($\alpha\beta$) is a type symbol denoting the type of functions from elements of type $\beta$ to elements of type $\alpha$
-
-**Variables Indexed by Type:**
-
-  - For each type symbol $\alpha$, a denumerable list of variables of type $\alpha$:
-    $f_\alpha, g_\alpha, h_\alpha \ldots x_\alpha, y_\alpha, z_\alpha, f^1_\alpha, g^1_\alpha \ldots z^1_\alpha, f^2_\alpha \ldots$
-
-**Primitive Syntactic Forms (of $Q_0$):**
-
-  - Improper symbols include  [ ] and $\lambda$
-
-  <!-- Andrews $Q_0$ is fairly barebones in terms of logical constants, as he only provides us with 2 main terms: $Q_{((o\alpha)\alpha)}$ and $u_{(\iota(o\iota))}$ where: -->
-
-  - $Q_{((o\alpha)\alpha)}$ is the equality predicate at type $\alpha$, which is a function that takes 2 $\alpha$ arguments and returns a truth value
-
-  - $u_{(\iota(o\iota))}$ is the description/selection operator (also known as the Hilbert $\epsilon$-operator), which returns an element of type $\iota$ that satisfies a predicate $p : \iota \to o$ if one exists
-
-**Nonlogical Constants:**
-
-  - Nonlogical constants of various types may be included depending on the particular formalized language
-
-**Formation of Well-Formed Expressions (wff's):**
-
-A wff$_\alpha$ (a well-formed expression of type $\alpha$) is defined inductively as follows:
-
-  - Any primitive variables or constant of type $\alpha$ is a wff$_\alpha$
-
-  - If $A_{\alpha\beta}$ is a wff of function type ($\beta \to \alpha$) and $B_\beta$ is a wff$_\beta$, then [$A_{\alpha\beta} B_\beta$] is a wff$_\alpha$ (function application).
-
-  - If $A_\alpha$ is a wff and $x_\beta$ is a variable, then $\lambda x_\beta A_\alpha$ is a wff of type $\alpha\beta$ ($\lambda$-abstraction; see Section 10.2.3).
-
-### $\lambda$-Abstraction and Application
-
-$\lambda$-abstraction is the syntax used to define a function by naming its argument. For example, $\lambda x .\; t$ denotes the function that takes an input x as argument input and returns the expression t as output. In other words, it is the function that maps $x$ to $t$, so $x \mapsto t$. Simply put, $\lambda$ is an operator that is used to denote and represent functions.
-
-Another example provided by the Stanford Encyclopedia of Philosophy (SEP)<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> is more ingrained in natural language and may be easier to understand: $\lambda x .\; x\text{ is a Polish diplomat and } x \text{ is a great pianist}$. If we set the input of x to an arbitrary person, say $x = $ Fred, then this can be read as “Fred is both a Polish diplomat and a great pianist”.
-
-HOL's $\lambda$-abstraction constructs a function. If $x:\alpha$ and $t:\beta$, then $\lambda x .\; t: \alpha \Rightarrow \beta$.
-(Basically, If $x$ has type $\alpha$ and $t$ has type $\beta$, then $\lambda x .\; t$ has type $\alpha \Rightarrow \beta$). Function application is typed accordingly. If $f:\alpha \Rightarrow \beta$ and $x:\alpha$, then $f x:\beta$. Applying a function of type $\alpha \Rightarrow \beta$ to an argument of type $\alpha$ produces a result of type $\beta$.
-
-**Andrews uses the notation of $\alpha\beta$, which is equivalent to Isabelle/HOL's notation of $\alpha \Rightarrow \beta$. They both mean the same thing: the type of a function that takes an argument of type $\alpha$ and returns a value of type $\beta$*
-
-In $\beta$-reduction, the idea is that application is the same as substitution.
-For example, if we have $[\lambda x . \; x + 1]0$, we apply $\beta$-reduction by substituting in 0 for x, so we get $[\lambda x . \; x + 1]0 \to_\beta 0 + 1 = 1$.<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup>
-
-In a Curried function, we basically turn a multiple argument function by nested single input $\lambda$ functions; this process is referred to as "Currying" the function. For example, if we have a function add(x, y) that takes in both the inputs of x and y, then we Curry the function by turning it into $\lambda x . \; (\lambda y . \; x + y)$<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup>
-
-<!-- (Currying): To replace a function in two arguments by a function that takes one argument and returns a function that takes the second argument is called "currying" after the mathematician and logician Haskell Curry.<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup> -->
-
-**In Isabelle/HOL, $\lambda$-abstraction is written as `%x. t` with a `%` instead of the $\lambda$ symbol.*
-
-**There are a plehtora of resources to find supplementary information about $\lambda$-calculus and abstraction. In addition to the HackMD pages by Alexander Kurz<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup> <sup><a href="#Kurz_LambdaSyntax">[15]</a></sup>, other good references are Chapters 3.1 and 3.2 of **Logic and Computation**<sup><a href="#Paulson_LCF">[11]</a></sup> and the aforementioned Section D.1 of the SEP<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup>*
-
+*For supplementary resources about $\lambda$-Abstraction and $\lambda$-calculus, SEP again provides some excellent articles.<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> <sup><a href="#SEP_LambdaCalc">[38]</a></sup>. There are also easy to grasp YouTube videos by LigerLearn.<sup><a href="#LigerLearn_LambdaPrimer">[28]</a></sup> <sup><a href="#LigerLearn_LambdaEval">[29]</a></sup>*
 
 ### Logical Constants in HOL
 
-<!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf section 2, Andrews Logical Constants of Q0	•	§51(c): Q_{(αα)o} and u_{(ιo)ι} and the explanations. ￼ -->
+In higher-order logic, the logical constants are the primitive symbols that express the core logical operations and quantification. They include propositional connectives such as: 
+- Conjunction ($\land$)
+- Disjunction ($\lor$)
+- Implication ($\to$)
+- Negation ($\neg$)
+- Equality ($=$)
 
-<!-- equality: = :: α ⇒ α ⇒ bool
+as well as quantifiers like:
+- Universal ($\forall$) 
+- Existential ($\exists$)
 
-Hilbert choice: ε :: (α ⇒ bool) ⇒ α
-
-standard connectives: ¬, ∧, ∨, ⟶, ↔
-
-quantifiers defined via λ (∀x. P x) -->
-
-Logical constants are built in symbols that define the logical structure of the system and are not defined by the user. Isabelle/HOL provides a standard set of such constants, summarized in Sections 2.1.1 of *Concrete Semantics*.<sup><a href="#ConcreteSemantics">[1]</a></sup> 
-
-<!-- base boolean constants: (true and false) -->
-- **Base Boolean Constants**: simplest terms of type bool, representing truth values
-  - *True* : bool
-  - *False* : bool
-
-<!-- logical connectives (such as not, and, or, ->, etc) -->
-- **Logical Connectives**: curried functions that return a Boolean
-  - **$\neg$**: $bool \Rightarrow bool$
-  - **$\land$**: $bool \Rightarrow bool \Rightarrow bool$
-  - **$\lor$**: $bool \Rightarrow bool \Rightarrow bool$
-  - **$\to$**: $bool \Rightarrow bool \Rightarrow bool$
-<!-- 
-Terminology (Currying): To replace a function in two arguments by a function that takes one argument and returns a function that takes the second argument is called "currying" after the mathematician and logician Haskell Curry.
-
-https://hackmd.io/@alexhkurz/H1e4Nv8Bv -->
-
-<!-- equality: = -->
-- **Equality**: infix function $=$ of type $\alpha \Rightarrow \alpha \Rightarrow bool$
-
-<!-- quantifiers: $\forall x$ and $\exists x$ -->
-- **Quantifiers**: $\forall x. \; Px$ and $\exists x. \; Px$
-
+which operate over objects of any type. In Isabelle/HOL, the full syntax of terms and constants is defined by the grammer of HOL and is treated uniformly alongside function application and $\lambda$-abstraction. This vocabulary is the basis on whic more complex formulas are built and manipulated in proof development.<sup><a href="#Isabelle_Logics">[37]</a></sup>
 
 ### Deductive Core of HOL
 
-Natural Deduction Rules
-Chapter 5 of *Isabelle/HOL: A Proof Assistant for Higher‑Order Logic* <sup><a href="#Isabelle/HOL_ProofAssistant">[13]</a></sup>
-
-<!-- Introduction and elimination rules for classical connectives and quantifiers. -->
-
-Typed $\lambda$-Calculus
-<!-- Terms are built using the simply-typed λ-calculus, with β-reduction and η-conversion (up to extensionality). -->
-
-Equality Rules
-<!-- Polymorphic equality with reflexivity + congruence/substitution; includes functional and boolean extensionality. -->
-
-Hilbert $\epsilon$ (Choice) Operator
-A choice operator $\varepsilon : (\alpha \Rightarrow bool) \Rightarrow \alpha$ with the choice axiom.
-
-Conservative Definition Principles
-<!-- New constants and types may only be introduced via mechanisms Isabelle checks as conservative (no new theorems introduced). -->
-
-Small Trusted Kernel
-<!-- Isabelle’s logical kernel is minimal; all automation reduces to this core proof system. -->
-
-
-WIP
-<!-- 
-	•	HOL’s small axiom set: classical logic, equality, choice
-	•	Isabelle’s kernel uses natural-deduction with λ-calculus + types
-	•	All user-introduced definitions are conservative
-	•	Isabelle proves everything from this core automatically -->
-
-<!-- The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system of $\mathcal{w}$-order logic which has all finite order logics as subsystems:
-
-1) **Modus Ponens** From $A$ and $A \to B$ to infer $B$.
-2) **Generalization** From $A$ to infer $\forall x\,A$, where x is a variable of any type
-
-
-*Adapted from Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> using modern logic convention.
-
-
-The axiom schemata of $\mathcal{F}^w$ are:
-
-1) $A \lor A \to A$
-2) $A \to (B \lor A)$
-3) From $A \to (B \to C)$, infer $ (A \to B) \lor C$
-4) **Universal Instantiation**
-    $\forall x_\tau\,A \to A[y_\tau / x_\tau]$, where $y_\tau$ is a variable or constant of the same type as the variable $x_\tau$, and $y_\tau$ is free for $x_\tau$ in $A$.
-  
-    Basically, from $\forall x_\tau\,A$, we may infer $A[y_\tau / x_\tau]$, meaning that if $A$ holds for all $x_\tau$, then it also holds for any particular instance $y_\tau$ of the same type.
-
-5) **Quantifier Distribution**
-    $\forall x(A \lor B) \to (A \lor \forall x\,B)$, where $x$ is any variable not free in $A$.
-
-    This means that if $(A \lor B)$ holds for all $x$, and $A$ does not depend on $x$, then either $A$ holds or $B$ holds for all $x$.
-
-6) **Comprehension Axioms**
-
-    - *0-ary case (a proposition/Boolean) that names a theorem/statement*.  
-    $ \exists u_{\mathbf{o}}\;[\,u_{\mathbf{o}} \leftrightarrow A\,] $
-    where $u_{\mathbf{o}}$ does not occur free in $A$.  
-    
-    - *n-ary case (a predicate/function of arity n) that names a property/relation*.  
-    $\exists u_{(\tau_1\ldots\tau_n)}\;
-    \forall v^{1}_{\tau_1}\cdots \forall v^{n}_{\tau_n}\,
-    \big[\,u_{(\tau_1\ldots\tau_n)}(v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n})
-    \leftrightarrow A\,\big]$
-    where $u_{(\tau_1\ldots\tau_n)}$ does not occur free in $A$, and $v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n}$ are distinct variables.
-
-    - These axioms allow us to define new symbols that stand for existing formulas.  
-    In the 0-ary case, a new propositional constant $u_{\mathbf{o}}$ can name a statement $A$.  
-    In the n-ary case, a new predicate $u_{(\tau_1\ldots\tau_n)}$ can be introduced so that $u(v^1,\ldots,v^n)$ is true exactly when $A$ holds for those arguments.
-
-7) **Axioms of Extensionality**
-    - *0-ary case (a proposition/Boolean) that names a theorem/statement*.  
-    $(x_{\mathbf{o}} \leftrightarrow y_{\mathbf{o}}) \to (x_{\mathbf{o}} = y_{\mathbf{o}})$
-
-    - *n-ary case (a predicate/function of arity n) that names a property/relation*.  
-    $\forall w^{1}_{\tau_1} \ldots \forall w^{n}_{\tau_n} [(x_{(\tau_1 \ldots \tau_n)}w^{1}_{\tau_1}\ldots w^{n}_{\tau_n}) \leftrightarrow (y_{(\tau_1 \dots \tau_n)} w^{1}_{\tau_1} \ldots w^{n}_{\tau_n})] \to (x_{(\tau_1 \ldots \tau_n)} = y_{(\tau_1 \ldots \tau_n)}) $
-
-    - These axioms state that two expressions are equal if and only if they behave identically in that their output result is the same in all evaluations. This formalizes the idea that in higher order logic, equality is extensional (based on meaning and behavior) rather than syntactic (based on form).
-
-Adapted from *Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> using modern logic convention. -->
+The deductive core of higher-order logic consists of the fundamental inference rules for logical connectives, quantifiers, and equality, including the basic introduction and elimination rules that govern valid reasoning in HOL. In Isabelle/HOL, these primitive rules form the logic’s core inference system, and every derived theorem is justified by a sequence of such sound rule applications. Higher level proof methods and tactics ultimately based on these basic rules make structured proofs possible in practice. Concrete presentations of these inference rules and how they are used in proofs can be found in the Isabelle/HOL Proof Assistant Manual.<sup><a href="#Isabelle/HOL_ProofAssistant">[13]</a></sup>
 
 
 ## Tool (Installation, First Example, First Exercise)
@@ -788,8 +595,22 @@ AI/LLM stuff with NTP in Isabelle?
   <span style="display:block; height:0.1em;"></span>
 
   <li id="Isar_History" class="citation-entry">
-    [36]: Makarius (Markus) Wenzel (1999) 
+    [36]: Makarius (Markus) Wenzel (1999)
     <a href="https://web.cs.wpi.edu/~dd/resources_isabelle/Isar-TPHOLs99.wenzel.pdf">Isar — a Generic Interpretative Approach to Readable Formal Proof Documents</a>, Theorem Proving in Higher Order Logics (TPHOLs 1999), volume 1690 of Lecture Notes in Computer Science. Springer-Verlag.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="Isabelle_Logics" class="citation-entry">
+    [37]: Nipkow, Paulson, and Wenzel (2009)
+    <a href="https://isabelle.in.tum.de/website-Isabelle2009-1/dist/Isabelle/doc/logics-HOL.pdf">Isabelle’s Logics: HOL</a>, Isabelle2009 Documentation.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="SEP_LambdaCalc" class="citation-entry">
+    [38]: Alama and Korbmacher (2023)
+    <a href="https://plato.stanford.edu/archives/win2024/entries/lambda-calculus/">The Lambda Calculus</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
   </li>
 
 </ul>
