@@ -4,6 +4,7 @@ Some suggested guidelines to consider when contributing to the book:
 
 - Writing:
   - Inline clickable links that lead to further reading. If you look at the introduction to [Propositional Logic](1-propositional-logic.md) you see that I tried to make it easy for readers to access further information. You may find this tedious, but interesting inline links add a lot of value.
+  - One way in which good online writing distinguishes itself is by the quality of interesting resources linked for further reading. 
   - Avoid long code snippets that are uninterrupted by interesting explanations.
   - Link source code and other resources
 - Organization and Layout:
