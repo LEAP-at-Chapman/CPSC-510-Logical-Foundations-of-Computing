@@ -330,16 +330,9 @@ You need to measure exactly 2 liters of water. You can:
 
 This seems simple, but the sequence of operations isn't immediately obvious. With Prolog we can systematically explore all possibilities to find the solution.
 
+These six moves defined below are the core to our solution and define all the legal moves that are available:
+
 ``` prolog
-% Water Jug Problem Solver
-% Jug A: 4 liters capacity, Jug B: 3 liters capacity
-% Goal: Measure exactly 2 liters
-
-% ---------- State Representation ----------
-% state(JugA_Current, JugB_Current)
-
-% ---------- Valid Moves ----------
-
 % 1. Fill Jug A completely
 move(state(_, B), state(4, B)) :- 
     format('Fill Jug A~n').
@@ -371,16 +364,19 @@ move(state(A, B), state(NewA, NewB)) :-
     NewA is A + PourAmount,
     NewB is B - PourAmount,
     format('Pour ~w liters from Jug B to Jug A~n', [PourAmount]).
+```
 
-% ---------- Search Algorithm ----------
+Each rule defines a valid transition from one state to another. The format move(CurrentState, NextState) means "from CurrentState you can move to NextState by performing this action":
 
-% Solve the water jug problem
-solve :-
-    solve_bfs([state(0,0)], [], Solution),
-    reverse(Solution, ReversedSolution),
-    nl, write('Solution Found!'), nl, nl,
-    print_solution(ReversedSolution).
+Filling Rules (1 & 2): These simply reset a jug to its maximum capacity while leaving the other jug unchanged. The underscore _ acts as an anonymous variable, meaning "I don't care what value was here before."
 
+Emptying Rules (3 & 4): These set a jug to 0 liters while preserving the other jug's contents.
+
+Pouring Rules (5 & 6): These are the most interesting. Rule 5 says: "You can pour from A to B if A has water (A > 0) and B has space (B < 3). The amount poured is the minimum between what A has and what B can accept (min(A, 3 - B))." Rule 6 is the symmetric case for pouring from B to A.
+
+While the move rules define the problem space, we need additional code to search through this space systematically. This "boilerplate" is interesting because it shows how Prolog can implement different search strategies with minimal changes:
+
+```prolog
 % Breadth-first search implementation
 solve_bfs([state(A, B)|_], Visited, [state(A, B)|Visited]) :-
     (A =:= 2; B =:= 2),  % Goal condition: 2 liters in either jug
@@ -394,23 +390,7 @@ solve_bfs([CurrentState|RestQueue], Visited, Solution) :-
     append(RestQueue, NewStates, NewQueue),
     solve_bfs(NewQueue, [CurrentState|Visited], Solution).
 
-% ---------- Solution Display ----------
-print_solution([]).
-print_solution([State]) :-
-    format_state(State), !.
-print_solution([State1, State2|Rest]) :-
-    format_state(State1),
-    print_solution([State2|Rest]).
-
-format_state(state(A, B)) :-
-    format('Jug A: ~w liters, Jug B: ~w liters~n', [A, B]).
-
-% ---------- Alternative Depth-First Search ----------
-solve_dfs :-
-    solve_dfs_path(state(0,0), [state(0,0)], Solution),
-    nl, write('DFS Solution:'), nl,
-    print_solution(Solution).
-
+% Depth-first search alternative
 solve_dfs_path(state(A, B), Path, Path) :-
     (A =:= 2; B =:= 2), !.  % Goal reached
 
@@ -420,22 +400,12 @@ solve_dfs_path(CurrentState, Path, Solution) :-
     solve_dfs_path(NextState, [NextState|Path], Solution).
 ```
 
-### To run the above code copy it a file named water_jug.pl
+Here the move rules remain unchanged regardless of whether we use BFS, DFS, or any other search strategy. The search algorithms simply navigate the graph defined by those moves.
 
-``` bash
-swipl -f water_jug.pl
-```
-
-Then in the Prolog interpreter:
-
-```prolog
-?- solve.
-```
-
-Tio code is also available: [code](https://tio.run/##nVZtb9owEP7Or7h@qAhqQC2wfWDrpGQdkyZ16lqp@8AQSokpnpwX2ckoUtW/zs4vcUwCSFskaOw7P3fP47ujOc9Y9twXG7rbncPPqCAcvpXPcMezJ0YSeMjYH8I752ozmMAYGEUfAcsoj5a02PrKEk5g1LTgoa9ZxCZwSyJRcgLkJVoWbAtD49lBj7594KHA6HBPck4ESXFBs9Sxo7OQHh7GCxafS87RSUUPq1WvgfgYMRrDbfaHCBcIna4GMKWMaVawzJKckYKwbSdBZ0/HWfgQ9nwTdCwXPZj0oQP4rDKeRIXXrUHe0m5vIKGHDnToQAO44IEPCwuOi5ECP4wdWuzRAL4kebHVIY8me1klu4fnnLSAYxcwPJXg5SnAOsN3A7jLSg4rniWobJGhBmVaUIZ/qYBViZwyjhZcEHm@EbMm8Z1scI3fDpUAPoEkBx9h5KsdGSxIMgwhEROaKjGhL4GUg4SRpgD3amdrU1mFcNGyVSQVm7dNVdyKl64a5FZx92FWn59rJd67SoTSOzBKBK4S4f8pEWolAlRifEyJ0Md27UPQUuLihBL9f1YirJQIjijh9jiJ@HINAXvOOC3WSaMt1bSBYk1goybRb0TN9STqCGUz9NVi8bQS3qwq@cveHIPjB0FKOTsMbU5wgAniVds@jhi1EzccU@bDBrMiXreywBRpxGddvAppxY/yzDlNi4UwTl4LT7EOOYniYt1fUS4KEJo4ldMgqaZbp0VD3fvrAlk8UoGpxEjJtZjdua0DL4DryTUMP@A1qBdMFfTgxdmTxlTGmdiRCzQFgsJrbRXCGWbr5GFGqRrGr/dEFD9KUhI3IUvTzgOaxhFjWKcv@pyvh2T1eKqwXWBZzca313CGXxeQkOSJcBfPBO/VpawMwqyjPCdp7Nl0/dpDvapN41tzrQyo8R7rSmSHaquOqwK5oSJn0dat40Z1zGQXNPdUoHljoi70TVeynB05duXrn8qhup5TIFe9g/U62zuO1PZOOuXWmvjmnwA7BOyPv93RI0Cebjd/wNAjxcrHPr4hOfbGVPWGGQqOhPqO4pXY73fcWORRsfbqnrf9YQbA8Z6@mT5Y68R09CF13Ds/GNbM5jvc0d8nm/FsYPsRB8JyTeIW7H5naNxWk53uoc7RzlEJ@odEdJxm9v1V@u9V/m6nzg3@Ag)
+Tio code is available to run here: [code](https://tio.run/##nVZtb9owEP7Or7h@qAhqQC2wfWDrpGQdkyZ16lqp@8AQSokpnpwX2ckoUtW/zs4vcUwCSFskaOw7P3fP47ujOc9Y9twXG7rbncPPqCAcvpXPcMezJ0YSeMjYH8I752ozmMAYGEUfAcsoj5a02PrKEk5g1LTgoa9ZxCZwSyJRcgLkJVoWbAtD49lBj7594KHA6HBPck4ESXFBs9Sxo7OQHh7GCxafS87RSUUPq1WvgfgYMRrDbfaHCBcIna4GMKWMaVawzJKckYKwbSdBZ0/HWfgQ9nwTdCwXPZj0oQP4rDKeRIXXrUHe0m5vIKGHDnToQAO44IEPCwuOi5ECP4wdWuzRAL4kebHVIY8me1klu4fnnLSAYxcwPJXg5SnAOsN3A7jLSg4rniWobJGhBmVaUIZ/qYBViZwyjhZcEHm@EbMm8Z1scI3fDpUAPoEkBx9h5KsdGSxIMgwhEROaKjGhL4GUg4SRpgD3amdrU1mFcNGyVSQVm7dNVdyKl64a5FZx92FWn59rJd67SoTSOzBKBK4S4f8pEWolAlRifEyJ0Md27UPQUuLihBL9f1YirJQIjijh9jiJ@HINAXvOOC3WSaMt1bSBYk1goybRb0TN9STqCGUz9NVi8bQS3qwq@cveHIPjB0FKOTsMbU5wgAniVds@jhi1EzccU@bDBrMiXreywBRpxGddvAppxY/yzDlNi4UwTl4LT7EOOYniYt1fUS4KEJo4ldMgqaZbp0VD3fvrAlk8UoGpxEjJtZjdua0DL4DryTUMP@A1qBdMFfTgxdmTxlTGmdiRCzQFgsJrbRXCGWbr5GFGqRrGr/dEFD9KUhI3IUvTzgOaxhFjWKcv@pyvh2T1eKqwXWBZzca313CGXxeQkOSJcBfPBO/VpawMwqyjPCdp7Nl0/dpDvapN41tzrQyo8R7rSmSHaquOqwK5oSJn0dat40Z1zGQXNPdUoHljoi70TVeynB05duXrn8qhup5TIFe9g/U62zuO1PZOOuXWmvjmnwA7BOyPv93RI0Cebjd/wNAjxcrHPr4hOfbGVPWGGQqOhPqO4pXY73fcWORRsfbqnrf9YQbA8Z6@mT5Y68R09CF13Ds/GNbM5jvc0d8nm/FsYPsRB8JyTeIW7H5naNxWk53uoc7RzlEJ@odEdJxm9v1V@u9V/m6nzg3@Ag)
 
 
-### 1. Declarative State Transitions
+### Declarative State Transitions
 
 The most interesting aspect of the Prolog solution is how we describe the *nature* of valid moves rather than prescribing a specific sequence of operations. Instead of writing step-by-step instructions like "first fill jug A, then pour to jug B, then..." we simply define what constitutes a legal transition between states.
 
@@ -443,7 +413,7 @@ Each move rule reads like a natural language description of the physical constra
 
 This declarative approach means we're encoding the *physics* of the problem rather than a solution strategy. Prolog then uses these fundamental rules to explore possibilities, much like how a person would mentally simulate different sequences while ensuring they never violate the physical constraints.
 
-### 2. Multiple Search Strategies
+### Multiple Search Strategies
 
 Our solution demonstrates how easily Prolog can switch between different problem-solving strategies. We implemented both breadth-first search (BFS) and depth-first search (DFS) approaches, each with distinct characteristics:
 
@@ -453,7 +423,7 @@ Our solution demonstrates how easily Prolog can switch between different problem
 
 We're not rewriting the problem rules for each approach, we simply change how we navigate the possibility space. This separation of "what moves are possible" from "how we explore those moves" is a powerful demonstration of logic programming's flexibility.
 
-### 3. Automatic Backtracking
+### Automatic Backtracking
 
 One of Prolog's most best features that we've touched on a bit already is its built-in backtracking mechanism. When the system follows a sequence of moves that leads to a dead end, like repeatedly filling and emptying the same jug without progress,, it automatically backtracks and tries alternative paths.
 
@@ -461,7 +431,7 @@ This eliminates the need for complex error recovery code or manual stack managem
 
 This built-in exploration makes Prolog exceptionally well-suited for problems where the solution isn't obvious but the rules are clear. It continually works through combinations that a human might overlook due to frustration or cognitive bias.
 
-### 4. Visual Solution Tracing
+### Visual Solution Tracing
 
 The step-by-step output reveals Prolog's reasoning process in action, transforming an abstract computational process into an understandable narrative:
 
@@ -589,14 +559,24 @@ This hybrid approach leverages the creativity and pattern recognition of neural 
 
 ## References
 
-1. https://swish.swi-prolog.org/p/dselman.swinb
-2. https://www.geeksforgeeks.org/dsa/8-queen-problem/
-3. https://www.swi-prolog.org/pldoc/man?section=arith
-4. https://sicstus.sics.se/    #SICStus Prolog
-5. https://www.researchgate.net/publication/47822182_SICStus_Prolog_--_the_first_25_years
-6. http://www.gprolog.org/     #GNU Prolog
-7. https://eclipseclp.org/     #Eclipse
-8. https://www.metalevel.at/prolog/sorting
-9. https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html
-10. https://blogit.michelin.io/an-introduction-to-datalog/
-11. https://leetcode.com/problems/water-and-jug-problem/description/
+Alberi, Fabien. "An Introduction to Datalog." Michelin.io Blog, 3 Feb. 2021, https://blogit.michelin.io/an-introduction-to-datalog/.
+
+swi-prolog. "Logic Programming Introduction." SWISH (SWI-Prolog for Sharing), https://swish.swi-prolog.org/p/dselman.swinb
+
+GeeksforGeeks. "8 Queen Problem." GeeksforGeeks, https://www.geeksforgeeks.org/dsa/8-queen-problem/
+
+swi-prolog. et al. "format/2." SWI-Prolog Documentation, https://www.swi-prolog.org/pldoc/man?predicate=format/2
+
+Swedish Institute of Computer Science. SICStus Prolog. https://sicstus.sics.se/
+
+Carlsson, Mats, and Per Mildner. "SICStus Prolog—The first 25 Years." ResearchGate, 2012, https://www.researchgate.net/publication/47822182_SICStus_Prolog_--_the_first_25_years.
+
+Diaz, Daniel, et al. GNU Prolog. http://www.gprolog.org/
+
+"ECLiPSe Constraint Programming System." Eclipse Foundation, https://eclipseclp.org/
+
+Metalevel. "Sorting." The Power of Prolog, https://www.metalevel.at/prolog/sorting
+
+"Prolog Basics." University of Washington, Computer Science & Engineering, https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html
+
+LeetCode. "Water and Jug Problem." LeetCode, https://leetcode.com/problems/water-and-jug-problem/description/.
