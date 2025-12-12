@@ -232,19 +232,19 @@ The following is one of the papers from this conference that I found interesting
 This paper suggests using temporal logic to model the uncertainty of an environment. The paper develves into the potential applications of such an approach, but also discusses some of the challenges associated with it.
 
 ## References
-* Gluck and Holtzman (2008) [Using SPIN model checking for flight software verification](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Using+SPIN+model+checking+for+flight+software+verification&btnG=), IEEE
+* Rescher and Urquhart 1971, [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=), Springer-Verlag/Wien
 
-* Zhang, Li, Cheng, and Xue (2018) [Verifying OSEK/VDX automotive applications: A Spin-based model checking approach](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=), Wiley
+* Bauland et al., 2008 [The Tractability of Model-Checking for LTL: The Good, the Bad, and the Ugly Fragments](https://arxiv.org/abs/0805.0498), Arxiv
 
-* Alzahrani and Mohammed Yahya (2015) [Model checking web applications](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Model+checking+web+applications+heriot+watt+university&btnG=), Heriot Watt University
+* Gluck and Holtzman 2008, [Using SPIN model checking for flight software verification](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Using+SPIN+model+checking+for+flight+software+verification&btnG=), IEEE
 
-* Rescher and Urquhart (1971) [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=), Springer-Verlag/Wien
-
-* TIME 2022, [International Symposium on Temporal Representation and Reasoning (TIME)](https://time-symposium.org/t/), TIME
+* Alzahrani and Mohammed Yahya 2015, [Model checking web applications](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Model+checking+web+applications+heriot+watt+university&btnG=), Heriot Watt University
 
 * Deshmukh, Kyriakis, and Bogdan 2018, [Stochastic Temporal Logic Abstractions: Challenges and Opportunities](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Stochastic+Temporal+Logic+Abstractions%3A+Challenges+and+Opportunities&btnG=), Springer
 
-* Bauland et al., 2008 [The Tractability of Model-Checking for LTL: The Good, the Bad, and the Ugly Fragments](https://arxiv.org/abs/0805.0498), Arxiv
+* Zhang, Li, Cheng, and Xue 2018, [Verifying OSEK/VDX automotive applications: A Spin-based model checking approach](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=), Wiley
+
+* TIME 2022, [International Symposium on Temporal Representation and Reasoning (TIME)](https://time-symposium.org/t/), TIME
 
 ## Further Reasources
 * [Wikipedia Article on Temporal Logic](https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators). Contains a good overview of the logic with links to more indepth reading.
@@ -261,3 +261,5 @@ This paper suggests using temporal logic to model the uncertainty of an environm
 For future work on this chapter, I would suggest expanding the algorithm section. As it stands currently it only gives a brief overview of SPIN's algorithm, which could likely warrant further inspection.
 
 Additionally, it would be good to check in on the benchmarks of the various temporal logic model checkers. As mentioned in the paper there does not seem to be any available at the time of writing. I would be interested in seeing if this changes in the future.
+
+Lastly an additional case study that could be interesting to look into is the idea of automated code verification for generative AI. A lot of talk has been made over whether gen AI could be used to create code automatically. One of the issues with this approach is that it's difficult to tell whether the code generated actually works. As such it would be interesting to integrate SPIN into this process; using some combination of genAI and SPIN to automatically generate and verify code segments.
