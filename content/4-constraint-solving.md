@@ -153,9 +153,7 @@ While libraries like OR-Tools certainly support many of these, MiniZinc's implem
 
 This leads to a common hybrid workflow: use MiniZinc for the **exploration** phase—rapidly modeling your problem to understand its complexity and rules—and only port it to an embedded language (like Python with OR-Tools) if you need to deploy it into a **production** environment where tight integration is critical (Perron and Furnon, 2019).
 
-## Example Applications
-
-### Employee Scheduling
+## Example Applications : Employee Scheduling
 
 A classic CP problem: A company runs three 8-hour shifts per day and assigns three of its four employees to different shifts each day, while giving the fourth the day off. Even with just 4 employees, there are 24 possible assignments per day, leading to 24^7 ≈ 4.5 billion possible weekly schedules (Perron and Furnon, 2019).
 
