@@ -36,5 +36,7 @@
 
 **L11.2:** An Introduction to Lean and Dependently Typed Programming. [The Lean Game Server](https://adam.math.hhu.de/). [Natural Deduction](https://hackmd.io/@alexhkurz/r1bYDpMybx).
 
+This finishes the list of software tools. The rest of the semester we spent on improving the book, solving epistemic puzzles (for example the 100 prisoners and the light bulb) and on analysing [mutual exclusion with a model checker](https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin).
+
 
 

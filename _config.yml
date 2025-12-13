@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Logical Foundations of AI
+title: Logical Foundations of Computing
 author: CPSC 510
 
 # Force re-execution of notebooks on each build.
@@ -32,6 +32,7 @@ exclude_patterns:
   - "notebooks/**"
   - "prompts/**"
   - "literature/**"
+  - "docs/**"
 
 # Information about where the book exists on the web
 repository:
@@ -54,6 +55,7 @@ parse:
 
 sphinx:
   config:
+    html_title: "Logical Foundations of Computing"
     html_extra_path: ["content/examples"]
     html_baseurl: https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/
     latex_elements:
