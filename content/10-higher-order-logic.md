@@ -381,6 +381,7 @@ Xu et al. present MiniLang/IsaMini, a streamlined proof language for Isabelle/HO
 
 Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> show that large language models are particularly effective at performing autoformalization, which is the process of automatically translating natural language mathematics into formal specifications and proofs. Specifically, they note that 25.3% of mathematical competition problems were translated *perfectly* to formal Isabelle/HOL statements. In addition, by using these autoformalized statements to fine-tune an existing neural theorem prover, they managed to improve achieve a 35.2% proof rate on Mini2F2, compared to a baseline proof rate of 29.6%.
 
+
 ## Case Study - Autoformalization with LLMs
 
 WIP
@@ -413,18 +414,30 @@ The creation of the Archive of Formal Proofs (AFP) in 2004 established a large, 
 The integration of tools such as Sledgehammer and external SMT/ATP solvers in 2007 further extend Isabelle/HOL's proof power. The bridging of interactive reasoning and automation allows user to tackle complex goals with minimal manual effort.<sup><a href="#Isabelle_Sledgehammer">[35]</a></sup>
 
 
-## Formal Methods and AI
-WIP
+<!-- ## Formal Methods and AI
 
-## Current Development, Research Challenges, Conferences and Workshops
+Not sure if this section is necessary since there are already sections that deal with NTP, LLMs in formal verification, autoformalization, etc. -->
+
+## Current Events within Isabelle/HOL
 
 ### Current Development
 
-AI/LLM stuff with NTP in Isabelle?
+Active research is increasingly integrating generative and large language models (LLMs) with interactive theorem proving to reduce manual proof construction. This emerging paradigm, termed *Neural Theorem Proving (NTP)*, augments classic automatic theorem proving (ATP) by integrating generative AI with symbolic proof assistants like Isabelle/HOL to enhance automation, guide proof search, and address complex formal reasoning tasks. Recent work by Xu et al. introduces MiniLang/IsaMini<sup><a href="#Xu_IsaMini">[25]</a></sup>, an intermediate proof language designed to improve LLM performance in Isabelle/HOL and significantly boost success rates on standard proof benchmarks compared to generating Isar scripts directly. NTP and hybrid AI frameworks are also being developed to generate and structure complete formal proofs, fine-tune models for syntactically correct proof output, and integrate verification backends to reduce errors and improve correctness in formal verification tasks. These efforts align with broader trends in formal methods research that explore how LLM reasoning can be combined with rigorous symbolic verification to enhance automation, benchmark performance, and increase formal verification scalability.
 
 ### Research Challenges
 
+Despite ongoing advances, substantial research challenges remain in Isabelle/HOL’s ecosystem, particularly at the intersection of formal verification and generative AI. Interactive theorem proving in Isabelle/HOL still depends heavily on human guidance through structured Isar proofs, making large-scale developments both labor-intensive and error-prone. The integration of LLM-based techniques introduces additional difficulties, such as translating model output into Isabelle’s strict proof language, mitigating hallucinations and syntactic errors, and obtaining sufficiently large, high-quality datasets of formal proofs for training. While intermediate languages such as MiniLang/IsaMini<sup><a href="#Xu_IsaMini">[25]</a></sup> can significantly improve LLM performance, they also highlight the sensitivity of proof success to representation choices and data quality. Moreover, bridging the gap between informal specifications and fully formalized Isabelle theories, commonly termed *autoformalization*<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup>, remains a major obstacle, as current LLMs struggle to reliably produce complete, semantically correct formalizations without human intervention.
+
 ### Conferences and Workshops
+
+- **[International Conference on Interactive Theorem Proving (ITP)](https://itp-conference.github.io/)** - dedicated to interactive theorem proving and related topics, ranging from theoretical foundations to implementation aspects and applications in program verification, security, and formalization of mathematics.
+
+- **[Isabelle Workshop](https://sketis.net/isabelle/isabelle-workshop-2026)** - a workshop focused on Isabelle where users and developers can present tool developments, formalization projects, and ongoing research papers.
+
+- **[International Joint Conference on Automated Reasoning (IJCAR)](https://ijcar.org//conferences)** - international conference covering automated and interactive reasoning which merges several leading conferences and events, such as the Conference on Automated Deduction (CADE), TABLEAUX, and FroCoS, into a single forum covering foundations, tools, and applications in automated reasoning.
+
+- **[Archive of Formal Proofs (AFP)](https://www.isa-afp.org/)** - while not an explicit conference, the AFP functions like a curated repository and journal for Isabelle/HOL proofs, hosting a large collection of mechanically checked proof libraries and scientific developments that are often associated with conference or journal publications.
+
 
 ## References
 
@@ -700,7 +713,7 @@ AI/LLM stuff with NTP in Isabelle?
 
 </ul>
 
-### Misccellaneous
+### Miscellaneous
 
 <ul>
 
