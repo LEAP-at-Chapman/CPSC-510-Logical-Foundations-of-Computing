@@ -1,4 +1,4 @@
-# Logical Foundations of Software Engineering
+# Logical Foundations of Computing
 
 <!--hide the markdown heading because it would not be centered (but it is needed to give the browser tab a title) -->
 ```{raw} html
@@ -14,10 +14,10 @@
 
 <div style="text-align: center; margin-top: 0em; margin-bottom: 0em; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; page-break-after: always;">
 
-<h1 style="margin: 0;">Logical Foundations of Software Engineering</h1>
+<h1 style="margin: 0;">Logical Foundations of Computing</h1>
 
 <div style="margin-top: 1.5em; margin-bottom: 1.5em; font-size: 1.2em; color: #666;">
-A Book on Logics and Their Software Tools
+An Introduction to Logics and Their Software Tools
 </div>
 
 <div style="margin-top: 4em; font-size: 0.9em; color: #888; font-style: italic;">
