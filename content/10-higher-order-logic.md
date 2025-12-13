@@ -95,8 +95,8 @@ For the first example, the goal will be to implement recursive addition via a fu
 
 ```isabelle
 fun add :: "nat ⇒ nat ⇒ nat" where
-    "base case"
-    "recursive case"
+  "base case"
+  "recursive case"
 ```
 
 where two natural numbers are added, and the result is a natural number that is the sum of the two input numbers. For example, `sum m n` should return the sum of m and n.
@@ -120,8 +120,8 @@ The custom add function is defined here:
 ```{dropdown} Show Answer
 ~~~isabelle
 fun add :: "nat => nat => nat" where
-    "add 0 n = n" |
-    "add (Suc m) n = Suc(add m n)"
+  "add 0 n = n" |
+  "add (Suc m) n = Suc(add m n)"
 ~~~
 ```
 
@@ -195,21 +195,68 @@ qed
 
 For a detailed explanation, [See Section 8.3.3 Commutative Property](./assets-10/8.3_exercises.md#communative-property-proof)
 
+*The Isabelle .thy file for this exercise are located [here](../content/assets-10/exercise_2_2.thy)*
 
-## Introductory Examples - Tower of Hanoi or Insertion Sort
+*This form is an Isar style proof. The following example will be an older style tactic based proof.*
+
+
+## Intro Example - Flattening and Length Invariant
 
 <!-- show something interesting about tool, logic, etc and can be digested and understood with minimum experience -->
 
-There is an introduction exercise to syllogistic logic<sup><a href="#MossSyllogism">[34]</a></sup> in Isabelle by Alexander Kurz linked [here](appendix-syllogistic-logics.md)
+There is an introduction exercise to syllogistic logic<sup><a href="#MossSyllogism">[34]</a></sup> in Isabelle by Alexander Kurz linked [here](appendix-syllogistic-logics.md).
 
-Tower of Hanoi or Insertion Sort
+The List Flattening and Length Preservation exercise is adjusted from [this exercise](https://isabelle.in.tum.de/exercises/lists/sum/sol.pdf). First try the exercise yourself, and if stuck, reference the document linked.
 
+### List Flattening
 
-f
+Define a recursive function `fun flatten :: 'a list list => 'a list` that takes a list of lists as input, flattens it, and returns that flattened list. Flattening is simply turning a multi-dimensional list into a single list by concatenating inner lists. For example, if we have $[[1,2], [3,4], [5]]$, then flattening would yield $[1,2,3,4,5]$.
 
+For the base case, simply check if the input list is empty, and if so, return an empty list. For the recursive case, match a non-empty list with (xs # xss) and concatenate xs (using @) with the result of flattening xss.
 
+```{dropdown} Show Answer
+~~~isabelle
+fun flatten :: "'a list list => 'a list" where
+  "flatten [] = []"
+  |"flatten (xs # xss) = xs @ flatten xss"
+~~~
+```
 
-WIP
+Use a quick lemma with simp to confirm that the function works:
+```isabelle
+lemma "flatten [[1::nat, 2], [3,4], [5,6], [7]] = [1,2,3,4,5,6,7]"
+  apply simp
+  done
+```
+If there are no errors, then the flatten function is implemented correctly.
+
+### Length Invariant
+
+The next step is to prove that the flatten function implemented is *length invariant*, meaning that the operation doesn't create or lose elements, but instead only performs simple concatenation.
+
+Define a lemma called `lemma length_flatten:`, and check that for all xss, the length of flatten(xss) equals the sum of the lengths of the lists inside xss using.
+
+```isabelle
+lemma length_flatten:
+  "length (flatten xss) = sum_list (map length xss)"
+```
+
+Since this proof is relatively simple, a tactic based approach would be ideal. Set up the tactic based proof by induction by using `apply (induct xss)`
+
+There should now be 2 subgoals, and from there, simply leverage the Sledgehammer tool to solve proof obligations.
+
+The full proof is here. Isabelle will recognize the lemma as a theorem when all proof obligations have been satisfied.
+```{dropdown} Show Answer
+~~~isabelle
+lemma length_flatten:
+  "length (flatten xss) = sum_list (map length xss)"
+  apply (induct xss)
+    apply simp
+  by simp
+~~~
+```
+
+*The Isabelle .thy file for this exercise are located [here](../content/assets-10/list_flatten.thy)*
 
 
 ## The Landscape of Tools
@@ -326,7 +373,7 @@ Xu et al. present MiniLang/IsaMini, a streamlined proof language for Isabelle/HO
 
 Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> show that large language models are particularly effective at performing autoformalization, which is the process of automatically translating natural language mathematics into formal specifications and proofs. Specifically, they note that 25.3% of mathematical competition problems were translated *perfectly* to formal Isabelle/HOL statements. In addition, by using these autoformalized statements to fine-tune an existing neural theorem prover, they managed to improve achieve a 35.2% proof rate on Mini2F2, compared to a baseline proof rate of 29.6%.
 
-## Case Study - Autoformalization with Large Language Models
+## Case Study - Autoformalization with LLMs
 
 WIP
 
@@ -688,7 +735,6 @@ AI/LLM stuff with NTP in Isabelle?
 
 <!-- calculus of inductive constants (in coq)
 https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html -->
-
 
 
 ## Suggestions for Future Work
