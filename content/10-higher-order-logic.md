@@ -346,7 +346,7 @@ lemma length_flatten:
 
 **Lean (4)** is another proof assistant that follows a similar but more modern variant of dependent type theory. Like Rocq, Learn also extends the Calculus of Constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Like Rocq, Lean 4's dependent type theory also supports greater expressive power compared to Isabelle/HOL.
 
-### Automated Theorem Prover
+### Automated Theorem Provers
 
 **Leo III** is an automated theorem prover for classical higher-order logic that supports all common TPTP input dialects and is based on paramodulation calculus with ordering constraints for reasoning. Leo III is written in Scala and runs on the JVM (Java Virtual Machine). Compared with ITPs (interactive theorem provers) like Isabelle/HOL, Leo III trades human-guided proof structuring and granular control for full automation, allowing it to rapidly discharge proof obligations.<sup><a href="#LeoIII">[28]</a></sup>
 **Leo III** is an automated theorem prover for classical higher-order logic that supports all common TPTP input dialects and is based on paramodulation calculus with ordering constraints for reasoning. Leo III is written in Scala and runs on the JVM (Java Virtual Machine). Compared with ITPs (interactive theorem provers) like Isabelle/HOL, Leo III trades human-guided proof structuring and granular control for full automation, allowing it to rapidly discharge proof obligations.<sup><a href="#LeoIII">[28]</a></sup>
@@ -361,9 +361,9 @@ lemma length_flatten:
 
 ## Algorithms
 
-WIP 
-
 ### Matching and Unification
+
+WIP
 
 <!-- This is the engine that lets the system fit rules to goals.
 Unification (especially first-order and higher-order patterns) is the key algorithm that determines how variables in rules or lemmas can be instantiated to match the current proof goal or subgoal. In Isabelle/HOL, unification drives rule application, tactic behavior, and many automation steps, linking the declarative inference rules to concrete proof steps.
@@ -378,6 +378,8 @@ Why this matters
 
 ### Simplification & Rewriting
 
+WIP
+
 <!-- This is the core term-engine that most automated tactics rely on.
 
 The simplifier in Isabelle/HOL repeatedly applies rewrite rules — typically equational theorems — to simplify terms. This involves heuristics such as term ordering and conditional rewriting, which make it efficient and prevent infinite rewriting loops. The simplifier is used by tactics like simp and underpins many other automatic proof methods.
@@ -388,6 +390,8 @@ What to cover
 	•	How this intersects with automation (simp, auto, etc.) -->
 
 ### Proof Search and External Automation
+
+WIP
 
 <!-- This covers the practical automation layer that makes Isabelle powerful in real use.
 
