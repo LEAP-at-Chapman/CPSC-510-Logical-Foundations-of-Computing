@@ -418,12 +418,11 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">2.9. Case Study</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-water-jug-problem">2.9.1. The Water Jug Problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-run-the-above-code-copy-it-a-file-named-water-jug-pl">2.9.2. To run the above code copy it a file named water_jug.pl</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declarative-state-transitions">2.9.3. 1. Declarative State Transitions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-search-strategies">2.9.4. 2. Multiple Search Strategies</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-backtracking">2.9.5. 3. Automatic Backtracking</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-solution-tracing">2.9.6. 4. Visual Solution Tracing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-big-picture">2.9.7. The Big Picture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declarative-state-transitions">2.9.2. Declarative State Transitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-search-strategies">2.9.3. Multiple Search Strategies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-backtracking">2.9.4. Automatic Backtracking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-solution-tracing">2.9.5. Visual Solution Tracing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-big-picture">2.9.6. The Big Picture</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">2.10. History</a><ul class="nav section-nav flex-column">
@@ -803,16 +802,8 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 <li><p>Pour water from one jug to another until either the source is empty or the destination is full</p></li>
 </ul>
 <p>This seems simple, but the sequence of operations isn’t immediately obvious. With Prolog we can systematically explore all possibilities to find the solution.</p>
-<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% Water Jug Problem Solver</span>
-<span class="c1">% Jug A: 4 liters capacity, Jug B: 3 liters capacity</span>
-<span class="c1">% Goal: Measure exactly 2 liters</span>
-
-<span class="c1">% ---------- State Representation ----------</span>
-<span class="c1">% state(JugA_Current, JugB_Current)</span>
-
-<span class="c1">% ---------- Valid Moves ----------</span>
-
-<span class="c1">% 1. Fill Jug A completely</span>
+<p>These six moves defined below are the core to our solution and define all the legal moves that are available:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% 1. Fill Jug A completely</span>
 <span class="nf">move</span><span class="p">(</span><span class="nf">state</span><span class="p">(</span><span class="k">_</span><span class="p">,</span> <span class="nv">B</span><span class="p">),</span> <span class="nf">state</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="nv">B</span><span class="p">))</span> <span class="p">:-</span> 
     <span class="nf">format</span><span class="p">(</span><span class="s s-Atom">&#39;Fill Jug A~n&#39;</span><span class="p">).</span>
 
@@ -843,17 +834,14 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
     <span class="nv">NewA</span> <span class="o">is</span> <span class="nv">A</span> <span class="o">+</span> <span class="nv">PourAmount</span><span class="p">,</span>
     <span class="nv">NewB</span> <span class="o">is</span> <span class="nv">B</span> <span class="o">-</span> <span class="nv">PourAmount</span><span class="p">,</span>
     <span class="nf">format</span><span class="p">(</span><span class="s s-Atom">&#39;Pour ~w liters from Jug B to Jug A~n&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">PourAmount</span><span class="p">]).</span>
-
-<span class="c1">% ---------- Search Algorithm ----------</span>
-
-<span class="c1">% Solve the water jug problem</span>
-<span class="nf">solve</span> <span class="o">:-</span>
-    <span class="nf">solve_bfs</span><span class="p">([</span><span class="nf">state</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)],</span> <span class="p">[],</span> <span class="nv">Solution</span><span class="p">),</span>
-    <span class="nf">reverse</span><span class="p">(</span><span class="nv">Solution</span><span class="p">,</span> <span class="nv">ReversedSolution</span><span class="p">),</span>
-    <span class="s s-Atom">nl</span><span class="p">,</span> <span class="nf">write</span><span class="p">(</span><span class="s s-Atom">&#39;Solution Found!&#39;</span><span class="p">),</span> <span class="s s-Atom">nl</span><span class="p">,</span> <span class="s s-Atom">nl</span><span class="p">,</span>
-    <span class="nf">print_solution</span><span class="p">(</span><span class="nv">ReversedSolution</span><span class="p">).</span>
-
-<span class="c1">% Breadth-first search implementation</span>
+</pre></div>
+</div>
+<p>Each rule defines a valid transition from one state to another. The format move(CurrentState, NextState) means “from CurrentState you can move to NextState by performing this action”:</p>
+<p>Filling Rules (1 &amp; 2): These simply reset a jug to its maximum capacity while leaving the other jug unchanged. The underscore _ acts as an anonymous variable, meaning “I don’t care what value was here before.”</p>
+<p>Emptying Rules (3 &amp; 4): These set a jug to 0 liters while preserving the other jug’s contents.</p>
+<p>Pouring Rules (5 &amp; 6): These are the most interesting. Rule 5 says: “You can pour from A to B if A has water (A &gt; 0) and B has space (B &lt; 3). The amount poured is the minimum between what A has and what B can accept (min(A, 3 - B)).” Rule 6 is the symmetric case for pouring from B to A.</p>
+<p>While the move rules define the problem space, we need additional code to search through this space systematically. This “boilerplate” is interesting because it shows how Prolog can implement different search strategies with minimal changes:</p>
+<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="c1">% Breadth-first search implementation</span>
 <span class="nf">solve_bfs</span><span class="p">([</span><span class="nf">state</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span><span class="p">)|</span><span class="k">_</span><span class="p">],</span> <span class="nv">Visited</span><span class="p">,</span> <span class="p">[</span><span class="nf">state</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span><span class="p">)|</span><span class="nv">Visited</span><span class="p">])</span> <span class="p">:-</span>
     <span class="p">(</span><span class="nv">A</span> <span class="o">=:=</span> <span class="mi">2</span><span class="p">;</span> <span class="nv">B</span> <span class="o">=:=</span> <span class="mi">2</span><span class="p">),</span>  <span class="c1">% Goal condition: 2 liters in either jug</span>
     <span class="p">!.</span>
@@ -866,23 +854,7 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
     <span class="nf">append</span><span class="p">(</span><span class="nv">RestQueue</span><span class="p">,</span> <span class="nv">NewStates</span><span class="p">,</span> <span class="nv">NewQueue</span><span class="p">),</span>
     <span class="nf">solve_bfs</span><span class="p">(</span><span class="nv">NewQueue</span><span class="p">,</span> <span class="p">[</span><span class="nv">CurrentState</span><span class="p">|</span><span class="nv">Visited</span><span class="p">],</span> <span class="nv">Solution</span><span class="p">).</span>
 
-<span class="c1">% ---------- Solution Display ----------</span>
-<span class="nf">print_solution</span><span class="p">([]).</span>
-<span class="nf">print_solution</span><span class="p">([</span><span class="nv">State</span><span class="p">])</span> <span class="p">:-</span>
-    <span class="nf">format_state</span><span class="p">(</span><span class="nv">State</span><span class="p">),</span> <span class="p">!.</span>
-<span class="nf">print_solution</span><span class="p">([</span><span class="nv">State1</span><span class="p">,</span> <span class="nv">State2</span><span class="p">|</span><span class="nv">Rest</span><span class="p">])</span> <span class="p">:-</span>
-    <span class="nf">format_state</span><span class="p">(</span><span class="nv">State1</span><span class="p">),</span>
-    <span class="nf">print_solution</span><span class="p">([</span><span class="nv">State2</span><span class="p">|</span><span class="nv">Rest</span><span class="p">]).</span>
-
-<span class="nf">format_state</span><span class="p">(</span><span class="nf">state</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span><span class="p">))</span> <span class="p">:-</span>
-    <span class="nf">format</span><span class="p">(</span><span class="s s-Atom">&#39;Jug A: ~w liters, Jug B: ~w liters~n&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span><span class="p">]).</span>
-
-<span class="c1">% ---------- Alternative Depth-First Search ----------</span>
-<span class="nf">solve_dfs</span> <span class="o">:-</span>
-    <span class="nf">solve_dfs_path</span><span class="p">(</span><span class="nf">state</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">[</span><span class="nf">state</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)],</span> <span class="nv">Solution</span><span class="p">),</span>
-    <span class="s s-Atom">nl</span><span class="p">,</span> <span class="nf">write</span><span class="p">(</span><span class="s s-Atom">&#39;DFS Solution:&#39;</span><span class="p">),</span> <span class="s s-Atom">nl</span><span class="p">,</span>
-    <span class="nf">print_solution</span><span class="p">(</span><span class="nv">Solution</span><span class="p">).</span>
-
+<span class="c1">% Depth-first search alternative</span>
 <span class="nf">solve_dfs_path</span><span class="p">(</span><span class="nf">state</span><span class="p">(</span><span class="nv">A</span><span class="p">,</span> <span class="nv">B</span><span class="p">),</span> <span class="nv">Path</span><span class="p">,</span> <span class="nv">Path</span><span class="p">)</span> <span class="p">:-</span>
     <span class="p">(</span><span class="nv">A</span> <span class="o">=:=</span> <span class="mi">2</span><span class="p">;</span> <span class="nv">B</span> <span class="o">=:=</span> <span class="mi">2</span><span class="p">),</span> <span class="p">!.</span>  <span class="c1">% Goal reached</span>
 
@@ -892,26 +864,17 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
     <span class="nf">solve_dfs_path</span><span class="p">(</span><span class="nv">NextState</span><span class="p">,</span> <span class="p">[</span><span class="nv">NextState</span><span class="p">|</span><span class="nv">Path</span><span class="p">],</span> <span class="nv">Solution</span><span class="p">).</span>
 </pre></div>
 </div>
-</section>
-<section id="to-run-the-above-code-copy-it-a-file-named-water-jug-pl">
-<h3><span class="section-number">2.9.2. </span>To run the above code copy it a file named water_jug.pl<a class="headerlink" href="#to-run-the-above-code-copy-it-a-file-named-water-jug-pl" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>swipl<span class="w"> </span>-f<span class="w"> </span>water_jug.pl
-</pre></div>
-</div>
-<p>Then in the Prolog interpreter:</p>
-<div class="highlight-prolog notranslate"><div class="highlight"><pre><span></span><span class="s s-Atom">?-</span> <span class="s s-Atom">solve</span><span class="p">.</span>
-</pre></div>
-</div>
-<p>Tio code is also available: <a class="reference external" href="https://tio.run/##nVZtb9owEP7Or7h&#64;qAhqQC2wfWDrpGQdkyZ16lqp&#64;8AQSokpnpwX2ckoUtW/zs4vcUwCSFskaOw7P3fP47ujOc9Y9twXG7rbncPPqCAcvpXPcMezJ0YSeMjYH8I752ozmMAYGEUfAcsoj5a02PrKEk5g1LTgoa9ZxCZwSyJRcgLkJVoWbAtD49lBj7594KHA6HBPck4ESXFBs9Sxo7OQHh7GCxafS87RSUUPq1WvgfgYMRrDbfaHCBcIna4GMKWMaVawzJKckYKwbSdBZ0/HWfgQ9nwTdCwXPZj0oQP4rDKeRIXXrUHe0m5vIKGHDnToQAO44IEPCwuOi5ECP4wdWuzRAL4kebHVIY8me1klu4fnnLSAYxcwPJXg5SnAOsN3A7jLSg4rniWobJGhBmVaUIZ/qYBViZwyjhZcEHm&#64;EbMm8Z1scI3fDpUAPoEkBx9h5KsdGSxIMgwhEROaKjGhL4GUg4SRpgD3amdrU1mFcNGyVSQVm7dNVdyKl64a5FZx92FWn59rJd67SoTSOzBKBK4S4f8pEWolAlRifEyJ0Md27UPQUuLihBL9f1YirJQIjijh9jiJ&#64;HINAXvOOC3WSaMt1bSBYk1goybRb0TN9STqCGUz9NVi8bQS3qwq&#64;cveHIPjB0FKOTsMbU5wgAniVds&#64;jhi1EzccU&#64;bDBrMiXreywBRpxGddvAppxY/yzDlNi4UwTl4LT7EOOYniYt1fUS4KEJo4ldMgqaZbp0VD3fvrAlk8UoGpxEjJtZjdua0DL4DryTUMP&#64;A1qBdMFfTgxdmTxlTGmdiRCzQFgsJrbRXCGWbr5GFGqRrGr/dEFD9KUhI3IUvTzgOaxhFjWKcv&#64;pyvh2T1eKqwXWBZzca313CGXxeQkOSJcBfPBO/VpawMwqyjPCdp7Nl0/dpDvapN41tzrQyo8R7rSmSHaquOqwK5oSJn0dat40Z1zGQXNPdUoHljoi70TVeynB05duXrn8qhup5TIFe9g/U62zuO1PZOOuXWmvjmnwA7BOyPv93RI0Cebjd/wNAjxcrHPr4hOfbGVPWGGQqOhPqO4pXY73fcWORRsfbqnrf9YQbA8Z6&#64;mT5Y68R09CF13Ds/GNbM5jvc0d8nm/FsYPsRB8JyTeIW7H5naNxWk53uoc7RzlEJ&#64;odEdJxm9v1V&#64;u9V/m6nzg3&#64;Ag">code</a></p>
+<p>Here the move rules remain unchanged regardless of whether we use BFS, DFS, or any other search strategy. The search algorithms simply navigate the graph defined by those moves.</p>
+<p>Tio code is available to run here: <a class="reference external" href="https://tio.run/##nVZtb9owEP7Or7h&#64;qAhqQC2wfWDrpGQdkyZ16lqp&#64;8AQSokpnpwX2ckoUtW/zs4vcUwCSFskaOw7P3fP47ujOc9Y9twXG7rbncPPqCAcvpXPcMezJ0YSeMjYH8I752ozmMAYGEUfAcsoj5a02PrKEk5g1LTgoa9ZxCZwSyJRcgLkJVoWbAtD49lBj7594KHA6HBPck4ESXFBs9Sxo7OQHh7GCxafS87RSUUPq1WvgfgYMRrDbfaHCBcIna4GMKWMaVawzJKckYKwbSdBZ0/HWfgQ9nwTdCwXPZj0oQP4rDKeRIXXrUHe0m5vIKGHDnToQAO44IEPCwuOi5ECP4wdWuzRAL4kebHVIY8me1klu4fnnLSAYxcwPJXg5SnAOsN3A7jLSg4rniWobJGhBmVaUIZ/qYBViZwyjhZcEHm&#64;EbMm8Z1scI3fDpUAPoEkBx9h5KsdGSxIMgwhEROaKjGhL4GUg4SRpgD3amdrU1mFcNGyVSQVm7dNVdyKl64a5FZx92FWn59rJd67SoTSOzBKBK4S4f8pEWolAlRifEyJ0Md27UPQUuLihBL9f1YirJQIjijh9jiJ&#64;HINAXvOOC3WSaMt1bSBYk1goybRb0TN9STqCGUz9NVi8bQS3qwq&#64;cveHIPjB0FKOTsMbU5wgAniVds&#64;jhi1EzccU&#64;bDBrMiXreywBRpxGddvAppxY/yzDlNi4UwTl4LT7EOOYniYt1fUS4KEJo4ldMgqaZbp0VD3fvrAlk8UoGpxEjJtZjdua0DL4DryTUMP&#64;A1qBdMFfTgxdmTxlTGmdiRCzQFgsJrbRXCGWbr5GFGqRrGr/dEFD9KUhI3IUvTzgOaxhFjWKcv&#64;pyvh2T1eKqwXWBZzca313CGXxeQkOSJcBfPBO/VpawMwqyjPCdp7Nl0/dpDvapN41tzrQyo8R7rSmSHaquOqwK5oSJn0dat40Z1zGQXNPdUoHljoi70TVeynB05duXrn8qhup5TIFe9g/U62zuO1PZOOuXWmvjmnwA7BOyPv93RI0Cebjd/wNAjxcrHPr4hOfbGVPWGGQqOhPqO4pXY73fcWORRsfbqnrf9YQbA8Z6&#64;mT5Y68R09CF13Ds/GNbM5jvc0d8nm/FsYPsRB8JyTeIW7H5naNxWk53uoc7RzlEJ&#64;odEdJxm9v1V&#64;u9V/m6nzg3&#64;Ag">code</a></p>
 </section>
 <section id="declarative-state-transitions">
-<h3><span class="section-number">2.9.3. </span>1. Declarative State Transitions<a class="headerlink" href="#declarative-state-transitions" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.9.2. </span>Declarative State Transitions<a class="headerlink" href="#declarative-state-transitions" title="Link to this heading">#</a></h3>
 <p>The most interesting aspect of the Prolog solution is how we describe the <em>nature</em> of valid moves rather than prescribing a specific sequence of operations. Instead of writing step-by-step instructions like “first fill jug A, then pour to jug B, then…” we simply define what constitutes a legal transition between states.</p>
 <p>Each move rule reads like a natural language description of the physical constraints. The pouring rule essentially says: “If jug B has water and jug A has space, you can transfer the smaller amount between what B contains and what A can accept.” This shows how we’d explain the rules to another person, yet it’s executable code.</p>
 <p>This declarative approach means we’re encoding the <em>physics</em> of the problem rather than a solution strategy. Prolog then uses these fundamental rules to explore possibilities, much like how a person would mentally simulate different sequences while ensuring they never violate the physical constraints.</p>
 </section>
 <section id="multiple-search-strategies">
-<h3><span class="section-number">2.9.4. </span>2. Multiple Search Strategies<a class="headerlink" href="#multiple-search-strategies" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.9.3. </span>Multiple Search Strategies<a class="headerlink" href="#multiple-search-strategies" title="Link to this heading">#</a></h3>
 <p>Our solution demonstrates how easily Prolog can switch between different problem-solving strategies. We implemented both breadth-first search (BFS) and depth-first search (DFS) approaches, each with distinct characteristics:</p>
 <ul class="simple">
 <li><p><strong>Breadth-first search</strong> systematically explores all possible moves level by level, guaranteeing it will find the shortest solution sequence. It’s methodical and complete but requires more memory to track all possibilities.</p></li>
@@ -920,13 +883,13 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 <p>We’re not rewriting the problem rules for each approach, we simply change how we navigate the possibility space. This separation of “what moves are possible” from “how we explore those moves” is a powerful demonstration of logic programming’s flexibility.</p>
 </section>
 <section id="automatic-backtracking">
-<h3><span class="section-number">2.9.5. </span>3. Automatic Backtracking<a class="headerlink" href="#automatic-backtracking" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.9.4. </span>Automatic Backtracking<a class="headerlink" href="#automatic-backtracking" title="Link to this heading">#</a></h3>
 <p>One of Prolog’s most best features that we’ve touched on a bit already is its built-in backtracking mechanism. When the system follows a sequence of moves that leads to a dead end, like repeatedly filling and emptying the same jug without progress,, it automatically backtracks and tries alternative paths.</p>
 <p>This eliminates the need for complex error recovery code or manual stack management that would be required in imperative languages. The programmer never writes “if this doesn’t work, go back and try something else”, Prolog handles that automatically as part of its fundamental execution model.</p>
 <p>This built-in exploration makes Prolog exceptionally well-suited for problems where the solution isn’t obvious but the rules are clear. It continually works through combinations that a human might overlook due to frustration or cognitive bias.</p>
 </section>
 <section id="visual-solution-tracing">
-<h3><span class="section-number">2.9.6. </span>4. Visual Solution Tracing<a class="headerlink" href="#visual-solution-tracing" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.9.5. </span>Visual Solution Tracing<a class="headerlink" href="#visual-solution-tracing" title="Link to this heading">#</a></h3>
 <p>The step-by-step output reveals Prolog’s reasoning process in action, transforming an abstract computational process into an understandable narrative:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Fill</span> <span class="n">Jug</span> <span class="n">A</span>
 <span class="n">Jug</span> <span class="n">A</span><span class="p">:</span> <span class="mi">4</span> <span class="n">liters</span><span class="p">,</span> <span class="n">Jug</span> <span class="n">B</span><span class="p">:</span> <span class="mi">0</span> <span class="n">liters</span>
@@ -945,7 +908,7 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 <p>Each step follows logically from the previous state, and the sequence reveals non-obvious insights—like the need to create intermediate measurements (the 1-liter state) to achieve the final goal.</p>
 </section>
 <section id="the-big-picture">
-<h3><span class="section-number">2.9.7. </span>The Big Picture<a class="headerlink" href="#the-big-picture" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">2.9.6. </span>The Big Picture<a class="headerlink" href="#the-big-picture" title="Link to this heading">#</a></h3>
 <p>What makes this case study interesting is how it showcases Prolog’s ability to bridge human reasoning and computational execution. We describe the problem in terms that make sense to us. Prolog handles the tedious work of exploring all the different combinations.</p>
 <p>This approach scales remarkably well to more complex problems. The same pattern of defining state transitions and letting Prolog search for sequences applies to scheduling problems, route planning, configuration tasks, and many other domains where the solution isn’t a simple formula but comes from following rules systematically.</p>
 </section>
@@ -1090,19 +1053,17 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 </section>
 <section id="references">
 <h2><span class="section-number">2.14. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>https://swish.swi-prolog.org/p/dselman.swinb</p></li>
-<li><p>https://www.geeksforgeeks.org/dsa/8-queen-problem/</p></li>
-<li><p>https://www.swi-prolog.org/pldoc/man?section=arith</p></li>
-<li><p>https://sicstus.sics.se/    #SICStus Prolog</p></li>
-<li><p>https://www.researchgate.net/publication/47822182_SICStus_Prolog_–_the_first_25_years</p></li>
-<li><p>http://www.gprolog.org/     #GNU Prolog</p></li>
-<li><p>https://eclipseclp.org/     #Eclipse</p></li>
-<li><p>https://www.metalevel.at/prolog/sorting</p></li>
-<li><p>https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html</p></li>
-<li><p>https://blogit.michelin.io/an-introduction-to-datalog/</p></li>
-<li><p>https://leetcode.com/problems/water-and-jug-problem/description/</p></li>
-</ol>
+<p>Alberi, Fabien. “An Introduction to Datalog.” Michelin.io Blog, 3 Feb. 2021, https://blogit.michelin.io/an-introduction-to-datalog/.</p>
+<p>swi-prolog. “Logic Programming Introduction.” SWISH (SWI-Prolog for Sharing), https://swish.swi-prolog.org/p/dselman.swinb</p>
+<p>GeeksforGeeks. “8 Queen Problem.” GeeksforGeeks, https://www.geeksforgeeks.org/dsa/8-queen-problem/</p>
+<p>swi-prolog. et al. “format/2.” SWI-Prolog Documentation, https://www.swi-prolog.org/pldoc/man?predicate=format/2</p>
+<p>Swedish Institute of Computer Science. SICStus Prolog. https://sicstus.sics.se/</p>
+<p>Carlsson, Mats, and Per Mildner. “SICStus Prolog—The first 25 Years.” ResearchGate, 2012, https://www.researchgate.net/publication/47822182_SICStus_Prolog_–_the_first_25_years.</p>
+<p>Diaz, Daniel, et al. GNU Prolog. http://www.gprolog.org/</p>
+<p>“ECLiPSe Constraint Programming System.” Eclipse Foundation, https://eclipseclp.org/</p>
+<p>Metalevel. “Sorting.” The Power of Prolog, https://www.metalevel.at/prolog/sorting</p>
+<p>“Prolog Basics.” University of Washington, Computer Science &amp; Engineering, https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html</p>
+<p>LeetCode. “Water and Jug Problem.” LeetCode, https://leetcode.com/problems/water-and-jug-problem/description/.</p>
 </section>
 </section>
 
@@ -1199,12 +1160,11 @@ Generative models lower the barrier to producing candidate proofs or tactics; sy
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">2.9. Case Study</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-water-jug-problem">2.9.1. The Water Jug Problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#to-run-the-above-code-copy-it-a-file-named-water-jug-pl">2.9.2. To run the above code copy it a file named water_jug.pl</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declarative-state-transitions">2.9.3. 1. Declarative State Transitions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-search-strategies">2.9.4. 2. Multiple Search Strategies</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-backtracking">2.9.5. 3. Automatic Backtracking</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-solution-tracing">2.9.6. 4. Visual Solution Tracing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-big-picture">2.9.7. The Big Picture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declarative-state-transitions">2.9.2. Declarative State Transitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-search-strategies">2.9.3. Multiple Search Strategies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-backtracking">2.9.4. Automatic Backtracking</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-solution-tracing">2.9.5. Visual Solution Tracing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-big-picture">2.9.6. The Big Picture</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">2.10. History</a><ul class="nav section-nav flex-column">

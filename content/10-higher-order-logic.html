@@ -415,6 +415,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">8.5. The Landscape of Tools</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-theorem-provers">8.5.1. Interactive Theorem Provers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-theorem-prover">8.5.2. Automated Theorem Prover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-languages">8.5.3. Programming Languages</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">8.6. Algorithms</a><ul class="nav section-nav flex-column">
@@ -717,6 +718,10 @@ document.write(`
 <h3><span class="section-number">8.5.2. </span>Automated Theorem Prover<a class="headerlink" href="#automated-theorem-prover" title="Link to this heading">#</a></h3>
 <p><strong>Leo III</strong> is an automated theorem prover for classical higher-order logic that supports all common TPTP input dialects and is based on paramodulation calculus with ordering constraints for reasoning. Leo III is written in Scala and runs on the JVM (Java Virtual Machine). Compared with ITPs (interactive theorem provers) like Isabelle/HOL, Leo III trades human-guided proof structuring and granular control for full automation, allowing it to rapidly discharge proof obligations.<sup><a href="#LeoIII">[28]</a></sup></p>
 <p><strong>Satallax</strong> is another automated theorem prover for classical higher-order logic and is based on Church’s simple type theory with extensionality and choice operators. It is implemented in OCaml and uses the SAT solver MiniSat for its proof search. Basically, Satallax generates propositional clauses corresponding to the rules of a complete tableau calculus and calls MiniSat periodically to test the satisfiability of these clauses.<sup><a href="#Satallax">[16]</a></sup></p>
+</section>
+<section id="programming-languages">
+<h3><span class="section-number">8.5.3. </span>Programming Languages<a class="headerlink" href="#programming-languages" title="Link to this heading">#</a></h3>
+<p><strong>F*</strong> is a dependently typed programming language that integrates program development with proof construction in a single system. It’s type system lets you encode precise specifications and it uses SMT solvers to automatically discharge proof obligations while still supporting interactive proof guidance when necessary, similar to Isabelle and its Sledgehammer tool. More information about F* with a web-based tutorial can be found <a class="reference external" href="https://fstar-lang.org/tutorial/">here</a>.</p>
 </section>
 </section>
 <section id="algorithms">
@@ -1185,6 +1190,7 @@ https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html -->
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">8.5. The Landscape of Tools</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-theorem-provers">8.5.1. Interactive Theorem Provers</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-theorem-prover">8.5.2. Automated Theorem Prover</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-languages">8.5.3. Programming Languages</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">8.6. Algorithms</a><ul class="nav section-nav flex-column">

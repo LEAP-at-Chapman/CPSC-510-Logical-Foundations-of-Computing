@@ -276,6 +276,10 @@ lemma length_flatten:
 
 **Satallax** is another automated theorem prover for classical higher-order logic and is based on Church's simple type theory with extensionality and choice operators. It is implemented in OCaml and uses the SAT solver MiniSat for its proof search. Basically, Satallax generates propositional clauses corresponding to the rules of a complete tableau calculus and calls MiniSat periodically to test the satisfiability of these clauses.<sup><a href="#Satallax">[16]</a></sup>
 
+### Programming Languages
+
+**F\*** is a dependently typed programming language that integrates program development with proof construction in a single system. It's type system lets you encode precise specifications and it uses SMT solvers to automatically discharge proof obligations while still supporting interactive proof guidance when necessary, similar to Isabelle and its Sledgehammer tool. More information about F* with a web-based tutorial can be found [here](https://fstar-lang.org/tutorial/).
+
 
 ## Algorithms
 
