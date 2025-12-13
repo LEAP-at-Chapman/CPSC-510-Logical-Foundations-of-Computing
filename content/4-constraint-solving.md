@@ -31,8 +31,8 @@ minizinc --version
 
 Constraint programming systems generally share several defining features that distinguish them from other approaches:
 
-* **Feasibility-focused**: CP emphasizes finding solutions that satisfy all constraints, not necessarily optimal ones
-* **Declarative**: You describe *what* constraints must hold, not *how* to find the solution
+* **Feasibility-focused**: CP emphasizes finding solutions that satisfy all constraints, not necessarily optimal ones.
+* **Declarative**: You describe *what* constraints must hold, not *how* to find the solution.
 * **Powerful for scheduling**: Particularly effective for problems like employee scheduling, job shop scheduling, and resource allocation
 * **Handles heterogeneous constraints**: Can combine different types of constraints (arithmetic, logical, global constraints)
 
@@ -80,13 +80,13 @@ output [
 ] ++ ["\n"];
 ```
 
-## Working Example: N-Queens in MiniZinc
+## Introductory Example: N-Queens in MiniZinc
 
-To see these concepts in action, let's look at the "Hello World" of constraint programming: placing N queens on a chessboard so that no two queens attack each other.
+To see these concepts in action, let's look at the "Hello World" of constraint programming: placing N queens on a chessboard so that no two queens attack each other. For context, the N queens problem is a classic problem in computer science and logical programming where you must place N queens on an Width x Height chessboard such that no two queens threaten each other.
 
-A minimal, runnable model is included in this repo at `src/minizinc/nqueens/nqueens.mzn`. You can run it directly without any `.dzn` file.
+A minimal, runnable introductory example is included in this repo at `src/minizinc/nqueens/nqueens.mzn`. You can run this file by doing minizinc nqueens.mzn while in the src/minizinc/nqueens directory.
 
-```mzn
+```
 include "globals.mzn";
 
 int: n = 8;
@@ -109,7 +109,7 @@ output [
 ] ++ ["\n", "Positions: ", show(q), "\n"];
 ```
 
-```{button-link} ../minizinc/nqueens.mzn
+```{button-link} ../minizinc/nqueens/nqueens.mzn
 :color: primary
 :shadow:
 :target: _blank
