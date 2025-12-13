@@ -327,8 +327,7 @@ What to cover
 
 ## Typical Use Cases
 
-WIP
-
+Isabelle/HOL is widely used for formal specification and rigorous proof of both mathematical theorems and system properties. It supports expressing precise logical models and verifying them interactively with automation (via the Sledgehammer tool), making it suitable for a variety of tasks such as formalizing algorithms, verifying software and hardware correctness, and reasoning about programming language semantics and protocols. Isabelle/HOL has been used in many different verification projects, such as through the large body of libraries and developments collected in the Archive of Formal Proofs (AFP)<sup><a href="#AFP_History">[27]</a></sup> and as evidenced by the examples in [Section 8.9](#applications-in-industry-and-academia).
 
 ## Benchmarks and Competitions
 
@@ -349,13 +348,18 @@ Achermann et al.<sup><a href="#Achermann_physicalAddressing">[19]</a></sup> disc
 
 ### FOCUS - Stream Processing Components
 
-Spichkova<sup><a href="#Spichkova_FOCUS">[20]</a></sup> proposes a new framework, FOCUS, aimed at formal specification and the application of refinement-based verification of interactive systems. In addition, FOCUS uses a stream processing component, represented by a communication history of a directed channel between components. FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).
+Spichkova<sup><a href="#Spichkova_FOCUS">[20]</a></sup> introduces FOCUS, a framework for formal specification and refinement-based verification of interactive systems. Based on stream-processing semantics that model communication histories over directed channels, FOCUS is supported by Isabelle/HOL using the Isar proof language. FOCUS is evaluated on three case studies:
+- a steam boiler control system modelled as a distributed real-time system with proofs that water levels and pump actuations satisfy safety and timing constraints
+- the FlexRay automotive communication protocol, where FOCUS verifies correct static schedules, channel behavior, and broadcast properties for safety-critical embedded communication
+- an Automotive-Gateway system from the Verisoft project, formally specified and refined with guarantees that crash signals trigger correct emergency-service calls and satisfy required data-handling properties.
+<!-- 
+FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).
 
 - The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalized in Isabelle/HOL, translating architecture and component behavior into higher-order logic while proving the design satisfies timing and safety requirements.
 
 - The second case study is about FlexRay, which is a communication protocol for safety-critical real-time applications, specifically embedded systems in vehicles. FOCUS is used in this case to verify and prove correct static cycles, channel scheduling and properties, and node broadcast behavior.
 
-- The third case study is about the Automative-Gateway system for the Verisoft project. Basically, if the Gateway receives a vehicle crash signal, then it will initiate a call to the appropriate Emergency Service Center (ESC). The system is modelled in Isabelle/HOL, with the architecture, requirements, and refinement relations all formally specified and proven to ensure that the Gateway design meets its crash signal and data transmission requirements.
+- The third case study is about the Automative-Gateway system for the Verisoft project. Basically, if the Gateway receives a vehicle crash signal, then it will initiate a call to the appropriate Emergency Service Center (ESC). The system is modelled in Isabelle/HOL, with the architecture, requirements, and refinement relations all formally specified and proven to ensure that the Gateway design meets its crash signal and data transmission requirements. -->
 
 ### IsaBIL - Verifying (In)Correctness of Binaries
 
@@ -376,6 +380,7 @@ Xu et al. present MiniLang/IsaMini, a streamlined proof language for Isabelle/HO
 ### Autoformalization with Large Language Models
 
 Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> show that large language models are particularly effective at performing autoformalization, which is the process of automatically translating natural language mathematics into formal specifications and proofs. Specifically, they note that 25.3% of mathematical competition problems were translated *perfectly* to formal Isabelle/HOL statements. In addition, by using these autoformalized statements to fine-tune an existing neural theorem prover, they managed to improve achieve a 35.2% proof rate on Mini2F2, compared to a baseline proof rate of 29.6%.
+
 
 ## Case Study - Autoformalization with LLMs
 
@@ -409,18 +414,30 @@ The creation of the Archive of Formal Proofs (AFP) in 2004 established a large, 
 The integration of tools such as Sledgehammer and external SMT/ATP solvers in 2007 further extend Isabelle/HOL's proof power. The bridging of interactive reasoning and automation allows user to tackle complex goals with minimal manual effort.<sup><a href="#Isabelle_Sledgehammer">[35]</a></sup>
 
 
-## Formal Methods and AI
-WIP
+<!-- ## Formal Methods and AI
 
-## Current Development, Research Challenges, Conferences and Workshops
+Not sure if this section is necessary since there are already sections that deal with NTP, LLMs in formal verification, autoformalization, etc. -->
+
+## Current Events within Isabelle/HOL
 
 ### Current Development
 
-AI/LLM stuff with NTP in Isabelle?
+Active research is increasingly integrating generative and large language models (LLMs) with interactive theorem proving to reduce manual proof construction. This emerging paradigm, termed *Neural Theorem Proving (NTP)*, augments classic automatic theorem proving (ATP) by integrating generative AI with symbolic proof assistants like Isabelle/HOL to enhance automation, guide proof search, and address complex formal reasoning tasks. Recent work by Xu et al. introduces MiniLang/IsaMini<sup><a href="#Xu_IsaMini">[25]</a></sup>, an intermediate proof language designed to improve LLM performance in Isabelle/HOL and significantly boost success rates on standard proof benchmarks compared to generating Isar scripts directly. NTP and hybrid AI frameworks are also being developed to generate and structure complete formal proofs, fine-tune models for syntactically correct proof output, and integrate verification backends to reduce errors and improve correctness in formal verification tasks. These efforts align with broader trends in formal methods research that explore how LLM reasoning can be combined with rigorous symbolic verification to enhance automation, benchmark performance, and increase formal verification scalability.
 
 ### Research Challenges
 
+Despite ongoing advances, substantial research challenges remain in Isabelle/HOL’s ecosystem, particularly at the intersection of formal verification and generative AI. Interactive theorem proving in Isabelle/HOL still depends heavily on human guidance through structured Isar proofs, making large-scale developments both labor-intensive and error-prone. The integration of LLM-based techniques introduces additional difficulties, such as translating model output into Isabelle’s strict proof language, mitigating hallucinations and syntactic errors, and obtaining sufficiently large, high-quality datasets of formal proofs for training. While intermediate languages such as MiniLang/IsaMini<sup><a href="#Xu_IsaMini">[25]</a></sup> can significantly improve LLM performance, they also highlight the sensitivity of proof success to representation choices and data quality. Moreover, bridging the gap between informal specifications and fully formalized Isabelle theories, commonly termed *autoformalization*<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup>, remains a major obstacle, as current LLMs struggle to reliably produce complete, semantically correct formalizations without human intervention.
+
 ### Conferences and Workshops
+
+- **[International Conference on Interactive Theorem Proving (ITP)](https://itp-conference.github.io/)** - dedicated to interactive theorem proving and related topics, ranging from theoretical foundations to implementation aspects and applications in program verification, security, and formalization of mathematics.
+
+- **[Isabelle Workshop](https://sketis.net/isabelle/isabelle-workshop-2026)** - a workshop focused on Isabelle where users and developers can present tool developments, formalization projects, and ongoing research papers.
+
+- **[International Joint Conference on Automated Reasoning (IJCAR)](https://ijcar.org//conferences)** - international conference covering automated and interactive reasoning which merges several leading conferences and events, such as the Conference on Automated Deduction (CADE), TABLEAUX, and FroCoS, into a single forum covering foundations, tools, and applications in automated reasoning.
+
+- **[Archive of Formal Proofs (AFP)](https://www.isa-afp.org/)** - while not an explicit conference, the AFP functions like a curated repository and journal for Isabelle/HOL proofs, hosting a large collection of mechanically checked proof libraries and scientific developments that are often associated with conference or journal publications.
+
 
 ## References
 
@@ -696,7 +713,7 @@ AI/LLM stuff with NTP in Isabelle?
 
 </ul>
 
-### Misccellaneous
+### Miscellaneous
 
 <ul>
 

@@ -441,23 +441,22 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">8.11.2. Development of Isabelle/HOL</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">8.12. Formal Methods and AI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">8.13. Current Development, Research Challenges, Conferences and Workshops</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">8.13.1. Current Development</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-challenges">8.13.2. Research Challenges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conferences-and-workshops">8.13.3. Conferences and Workshops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-events-within-isabelle-hol">8.12. Current Events within Isabelle/HOL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">8.12.1. Current Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-challenges">8.12.2. Research Challenges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conferences-and-workshops">8.12.3. Conferences and Workshops</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">8.14. References</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ebooks-and-textbooks">8.14.1. eBooks and Textbooks</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#online-articles">8.14.2. Online Articles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-papers">8.14.3. Research Papers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">8.14.4. Videos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misccellaneous">8.14.5. Misccellaneous</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">8.13. References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ebooks-and-textbooks">8.13.1. eBooks and Textbooks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#online-articles">8.13.2. Online Articles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-papers">8.13.3. Research Papers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">8.13.4. Videos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous">8.13.5. Miscellaneous</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">8.15. Suggestions for Future Work</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">8.16. Contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">8.14. Suggestions for Future Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">8.15. Contributors</a></li>
 </ul>
             </nav>
         </div>
@@ -770,7 +769,7 @@ What to cover
 </section>
 <section id="typical-use-cases">
 <h2><span class="section-number">8.7. </span>Typical Use Cases<a class="headerlink" href="#typical-use-cases" title="Link to this heading">#</a></h2>
-<p>WIP</p>
+<p>Isabelle/HOL is widely used for formal specification and rigorous proof of both mathematical theorems and system properties. It supports expressing precise logical models and verifying them interactively with automation (via the Sledgehammer tool), making it suitable for a variety of tasks such as formalizing algorithms, verifying software and hardware correctness, and reasoning about programming language semantics and protocols. Isabelle/HOL has been used in many different verification projects, such as through the large body of libraries and developments collected in the Archive of Formal Proofs (AFP)<sup><a href="#AFP_History">[27]</a></sup> and as evidenced by the examples in <a class="reference internal" href="#applications-in-industry-and-academia"><span class="xref myst">Section 8.9</span></a>.</p>
 </section>
 <section id="benchmarks-and-competitions">
 <h2><span class="section-number">8.8. </span>Benchmarks and Competitions<a class="headerlink" href="#benchmarks-and-competitions" title="Link to this heading">#</a></h2>
@@ -787,12 +786,20 @@ What to cover
 </section>
 <section id="focus-stream-processing-components">
 <h3><span class="section-number">8.9.2. </span>FOCUS - Stream Processing Components<a class="headerlink" href="#focus-stream-processing-components" title="Link to this heading">#</a></h3>
-<p>Spichkova<sup><a href="#Spichkova_FOCUS">[20]</a></sup> proposes a new framework, FOCUS, aimed at formal specification and the application of refinement-based verification of interactive systems. In addition, FOCUS uses a stream processing component, represented by a communication history of a directed channel between components. FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).</p>
+<p>Spichkova<sup><a href="#Spichkova_FOCUS">[20]</a></sup> introduces FOCUS, a framework for formal specification and refinement-based verification of interactive systems. Based on stream-processing semantics that model communication histories over directed channels, FOCUS is supported by Isabelle/HOL using the Isar proof language. FOCUS is evaluated on three case studies:</p>
 <ul class="simple">
-<li><p>The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalized in Isabelle/HOL, translating architecture and component behavior into higher-order logic while proving the design satisfies timing and safety requirements.</p></li>
-<li><p>The second case study is about FlexRay, which is a communication protocol for safety-critical real-time applications, specifically embedded systems in vehicles. FOCUS is used in this case to verify and prove correct static cycles, channel scheduling and properties, and node broadcast behavior.</p></li>
-<li><p>The third case study is about the Automative-Gateway system for the Verisoft project. Basically, if the Gateway receives a vehicle crash signal, then it will initiate a call to the appropriate Emergency Service Center (ESC). The system is modelled in Isabelle/HOL, with the architecture, requirements, and refinement relations all formally specified and proven to ensure that the Gateway design meets its crash signal and data transmission requirements.</p></li>
+<li><p>a steam boiler control system modelled as a distributed real-time system with proofs that water levels and pump actuations satisfy safety and timing constraints</p></li>
+<li><p>the FlexRay automotive communication protocol, where FOCUS verifies correct static schedules, channel behavior, and broadcast properties for safety-critical embedded communication</p></li>
+<li><p>an Automotive-Gateway system from the Verisoft project, formally specified and refined with guarantees that crash signals trigger correct emergency-service calls and satisfy required data-handling properties.</p></li>
 </ul>
+<!-- 
+FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).
+
+- The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalized in Isabelle/HOL, translating architecture and component behavior into higher-order logic while proving the design satisfies timing and safety requirements.
+
+- The second case study is about FlexRay, which is a communication protocol for safety-critical real-time applications, specifically embedded systems in vehicles. FOCUS is used in this case to verify and prove correct static cycles, channel scheduling and properties, and node broadcast behavior.
+
+- The third case study is about the Automative-Gateway system for the Verisoft project. Basically, if the Gateway receives a vehicle crash signal, then it will initiate a call to the appropriate Emergency Service Center (ESC). The system is modelled in Isabelle/HOL, with the architecture, requirements, and refinement relations all formally specified and proven to ensure that the Gateway design meets its crash signal and data transmission requirements. -->
 </section>
 <section id="isabil-verifying-in-correctness-of-binaries">
 <h3><span class="section-number">8.9.3. </span>IsaBIL - Verifying (In)Correctness of Binaries<a class="headerlink" href="#isabil-verifying-in-correctness-of-binaries" title="Link to this heading">#</a></h3>
@@ -835,27 +842,33 @@ Xu et al. present MiniLang/IsaMini, a streamlined proof language for Isabelle/HO
 <p>Markus Wenzel proposed and developed the Isar Proof Language<sup><a href="#Isar_History">[17]</a></sup> for Isabelle between 1998 and 2001. Isar allows for more structured and human readable proofs, improving clarity over traditional tactic-based approaches like in LCF.</p>
 <p>The creation of the Archive of Formal Proofs (AFP) in 2004 established a large, community-driven library of formalized mathematics and computer science. The establishment of the AFP solidified Isabelle/HOL’s role in both academia and industry.<sup><a href="#AFP_History">[27]</a></sup></p>
 <p>The integration of tools such as Sledgehammer and external SMT/ATP solvers in 2007 further extend Isabelle/HOL’s proof power. The bridging of interactive reasoning and automation allows user to tackle complex goals with minimal manual effort.<sup><a href="#Isabelle_Sledgehammer">[35]</a></sup></p>
+<!-- ## Formal Methods and AI
+
+Not sure if this section is necessary since there are already sections that deal with NTP, LLMs in formal verification, autoformalization, etc. -->
 </section>
 </section>
-<section id="formal-methods-and-ai">
-<h2><span class="section-number">8.12. </span>Formal Methods and AI<a class="headerlink" href="#formal-methods-and-ai" title="Link to this heading">#</a></h2>
-<p>WIP</p>
-</section>
-<section id="current-development-research-challenges-conferences-and-workshops">
-<h2><span class="section-number">8.13. </span>Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Link to this heading">#</a></h2>
+<section id="current-events-within-isabelle-hol">
+<h2><span class="section-number">8.12. </span>Current Events within Isabelle/HOL<a class="headerlink" href="#current-events-within-isabelle-hol" title="Link to this heading">#</a></h2>
 <section id="current-development">
-<h3><span class="section-number">8.13.1. </span>Current Development<a class="headerlink" href="#current-development" title="Link to this heading">#</a></h3>
-<p>AI/LLM stuff with NTP in Isabelle?</p>
+<h3><span class="section-number">8.12.1. </span>Current Development<a class="headerlink" href="#current-development" title="Link to this heading">#</a></h3>
+<p>Active research is increasingly integrating generative and large language models (LLMs) with interactive theorem proving to reduce manual proof construction. This emerging paradigm, termed <em>Neural Theorem Proving (NTP)</em>, augments classic automatic theorem proving (ATP) by integrating generative AI with symbolic proof assistants like Isabelle/HOL to enhance automation, guide proof search, and address complex formal reasoning tasks. Recent work by Xu et al. introduces MiniLang/IsaMini<sup><a href="#Xu_IsaMini">[25]</a></sup>, an intermediate proof language designed to improve LLM performance in Isabelle/HOL and significantly boost success rates on standard proof benchmarks compared to generating Isar scripts directly. NTP and hybrid AI frameworks are also being developed to generate and structure complete formal proofs, fine-tune models for syntactically correct proof output, and integrate verification backends to reduce errors and improve correctness in formal verification tasks. These efforts align with broader trends in formal methods research that explore how LLM reasoning can be combined with rigorous symbolic verification to enhance automation, benchmark performance, and increase formal verification scalability.</p>
 </section>
 <section id="research-challenges">
-<h3><span class="section-number">8.13.2. </span>Research Challenges<a class="headerlink" href="#research-challenges" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.12.2. </span>Research Challenges<a class="headerlink" href="#research-challenges" title="Link to this heading">#</a></h3>
+<p>Despite ongoing advances, substantial research challenges remain in Isabelle/HOL’s ecosystem, particularly at the intersection of formal verification and generative AI. Interactive theorem proving in Isabelle/HOL still depends heavily on human guidance through structured Isar proofs, making large-scale developments both labor-intensive and error-prone. The integration of LLM-based techniques introduces additional difficulties, such as translating model output into Isabelle’s strict proof language, mitigating hallucinations and syntactic errors, and obtaining sufficiently large, high-quality datasets of formal proofs for training. While intermediate languages such as MiniLang/IsaMini<sup><a href="#Xu_IsaMini">[25]</a></sup> can significantly improve LLM performance, they also highlight the sensitivity of proof success to representation choices and data quality. Moreover, bridging the gap between informal specifications and fully formalized Isabelle theories, commonly termed <em>autoformalization</em><sup><a href="#Wu_LLM_Autoformat">[24]</a></sup>, remains a major obstacle, as current LLMs struggle to reliably produce complete, semantically correct formalizations without human intervention.</p>
 </section>
 <section id="conferences-and-workshops">
-<h3><span class="section-number">8.13.3. </span>Conferences and Workshops<a class="headerlink" href="#conferences-and-workshops" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.12.3. </span>Conferences and Workshops<a class="headerlink" href="#conferences-and-workshops" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://itp-conference.github.io/">International Conference on Interactive Theorem Proving (ITP)</a></strong> - dedicated to interactive theorem proving and related topics, ranging from theoretical foundations to implementation aspects and applications in program verification, security, and formalization of mathematics.</p></li>
+<li><p><strong><a class="reference external" href="https://sketis.net/isabelle/isabelle-workshop-2026">Isabelle Workshop</a></strong> - a workshop focused on Isabelle where users and developers can present tool developments, formalization projects, and ongoing research papers.</p></li>
+<li><p><strong><a class="reference external" href="https://ijcar.org//conferences">International Joint Conference on Automated Reasoning (IJCAR)</a></strong> - international conference covering automated and interactive reasoning which merges several leading conferences and events, such as the Conference on Automated Deduction (CADE), TABLEAUX, and FroCoS, into a single forum covering foundations, tools, and applications in automated reasoning.</p></li>
+<li><p><strong><a class="reference external" href="https://www.isa-afp.org/">Archive of Formal Proofs (AFP)</a></strong> - while not an explicit conference, the AFP functions like a curated repository and journal for Isabelle/HOL proofs, hosting a large collection of mechanically checked proof libraries and scientific developments that are often associated with conference or journal publications.</p></li>
+</ul>
 </section>
 </section>
 <section id="references">
-<h2><span class="section-number">8.14. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.13. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <style>
 .citation-entry:target {
   background-color: rgba(201, 184, 91, 0.35);
@@ -866,7 +879,7 @@ Xu et al. present MiniLang/IsaMini, a streamlined proof language for Isabelle/HO
 }
 </style>
 <section id="ebooks-and-textbooks">
-<h3><span class="section-number">8.14.1. </span>eBooks and Textbooks<a class="headerlink" href="#ebooks-and-textbooks" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.13.1. </span>eBooks and Textbooks<a class="headerlink" href="#ebooks-and-textbooks" title="Link to this heading">#</a></h3>
 <ul>
   <li id="ConcreteSemantics" class="citation-entry">
     [1]: Nipkow and Klein (2014)
@@ -900,7 +913,7 @@ Xu et al. present MiniLang/IsaMini, a streamlined proof language for Isabelle/HO
 </ul>
 </section>
 <section id="online-articles">
-<h3><span class="section-number">8.14.2. </span>Online Articles<a class="headerlink" href="#online-articles" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.13.2. </span>Online Articles<a class="headerlink" href="#online-articles" title="Link to this heading">#</a></h3>
 <ul>
   <li id="SEP_HOL" class="citation-entry">
     [7]: Jouko Väänänen (2024)
@@ -969,7 +982,7 @@ Xu et al. present MiniLang/IsaMini, a streamlined proof language for Isabelle/HO
 </ul>
 </section>
 <section id="research-papers">
-<h3><span class="section-number">8.14.3. </span>Research Papers<a class="headerlink" href="#research-papers" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.13.3. </span>Research Papers<a class="headerlink" href="#research-papers" title="Link to this heading">#</a></h3>
 <ul>
   <li id="Church_TypeTheory" class="citation-entry">
     [18]: Alonzo Church (1940)
@@ -1033,7 +1046,7 @@ Xu et al. present MiniLang/IsaMini, a streamlined proof language for Isabelle/HO
 </ul>
 </section>
 <section id="videos">
-<h3><span class="section-number">8.14.4. </span>Videos<a class="headerlink" href="#videos" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.13.4. </span>Videos<a class="headerlink" href="#videos" title="Link to this heading">#</a></h3>
 <ul>
   <li id="LigerLearn_LambdaPrimer" class="citation-entry">
     [30]: LigerLearn (2023)
@@ -1056,8 +1069,8 @@ Xu et al. present MiniLang/IsaMini, a streamlined proof language for Isabelle/HO
   </li>
 </ul>
 </section>
-<section id="misccellaneous">
-<h3><span class="section-number">8.14.5. </span>Misccellaneous<a class="headerlink" href="#misccellaneous" title="Link to this heading">#</a></h3>
+<section id="miscellaneous">
+<h3><span class="section-number">8.13.5. </span>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading">#</a></h3>
 <ul>
   <li id="MossSyllogism" class="citation-entry">
     [34]: Larry Moss (2015)
@@ -1090,13 +1103,13 @@ https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html -->
 </section>
 </section>
 <section id="suggestions-for-future-work">
-<h2><span class="section-number">8.15. </span>Suggestions for Future Work<a class="headerlink" href="#suggestions-for-future-work" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.14. </span>Suggestions for Future Work<a class="headerlink" href="#suggestions-for-future-work" title="Link to this heading">#</a></h2>
 <p>I definitely agree having an explicit chapter on both first-order logic and theorem provers related to FOL would be helpful, especially as a preceding chapter to the current one about higher-order logic and Isabelle. This chapter should also include popular Automatic Theorem Provers (ATPs) for FOL, and could serve as a nice introduction into theorem proving and “stronger” tools such as Isabelle/HOL and Lean.</p>
 <p>It might also be interesting to see different chapters covering automatic theorem provers such as Vampire or Satallax vs interactive theorem provers such as Isabelle/HOL or Lean. In addition, there should be a clear division made between first order logic ATPs such as the aforementioned Vampire and higher-order logic ATPs such as Satallax.</p>
 <p>It may also be interesting and useful to either create or find an online Isabelle/HOL program that can run in a web browser, similar to the Lean Game Server. This way users can be quickly onboarded to the tool without having to go through download, setup, version compatibility issues, and other miscellaneous problems that may arise.</p>
 </section>
 <section id="contributors">
-<h2><span class="section-number">8.16. </span>Contributors<a class="headerlink" href="#contributors" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.15. </span>Contributors<a class="headerlink" href="#contributors" title="Link to this heading">#</a></h2>
 <p>Initial Author: Spencer Au</p>
 <p>Peer Reviewer: Wayne Chong</p>
 </section>
@@ -1216,23 +1229,22 @@ https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html -->
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">8.11.2. Development of Isabelle/HOL</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">8.12. Formal Methods and AI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">8.13. Current Development, Research Challenges, Conferences and Workshops</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">8.13.1. Current Development</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-challenges">8.13.2. Research Challenges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conferences-and-workshops">8.13.3. Conferences and Workshops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-events-within-isabelle-hol">8.12. Current Events within Isabelle/HOL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">8.12.1. Current Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-challenges">8.12.2. Research Challenges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conferences-and-workshops">8.12.3. Conferences and Workshops</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">8.14. References</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ebooks-and-textbooks">8.14.1. eBooks and Textbooks</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#online-articles">8.14.2. Online Articles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-papers">8.14.3. Research Papers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">8.14.4. Videos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#misccellaneous">8.14.5. Misccellaneous</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">8.13. References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ebooks-and-textbooks">8.13.1. eBooks and Textbooks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#online-articles">8.13.2. Online Articles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-papers">8.13.3. Research Papers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">8.13.4. Videos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous">8.13.5. Miscellaneous</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">8.15. Suggestions for Future Work</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">8.16. Contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">8.14. Suggestions for Future Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">8.15. Contributors</a></li>
 </ul>
   </nav></div>
 
