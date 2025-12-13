@@ -2,15 +2,6 @@
 
 *Author: Spencer Au*
 
-
-<!-- ## Topics
-
-- Higher-order logic foundations
-- Function types and quantification
-- Isabelle/HOL advanced features
-- Theorem proving strategies
-- Industrial theorem proving -->
-
 ## Idea and Introduction
 
 Topics
@@ -33,17 +24,17 @@ First-order logic (FOL) restricts quantification to individual elements of a dom
 
 ### The HOL Type System
 
-In Isabelle/HOL, the underlying higher-order logic is built upon Church's simple type theory, which is a disciplined type system in which every term is asigned a type and compound types are formed using function type constructors. This simple type theory extends first-order logic by classifying individuals, predicates, and functions into an explicit hiearchy of types, enabling quantification over functions and predicates while avoiding the semantic paradoxes of untyped systems, such as an expression that may refer to itself in a problematic way. In HOL, the type system both guarantees well-formed expressions and organizes how functions of any finite type can be combined and applied. Church’s type theory is widely adopted in proof assistants implementing HOL, such as Isabelle/HOL, and offers a foundation for formalizing mathematics and computations.<sup><a href="#SEP_ChurchTypeTheory">[8]</a></sup> <sup><a href="#Isabelle_Logics">[2]</a></sup>
+In Isabelle/HOL, the underlying higher-order logic is built upon Church's simple type theory<sup><a href="#Church_TypeTheory">[18]</a></sup>, which is a disciplined type system in which every term is assigned a type and compound types are formed using function type constructors. This simple type theory extends first-order logic by classifying individuals, predicates, and functions into an explicit hierarchy of types, enabling quantification over functions and predicates while avoiding the semantic paradoxes of untyped systems, such as an expression that may refer to itself in a problematic way. In HOL, the type system both guarantees well-formed expressions and organizes how functions of any finite type can be combined and applied.<sup><a href="#SEP_ChurchTypeTheory">[8]</a></sup> Church’s type theory is widely adopted in proof assistants implementing HOL, such as Isabelle/HOL, and offers a foundation for formalizing mathematics and computations.<sup><a href="#Isabelle_Logics">[2]</a></sup>
 
-*For further resources about type theory, SEP provides an excellent article on Type Theory<sup><a href="#SEP_TypeTheory">[9]</a></sup>. While more difficult to digest, there is also the original paper where Alonzo Church introduced his simple theory of types<sup><a href="#Church_TypeTheory">[18]</a></sup>. There is also a solid YouTube video for those that would prefer a different medium.<sup><a href="#TypeTheory_Youtube">[32]</a></sup>*
+*For further resources about type theory, SEP provides an excellent article on Type Theory<sup><a href="#SEP_TypeTheory">[9]</a></sup>. There is also a solid YouTube video for those that would prefer a different medium.<sup><a href="#TypeTheory_Youtube">[32]</a></sup>*
 
 ### Lambda ($\lambda$) Abstraction
 
-In higher-order logic, $\lambda$-abstraction provides a formal way to define anonymous functions by binding variables in expressions. We write this as $\lambda x.\; t$, where x is a paramter and t is the body of the function. A $\lambda$-term defines a function by binding a variable in an expression, and $\beta$-reduction is the rule that implements function application. Basically, when you apply a $\lambda$-term to an argument, you substitue that argument for the bound variable in the function body. For example, the abstraction $\lambda x. \; x * x$ represents the square function, and applying it to an arbitrary number $a$ yields $a * a$ by replacing $x$ with $a$.<sup><a href="#Kurz_LambdaSemantics">[10]</a></sup> <sup><a href="#Kurz_LambdaSyntax">[11]</a></sup>
+In higher-order logic, $\lambda$-abstraction provides a formal way to define anonymous functions by binding variables in expressions. We write this as $\lambda x.\; t$, where x is a parameter and t is the body of the function. A $\lambda$-term defines a function by binding a variable in an expression, and $\beta$-reduction is the rule that implements function application. Basically, when you apply a $\lambda$-term to an argument, you substitute that argument for the bound variable in the function body. For example, the abstraction $\lambda x. \; x * x$ represents the square function, and applying it to an arbitrary number $a$ yields $a * a$ by replacing $x$ with $a$.<sup><a href="#Kurz_LambdaSemantics">[10]</a></sup> <sup><a href="#Kurz_LambdaSyntax">[11]</a></sup>
 
 In Isabelle/HOL, $\lambda$-abstraction is part of the underlying simply typed $\lambda$-calculus, where terms consist of variables, constants, applications, and abstractions. Applying a $\lambda$-term to an argument substitutes the argument for the bound variable in the body, and Isabelle treats the original application and its $\beta$-reduced form as equivalent. This mechanism makes functions first-class citizens in HOL, supports the construction of higher-order functions, and enables logical constructs to be expressed uniformly.<sup><a href="#Isabelle_Logics">[2]</a></sup>
 
-*For supplementary resources about $\lambda$-Abstraction and $\lambda$-calculus, SEP again provides some excellent articles.<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> <sup><a href="#SEP_LambdaCalc">[13]</a></sup>. There are also easy to grasp YouTube videos by LigerLearn.<sup><a href="#LigerLearn_LambdaPrimer">[30]</a></sup> <sup><a href="#LigerLearn_LambdaEval">[31]</a></sup>*
+*For supplementary resources about $\lambda$-abstraction and $\lambda$-calculus, SEP again provides some excellent articles.<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> <sup><a href="#SEP_LambdaCalc">[13]</a></sup> There are also easy to grasp YouTube videos by LigerLearn.<sup><a href="#LigerLearn_LambdaPrimer">[30]</a></sup> <sup><a href="#LigerLearn_LambdaEval">[31]</a></sup>*
 
 ### Logical Constants in HOL
 
@@ -58,7 +49,7 @@ as well as quantifiers like:
 - Universal ($\forall$) 
 - Existential ($\exists$)
 
-which operate over objects of any type. In Isabelle/HOL, the full syntax of terms and constants is defined by the grammer of HOL and is treated uniformly alongside function application and $\lambda$-abstraction. This vocabulary is the basis on whic more complex formulas are built and manipulated in proof development.<sup><a href="#Isabelle_Logics">[2]</a></sup>
+which operate over objects of any type. In Isabelle/HOL, the full syntax of terms and constants is defined by the grammar of HOL and is treated uniformly alongside function application and $\lambda$-abstraction. This vocabulary is the basis on which more complex formulas are built and manipulated in proof development.<sup><a href="#Isabelle_Logics">[2]</a></sup>
 
 ### Deductive Core of HOL
 
@@ -121,7 +112,7 @@ fun add :: "nat ⇒ nat ⇒ nat" where
 For a detailed explanation, [See Section 8.3.2 Exercises](./assets-10/8.3_exercises.md)
 
 
-### First Exercise - Associativity and Communativity of Add
+### First Exercise - Associativity and Commutativity of Add
 
 For the first exercise, we will be proving the associative and commutative properties of a custom `add` function in Isabelle. This exercise comes from Exercise 2.2 of [Concrete Semantics Exercises](http://www.concrete-semantics.org/Exercises/exercises.pdf)
 
@@ -156,13 +147,13 @@ qed
 
 For a detailed explanation, [See Section 8.3.3 Associative Property](./assets-10/8.3_exercises.md#associative-property-proof)
 
-Next, to prove the communative property, we will first prove 2 helper lemmas:
+Next, to prove the commutative property, we will first prove 2 helper lemmas:
 ```isabelle
 lemma add_0_right: "add m 0 = m"
 lemma add_Suc_right: "add m (Suc n) = Suc (add m n)"
 ```
 
-The helper lemma proofs for communativity
+The helper lemma proofs for commutativity
 ```{dropdown} Show Answer
 ~~~isabelle
 lemma add_0_right: "add m 0 = m"
@@ -202,14 +193,21 @@ qed
 ~~~
 ```
 
-For a detailed explanation, [See Section 8.3.3 Communative Property](./assets-10/8.3_exercises.md#communative-property-proof)
+For a detailed explanation, [See Section 8.3.3 Commutative Property](./assets-10/8.3_exercises.md#communative-property-proof)
 
 
 ## Introductory Examples - Tower of Hanoi or Insertion Sort
 
 <!-- show something interesting about tool, logic, etc and can be digested and understood with minimum experience -->
 
+There is an introduction exercise to syllogistic logic<sup><a href="#MossSyllogism">[34]</a></sup> in Isabelle by Alexander Kurz linked [here](appendix-syllogistic-logics.md)
+
 Tower of Hanoi or Insertion Sort
+
+
+f
+
+
 
 WIP
 
@@ -220,7 +218,7 @@ WIP
 
 **HOL4** is part of the "HOL" family of interactive theorem provers, using classical higher-order logic and following the LCF approach to ensure soundness. Developed by Michael J. C. Gordon, the system is implemented in ML, and is a direct descendent of the original HOL88 system. Because HOL4 shares the same underlying logic as Isabelle/HOL, many theories and proof patterns are generally portable between the two tools.
 
-**Rocq** (formerly Coq) is an interactive theorem prover based on the Calculus of Inductive Constructions (CIC), which is dependently typed $\lambda$-calculus that extends the Calculus of Constructions with inductive types. This extension allow propositions to be represented as types and proofs as programs, enabling highly expressive specifications.Rocq is mainly implemented in OCaml with some C, and it's dependent type theory allows it to have greater expressive power over Isabelle/HOL.
+**Rocq** (formerly Coq) is an interactive theorem prover based on the Calculus of Inductive Constructions (CIC), which is dependently typed $\lambda$-calculus that extends the Calculus of Constructions with inductive types. This extension allow propositions to be represented as types and proofs as programs, enabling highly expressive specifications. Rocq is mainly implemented in OCaml with some C, and it's dependent type theory allows it to have greater expressive power over Isabelle/HOL.
 
 **Lean (4)** is another proof assistant that follows a similar but more modern variant of dependent type theory. Like Rocq, Learn also extends the Calculus of Constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Like Rocq, Lean 4's dependent type theory also supports greater expressive power compared to Isabelle/HOL.
 
@@ -285,14 +283,14 @@ WIP
 
 **miniF2F** is a cross-system benchmark of 488 problem statements drawn from both mathematical competitions (IME, AMC and the International Mathematical Olympiad) and high school and undergraduate level mathematics courses. The benchmark targets theorem provers such as Lean, Metamath, Isabelle, and HOL Light in order to enable cross-system comparison of theorem provers and proof automation tools. The goal is to serve as a benchmark for automated and neural theorem proving systems. A formal problem statement is fed into system and the prover must output a fully machine-verifiable proof.<sup><a href="#MiniF2F">[29]</a></sup>
 
-**TPTP** (Thousands of Problems for Theorem Provers) is a library of test problems for testing and evaluating ATPs. Problems are expressed in a simple text-based format for either first-order logic or higher-order logic. TPTP provides a common benchmark with a single, umambiguous reference set of problems so that different ATP systems can be both evaluated and compared with reproducible results.<sup><a href="#TPTP">[36]</a></sup>
+**TPTP** (Thousands of Problems for Theorem Provers) is a library of test problems for testing and evaluating ATPs. Problems are expressed in a simple text-based format for either first-order logic or higher-order logic. TPTP provides a common benchmark with a single, unambiguous reference set of problems so that different ATP systems can be both evaluated and compared with reproducible results.<sup><a href="#TPTP">[36]</a></sup>
 
-**CASC** (The CADE ATP System Competition) is an annual competition of fully automatic, classical logic, ATP systems. The purpose of CASC is to provide a public evaluation of relative capabilities of ATP systems as well as to stimulate research and development of ATP systems. At CASC, ATP system performane is evaluated in terms of the total number of problems solved with an acceptable solution output within a specified time limit, as well as the average time taken for problems solved. CASC is hosted at each CADE and IJCAR conference, both forums for automated deduction.<sup><a href="#CASC">[37]</a></sup>
+**CASC** (The CADE ATP System Competition) is an annual competition of fully automatic, classical logic, ATP systems. The purpose of CASC is to provide a public evaluation of relative capabilities of ATP systems as well as to stimulate research and development of ATP systems. At CASC, ATP system performance is evaluated in terms of the total number of problems solved with an acceptable solution output within a specified time limit, as well as the average time taken for problems solved. CASC is hosted at each CADE and IJCAR conference, both forums for automated deduction.<sup><a href="#CASC">[37]</a></sup>
 
 
 ## Applications in Industry and Academia
 
-In general, Isabelle/HOL appears to have a wide variety of applcation throughout industry and academia due to the fact that it provides a mathematical assuranace of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.
+In general, Isabelle/HOL appears to have a wide variety of application throughout industry and academia due to the fact that it provides a mathematical assurance of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.
 
 ### Physical Addressing on Real Hardware
 
@@ -302,19 +300,19 @@ Achermann et al.<sup><a href="#Achermann_physicalAddressing">[19]</a></sup> disc
 
 Spichkova<sup><a href="#Spichkova_FOCUS">[20]</a></sup> proposes a new framework, FOCUS, aimed at formal specification and the application of refinement-based verification of interactive systems. In addition, FOCUS uses a stream processing component, represented by a communication history of a directed channel between components. FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).
 
-- The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalised in Isabelle/HOL, translating architecture and component behaviour into higher-order logic while proving the design satisfies timing and safety requirements.
+- The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalized in Isabelle/HOL, translating architecture and component behavior into higher-order logic while proving the design satisfies timing and safety requirements.
 
-- The second case study is about FlexRay, which is a communication protocol for safety-critical real-time applications, specfically embedded systems in vehicles. FOCUS is used in this case to verify and prove correct static cycles, channel scheduling and properties, and node broadcast behiavor.
+- The second case study is about FlexRay, which is a communication protocol for safety-critical real-time applications, specifically embedded systems in vehicles. FOCUS is used in this case to verify and prove correct static cycles, channel scheduling and properties, and node broadcast behavior.
 
 - The third case study is about the Automative-Gateway system for the Verisoft project. Basically, if the Gateway receives a vehicle crash signal, then it will initiate a call to the appropriate Emergency Service Center (ESC). The system is modelled in Isabelle/HOL, with the architecture, requirements, and refinement relations all formally specified and proven to ensure that the Gateway design meets its crash signal and data transmission requirements.
 
 ### IsaBIL - Verifying (In)Correctness of Binaries
 
-Griffin et al.<sup><a href="#Griffin_IsaBIL">[21]</a></sup> present IsaBIL, a binary analysis framework in Isabelle/HOL that is based on BAP (Binary Analysis Platform). IsaBIL formalizes BAP's intermediate language (BIL) and integrates it with Hoare Logic (for proofs of correctness) and incorrectness logic (for proofs of incorectness). While there is a primary focus is on the RISC-V architecture and C binaries, the authors assert that IsaBIL is a flexible framework that can verify binaries for different languages (C, C++, Rust), toolchains (LLVM, Ghidra), and architectures (x86, RISC-V). The authors prove correctness through some industry level examples such as Lockheed Martin's JSF (Joint Strike Fighter) coding standards and the MITRE ATT&CK database.
+Griffin et al.<sup><a href="#Griffin_IsaBIL">[21]</a></sup> present IsaBIL, a binary analysis framework in Isabelle/HOL that is based on BAP (Binary Analysis Platform). IsaBIL formalizes BAP's intermediate language (BIL) and integrates it with Hoare Logic (for proofs of correctness) and incorrectness logic (for proofs of incorrectness). While there is a primary focus is on the RISC-V architecture and C binaries, the authors assert that IsaBIL is a flexible framework that can verify binaries for different languages (C, C++, Rust), toolchains (LLVM, Ghidra), and architectures (x86, RISC-V). The authors prove correctness through some industry level examples such as Lockheed Martin's JSF (Joint Strike Fighter) coding standards and the MITRE ATT&CK database.
 
 ### Verlso - Isolation Guarantees of Database Transactions
 
-Ghasemirad et al.<sup><a href="#Ghasemirad_VerIso">[7]</a></sup> present VerIso, a rigorous Isabelle/HOL-based framework for verifying transaction isolation within production level databases. The authors showcase VerIso by modelling the strict two-phase locking (S2PL) protocol and prove that it provides strict serializability (transactions behave as if executed sequentially and that sequential order must match the actual time order of their invocation/commit). In addition, VerIso’s parameterised architecture supports multiple isolation levels and uncovers design-level bugs in protocols such as the TAPIR protocol and its violation of atomic visibility.
+Ghasemirad et al.<sup><a href="#Ghasemirad_VerIso">[7]</a></sup> present VerIso, a rigorous Isabelle/HOL-based framework for verifying transaction isolation within production level databases. The authors showcase VerIso by modelling the strict two-phase locking (S2PL) protocol and prove that it provides strict serializability (transactions behave as if executed sequentially and that sequential order must match the actual time order of their invocation/commit). In addition, VerIso’s parameterized architecture supports multiple isolation levels and uncovers design-level bugs in protocols such as the TAPIR protocol and its violation of atomic visibility.
 
 ### IEEE 754 Floating Point Implementation for MDPs
 
@@ -322,11 +320,11 @@ Kohlen et al.<sup><a href="#Kohlen_float">[22]</a></sup> present a fully verifie
 
 <!-- ### 10.8.6 IsaMini: Isabelle Proof Language for Machine Learning
 
-Xu et al. present MiniLang/IsaMini, a streamlined proof langauge for Isabelle/HOL designed to improve Large Language Model (LLM) integration in formal verification. The authors convert existing Isar proofs, such as those within Isabelle's Archive of Formal Proofs (AFP), into MiniLang and fine-tune LLMs on this new proof representation. They then use the LLM's macro level proof planning alongside Isabelle's automation (such as Sledgehammer, etc) for micro level proof steps to significantly boost proof success rate. Their work is noteworthy because it brings together formal methods and AI-assisted tooling, reducing manual proof effort and enabling more scalable verification.<sup><a href="#Xu_IsaMini">[7]</a></sup> -->
+Xu et al. present MiniLang/IsaMini, a streamlined proof language for Isabelle/HOL designed to improve Large Language Model (LLM) integration in formal verification. The authors convert existing Isar proofs, such as those within Isabelle's Archive of Formal Proofs (AFP), into MiniLang and fine-tune LLMs on this new proof representation. They then use the LLM's macro level proof planning alongside Isabelle's automation (such as Sledgehammer, etc) for micro level proof steps to significantly boost proof success rate. Their work is noteworthy because it brings together formal methods and AI-assisted tooling, reducing manual proof effort and enabling more scalable verification.<sup><a href="#Xu_IsaMini">[7]</a></sup> -->
 
 ### Autoformalization with Large Language Models
 
-Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> show that large language models are particularly effective at performing autoformalization, which is the process of automatically translating natural language mathetmatics into formal specifications and proofs. Specifically, they note that 25.3% of mathematical competition problems were translated *perfectly* to formal Isabelle/HOL statements. In addition, by using these autoformalized statements to finetune an existing neural theorem prover, they managed to improve achieve a 35.2% proof rate on Mini2F2, compared to a baseline proof rate of 29.6%.
+Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> show that large language models are particularly effective at performing autoformalization, which is the process of automatically translating natural language mathematics into formal specifications and proofs. Specifically, they note that 25.3% of mathematical competition problems were translated *perfectly* to formal Isabelle/HOL statements. In addition, by using these autoformalized statements to fine-tune an existing neural theorem prover, they managed to improve achieve a 35.2% proof rate on Mini2F2, compared to a baseline proof rate of 29.6%.
 
 ## Case Study - Autoformalization with Large Language Models
 
@@ -341,11 +339,11 @@ https://openreview.net/forum?id=IUikebJ1Bf0
 
 ### Origins of Higher-Order Logic
 
-Alonzo Church's work in the 1930s (via $\lambda$-calculus)<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> and 1940s (via type theory) and Leon Henkin's work in the 1950s (on general model/Henkin semantics)<sup><a href="#SEP_HOL">[7]</a></sup> lay the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities.
+Alonzo Church's work in the 1930s (via $\lambda$-calculus)<sup><a href="#SEP_D.1_LambdaCalc">[39]</a></sup> and 1940s (via type theory)<sup><a href="#SEP_D.2_TypeTheory">[40]</a></sup> and Leon Henkin's work in the 1950s (on general model/Henkin semantics)<sup><a href="#SEP_HOL">[7]</a></sup> lay the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities.
 
-In the 1970s, Robert Milner develops LCF (Logic for Computable Functions) at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evovles into OCaml and Standard ML.<sup><a href="#LCF_HOL_history">[38]</a></sup>
+In the 1970s, Robert Milner develops LCF (Logic for Computable Functions)<sup><a href="#LCF_HOL_history">[38]</a></sup> at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evolves into OCaml and Standard ML.
 
-In the early 1980s, Michael J. C. Gordon builds upon LCF in order to create the HOL system, which explicitly uses higher-order logic as its core formalism. This HOL system would become the foundation for hardware verification, paving the way and influencing later provers like HOL4 and Isabelle/HOL.<sup><a href="#LCF_HOL_history">[38]</a></sup>
+In the early 1980s, Michael J. C. Gordon builds upon LCF in order to create the HOL system<sup><a href="#LCF_HOL_history">[38]</a></sup>, which explicitly uses higher-order logic as its core formalism. This HOL system would become the foundation for hardware verification, paving the way and influencing later provers like HOL4 and Isabelle/HOL.
 
 ### Development of Isabelle/HOL
 
@@ -353,9 +351,9 @@ Developed in the late 1980's by Lawrence C. Paulson at Cambridge, Isabelle was c
 
 The HOL instantiation of Isabelle (Isabelle/HOL) became the most widely adopted version due to its strong expressiveness and balance between automation and manual control.<sup><a href="#LCF_Isabelle_History">[26]</a></sup>
 
-Markus Wenzel proposed and developed the Isar Proof Language for Isabelle between 1998 and 2001. Isar allows for more structured and human readable proofs, improving clarity over traditional tactic-based approaches like in LCF.<sup><a href="#Isar_History">[17]</a></sup>
+Markus Wenzel proposed and developed the Isar Proof Language<sup><a href="#Isar_History">[17]</a></sup> for Isabelle between 1998 and 2001. Isar allows for more structured and human readable proofs, improving clarity over traditional tactic-based approaches like in LCF.
 
-The creation of the Archive of Formal Proofs (AFP) in 2004 established a large, community-driven library of formalized mathematics and computer science. The establishment of the AFP solified Isabelle/HOL's role in both academia and industry.<sup><a href="#AFP_History">[27]</a></sup>
+The creation of the Archive of Formal Proofs (AFP) in 2004 established a large, community-driven library of formalized mathematics and computer science. The establishment of the AFP solidified Isabelle/HOL's role in both academia and industry.<sup><a href="#AFP_History">[27]</a></sup>
 
 The integration of tools such as Sledgehammer and external SMT/ATP solvers in 2007 further extend Isabelle/HOL's proof power. The bridging of interactive reasoning and automation allows user to tackle complex goals with minimal manual effort.<sup><a href="#Isabelle_Sledgehammer">[35]</a></sup>
 
@@ -474,6 +472,20 @@ AI/LLM stuff with NTP in Isabelle?
   <li id="Stanford_LambdaCalc_TypeTheory" class="citation-entry">
     [12]: Deutsch and Marshall (2025)
     <a href="https://plato.stanford.edu/entries/church/supplementD.html">Supplement D: The λ-Calculus and Type Theory</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="SEP_D.1_LambdaCalc" class="citation-entry">
+    [39]: Deutsch and Marshall (2025)
+    <a href="https://plato.stanford.edu/entries/church/supplementD.html#D1ChurLambCalc">D.1 Church’s Lambda Calculus</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
+  </li>
+
+  <span style="display:block; height:0.1em;"></span>
+
+  <li id="SEP_D.2_TypeTheory" class="citation-entry">
+    [40]: Deutsch and Marshall (2025)
+    <a href="https://plato.stanford.edu/entries/church/supplementD.html#D2ChurSimpTheoType">D.2 Church’s Simple Theory of Types</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
   </li>
 
   <span style="display:block; height:0.1em;"></span>
@@ -601,7 +613,6 @@ AI/LLM stuff with NTP in Isabelle?
 
 </ul>
 
-
 ### Videos
 
 <ul>
@@ -639,7 +650,7 @@ AI/LLM stuff with NTP in Isabelle?
 <ul>
 
   <li id="MossSyllogism" class="citation-entry">
-    [34]: Larry Moss (2015) 
+    [34]: Larry Moss (2015)
     <a href="https://logic.berkeley.edu/colloquium/MossSlides.pdf">Natural Logic</a>, UC Berkeley Logic Seminar.
   </li>
 
