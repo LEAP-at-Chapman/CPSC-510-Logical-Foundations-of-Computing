@@ -4,15 +4,15 @@ Author: *John Mulhern*
 
 ## Idea
 
-Epistemic logic is the study of **knowledge** and **belief** using a formal logical language (Hintikka, 1962). Instead of only asking “is `p` true?”, we can ask:
+Epistemic logic is the study of **knowledge** and **belief** using a formal logical language ([Hintikka, 1962](https://scholar.google.com/scholar?q=Hintikka+Knowledge+and+Belief)). Instead of only asking “is `p` true?”, we can ask:
 
 - “does agent `a` know that `p` is true?” (`K_a p`)
 - “does agent `a` believe that `p` is true?” (`B_a p`)
 - “does agent `a` know that agent `b` knows that `p`?” (`K_a K_b p`)
 
-This is useful in computer science because many systems are **multi-agent** or **distributed**. What an individual process, user, or node **knows** (or does **not** know) affects what it can safely and effectively do (Halpern and Moses, 1990).
+This is useful in computer science because many systems are **multi-agent** or **distributed**. What an individual process, user, or node **knows** (or does **not** know) affects what it can safely and effectively do ([Halpern and Moses, 1990](https://scholar.google.com/scholar?q=Knowledge+and+Common+Knowledge+in+a+Distributed+Environment)).
 
-Epistemic logic is motivated by a simple but profound observation: in many systems, what matters is not merely what is true but what agents think is true. Whether we examine human communication, negotiation between strategic players, or computation in networked software agents, the ability to reason about an entity’s informational state becomes central. Questions such as “what does the system know about its environment?” or “what can a user infer from a public disclosure?” characterize modern cybersecurity, distributed systems, and artificial intelligence. Thus epistemic logic provides a formal language to articulate and analyze these questions rigorously, giving us a way to represent knowledge differences, detect misinformation, model secrecy, and reason about what becomes knowable as communication unfolds (van Ditmarsch, van der Hoek, and Kooi, 2007).
+Epistemic logic is motivated by a simple but profound observation: in many systems, what matters is not merely what is true but what agents think is true. Whether we examine human communication, negotiation between strategic players, or computation in networked software agents, the ability to reason about an entity’s informational state becomes central. Questions such as “what does the system know about its environment?” or “what can a user infer from a public disclosure?” characterize modern cybersecurity, distributed systems, and artificial intelligence. Thus epistemic logic provides a formal language to articulate and analyze these questions rigorously, giving us a way to represent knowledge differences, detect misinformation, model secrecy, and reason about what becomes knowable as communication unfolds ([van Ditmarsch, van der Hoek, and Kooi, 2007](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logic+van+Ditmarsch+van+der+Hoek+Kooi)).
 
 ## In this chapter we will:
 
@@ -26,7 +26,7 @@ Epistemic logic is motivated by a simple but profound observation: in many syste
 
 The story of epistemic logic begins not in computer science, but in philosophy—specifically, in a moment when logicians first wondered whether knowledge itself could be treated with the same mathematical precision as truth. In the early 1960s, Jaakko Hintikka proposed a bold idea that reshaped the field: if we can speak formally about what is true, we should also be able to speak formally about what an agent knows to be true. His seminal work introduced modal operators such as K_a φ, and with them a logic that captured the structure of knowledge through the lens of “possible worlds” [(Hintikka, 1962)](https://scholar.google.com/scholar?q=Hintikka+Knowledge+and+Belief). In one stroke, Hintikka gave us a language for expressing uncertainty, inference, ignorance, and introspection—with the rigor of classical logic.
 
-Through the 1970s and 1980s, epistemic logic matured alongside another major development: the rise of Kripke semantics. Saul Kripke's relational semantics provided clarity and precision to modal logic, grounding Hintikka’s insights in a framework where knowledge corresponded to accessibility between worlds [(Kripke, 1963)](https://scholar.google.com/scholar?q=Kripke+semantical+considerations+modal+logic+1963). These frames became powerful tools, capable of describing anything from the beliefs of a single agent to the mutual awareness of large groups. Researchers like Halpern and Moses soon recognized another profound application: distributed systems. In their influential 1990 paper, they observed that many coordination problems hinge not merely on what processes know, but on what they know about the knowledge of others (Halpern and Moses, 1990). This insight forged the first deep connection between epistemic logic and computer science.
+Through the 1970s and 1980s, epistemic logic matured alongside another major development: the rise of Kripke semantics. Saul Kripke's relational semantics provided clarity and precision to modal logic, grounding Hintikka’s insights in a framework where knowledge corresponded to accessibility between worlds [(Kripke, 1963)](https://scholar.google.com/scholar?q=Kripke+semantical+considerations+modal+logic+1963). These frames became powerful tools, capable of describing anything from the beliefs of a single agent to the mutual awareness of large groups. Researchers like Halpern and Moses soon recognized another profound application: distributed systems. In their influential 1990 paper, they observed that many coordination problems hinge not merely on what processes know, but on what they know about the knowledge of others ([Halpern and Moses, 1990](https://scholar.google.com/scholar?q=Knowledge+and+Common+Knowledge+in+a+Distributed+Environment)). This insight forged the first deep connection between epistemic logic and computer science.
 
 While epistemic logic had established itself as a rich static theory, its dynamic nature—how knowledge changes—remained elusive. That changed in the 1990s. Alexandru Baltag, Lawrence Moss, and Slawomir Solecki, building on earlier work by Plaza on public announcement logic [(Plaza, 1989)](https://scholar.google.com/scholar?q=Plaza+Logic+of+Public+Announcements), developed what we now call Dynamic Epistemic Logic (DEL). Their breakthrough was to treat communication events themselves as mathematical objects: not just “messages sent,” but structured transformations of epistemic models. A public announcement, a whispered secret, a shared observation—all could be described as actions that reshape the possibilities agents consider. The importance of this shift cannot be overstated: DEL made information flow first-class, allowing researchers to reason formally about communication, misinformation, secrecy, and coordinated decision-making ([Baltag, Moss, and Solecki, 1998](https://scholar.google.com/scholar?q=The+Logic+of+Public+Announcements+Common+Knowledge+and+Private+Suspicions); [Baltag, Moss, and Solecki, 2004](https://scholar.google.com/scholar?q=The+Logic+of+Epistemic+Actions)).
 
@@ -499,10 +499,13 @@ function CachedModelCheck(formula φ, model M, cache):
 By combining symbolic representation, carefully designed relational operations, and aggressive caching, SMCDEL makes it possible to interactively explore complex multi-agent epistemic scenarios—often directly from the web interface—despite the underlying worst-case complexity of DEL model checking.
 
 ## Social Networks and Epistemic Logic
+
 We can think of a social network as:
-- a set of agents (users, accounts, processes)
-- a set of connections (who can hear whom, who follows whom, who is in the same group chat)
-- a sequence of information events (DMs, posts, story updates, announcements)
+- a set of agents (users, accounts, processes),
+- a set of connections (who can hear whom, who follows whom, who is in the same group chat),
+- a sequence of information events (DMs, posts, story updates, announcements).
+
+From an epistemic perspective, such networks determine **who can receive information, who can distinguish which situations, and how knowledge propagates through communication** ([Ruan & Thielscher, 2011](https://scholar.google.com/scholar?q=A+Logic+for+Knowledge+Flow+in+Social+Networks); [Seligman, Liu, & Girard, 2013](https://scholar.google.com/scholar?q=Facebook+and+the+Epistemic+Logic+of+Friendship)).
 
 Epistemic logic lets us ask:
 - after this sequence of events, who knows the information?
@@ -510,19 +513,25 @@ Epistemic logic lets us ask:
 - who knows that others know it?
 - is it common knowledge to the group?
 
+Dynamic Epistemic Logic (DEL) is particularly well-suited for this setting because it treats communication acts—such as public broadcasts and private messages—as model-transforming events, allowing precise reasoning about how information flow reshapes agents’ knowledge states (Baltag, Moss, & Solecki, 1998; [Renne, 2008](https://scholar.google.com/scholar?q=Public+and+Private+Communication+Are+Different+Renne)).
+
+---
+
 ### Conceptual Mapping
 
-| Social concept                              | Epistemic logic counterpart                                  |
-|---------------------------------------------|---------------------------------------------------------------|
-| user / account                              | agent (e.g. `A`, `B`, `C`)                                    |
-| follow / friend                             | accessibility / visibility / communication link              |
-| public post                                 | public announcement                                           |
-| private message                             | private event (visible to a subset of agents)                 |
-| rumor                                       | sequence of (possibly private) announcements                  |
-| "everyone knows"                            | group knowledge (`E_G φ`)                                     |
-| "everyone knows that everyone knows"        | common knowledge (`C_G φ`)                                    |
+| Social concept                                | Epistemic logic counterpart                                  |
+|----------------------------------------------|---------------------------------------------------------------|
+| user / account                               | agent (e.g. `A`, `B`, `C`)                                    |
+| follow / friend                              | accessibility / visibility / communication link              |
+| public post                                  | public announcement                                           |
+| private message                              | private event (visible to a subset of agents)                 |
+| rumor                                        | sequence of (possibly private) announcements                  |
+| "everyone knows"                             | group knowledge (`E_G φ`)                                     |
+| "everyone knows that everyone knows"         | common knowledge (`C_G φ`)                                    |
 
-So: **social-network reasoning is a natural application of DEL.**
+Treating **rumors or gossip as sequences of epistemic updates** has been studied explicitly in the DEL literature, where repeated private and public communications are shown to generate complex higher-order knowledge effects ([van Ditmarsch et al., 2017](https://scholar.google.com/scholar?q=Epistemic+Protocols+for+Dynamic+Gossip)).
+
+So: **social-network reasoning is a natural application of dynamic epistemic logic**, especially when the structure of communication channels determines what agents can or cannot infer ([Baltag et al., 1998](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction)).
 
 ---
 
@@ -530,80 +539,39 @@ So: **social-network reasoning is a natural application of DEL.**
 
 **Agents:** `A`, `B`, `C`.
 
-- only `A` initially knows proposition `1`
-- `A` privately tells `1`
-- then `B` publicly says “I learned `1`”
-- we want to see what `C` can now conclude
+- only `A` initially knows proposition `1`,
+- `A` privately tells `1` to `B`,
+- then `B` publicly says “I learned `1`”,
+- we want to see what `C` can now conclude.
 
-```
-VARS 1,2
+This scenario illustrates a key distinction in epistemic modeling: **private communication updates only the knowledge of involved agents, while public announcements can generate higher-order and even common knowledge**, depending on the assumed communication channel ([Renne, 2008](https://scholar.google.com/scholar?q=Public+and+Private+Communication+Are+Different+Renne)).
 
-LAW Top
+---
 
-OBS A: 1,2
-    B: 1,2
-    C: 2
+### Private vs. Public (Why It Matters)
 
-WHERE?
-  A knows that 1
-  & B knows that 1
-  & ~ (C knows that 1)
-
-WHERE?
-  < ! (1) >
-  (A knows that 1
-   & B knows that 1
-   & C knows that 1
-   & C knows that (B knows that 1)
-   & B knows that (A knows that 1))
-
-VALID?
-  [ ! (1) ]
-  (A knows that 1
-   & B knows that 1
-   & C knows that 1)
-
-```
-
-What’s going on:
-`VARS 1,2`
-Two propositional variables. 1 is your “rumor is true” / p; 2 is just a dummy.
-
-`OBS A: 1,2 and OBS B: 1,2`:
-A and B see both 1 and 2, so in the actual world they know whether 1 is true.
-
-`OBS C: 2`:
-C only sees var 2. Since there are epistemically possible worlds where 1 is true or false but 2 is the same, C cannot distinguish them → C does not know 1.
-
-The first `WHERE?` block checks the pre-announcement situation.
-
-The second `WHERE?` with `< ! (1) >` checks the post-announcement situation (everyone learns 1, plus some higher-order knowledge).
-
-### Private vs. Public (Why it matters)
-- A public announcement reduces uncertainty for every agent. It is “broadcast.”
+- A public announcement reduces uncertainty for every agent.
 - A private event reduces uncertainty only for the involved agents.
-- If we want something to become common knowledge, it almost always needs to be public (or something equivalent to a public event — e.g. everyone hears it, and everyone hears that everyone heard it, etc.).
+- Achieving common knowledge typically requires some form of public or mutually observable communication.
 
-This distinction is exactly what we need to study:
-- partial disclosure
-- data leaks
-- misinformation
-- who can deduce what after an observable action
+These distinctions are fundamental in DEL and underpin many formal results about secrecy, information leakage, and coordination in multi-agent systems ([Baltag et al., 1998](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction); Renne, 2008).
+
+---
 
 ### Toward Common Knowledge
 
 In a group chat with agents `A`, `B`, `C`, we might model:
-- a message is posted publicly: `p`
-- everyone sees it
-- everyone knows that everyone sees it (because that’s how the channel works)
+- a message is posted publicly: `p`,
+- everyone sees it,
+- everyone knows that everyone sees it.
 
-In epistemic logic we often define:
-- `E_G(φ)` = everyone in group `G` knows `φ`
-- `E_G^2(φ)` = everyone in `G` knows that everyone in `G` knows `φ`
-- ...
-- `C_G(φ)` = for all `n`, `E_G^n(φ)`
+In epistemic logic we define:
+- `E_G(φ)` = everyone in group `G` knows `φ`,
+- `C_G(φ)` = `φ` is common knowledge in `G`.
 
-Public announcements are a classic way to get close to this kind of knowledge.
+Public announcements are a canonical mechanism for generating common knowledge, and their role in social and informational networks has been extensively studied in DEL ([Baltag et al., 1998](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction)).
+
+More recent work extends this perspective by allowing **the social network itself to change**, modeling how new links, groups, or communication structures emerge and affect knowledge dynamics (Smets & Velázquez-Quesada, [2017](https://scholar.google.com/scholar?q=How+to+Make+Friends+Smets+Velazquez-Quesada), [2018](https://scholar.google.com/scholar?q=The+Creation+and+Change+of+Social+Networks+Smets)). These ideas have also been applied to **diffusion and prediction phenomena in social networks**, where epistemic states evolve alongside social influence ([Baltag, Christoff, Rendsvig, & Smets, 2019](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction)).
 
 ## Applications in Industry
 
@@ -684,21 +652,20 @@ In all of these typical use cases, the models are intentionally small and styliz
 
 ## Epistemic Logic and Generative AI
 
-### Targeting Theory of Mind in Large Language Models with Dynamic Epistemic Logic – Sileo et al., 2023
+### Targeting Theory of Mind in Large Language Models with Dynamic Epistemic Logic – [Sileo et al. (2023)](https://scholar.google.com/scholar?q=Sileo+Dynamic+Epistemic+Logic+Theory+of+Mind)
   
 Uses dynamic epistemic logic (DEL) to generate controlled Theory-of-Mind tasks and test whether LLMs can reason about who knows what, when, and under which information updates. They explicitly use DEL models to construct scenarios where knowledge and belief are manipulated stepwise, then probe LLM behavior against these formal structures.
 
-### Inference-Time Scaling for Theory-of-Mind Tasks – Wu et al., 2025
+### Inference-Time Scaling for Theory-of-Mind Tasks – [Wu et al. (2025)](https://scholar.google.com/scholar?q=Wu+Inference+Time+Scaling+Theory+of+Mind+2025)
 
 Builds on the same idea: ToM is framed in explicitly epistemic-logical terms, and dynamic epistemic logic is used to structure multi-agent belief/knowledge states. LLMs are then evaluated (and improved) on these tasks, showing that epistemic logic can act as a test harness for higher-order social reasoning in generative models.
 
-### Bridging Epistemology and Large Language Models – Fierro et al., EMNLP 2024
+### Bridging Epistemology and Large Language Models – [Fierro et al. (2024)](https://scholar.google.com/scholar?q=Fierro+Bridging+Epistemology+Large+Language+Models)
 
 Analyzes different philosophical definitions of knowledge and connects them to large language models, giving semi-formal epistemic-logic style axioms (e.g., S4/T-like systems) in an appendix. They explicitly discuss how modal operators (like those in epistemic logic) can formalize competing notions of “the model knows that p.”
 
 ### An AI Safety Problem – Klassen & al., AAMAS 2023
-
-### Epistemic Artificial Intelligence is Essential for Machine Learning
+Analyzes safety failures in multi-agent AI systems as arising from misaligned epistemic states rather than faulty policies, showing how agents can act rationally yet unsafely due to incorrect or incomplete knowledge about the world or other agents. The paper argues that explicit epistemic reasoning is necessary for AI safety, framing knowledge alignment as a core design requirement for multi-agent systems.
 
 ## Case Study: The “Rescue Drone Coordination” Problem
 
@@ -794,3 +761,17 @@ Such models help engineers verify communication protocols in distributed robotic
 - Wu et al. (2025) [Inference-Time Scaling for Theory of Mind Tasks](https://scholar.google.com/scholar?q=Inference-Time+Scaling+for+Theory+of+Mind+LLM), arXiv preprint
 
 - Klassen et al. (2023) [An AI Safety Problem: Misaligned Epistemic States in Multi-Agent Systems](https://scholar.google.com/scholar?q=Misaligned+Epistemic+States+Multi-Agent+Systems), Proceedings of AAMAS
+
+- Ruan and Thielscher (2011) [A Logic for Knowledge Flow in Social Networks](https://scholar.google.com/scholar?q=A+Logic+for+Knowledge+Flow+in+Social+Networks), Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence (IJCAI)
+
+- Seligman, Liu, and Girard (2013) [Facebook and the Epistemic Logic of Friendship](https://scholar.google.com/scholar?q=Facebook+and+the+Epistemic+Logic+of+Friendship), Proceedings of TARK
+
+- Renne (2008) [Public and Private Communication Are Different](https://scholar.google.com/scholar?q=Public+and+Private+Communication+Are+Different+Renne), *Synthese*
+
+- van Ditmarsch, van Eijck, Pardo, Ramezanian, and Schwarzentruber (2017) [Epistemic Protocols for Dynamic Gossip](https://scholar.google.com/scholar?q=Epistemic+Protocols+for+Dynamic+Gossip), *Journal of Applied Logic*, 20: 1–31
+
+- Smets and Velázquez-Quesada (2017) [How to Make Friends: A Logical Approach to Social Group Creation](https://scholar.google.com/scholar?q=How+to+Make+Friends+Smets+Velazquez-Quesada), Logic, Rationality and Interaction (LORI 2017), LNCS 10455: 377–390
+
+- Smets and Velázquez-Quesada (2018) [The Creation and Change of Social Networks: A Logical Study Based on Group Size](https://scholar.google.com/scholar?q=The+Creation+and+Change+of+Social+Networks+Smets), Dynamic Logic and Applications (DALI)
+
+- Baltag, Christoff, Rendsvig, and Smets (2019) [Dynamic Epistemic Logics of Diffusion and Prediction in Social Networks](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction), *Studia Logica*, 107(3): 489–531
