@@ -452,7 +452,12 @@ Using the feedback loop to build this collaborative tool, the AI assistant would
 
 ## Hoare Logic in F*
 
-*To be added*
+The F* programming language is built on the foundation of Hoare logic, more specifically the Hoare triple. The Hoare triple gives programs a strong sense of mathematical certainty through verification. This foundation allows developers to move beyond endless testing and instead write code they can trust through program verification. Like the Hoare triple, F* uses preconditions and postconditions to define when a function can be called and what it must guarantee upon completion. With built-in keywords like ```requires```, ```ensures```, and ```invariant```, logical reasoning becomes a natural part of writing code. Inspired by Dafny’s design philosophy, F* seamlessly integrates formal verification into the development process, making correctness feel like a natural aspect of programming.
+
+At the heart of F* lies weakest-precondition (WP) calculus, an extension of Dijkstra’s original idea. F* automatically checks that every function guarantees hold by calculating the weakest precondition needed for correctness across all possible paths. In comparison to F*, Dafny translates programs into the Boogie intermediate language in order to verify them through the Z3 solver. Both languages show how structured logic and automation can work together, making rigorous verification accessible to everyday programmers.
+
+F* also categorizes computations into effects such as Pure, Ghost, and Div, each representing a different kind of behavior or correctness. The Ghost effect allows programmers to write specifications solely for verification purposes, with no runtime cost. This clear separation between reasoning and execution helps developers verify their programs without needing to run it. Dafny follows the same principle, representing memory and state as mathematical models with dynamic frames and termination checks to ensure soundness. Together, F* and Dafny show that formal verification can be practical, powerful, and human-friendly, bridging the gap between theory and real-world software engineering.
+
 
 ## Resources
 
