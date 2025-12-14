@@ -263,8 +263,6 @@ In the 1980s and 1990s the field consolidated around a handful of influential ca
 
 - Miranda et al. ["VeriBench: End-to-End formal verification benchmark for AI code generation in Lean 4"](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&as_ylo=2024&q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&btnG=). In Proceedings of the 42nd International Conference on Machine Learning, Vancouver, Canada (PMLR 267) (2025). 
 
-- Wikipedia contributors. (2025, November 28). [History of Type Theory](https://en.wikipedia.org/wiki/History_of_type_theory). Wikipedia. 
-
 - [Type Theory (Stanford Encyclopedia of Philosophy)]( https://plato.stanford.edu/entries/type-theory). (2022, September 6).
 
 ## Suggestions for Future Works
