@@ -467,16 +467,20 @@ F* also categorizes computations into effects such as Pure, Ghost, and Div, each
 
 ## References
 
-- [University of Pennsylvania – Software Foundations, Volume 2: Programming Language Foundations Chapter: Hoare Logic](https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html)
+- Alexander Kurz (2022) [Alexander Kurz – Hoare Logic Example (HackMD) Worked Example: Loop Invariants and Correctness Proofs](https://hackmd.io/@alexhkurz/Hy135C2tH)
 
-- [Carnegie Mellon University – 15-654 Software Engineering (Spring 2006) Lecture Notes: Hoare Logic by Jonathan Aldrich](https://www.cs.cmu.edu/~aldrich/courses/654-sp06/notes/3-hoare-notes.pdf)
-
-- [Alexander Kurz – Hoare Logic Example (HackMD) Worked example: Loop invariants and correctness proofs](https://hackmd.io/@alexhkurz/Hy135C2tH)
-
-- [University of Cambridge – M.J.C. Gordon: Hoare Logic Lecture Notes All Lectures (Formal Semantics, wlp, VCG, and Separation Logic)](https://www.cl.cam.ac.uk/archive/mjcg/HoareLogic/Lectures/AllLectures.pdf)
-5
 - Krzysztof and Ernst-Rudiger (2019) [Fifty Years of Hoare’s Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Fifty+years+of+Hoare%E2%80%99s+logic+KR+Apt%2C+ER+Olderog&btnG=), Springer
 
 - Josh Rushby (1995) [Formal Methods and Their Role in Digital Systems Validation for Airborne Systems](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Formal+Methods+and+Their+Role+in+Digital+Systems+Validation+for+Airborne+Systems&btnG=), NASA Contractor Report 4673 
 
-- https://www.cs.cmu.edu/~lblum/flac/Presentations/cappiello_project_report.pdf
+- Alex Cappiello (2014) [Static Analysis of Programs with Hoare Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Static+Analysis+of+Programs+with+Hoare+Logic+by+Alex+Cappiello&btnG=)
+
+- Ernst, Huisman, Mostowski, and Ulbrich (2019) [VerifyThis–Verification Competition With A Human Factor](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=VerifyThis+%E2%80%93+Verification+Competition+with+a+Human+Factor&btnG=)
+
+- Rustan and Leino (2010) [Dafny: An Automatic Program Verifier For Functional Correctness](https://www.microsoft.com/en-us/research/wp-content/uploads/2008/12/dafny_krml203.pdf)
+
+- Swamy, Martinez, and Rastogi (2023) [Proof-Oriented Programming in F*](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Proof-Oriented+Programming+in+F*+N+Swamy%2C+G+Martinez%2C+A+Rastogi&btnG=)
+
+- [Dafny Reference Manual](https://dafny.org/latest/DafnyRef/DafnyRef)
+
+- [Software Foundations Volume 2: Programming Language Foundations](https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html)
