@@ -406,7 +406,10 @@ Sum of array = 9
 
 ## The Landscape of Tools
 
-*To be added*
+Dafny is a programming language that helps developers write code they can trust. It bridges the gap between manual proof assistants and automated analyzers. Proof assistants are precise but require considerable manual effort. Although automated analyzers are faster, they are limited in what they can prove. Dafny combines the best of both by embedding Hoare logic directly into its structure. Programmers can write preconditions, postconditions, invariants, and termination checks alongside their code. This makes specifying behavior feel natural, like an extension of coding rather than a separate task.
+
+Dafny translates code into the Boogie intermediate language and uses the Z3 solver to ensure methods meet their contracts and loops maintain their invariants. When encountering a program that fails, Dafny can report the issue within the source code. This allows programs ranging from beginners to experts to understand what went wrong throughout the program. Dafny makes rigorous verification practical and approachable, even for complex systems and algorithms.
+
 
 ## Benchmark and Competitions
 
