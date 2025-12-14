@@ -8,16 +8,13 @@ This chapter presents dependent type theory with Lean, demonstrating how types c
 
 ## Idea
 
-Dependent Type Theory (DTT) is the idea that types can depend on values. This enable us to establish precise relationships between data and the logical propositions that describes it.
-
-In traditional programming languages, types classify values. `Int` describes integers, `Bool` describes True or False, etc... With dependent type theory, a type itself depends on a value. For example, instead of defining a single `array` type, we define `array n A`, meaning “an array of length n whose elements are of type A.” This makes certain properties, like the dimension of an array, part of the type system itself. The compiler can then verify these constraints automatically.
+Dependent Type Theory (DTT) is the idea that types can depend on values. In traditional programming languages, types classify values. `Int` describes integers, `Bool` describes True or False, etc... With dependent type theory, a type itself depends on a value. For example, instead of defining a single `array` type, we define `array n A`, meaning “an array of length n whose elements are of type A.” This makes certain properties, like the dimension of an array, part of the type system itself. The compiler can then verify these constraints automatically.
 
 This expressiveness blurs the boundary between proofs and programs. In dependent type theory, writing a function that computes something often simultaneously constructs a proof of its correctness. For instance, a function that returns the sum of two natural numbers can be defined alongside a proof that addition is associative or commutative, proofs that Lean, Coq, or Agda can check mechanically.
 
 Dependent Type Theory(DTT) is a unifying foundation for:
 - Formal methematics where theorems and proofs are treated as typed objects.
 - Verified programming where correctness is guaranteed by construction.
-- Knowledge representation where logical precision replaces ad-hoc conventions.
 
 Think of DTT as the language that connects mathematics, logic, and software engineering. It transforms "what is true" into "what is computed" and vice versa.
 
@@ -57,7 +54,7 @@ The following installation is pull directly from Lean-["Install Lean"](https://l
 - Install VS Code
 - Install the official Lean 4 extension in VS Code 
 - Complete the extension by following the guideline of Lean 4 extension:
-    - Click the "∀" symbol at the top right of the window.
+    - Click the "$\forall$" symbol at the top right of the window.
     - Hover down to "Documentation..."
     - Click on "Show Setup Guide"
     - Follow the guide until "Install Lean" option light up
@@ -76,6 +73,7 @@ The Logic Game introduces users to the foundational rules of formal logic such a
 Unlike traditional textbooks, the Logic Game responds instantly to every tactic command:
 - If a tactic is correct, Lean advances the goal state.
 - If a tactic is wrong, Lean explains why.
+
 This tight feedback loop mirrors the experience of interacting with an automated proof assistant in real industrial or research settings, lowering the learning curve dramatically.
 
 #### The "Mental Model" of Lean
@@ -83,6 +81,7 @@ This tight feedback loop mirrors the experience of interacting with an automated
 The Logic Game is explicitly designed to teach users how Lean thinks about logic:
 - Every tactic corresponds to a precise logical rule.
 - Users see how Lean's kernel enforces correctness step by step.
+
 This builds intuition for dependent type theory and Curry–Howard correspondence (propositions-as-types), but without requiring the learner to know any theory beforehand.
 
 #### Encourages Experimentation
@@ -91,6 +90,7 @@ Players can try tactics freely without risk. This experimentation fosters:
 - pattern recognition
 - tactical reasoning
 - an understanding of proof search strategies
+
 These habits carry directly over to real software verification tasks.
 
 ### Natural Number Game
@@ -126,7 +126,7 @@ This section presents a landscape view of major tools in the DTT ecosystem as of
 | Coq | One of the oldest and most widely used proof assistants based on DTT (or similar). Supports extraction to programming languages, large body of existing formalization (math, compilers, verified software), powerful tactic languages. | Best for verified software projects, certified compilers (e.g. CompCert), verified algorithms, and academic formalization. Has a steep learning curve, sometimes verbose proof scripts, and a heavier kernel than simpler languages. |
 | Agda | A dependently typed programming language/proof assistant more in the “programming + proof as functional style” camp (rather than tactic-based). Similar to MLTT tradition, with strong emphasis on inductive families, totality, and interactive evaluation. | Good for experimental formalizations, teaching type theory, writing dependently typed programs. More suited for small-to-medium proofs; less focused on industrial-scale verification or large libraries. |
 | Idris / Idris 2 | A dependently typed programming language with a focus on general-purpose programming, not only proof. Supports effects, code generation (e.g. C, JS), totality checking or partial functions depending on settings. | Good when you want a language with expressive types and runtime code generation for building verified-but-executable programs. Less mature than proof assistants; less library support; proofs may be more manual. |
-| Haskell | A general-purpose, functional programming that is statically typed with type inference and lazy evaluation. Popular in academia and industry | It has practical, industrial-strength functional programming and powerful abstractions, rich ecosystem, compilers (GHC) with pluggable extensions. Typically used in high-assurance and mission-critical systems, data transformation pipelines, and systems that benefit from strong static guarantees. It has a steep learning curve; unpredictable performance due to laziness; smaller ecosystem; harder hiring pipeline; abstract debugging; less ergonomic for low-level systems |
+| Haskell | A general-purpose, functional programming language that is statically typed with type inference and lazy evaluation. Popular in academia and industry | It has practical, industrial-strength functional programming and powerful abstractions, rich ecosystem, compilers (GHC) with pluggable extensions. Typically used in high-assurance and mission-critical systems, data transformation pipelines, and systems that benefit from strong static guarantees. It has a steep learning curve; unpredictable performance due to laziness; smaller ecosystem; harder hiring pipeline; abstract debugging; less ergonomic for low-level systems |
 
 When selecting among tools, you should weigh:
 - Expressiveness vs. automation: More expressive systems (Lean, Coq, Agda, Idris) allow rich invariants and proofs but often need manual proof work. Automated or SMT-backed tools trade expressiveness for easier automation.
@@ -139,8 +139,7 @@ When selecting among tools, you should weigh:
 
 In implementing and using a dependently typed language or proof assistant (like Lean, Coq, Agda, Idris, etc.), a number of non-trivial algorithms lie at the foundation. These algorithms handle typing, type checking/inference, equality checking, unification or normalization, and elaboration. Understanding them gives insight into why dependent types are powerful and why they are hard.
 
-### Key algorithms and concepts:
-#### Bidirectional typechecking / type-inference + type-checking separation
+### Bidirectional typechecking / type-inference + type-checking separation
 
 Instead of trying to infer types for all expressions (type inference) or requiring full type annotations everywhere, bidirectional typing splits the typing judgment into two modes:
 
@@ -155,14 +154,14 @@ The necessity of type annotations in places where inference is impossible (e.g.,
 
 ### Equality / Normalization / Conversion / Extensionality Checking
 
-In dependent type theory, type equality (and term equality) is not just "are they syntactically identical?". It often involves computation (normalization), conversion rules (β-reduction), and user-defined equality/extension rules (e.g., extensionality, definitional equalities). Implementations need an algorithm to decide or check when two types or terms are equal.
+In dependent type theory, type equality (and term equality) is not just "are they syntactically identical?". It often involves computation (normalization), conversion rules ($\beta$-reduction), and user-defined equality/extension rules (e.g., extensionality, definitional equalities). Implementations need an algorithm to decide or check when two types or terms are equal.
 
 The paper [“An extensible equality checking algorithm for dependent type theories”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=An+extensible+equality+checking+algorithm+for+dependent+type+theories&btnG=) introduces a general algorithm combining type-directed extensionality rules with normalization by computation rules, and shows how to classify rules as computational or extensional in a user-definable way. The algorithm is implemented in a proof assistant prototype that supports custom dependent type theories. 
 arXiv
 
 Without a robust equality/normalization algorithm, dependent types, especially those involving dependent functions or indexed types,become unwieldy. Many trivial-looking equalities (e.g., rewriting with definitional reduction, simplification) would need to be proven manually. A good algorithm reduces overhead and makes proofs manageable.
 
-#### Elaboration
+### Elaboration
 
 In proof assistants or dependently typed languages, users write code in a friendly high-level syntax (with type annotations optional, implicit arguments, etc.). The elaboration phase translates that syntax into the core type theory: resolves implicit arguments, performs type inference/checking, adds coercions, resolves overloading, etc.
 
@@ -170,7 +169,7 @@ Without a powerful elaboration engine, the user would be burdened with writing f
 
 The designers of Lean highlight that its "powerful elaboration engine", combined with a small trusted kernel and support for mixed declarative and tactic proof style, make it a mature system for real-world development. 
 
-#### Combined algorithmic stack → Decidability + Trust
+### Combined algorithmic stack → Decidability + Trust
 
 Bidirectional typing + equality/normalization + elaboration + a small trusted kernel yields a system where:
 - Type checking and proof checking remain decidable (modulo normalization / termination constraints),
@@ -226,8 +225,6 @@ The story begins with early efforts to avoid paradoxes in naive set theory and l
 
 A decisive shift toward dependent types occurred with Per Martin-Löf’s intuitionistic type theory (1970s–1980s). Martin-Löf introduced dependent function ($\Pi$) and dependent pair ($\Sigma$) types, giving a constructive foundation in which types can quantify over values. This made it possible to represent propositions as types and proofs as programs in a very expressive way. The Curry–Howard correspondence, the observation that proofs correspond to programs and propositions to types, fused logic and computation and underpins modern dependently-typed systems. ([See here](https://plato.stanford.edu/entries/type-theory)) 
 
-A decisive shift toward dependent types occurred with Per Martin-Löf’s intuitionistic type theory (1970s–1980s). Martin-Löf introduced dependent function ($\Pi$) and dependent pair ($\Sigma$) types, giving a constructive foundation in which types can quantify over values. This made it possible to represent propositions as types and proofs as programs in a very expressive way. The Curry–Howard correspondence, the observation that proofs correspond to programs and propositions to types, fused logic and computation and underpins modern dependently-typed systems. ([See here](https://plato.stanford.edu/entries/type-theory))
-
 In the 1980s and 1990s the field consolidated around a handful of influential calculi and systems. The Calculus of Constructions (Coquand & Huet) and the later Calculus of Inductive Constructions became the basis for the Coq proof assistant; Agda and other systems explored dependently typed programming more directly; and the so-called lambda-cube classified a spectrum of type systems. Over the last two decades these theoretical advances have been implemented in robust systems (Coq, Agda, Lean, Idris) and large collaborative libraries (e.g., Lean’s mathlib), enabling both deep mathematical formalization and practical verification projects. ([See here](https://plato.stanford.edu/entries/type-theory))
 
 ## Formal Methods and AI
@@ -266,7 +263,7 @@ In the 1980s and 1990s the field consolidated around a handful of influential ca
 
 - Miranda et al. ["VeriBench: End-to-End formal verification benchmark for AI code generation in Lean 4"](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&as_ylo=2024&q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&btnG=). In Proceedings of the 42nd International Conference on Machine Learning, Vancouver, Canada (PMLR 267) (2025). 
 
-- Wikipedia contributors. (2025, November 28). [History of type theory](https://en.wikipedia.org/wiki/History_of_type_theory). Wikipedia. 
+- Wikipedia contributors. (2025, November 28). [History of Type Theory](https://en.wikipedia.org/wiki/History_of_type_theory). Wikipedia. 
 
 - [Type Theory (Stanford Encyclopedia of Philosophy)]( https://plato.stanford.edu/entries/type-theory). (2022, September 6).
 
