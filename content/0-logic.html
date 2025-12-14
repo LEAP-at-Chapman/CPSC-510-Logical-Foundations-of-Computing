@@ -1,14 +1,15 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Short Intro to Logic &#8212; Logical Foundations of Computing</title>
+    <title>Short Intro to Logic &#8212; Logical Foundations of AI</title>
   
   
   
@@ -28,35 +29,39 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/0-logic';</script>
@@ -64,7 +69,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Propositional Logic" href="1-propositional-logic.html" />
-    <link rel="prev" title="The Book" href="0-intro.html" />
+    <link rel="prev" title="The Book" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -145,32 +150,21 @@
     
   
 
-<a class="navbar-brand logo" href="0-title.html">
+<a class="navbar-brand logo" href="title.html">
   
   
   
   
   
   
-    <p class="title logo__title">Logical Foundations of Computing</p>
+    <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0-intro.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Short Intro to Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
@@ -179,23 +173,30 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraints with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraint Programming with MiniZinc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">4. SMT Solving and Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">7. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style Guide</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to-contribute.html">How to Contribute</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
 </ul>
 
     </div>
@@ -225,9 +226,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -368,9 +369,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -413,8 +414,8 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="short-intro-to-logic">
-<h1>Short Intro to Logic<a class="headerlink" href="#short-intro-to-logic" title="Link to this heading">#</a></h1>
-<p>This very short introduction to logic does not aim at explaining what logic is or the foundtaional role that logic plays in computing. As we will see throughout the book, many different answers can be given to these questions. Here, I only want to highlight some big ideas that underpin all these answers.</p>
+<h1>Short Intro to Logic<a class="headerlink" href="#short-intro-to-logic" title="Permalink to this heading">#</a></h1>
+<p>some intro to the intro …</p>
 <p><strong>Big Ideas of Logic</strong>:</p>
 <ul class="simple">
 <li><p>Validity</p></li>
@@ -428,7 +429,7 @@ document.write(`
 <li><p>Incompleteness</p></li>
 </ul>
 <section id="validity">
-<h2>Validity<a class="headerlink" href="#validity" title="Link to this heading">#</a></h2>
+<h2>Validity<a class="headerlink" href="#validity" title="Permalink to this heading">#</a></h2>
 <p>An important idea often attributed to <a class="reference external" href="https://plato.stanford.edu/entries/aristotle-logic/">Aristotle</a> is the following: To check whether an argument is valid, one does not need to understand its content. This surprising insight is at the heart of artificial intelligence.<a class="footnote-reference brackets" href="#ai" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>The classic example is:</p>
 <blockquote>
@@ -440,7 +441,7 @@ Therefore, Socrates is mortal.</p>
 <p>We know that it is valid because of its form, not because we know anything about Socrates, men, or mortality. The form is:</p>
 <blockquote>
 <div><p>All X are Y.<br />
-Z is X.<br />
+Z is an X.<br />
 Therefore, Z is Y.</p>
 </div></blockquote>
 <p>This pattern holds regardless of what X, Y, and Z represent. We can substitute:</p>
@@ -451,26 +452,26 @@ Therefore, Z is Y.</p>
 <p>The argument remains valid in all cases. This is the power of <strong>formal reasoning</strong>: validity depends only on the structure of the argument, not its content.</p>
 </section>
 <section id="formal-language">
-<h2>Formal Language<a class="headerlink" href="#formal-language" title="Link to this heading">#</a></h2>
+<h2>Formal Language<a class="headerlink" href="#formal-language" title="Permalink to this heading">#</a></h2>
 <p>Mathematically, a formal language is the smallest set closed under a finite number rules. Some examples:</p>
 <ul class="simple">
 <li><p>The natural numbers are the smallest set containing “zero” and closed under “plus one”.</p></li>
-<li><p>A programming language is the set of strings (or abstract syntax trees) that can be derived by the <a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">context-free grammar</a> of the language, a classic example being the <a class="reference external" href="https://www.quut.com/c/ANSI-C-grammar-y.html">grammar of the C language</a> and we will see later the <a class="reference external" href="https://spinroot.com/spin/Man/grammar.html">grammar of Promela</a> in  <a class="reference internal" href="7-temporal-logic.html"><span class="std std-doc">Chapter 7: Temporal Logic with Spin</span></a>.</p></li>
+<li><p>A programming language is the set of strings (or abstract syntax trees) that can be derived by the <a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">context-free grammar</a> of the language, a classic example being the <a class="reference external" href="https://www.quut.com/c/ANSI-C-grammar-y.html">grammar of the C language</a> and we will see later the <a class="reference external" href="https://spinroot.com/spin/Man/grammar.html">grammar of Promela</a> in  <a class="reference internal" href="7-temporal-logic.html"><span class="doc std std-doc">Chapter 7: Temporal Logic with Spin</span></a>.</p></li>
 <li><p>The language of propositional logic is the smallest set containing a given set of atomic propositions (strings) and being closed under the operations AND (<span class="math notranslate nohighlight">\(\wedge\)</span>), OR (<span class="math notranslate nohighlight">\(\vee\)</span>), NOT (<span class="math notranslate nohighlight">\(\neg\)</span>).</p></li>
 </ul>
-<p>Formal languages can be processed by algorithms. In particular, for any given formal language one would expect (terminating, even efficient) algorithms that</p>
+<p>Formal languages can be processed by algorithms. In particular, for any given formal language there are (terminating, even efficient) algorithms that</p>
 <ul class="simple">
 <li><p>answer the yes-no-question, for any string, whether that string belongs to the language,</p></li>
 <li><p>parse a given string into an <a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax tree</a>.</p></li>
 </ul>
 </section>
 <section id="decidability">
-<h2>Decidability<a class="headerlink" href="#decidability" title="Link to this heading">#</a></h2>
-<p>Some logical questions are <strong>decidable</strong>: There exists an algorithm that, for any input, will eventually halt and give a correct yes-or-no answer. For example, in Chapters <a class="reference internal" href="2-satsolving.html"><span class="std std-doc">2</span></a>, <a class="reference internal" href="4-constraint-solving.html"><span class="std std-doc">4</span></a>, <a class="reference internal" href="5-smt-solving.html"><span class="std std-doc">5</span></a>, <a class="reference internal" href="7-temporal-logic.html"><span class="std std-doc">7</span></a>, <a class="reference internal" href="8-epistemic-logic.html"><span class="std std-doc">8</span></a> we will meet software tools based on algorithms that decide the satisfiability problem of various logics.</p>
+<h2>Decidability<a class="headerlink" href="#decidability" title="Permalink to this heading">#</a></h2>
+<p>Some logical questions are <strong>decidable</strong>: There exists an algorithm that, for any input, will eventually halt and give a correct yes-or-no answer. For example, in Chapters <a class="reference internal" href="2-satsolving.html"><span class="doc std std-doc">2</span></a>, <a class="reference internal" href="4-constraint-solving.html"><span class="doc std std-doc">4</span></a>, <a class="reference internal" href="5-smt-solving.html"><span class="doc std std-doc">5</span></a>, <a class="reference internal" href="7-temporal-logic.html"><span class="doc std std-doc">7</span></a>, <a class="reference internal" href="8-epistemic-logic.html"><span class="doc std std-doc">8</span></a> we will meet software tools based on algorithms that decide the satisfiability problem of various logics.</p>
 <p>Other questions are <strong>undecidable</strong>: No algorithm exists that can always provide an answer. Famously, Turing’s <a class="reference external" href="https://en.wikipedia.org/wiki/Halting_problem">Halting Problem</a> shows that there is no algorithm that can decide, for any program, whether that program terminates on all inputs.</p>
 </section>
 <section id="satisfiability">
-<h2>Satisfiability<a class="headerlink" href="#satisfiability" title="Link to this heading">#</a></h2>
+<h2>Satisfiability<a class="headerlink" href="#satisfiability" title="Permalink to this heading">#</a></h2>
 <p>We remember from school various techniques to solve algebraic equations, maybe most famously <a class="reference external" href="https://en.wikipedia.org/wiki/Quadratic_equation">the formula for the solutions of the quadratic equation</a>. After Aristotle, the next important progress in logic was by <a class="reference external" href="https://en.wikipedia.org/wiki/George_Boole">George Boole</a> who in his groundbreaking work <a class="reference external" href="https://www.gutenberg.org/files/36884/36884-pdf.pdf">Mathematical Analysis of Logic</a> (I recommend to read at least the introduction) introduced the idea that we can calculate with logic (and probability) in much the same way we calculate with real numbers in <a class="reference external" href="https://en.wikipedia.org/wiki/Algebra">algebra</a> and the <a class="reference external" href="https://en.wikipedia.org/wiki/Calculus">infinitesimal calculus</a>.</p>
 <p>Maybe this can nowadays best be explained with the help of <a class="reference external" href="https://www.nytimes.com/puzzles/sudoku/easy">Sudoku</a>. To focus on the main idea let us look at a 2x2 Sudoku:</p>
 <div class="math notranslate nohighlight">
@@ -506,7 +507,7 @@ r &amp; s \\
 \end{array}
 \end{split}\]</div>
 <p>The variables <span class="math notranslate nohighlight">\(p, q, r, s\)</span> are bits taking values in <span class="math notranslate nohighlight">\(\{0,1\}\)</span>.</p>
-<p>The intended encoding is as follows. For each cell, let’s say the bit is 1 when the cell contains 1, and 0 when it contains 2. In the notation of <a class="reference internal" href="1-propositional-logic.html"><span class="std std-doc">propositional logic</span></a>, a <strong>specification</strong> of the puzzle can now be expressed as follows.</p>
+<p>The intended encoding is as follows. For each cell, let’s say the bit is 1 when the cell contains 1, and 0 when it contains 2. In the notation of propositional logic of Chapters <a class="reference internal" href="1-propositional-logic.html"><span class="doc std std-doc">1</span></a> and <a class="reference internal" href="2-satsolving.html"><span class="doc std std-doc">2</span></a>, a <strong>specification</strong> of the puzzle can now be expressed as follows.</p>
 <p>First, the rules of Sudoku are transformed into the following equations (writing <span class="math notranslate nohighlight">\(\vee\)</span> for OR and <span class="math notranslate nohighlight">\(\neg\)</span> for NOT)</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -541,11 +542,11 @@ p&amp;= 1 &amp;\text{upper left corner is 1}
 \end{array}
 \end{split}\]</div>
 <p>as a formula in propositional logic finding a solution to the puzzle is the same as finding <strong>an assignment of truth values for the variables satisfying the logical specification</strong> of the puzzle.</p>
-<p>The software tools of Chapters <a class="reference internal" href="2-satsolving.html"><span class="std std-doc">2</span></a>, <a class="reference internal" href="4-constraint-solving.html"><span class="std std-doc">4</span></a>, <a class="reference internal" href="5-smt-solving.html"><span class="std std-doc">5</span></a>, <a class="reference internal" href="7-temporal-logic.html"><span class="std std-doc">7</span></a>, <a class="reference internal" href="8-epistemic-logic.html"><span class="std std-doc">8</span></a> are all elaborations of this simple idea of algorithms solving logical equations.</p>
+<p>The software tools of Chapters <a class="reference internal" href="2-satsolving.html"><span class="doc std std-doc">2</span></a>, <a class="reference internal" href="4-constraint-solving.html"><span class="doc std std-doc">4</span></a>, <a class="reference internal" href="5-smt-solving.html"><span class="doc std std-doc">5</span></a>, <a class="reference internal" href="7-temporal-logic.html"><span class="doc std std-doc">7</span></a>, <a class="reference internal" href="8-epistemic-logic.html"><span class="doc std std-doc">8</span></a> are all elaborations of this simple idea of algorithms solving logical equations.</p>
 <p><strong>Remark:</strong> Satisfiability solvers are now used everywhere in software engineering, very much like numerical methods in more traditional areas of engineering. This is a fairly recent development: Only since the beginning of the 21st century, Boole’s 1847 vision of “a Calculus of Deductive Reasoning” has become mainstream engineering on a par with Newton’s and Leibniz’s infinitesimal calculus.</p>
 </section>
 <section id="duality-of-syntax-and-semantics">
-<h2>Duality of Syntax and Semantics<a class="headerlink" href="#duality-of-syntax-and-semantics" title="Link to this heading">#</a></h2>
+<h2>Duality of Syntax and Semantics<a class="headerlink" href="#duality-of-syntax-and-semantics" title="Permalink to this heading">#</a></h2>
 <p>Satisfiability is a relation between models (semantics) and formulas (syntax). This relation is commonly written in symbolic notation as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -555,8 +556,7 @@ M\models\phi
 <p>The reason that this is called a <em>duality</em> is that adding <em>more</em> equations means specifying <em>fewer</em> solutions.</p>
 <p>With a little mathematics, we can see that such a duality is a rather general phenomenon. For any relation <span class="math notranslate nohighlight">\(R\subseteq X\times A\)</span>, there are functions</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/2025-10-26-14-31-31.png"><img alt="../_images/2025-10-26-14-31-31.png" src="../_images/2025-10-26-14-31-31.png" style="width: 500px;" />
-</a>
+<a class="reference internal image-reference" href="../_images/2025-10-26-14-31-31.png"><img alt="../_images/2025-10-26-14-31-31.png" src="../_images/2025-10-26-14-31-31.png" style="width: 500px;" /></a>
 </figure>
 <p>between the set <span class="math notranslate nohighlight">\(\mathcal PX\)</span> of subsets of <span class="math notranslate nohighlight">\(X\)</span> and the set <span class="math notranslate nohighlight">\(\mathcal PA\)</span> of subsets of <span class="math notranslate nohighlight">\(A\)</span> defined by <a class="footnote-reference brackets" href="#powerset" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight">
@@ -573,7 +573,7 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 </ul>
 </section>
 <section id="proof-theory">
-<h2>Proof Theory<a class="headerlink" href="#proof-theory" title="Link to this heading">#</a></h2>
+<h2>Proof Theory<a class="headerlink" href="#proof-theory" title="Permalink to this heading">#</a></h2>
 <p>Logic studies truth in general rather than what is true in the world. There are two ways of doing this.</p>
 <p>Proof theory studies truth-preserving transformations: Assuming that my premises are true, which rules of reasoning guarantee that my conclusions will also be true? In particular, can I be sure to never contradict myself if I follow the rules of logic?</p>
 <p>In symbolic notation, one writes</p>
@@ -585,7 +585,7 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 <p>All of the software tools we will look at in this book can be understood as implementing reasoning in a particular calculus. In the next chapter, we will briefly look at Natural Deduction and at Tableaux.</p>
 </section>
 <section id="model-theory">
-<h2>Model Theory<a class="headerlink" href="#model-theory" title="Link to this heading">#</a></h2>
+<h2>Model Theory<a class="headerlink" href="#model-theory" title="Permalink to this heading">#</a></h2>
 <p>In model theory one studies truth in all possible models. Roughly speaking, a model <span class="math notranslate nohighlight">\(M\)</span> is a mathematical structure that contains enough information in order to define when a formula <span class="math notranslate nohighlight">\(\phi\)</span> in a given logic evaluates to true. As we have seen above this is written as <span class="math notranslate nohighlight">\(M\models\phi\)</span>. Now one can define semantic entailment as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -595,7 +595,7 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 <p>Many of the tools in this book can be understood from a model theoretic point of view (for example: SAT-solvers, SMT-solvers, Prolog, model checkers).</p>
 </section>
 <section id="soundness-and-completenss">
-<h2>Soundness and Completenss<a class="headerlink" href="#soundness-and-completenss" title="Link to this heading">#</a></h2>
+<h2>Soundness and Completenss<a class="headerlink" href="#soundness-and-completenss" title="Permalink to this heading">#</a></h2>
 <p>A hallmark of logic are its completeness theorems. For any logic, we would typically like to have a soundness and completeness theorem. While the details can be difficult, we can state soundness and completeness simply as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -604,12 +604,12 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 <p>In other words, a statement is true in all models if and only if it is derivable.</p>
 </section>
 <section id="incompleteness">
-<h2>Incompleteness<a class="headerlink" href="#incompleteness" title="Link to this heading">#</a></h2>
+<h2>Incompleteness<a class="headerlink" href="#incompleteness" title="Permalink to this heading">#</a></h2>
 <p>Gödel’s incompleteness theorem (Gödel, 1931) states that there cannot be a proof system that derives all statements in the language of arithmetic that are true in the model of natural numbers.</p>
 <p>This is a profound result that has ramifications in mathematics, philosophy and, of course, software engineering. A popular introduction is (Hofstadter, 1979).</p>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Stanford Encyclopedia of Philosophy (2024) <a class="reference external" href="https://plato.stanford.edu/entries/aristotle-logic/">Aristotle’s Logic</a></p></li>
 <li><p>Boole (1847) <a class="reference external" href="https://www.gutenberg.org/files/36884/36884-pdf.pdf">The Mathematical Analysis of Logic</a></p></li>
@@ -617,8 +617,7 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 <li><p>Hofstadter (1979) <a class="reference external" href="https://scholar.google.com/scholar?q=G%C3%B6del+Escher+Bach+Hofstadter">Gödel, Escher, Bach: An Eternal Golden Braid</a></p></li>
 </ul>
 <hr class="footnotes docutils" />
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="ai" role="doc-footnote">
+<aside class="footnote brackets" id="ai" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>This clearly is true for <a class="reference external" href="https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence">symbolic AI</a> (aka <a class="reference external" href="https://en.wikipedia.org/wiki/GOFAI">GOFAI</a>). But it is also true for <a class="reference external" href="https://en.wikipedia.org/wiki/Connectionism">connectionist</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Neural_network_(machine_learning)">neural</a>, statistical-probabilistic-stochastic, subsymbolic AI because the Boolean circuits implemented in our silicon-based hardware are symbolic AI. In a slogan: Neural AI is compiled to symbolic AI.</p>
 <p>Btw, there does not seem to be an established meaning differentiating between statistical, stochastic and probabilistic. Here is Claude-Opus-4 on the topic (edited):</p>
@@ -628,10 +627,9 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
 <p><strong>Probabilistic</strong>. Focuses on <strong>reasoning about uncertainty</strong>. Models beliefs, likelihood, and uncertainty explicitly using probability theory. Use when: uncertainty quantification is central to the approach</p>
 <p>Many AI methods are all three: neural networks learn <strong>statistical</strong> patterns from data, use <strong>stochastic</strong> optimization,  and can output <strong>probabilistic</strong> predictions.</p>
 </aside>
-<aside class="footnote brackets" id="powerset" role="doc-footnote">
+<aside class="footnote brackets" id="powerset" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p><span class="math notranslate nohighlight">\(\mathcal P\)</span> stands for “powerset of”.</p>
-</aside>
 </aside>
 </section>
 </section>
@@ -667,7 +665,7 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="0-intro.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -734,7 +732,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>

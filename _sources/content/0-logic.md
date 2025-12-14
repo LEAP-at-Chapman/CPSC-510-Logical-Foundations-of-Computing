@@ -1,6 +1,6 @@
 # Short Intro to Logic
 
-This very short introduction to logic does not aim at explaining what logic is or the foundtaional role that logic plays in computing. As we will see throughout the book, many different answers can be given to these questions. Here, I only want to highlight some big ideas that underpin all these answers.
+some intro to the intro ...
 
 **Big Ideas of Logic**:
 
@@ -31,7 +31,7 @@ Clearly, this is a valid argument ... but how do we *know* that it is valid?
 We know that it is valid because of its form, not because we know anything about Socrates, men, or mortality. The form is:
 
 > All X are Y.  
-> Z is X.  
+> Z is an X.  
 > Therefore, Z is Y.
 
 This pattern holds regardless of what X, Y, and Z represent. We can substitute:
@@ -47,7 +47,7 @@ Mathematically, a formal language is the smallest set closed under a finite numb
 - A programming language is the set of strings (or abstract syntax trees) that can be derived by the [context-free grammar](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of the language, a classic example being the [grammar of the C language](https://www.quut.com/c/ANSI-C-grammar-y.html) and we will see later the [grammar of Promela](https://spinroot.com/spin/Man/grammar.html) in  [Chapter 7: Temporal Logic with Spin](./7-temporal-logic.md).
 - The language of propositional logic is the smallest set containing a given set of atomic propositions (strings) and being closed under the operations AND ($\wedge$), OR ($\vee$), NOT ($\neg$).
 
-Formal languages can be processed by algorithms. In particular, for any given formal language one would expect (terminating, even efficient) algorithms that
+Formal languages can be processed by algorithms. In particular, for any given formal language there are (terminating, even efficient) algorithms that
 - answer the yes-no-question, for any string, whether that string belongs to the language,
 - parse a given string into an [abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 
@@ -99,7 +99,7 @@ $$
 
 The variables $p, q, r, s$ are bits taking values in $\{0,1\}$.
 
-The intended encoding is as follows. For each cell, let's say the bit is 1 when the cell contains 1, and 0 when it contains 2. In the notation of [propositional logic](./1-propositional-logic.md), a **specification** of the puzzle can now be expressed as follows.
+The intended encoding is as follows. For each cell, let's say the bit is 1 when the cell contains 1, and 0 when it contains 2. In the notation of propositional logic of Chapters [1](./1-propositional-logic.md) and [2](./2-satsolving.md), a **specification** of the puzzle can now be expressed as follows.
 
 First, the rules of Sudoku are transformed into the following equations (writing $\vee$ for OR and $\neg$ for NOT) 
 

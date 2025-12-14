@@ -222,12 +222,7 @@ dotnet test -v:n
 
 ## Program Verification Techniques
 
-Dafny was built using the principles of Hoare Logic as a form of program verification. Through this, Dafyny integrated the Hoare Triple directly into the system language to verify what must be true before (pre-condition) and what must be true after program execution (post-condition). This integration of built-in formal reasoning enabled constructs such as ```requires``` and ```ensures``` to be part of the natural language. Additionally, Dafny development was also able to account for loops and recursions by utilizing invariants and termination conditions. 
-
-Although a majority of the verification work in Dafny is handled by an SMT solver, this automated process alleviates the stress of manually constructing corrected proofs. This automated process, however, still requires human input to provide well-selected specifications and invariants, which can be deemed challenging, especially for more complex properties. 
-
-Despite the challenges that selecting specifications and invariants may bring, Dafny has successfully demonstrated the practicality of implementing Hoare Logic. Through system-wide efforts to enforce program validations and correctness, users can develop programs without worrying about extensive testing. As a result of this constant verification, users can trust their programs, knowing that each portion of them has been thoroughly validated. Founded on the principle of ensuring that mathematical proofs function as intended, Hoare Logic provides a robust and reliable method for developing programs. 
-
+*To be added*
 
 ## Exercises
 
@@ -406,18 +401,11 @@ Sum of array = 9
 
 ## The Landscape of Tools
 
-Dafny is a programming language that helps developers write code they can trust. It bridges the gap between manual proof assistants and automated analyzers. Proof assistants are precise but require considerable manual effort. Although automated analyzers are faster, they are limited in what they can prove. Dafny combines the best of both by embedding Hoare logic directly into its structure. Programmers can write preconditions, postconditions, invariants, and termination checks alongside their code. This makes specifying behavior feel natural, like an extension of coding rather than a separate task.
-
-Dafny translates code into the Boogie intermediate language and uses the Z3 solver to ensure methods meet their contracts and loops maintain their invariants. When encountering a program that fails, Dafny can report the issue within the source code. This allows programs ranging from beginners to experts to understand what went wrong throughout the program. Dafny makes rigorous verification practical and approachable, even for complex systems and algorithms.
-
+*To be added*
 
 ## Benchmark and Competitions
 
-The development of Hoare Logic continues to grow, as the number of conferences and workshops around program verification tools continues to increase. Events such as ETAPS, TACAS, FM, and the Dagstuhl seminars provide a platform for individuals to test new ideas and assess how tools perform on real-world problems. The VerifyThis competition has become especially influential. Participants are given problems, create specifications, and work with their verification tools within an allotted time limit. These events often lead to the development of contract notation, improved annotation design, stronger automation, and more helpful tool feedback. These developments shape the evolution of verification tools.
-
-Additionally, these events highlight the challenges that researchers continue to face. Writing effective specifications and invariants still requires skill and insight. Even with recent advances, tools can produce confusing diagnostics or behave in ways that make it hard to understand what went wrong. When these issues arise, conferences and competitions provide researchers with a platform to discuss them directly. Comparing approaches, discussing which ideas are effective, and identifying areas where tools are still limited, enables an exchange that guides future improvements in program verification tools.
-
-The VerifyThis competition has also contributed directly to the development of modern verification tools. Through this competition, many participants have been able to develop improvements as these events push them to refine their tools, adopt new specification features, and strengthen automation strategies. Surviving past competitions show that these newly implemented improvements often stem from insights gained during competitions such as VerifyThis. These teams observe how others formalize requirements, structure invariants, and interact with their tools under pressure. This collaborative environment fosters a feedback loop that supports steady progress in deductive verification research, ensuring that Hoare Logic continues to evolve as both a theoretical framework and a practical verification method.
+*To be added*
 
 ## Applications in Industry
 
@@ -428,6 +416,11 @@ In safety-critical systems, such as those in the aerospace and medical device in
 
 - **Static Analysis:**
 In static analysis, the Hoare Triple is used to reason all program states, ensuring correctness when testing alone can be insufficient. This reasoning is adjusted and adapted to work across various computational models. For synchronous languages, they are rewritten into a synchronous tuple assignment form, enabling grouped updates and macro-step boundaries to be verified through specialized axioms. Meanwhile, in quantum programs, redefined semantics, quantum predicates, and measurement-aware rules are used to handle superposition and probabilistic branching. In each case, static analysis becomes an automated form of Hoare-style reasoning adapted to the computational model, ensuring that correctness is proven.
+
+
+## Case Studies
+
+*To be added*
 
 ## History
 
@@ -441,14 +434,14 @@ By the early 1970s, Hoare had expanded his logic to handle recursive procedures 
 
 The development of Hoare Logic established a foundation in computer science by shifting the perspective from viewing programs as sequences of commands to viewing them as logical systems that can be mathematically analyzed. Building upon Turing’s conceptual groundwork, refining Floyd’s formalization, and realizing Hoare’s framework, this lineage transformed programming into a science of correctness. To this day, Hoare Logic remains a foundational method of verification, and it also serves as a symbol of the connection between logic, mathematics, and computation.
 
+
+## Current Development, Research Challenges, Conferences and Workshops
+
+*To be added*
+
 ## Suggestions for future work on the book
 
-An idea for future work is the integration of an AI-assisted system that helps programmers create, refine, and select Hoare Logic specifications in languages such as Dafny and F*. As program verification continues to grow in importance for software reliability, it reduces the difficulty of writing precise preconditions, postconditions, and invariants. Rather than replacing the verifier, this system would make the specification-writing process more intuitive, guiding developers toward correct and meaningful contracts.
-
-This system would analyze code structure, variable behavior, naming patterns, and points where verification conditions fail to suggest appropriate specifications and loop invariants. By combining static analysis with optional execution traces, the new system could propose candidate requires, ensures, and invariant clauses. These candidates could then be refined through a feedback loop driven by counterexamples produced by Dafny or F*. As the system accumulates experience, it could favor specifications that are simple and readable, while leaving final correctness guarantees to the underlying prover.
-
-Using the feedback loop to build this collaborative tool, the AI assistant would explain verification failures in plain language, offer specification suggestions, and even translate natural-language comments into formal logic. By reducing the trial-and-error usually required in formal verification, this system would ease the integration of Hoare Logic more naturally into everyday development workflows.
-
+*To be added*
 
 ## Hoare Logic in F*
 

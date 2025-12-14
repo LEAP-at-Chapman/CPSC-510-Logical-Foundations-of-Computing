@@ -1,14 +1,15 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>8. Higher-Order Logic with Isabelle &#8212; Logical Foundations of Computing</title>
+    <title>8. Higher-Order Logic with Isabelle/HOL &#8212; Logical Foundations of AI</title>
   
   
   
@@ -28,42 +29,46 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/10-higher-order-logic';</script>
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/10-higher-order-logic.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="9. Type Theory with Lean" href="11-dependent-types.html" />
+    <link rel="next" title="9. Dependent Type Theory with Lean" href="11-dependent-types.html" />
     <link rel="prev" title="7. Hoare Logic with Dafny" href="9-hoare-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -145,32 +150,21 @@
     
   
 
-<a class="navbar-brand logo" href="0-title.html">
+<a class="navbar-brand logo" href="title.html">
   
   
   
   
   
   
-    <p class="title logo__title">Logical Foundations of Computing</p>
+    <p class="title logo__title">Logical Foundations of AI</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0-intro.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
 <li class="toctree-l1"><a class="reference internal" href="0-logic.html">Short Intro to Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
@@ -179,23 +173,30 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraints with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraint Programming with MiniZinc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">4. SMT Solving and Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">7. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Higher-Order Logic with Isabelle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Type Theory with Lean</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Higher-Order Logic with Isabelle/HOL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Dependent Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style Guide</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
-<li class="toctree-l1"><a class="reference internal" href="how-to-contribute.html">How to Contribute</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
 </ul>
 
     </div>
@@ -225,9 +226,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -368,9 +369,9 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -381,7 +382,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Higher-Order Logic with Isabelle</h1>
+    <h1>Higher-Order Logic with Isabelle/HOL</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -393,9 +394,9 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-and-introduction">8.1. Idea and Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">8.2. Basic Theory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-first-order-logic-to-higher-order-logic">8.2.1. From First-Order Logic to Higher-Order Logic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hol-type-system">8.2.2. The HOL Type System</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-lambda-abstraction">8.2.3. Lambda (<span class="math notranslate nohighlight">\(\lambda\)</span>) Abstraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-first-order-logic-to-hol">8.2.1. From First-Order Logic to HOL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-type-system">8.2.2. (Explicit) Type System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-abstraction-and-application">8.2.3. <span class="math notranslate nohighlight">\(\lambda\)</span>-Abstraction and Application</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-constants-in-hol">8.2.4. Logical Constants in HOL</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deductive-core-of-hol">8.2.5. Deductive Core of HOL</a></li>
 </ul>
@@ -404,60 +405,40 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">8.3.1. Installation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-solving-via-sledgehammer">8.3.2. Proof Solving via Sledgehammer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example-add-function">8.3.3. First Example - Add Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-exercise-associativity-and-commutativity-of-add">8.3.4. First Exercise - Associativity and Commutativity of Add</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-exercise-associativity-and-communativity-of-add">8.3.4. First Exercise - Associativity and Communativity of Add</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-example-flattening-and-length-invariant">8.4. Intro Example - Flattening and Length Invariant</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-flattening">8.4.1. List Flattening</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#length-invariant">8.4.2. Length Invariant</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples-tower-of-hanoi-or-insertion-sort">8.4. Introductory Examples - Tower of Hanoi or Insertion Sort</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">8.5. The Landscape of Tools</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-theorem-provers">8.5.1. Interactive Theorem Provers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-theorem-provers">8.5.2. Automated Theorem Provers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-languages">8.5.3. Programming Languages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-theorem-prover">8.5.2. Automated Theorem Prover</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">8.6. Algorithms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-and-unification">8.6.1. Matching and Unification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplification-rewriting">8.6.2. Simplification &amp; Rewriting</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-search-and-external-automation">8.6.3. Proof Search and External Automation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">8.6. Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-competitions">8.7. Benchmarks and Competitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry-and-academia">8.8. Applications in Industry and Academia</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-addressing-on-real-hardware">8.8.1. Physical Addressing on Real Hardware</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-stream-processing-components">8.8.2. FOCUS - Stream Processing Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isabil-verifying-in-correctness-of-binaries">8.8.3. IsaBIL - Verifying (In)Correctness of Binaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verlso-isolation-guarantees-of-database-transactions">8.8.4. Verlso - Isolation Guarantees of Database Transactions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ieee-754-floating-point-implementation-for-mdps">8.8.5. IEEE 754 Floating Point Implementation for MDPs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoformalization-with-large-language-models">8.8.6. Autoformalization with Large Language Models</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-use-cases">8.7. Typical Use Cases</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-competitions">8.8. Benchmarks and Competitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry-and-academia">8.9. Applications in Industry and Academia</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-addressing-on-real-hardware">8.9.1. Physical Addressing on Real Hardware</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-stream-processing-components">8.9.2. FOCUS - Stream Processing Components</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isabil-verifying-in-correctness-of-binaries">8.9.3. IsaBIL - Verifying (In)Correctness of Binaries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verlso-isolation-guarantees-of-database-transactions">8.9.4. Verlso - Isolation Guarantees of Database Transactions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ieee-754-floating-point-implementation-for-mdps">8.9.5. IEEE 754 Floating Point Implementation for MDPs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoformalization-with-large-language-models">8.9.6. Autoformalization with Large Language Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-autoformalization-with-large-language-models">8.9. Case Study - Autoformalization with Large Language Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">8.10. History</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-higher-order-logic">8.10.1. Origins of Higher-Order Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">8.10.2. Development of Isabelle/HOL</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-autoformalization-with-llms">8.10. Case Study - Autoformalization with LLMs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">8.11. History</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-higher-order-logic">8.11.1. Origins of Higher-Order Logic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">8.11.2. Development of Isabelle/HOL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">8.11. Current Development, Research Challenges, Conferences and Workshops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">8.11.1. Current Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-challenges">8.11.2. Research Challenges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conferences-and-workshops">8.11.3. Conferences and Workshops</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-events-within-isabelle-hol">8.12. Current Events within Isabelle/HOL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">8.12.1. Current Development</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-challenges">8.12.2. Research Challenges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conferences-and-workshops">8.12.3. Conferences and Workshops</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">8.13. References</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ebooks-and-textbooks">8.13.1. eBooks and Textbooks</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#online-articles">8.13.2. Online Articles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-papers">8.13.3. Research Papers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.13.4. Research Papers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">8.13.5. Videos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous">8.13.6. Miscellaneous</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">8.14. Suggestions for Future Work</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">8.15. Contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">8.12. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">8.13. Suggestions for Future Work</a></li>
 </ul>
             </nav>
         </div>
@@ -469,11 +450,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="higher-order-logic-with-isabelle">
-<h1><span class="section-number">8. </span>Higher-Order Logic with Isabelle<a class="headerlink" href="#higher-order-logic-with-isabelle" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="higher-order-logic-with-isabelle-hol">
+<h1><span class="section-number">8. </span>Higher-Order Logic with Isabelle/HOL<a class="headerlink" href="#higher-order-logic-with-isabelle-hol" title="Permalink to this heading">#</a></h1>
 <p><em>Author: Spencer Au</em></p>
+<!-- ## Topics
+
+- Higher-order logic foundations
+- Function types and quantification
+- Isabelle/HOL advanced features
+- Theorem proving strategies
+- Industrial theorem proving -->
 <section id="idea-and-introduction">
-<h2><span class="section-number">8.1. </span>Idea and Introduction<a class="headerlink" href="#idea-and-introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1. </span>Idea and Introduction<a class="headerlink" href="#idea-and-introduction" title="Permalink to this heading">#</a></h2>
+<p>WIP</p>
 <p>Topics</p>
 <ul class="simple">
 <li><p>Higher-order logic foundations</p></li>
@@ -486,48 +475,211 @@ document.write(`
 <p>Higher-order logic (HOL) extends the capabilities of first-order logic (FOL) by allowing quantifiers (such as <span class="math notranslate nohighlight">\( \forall x \)</span> and <span class="math notranslate nohighlight">\( \exists x \)</span>) to range over functions and predicates, not just individual elements. In addition, functions can be passed as arguments to other functions, returned as results, and manipulated just like any other data type. This enables more expressive statements about the properties of functions and their relationships.</p>
 </section>
 <section id="basic-theory">
-<h2><span class="section-number">8.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Link to this heading">#</a></h2>
-<section id="from-first-order-logic-to-higher-order-logic">
-<h3><span class="section-number">8.2.1. </span>From First-Order Logic to Higher-Order Logic<a class="headerlink" href="#from-first-order-logic-to-higher-order-logic" title="Link to this heading">#</a></h3>
-<p>First-order logic (FOL) restricts quantification to individual elements of a domain, without quantifying over predicates or functions. Second-order logic extends FOL by allowing quantification over relations, sets, and functions of that domain. Higher-order logic (HOL) generalizes this extension by allowing quantification over predicates and functions of arbitrary finite types, not just individuals or sets.<sup><a href="#SEP_HOL">[7]</a></sup></p>
+<h2><span class="section-number">8.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
+<!-- basic setup - need to add much more but this is just basics/scaffolding -->
+<section id="from-first-order-logic-to-hol">
+<h3><span class="section-number">8.2.1. </span>From First-Order Logic to HOL<a class="headerlink" href="#from-first-order-logic-to-hol" title="Permalink to this heading">#</a></h3>
+<p>WIP</p>
+<!-- 
+	•	HOL is typed
+	•	Functions are first-class
+	•	Quantifiers range over all types
+	•	λ-abstraction builds function terms
+	•	Application is part of the syntax
+	•	Equality at every type
+   -->
+<!-- Andrews Ch 1-2, https://isabelle.in.tum.de/library/HOL/HOL/document.pdf section 2,  -->
+<p><span class="math notranslate nohighlight">\( \forall x \)</span> and <span class="math notranslate nohighlight">\( \exists x\)</span> where x is a variable/individual element</p>
+<p>First Order Logic</p>
+<p>Second Order Logic</p>
+<p>Third Order Logic -&gt; Higher Order Logic</p>
+<p>In higher order logic, we extend this to <span class="math notranslate nohighlight">\( \forall f(x) \)</span> and <span class="math notranslate nohighlight">\( \exists f(x) \)</span>, where x is a function that takes x as an input</p>
+<p>These are the principal features which are added to first-order logic in order to obtain this formulation of higher-order logic:<sup><a href="#andrews2002">[3]</a></sup></p>
+<ol class="arabic simple">
+<li><p>Variables of arbitrarily high orders</p></li>
+<li><p>Quantification on variables of all types</p></li>
+<li><p>Comprehension Axioms</p></li>
+<li><p>Axioms of Extensionality</p></li>
+</ol>
+<p>conclusion line of how HOL = typed + <span class="math notranslate nohighlight">\(\lambda\)</span> + functional programming</p>
 </section>
-<section id="the-hol-type-system">
-<h3><span class="section-number">8.2.2. </span>The HOL Type System<a class="headerlink" href="#the-hol-type-system" title="Link to this heading">#</a></h3>
-<p>In Isabelle/HOL, the underlying higher-order logic is built upon Church’s simple type theory<sup><a href="#Church_TypeTheory">[18]</a></sup>, which is a disciplined type system in which every term is assigned a type and compound types are formed using function type constructors. This simple type theory extends first-order logic by classifying individuals, predicates, and functions into an explicit hierarchy of types, enabling quantification over functions and predicates while avoiding the semantic paradoxes of untyped systems, such as an expression that may refer to itself in a problematic way. In HOL, the type system both guarantees well-formed expressions and organizes how functions of any finite type can be combined and applied.<sup><a href="#SEP_ChurchTypeTheory">[8]</a></sup> Church’s type theory is widely adopted in proof assistants implementing HOL, such as Isabelle/HOL, and offers a foundation for formalizing mathematics and computations.<sup><a href="#Isabelle_Logics">[2]</a></sup></p>
-<p><em>For further resources about type theory, SEP provides an excellent article on Type Theory<sup><a href="#SEP_TypeTheory">[9]</a></sup>. There is also a solid YouTube video for those that would prefer a different medium.<sup><a href="#TypeTheory_Youtube">[32]</a></sup></em></p>
+<section id="explicit-type-system">
+<h3><span class="section-number">8.2.2. </span>(Explicit) Type System<a class="headerlink" href="#explicit-type-system" title="Permalink to this heading">#</a></h3>
+<!-- – Andrews (2002) Sections 5 (“Type theory basics”)
+– Church (1940) A Formulation of the Simple Theory of Types 
+Church Text is more relevant to history section-->
+<p><em>Andrews, 2002 Section 5.1</em><sup><a href="#andrews2002">[3]</a></sup> provides us with <span class="math notranslate nohighlight">\(Q_0\)</span>, which is a modified formalization of Church’s simple theory of types<sup><a href="#Church_TypeTheory">[10]</a></sup>, in which equality is taken as the basic primitive notion. The semantics of <span class="math notranslate nohighlight">\(Q_0\)</span> describe how types denote sets, how function types denote function spaces, and how terms receive meaning under assignments.</p>
+<p>This section introduces the purely syntactic component of simple type theory:
+the formation of types, variables, primitive symbols, and well-formed expressions.</p>
+<p><strong>Type Formation Rules:</strong></p>
+<p><span class="math notranslate nohighlight">\((\alpha, \beta, \gamma, \ldots )\)</span> are syntactical variables that range over type symbols, defined inductively:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\iota\)</span> is a type symbol for individuals</p></li>
+<li><p><span class="math notranslate nohighlight">\(o\)</span> is a type symbol for truth values</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are types symbols, then (<span class="math notranslate nohighlight">\(\alpha\beta\)</span>) is a type symbol denoting the type of functions from elements of type <span class="math notranslate nohighlight">\(\beta\)</span> to elements of type <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+</ul>
+<p><strong>Variables Indexed by Type:</strong></p>
+<ul class="simple">
+<li><p>For each type symbol <span class="math notranslate nohighlight">\(\alpha\)</span>, a denumerable list of variables of type <span class="math notranslate nohighlight">\(\alpha\)</span>:
+<span class="math notranslate nohighlight">\(f_\alpha, g_\alpha, h_\alpha \ldots x_\alpha, y_\alpha, z_\alpha, f^1_\alpha, g^1_\alpha \ldots z^1_\alpha, f^2_\alpha \ldots\)</span></p></li>
+</ul>
+<p><strong>Primitive Syntactic Forms (of <span class="math notranslate nohighlight">\(Q_0\)</span>):</strong></p>
+<ul class="simple">
+<li><p>Improper symbols include  [ ] and <span class="math notranslate nohighlight">\(\lambda\)</span></p></li>
+</ul>
+  <!-- Andrews $Q_0$ is fairly barebones in terms of logical constants, as he only provides us with 2 main terms: $Q_{((o\alpha)\alpha)}$ and $u_{(\iota(o\iota))}$ where: -->
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q_{((o\alpha)\alpha)}\)</span> is the equality predicate at type <span class="math notranslate nohighlight">\(\alpha\)</span>, which is a function that takes 2 <span class="math notranslate nohighlight">\(\alpha\)</span> arguments and returns a truth value</p></li>
+<li><p><span class="math notranslate nohighlight">\(u_{(\iota(o\iota))}\)</span> is the description/selection operator (also known as the Hilbert <span class="math notranslate nohighlight">\(\epsilon\)</span>-operator), which returns an element of type <span class="math notranslate nohighlight">\(\iota\)</span> that satisfies a predicate <span class="math notranslate nohighlight">\(p : \iota \to o\)</span> if one exists</p></li>
+</ul>
+<p><strong>Nonlogical Constants:</strong></p>
+<ul class="simple">
+<li><p>Nonlogical constants of various types may be included depending on the particular formalized language</p></li>
+</ul>
+<p><strong>Formation of Well-Formed Expressions (wff’s):</strong></p>
+<p>A wff<span class="math notranslate nohighlight">\(_\alpha\)</span> (a well-formed expression of type <span class="math notranslate nohighlight">\(\alpha\)</span>) is defined inductively as follows:</p>
+<ul class="simple">
+<li><p>Any primitive variables or constant of type <span class="math notranslate nohighlight">\(\alpha\)</span> is a wff<span class="math notranslate nohighlight">\(_\alpha\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(A_{\alpha\beta}\)</span> is a wff of function type (<span class="math notranslate nohighlight">\(\beta \to \alpha\)</span>) and <span class="math notranslate nohighlight">\(B_\beta\)</span> is a wff<span class="math notranslate nohighlight">\(_\beta\)</span>, then [<span class="math notranslate nohighlight">\(A_{\alpha\beta} B_\beta\)</span>] is a wff<span class="math notranslate nohighlight">\(_\alpha\)</span> (function application).</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(A_\alpha\)</span> is a wff and <span class="math notranslate nohighlight">\(x_\beta\)</span> is a variable, then <span class="math notranslate nohighlight">\(\lambda x_\beta A_\alpha\)</span> is a wff of type <span class="math notranslate nohighlight">\(\alpha\beta\)</span> (<span class="math notranslate nohighlight">\(\lambda\)</span>-abstraction; see Section 10.2.3).</p></li>
+</ul>
 </section>
-<section id="lambda-lambda-abstraction">
-<h3><span class="section-number">8.2.3. </span>Lambda (<span class="math notranslate nohighlight">\(\lambda\)</span>) Abstraction<a class="headerlink" href="#lambda-lambda-abstraction" title="Link to this heading">#</a></h3>
-<p>In higher-order logic, <span class="math notranslate nohighlight">\(\lambda\)</span>-abstraction provides a formal way to define anonymous functions by binding variables in expressions. We write this as <span class="math notranslate nohighlight">\(\lambda x.\; t\)</span>, where x is a parameter and t is the body of the function. A <span class="math notranslate nohighlight">\(\lambda\)</span>-term defines a function by binding a variable in an expression, and <span class="math notranslate nohighlight">\(\beta\)</span>-reduction is the rule that implements function application. Basically, when you apply a <span class="math notranslate nohighlight">\(\lambda\)</span>-term to an argument, you substitute that argument for the bound variable in the function body. For example, the abstraction <span class="math notranslate nohighlight">\(\lambda x. \; x * x\)</span> represents the square function, and applying it to an arbitrary number <span class="math notranslate nohighlight">\(a\)</span> yields <span class="math notranslate nohighlight">\(a * a\)</span> by replacing <span class="math notranslate nohighlight">\(x\)</span> with <span class="math notranslate nohighlight">\(a\)</span>.<sup><a href="#Kurz_LambdaSemantics">[10]</a></sup> <sup><a href="#Kurz_LambdaSyntax">[11]</a></sup></p>
-<p>In Isabelle/HOL, <span class="math notranslate nohighlight">\(\lambda\)</span>-abstraction is part of the underlying simply typed <span class="math notranslate nohighlight">\(\lambda\)</span>-calculus, where terms consist of variables, constants, applications, and abstractions. Applying a <span class="math notranslate nohighlight">\(\lambda\)</span>-term to an argument substitutes the argument for the bound variable in the body, and Isabelle treats the original application and its <span class="math notranslate nohighlight">\(\beta\)</span>-reduced form as equivalent. This mechanism makes functions first-class citizens in HOL, supports the construction of higher-order functions, and enables logical constructs to be expressed uniformly.<sup><a href="#Isabelle_Logics">[2]</a></sup></p>
-<p><em>For supplementary resources about <span class="math notranslate nohighlight">\(\lambda\)</span>-abstraction and <span class="math notranslate nohighlight">\(\lambda\)</span>-calculus, SEP again provides some excellent articles.<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> <sup><a href="#SEP_LambdaCalc">[13]</a></sup> There are also easy to grasp YouTube videos by LigerLearn.<sup><a href="#LigerLearn_LambdaPrimer">[30]</a></sup> <sup><a href="#LigerLearn_LambdaEval">[31]</a></sup></em></p>
+<section id="lambda-abstraction-and-application">
+<h3><span class="section-number">8.2.3. </span><span class="math notranslate nohighlight">\(\lambda\)</span>-Abstraction and Application<a class="headerlink" href="#lambda-abstraction-and-application" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\lambda\)</span>-abstraction is the syntax used to define a function by naming its argument. For example, <span class="math notranslate nohighlight">\(\lambda x .\; t\)</span> denotes the function that takes an input x as argument input and returns the expression t as output. In other words, it is the function that maps <span class="math notranslate nohighlight">\(x\)</span> to <span class="math notranslate nohighlight">\(t\)</span>, so <span class="math notranslate nohighlight">\(x \mapsto t\)</span>. Simply put, <span class="math notranslate nohighlight">\(\lambda\)</span> is an operator that is used to denote and represent functions.</p>
+<p>Another example provided by the Stanford Encyclopedia of Philosophy (SEP)<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup> is more ingrained in natural language and may be easier to understand: <span class="math notranslate nohighlight">\(\lambda x .\; x\text{ is a Polish diplomat and } x \text{ is a great pianist}\)</span>. If we set the input of x to an arbitrary person, say <span class="math notranslate nohighlight">\(x = \)</span> Fred, then this can be read as “Fred is both a Polish diplomat and a great pianist”.</p>
+<p>HOL’s <span class="math notranslate nohighlight">\(\lambda\)</span>-abstraction constructs a function. If <span class="math notranslate nohighlight">\(x:\alpha\)</span> and <span class="math notranslate nohighlight">\(t:\beta\)</span>, then <span class="math notranslate nohighlight">\(\lambda x .\; t: \alpha \Rightarrow \beta\)</span>.
+(Basically, If <span class="math notranslate nohighlight">\(x\)</span> has type <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(t\)</span> has type <span class="math notranslate nohighlight">\(\beta\)</span>, then <span class="math notranslate nohighlight">\(\lambda x .\; t\)</span> has type <span class="math notranslate nohighlight">\(\alpha \Rightarrow \beta\)</span>). Function application is typed accordingly. If <span class="math notranslate nohighlight">\(f:\alpha \Rightarrow \beta\)</span> and <span class="math notranslate nohighlight">\(x:\alpha\)</span>, then <span class="math notranslate nohighlight">\(f x:\beta\)</span>. Applying a function of type <span class="math notranslate nohighlight">\(\alpha \Rightarrow \beta\)</span> to an argument of type <span class="math notranslate nohighlight">\(\alpha\)</span> produces a result of type <span class="math notranslate nohighlight">\(\beta\)</span>.</p>
+<p>*<em>Andrews uses the notation of <span class="math notranslate nohighlight">\(\alpha\beta\)</span>, which is equivalent to Isabelle/HOL’s notation of <span class="math notranslate nohighlight">\(\alpha \Rightarrow \beta\)</span>. They both mean the same thing: the type of a function that takes an argument of type <span class="math notranslate nohighlight">\(\alpha\)</span> and returns a value of type <span class="math notranslate nohighlight">\(\beta\)</span></em></p>
+<p>In <span class="math notranslate nohighlight">\(\beta\)</span>-reduction, the idea is that application is the same as substitution.
+For example, if we have <span class="math notranslate nohighlight">\([\lambda x . \; x + 1]0\)</span>, we apply <span class="math notranslate nohighlight">\(\beta\)</span>-reduction by substituting in 0 for x, so we get <span class="math notranslate nohighlight">\([\lambda x . \; x + 1]0 \to_\beta 0 + 1 = 1\)</span>.<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup></p>
+<p>In a Curried function, we basically turn a multiple argument function by nested single input <span class="math notranslate nohighlight">\(\lambda\)</span> functions; this process is referred to as “Currying” the function. For example, if we have a function add(x, y) that takes in both the inputs of x and y, then we Curry the function by turning it into <span class="math notranslate nohighlight">\(\lambda x . \; (\lambda y . \; x + y)\)</span><sup><a href="#Kurz_LambdaSemantics">[14]</a></sup></p>
+<!-- (Currying): To replace a function in two arguments by a function that takes one argument and returns a function that takes the second argument is called "currying" after the mathematician and logician Haskell Curry.<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup> -->
+<p>*<em>In Isabelle/HOL, <span class="math notranslate nohighlight">\(\lambda\)</span>-abstraction is written as <code class="docutils literal notranslate"><span class="pre">%x.</span> <span class="pre">t</span></code> with a <code class="docutils literal notranslate"><span class="pre">%</span></code> instead of the <span class="math notranslate nohighlight">\(\lambda\)</span> symbol.</em></p>
+<p>*<em>There are a plehtora of resources to find supplementary information about <span class="math notranslate nohighlight">\(\lambda\)</span>-calculus and abstraction. In addition to the HackMD pages by Alexander Kurz<sup><a href="#Kurz_LambdaSemantics">[14]</a></sup> <sup><a href="#Kurz_LambdaSyntax">[15]</a></sup>, other good references are Chapters 3.1 and 3.2 of <strong>Logic and Computation</strong><sup><a href="#Paulson_LCF">[11]</a></sup> and the aforementioned Section D.1 of the SEP<sup><a href="#Stanford_LambdaCalc_TypeTheory">[12]</a></sup></em></p>
 </section>
 <section id="logical-constants-in-hol">
-<h3><span class="section-number">8.2.4. </span>Logical Constants in HOL<a class="headerlink" href="#logical-constants-in-hol" title="Link to this heading">#</a></h3>
-<p>In higher-order logic, the logical constants are the primitive symbols that express the core logical operations and quantification. They include propositional connectives such as:</p>
+<h3><span class="section-number">8.2.4. </span>Logical Constants in HOL<a class="headerlink" href="#logical-constants-in-hol" title="Permalink to this heading">#</a></h3>
+<!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf section 2, Andrews Logical Constants of Q0	•	§51(c): Q_{(αα)o} and u_{(ιo)ι} and the explanations. ￼ -->
+<!-- equality: = :: α ⇒ α ⇒ bool
+
+Hilbert choice: ε :: (α ⇒ bool) ⇒ α
+
+standard connectives: ¬, ∧, ∨, ⟶, ↔
+
+quantifiers defined via λ (∀x. P x) -->
+<p>Logical constants are built in symbols that define the logical structure of the system and are not defined by the user. Isabelle/HOL provides a standard set of such constants, summarized in Sections 2.1.1 of <em>Concrete Semantics</em>.<sup><a href="#ConcreteSemantics">[1]</a></sup></p>
+<!-- base boolean constants: (true and false) -->
 <ul class="simple">
-<li><p>Conjunction (<span class="math notranslate nohighlight">\(\land\)</span>)</p></li>
-<li><p>Disjunction (<span class="math notranslate nohighlight">\(\lor\)</span>)</p></li>
-<li><p>Implication (<span class="math notranslate nohighlight">\(\to\)</span>)</p></li>
-<li><p>Negation (<span class="math notranslate nohighlight">\(\neg\)</span>)</p></li>
-<li><p>Equality (<span class="math notranslate nohighlight">\(=\)</span>)</p></li>
+<li><p><strong>Base Boolean Constants</strong>: simplest terms of type bool, representing truth values</p>
+<ul>
+<li><p><em>True</em> : bool</p></li>
+<li><p><em>False</em> : bool</p></li>
 </ul>
-<p>as well as quantifiers like:</p>
+</li>
+</ul>
+<!-- logical connectives (such as not, and, or, ->, etc) -->
 <ul class="simple">
-<li><p>Universal (<span class="math notranslate nohighlight">\(\forall\)</span>)</p></li>
-<li><p>Existential (<span class="math notranslate nohighlight">\(\exists\)</span>)</p></li>
+<li><p><strong>Logical Connectives</strong>: curried functions that return a Boolean</p>
+<ul>
+<li><p><strong><span class="math notranslate nohighlight">\(\neg\)</span></strong>: <span class="math notranslate nohighlight">\(bool \Rightarrow bool\)</span></p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\land\)</span></strong>: <span class="math notranslate nohighlight">\(bool \Rightarrow bool \Rightarrow bool\)</span></p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\lor\)</span></strong>: <span class="math notranslate nohighlight">\(bool \Rightarrow bool \Rightarrow bool\)</span></p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(\to\)</span></strong>: <span class="math notranslate nohighlight">\(bool \Rightarrow bool \Rightarrow bool\)</span></p></li>
 </ul>
-<p>which operate over objects of any type. In Isabelle/HOL, the full syntax of terms and constants is defined by the grammar of HOL and is treated uniformly alongside function application and <span class="math notranslate nohighlight">\(\lambda\)</span>-abstraction. This vocabulary is the basis on which more complex formulas are built and manipulated in proof development.<sup><a href="#Isabelle_Logics">[2]</a></sup></p>
+</li>
+</ul>
+<!-- 
+Terminology (Currying): To replace a function in two arguments by a function that takes one argument and returns a function that takes the second argument is called "currying" after the mathematician and logician Haskell Curry.
+
+https://hackmd.io/@alexhkurz/H1e4Nv8Bv -->
+<!-- equality: = -->
+<ul class="simple">
+<li><p><strong>Equality</strong>: infix function <span class="math notranslate nohighlight">\(=\)</span> of type <span class="math notranslate nohighlight">\(\alpha \Rightarrow \alpha \Rightarrow bool\)</span></p></li>
+</ul>
+<!-- quantifiers: $\forall x$ and $\exists x$ -->
+<ul class="simple">
+<li><p><strong>Quantifiers</strong>: <span class="math notranslate nohighlight">\(\forall x. \; Px\)</span> and <span class="math notranslate nohighlight">\(\exists x. \; Px\)</span></p></li>
+</ul>
 </section>
 <section id="deductive-core-of-hol">
-<h3><span class="section-number">8.2.5. </span>Deductive Core of HOL<a class="headerlink" href="#deductive-core-of-hol" title="Link to this heading">#</a></h3>
-<p>The deductive core of higher-order logic consists of the fundamental inference rules for logical connectives, quantifiers, and equality, including the basic introduction and elimination rules that govern valid reasoning in HOL. In Isabelle/HOL, these primitive rules form the logic’s core inference system, and every derived theorem is justified by a sequence of such sound rule applications. Higher level proof methods and tactics ultimately based on these basic rules make structured proofs possible in practice. Concrete presentations of these inference rules and how they are used in proofs can be found in the Isabelle/HOL Proof Assistant Manual.<sup><a href="#Isabelle/HOL_ProofAssistant">[3]</a></sup></p>
+<h3><span class="section-number">8.2.5. </span>Deductive Core of HOL<a class="headerlink" href="#deductive-core-of-hol" title="Permalink to this heading">#</a></h3>
+<p>Natural Deduction Rules
+Chapter 5 of <em>Isabelle/HOL: A Proof Assistant for Higher‑Order Logic</em> <sup><a href="#Isabelle/HOL_ProofAssistant">[13]</a></sup></p>
+<!-- Introduction and elimination rules for classical connectives and quantifiers. -->
+<p>Typed <span class="math notranslate nohighlight">\(\lambda\)</span>-Calculus</p>
+<!-- Terms are built using the simply-typed λ-calculus, with β-reduction and η-conversion (up to extensionality). -->
+<p>Equality Rules</p>
+<!-- Polymorphic equality with reflexivity + congruence/substitution; includes functional and boolean extensionality. -->
+<p>Hilbert <span class="math notranslate nohighlight">\(\epsilon\)</span> (Choice) Operator
+A choice operator <span class="math notranslate nohighlight">\(\varepsilon : (\alpha \Rightarrow bool) \Rightarrow \alpha\)</span> with the choice axiom.</p>
+<p>Conservative Definition Principles</p>
+<!-- New constants and types may only be introduced via mechanisms Isabelle checks as conservative (no new theorems introduced). -->
+<p>Small Trusted Kernel</p>
+<!-- Isabelle’s logical kernel is minimal; all automation reduces to this core proof system. -->
+<p>WIP</p>
+<!-- 
+	•	HOL’s small axiom set: classical logic, equality, choice
+	•	Isabelle’s kernel uses natural-deduction with λ-calculus + types
+	•	All user-introduced definitions are conservative
+	•	Isabelle proves everything from this core automatically -->
+<!-- The basic rules of inference of $\mathcal{F}^w$, where $\mathcal{F}$ is a system of $\mathcal{w}$-order logic which has all finite order logics as subsystems:
+
+1) **Modus Ponens** From $A$ and $A \to B$ to infer $B$.
+2) **Generalization** From $A$ to infer $\forall x\,A$, where x is a variable of any type
+
+
+*Adapted from Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> using modern logic convention.
+
+
+The axiom schemata of $\mathcal{F}^w$ are:
+
+1) $A \lor A \to A$
+2) $A \to (B \lor A)$
+3) From $A \to (B \to C)$, infer $ (A \to B) \lor C$
+4) **Universal Instantiation**
+    $\forall x_\tau\,A \to A[y_\tau / x_\tau]$, where $y_\tau$ is a variable or constant of the same type as the variable $x_\tau$, and $y_\tau$ is free for $x_\tau$ in $A$.
+  
+    Basically, from $\forall x_\tau\,A$, we may infer $A[y_\tau / x_\tau]$, meaning that if $A$ holds for all $x_\tau$, then it also holds for any particular instance $y_\tau$ of the same type.
+
+5) **Quantifier Distribution**
+    $\forall x(A \lor B) \to (A \lor \forall x\,B)$, where $x$ is any variable not free in $A$.
+
+    This means that if $(A \lor B)$ holds for all $x$, and $A$ does not depend on $x$, then either $A$ holds or $B$ holds for all $x$.
+
+6) **Comprehension Axioms**
+
+    - *0-ary case (a proposition/Boolean) that names a theorem/statement*.  
+    $ \exists u_{\mathbf{o}}\;[\,u_{\mathbf{o}} \leftrightarrow A\,] $
+    where $u_{\mathbf{o}}$ does not occur free in $A$.  
+    
+    - *n-ary case (a predicate/function of arity n) that names a property/relation*.  
+    $\exists u_{(\tau_1\ldots\tau_n)}\;
+    \forall v^{1}_{\tau_1}\cdots \forall v^{n}_{\tau_n}\,
+    \big[\,u_{(\tau_1\ldots\tau_n)}(v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n})
+    \leftrightarrow A\,\big]$
+    where $u_{(\tau_1\ldots\tau_n)}$ does not occur free in $A$, and $v^{1}_{\tau_1},\ldots,v^{n}_{\tau_n}$ are distinct variables.
+
+    - These axioms allow us to define new symbols that stand for existing formulas.  
+    In the 0-ary case, a new propositional constant $u_{\mathbf{o}}$ can name a statement $A$.  
+    In the n-ary case, a new predicate $u_{(\tau_1\ldots\tau_n)}$ can be introduced so that $u(v^1,\ldots,v^n)$ is true exactly when $A$ holds for those arguments.
+
+7) **Axioms of Extensionality**
+    - *0-ary case (a proposition/Boolean) that names a theorem/statement*.  
+    $(x_{\mathbf{o}} \leftrightarrow y_{\mathbf{o}}) \to (x_{\mathbf{o}} = y_{\mathbf{o}})$
+
+    - *n-ary case (a predicate/function of arity n) that names a property/relation*.  
+    $\forall w^{1}_{\tau_1} \ldots \forall w^{n}_{\tau_n} [(x_{(\tau_1 \ldots \tau_n)}w^{1}_{\tau_1}\ldots w^{n}_{\tau_n}) \leftrightarrow (y_{(\tau_1 \dots \tau_n)} w^{1}_{\tau_1} \ldots w^{n}_{\tau_n})] \to (x_{(\tau_1 \ldots \tau_n)} = y_{(\tau_1 \ldots \tau_n)}) $
+
+    - These axioms state that two expressions are equal if and only if they behave identically in that their output result is the same in all evaluations. This formalizes the idea that in higher order logic, equality is extensional (based on meaning and behavior) rather than syntactic (based on form).
+
+Adapted from *Andrews, 2002*<sup><a href="#andrews2002">[3]</a></sup> using modern logic convention. -->
 </section>
 </section>
 <section id="tool-installation-first-example-first-exercise">
-<h2><span class="section-number">8.3. </span>Tool (Installation, First Example, First Exercise)<a class="headerlink" href="#tool-installation-first-example-first-exercise" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3. </span>Tool (Installation, First Example, First Exercise)<a class="headerlink" href="#tool-installation-first-example-first-exercise" title="Permalink to this heading">#</a></h2>
 <section id="installation">
-<h3><span class="section-number">8.3.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.3.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h3>
 <p><a class="reference external" href="https://isabelle.in.tum.de/">Installation Link for Isabelle</a></p>
 <p>Isabelle processes the theory document incrementally in the background, meaning that there is no additional “compile” or “run” step. As you type in lines and commands, the background system will check them and automatically update the proof state and any relevant error reports. Just go line by line, or command by command in order to check the related output.</p>
 <p>Isabelle uses *.thy (theory) files, and the general structure of the theory files is like this:</p>
@@ -547,39 +699,47 @@ document.write(`
 <p>More detailed instructions on setup and initial use can be found in Chapters 1 and 2.1.2 of <em>Concrete Semantics</em><sup><a href="#ConcreteSemantics">[1]</a></sup></p>
 </section>
 <section id="proof-solving-via-sledgehammer">
-<h3><span class="section-number">8.3.2. </span>Proof Solving via Sledgehammer<a class="headerlink" href="#proof-solving-via-sledgehammer" title="Link to this heading">#</a></h3>
-<p>Sledgehammer is an automated theorem prover orchestrator. It dispatches proof obligations to external provers such as Vampire via command line and returns candidate proofs that can be directly applied. Basically, it find proofs by “hammering away” at different sub-goals that would typically be tedious to construct manually. In the Isabelle GUI, Sledgehammer can be accessed by clicking on the <em>sledgehammer</em> tab on the bottom left corner of the application: select the target sub-goal, invoke Sledgehammer via apply, and then apply a suggested proof if found. Although <em>Concrete Semantics 4.3.1</em><sup><a href="#ConcreteSemantics">[1]</a></sup> introduces the basic sledgehammer command, the GUI method is generally more convenient. The official Isabelle Sledgehammer documentation page<sup><a href="#Isabelle_Sledgehammer">[35]</a></sup> provides further detail.</p>
+<h3><span class="section-number">8.3.2. </span>Proof Solving via Sledgehammer<a class="headerlink" href="#proof-solving-via-sledgehammer" title="Permalink to this heading">#</a></h3>
+<p>WIP</p>
 </section>
 <section id="first-example-add-function">
-<h3><span class="section-number">8.3.3. </span>First Example - Add Function<a class="headerlink" href="#first-example-add-function" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.3.3. </span>First Example - Add Function<a class="headerlink" href="#first-example-add-function" title="Permalink to this heading">#</a></h3>
 <p>For the first example, the goal will be to implement recursive addition via a function called “add”. The general form should be:</p>
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="s">&quot;nat ⇒ nat ⇒ nat&quot;</span><span class="w"> </span><span class="kp">where</span>
-<span class="w">  </span><span class="s">&quot;base case&quot;</span>
-<span class="w">  </span><span class="s">&quot;recursive case&quot;</span>
+<span class="w">    </span><span class="s">&quot;base case&quot;</span>
+<span class="w">    </span><span class="s">&quot;recursive case&quot;</span>
 </pre></div>
 </div>
 <p>where two natural numbers are added, and the result is a natural number that is the sum of the two input numbers. For example, <code class="docutils literal notranslate"><span class="pre">sum</span> <span class="pre">m</span> <span class="pre">n</span></code> should return the sum of m and n.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Show Answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="s">&quot;nat ⇒ nat ⇒ nat&quot;</span><span class="w"> </span><span class="kp">where</span>
 <span class="w">  </span><span class="s">&quot;add 0 n = n&quot;</span><span class="w"> </span><span class="o">|</span>
 <span class="w">  </span><span class="s">&quot;add (Suc m) n = Suc (add m n)&quot;</span><span class="w"> </span>
 </pre></div>
 </div>
 </div>
-</details><p>For a detailed explanation, <a class="reference internal" href="assets-10/8.3_exercises.html"><span class="std std-doc">See Section 8.3.2 Exercises</span></a></p>
+</details><p>For a detailed explanation, <span class="xref myst">See Section 10.3.2 Exercises</span></p>
 </section>
-<section id="first-exercise-associativity-and-commutativity-of-add">
-<h3><span class="section-number">8.3.4. </span>First Exercise - Associativity and Commutativity of Add<a class="headerlink" href="#first-exercise-associativity-and-commutativity-of-add" title="Link to this heading">#</a></h3>
+<section id="first-exercise-associativity-and-communativity-of-add">
+<h3><span class="section-number">8.3.4. </span>First Exercise - Associativity and Communativity of Add<a class="headerlink" href="#first-exercise-associativity-and-communativity-of-add" title="Permalink to this heading">#</a></h3>
 <p>For the first exercise, we will be proving the associative and commutative properties of a custom <code class="docutils literal notranslate"><span class="pre">add</span></code> function in Isabelle. This exercise comes from Exercise 2.2 of <a class="reference external" href="http://www.concrete-semantics.org/Exercises/exercises.pdf">Concrete Semantics Exercises</a></p>
 <p>The custom add function is defined here:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Show Answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="s">&quot;nat =&gt; nat =&gt; nat&quot;</span><span class="w"> </span><span class="kp">where</span>
-<span class="w">  </span><span class="s">&quot;add 0 n = n&quot;</span><span class="w"> </span><span class="o">|</span>
-<span class="w">  </span><span class="s">&quot;add (Suc m) n = Suc(add m n)&quot;</span>
+<span class="w">    </span><span class="s">&quot;add 0 n = n&quot;</span><span class="w"> </span><span class="o">|</span>
+<span class="w">    </span><span class="s">&quot;add (Suc m) n = Suc(add m n)&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -591,7 +751,11 @@ document.write(`
 <p>The full lemma proof for associativity is here:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Show Answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_assoc</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add (add m n) p = add m (add n p)&quot;</span>
 <span class="k">proof</span><span class="w"> </span><span class="o">(</span><span class="n">induction</span><span class="w"> </span><span class="n">m</span><span class="o">)</span><span class="w"> </span>
 <span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="n">0</span>
@@ -603,16 +767,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
-</details><p>For a detailed explanation, <a class="reference internal" href="assets-10/8.3_exercises.html#associative-property-proof"><span class="std std-ref">See Section 8.3.3 Associative Property</span></a></p>
-<p>Next, to prove the commutative property, we will first prove 2 helper lemmas:</p>
+</details><p>For a detailed explanation, <span class="xref myst">See Section 10.3.3 Associative Property</span></p>
+<p>Next, to prove the communative property, we will first prove 2 helper lemmas:</p>
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_0_right</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m 0 = m&quot;</span>
 <span class="kn">lemma</span><span class="w"> </span><span class="n">add_Suc_right</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m (Suc n) = Suc (add m n)&quot;</span>
 </pre></div>
 </div>
-<p>The helper lemma proofs for commutativity</p>
+<p>The helper lemma proofs for communativity</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Show Answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_0_right</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m 0 = m&quot;</span>
 <span class="k">proof</span><span class="w"> </span><span class="o">(</span><span class="n">induction</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
 <span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="n">0</span>
@@ -636,7 +804,11 @@ document.write(`
 </details><p>With the helper lemmas proven, we will use them to prove the commutative property</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Show Answer<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">add_comm</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;add m n = add n m&quot;</span>
 <span class="k">proof</span><span class="w"> </span><span class="o">(</span><span class="n">induction</span><span class="w"> </span><span class="n">m</span><span class="o">)</span>
 <span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="n">0</span>
@@ -650,473 +822,220 @@ document.write(`
 </pre></div>
 </div>
 </div>
-</details><p>For a detailed explanation, <a class="reference internal" href="assets-10/8.3_exercises.html#communative-property-proof"><span class="std std-ref">See Section 8.3.3 Commutative Property</span></a></p>
-<p><em>The Isabelle .thy file for this exercise are located <a class="reference download internal" download="" href="../_downloads/d624d383f05f5525cbb5b2a3316e16aa/exercise_2_2.thy"><span class="xref download myst">here</span></a></em></p>
-<p><em>This form is an Isar style proof. The following example will be an older style tactic based proof.</em></p>
+</details><p>For a detailed explanation, <span class="xref myst">See Section 10.3.3 Communative Property</span></p>
 </section>
 </section>
-<section id="intro-example-flattening-and-length-invariant">
-<h2><span class="section-number">8.4. </span>Intro Example - Flattening and Length Invariant<a class="headerlink" href="#intro-example-flattening-and-length-invariant" title="Link to this heading">#</a></h2>
+<section id="introductory-examples-tower-of-hanoi-or-insertion-sort">
+<h2><span class="section-number">8.4. </span>Introductory Examples - Tower of Hanoi or Insertion Sort<a class="headerlink" href="#introductory-examples-tower-of-hanoi-or-insertion-sort" title="Permalink to this heading">#</a></h2>
 <!-- show something interesting about tool, logic, etc and can be digested and understood with minimum experience -->
-<p>There is an introduction exercise to syllogistic logic<sup><a href="#MossSyllogism">[34]</a></sup> in Isabelle by Alexander Kurz linked <a class="reference internal" href="appendix-syllogistic-logics.html"><span class="std std-doc">here</span></a>.</p>
-<p>The List Flattening and Length Preservation exercise is adjusted from <a class="reference external" href="https://isabelle.in.tum.de/exercises/lists/sum/sol.pdf">this exercise</a>. First try the exercise yourself, and if stuck, reference the document linked.</p>
-<section id="list-flattening">
-<h3><span class="section-number">8.4.1. </span>List Flattening<a class="headerlink" href="#list-flattening" title="Link to this heading">#</a></h3>
-<p>Define a recursive function <code class="docutils literal notranslate"><span class="pre">fun</span> <span class="pre">flatten</span> <span class="pre">::</span> <span class="pre">'a</span> <span class="pre">list</span> <span class="pre">list</span> <span class="pre">=&gt;</span> <span class="pre">'a</span> <span class="pre">list</span></code> that takes a list of lists as input, flattens it, and returns that flattened list. Flattening is simply turning a multi-dimensional list into a single list by concatenating inner lists. For example, if we have <span class="math notranslate nohighlight">\([[1,2], [3,4], [5]]\)</span>, then flattening would yield <span class="math notranslate nohighlight">\([1,2,3,4,5]\)</span>.</p>
-<p>For the base case, simply check if the input list is empty, and if so, return an empty list. For the recursive case, match a non-empty list with (xs # xss) and concatenate xs (using &#64;) with the result of flattening xss.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="k">fun</span><span class="w"> </span><span class="n">flatten</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="s">&quot;&#39;a list list =&gt; &#39;a list&quot;</span><span class="w"> </span><span class="kp">where</span>
-<span class="w">  </span><span class="s">&quot;flatten [] = []&quot;</span><span class="w"> </span><span class="o">|</span>
-<span class="w">  </span><span class="s">&quot;flatten (xs # xss) = xs @ flatten xss&quot;</span>
-</pre></div>
-</div>
-</div>
-</details><p>Use a quick lemma with simp to confirm that the function works:</p>
-<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="s">&quot;flatten [[1::nat, 2], [3,4], [5,6], [7]] = [1,2,3,4,5,6,7]&quot;</span>
-<span class="w">  </span><span class="kp">apply</span><span class="w"> </span><span class="n">simp</span>
-<span class="w">  </span><span class="k">done</span>
-</pre></div>
-</div>
-<p>If there are no errors, then the flatten function is implemented correctly.</p>
-</section>
-<section id="length-invariant">
-<h3><span class="section-number">8.4.2. </span>Length Invariant<a class="headerlink" href="#length-invariant" title="Link to this heading">#</a></h3>
-<p>The next step is to prove that the flatten function implemented is <em>length invariant</em>, meaning that the operation doesn’t create or lose elements, but instead only performs simple concatenation.</p>
-<p>Define a lemma called <code class="docutils literal notranslate"><span class="pre">lemma</span> <span class="pre">length_flatten:</span></code>, and check that for all xss, the length of flatten(xss) equals the sum of the lengths of the lists inside xss using.</p>
-<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">length_flatten</span><span class="o">:</span>
-<span class="w">  </span><span class="s">&quot;length (flatten xss) = sum_list (map length xss)&quot;</span>
-</pre></div>
-</div>
-<p>Since this proof is relatively simple, a tactic based approach would be ideal. Set up the tactic based proof by induction by using <code class="docutils literal notranslate"><span class="pre">apply</span> <span class="pre">(induct</span> <span class="pre">xss)</span></code></p>
-<p>There should now be 2 subgoals, and from there, simply leverage the Sledgehammer tool to solve proof obligations.</p>
-<p>The full proof is here. Isabelle will recognize the lemma as a theorem when all proof obligations have been satisfied.</p>
-<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
-<summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Show Answer</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<div class="highlight-isabelle notranslate"><div class="highlight"><pre><span></span><span class="kn">lemma</span><span class="w"> </span><span class="n">length_flatten</span><span class="o">:</span>
-<span class="w">  </span><span class="s">&quot;length (flatten xss) = sum_list (map length xss)&quot;</span>
-<span class="w">  </span><span class="kp">apply</span><span class="w"> </span><span class="o">(</span><span class="n">induct</span><span class="w"> </span><span class="n">xss</span><span class="o">)</span>
-<span class="w">    </span><span class="kp">apply</span><span class="w"> </span><span class="n">simp</span>
-<span class="w">  </span><span class="k">by</span><span class="w"> </span><span class="n">simp</span>
-</pre></div>
-</div>
-</div>
-</details><p><em>The Isabelle .thy file for this exercise are located <a class="reference download internal" download="" href="../_downloads/dfb482bb4e25cd32c73c48320bb8208f/list_flatten.thy"><span class="xref download myst">here</span></a></em></p>
-</section>
+<p>Tower of Hanoi or Insertion Sort</p>
+<p>WIP</p>
 </section>
 <section id="the-landscape-of-tools">
-<h2><span class="section-number">8.5. </span>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.5. </span>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Permalink to this heading">#</a></h2>
 <section id="interactive-theorem-provers">
-<h3><span class="section-number">8.5.1. </span>Interactive Theorem Provers<a class="headerlink" href="#interactive-theorem-provers" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.5.1. </span>Interactive Theorem Provers<a class="headerlink" href="#interactive-theorem-provers" title="Permalink to this heading">#</a></h3>
 <p><strong>HOL4</strong> is part of the “HOL” family of interactive theorem provers, using classical higher-order logic and following the LCF approach to ensure soundness. Developed by Michael J. C. Gordon, the system is implemented in ML, and is a direct descendent of the original HOL88 system. Because HOL4 shares the same underlying logic as Isabelle/HOL, many theories and proof patterns are generally portable between the two tools.</p>
-<p><strong>Rocq</strong> (formerly Coq) is an interactive theorem prover based on the Calculus of Inductive Constructions (CIC), which is dependently typed <span class="math notranslate nohighlight">\(\lambda\)</span>-calculus that extends the Calculus of Constructions with inductive types. This extension allow propositions to be represented as types and proofs as programs, enabling highly expressive specifications. Rocq is mainly implemented in OCaml with some C, and it’s dependent type theory allows it to have greater expressive power over Isabelle/HOL.</p>
-<p><strong>Lean (4)</strong> is another proof assistant that follows a similar but more modern variant of dependent type theory. Like Rocq, Learn also extends the Calculus of Constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Like Rocq, Lean 4’s dependent type theory also supports greater expressive power compared to Isabelle/HOL.</p>
+<p><strong>Rocq</strong> (formerly named Coq) is an interactive theorem prover based on the <em>Calculus of Inductive Constructions</em>, which is a derivative of the calculus of constructions, and is a higher-order typed lambda calculus that adds inductive types. It is mainly implemented in OCaml with some C. Compared with Isabelle/HOL, Rocq uses higher-order type theory, which allows it to have greater expressive power.</p>
+<p><strong>Lean (4)</strong> is another proof assistant and, similar to Rocq, is based on dependent type theory, which is a version of the calculus of constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Compared to Isabelle/HOL’s classic higher-order logic, Lean’s dependent type theory offers greater expressive power, similar to Rocq.</p>
 </section>
-<section id="automated-theorem-provers">
-<h3><span class="section-number">8.5.2. </span>Automated Theorem Provers<a class="headerlink" href="#automated-theorem-provers" title="Link to this heading">#</a></h3>
-<p><strong>Leo III</strong> is an automated theorem prover for classical higher-order logic that supports all common TPTP input dialects and is based on paramodulation calculus with ordering constraints for reasoning. Leo III is written in Scala and runs on the JVM (Java Virtual Machine). Compared with ITPs (interactive theorem provers) like Isabelle/HOL, Leo III trades human-guided proof structuring and granular control for full automation, allowing it to rapidly discharge proof obligations.<sup><a href="#LeoIII">[28]</a></sup></p>
-<p><strong>Satallax</strong> is another automated theorem prover for classical higher-order logic and is based on Church’s simple type theory with extensionality and choice operators. It is implemented in OCaml and uses the SAT solver MiniSat for its proof search. Basically, Satallax generates propositional clauses corresponding to the rules of a complete tableau calculus and calls MiniSat periodically to test the satisfiability of these clauses.<sup><a href="#Satallax">[16]</a></sup></p>
-</section>
-<section id="programming-languages">
-<h3><span class="section-number">8.5.3. </span>Programming Languages<a class="headerlink" href="#programming-languages" title="Link to this heading">#</a></h3>
-<p><strong>F*</strong> is a dependently typed programming language that integrates program development with proof construction in a single system. It’s type system lets you encode precise specifications and it uses SMT solvers to automatically discharge proof obligations while still supporting interactive proof guidance when necessary, similar to Isabelle and its Sledgehammer tool. More information about F* with a web-based tutorial can be found <a class="reference external" href="https://fstar-lang.org/tutorial/">here</a>.</p>
+<section id="automated-theorem-prover">
+<h3><span class="section-number">8.5.2. </span>Automated Theorem Prover<a class="headerlink" href="#automated-theorem-prover" title="Permalink to this heading">#</a></h3>
+<p><strong>Leo III</strong> is an automated theorem prover for classical higher-order logic that supports all common TPTP input dialects and is based on paramodulation calculus with ordering constraints for reasoning. Leo III is written in Scala and runs on the JVM (Java Virtual Machine). Compared with ITPs (interactive theorem provers) like Isabelle/HOL, Leo III trades human-guided proof structuring and granular control for full automation, allowing it to rapidly discharge proof obligations.<sup><a href="#LeoIII">[18]</a></sup></p>
+<p><strong>Satallax</strong> is another automated theorem prover for classical higher-order logic and is based on Church’s simple type theory with extensionality and choice operators. It is implemented in OCaml and uses the SAT solver MiniSat for its proof search. Basically, Satallax generates propositional clauses corresponding to the rules of a complete tableau calculus and calls MiniSat periodically to test the satisfiability of these clauses.<sup><a href="#Satallax">[19]</a></sup></p>
 </section>
 </section>
 <section id="algorithms">
-<h2><span class="section-number">8.6. </span>Algorithms<a class="headerlink" href="#algorithms" title="Link to this heading">#</a></h2>
-<section id="matching-and-unification">
-<h3><span class="section-number">8.6.1. </span>Matching and Unification<a class="headerlink" href="#matching-and-unification" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">8.6. </span>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h2>
 <p>WIP</p>
-<!-- This is the engine that lets the system fit rules to goals.
-Unification (especially first-order and higher-order patterns) is the key algorithm that determines how variables in rules or lemmas can be instantiated to match the current proof goal or subgoal. In Isabelle/HOL, unification drives rule application, tactic behavior, and many automation steps, linking the declarative inference rules to concrete proof steps.
-
-What to cover
-	•	First-order unification basics
-	•	Pattern unification in HOL context
-	•	How unification enables lemma instantiation and rule application
-
-Why this matters
-	•	It’s the bridge from abstract inference rules to concrete uses in proofs. -->
-</section>
-<section id="simplification-rewriting">
-<h3><span class="section-number">8.6.2. </span>Simplification &amp; Rewriting<a class="headerlink" href="#simplification-rewriting" title="Link to this heading">#</a></h3>
-<p>WIP</p>
-<!-- This is the core term-engine that most automated tactics rely on.
-
-The simplifier in Isabelle/HOL repeatedly applies rewrite rules — typically equational theorems — to simplify terms. This involves heuristics such as term ordering and conditional rewriting, which make it efficient and prevent infinite rewriting loops. The simplifier is used by tactics like simp and underpins many other automatic proof methods.
-
-What to cover
-	•	Term rewriting as a mechanical simplification algorithm
-	•	Conditional rewriting and simplification strategies
-	•	How this intersects with automation (simp, auto, etc.) -->
-</section>
-<section id="proof-search-and-external-automation">
-<h3><span class="section-number">8.6.3. </span>Proof Search and External Automation<a class="headerlink" href="#proof-search-and-external-automation" title="Link to this heading">#</a></h3>
-<p>WIP</p>
-<!-- This covers the practical automation layer that makes Isabelle powerful in real use.
-
-Isabelle/HOL provides algorithms that integrate internal proof search with powerful external solvers. A standout example is Sledgehammer, which heuristically selects relevant facts from the context, encodes goals for external automatic theorem provers (ATPs) and SMT solvers, and reconstructs validated proofs back inside Isabelle so that trust remains intact.  ￼
-
-This class also includes:
-	•	Invocation and reconstruction of external ATP/SMT proofs
-	•	Built-in general search strategies (e.g., resolution-style search)
-	•	Tactics like auto, blast, and the Metis integration that systematically explore proof alternatives
-
-What to cover
-	•	Idea of heuristically guided search
-	•	Integration with external solvers and reconstruction
-	•	How this differs from the pure logic core -->
-</section>
-</section>
-<section id="typical-use-cases">
-<h2><span class="section-number">8.7. </span>Typical Use Cases<a class="headerlink" href="#typical-use-cases" title="Link to this heading">#</a></h2>
-<p>Isabelle/HOL is widely used for formal specification and rigorous proof of both mathematical theorems and system properties. It supports expressing precise logical models and verifying them interactively with automation (via the Sledgehammer tool), making it suitable for a variety of tasks such as formalizing algorithms, verifying software and hardware correctness, and reasoning about programming language semantics and protocols. Isabelle/HOL has been used in many different verification projects, such as through the large body of libraries and developments collected in the Archive of Formal Proofs (AFP)<sup><a href="#AFP_History">[27]</a></sup> and as evidenced by the examples in <a class="reference internal" href="#applications-in-industry-and-academia"><span class="xref myst">Section 8.9</span></a>.</p>
+<!-- (may need to strip some of the stuff from basic theory for this?) -->
 </section>
 <section id="benchmarks-and-competitions">
-<h2><span class="section-number">8.8. </span>Benchmarks and Competitions<a class="headerlink" href="#benchmarks-and-competitions" title="Link to this heading">#</a></h2>
-<p><strong>miniF2F</strong> is a cross-system benchmark of 488 problem statements drawn from both mathematical competitions (IME, AMC and the International Mathematical Olympiad) and high school and undergraduate level mathematics courses. The benchmark targets theorem provers such as Lean, Metamath, Isabelle, and HOL Light in order to enable cross-system comparison of theorem provers and proof automation tools. The goal is to serve as a benchmark for automated and neural theorem proving systems. A formal problem statement is fed into system and the prover must output a fully machine-verifiable proof.<sup><a href="#MiniF2F">[29]</a></sup></p>
-<p><strong>TPTP</strong> (Thousands of Problems for Theorem Provers) is a library of test problems for testing and evaluating ATPs. Problems are expressed in a simple text-based format for either first-order logic or higher-order logic. TPTP provides a common benchmark with a single, unambiguous reference set of problems so that different ATP systems can be both evaluated and compared with reproducible results.<sup><a href="#TPTP">[36]</a></sup></p>
-<p><strong>CASC</strong> (The CADE ATP System Competition) is an annual competition of fully automatic, classical logic, ATP systems. The purpose of CASC is to provide a public evaluation of relative capabilities of ATP systems as well as to stimulate research and development of ATP systems. At CASC, ATP system performance is evaluated in terms of the total number of problems solved with an acceptable solution output within a specified time limit, as well as the average time taken for problems solved. CASC is hosted at each CADE and IJCAR conference, both forums for automated deduction.<sup><a href="#CASC">[37]</a></sup></p>
+<h2><span class="section-number">8.7. </span>Benchmarks and Competitions<a class="headerlink" href="#benchmarks-and-competitions" title="Permalink to this heading">#</a></h2>
+<p><strong>miniF2F</strong> is a cross-system benchmark of 488 problem statements drawn from both mathematical competitions (IME, AMC and the International Mathematical Olympiad) and high school and undergraduate level mathematics courses. The benchmark targets theorem provers such as Lean, Metamath, Isabelle, and HOL Light in order to enable cross-system comparison of theorem provers and proof automation tools. The goal is to serve as a benchmark for automated and neural theorem proving systems. A formal problem statement is fed into system and the prover must output a fully machine-verifiable proof.<sup><a href="#MiniF2F">[20]</a></sup></p>
+<p><strong>TPTP</strong> (Thousands of Problems for Theorem Provers) is a library of test problems for testing and evaluating ATPs. Problems are expressed in a simple text-based format for either first-order logic or higher-order logic. TPTP provides a common benchmark with a single, umambiguous reference set of problems so that different ATP systems can be both evaluated and compared with reproducible results.<sup><a href="#TPTP">[21]</a></sup></p>
+<p><strong>CASC</strong> (The CADE ATP System Competition) is an annual competition of fully automatic, classical logic, ATP systems. The purpose of CASC is to provide a public evaluation of relative capabilities of ATP systems as well as to stimulate research and development of ATP systems. At CASC, ATP system performane is evaluated in terms of the total number of problems solved with an acceptable solution output within a specified time limit, as well as the average time taken for problems solved. CASC is hosted at each CADE and IJCAR conference, both forums for automated deduction.<sup><a href="#CASC">[22]</a></sup></p>
 </section>
 <section id="applications-in-industry-and-academia">
-<h2><span class="section-number">8.9. </span>Applications in Industry and Academia<a class="headerlink" href="#applications-in-industry-and-academia" title="Link to this heading">#</a></h2>
-<p>In general, Isabelle/HOL appears to have a wide variety of application throughout industry and academia due to the fact that it provides a mathematical assurance of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.</p>
+<h2><span class="section-number">8.8. </span>Applications in Industry and Academia<a class="headerlink" href="#applications-in-industry-and-academia" title="Permalink to this heading">#</a></h2>
+<p>In general, Isabelle/HOL appears to have a wide variety of applcation throughout industry and academia due to the fact that it provides a mathematical assuranace of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.</p>
 <section id="physical-addressing-on-real-hardware">
-<h3><span class="section-number">8.9.1. </span>Physical Addressing on Real Hardware<a class="headerlink" href="#physical-addressing-on-real-hardware" title="Link to this heading">#</a></h3>
-<p>Achermann et al.<sup><a href="#Achermann_physicalAddressing">[19]</a></sup> discuss how to formally model and verify physical memory address translation and remapping hardware (such as MMUs) in SoCs (Systems-on-Chip) using Isabelle/HOL. Specifically, they developed a hardware model that encodes translation units and then prove that standard memory operations preserve system invariants.</p>
+<h3><span class="section-number">8.8.1. </span>Physical Addressing on Real Hardware<a class="headerlink" href="#physical-addressing-on-real-hardware" title="Permalink to this heading">#</a></h3>
+<p>Achermann et al.<sup><a href="#Achermann_physicalAddressing">[4]</a></sup> discuss how to formally model and verify physical memory address translation and remapping hardware (such as MMUs) in SoCs (Systems-on-Chip) using Isabelle/HOL. Specifically, they developed a hardware model that encodes translation units and then prove that standard memory operations preserve system invariants.</p>
+<!-- HOL-based systems used to verify hardware modules and FPGA implementations -->
 </section>
 <section id="focus-stream-processing-components">
-<h3><span class="section-number">8.9.2. </span>FOCUS - Stream Processing Components<a class="headerlink" href="#focus-stream-processing-components" title="Link to this heading">#</a></h3>
-<p>Spichkova<sup><a href="#Spichkova_FOCUS">[20]</a></sup> introduces FOCUS, a framework for formal specification and refinement-based verification of interactive systems. Based on stream-processing semantics that model communication histories over directed channels, FOCUS is supported by Isabelle/HOL using the Isar proof language. FOCUS is evaluated on three case studies:</p>
+<h3><span class="section-number">8.8.2. </span>FOCUS - Stream Processing Components<a class="headerlink" href="#focus-stream-processing-components" title="Permalink to this heading">#</a></h3>
+<p>Spichkova<sup><a href="#Spichkova_FOCUS">[5]</a></sup> proposes a new framework, FOCUS, aimed at formal specification and the application of refinement-based verification of interactive systems. In addition, FOCUS uses a stream processing component, represented by a communication history of a directed channel between components. FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).</p>
 <ul class="simple">
-<li><p>a steam boiler control system modelled as a distributed real-time system with proofs that water levels and pump actuations satisfy safety and timing constraints</p></li>
-<li><p>the FlexRay automotive communication protocol, where FOCUS verifies correct static schedules, channel behavior, and broadcast properties for safety-critical embedded communication</p></li>
-<li><p>an Automotive-Gateway system from the Verisoft project, formally specified and refined with guarantees that crash signals trigger correct emergency-service calls and satisfy required data-handling properties.</p></li>
+<li><p>The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalised in Isabelle/HOL, translating architecture and component behaviour into higher-order logic while proving the design satisfies timing and safety requirements.</p></li>
+<li><p>The second case study is about FlexRay, which is a communication protocol for safety-critical real-time applications, specfically embedded systems in vehicles. FOCUS is used in this case to verify and prove correct static cycles, channel scheduling and properties, and node broadcast behiavor.</p></li>
+<li><p>The third case study is about the Automative-Gateway system for the Verisoft project. Basically, if the Gateway receives a vehicle crash signal, then it will initiate a call to the appropriate Emergency Service Center (ESC). The system is modelled in Isabelle/HOL, with the architecture, requirements, and refinement relations all formally specified and proven to ensure that the Gateway design meets its crash signal and data transmission requirements.</p></li>
 </ul>
-<!-- 
-FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).
-
-- The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalized in Isabelle/HOL, translating architecture and component behavior into higher-order logic while proving the design satisfies timing and safety requirements.
-- The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalized in Isabelle/HOL, translating architecture and component behavior into higher-order logic while proving the design satisfies timing and safety requirements.
-
-- The second case study is about FlexRay, which is a communication protocol for safety-critical real-time applications, specifically embedded systems in vehicles. FOCUS is used in this case to verify and prove correct static cycles, channel scheduling and properties, and node broadcast behavior.
-- The second case study is about FlexRay, which is a communication protocol for safety-critical real-time applications, specifically embedded systems in vehicles. FOCUS is used in this case to verify and prove correct static cycles, channel scheduling and properties, and node broadcast behavior.
-
-- The third case study is about the Automative-Gateway system for the Verisoft project. Basically, if the Gateway receives a vehicle crash signal, then it will initiate a call to the appropriate Emergency Service Center (ESC). The system is modelled in Isabelle/HOL, with the architecture, requirements, and refinement relations all formally specified and proven to ensure that the Gateway design meets its crash signal and data transmission requirements. -->
 </section>
 <section id="isabil-verifying-in-correctness-of-binaries">
-<h3><span class="section-number">8.9.3. </span>IsaBIL - Verifying (In)Correctness of Binaries<a class="headerlink" href="#isabil-verifying-in-correctness-of-binaries" title="Link to this heading">#</a></h3>
-<p>Griffin et al.<sup><a href="#Griffin_IsaBIL">[21]</a></sup> present IsaBIL, a binary analysis framework in Isabelle/HOL that is based on BAP (Binary Analysis Platform). IsaBIL formalizes BAP’s intermediate language (BIL) and integrates it with Hoare Logic (for proofs of correctness) and incorrectness logic (for proofs of incorrectness). While there is a primary focus is on the RISC-V architecture and C binaries, the authors assert that IsaBIL is a flexible framework that can verify binaries for different languages (C, C++, Rust), toolchains (LLVM, Ghidra), and architectures (x86, RISC-V). The authors prove correctness through some industry level examples such as Lockheed Martin’s JSF (Joint Strike Fighter) coding standards and the MITRE ATT&amp;CK database.</p>
+<h3><span class="section-number">8.8.3. </span>IsaBIL - Verifying (In)Correctness of Binaries<a class="headerlink" href="#isabil-verifying-in-correctness-of-binaries" title="Permalink to this heading">#</a></h3>
+<p>Griffin et al.<sup><a href="#Griffin_IsaBIL">[6]</a></sup> present IsaBIL, a binary analysis framework in Isabelle/HOL that is based on BAP (Binary Analysis Platform). IsaBIL formalizes BAP’s intermediate language (BIL) and integrates it with Hoare Logic (for proofs of correctness) and incorrectness logic (for proofs of incorectness). While there is a primary focus is on the RISC-V architecture and C binaries, the authors assert that IsaBIL is a flexible framework that can verify binaries for different languages (C, C++, Rust), toolchains (LLVM, Ghidra), and architectures (x86, RISC-V). The authors prove correctness through some industry level examples such as Lockheed Martin’s JSF (Joint Strike Fighter) coding standards and the MITRE ATT&amp;CK database.</p>
 </section>
 <section id="verlso-isolation-guarantees-of-database-transactions">
-<h3><span class="section-number">8.9.4. </span>Verlso - Isolation Guarantees of Database Transactions<a class="headerlink" href="#verlso-isolation-guarantees-of-database-transactions" title="Link to this heading">#</a></h3>
-<p>Ghasemirad et al.<sup><a href="#Ghasemirad_VerIso">[7]</a></sup> present VerIso, a rigorous Isabelle/HOL-based framework for verifying transaction isolation within production level databases. The authors showcase VerIso by modelling the strict two-phase locking (S2PL) protocol and prove that it provides strict serializability (transactions behave as if executed sequentially and that sequential order must match the actual time order of their invocation/commit). In addition, VerIso’s parameterized architecture supports multiple isolation levels and uncovers design-level bugs in protocols such as the TAPIR protocol and its violation of atomic visibility.</p>
+<h3><span class="section-number">8.8.4. </span>Verlso - Isolation Guarantees of Database Transactions<a class="headerlink" href="#verlso-isolation-guarantees-of-database-transactions" title="Permalink to this heading">#</a></h3>
+<p>Ghasemirad et al.<sup><a href="#Ghasemirad_VerIso">[7]</a></sup> present VerIso, a rigorous Isabelle/HOL-based framework for verifying transaction isolation within production level databases. The authors showcase VerIso by modelling the strict two-phase locking (S2PL) protocol and prove that it provides strict serializability (transactions behave as if executed sequentially and that sequential order must match the actual time order of their invocation/commit). In addition, VerIso’s parameterised architecture supports multiple isolation levels and uncovers design-level bugs in protocols such as the TAPIR protocol and its violation of atomic visibility.</p>
 </section>
 <section id="ieee-754-floating-point-implementation-for-mdps">
-<h3><span class="section-number">8.9.5. </span>IEEE 754 Floating Point Implementation for MDPs<a class="headerlink" href="#ieee-754-floating-point-implementation-for-mdps" title="Link to this heading">#</a></h3>
-<p>Kohlen et al.<sup><a href="#Kohlen_float">[22]</a></sup> present a fully verified implementation of the Interval Iteration (II) Algorithm for Markov Decision Processes (MDPs). They model the II algorithm in Isabelle/HOL, use the Isabelle Refinement Framework (IRF) to carry out step-wise refinement down to LLVM bytecode, and extend Isabelle/HOL’s reasoning to support IEEE 754 floating-point arithmetic with directed rounding. Their result is a correct-by-construction floating-point implementation, competitive with industry tools and highly relevant for domains where verified numerical correctness matters, such as embedded systems, SoCs and safety-critical software.</p>
+<h3><span class="section-number">8.8.5. </span>IEEE 754 Floating Point Implementation for MDPs<a class="headerlink" href="#ieee-754-floating-point-implementation-for-mdps" title="Permalink to this heading">#</a></h3>
+<p>Kohlen et al.<sup><a href="#Kohlen_float">[8]</a></sup> present a fully verified implementation of the Interval Iteration (II) Algorithm for Markov Decision Processes (MDPs). They model the II algorithm in Isabelle/HOL, use the Isabelle Refinement Framework (IRF) to carry out step-wise refinement down to LLVM bytecode, and extend Isabelle/HOL’s reasoning to support IEEE 754 floating-point arithmetic with directed rounding. Their result is a correct-by-construction floating-point implementation, competitive with industry tools and highly relevant for domains where verified numerical correctness matters, such as embedded systems, SoCs and safety-critical software.</p>
 <!-- ### 10.8.6 IsaMini: Isabelle Proof Language for Machine Learning
 
-Xu et al. present MiniLang/IsaMini, a streamlined proof language for Isabelle/HOL designed to improve Large Language Model (LLM) integration in formal verification. The authors convert existing Isar proofs, such as those within Isabelle's Archive of Formal Proofs (AFP), into MiniLang and fine-tune LLMs on this new proof representation. They then use the LLM's macro level proof planning alongside Isabelle's automation (such as Sledgehammer, etc) for micro level proof steps to significantly boost proof success rate. Their work is noteworthy because it brings together formal methods and AI-assisted tooling, reducing manual proof effort and enabling more scalable verification.<sup><a href="#Xu_IsaMini">[7]</a></sup> -->
+Xu et al. present MiniLang/IsaMini, a streamlined proof langauge for Isabelle/HOL designed to improve Large Language Model (LLM) integration in formal verification. The authors convert existing Isar proofs, such as those within Isabelle's Archive of Formal Proofs (AFP), into MiniLang and fine-tune LLMs on this new proof representation. They then use the LLM's macro level proof planning alongside Isabelle's automation (such as Sledgehammer, etc) for micro level proof steps to significantly boost proof success rate. Their work is noteworthy because it brings together formal methods and AI-assisted tooling, reducing manual proof effort and enabling more scalable verification.<sup><a href="#Xu_IsaMini">[7]</a></sup> -->
 </section>
 <section id="autoformalization-with-large-language-models">
-<h3><span class="section-number">8.9.6. </span>Autoformalization with Large Language Models<a class="headerlink" href="#autoformalization-with-large-language-models" title="Link to this heading">#</a></h3>
-<p>Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> show that large language models are particularly effective at performing autoformalization, which is the process of automatically translating natural language mathematics into formal specifications and proofs. Specifically, they note that 25.3% of mathematical competition problems were translated <em>perfectly</em> to formal Isabelle/HOL statements. In addition, by using these autoformalized statements to fine-tune an existing neural theorem prover, they managed to improve achieve a 35.2% proof rate on Mini2F2, compared to a baseline proof rate of 29.6%.</p>
+<h3><span class="section-number">8.8.6. </span>Autoformalization with Large Language Models<a class="headerlink" href="#autoformalization-with-large-language-models" title="Permalink to this heading">#</a></h3>
+<p>Wu et al.<sup><a href="#Wu_LLM_Autoformat">[9]</a></sup> present WIP</p>
 </section>
 </section>
-<section id="case-study-autoformalization-with-llms">
-<h2><span class="section-number">8.10. </span>Case Study - Autoformalization with LLMs<a class="headerlink" href="#case-study-autoformalization-with-llms" title="Link to this heading">#</a></h2>
+<section id="case-study-autoformalization-with-large-language-models">
+<h2><span class="section-number">8.9. </span>Case Study - Autoformalization with Large Language Models<a class="headerlink" href="#case-study-autoformalization-with-large-language-models" title="Permalink to this heading">#</a></h2>
 <p>WIP</p>
 <p>use this one:</p>
 <p>https://openreview.net/forum?id=IUikebJ1Bf0</p>
 </section>
 <section id="history">
-<h2><span class="section-number">8.11. </span>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.10. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
+<!-- Church (1940) A Formulation of the Simple Theory of Types -->
+<!-- may include dates at the beginning of each part, and include citations etc  -->
 <section id="origins-of-higher-order-logic">
-<h3><span class="section-number">8.11.1. </span>Origins of Higher-Order Logic<a class="headerlink" href="#origins-of-higher-order-logic" title="Link to this heading">#</a></h3>
-<p>Alonzo Church’s work in the 1930s (via <span class="math notranslate nohighlight">\(\lambda\)</span>-calculus)<sup><a href="#SEP_D.1_LambdaCalc">[39]</a></sup> and 1940s (via type theory)<sup><a href="#SEP_D.2_TypeTheory">[40]</a></sup> and Leon Henkin’s work in the 1950s (on general model/Henkin semantics)<sup><a href="#SEP_HOL">[7]</a></sup> lay the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities.</p>
-<p>In the 1970s, Robert Milner develops LCF (Logic for Computable Functions)<sup><a href="#LCF_HOL_history">[38]</a></sup> at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evolves into OCaml and Standard ML.</p>
-<p>In the early 1980s, Michael J. C. Gordon builds upon LCF in order to create the HOL system<sup><a href="#LCF_HOL_history">[38]</a></sup>, which explicitly uses higher-order logic as its core formalism. This HOL system would become the foundation for hardware verification, paving the way and influencing later provers like HOL4 and Isabelle/HOL.</p>
+<h3><span class="section-number">8.10.1. </span>Origins of Higher-Order Logic<a class="headerlink" href="#origins-of-higher-order-logic" title="Permalink to this heading">#</a></h3>
+<!-- scaffolding template for now -->
+<p>Alonzo Church’s work in the 1930s (via <span class="math notranslate nohighlight">\(\lambda\)</span>-calculus) and 1940s (via type theory) and Leon Henkin’s work in the 1950s (on general models semantics) lay the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities</p>
+<p>In the 1970s, Robert Milner develops LCF (Logic for Computable Functions) at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evovles into OCaml and Standard ML.</p>
+<p>In the early 1980s, Michael J. C. Gordon builds upon LCF in order to create the HOL system, which explicitly uses higher-order logic as its core formalism. This HOL system would become the foundation for hardware verification, paving the way and influencing later provers like HOL4 and Isabelle/HOL.</p>
 </section>
 <section id="development-of-isabelle-hol">
-<h3><span class="section-number">8.11.2. </span>Development of Isabelle/HOL<a class="headerlink" href="#development-of-isabelle-hol" title="Link to this heading">#</a></h3>
-<p>Developed in the late 1980’s by Lawrence C. Paulson at Cambridge, Isabelle was created as a generic theorem proving framework capable of supporting multiple logical formalisms under a single meta-logic.<sup><a href="#LCF_Isabelle_History">[26]</a></sup></p>
-<p>The HOL instantiation of Isabelle (Isabelle/HOL) became the most widely adopted version due to its strong expressiveness and balance between automation and manual control.<sup><a href="#LCF_Isabelle_History">[26]</a></sup></p>
-<p>Markus Wenzel proposed and developed the Isar Proof Language<sup><a href="#Isar_History">[17]</a></sup> for Isabelle between 1998 and 2001. Isar allows for more structured and human readable proofs, improving clarity over traditional tactic-based approaches like in LCF.</p>
-<p>The creation of the Archive of Formal Proofs (AFP) in 2004 established a large, community-driven library of formalized mathematics and computer science. The establishment of the AFP solidified Isabelle/HOL’s role in both academia and industry.<sup><a href="#AFP_History">[27]</a></sup></p>
-<p>The integration of tools such as Sledgehammer and external SMT/ATP solvers in 2007 further extend Isabelle/HOL’s proof power. The bridging of interactive reasoning and automation allows user to tackle complex goals with minimal manual effort.<sup><a href="#Isabelle_Sledgehammer">[35]</a></sup></p>
-<!-- ## Formal Methods and AI
-
-Not sure if this section is necessary since there are already sections that deal with NTP, LLMs in formal verification, autoformalization, etc. -->
+<h3><span class="section-number">8.10.2. </span>Development of Isabelle/HOL<a class="headerlink" href="#development-of-isabelle-hol" title="Permalink to this heading">#</a></h3>
+<p>Developed in the late 1980’s by Lawrence C. Paulson at Cambridge, Isabelle was created as a generic theorem proving framework capable of supporting multiple logical formalisms under a single meta-logic.</p>
+<p>The HOL instantiation of Isabelle (Isabelle/HOL) became the most widely adopted version due to its strong expressiveness and balance between automation and manual control.</p>
+<p>Isabelle introduced the Isar prof language in the 2000s, allowing structured and human readable proofs, improving clarity over traditional tactic-based approaches like in LCF.</p>
+<p>Integration with automated tools such as Sledgehammer and SMT solvers further extend its power, bridging interactive reasoning and automation.</p>
+<p>The creation of the AFP (Archive of Formal Proofs) established a reusable library of formalizd mathematics and computer science, solidifying Isabelle/HOL’s role in both academia and industry.</p>
 </section>
 </section>
-<section id="current-events-within-isabelle-hol">
-<h2><span class="section-number">8.12. </span>Current Events within Isabelle/HOL<a class="headerlink" href="#current-events-within-isabelle-hol" title="Link to this heading">#</a></h2>
+<section id="current-development-research-challenges-conferences-and-workshops">
+<h2><span class="section-number">8.11. </span>Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Permalink to this heading">#</a></h2>
 <section id="current-development">
-<h3><span class="section-number">8.12.1. </span>Current Development<a class="headerlink" href="#current-development" title="Link to this heading">#</a></h3>
-<p>Active research is increasingly integrating generative and large language models (LLMs) with interactive theorem proving to reduce manual proof construction. This emerging paradigm, termed <em>Neural Theorem Proving (NTP)</em>, augments classic automatic theorem proving (ATP) by integrating generative AI with symbolic proof assistants like Isabelle/HOL to enhance automation, guide proof search, and address complex formal reasoning tasks. Recent work by Xu et al. introduces MiniLang/IsaMini<sup><a href="#Xu_IsaMini">[25]</a></sup>, an intermediate proof language designed to improve LLM performance in Isabelle/HOL and significantly boost success rates on standard proof benchmarks compared to generating Isar scripts directly. NTP and hybrid AI frameworks are also being developed to generate and structure complete formal proofs, fine-tune models for syntactically correct proof output, and integrate verification backends to reduce errors and improve correctness in formal verification tasks. These efforts align with broader trends in formal methods research that explore how LLM reasoning can be combined with rigorous symbolic verification to enhance automation, benchmark performance, and increase formal verification scalability.</p>
+<h3><span class="section-number">8.11.1. </span>Current Development<a class="headerlink" href="#current-development" title="Permalink to this heading">#</a></h3>
+<p>AI/LLM stuff with NTP in Isabelle?</p>
 </section>
 <section id="research-challenges">
-<h3><span class="section-number">8.12.2. </span>Research Challenges<a class="headerlink" href="#research-challenges" title="Link to this heading">#</a></h3>
-<p>Despite ongoing advances, substantial research challenges remain in Isabelle/HOL’s ecosystem, particularly at the intersection of formal verification and generative AI. Interactive theorem proving in Isabelle/HOL still depends heavily on human guidance through structured Isar proofs, making large-scale developments both labor-intensive and error-prone. The integration of LLM-based techniques introduces additional difficulties, such as translating model output into Isabelle’s strict proof language, mitigating hallucinations and syntactic errors, and obtaining sufficiently large, high-quality datasets of formal proofs for training. While intermediate languages such as MiniLang/IsaMini<sup><a href="#Xu_IsaMini">[25]</a></sup> can significantly improve LLM performance, they also highlight the sensitivity of proof success to representation choices and data quality. Moreover, bridging the gap between informal specifications and fully formalized Isabelle theories, commonly termed <em>autoformalization</em><sup><a href="#Wu_LLM_Autoformat">[24]</a></sup>, remains a major obstacle, as current LLMs struggle to reliably produce complete, semantically correct formalizations without human intervention.</p>
+<h3><span class="section-number">8.11.2. </span>Research Challenges<a class="headerlink" href="#research-challenges" title="Permalink to this heading">#</a></h3>
 </section>
 <section id="conferences-and-workshops">
-<h3><span class="section-number">8.12.3. </span>Conferences and Workshops<a class="headerlink" href="#conferences-and-workshops" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong><a class="reference external" href="https://itp-conference.github.io/">International Conference on Interactive Theorem Proving (ITP)</a></strong> - dedicated to interactive theorem proving and related topics, ranging from theoretical foundations to implementation aspects and applications in program verification, security, and formalization of mathematics.</p></li>
-<li><p><strong><a class="reference external" href="https://sketis.net/isabelle/isabelle-workshop-2026">Isabelle Workshop</a></strong> - a workshop focused on Isabelle where users and developers can present tool developments, formalization projects, and ongoing research papers.</p></li>
-<li><p><strong><a class="reference external" href="https://ijcar.org//conferences">International Joint Conference on Automated Reasoning (IJCAR)</a></strong> - international conference covering automated and interactive reasoning which merges several leading conferences and events, such as the Conference on Automated Deduction (CADE), TABLEAUX, and FroCoS, into a single forum covering foundations, tools, and applications in automated reasoning.</p></li>
-<li><p><strong><a class="reference external" href="https://www.isa-afp.org/">Archive of Formal Proofs (AFP)</a></strong> - while not an explicit conference, the AFP functions like a curated repository and journal for Isabelle/HOL proofs, hosting a large collection of mechanically checked proof libraries and scientific developments that are often associated with conference or journal publications.</p></li>
-</ul>
+<h3><span class="section-number">8.11.3. </span>Conferences and Workshops<a class="headerlink" href="#conferences-and-workshops" title="Permalink to this heading">#</a></h3>
 </section>
 </section>
 <section id="references">
-<h2><span class="section-number">8.13. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<style>
-.citation-entry:target {
-  background-color: rgba(201, 184, 91, 0.35);
-  padding: 4px 8px;
-  border-left: 3px solid #e0b400;
-  transition: background-color 0.25s ease;
-  scroll-margin-top: 3rem;
-}
-</style>
-<section id="ebooks-and-textbooks">
-<h3><span class="section-number">8.13.1. </span>eBooks and Textbooks<a class="headerlink" href="#ebooks-and-textbooks" title="Link to this heading">#</a></h3>
-<ul>
-  <li id="ConcreteSemantics" class="citation-entry">
-    [1]: Nipkow and Klein (2014)
-    <a href="http://www.concrete-semantics.org/index.html">Concrete Semantics: With Isabelle/HOL</a>, Springer Publishing Company, Incorporated.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Isabelle_Logics" class="citation-entry">
-    [2]: Nipkow, Paulson, and Wenzel (2009)
-    <a href="https://isabelle.in.tum.de/website-Isabelle2009-1/dist/Isabelle/doc/logics-HOL.pdf">Isabelle’s Logics: HOL</a>, Isabelle2009 Documentation.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Isabelle/HOL_ProofAssistant" class="citation-entry">
-    [3]: Nipkow, Paulson, and Wenzel (2025)
-    <a href="https://isabelle.in.tum.de/doc/tutorial.pdf">Isabelle/HOL: A Proof Assistant for Higher-Order Logic</a>, Springer-Verlag.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="andrews2002" class="citation-entry">
-    [4]: Peter B. Andrews (2002)
-    <a href="https://dl.acm.org/doi/10.5555/581793#">Introduction to Mathematical Logic and Type Theory: To Truth through Proof (2nd. ed.)</a>, Kluwer Academic Publishers, USA.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Paulson_LCF" class="citation-entry">
-    [5]: Laurence C. Paulson (1987)
-    <a href="https://assets.cambridge.org/97805213/46320/sample/9780521346320ws.pdf">Logic and Computation: Interactive Proof with Cambridge LCF</a>, Cambridge University Press, USA.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Teege_IntroIsabelle" class="citation-entry">
-    [6]: Gunnar Teege (2025)
-    <a href="https://github.com/gteege/gentle-isabelle/blob/main/man-isabelle.pdf">A Gentle Introduction to Isabelle and Isabelle/HOL</a>, Universität der Bundeswehr München.
+<h2><span class="section-number">8.12. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<p><a id="ConcreteSemantics"></a></p>
+<ul class="simple">
+<li><p>[1]: Nipkow and Klein (2014) <a class="reference external" href="http://www.concrete-semantics.org/index.html">Concrete Semantics: With Isabelle/HOL</a>, Springer Publishing Company, Incorporated.</p></li>
 </ul>
-</section>
-<section id="online-articles">
-<h3><span class="section-number">8.13.2. </span>Online Articles<a class="headerlink" href="#online-articles" title="Link to this heading">#</a></h3>
-<ul>
-  <li id="SEP_HOL" class="citation-entry">
-    [7]: Jouko Väänänen (2024)
-    <a href="https://plato.stanford.edu/entries/logic-higher-order/">Second-order and Higher-order Logic</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="SEP_ChurchTypeTheory" class="citation-entry">
-    [8]: Benzmüller and Andrews (2025)
-    <a href="https://plato.stanford.edu/entries/type-theory-church/">Church’s Type Theory</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="SEP_TypeTheory" class="citation-entry">
-    [9]: Thierry Coquand (2022)
-    <a href="https://plato.stanford.edu/entries/type-theory/">Type Theory</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Kurz_LambdaSemantics" class="citation-entry">
-    [10]: Alexander Kurz (2023)
-    <a href="https://hackmd.io/@alexhkurz/H1e4Nv8Bv">Semantics of the Lambda Calculus</a>, CPSC 354 Programming Languages, Chapman University.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Kurz_LambdaSyntax" class="citation-entry">
-    [11]: Alexander Kurz (2023)
-    <a href="https://hackmd.io/@alexhkurz/S1D0yP8Bw">Syntax of Lambda Calculus</a>, CPSC 354 Programming Languages, Chapman University.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Stanford_LambdaCalc_TypeTheory" class="citation-entry">
-    [12]: Deutsch and Marshall (2025)
-    <a href="https://plato.stanford.edu/entries/church/supplementD.html">Supplement D: The λ-Calculus and Type Theory</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="SEP_D.1_LambdaCalc" class="citation-entry">
-    [39]: Deutsch and Marshall (2025)
-    <a href="https://plato.stanford.edu/entries/church/supplementD.html#D1ChurLambCalc">D.1 Church’s Lambda Calculus</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="SEP_D.2_TypeTheory" class="citation-entry">
-    [40]: Deutsch and Marshall (2025)
-    <a href="https://plato.stanford.edu/entries/church/supplementD.html#D2ChurSimpTheoType">D.2 Church’s Simple Theory of Types</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="SEP_LambdaCalc" class="citation-entry">
-    [13]: Alama and Korbmacher (2023)
-    <a href="https://plato.stanford.edu/archives/win2024/entries/lambda-calculus/">The Lambda Calculus</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="SEP_CategTheory" class="citation-entry">
-    [14]: Jean-Pierre Marquis (2023)
-    <a href="https://plato.stanford.edu/entries/category-theory/">Category Theory</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="SEP_AutomatedReasoning_HOL" class="citation-entry">
-    [15]: Frederic Portoraro (2025)
-    <a href="https://plato.stanford.edu/entries/reasoning-automated/#HigOrdLog">Automated Reasoning: Section 3.1 on Higher-Order Logic</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Satallax" class="citation-entry">
-    [16]: Chad E. Brown (2012)
-    <a href="https://ps.uni-saarland.de/Publications/documents/Brown2012b.pdf">Satallax: An Automatic Higher-Order Prover</a>, Saarland University, Saarbr¨ucken, Germany.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Isar_History" class="citation-entry">
-    [17]: Makarius (Markus) Wenzel (1999)
-    <a href="https://web.cs.wpi.edu/~dd/resources_isabelle/Isar-TPHOLs99.wenzel.pdf">Isar — a Generic Interpretative Approach to Readable Formal Proof Documents</a>, Theorem Proving in Higher Order Logics (TPHOLs 1999), volume 1690 of Lecture Notes in Computer Science. Springer-Verlag.
-  </li>
+<p><a id="MossSyllogism"></a></p>
+<ul class="simple">
+<li><p>[2]: Larry Moss (2015) <a class="reference external" href="https://logic.berkeley.edu/colloquium/MossSlides.pdf">Natural Logic</a>, UC Berkeley Logic Seminar.</p></li>
 </ul>
-</section>
-<section id="research-papers">
-<h3><span class="section-number">8.13.3. </span>Research Papers<a class="headerlink" href="#research-papers" title="Link to this heading">#</a></h3>
-<ul>
-  <li id="Church_TypeTheory" class="citation-entry">
-    [18]: Alonzo Church (1940)
-    <a href="https://www.jstor.org/stable/2266170">A Formulation of the Simple Theory of Types</a>, The Journal of Symbolic Logic 5(2): 56–68.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Achermann_physicalAddressing" class="citation-entry">
-    [19]: Achermann, Humbel, Cock, and Roscoe (2018)
-    <a href="https://people.inf.ethz.ch/troscoe/pubs/achermann_itp_2018.pdf">Physical Addressing on Real Hardware in Isabelle/HOL</a>, Department of Computer Science, ETH Zurich.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Spichkova_FOCUS" class="citation-entry">
-    [20]: Maria Spichkova (2014)
-    <a href="https://arxiv.org/abs/1405.1512">Stream processing components: Isabelle/HOL formalisation and case studies</a>, arXiv preprint arXiv:1405.1512.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Griffin_IsaBIL" class="citation-entry">
-    [21]: Griffin, Dongol, and Raad (2025)
-    <a href="https://arxiv.org/abs/2504.16775v1">IsaBIL: A Framework for Verifying (In)correctness of Binaries in Isabelle/HOL (Extended Version)</a>, arXiv preprint arXiv:2504.16775.
+<p><a id="andrews2002"></a></p>
+<ul class="simple">
+<li><p>[3]: Peter B. Andrews (2002) <a class="reference external" href="https://dl.acm.org/doi/10.5555/581793#">Introduction to Mathematical Logic and Type Theory: To Truth through Proof (2nd. ed.)</a>, Kluwer Academic Publishers, USA.</p></li>
 </ul>
-</section>
-<section id="id1">
-<h3><span class="section-number">8.13.4. </span>Research Papers<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<ul>
-  <li id="Church_TypeTheory" class="citation-entry">
-    [18]: Alonzo Church (1940)
-    <a href="https://www.jstor.org/stable/2266170">A Formulation of the Simple Theory of Types</a>, The Journal of Symbolic Logic 5(2): 56–68.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Achermann_physicalAddressing" class="citation-entry">
-    [19]: Achermann, Humbel, Cock, and Roscoe (2018)
-    <a href="https://people.inf.ethz.ch/troscoe/pubs/achermann_itp_2018.pdf">Physical Addressing on Real Hardware in Isabelle/HOL</a>, Department of Computer Science, ETH Zurich.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Spichkova_FOCUS" class="citation-entry">
-    [20]: Maria Spichkova (2014)
-    <a href="https://arxiv.org/abs/1405.1512">Stream processing components: Isabelle/HOL formalisation and case studies</a>, arXiv preprint arXiv:1405.1512.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Griffin_IsaBIL" class="citation-entry">
-    [21]: Griffin, Dongol, and Raad (2025)
-    <a href="https://arxiv.org/abs/2504.16775v1">IsaBIL: A Framework for Verifying (In)correctness of Binaries in Isabelle/HOL (Extended Version)</a>, arXiv preprint arXiv:2504.16775.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Ghasemirad_VerIso" class="citation-entry">
-    [22]: Ghasemirad et al. (2025)
-    <a href="https://arxiv.org/abs/2503.06284">VerIso: Verifiable isolation guarantees for database transactions</a>, arXiv preprint arXiv:2503.06284.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Kohlen_float" class="citation-entry">
-    [23]: Kohlen et al. (2025)
-    <a href="https://arxiv.org/abs/2501.10127v3">A formally verified IEEE 754 floating-point implementation of interval iteration for MDPs</a>, International Conference on Computer Aided Verification, Cham: Springer Nature Switzerland.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Wu_LLM_Autoformat" class="citation-entry">
-    [24]: Wu et al. (2022)
-    <a href="https://openreview.net/forum?id=IUikebJ1Bf0">Autoformalization with Large Language Models</a>, NeurIPS 2022 Conference.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Xu_IsaMini" class="citation-entry">
-    [25]: Xu et al. (2025)
-    <a href="https://arxiv.org/abs/2507.18885">IsaMini: Redesigned Isabelle Proof Language for Machine Learning</a>, arXiv preprint arXiv:2507.18885.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="LCF_Isabelle_History" class="citation-entry">
-    [26]: Paulson, Nipkow, and Wenzel (2019)  
-    <a href="https://arxiv.org/abs/1907.02836">From LCF to Isabelle/HOL</a>, Formal Aspects of Computing 31.6 (2019): 675-698.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="AFP_History" class="citation-entry">
-    [27]: Makarius (Markus) Wenzel (2019)
-    <a href="https://arxiv.org/abs/1905.07244">Isabelle technology for the Archive of Formal Proofs with application to MMT</a>, arXiv preprint arXiv:1905.07244.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="LeoIII" class="citation-entry">
-    [28]: Steen and Benzmüller (2018)
-    <a href="https://arxiv.org/abs/1802.02732">The Higher-Order Prover Leo-III (Extended Version)</a>, IJCAR 2018, Oxford, UK.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="MiniF2F" class="citation-entry">
-    [29]: Zheng, Han, and Polu (2022)
-    <a href="https://arxiv.org/abs/2109.00110">MiniF2F: A Cross-System Benchmark for Formal Olympiad-Level Mathematics</a>, ICLR 2022.
-  </li>
+<p><a id="Achermann_physicalAddressing"></a></p>
+<ul class="simple">
+<li><p>[4]: Achermann, Humbel, Cock, and Roscoe (2018) <a class="reference external" href="https://people.inf.ethz.ch/troscoe/pubs/achermann_itp_2018.pdf">Physical Addressing on Real Hardware in Isabelle/HOL</a>, Department of Computer Science, ETH Zurich.</p></li>
 </ul>
-</section>
-<section id="videos">
-<h3><span class="section-number">8.13.5. </span>Videos<a class="headerlink" href="#videos" title="Link to this heading">#</a></h3>
-<ul>
-  <li id="LigerLearn_LambdaPrimer" class="citation-entry">
-    [30]: LigerLearn (2023)
-    <a href="https://www.youtube.com/watch?v=9MtE5ONrQyk">Lambda (λ) Calculus Primer</a>, YouTube.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="LigerLearn_LambdaEval" class="citation-entry">
-    [31]: LigerLearn (2023)
-    <a href="https://www.youtube.com/watch?v=VS_GK-9xUO4">Lambda (λ) calculus evaluation rules (δ, β, α, η conversion/reduction)</a>, YouTube.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="TypeTheory_Youtube" class="citation-entry">
-    [32]: Mark Jago / Attic Philosophy (2025)
-    <a href="https://www.youtube.com/watch?v=TrYosPPCQAY">Type Theory in Computer Science, Linguistics, Logic</a>, YouTube.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Lugg_CategoryTheory" class="citation-entry">
-    [33]: Oliver Lugg (2022)
-    <a href="https://www.youtube.com/watch?v=yAi3XWCBkDo">A Sensible Introduction to Category Theory</a>, YouTube.
-  </li>
+<p><a id="Spichkova_FOCUS"></a></p>
+<ul class="simple">
+<li><p>[5]: Spichkova (2014) <a class="reference external" href="https://arxiv.org/abs/1405.1512">Stream processing components: Isabelle/HOL formalisation and case studies</a>, arXiv preprint arXiv:1405.1512.</p></li>
 </ul>
-</section>
-<section id="miscellaneous">
-<h3><span class="section-number">8.13.6. </span>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading">#</a></h3>
-<ul>
-  <li id="MossSyllogism" class="citation-entry">
-    [34]: Larry Moss (2015)
-    <a href="https://logic.berkeley.edu/colloquium/MossSlides.pdf">Natural Logic</a>, UC Berkeley Logic Seminar.
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="Isabelle_Sledgehammer" class="citation-entry">
-    [35]: Blanchette, Desharnais, Paulson, and Bartl (2025)
-    <a href="https://isabelle.in.tum.de/doc/sledgehammer.pdf">Hammering Away: A User’s Guide to Sledgehammer for Isabelle/HOL</a>, Isabelle 2025 Documentation
-  </li>
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="TPTP" class="citation-entry">
-    [36]: Geoff Sutcliffe (2017)
-    <a href="https://tptp.org/TPTP/">The TPTP Problem Library and Associated Infrastructure: From CNF to TH0</a>, Journal of Automated Reasoning 59(4): 483–502.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="CASC" class="citation-entry">
-    [37]: Geoff Sutcliffe (2016)
-    <a href="https://tptp.org/CASC/">The CADE ATP System Competition – CASC</a>, AI Magazine 37(2): 99–101.
-<p><span style="display:block; height:0.1em;"></span></p>
-  <li id="LCF_HOL_history" class="citation-entry">
-    [38]: Mike Gordon (1996)
-    <a href="https://www.cl.cam.ac.uk/archive/mjcg/papers/HolHistory.pdf">From LCF to HOL: a short history</a>
+<p><a id="Griffin_IsaBIL"></a></p>
+<ul class="simple">
+<li><p>[6]: Griffin, Dongol, and Raad. (2025) <a class="reference external" href="https://arxiv.org/abs/2504.16775v1">IsaBIL: A Framework for Verifying (In) correctness of Binaries in Isabelle/HOL (Extended Version)</a>, arXiv preprint arXiv:2504.16775.</p></li>
 </ul>
+<p><a id="Ghasemirad_VerIso"></a></p>
+<ul class="simple">
+<li><p>[7]: Ghasemirad, et al. (2025) <a class="reference external" href="https://arxiv.org/abs/2503.06284">VerIso: Verifiable isolation guarantees for database transactions.</a> arXiv preprint arXiv:2503.06284.</p></li>
+</ul>
+<p><a id="Kohlen_float"></a></p>
+<ul class="simple">
+<li><p>[8]: Kohlen et al. (2025) <a class="reference external" href="https://arxiv.org/abs/2501.10127v3">A formally verified IEEE 754 floating-point implementation of interval iteration for MDPs</a>, International Conference on Computer Aided Verification, Cham: Springer Nature Switzerland.</p></li>
+</ul>
+<p><a id="Wu_LLM_Autoformat"></a></p>
+<ul class="simple">
+<li><p>[9]: Wu et al. (2022) <a class="reference external" href="https://openreview.net/forum?id=IUikebJ1Bf0">Autoformalization with Large Language Models</a>, NeurIPS 2022 Conference.</p></li>
+</ul>
+<p><a id="Church_TypeTheory"></a></p>
+<ul class="simple">
+<li><p>[10]: Alonzo Church (1940) <a class="reference external" href="https://www.jstor.org/stable/2266170">A Formulation of the Simple Theory of Types</a>, The Journal of Symbolic Logic, Vol. 5, No. 2 (June, 1940), pp. 56-68 (13 pages).</p></li>
+</ul>
+<p><a id="Paulson_LCF"></a></p>
+<ul class="simple">
+<li><p>[11]: Laurence C. Paulson (1987) <a class="reference external" href="https://assets.cambridge.org/97805213/46320/sample/9780521346320ws.pdf">Logic and Computation: Interactive Proof with Cambridge LCF</a>, Cambridge University Press, USA.</p></li>
+</ul>
+<p><a id="Stanford_LambdaCalc_TypeTheory"></a></p>
+<ul class="simple">
+<li><p>[12]: Deutsch and Marshall (2025) <a class="reference external" href="https://plato.stanford.edu/entries/church/supplementD.html">D. The λ-Calculus and Type Theory: Supplement to Alonzo Church</a>, The Stanford Encyclopedia of Philosophy, Metaphysics Research Lab, Stanford University.</p></li>
+</ul>
+<p><a id="Isabelle/HOL_ProofAssistant"></a></p>
+<ul class="simple">
+<li><p>[13]: Nipkow, Paulson, and Wenzel (2025) <a class="reference external" href="https://isabelle.in.tum.de/doc/tutorial.pdf">Isabelle/HOL: A Proof Assistant for
+Higher-Order Logic</a>, Springer-Verlag, Berlin, Heidelberg.</p></li>
+</ul>
+<p><a id="Kurz_LambdaSemantics"></a></p>
+<ul class="simple">
+<li><p>[14]: Alexander Kurz (2023) <a class="reference external" href="https://hackmd.io/&#64;alexhkurz/H1e4Nv8Bv">Semantics of the Lambda Calculus</a>, CPSC 354 - Programming Languages, Chapman University</p></li>
+</ul>
+<p><a id="Kurz_LambdaSyntax"></a></p>
+<ul class="simple">
+<li><p>[15]: Alexander Kurz (2023) <a class="reference external" href="https://hackmd.io/&#64;alexhkurz/S1D0yP8Bw">Syntax of Lambda Calculus</a>, CPSC 354 - Programming Languages, Chapman University</p></li>
+</ul>
+<p><a id="Xu_IsaMini"></a></p>
+<ul class="simple">
+<li><p>[16]: Xu et al. (2025) <a class="reference external" href="https://arxiv.org/abs/2507.18885">IsaMini: Redesigned Isabelle Proof Language for Machine Learning</a>, arXiv preprint arXiv:2507.18885.</p></li>
+</ul>
+<p><a id="Teege_IntroIsabelle"></a></p>
+<ul class="simple">
+<li><p>[17]: Teege (2025) <a class="reference external" href="https://github.com/gteege/gentle-isabelle/blob/main/man-isabelle.pdf">A Gentle Introduction to Isabelle and Isabelle/HOL</a>, Universität der Bundeswehr München</p></li>
+</ul>
+<p><a id="LeoIII"></a></p>
+<ul class="simple">
+<li><p>[18]: <a class="reference external" href="https://github.com/leoprover/Leo-III">Leo III Repository</a> GitHub</p></li>
+</ul>
+<p><a id="Satallax"></a></p>
+<ul class="simple">
+<li><p>[19]: Michael Färber, <a class="reference external" href="https://satallaxprover.org/">Satallax</a></p></li>
+</ul>
+<p><a id="MiniF2F"></a></p>
+<ul class="simple">
+<li><p>[20]: Zheng, Han, and Polu (2022) <a class="reference external" href="https://arxiv.org/abs/2109.00110">MiniF2F: a cross-system benchmark for formal Olympiad-level mathematics</a>, ICLR 2022</p></li>
+</ul>
+<p><a id="TPTP"></a></p>
+<ul class="simple">
+<li><p>[21]: Sutcliffe (2017) <a class="reference external" href="https://tptp.org/TPTP/">The TPTP Problem Library and Associated Infrastructure: From CNF to TH0, TPTP v6.4.0</a>, Journal of Automated Reasoning, 59(4): 483–502</p></li>
+</ul>
+<p><a id="CASC"></a></p>
+<ul class="simple">
+<li><p>[22]: Sutcliffe (2016) <a class="reference external" href="https://tptp.org/CASC/">The CADE ATP System Competition - CASC</a>, AI Magazine, 37(2): 99–101</p></li>
+</ul>
+<p>https://plato.stanford.edu/entries/logic-higher-order/</p>
+<p>https://plato.stanford.edu/entries/reasoning-automated/#HigOrdLog</p>
+<p>https://plato.stanford.edu/entries/type-theory-church/</p>
+<p>https://plato.stanford.edu/entries/type-theory/</p>
+<p>https://www.youtube.com/watch?v=VS_GK-9xUO4</p>
+<p>https://www.youtube.com/watch?si=ocR0HnYDEQLAneym&amp;v=TrYosPPCQAY&amp;feature=youtu.be</p>
+<p>https://www.youtube.com/watch?v=yAi3XWCBkDo</p>
+<p>SEP Category Theory - https://plato.stanford.edu/entries/category-theory/</p>
 <!-- https://isabelle.in.tum.de/library/HOL/HOL/document.pdf -->
-<!-- calculus of inductive constants (in coq)
-https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html -->
-</section>
+<p>https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html</p>
 </section>
 <section id="suggestions-for-future-work">
-<h2><span class="section-number">8.14. </span>Suggestions for Future Work<a class="headerlink" href="#suggestions-for-future-work" title="Link to this heading">#</a></h2>
-<p>I definitely agree having an explicit chapter on both first-order logic and theorem provers related to FOL would be helpful, especially as a preceding chapter to the current one about higher-order logic and Isabelle. This chapter should also include popular Automatic Theorem Provers (ATPs) for FOL, and could serve as a nice introduction into theorem proving and “stronger” tools such as Isabelle/HOL and Lean.</p>
-<p>It might also be interesting to see different chapters covering automatic theorem provers such as Vampire or Satallax vs interactive theorem provers such as Isabelle/HOL or Lean. In addition, there should be a clear division made between first order logic ATPs such as the aforementioned Vampire and higher-order logic ATPs such as Satallax.</p>
-<p>It may also be interesting and useful to either create or find an online Isabelle/HOL program that can run in a web browser, similar to the Lean Game Server. This way users can be quickly onboarded to the tool without having to go through download, setup, version compatibility issues, and other miscellaneous problems that may arise.</p>
-</section>
-<section id="contributors">
-<h2><span class="section-number">8.15. </span>Contributors<a class="headerlink" href="#contributors" title="Link to this heading">#</a></h2>
-<p>Initial Author: Spencer Au</p>
-<p>Peer Reviewer: Wayne Chong</p>
+<h2><span class="section-number">8.13. </span>Suggestions for Future Work<a class="headerlink" href="#suggestions-for-future-work" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1164,7 +1083,7 @@ https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html -->
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Type Theory with Lean</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Dependent Type Theory with Lean</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1186,9 +1105,9 @@ https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html -->
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea-and-introduction">8.1. Idea and Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">8.2. Basic Theory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-first-order-logic-to-higher-order-logic">8.2.1. From First-Order Logic to Higher-Order Logic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-hol-type-system">8.2.2. The HOL Type System</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-lambda-abstraction">8.2.3. Lambda (<span class="math notranslate nohighlight">\(\lambda\)</span>) Abstraction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-first-order-logic-to-hol">8.2.1. From First-Order Logic to HOL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-type-system">8.2.2. (Explicit) Type System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lambda-abstraction-and-application">8.2.3. <span class="math notranslate nohighlight">\(\lambda\)</span>-Abstraction and Application</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-constants-in-hol">8.2.4. Logical Constants in HOL</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deductive-core-of-hol">8.2.5. Deductive Core of HOL</a></li>
 </ul>
@@ -1197,60 +1116,40 @@ https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html -->
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">8.3.1. Installation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-solving-via-sledgehammer">8.3.2. Proof Solving via Sledgehammer</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-example-add-function">8.3.3. First Example - Add Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-exercise-associativity-and-commutativity-of-add">8.3.4. First Exercise - Associativity and Commutativity of Add</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-exercise-associativity-and-communativity-of-add">8.3.4. First Exercise - Associativity and Communativity of Add</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-example-flattening-and-length-invariant">8.4. Intro Example - Flattening and Length Invariant</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-flattening">8.4.1. List Flattening</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#length-invariant">8.4.2. Length Invariant</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples-tower-of-hanoi-or-insertion-sort">8.4. Introductory Examples - Tower of Hanoi or Insertion Sort</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">8.5. The Landscape of Tools</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-theorem-provers">8.5.1. Interactive Theorem Provers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-theorem-provers">8.5.2. Automated Theorem Provers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-languages">8.5.3. Programming Languages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-theorem-prover">8.5.2. Automated Theorem Prover</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">8.6. Algorithms</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matching-and-unification">8.6.1. Matching and Unification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplification-rewriting">8.6.2. Simplification &amp; Rewriting</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof-search-and-external-automation">8.6.3. Proof Search and External Automation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">8.6. Algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-competitions">8.7. Benchmarks and Competitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry-and-academia">8.8. Applications in Industry and Academia</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-addressing-on-real-hardware">8.8.1. Physical Addressing on Real Hardware</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-stream-processing-components">8.8.2. FOCUS - Stream Processing Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isabil-verifying-in-correctness-of-binaries">8.8.3. IsaBIL - Verifying (In)Correctness of Binaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verlso-isolation-guarantees-of-database-transactions">8.8.4. Verlso - Isolation Guarantees of Database Transactions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ieee-754-floating-point-implementation-for-mdps">8.8.5. IEEE 754 Floating Point Implementation for MDPs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoformalization-with-large-language-models">8.8.6. Autoformalization with Large Language Models</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-use-cases">8.7. Typical Use Cases</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-competitions">8.8. Benchmarks and Competitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry-and-academia">8.9. Applications in Industry and Academia</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-addressing-on-real-hardware">8.9.1. Physical Addressing on Real Hardware</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#focus-stream-processing-components">8.9.2. FOCUS - Stream Processing Components</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isabil-verifying-in-correctness-of-binaries">8.9.3. IsaBIL - Verifying (In)Correctness of Binaries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verlso-isolation-guarantees-of-database-transactions">8.9.4. Verlso - Isolation Guarantees of Database Transactions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ieee-754-floating-point-implementation-for-mdps">8.9.5. IEEE 754 Floating Point Implementation for MDPs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoformalization-with-large-language-models">8.9.6. Autoformalization with Large Language Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-autoformalization-with-large-language-models">8.9. Case Study - Autoformalization with Large Language Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">8.10. History</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-higher-order-logic">8.10.1. Origins of Higher-Order Logic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">8.10.2. Development of Isabelle/HOL</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-autoformalization-with-llms">8.10. Case Study - Autoformalization with LLMs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">8.11. History</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#origins-of-higher-order-logic">8.11.1. Origins of Higher-Order Logic</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-isabelle-hol">8.11.2. Development of Isabelle/HOL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">8.11. Current Development, Research Challenges, Conferences and Workshops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">8.11.1. Current Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-challenges">8.11.2. Research Challenges</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conferences-and-workshops">8.11.3. Conferences and Workshops</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-events-within-isabelle-hol">8.12. Current Events within Isabelle/HOL</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">8.12.1. Current Development</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-challenges">8.12.2. Research Challenges</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conferences-and-workshops">8.12.3. Conferences and Workshops</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">8.13. References</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ebooks-and-textbooks">8.13.1. eBooks and Textbooks</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#online-articles">8.13.2. Online Articles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#research-papers">8.13.3. Research Papers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.13.4. Research Papers</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#videos">8.13.5. Videos</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous">8.13.6. Miscellaneous</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">8.14. Suggestions for Future Work</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">8.15. Contributors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">8.12. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work">8.13. Suggestions for Future Work</a></li>
 </ul>
   </nav></div>
 
@@ -1275,7 +1174,7 @@ By CPSC 510
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
