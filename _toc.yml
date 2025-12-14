@@ -2,12 +2,12 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: content/title
+root: content/0-title
 parts:
 - caption: Introduction
   numbered: false
   chapters:
-    - file: content/intro
+    - file: content/0-intro
     - file: content/0-logic
     - file: content/1-propositional-logic
     - file: content/6-modal-logic
@@ -28,19 +28,12 @@ parts:
 - caption: Appendices
   numbered: false
   chapters:
-    - file: content/appendix-puzzles
     - file: content/appendix-hoare-logic
     - file: content/appendix-syllogistic-logics
 
-- caption: "Typesetting Conventions"
+- caption: "Style Guide"
   numbered: false
   chapters:
     - file: content/how-to-cite
+    - file: content/how-to-contribute
 
-- caption: "Appendix: On Jupyter Books"
-  numbered: false
-  chapters:
-    - file: content/how-to-create-a-jupyter-book
-    - file: content/markdown
-    - file: content/notebooks
-    - file: content/markdown-notebooks

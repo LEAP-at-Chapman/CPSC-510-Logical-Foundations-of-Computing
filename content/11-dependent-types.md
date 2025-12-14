@@ -1,4 +1,4 @@
-# Dependent Type Theory with Lean
+# Type Theory with Lean
 
 *Author: Khoa Nguyen*
 

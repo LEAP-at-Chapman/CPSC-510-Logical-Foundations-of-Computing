@@ -1,4 +1,4 @@
-# Constraint Programming with MiniZinc
+# Constraints with MiniZinc
 
 ## Idea
 
@@ -31,8 +31,8 @@ minizinc --version
 
 Constraint programming systems generally share several defining features that distinguish them from other approaches:
 
-* **Feasibility-focused**: CP emphasizes finding solutions that satisfy all constraints, not necessarily optimal ones
-* **Declarative**: You describe *what* constraints must hold, not *how* to find the solution
+* **Feasibility-focused**: CP emphasizes finding solutions that satisfy all constraints, not necessarily optimal ones.
+* **Declarative**: You describe *what* constraints must hold, not *how* to find the solution.
 * **Powerful for scheduling**: Particularly effective for problems like employee scheduling, job shop scheduling, and resource allocation
 * **Handles heterogeneous constraints**: Can combine different types of constraints (arithmetic, logical, global constraints)
 
@@ -80,13 +80,13 @@ output [
 ] ++ ["\n"];
 ```
 
-## Working Example: N-Queens in MiniZinc
+## Introductory Example: N-Queens in MiniZinc
 
-To see these concepts in action, let's look at the "Hello World" of constraint programming: placing N queens on a chessboard so that no two queens attack each other.
+To see these concepts in action, let's look at the "Hello World" of constraint programming: placing N queens on a chessboard so that no two queens attack each other. For context, the N queens problem is a classic problem in computer science and logical programming where you must place N queens on an Width x Height chessboard such that no two queens threaten each other.
 
-A minimal, runnable model is included in this repo at `src/minizinc/nqueens/nqueens.mzn`. You can run it directly without any `.dzn` file.
+A minimal, runnable introductory example is included in this repo at `src/minizinc/nqueens/nqueens.mzn`. You can run this file by doing minizinc nqueens.mzn while in the src/minizinc/nqueens directory.
 
-```mzn
+```
 include "globals.mzn";
 
 int: n = 8;
@@ -109,7 +109,7 @@ output [
 ] ++ ["\n", "Positions: ", show(q), "\n"];
 ```
 
-```{button-link} ../minizinc/nqueens.mzn
+```{button-link} ../minizinc/nqueens/nqueens.mzn
 :color: primary
 :shadow:
 :target: _blank
@@ -153,9 +153,7 @@ While libraries like OR-Tools certainly support many of these, MiniZinc's implem
 
 This leads to a common hybrid workflow: use MiniZinc for the **exploration** phase—rapidly modeling your problem to understand its complexity and rules—and only port it to an embedded language (like Python with OR-Tools) if you need to deploy it into a **production** environment where tight integration is critical (Perron and Furnon, 2019).
 
-## Example Applications
-
-### Employee Scheduling
+## Example Applications : Employee Scheduling
 
 A classic CP problem: A company runs three 8-hour shifts per day and assigns three of its four employees to different shifts each day, while giving the fourth the day off. Even with just 4 employees, there are 24 possible assignments per day, leading to 24^7 ≈ 4.5 billion possible weekly schedules (Perron and Furnon, 2019).
 
