@@ -406,7 +406,10 @@ Sum of array = 9
 
 ## The Landscape of Tools
 
-*To be added*
+Dafny is a programming language that helps developers write code they can trust. It bridges the gap between manual proof assistants and automated analyzers. Proof assistants are precise but require considerable manual effort. Although automated analyzers are faster, they are limited in what they can prove. Dafny combines the best of both by embedding Hoare logic directly into its structure. Programmers can write preconditions, postconditions, invariants, and termination checks alongside their code. This makes specifying behavior feel natural, like an extension of coding rather than a separate task.
+
+Dafny translates code into the Boogie intermediate language and uses the Z3 solver to ensure methods meet their contracts and loops maintain their invariants. When encountering a program that fails, Dafny can report the issue within the source code. This allows programs ranging from beginners to experts to understand what went wrong throughout the program. Dafny makes rigorous verification practical and approachable, even for complex systems and algorithms.
+
 
 ## Benchmark and Competitions
 
@@ -440,7 +443,12 @@ The development of Hoare Logic established a foundation in computer science by s
 
 ## Suggestions for future work on the book
 
-*To be added*
+An idea for future work is the integration of an AI-assisted system that helps programmers create, refine, and select Hoare Logic specifications in languages such as Dafny and F*. As program verification continues to grow in importance for software reliability, it reduces the difficulty of writing precise preconditions, postconditions, and invariants. Rather than replacing the verifier, this system would make the specification-writing process more intuitive, guiding developers toward correct and meaningful contracts.
+
+This system would analyze code structure, variable behavior, naming patterns, and points where verification conditions fail to suggest appropriate specifications and loop invariants. By combining static analysis with optional execution traces, the new system could propose candidate requires, ensures, and invariant clauses. These candidates could then be refined through a feedback loop driven by counterexamples produced by Dafny or F*. As the system accumulates experience, it could favor specifications that are simple and readable, while leaving final correctness guarantees to the underlying prover.
+
+Using the feedback loop to build this collaborative tool, the AI assistant would explain verification failures in plain language, offer specification suggestions, and even translate natural-language comments into formal logic. By reducing the trial-and-error usually required in formal verification, this system would ease the integration of Hoare Logic more naturally into everyday development workflows.
+
 
 ## Hoare Logic in F*
 
