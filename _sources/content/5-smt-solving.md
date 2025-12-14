@@ -114,13 +114,13 @@ Other SMT-solvers that accept SMT-LIB are:
 
 ### Z3 in Python
 
-Interactive Z3 examples are available below via Colab or Binder or download a copy [here](https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/z3/z3-examples.ipynb).
+Interactive Z3 examples are available below via Colab or Binder or download a copy [here](https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/notebooks/z3/z3-examples.ipynb).
 
 **Try it interactively:** 
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/z3/z3-examples.ipynb) **🚀 Google Colab (Recommended - Fast & Reliable)**
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/notebooks/z3/z3-examples.ipynb) 
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/main?filepath=content%2Frequirements.txt&labpath=../z3%2Fz3-examples.ipynb) **🐳 Binder (Alternative)**
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/main?filepath=notebooks/z3/z3-examples.ipynb) 
 
 Practical Examples:
 

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Short Intro to Logic &#8212; Logical Foundations of AI</title>
+    <title>Short Intro to Logic &#8212; Logical Foundations of Computing</title>
   
   
   
@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Propositional Logic" href="1-propositional-logic.html" />
-    <link rel="prev" title="The Book" href="intro.html" />
+    <link rel="prev" title="The Book" href="0-intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,21 +150,21 @@ const thebe_selector_output = ".output, .cell_output"
     
   
 
-<a class="navbar-brand logo" href="title.html">
+<a class="navbar-brand logo" href="0-title.html">
   
   
   
   
   
   
-    <p class="title logo__title">Logical Foundations of AI</p>
+    <p class="title logo__title">Logical Foundations of Computing</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-intro.html">The Book</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Short Intro to Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
@@ -173,30 +173,23 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraints with MiniZinc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">4. SMT Solving and Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">7. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style Guide</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-contribute.html">How to Contribute</a></li>
 </ul>
 
     </div>
@@ -415,7 +408,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="short-intro-to-logic">
 <h1>Short Intro to Logic<a class="headerlink" href="#short-intro-to-logic" title="Permalink to this heading">#</a></h1>
-<p>some intro to the intro …</p>
+<p>This very short introduction to logic does not aim at explaining what logic is or the foundtaional role that logic plays in computing. As we will see throughout the book, many different answers can be given to these questions. Here, I only want to highlight some big ideas that underpin all these answers.</p>
 <p><strong>Big Ideas of Logic</strong>:</p>
 <ul class="simple">
 <li><p>Validity</p></li>
@@ -441,7 +434,7 @@ Therefore, Socrates is mortal.</p>
 <p>We know that it is valid because of its form, not because we know anything about Socrates, men, or mortality. The form is:</p>
 <blockquote>
 <div><p>All X are Y.<br />
-Z is an X.<br />
+Z is X.<br />
 Therefore, Z is Y.</p>
 </div></blockquote>
 <p>This pattern holds regardless of what X, Y, and Z represent. We can substitute:</p>
@@ -459,7 +452,7 @@ Therefore, Z is Y.</p>
 <li><p>A programming language is the set of strings (or abstract syntax trees) that can be derived by the <a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">context-free grammar</a> of the language, a classic example being the <a class="reference external" href="https://www.quut.com/c/ANSI-C-grammar-y.html">grammar of the C language</a> and we will see later the <a class="reference external" href="https://spinroot.com/spin/Man/grammar.html">grammar of Promela</a> in  <a class="reference internal" href="7-temporal-logic.html"><span class="doc std std-doc">Chapter 7: Temporal Logic with Spin</span></a>.</p></li>
 <li><p>The language of propositional logic is the smallest set containing a given set of atomic propositions (strings) and being closed under the operations AND (<span class="math notranslate nohighlight">\(\wedge\)</span>), OR (<span class="math notranslate nohighlight">\(\vee\)</span>), NOT (<span class="math notranslate nohighlight">\(\neg\)</span>).</p></li>
 </ul>
-<p>Formal languages can be processed by algorithms. In particular, for any given formal language there are (terminating, even efficient) algorithms that</p>
+<p>Formal languages can be processed by algorithms. In particular, for any given formal language one would expect (terminating, even efficient) algorithms that</p>
 <ul class="simple">
 <li><p>answer the yes-no-question, for any string, whether that string belongs to the language,</p></li>
 <li><p>parse a given string into an <a class="reference external" href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax tree</a>.</p></li>
@@ -507,7 +500,7 @@ r &amp; s \\
 \end{array}
 \end{split}\]</div>
 <p>The variables <span class="math notranslate nohighlight">\(p, q, r, s\)</span> are bits taking values in <span class="math notranslate nohighlight">\(\{0,1\}\)</span>.</p>
-<p>The intended encoding is as follows. For each cell, let’s say the bit is 1 when the cell contains 1, and 0 when it contains 2. In the notation of propositional logic of Chapters <a class="reference internal" href="1-propositional-logic.html"><span class="doc std std-doc">1</span></a> and <a class="reference internal" href="2-satsolving.html"><span class="doc std std-doc">2</span></a>, a <strong>specification</strong> of the puzzle can now be expressed as follows.</p>
+<p>The intended encoding is as follows. For each cell, let’s say the bit is 1 when the cell contains 1, and 0 when it contains 2. In the notation of <a class="reference internal" href="1-propositional-logic.html"><span class="doc std std-doc">propositional logic</span></a>, a <strong>specification</strong> of the puzzle can now be expressed as follows.</p>
 <p>First, the rules of Sudoku are transformed into the following equations (writing <span class="math notranslate nohighlight">\(\vee\)</span> for OR and <span class="math notranslate nohighlight">\(\neg\)</span> for NOT)</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -665,7 +658,7 @@ m(T)=\{x\in X\mid xRa \text{ for all } a\in T\}\\
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="0-intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">

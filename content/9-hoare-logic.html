@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>7. Hoare Logic with Dafny &#8212; Logical Foundations of AI</title>
+    <title>7. Hoare Logic with Dafny &#8212; Logical Foundations of Computing</title>
   
   
   
@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/9-hoare-logic.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="8. Higher-Order Logic with Isabelle/HOL" href="10-higher-order-logic.html" />
+    <link rel="next" title="8. Higher-Order Logic with Isabelle" href="10-higher-order-logic.html" />
     <link rel="prev" title="6. Epistemic Logic with SMCDEL" href="8-epistemic-logic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -148,21 +148,21 @@ const thebe_selector_output = ".output, .cell_output"
     
   
 
-<a class="navbar-brand logo" href="title.html">
+<a class="navbar-brand logo" href="0-title.html">
   
   
   
   
   
   
-    <p class="title logo__title">Logical Foundations of AI</p>
+    <p class="title logo__title">Logical Foundations of Computing</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-intro.html">The Book</a></li>
 <li class="toctree-l1"><a class="reference internal" href="0-logic.html">Short Intro to Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
@@ -171,30 +171,23 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraint Programming with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraints with MiniZinc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">4. SMT Solving and Z3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle/HOL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Dependent Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Typesetting Conventions</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style Guide</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix: On Jupyter Books</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="how-to-create-a-jupyter-book.html">How to Create a Jupyter Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-contribute.html">How to Contribute</a></li>
 </ul>
 
     </div>
@@ -427,13 +420,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">7.6. The Landscape of Tools</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">7.7. Benchmark and Competitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">7.8. Applications in Industry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">7.9. Case Studies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">7.10. History</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">7.11. Current Development, Research Challenges, Conferences and Workshops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-the-book">7.12. Suggestions for future work on the book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hoare-logic-in-f">7.13. Hoare Logic in F*</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">7.14. Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">7.15. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">7.9. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-the-book">7.10. Suggestions for future work on the book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hoare-logic-in-f">7.11. Hoare Logic in F*</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">7.12. Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">7.13. References</a></li>
 </ul>
             </nav>
         </div>
@@ -739,7 +730,9 @@ dotnet<span class="w"> </span><span class="nb">test</span><span class="w"> </spa
 </section>
 <section id="program-verification-techniques">
 <h2><span class="section-number">7.4. </span>Program Verification Techniques<a class="headerlink" href="#program-verification-techniques" title="Permalink to this heading">#</a></h2>
-<p><em>To be added</em></p>
+<p>Dafny was built using the principles of Hoare Logic as a form of program verification. Through this, Dafyny integrated the Hoare Triple directly into the system language to verify what must be true before (pre-condition) and what must be true after program execution (post-condition). This integration of built-in formal reasoning enabled constructs such as <code class="docutils literal notranslate"><span class="pre">requires</span></code> and <code class="docutils literal notranslate"><span class="pre">ensures</span></code> to be part of the natural language. Additionally, Dafny development was also able to account for loops and recursions by utilizing invariants and termination conditions.</p>
+<p>Although a majority of the verification work in Dafny is handled by an SMT solver, this automated process alleviates the stress of manually constructing corrected proofs. This automated process, however, still requires human input to provide well-selected specifications and invariants, which can be deemed challenging, especially for more complex properties.</p>
+<p>Despite the challenges that selecting specifications and invariants may bring, Dafny has successfully demonstrated the practicality of implementing Hoare Logic. Through system-wide efforts to enforce program validations and correctness, users can develop programs without worrying about extensive testing. As a result of this constant verification, users can trust their programs, knowing that each portion of them has been thoroughly validated. Founded on the principle of ensuring that mathematical proofs function as intended, Hoare Logic provides a robust and reliable method for developing programs.</p>
 </section>
 <section id="exercises">
 <h2><span class="section-number">7.5. </span>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
@@ -886,11 +879,14 @@ The requires clause ensures that the array must not be null before the method ru
 </section>
 <section id="the-landscape-of-tools">
 <h2><span class="section-number">7.6. </span>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Permalink to this heading">#</a></h2>
-<p><em>To be added</em></p>
+<p>Dafny is a programming language that helps developers write code they can trust. It bridges the gap between manual proof assistants and automated analyzers. Proof assistants are precise but require considerable manual effort. Although automated analyzers are faster, they are limited in what they can prove. Dafny combines the best of both by embedding Hoare logic directly into its structure. Programmers can write preconditions, postconditions, invariants, and termination checks alongside their code. This makes specifying behavior feel natural, like an extension of coding rather than a separate task.</p>
+<p>Dafny translates code into the Boogie intermediate language and uses the Z3 solver to ensure methods meet their contracts and loops maintain their invariants. When encountering a program that fails, Dafny can report the issue within the source code. This allows programs ranging from beginners to experts to understand what went wrong throughout the program. Dafny makes rigorous verification practical and approachable, even for complex systems and algorithms.</p>
 </section>
 <section id="benchmark-and-competitions">
 <h2><span class="section-number">7.7. </span>Benchmark and Competitions<a class="headerlink" href="#benchmark-and-competitions" title="Permalink to this heading">#</a></h2>
-<p><em>To be added</em></p>
+<p>The development of Hoare Logic continues to grow, as the number of conferences and workshops around program verification tools continues to increase. Events such as ETAPS, TACAS, FM, and the Dagstuhl seminars provide a platform for individuals to test new ideas and assess how tools perform on real-world problems. The VerifyThis competition has become especially influential. Participants are given problems, create specifications, and work with their verification tools within an allotted time limit. These events often lead to the development of contract notation, improved annotation design, stronger automation, and more helpful tool feedback. These developments shape the evolution of verification tools.</p>
+<p>Additionally, these events highlight the challenges that researchers continue to face. Writing effective specifications and invariants still requires skill and insight. Even with recent advances, tools can produce confusing diagnostics or behave in ways that make it hard to understand what went wrong. When these issues arise, conferences and competitions provide researchers with a platform to discuss them directly. Comparing approaches, discussing which ideas are effective, and identifying areas where tools are still limited, enables an exchange that guides future improvements in program verification tools.</p>
+<p>The VerifyThis competition has also contributed directly to the development of modern verification tools. Through this competition, many participants have been able to develop improvements as these events push them to refine their tools, adopt new specification features, and strengthen automation strategies. Surviving past competitions show that these newly implemented improvements often stem from insights gained during competitions such as VerifyThis. These teams observe how others formalize requirements, structure invariants, and interact with their tools under pressure. This collaborative environment fosters a feedback loop that supports steady progress in deductive verification research, ensuring that Hoare Logic continues to evolve as both a theoretical framework and a practical verification method.</p>
 </section>
 <section id="applications-in-industry">
 <h2><span class="section-number">7.8. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Permalink to this heading">#</a></h2>
@@ -902,32 +898,26 @@ In safety-critical systems, such as those in the aerospace and medical device in
 In static analysis, the Hoare Triple is used to reason all program states, ensuring correctness when testing alone can be insufficient. This reasoning is adjusted and adapted to work across various computational models. For synchronous languages, they are rewritten into a synchronous tuple assignment form, enabling grouped updates and macro-step boundaries to be verified through specialized axioms. Meanwhile, in quantum programs, redefined semantics, quantum predicates, and measurement-aware rules are used to handle superposition and probabilistic branching. In each case, static analysis becomes an automated form of Hoare-style reasoning adapted to the computational model, ensuring that correctness is proven.</p></li>
 </ul>
 </section>
-<section id="case-studies">
-<h2><span class="section-number">7.9. </span>Case Studies<a class="headerlink" href="#case-studies" title="Permalink to this heading">#</a></h2>
-<p><em>To be added</em></p>
-</section>
 <section id="history">
-<h2><span class="section-number">7.10. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.9. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
 <p>In 1949, Alan Turing presented his paper, “Checking a Large Routine”, which was one of the first attempts to describe how programmers could verify the correctness of their code. Throughout his paper, Turing proposed the idea of using assertion statements to explain what should be true at specific points in the program, thereby verifying its correctness. Additionally, Turing introduced the concept of a termination function as a method to ensure that the presented program eventually halts. Using a factorial program, Turing showed that logical reasoning could be applied to computer programs.</p>
 <p>Throughout the 1960s, Robert Floyd built on Turing’s ideas by introducing the inductive assertion method, a systematic approach to proving the correctness of flowchart-based programs. Floyd proposed identifying key points in a program with logical statements called invariants, similar to the idea of assertion statements, which are both meant to show specific points during the program that must remain true throughout execution. Although the idea continued to build on Turing’s progress, this was limited to flowcharts rather than structured programming languages.</p>
 <p>In the year 1969, C.A.R. Hoare continued to build on these ideas by introducing the Hoare triple: {P} S {Q}. This notation states that if the execution of program P begins in a state where the precondition C holds, then upon termination, the postcondition Q will hold. Although this development seemed simple, it proved to be powerful, as it created rules for statements, loops, and sequences. This notation enabled program proofs to be both structured and easier to understand due to their improved readability. The Hoare triple enabled program verification for all types of code, not just flowcharts, transforming program reasoning into a formal, language-based discipline.</p>
 <p>By the early 1970s, Hoare had expanded his logic to handle recursive procedures and local variables, which enabled reasoning about more complex programs. Working alongside Joseph Foley, he applied these ideas to verify the Quicksort algorithm, which was one of the first detailed proofs of correctness for a real-world program. Around the same time, Hoare began promoting the idea of programming and proving should be done simultaneously. This growing philosophy later influenced Edsger Dijkstra’s work on structured programming and program derivation, transforming Hoare Logic into a guide for creating verified software instead of verifying it after the fact.</p>
 <p>The development of Hoare Logic established a foundation in computer science by shifting the perspective from viewing programs as sequences of commands to viewing them as logical systems that can be mathematically analyzed. Building upon Turing’s conceptual groundwork, refining Floyd’s formalization, and realizing Hoare’s framework, this lineage transformed programming into a science of correctness. To this day, Hoare Logic remains a foundational method of verification, and it also serves as a symbol of the connection between logic, mathematics, and computation.</p>
 </section>
-<section id="current-development-research-challenges-conferences-and-workshops">
-<h2><span class="section-number">7.11. </span>Current Development, Research Challenges, Conferences and Workshops<a class="headerlink" href="#current-development-research-challenges-conferences-and-workshops" title="Permalink to this heading">#</a></h2>
-<p><em>To be added</em></p>
-</section>
 <section id="suggestions-for-future-work-on-the-book">
-<h2><span class="section-number">7.12. </span>Suggestions for future work on the book<a class="headerlink" href="#suggestions-for-future-work-on-the-book" title="Permalink to this heading">#</a></h2>
-<p><em>To be added</em></p>
+<h2><span class="section-number">7.10. </span>Suggestions for future work on the book<a class="headerlink" href="#suggestions-for-future-work-on-the-book" title="Permalink to this heading">#</a></h2>
+<p>An idea for future work is the integration of an AI-assisted system that helps programmers create, refine, and select Hoare Logic specifications in languages such as Dafny and F*. As program verification continues to grow in importance for software reliability, it reduces the difficulty of writing precise preconditions, postconditions, and invariants. Rather than replacing the verifier, this system would make the specification-writing process more intuitive, guiding developers toward correct and meaningful contracts.</p>
+<p>This system would analyze code structure, variable behavior, naming patterns, and points where verification conditions fail to suggest appropriate specifications and loop invariants. By combining static analysis with optional execution traces, the new system could propose candidate requires, ensures, and invariant clauses. These candidates could then be refined through a feedback loop driven by counterexamples produced by Dafny or F*. As the system accumulates experience, it could favor specifications that are simple and readable, while leaving final correctness guarantees to the underlying prover.</p>
+<p>Using the feedback loop to build this collaborative tool, the AI assistant would explain verification failures in plain language, offer specification suggestions, and even translate natural-language comments into formal logic. By reducing the trial-and-error usually required in formal verification, this system would ease the integration of Hoare Logic more naturally into everyday development workflows.</p>
 </section>
 <section id="hoare-logic-in-f">
-<h2><span class="section-number">7.13. </span>Hoare Logic in F*<a class="headerlink" href="#hoare-logic-in-f" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.11. </span>Hoare Logic in F*<a class="headerlink" href="#hoare-logic-in-f" title="Permalink to this heading">#</a></h2>
 <p><em>To be added</em></p>
 </section>
 <section id="resources">
-<h2><span class="section-number">7.14. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.12. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/dafny-lang/dafny">Dafny</a></p></li>
 <li><p><a class="reference external" href="https://dafny.org/dafny/OnlineTutorial/guide">Dafny Tutorial</a></p></li>
@@ -935,7 +925,7 @@ In static analysis, the Hoare Triple is used to reason all program states, ensur
 </ul>
 </section>
 <section id="references">
-<h2><span class="section-number">7.15. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.13. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html">University of Pennsylvania – Software Foundations, Volume 2: Programming Language Foundations Chapter: Hoare Logic</a></p></li>
 <li><p><a class="reference external" href="https://www.cs.cmu.edu/~aldrich/courses/654-sp06/notes/3-hoare-notes.pdf">Carnegie Mellon University – 15-654 Software Engineering (Spring 2006) Lecture Notes: Hoare Logic by Jonathan Aldrich</a></p></li>
@@ -993,7 +983,7 @@ In static analysis, the Hoare Triple is used to reason all program states, ensur
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Higher-Order Logic with Isabelle/HOL</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Higher-Order Logic with Isabelle</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1050,13 +1040,11 @@ In static analysis, the Hoare Triple is used to reason all program states, ensur
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">7.6. The Landscape of Tools</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmark-and-competitions">7.7. Benchmark and Competitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">7.8. Applications in Industry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">7.9. Case Studies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">7.10. History</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development-research-challenges-conferences-and-workshops">7.11. Current Development, Research Challenges, Conferences and Workshops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-the-book">7.12. Suggestions for future work on the book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hoare-logic-in-f">7.13. Hoare Logic in F*</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">7.14. Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">7.15. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">7.9. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-work-on-the-book">7.10. Suggestions for future work on the book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hoare-logic-in-f">7.11. Hoare Logic in F*</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">7.12. Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">7.13. References</a></li>
 </ul>
   </nav></div>
 

@@ -1,4 +1,4 @@
-# Dependent Type Theory with Lean
+# Type Theory with Lean
 
 *Author: Khoa Nguyen*
 
@@ -54,7 +54,7 @@ The following installation is pull directly from Lean-["Install Lean"](https://l
 - Install VS Code
 - Install the official Lean 4 extension in VS Code 
 - Complete the extension by following the guideline of Lean 4 extension:
-    - Click the "∀" symbol at the top right of the window.
+    - Click the "$\forall$" symbol at the top right of the window.
     - Hover down to "Documentation..."
     - Click on "Show Setup Guide"
     - Follow the guide until "Install Lean" option light up
@@ -154,7 +154,7 @@ The necessity of type annotations in places where inference is impossible (e.g.,
 
 ### Equality / Normalization / Conversion / Extensionality Checking
 
-In dependent type theory, type equality (and term equality) is not just "are they syntactically identical?". It often involves computation (normalization), conversion rules (β-reduction), and user-defined equality/extension rules (e.g., extensionality, definitional equalities). Implementations need an algorithm to decide or check when two types or terms are equal.
+In dependent type theory, type equality (and term equality) is not just "are they syntactically identical?". It often involves computation (normalization), conversion rules ($\beta$-reduction), and user-defined equality/extension rules (e.g., extensionality, definitional equalities). Implementations need an algorithm to decide or check when two types or terms are equal.
 
 The paper [“An extensible equality checking algorithm for dependent type theories”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=An+extensible+equality+checking+algorithm+for+dependent+type+theories&btnG=) introduces a general algorithm combining type-directed extensionality rules with normalization by computation rules, and shows how to classify rules as computational or extensional in a user-definable way. The algorithm is implemented in a proof assistant prototype that supports custom dependent type theories. 
 arXiv
@@ -262,8 +262,6 @@ In the 1980s and 1990s the field consolidated around a handful of influential ca
 - Groote, J. F., Huisman, M. [“Formal Methods for Industrial Critical Systems.”](https://scholar.google.com/scholar?q=%E2%80%9CFormal+Methods+for+Industrial+Critical+Systems%E2%80%9D&hl=en&as_sdt=0%2C5&as_ylo=2024&as_yhi=) Int J Softw Tools Technol Transfer 26 (2024). 
 
 - Miranda et al. ["VeriBench: End-to-End formal verification benchmark for AI code generation in Lean 4"](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&as_ylo=2024&q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&btnG=). In Proceedings of the 42nd International Conference on Machine Learning, Vancouver, Canada (PMLR 267) (2025). 
-
-- Wikipedia contributors. (2025, November 28). [History of type theory](https://en.wikipedia.org/wiki/History_of_type_theory). Wikipedia. 
 
 - [Type Theory (Stanford Encyclopedia of Philosophy)]( https://plato.stanford.edu/entries/type-theory). (2022, September 6).
 
