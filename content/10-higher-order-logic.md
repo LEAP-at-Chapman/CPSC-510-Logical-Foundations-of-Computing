@@ -203,8 +203,6 @@ For a detailed explanation, [See Section 8.3.3 Commutative Property](./assets-10
 
 <!-- show something interesting about tool, logic, etc and can be digested and understood with minimum experience -->
 
-There is an introduction exercise to syllogistic logic<sup><a href="#MossSyllogism">[34]</a></sup> in Isabelle by Alexander Kurz linked [here](appendix-syllogistic-logics.md).
-
 The List Flattening and Length Preservation exercise is adjusted from [this exercise](https://isabelle.in.tum.de/exercises/lists/sum/sol.pdf). First try the exercise yourself, and if stuck, reference the document linked.
 
 ### List Flattening
@@ -242,7 +240,7 @@ lemma length_flatten:
 
 Since this proof is relatively simple, a tactic based approach would be ideal. Set up the tactic based proof by induction by using `apply (induct xss)`
 
-There should now be 2 subgoals, and from there, simply leverage the Sledgehammer tool to solve proof obligations.
+There should now be 2 sub-goals, and from there, simply leverage the Sledgehammer tool to solve proof obligations.
 
 The full proof is here. Isabelle will recognize the lemma as a theorem when all proof obligations have been satisfied.
 ```{dropdown} Show Answer
@@ -256,6 +254,8 @@ lemma length_flatten:
 ```
 
 *The Isabelle .thy file for this exercise are located [here](../content/assets-10/list_flatten.thy)*
+
+*In addition to this exercise, there is also an introduction exercise to syllogistic logic<sup><a href="#MossSyllogism">[34]</a></sup> in Isabelle by Alexander Kurz linked [here](appendix-syllogistic-logics.md).*
 
 
 ## The Landscape of Tools
@@ -283,35 +283,14 @@ lemma length_flatten:
 
 ### Matching and Unification
 
-WIP
+Matching and unification are core algorithms in Isabelle/HOL that let the system find substitutions for schematic variables so that rules, lemmas, or patterns can be applied to the current proof goal. Introduced in Section 5.8 in *A Proof Assistant for Higher-Order Logic*<sup><a href="#Isabelle/HOL_ProofAssistant">[3]</a></sup>, these processes are essential because they enable Isabelle/HOL to automatically instantiate facts and guide proof search without significant manual effort. In Isabelle/HOL, matching often uses *higher-order pattern unification* because terms can include $\lambda$-abstractions and variables that represent functions, meaning that the algorithm must respect equivalence under various $\lambda$-calculus conversion rules (such as $\beta$-reduction) rather than just syntactic/text-based equality. Basically, higher-order unification must account for the way function application and variable binding behave in the typed $\lambda$-calculus that underlies higher-order logic. In practice, this allows Isabelle/HOL handle the richer structure of higher-order logic, such as functions and bound variables, and apply the resulting substitutions directly in tactics and inference steps during proof construction.
 
-<!-- This is the engine that lets the system fit rules to goals.
-Unification (especially first-order and higher-order patterns) is the key algorithm that determines how variables in rules or lemmas can be instantiated to match the current proof goal or subgoal. In Isabelle/HOL, unification drives rule application, tactic behavior, and many automation steps, linking the declarative inference rules to concrete proof steps.
-
-What to cover
-	•	First-order unification basics
-	•	Pattern unification in HOL context
-	•	How unification enables lemma instantiation and rule application
-
-Why this matters
-	•	It’s the bridge from abstract inference rules to concrete uses in proofs. -->
 
 ### Simplification & Rewriting
 
-WIP
-
-<!-- This is the core term-engine that most automated tactics rely on.
-
-The simplifier in Isabelle/HOL repeatedly applies rewrite rules — typically equational theorems — to simplify terms. This involves heuristics such as term ordering and conditional rewriting, which make it efficient and prevent infinite rewriting loops. The simplifier is used by tactics like simp and underpins many other automatic proof methods.
-
-What to cover
-	•	Term rewriting as a mechanical simplification algorithm
-	•	Conditional rewriting and simplification strategies
-	•	How this intersects with automation (simp, auto, etc.) -->
+Term simplification, introduced in Section 3.1 in *A Proof Assistant for Higher-Order Logic*<sup><a href="#Isabelle/HOL_ProofAssistant">[3]</a></sup> is a core component of Isabelle/HOL’s rewriting infrastructure. It repeatedly applies equational theorems (theorem that states an equality between two terms) as rewrite rules to transform terms into simpler forms, with these rules typically marked by the simp attribute so that the simplifier can use them automatically in tactics such as **simp**, **auto**, and related methods. The simplifier underpins much of Isabelle's automation by reducing goal terms and sub-goals before other tactics run, enabling the construction and success of more complex proofs without extensive manual effort. The Isabelle/HOL simplifier also supports *conditional rewriting*, where rewrite rules are only applied if their premise conditions can be satisfied, increasing flexibility while still ensuring correctness during proof search. This conditional behavior and the ability to tune which rules are active give users granular control over how goals are simplified when developing formal proofs and help automation focus on relevant proof progress rather than unproductive rewrites.
 
 ### Proof Search and External Automation
-
-WIP
 
 <!-- This covers the practical automation layer that makes Isabelle powerful in real use.
 
@@ -326,6 +305,19 @@ What to cover
 	•	Idea of heuristically guided search
 	•	Integration with external solvers and reconstruction
 	•	How this differs from the pure logic core -->
+
+Proof search and external automation serve as the foundation for Isabelle/HOL’s practical automation layer, combining built-in search procedures with calls to external solvers. Isabelle’s classical reasoner, introduced in Section 5.12 in *A Proof Assistant for Higher-Order Logic*<sup><a href="#Isabelle/HOL_ProofAssistant">[3]</a></sup>, is family of tools that perform proof search automatically by leveraging search and backtracking. While the **blast** method is "the main workhorse" for the classical reasoner, Section 5.13<sup><a href="#Isabelle/HOL_ProofAssistant">[3]</a></sup> also talks about **clarify**, **clarsimp**, **force**, **auto**, **fast**, and **best**. 
+This is a general summary provided by the document of the different classical reasoning methods:
+
+- **blast** works automatically and is the fastest
+- **clarify** and **clarsimp** perform obvious steps without splitting the goal;
+safe even splits goals
+- **force** uses classical reasoning and simplification to prove a goal; **auto** is
+similar but leaves what it cannot prove
+- **fast** and **best** are legacy methods that work well with rules involving unusual features
+
+External automation is typically invoked via the Sledgehammer tool. Sledgehammer works by selecting a set of relevant facts from the current proof context, translates it to a format appropriate for ATPs/SMTs, invokes the tools, and then returns the proof text in an appropriate Isabelle proof format (oftentimes via metis). This method helps preserve trust given that Sledgehammer relies on tools that are outside of the Isabelle/HOL ecosystem. More information about using the tool can be found in [Section 8.3.2](#proof-solving-via-sledgehammer), and the official Sledgehammer tool documentation page<sup><a href="Isabelle_Sledgehammer">[35]</a></sup> provides a breadth of detailed, supplementary information.
+
 
 ## Typical Use Cases
 
@@ -351,19 +343,10 @@ Achermann et al.<sup><a href="#Achermann_physicalAddressing">[19]</a></sup> disc
 ### FOCUS - Stream Processing Components
 
 Spichkova<sup><a href="#Spichkova_FOCUS">[20]</a></sup> introduces FOCUS, a framework for formal specification and refinement-based verification of interactive systems. Based on stream-processing semantics that model communication histories over directed channels, FOCUS is supported by Isabelle/HOL using the Isar proof language. FOCUS is evaluated on three case studies:
+
 - a steam boiler control system modelled as a distributed real-time system with proofs that water levels and pump actuations satisfy safety and timing constraints
 - the FlexRay automotive communication protocol, where FOCUS verifies correct static schedules, channel behavior, and broadcast properties for safety-critical embedded communication
 - an Automotive-Gateway system from the Verisoft project, formally specified and refined with guarantees that crash signals trigger correct emergency-service calls and satisfy required data-handling properties.
-<!-- 
-FOCUS uses Isabelle/HOL with the Isar language with three distinct case studies, namely process control (Steam Boiler System), data transmission (FlexRay communication protocol), memory and processing components (Automotive-Gateway System).
-
-- The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalized in Isabelle/HOL, translating architecture and component behavior into higher-order logic while proving the design satisfies timing and safety requirements.
-- The first case study is about a generic steam boiler system, which is represented as a distributed system with communicating components. In addition, the system must meet real time requirements such as ensuring water levels stay within bounds and when to appropriately actuate the water pumps. The system is formalized in Isabelle/HOL, translating architecture and component behavior into higher-order logic while proving the design satisfies timing and safety requirements.
-
-- The second case study is about FlexRay, which is a communication protocol for safety-critical real-time applications, specifically embedded systems in vehicles. FOCUS is used in this case to verify and prove correct static cycles, channel scheduling and properties, and node broadcast behavior.
-- The second case study is about FlexRay, which is a communication protocol for safety-critical real-time applications, specifically embedded systems in vehicles. FOCUS is used in this case to verify and prove correct static cycles, channel scheduling and properties, and node broadcast behavior.
-
-- The third case study is about the Automative-Gateway system for the Verisoft project. Basically, if the Gateway receives a vehicle crash signal, then it will initiate a call to the appropriate Emergency Service Center (ESC). The system is modelled in Isabelle/HOL, with the architecture, requirements, and refinement relations all formally specified and proven to ensure that the Gateway design meets its crash signal and data transmission requirements. -->
 
 ### IsaBIL - Verifying (In)Correctness of Binaries
 
@@ -399,7 +382,7 @@ https://openreview.net/forum?id=IUikebJ1Bf0
 
 ### Origins of Higher-Order Logic
 
-Alonzo Church's work in the 1930s (via $\lambda$-calculus)<sup><a href="#SEP_D.1_LambdaCalc">[39]</a></sup> and 1940s (via type theory)<sup><a href="#SEP_D.2_TypeTheory">[40]</a></sup> and Leon Henkin's work in the 1950s (on general model/Henkin semantics)<sup><a href="#SEP_HOL">[7]</a></sup> lay the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities.
+Alonzo Church's work in the 1930s (via $\lambda$-calculus)<sup><a href="#SEP_D.1_LambdaCalc">[39]</a></sup> and 1940s (via type theory)<sup><a href="#SEP_D.2_TypeTheory">[40]</a></sup> and Leon Henkin's work in the 1950s (on general model/Henkin semantics)<sup><a href="#SEP_HOL">[7]</a></sup> laid the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities.
 
 In the 1970s, Robert Milner develops LCF (Logic for Computable Functions)<sup><a href="#LCF_HOL_history">[38]</a></sup> at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evolves into OCaml and Standard ML.
 
@@ -773,9 +756,9 @@ https://flint.cs.yale.edu/cs428/coq/doc/Reference-Manual006.html -->
 
 I definitely agree having an explicit chapter on both first-order logic and theorem provers related to FOL would be helpful, especially as a preceding chapter to the current one about higher-order logic and Isabelle. This chapter should also include popular Automatic Theorem Provers (ATPs) for FOL, and could serve as a nice introduction into theorem proving and "stronger" tools such as Isabelle/HOL and Lean.
 
-It might also be interesting to see different chapters covering automatic theorem provers such as Vampire or Satallax vs interactive theorem provers such as Isabelle/HOL or Lean. In addition, there should be a clear division made between first order logic ATPs such as the aforementioned Vampire and higher-order logic ATPs such as Satallax.
+It might also be interesting to see different chapters covering automatic theorem provers such as Vampire or Satallax vs interactive theorem provers such as Isabelle/HOL or Lean. In addition, there should be a clear division made between first order logic ATPs such as the aforementioned Vampire and higher-order logic ATPs such as Satallax. In addition, it would also be interesting and useful to either create or find an online Isabelle/HOL program that can run in a web browser, similar to the Lean Game Server. This way users can be quickly onboarded to the tool without having to go through download, setup, version compatibility issues, and other miscellaneous problems that may arise.
 
-It may also be interesting and useful to either create or find an online Isabelle/HOL program that can run in a web browser, similar to the Lean Game Server. This way users can be quickly onboarded to the tool without having to go through download, setup, version compatibility issues, and other miscellaneous problems that may arise.
+It may also be cool to see a more interactive history section, with custom CSS and JS injection that allows for a detailed history timeline of Isabelle/HOL development, and theorem provers in general within the context of higher-order logic. In addition, having some kind of visual aid to see the different relationships between the "major figures" within this space would be helpful as well. For example, Peter Andrews was a doctorate student of Alonzo Church, and while Laurence Paulson was responsible for the development of LCF, we can still see from the citations (where he is often credited alongside Nipkow and Wenzel) that he is still very invovled with the documentation and development of Isabelle/HOL.
 
 ## Contributors
 
