@@ -262,7 +262,7 @@ lake new my_project math
 ````
 Feel free to replace ``my_project`` with any name. 
 
-# 3D Point Transformation Pipeline
+### 3D Point Transformation Pipeline
 This module demonstrates how dependent types and theorem proving can be used
 to verify geometric transformations in computer graphics applications.
 
@@ -272,6 +272,8 @@ We implement:
 - Translation operations
 - A transformation pipeline that composes rotation and translation
 - Formal proofs of geometric invariants (norm preservation)
+
+We declared the structures for 3D points, the rotation matrix and the translation matrix. Each elements of each structures is of type Real numbers.
 
 ````lean
 namespace Graphics3D
@@ -301,7 +303,7 @@ structure Translation where
   dz : ℝ
 ````
 
-This code block declared the structures for 3D points, the rotation matrix and the translation matrix. Each elements of each structures is of type Real numbers.
+We defined below some common formulas and transformation matrixes that will be used to verify our theorems later.
 
 ````lean
 /-- Apply a rotation matrix to a 3D point -/
@@ -356,8 +358,7 @@ noncomputable def rotationZ (θ : ℝ) : RotationMatrix :=
 def transformPipeline (R : RotationMatrix) (t : Translation) (p : Point3D) : Point3D :=
   translate t (rotate R p)
 ````
-
-This code block defines some common formulas and transformation matrixes that will be used to verify our theorems later.
+We now define our theorems to verify the integrity of our 3D points after applying Rotation and Transformation.
 
 ```lean
 /--
@@ -431,7 +432,7 @@ theorem rotationZ_is_orthogonal (θ : ℝ) : isOrthogonal (rotationZ θ) := by
   · ring
 ```
 
-## Properties That Can Be Verified
+### Properties That Can Be Verified
 
 The type system and proof system together ensure:
 1. **Type Safety**: We can't accidentally mix 2D and 3D operations
@@ -449,7 +450,7 @@ This approach is increasingly important in:
 By formally verifying these properties, we can guarantee correctness
 before any graphics are rendered or simulations are run.
 
-## Example Usage
+### Example Usage
 
 Below we demonstrate the transformation pipeline with concrete values.
 
