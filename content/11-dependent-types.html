@@ -180,7 +180,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">7. Hoare Logic with Dafny</a></li>
 <li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Type Theory with Lean</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
@@ -386,7 +385,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">9. Type Theory with Lean</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">9.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">9.2. Idea</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">9.3. Basic Theory</a><ul class="nav section-nav flex-column">
@@ -429,34 +427,31 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-emerging-directions">9.9.2. Recent &amp; Emerging Directions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">9.10. Case Study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">9.10. Case Study</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-point-transformation-pipeline">9.10.1. 3D Point Transformation Pipeline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-that-can-be-verified">9.10.2. Properties That Can Be Verified</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">9.10.3. Example Usage</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-point-transformation-pipeline">10. 3D Point Transformation Pipeline</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-that-can-be-verified">10.1. Properties That Can Be Verified</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">10.2. Example Usage</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">10.3. History</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">10.4. Formal Methods and AI</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#infrastructure-for-ai-driven-theorem-proving">10.4.1. Infrastructure for AI-Driven Theorem Proving</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-augmented-language-models">10.4.2. Retrieval-Augmented Language Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-large-language-models">10.4.3. Integration with Large Language Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-and-future-directions">10.4.4. Challenges and Future Directions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">9.11. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">9.12. Formal Methods and AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#infrastructure-for-ai-driven-theorem-proving">9.12.1. Infrastructure for AI-Driven Theorem Proving</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-augmented-language-models">9.12.2. Retrieval-Augmented Language Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-large-language-models">9.12.3. Integration with Large Language Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-and-future-directions">9.12.4. Challenges and Future Directions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">10.5. Current Development</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#institutional-support-and-the-lean-fro">10.5.1. Institutional Support and the Lean FRO</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathlib4-development">10.5.2. Mathlib4 Development</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-profile-formalization-projects">10.5.3. High-Profile Formalization Projects</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commercial-and-research-ecosystem">10.5.4. Commercial and Research Ecosystem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recognition-and-future-outlook">10.5.5. Recognition and Future Outlook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">9.13. Current Development</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#institutional-support-and-the-lean-fro">9.13.1. Institutional Support and the Lean FRO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathlib4-development">9.13.2. Mathlib4 Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-profile-formalization-projects">9.13.3. High-Profile Formalization Projects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commercial-and-research-ecosystem">9.13.4. Commercial and Research Ecosystem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recognition-and-future-outlook">9.13.5. Recognition and Future Outlook</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">10.6. Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-works">10.7. Suggestions for Future Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">9.14. Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-works">9.15. Suggestions for Future Works</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -758,10 +753,8 @@ that such benchmarks are essential to meaningful progress in automated code veri
 </pre></div>
 </div>
 <p>Feel free to replace <code class="docutils literal notranslate"><span class="pre">my_project</span></code> with any name.</p>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="d-point-transformation-pipeline">
-<h1><span class="section-number">10. </span>3D Point Transformation Pipeline<a class="headerlink" href="#d-point-transformation-pipeline" title="Permalink to this heading">#</a></h1>
+<section id="d-point-transformation-pipeline">
+<h3><span class="section-number">9.10.1. </span>3D Point Transformation Pipeline<a class="headerlink" href="#d-point-transformation-pipeline" title="Permalink to this heading">#</a></h3>
 <p>This module demonstrates how dependent types and theorem proving can be used
 to verify geometric transformations in computer graphics applications.</p>
 <p>We implement:</p>
@@ -772,6 +765,7 @@ to verify geometric transformations in computer graphics applications.</p>
 <li><p>A transformation pipeline that composes rotation and translation</p></li>
 <li><p>Formal proofs of geometric invariants (norm preservation)</p></li>
 </ul>
+<p>We declared the structures for 3D points, the rotation matrix and the translation matrix. Each elements of each structures is of type Real numbers.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kn">namespace</span><span class="w"> </span><span class="n">Graphics3D</span>
 
 <span class="sd">/-- A 3D point represented as three real coordinates -/</span>
@@ -799,7 +793,7 @@ to verify geometric transformations in computer graphics applications.</p>
 <span class="w">  </span><span class="n">dz</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">ℝ</span>
 </pre></div>
 </div>
-<p>This code block declared the structures for 3D points, the rotation matrix and the translation matrix. Each elements of each structures is of type Real numbers.</p>
+<p>We defined below some common formulas and transformation matrixes that will be used to verify our theorems later.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- Apply a rotation matrix to a 3D point -/</span>
 <span class="kd">def</span><span class="w"> </span><span class="n">rotate</span><span class="w"> </span><span class="o">(</span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">RotationMatrix</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">p</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Point3D</span><span class="o">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Point3D</span><span class="w"> </span><span class="o">:=</span>
 <span class="w">  </span><span class="o">{</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="n">R.m00</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">p.x</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="n">R.m01</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">p.y</span><span class="w"> </span><span class="bp">+</span><span class="w"> </span><span class="n">R.m02</span><span class="w"> </span><span class="bp">*</span><span class="w"> </span><span class="n">p.z</span><span class="o">,</span>
@@ -853,7 +847,7 @@ to verify geometric transformations in computer graphics applications.</p>
 <span class="w">  </span><span class="n">translate</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">(</span><span class="n">rotate</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="n">p</span><span class="o">)</span>
 </pre></div>
 </div>
-<p>This code block defines some common formulas and transformation matrixes that will be used to verify our theorems later.</p>
+<p>We now define our theorems to verify the integrity of our 3D points after applying Rotation and Transformation.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="sd">/--</span>
 <span class="sd">THEOREM: Orthogonal transformations preserve the squared norm.</span>
 <span class="sd">This is a fundamental property in computer graphics: rotations don&#39;t change</span>
@@ -925,8 +919,9 @@ to verify geometric transformations in computer graphics applications.</p>
 <span class="w">  </span><span class="bp">·</span><span class="w"> </span><span class="n">ring</span>
 </pre></div>
 </div>
+</section>
 <section id="properties-that-can-be-verified">
-<h2><span class="section-number">10.1. </span>Properties That Can Be Verified<a class="headerlink" href="#properties-that-can-be-verified" title="Permalink to this heading">#</a></h2>
+<h3><span class="section-number">9.10.2. </span>Properties That Can Be Verified<a class="headerlink" href="#properties-that-can-be-verified" title="Permalink to this heading">#</a></h3>
 <p>The type system and proof system together ensure:</p>
 <ol class="arabic simple">
 <li><p><strong>Type Safety</strong>: We can’t accidentally mix 2D and 3D operations</p></li>
@@ -946,7 +941,7 @@ to verify geometric transformations in computer graphics applications.</p>
 before any graphics are rendered or simulations are run.</p>
 </section>
 <section id="example-usage">
-<h2><span class="section-number">10.2. </span>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading">#</a></h2>
+<h3><span class="section-number">9.10.3. </span>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading">#</a></h3>
 <p>Below we demonstrate the transformation pipeline with concrete values.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- Example: A point at (1, 0, 0) -/</span>
 <span class="kd">def</span><span class="w"> </span><span class="n">examplePoint</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Point3D</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">⟨</span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">⟩</span>
@@ -971,70 +966,71 @@ This example shows how dependent types ensure:</p>
 </ul>
 <p>The code is ready to use in Lean 4 with Mathlib imported. Feel free to extend it with additional rotations (X, Y axes), compose multiple rotations, or add more complex transformations<img alt="The entire code file is available here!" src="../_images/CaseStudy.lean" /></p>
 </section>
+</section>
 <section id="history">
-<h2><span class="section-number">10.3. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.11. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
 <p>Type theory and the idea of types as a foundation for mathematics and computation have a long pedigree that connects philosophical logic, lambda calculus, and modern proof assistants.</p>
 <p>The story begins with early efforts to avoid paradoxes in naive set theory and logic (Russell, Frege), which motivated ramified and then simple type theories in the first half of the 20th century. Alonzo Church’s formulation of the simple theory of types and the simply-typed lambda calculus provided the computational backbone that later researchers built on. (<a class="reference external" href="https://en.wikipedia.org/wiki/History_of_type_theory">Wikipedia</a>)</p>
 <p>A decisive shift toward dependent types occurred with Per Martin-Löf’s intuitionistic type theory (1970s–1980s). Martin-Löf introduced dependent function (<span class="math notranslate nohighlight">\(\Pi\)</span>) and dependent pair (<span class="math notranslate nohighlight">\(\Sigma\)</span>) types, giving a constructive foundation in which types can quantify over values. This made it possible to represent propositions as types and proofs as programs in a very expressive way. The Curry–Howard correspondence, the observation that proofs correspond to programs and propositions to types, fused logic and computation and underpins modern dependently-typed systems. (<a class="reference external" href="https://plato.stanford.edu/entries/type-theory">See here</a>)</p>
 <p>In the 1980s and 1990s the field consolidated around a handful of influential calculi and systems. The Calculus of Constructions (Coquand &amp; Huet) and the later Calculus of Inductive Constructions became the basis for the Coq proof assistant; Agda and other systems explored dependently typed programming more directly; and the so-called lambda-cube classified a spectrum of type systems. Over the last two decades these theoretical advances have been implemented in robust systems (Coq, Agda, Lean, Idris) and large collaborative libraries (e.g., Lean’s mathlib), enabling both deep mathematical formalization and practical verification projects. (<a class="reference external" href="https://plato.stanford.edu/entries/type-theory">See here</a>)</p>
 </section>
 <section id="formal-methods-and-ai">
-<h2><span class="section-number">10.4. </span>Formal Methods and AI<a class="headerlink" href="#formal-methods-and-ai" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.12. </span>Formal Methods and AI<a class="headerlink" href="#formal-methods-and-ai" title="Permalink to this heading">#</a></h2>
 <p>The integration of artificial intelligence with Lean and dependent type theory represents one of the most promising frontiers in automated reasoning. This convergence combines the rigor and certainty of formal verification with the pattern-matching and generalization capabilities of modern machine learning systems, creating powerful new approaches to mathematical theorem proving and software verification.</p>
 <section id="infrastructure-for-ai-driven-theorem-proving">
-<h3><span class="section-number">10.4.1. </span>Infrastructure for AI-Driven Theorem Proving<a class="headerlink" href="#infrastructure-for-ai-driven-theorem-proving" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.12.1. </span>Infrastructure for AI-Driven Theorem Proving<a class="headerlink" href="#infrastructure-for-ai-driven-theorem-proving" title="Permalink to this heading">#</a></h3>
 <p>A critical challenge in applying machine learning to theorem proving is the gap between the Python-based machine learning ecosystem and the specialized environments of proof assistants. LeanDojo addresses this by providing foundational infrastructure that bridges Python-based machine learning with the Lean prover, extracting rich datasets from Lean repositories including abstract syntax trees, file dependencies, proof states, tactics, and fine-grained premise annotations (Yang et al., 2023). The tool transforms Lean into a gym-like environment where AI agents can programmatically observe proof states, submit tactics, and receive feedback, which is indispensable for evaluation, deployment, and reinforcement learning.</p>
 <p>The LeanDojo project also introduced substantial benchmarks for training machine learning models. The original LeanDojo Benchmark contains 98,734 theorems and proofs with 217,776 tactics extracted from Mathlib, while the Lean 4 version includes 122,517 theorems with 259,580 tactics (Yang et al., 2023). A key innovation is the challenging data split design, which requires models to generalize to theorems relying on novel premises never used in training, rather than simply memorizing similar proofs (Yang et al., 2023).</p>
 </section>
 <section id="retrieval-augmented-language-models">
-<h3><span class="section-number">10.4.2. </span>Retrieval-Augmented Language Models<a class="headerlink" href="#retrieval-augmented-language-models" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.12.2. </span>Retrieval-Augmented Language Models<a class="headerlink" href="#retrieval-augmented-language-models" title="Permalink to this heading">#</a></h3>
 <p>One of the key bottlenecks in automated theorem proving is premise selection—identifying relevant existing lemmas and definitions from vast mathematical libraries to apply in proofs. ReProver (Retrieval-Augmented Prover) represents a significant advance, combining language models with retrieval mechanisms for selecting premises from large mathematics libraries, requiring only one GPU week of training (Yang et al., 2023). The retrieval component leverages LeanDojo’s program analysis to identify accessible premises and hard negative examples, making retrieval substantially more effective than baseline approaches.</p>
 <p>More recently, researchers have developed methods for generating massive training datasets. LeanNavigator generates new theorems by exploring state transition graphs of existing Lean theorems, producing 4.7 million theorems totaling 1 billion tokens from Mathlib4, surpassing previous datasets by more than an order of magnitude (Li et al., 2025). Models trained on this expanded dataset outperform previous state-of-the-art systems like ReProver in theorem-proving benchmarks.</p>
 </section>
 <section id="integration-with-large-language-models">
-<h3><span class="section-number">10.4.3. </span>Integration with Large Language Models<a class="headerlink" href="#integration-with-large-language-models" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.12.3. </span>Integration with Large Language Models<a class="headerlink" href="#integration-with-large-language-models" title="Permalink to this heading">#</a></h3>
 <p>The emergence of powerful large language models has opened new possibilities for human-AI collaboration in formal mathematics. Lean Copilot allows large language models to be used natively in Lean for proof automation, suggesting tactics and premises and searching for proofs using built-in models from LeanDojo or custom models running locally or remotely (Song et al., 2024). This integration enables more natural interaction patterns where AI systems can interleave informal mathematical reasoning with formal proof steps.</p>
 <p>Commercial and research applications are proliferating. In 2022, OpenAI and Meta AI independently created AI models to generate proofs of high-school-level olympiad problems in Lean, demonstrating that large language models can interface effectively with formal proof environments (<a class="reference external" href="https://scholar.google.com/scholar?q=Lean+proof+assistant">Wikipedia</a>, 2024). More recently, systems like AlphaProof from Google DeepMind have achieved silver-medal performance at the International Mathematical Olympiad using reinforcement learning trained on Lean (Google DeepMind, 2024).</p>
 </section>
 <section id="challenges-and-future-directions">
-<h3><span class="section-number">10.4.4. </span>Challenges and Future Directions<a class="headerlink" href="#challenges-and-future-directions" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.12.4. </span>Challenges and Future Directions<a class="headerlink" href="#challenges-and-future-directions" title="Permalink to this heading">#</a></h3>
 <p>Despite significant progress, substantial challenges remain. Formalizing real-world knowledge or large codebases in Lean remains labor-intensive, and Lean requires precise problem specification, which isn’t straightforward for messy real-world scenarios. Auto-formalization efforts—where AI converts informal specifications into Lean code—are underway but not yet seamless.</p>
 <p>The trajectory, however, is promising. As one analysis notes, every improvement in AI reasoning capabilities—better chain-of-thought reasoning, specialized training on formal tasks—directly boosts Lean integration performance (VentureBeat AI, 2024). The convergence of human expertise, community knowledge, and AI assistance hints at a collaborative future for formal methods where mathematical superintelligence becomes achievable through the synergy of human insight and machine verification.</p>
 </section>
 </section>
 <section id="current-development">
-<h2><span class="section-number">10.5. </span>Current Development<a class="headerlink" href="#current-development" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.13. </span>Current Development<a class="headerlink" href="#current-development" title="Permalink to this heading">#</a></h2>
 <p>Lean and its ecosystem continue to evolve rapidly, driven by both community contributions and institutional support. The development landscape encompasses advances in the core language, expansion of mathematical libraries, organizational infrastructure, and high-profile mathematical formalization projects.</p>
 <section id="institutional-support-and-the-lean-fro">
-<h3><span class="section-number">10.5.1. </span>Institutional Support and the Lean FRO<a class="headerlink" href="#institutional-support-and-the-lean-fro" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.13.1. </span>Institutional Support and the Lean FRO<a class="headerlink" href="#institutional-support-and-the-lean-fro" title="Permalink to this heading">#</a></h3>
 <p>In July 2023, the Lean Focused Research Organization (FRO) was established as a non-profit under Convergent Research, pursuing a focused 5-year mission to improve Lean’s critical systems through enhanced scalability, usability, documentation, and proof automation (Lean FRO, 2024). The FRO is led by Chief Architect Leonardo de Moura, who created Lean in 2013, alongside Head of Engineering Sebastian Ullrich, and is funded by the Alfred P. Sloan Foundation, Simons Foundation International, Richard Merkin Foundation, and private donors including Alex Gerko.</p>
 <p>In its first year of operation, the FRO achieved measurable progress across key metrics: monthly active users increased 49%, the number of packages grew 372%, and the number of courses using Lean increased 89% year-over-year (Lean FRO, 2024). The organization hired eleven team members, established governance structures, and secured sufficient funding to ensure Lean’s path toward self-sufficiency. Focus areas included improving compilation speed, enhancing documentation, developing proof automation tools like the omega tactic for integer and natural number reasoning, and launching Reservoir, Lean’s package repository.</p>
 </section>
 <section id="mathlib4-development">
-<h3><span class="section-number">10.5.2. </span>Mathlib4 Development<a class="headerlink" href="#mathlib4-development" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.13.2. </span>Mathlib4 Development<a class="headerlink" href="#mathlib4-development" title="Permalink to this heading">#</a></h3>
 <p>The community-maintained Mathlib library represents one of the most comprehensive formalizations of mathematics in any proof assistant. As of May 2025, Mathlib had formalized over 210,000 theorems and 100,000 definitions in Lean, spanning areas from undergraduate mathematics through research-level topics (<a class="reference external" href="https://scholar.google.com/scholar?q=Lean+proof+assistant">Wikipedia</a>, 2025).</p>
 <p>The transition from Lean 3 to Lean 4 required porting the entire Mathlib library—a massive community effort. July 2023 marked the completion of the project to port Lean’s mathematics library from Lean 3 to Lean 4, enabling the community to focus on expansion rather than migration (Buzzard, 2024). Lean 4’s redesigned typeclass inference system, which incorporated insights from Mathlib development, eliminated the need for many typeclass linters that were necessary in Lean 3 (Baanen et al., 2022).</p>
 <p>Managing a library of this scale presents unique challenges. The community employs sophisticated tooling including automated continuous integration, code quality linters, a deprecation system for managing breaking changes, and the bors merge bot to ensure the main branch always passes all tests (Baanen et al., 2022). Development is coordinated through GitHub and the Lean Zulip chat, where contributors at all expertise levels participate in design discussions and receive guidance.</p>
 </section>
 <section id="high-profile-formalization-projects">
-<h3><span class="section-number">10.5.3. </span>High-Profile Formalization Projects<a class="headerlink" href="#high-profile-formalization-projects" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.13.3. </span>High-Profile Formalization Projects<a class="headerlink" href="#high-profile-formalization-projects" title="Permalink to this heading">#</a></h3>
 <p>Several ambitious mathematical formalization projects have demonstrated Lean’s capabilities and attracted attention from prominent mathematicians. In 2023, Fields Medalist Terence Tao led a collaborative project to formalize the proof of the Polynomial Freiman-Ruzsa (PFR) conjecture in Lean 4, completed within weeks of the original paper’s release (Tao, 2023). The project utilized Patrick Massot’s Blueprint tool, which links human-readable proof outlines to formal Lean code, facilitating large-scale collaboration.</p>
 <p>Tao has continued his engagement with Lean formalization. In May 2025, Tao released a Lean companion to his textbook “Analysis I,” formalizing foundational real analysis topics including constructions of number systems, sequences, series, continuity, differentiation, and integration (Tao, 2025). The formalization serves dual purposes: as an annotated companion to the textbook and as an introduction to relevant portions of Mathlib, gradually transitioning from textbook definitions to Mathlib conventions.</p>
 <p>Other major ongoing projects include the Fermat’s Last Theorem formalization project, established in December 2023, which aims to formalize one of mathematics’ most complex proofs (Lean FRO, 2024). In 2021, researchers used Lean to verify Peter Scholze’s proof in condensed mathematics, garnering attention for formalizing cutting-edge mathematical research (<a class="reference external" href="https://scholar.google.com/scholar?q=Lean+proof+assistant">Wikipedia</a>, 2024).</p>
 </section>
 <section id="commercial-and-research-ecosystem">
-<h3><span class="section-number">10.5.4. </span>Commercial and Research Ecosystem<a class="headerlink" href="#commercial-and-research-ecosystem" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.13.4. </span>Commercial and Research Ecosystem<a class="headerlink" href="#commercial-and-research-ecosystem" title="Permalink to this heading">#</a></h3>
 <p>The Lean ecosystem has expanded beyond academia into commercial applications. In June 2024, Harmonic launched as the first startup based on Lean, covered in The New York Times, focusing on reducing AI hallucinations through formal verification (Lean FRO, 2024). Other recent developments include Velvet, a verifier for imperative programs released in October 2025, and Axiom, which aims to build quantitative superintelligence using formal methods.</p>
 <p>The Lean VS Code development environment surpassed 100,000 installations in September 2025, indicating growing adoption (Lean FRO, 2024). Academic partnerships continue to deepen, with institutions like Carnegie Mellon University’s Hoskinson Center and L3 Lab at the University of Washington conducting research at the intersection of Lean and AI.</p>
 </section>
 <section id="recognition-and-future-outlook">
-<h3><span class="section-number">10.5.5. </span>Recognition and Future Outlook<a class="headerlink" href="#recognition-and-future-outlook" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">9.13.5. </span>Recognition and Future Outlook<a class="headerlink" href="#recognition-and-future-outlook" title="Permalink to this heading">#</a></h3>
 <p>In 2025, the ACM SIGPLAN Programming Languages Software Award was awarded to Gabriel Ebner, Soonho Kong, Leonardo de Moura, and Sebastian Ullrich for Lean, recognizing its significant impact on mathematics, hardware and software verification, and AI (<a class="reference external" href="https://scholar.google.com/scholar?q=Lean+proof+assistant">Wikipedia</a>, 2025). This recognition reflects Lean’s evolution from an academic research project into a platform with broad impact across multiple domains.</p>
 <p>Looking forward, the Lean FRO’s roadmap emphasizes continued investment in scalability, improved tooling for diverse user communities from mathematicians to verification engineers, and deeper integration with AI-assisted reasoning systems. The community’s ambitious formalization projects, combined with growing institutional support and commercial interest, position Lean as a central platform for the formal verification revolution in both mathematics and computer science.</p>
 </section>
 </section>
 <section id="resources">
-<h2><span class="section-number">10.6. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.14. </span>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://lean-lang.org/install/">Lean4 Installation</a></p></li>
 <li><p><a class="reference external" href="https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic">Lean Game Logic</a></p></li>
@@ -1083,7 +1079,7 @@ This example shows how dependent types ensure:</p>
 </ul>
 </section>
 <section id="suggestions-for-future-works">
-<h2><span class="section-number">10.7. </span>Suggestions for Future Works<a class="headerlink" href="#suggestions-for-future-works" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">9.15. </span>Suggestions for Future Works<a class="headerlink" href="#suggestions-for-future-works" title="Permalink to this heading">#</a></h2>
 <p>For future works, find more relevant sources, specifically to Lean, for Application in the Industry. Additionally, include more algorithms and properties of Dependent Type Theory. Please extend and explore more indepthly any topics that was not thoroughly covered in this chapter. Final note, include additional different case studies for Lean to demonstrate how Lean can be applied to different fields.</p>
 </section>
 </section>
@@ -1152,7 +1148,6 @@ This example shows how dependent types ensure:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">9. Type Theory with Lean</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">9.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">9.2. Idea</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">9.3. Basic Theory</a><ul class="nav section-nav flex-column">
@@ -1195,34 +1190,31 @@ This example shows how dependent types ensure:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-emerging-directions">9.9.2. Recent &amp; Emerging Directions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">9.10. Case Study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">9.10. Case Study</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-point-transformation-pipeline">9.10.1. 3D Point Transformation Pipeline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-that-can-be-verified">9.10.2. Properties That Can Be Verified</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">9.10.3. Example Usage</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-point-transformation-pipeline">10. 3D Point Transformation Pipeline</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-that-can-be-verified">10.1. Properties That Can Be Verified</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">10.2. Example Usage</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">10.3. History</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">10.4. Formal Methods and AI</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#infrastructure-for-ai-driven-theorem-proving">10.4.1. Infrastructure for AI-Driven Theorem Proving</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-augmented-language-models">10.4.2. Retrieval-Augmented Language Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-large-language-models">10.4.3. Integration with Large Language Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-and-future-directions">10.4.4. Challenges and Future Directions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">9.11. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">9.12. Formal Methods and AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#infrastructure-for-ai-driven-theorem-proving">9.12.1. Infrastructure for AI-Driven Theorem Proving</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-augmented-language-models">9.12.2. Retrieval-Augmented Language Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-with-large-language-models">9.12.3. Integration with Large Language Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-and-future-directions">9.12.4. Challenges and Future Directions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">10.5. Current Development</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#institutional-support-and-the-lean-fro">10.5.1. Institutional Support and the Lean FRO</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathlib4-development">10.5.2. Mathlib4 Development</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-profile-formalization-projects">10.5.3. High-Profile Formalization Projects</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commercial-and-research-ecosystem">10.5.4. Commercial and Research Ecosystem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recognition-and-future-outlook">10.5.5. Recognition and Future Outlook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-development">9.13. Current Development</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#institutional-support-and-the-lean-fro">9.13.1. Institutional Support and the Lean FRO</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathlib4-development">9.13.2. Mathlib4 Development</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-profile-formalization-projects">9.13.3. High-Profile Formalization Projects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commercial-and-research-ecosystem">9.13.4. Commercial and Research Ecosystem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recognition-and-future-outlook">9.13.5. Recognition and Future Outlook</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">10.6. Resources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-works">10.7. Suggestions for Future Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">9.14. Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggestions-for-future-works">9.15. Suggestions for Future Works</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
