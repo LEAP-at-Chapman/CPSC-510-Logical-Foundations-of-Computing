@@ -30,6 +30,7 @@ parts:
   chapters:
     - file: content/appendix-hoare-logic
     - file: content/appendix-syllogistic-logics
+    - file: content/appendix-complexity-classes
 
 - caption: "Style Guide"
   numbered: false
