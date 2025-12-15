@@ -178,7 +178,7 @@ The elaboration process involves several distinct phases. During parsing, Lean m
 Without a powerful elaboration engine, users would face the burden of writing explicit dependent types everywhere. Good elaboration makes dependent typing practical by hiding complexity while retaining formal guarantees. As the Lean developers emphasize, the combination of a powerful elaboration engine, a small trusted kernel, and support for mixed declarative and tactic proof styles makes Lean a mature system for real-world development.
 
 
-### Combined algorithmic stack → Decidability + Trust
+### Combined algorithmic stack: Decidability + Trust
 
 The integration of bidirectional typing, equality checking through normalization, elaboration, and a small trusted kernel yields a system where:
 
@@ -189,7 +189,6 @@ The integration of bidirectional typing, equality checking through normalization
 
 This algorithmic backbone enables modern dependent type theory-based proof assistants to scale from toy examples to libraries containing hundreds of thousands of formalized theorems. The careful balance between decidability, expressiveness, and usability represents decades of research in type theory, programming languages, and automated reasoning.
 
-## Benchmarks and Competitions
 ## Benchmarks and Competitions
 
 The development of dependent type theory systems, particularly Lean, has been significantly shaped by various benchmarks and competitions that provide standardized evaluation frameworks for automated theorem proving and mathematical reasoning. These benchmarks serve multiple purposes: they enable objective comparison of different systems and approaches, drive progress in the field, and establish concrete goals for researchers working on AI-assisted theorem proving.
