@@ -470,6 +470,7 @@ noncomputable def transformedPoint : Point3D :=
 ````
 
 **Why This Matters:**
+
 This example shows how dependent types ensure:
 
 - **Compile-time correctness**: Can't mix incompatible dimensions
