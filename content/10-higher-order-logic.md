@@ -109,7 +109,7 @@ fun add :: "nat ⇒ nat ⇒ nat" where
 ~~~
 ```
 
-For a detailed explanation, [See Section 8.3.2 Exercises](./assets-10/8.3_exercises.md)
+For a detailed explanation, [See Section 8.3.2 Exercises](./assets-10/8.3_tool/8.3_exercises.md)
 
 ### First Exercise - Associativity and Commutativity of Add
 
@@ -144,7 +144,7 @@ qed
 ~~~
 ```
 
-For a detailed explanation, [See Section 8.3.3 Associative Property](./assets-10/8.3_exercises.md#associative-property-proof)
+For a detailed explanation, [See Section 8.3.3 Associative Property](./assets-10/8.3_tool/8.3_exercises.md#associative-property-proof)
 
 Next, to prove the commutative property, we will first prove 2 helper lemmas:
 ```isabelle
@@ -192,9 +192,9 @@ qed
 ~~~
 ```
 
-For a detailed explanation, [See Section 8.3.3 Commutative Property](./assets-10/8.3_exercises.md#communative-property-proof)
+For a detailed explanation, [See Section 8.3.3 Commutative Property](./assets-10/8.3_tool/8.3_exercises.md#communative-property-proof)
 
-*The Isabelle .thy file for this exercise are located [here](../content/assets-10/exercise_2_2.thy)*
+*The Isabelle .thy file for this exercise is located [here](../content/assets-10/8.3_tool/exercise_2_2.md)*
 
 *This form is an Isar style proof. The following example will be an older style tactic based proof.*
 
@@ -253,7 +253,7 @@ lemma length_flatten:
 ~~~
 ```
 
-*The Isabelle .thy file for this exercise are located [here](../content/assets-10/list_flatten.thy)*
+*The Isabelle .thy file for this exercise is located [here](../content/assets-10/8.4_intro/list_flatten.md)*
 
 *In addition to this exercise, there is also an introduction exercise to syllogistic logic<sup><a href="#MossSyllogism">[34]</a></sup> in Isabelle by Alexander Kurz linked [here](appendix-syllogistic-logics.md).*
 
@@ -291,20 +291,6 @@ Matching and unification are core algorithms in Isabelle/HOL that let the system
 Term simplification, introduced in Section 3.1 in *A Proof Assistant for Higher-Order Logic*<sup><a href="#Isabelle/HOL_ProofAssistant">[3]</a></sup> is a core component of Isabelle/HOL’s rewriting infrastructure. It repeatedly applies equational theorems (theorem that states an equality between two terms) as rewrite rules to transform terms into simpler forms, with these rules typically marked by the simp attribute so that the simplifier can use them automatically in tactics such as **simp**, **auto**, and related methods. The simplifier underpins much of Isabelle's automation by reducing goal terms and sub-goals before other tactics run, enabling the construction and success of more complex proofs without extensive manual effort. The Isabelle/HOL simplifier also supports *conditional rewriting*, where rewrite rules are only applied if their premise conditions can be satisfied, increasing flexibility while still ensuring correctness during proof search. This conditional behavior and the ability to tune which rules are active give users granular control over how goals are simplified when developing formal proofs and help automation focus on relevant proof progress rather than unproductive rewrites.
 
 ### Proof Search and External Automation
-
-<!-- This covers the practical automation layer that makes Isabelle powerful in real use.
-
-Isabelle/HOL provides algorithms that integrate internal proof search with powerful external solvers. A standout example is Sledgehammer, which heuristically selects relevant facts from the context, encodes goals for external automatic theorem provers (ATPs) and SMT solvers, and reconstructs validated proofs back inside Isabelle so that trust remains intact.  ￼
-
-This class also includes:
-	•	Invocation and reconstruction of external ATP/SMT proofs
-	•	Built-in general search strategies (e.g., resolution-style search)
-	•	Tactics like auto, blast, and the Metis integration that systematically explore proof alternatives
-
-What to cover
-	•	Idea of heuristically guided search
-	•	Integration with external solvers and reconstruction
-	•	How this differs from the pure logic core -->
 
 Proof search and external automation serve as the foundation for Isabelle/HOL’s practical automation layer, combining built-in search procedures with calls to external solvers. Isabelle’s classical reasoner, introduced in Section 5.12 in *A Proof Assistant for Higher-Order Logic*<sup><a href="#Isabelle/HOL_ProofAssistant">[3]</a></sup>, is family of tools that perform proof search automatically by leveraging search and backtracking. While the **blast** method is "the main workhorse" for the classical reasoner, Section 5.13<sup><a href="#Isabelle/HOL_ProofAssistant">[3]</a></sup> also talks about **clarify**, **clarsimp**, **force**, **auto**, **fast**, and **best**. 
 This is a general summary provided by the document of the different classical reasoning methods:
@@ -371,11 +357,61 @@ Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> show that large langua
 
 ## Case Study - Autoformalization with LLMs
 
-WIP
+For the case study, we will be playing around with autoformalization with a locally hosted LLM. Neither the provided artifacts Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> nor Xu et al.<sup><a href="Xu_IsaMini">[25]</a></sup> provide model checkpoints or some kind of a modelfile, but instead simply detail the methods the authors had used to fine-tune the model. As a result, for this example, we will simply be using a baseline model along with some examples from Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> in order to produce valid Isabelle/HOL proofs from natural language input.
+Also, its important to keep in mind that the [3 JSON proof examples](./assets-10/8.10_case_study/Wu_Autoformalizations.md) provided by Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> use certain keywords like **fixes** and **shows** unlike the examples we worked through together above.
 
-use this one:
+**Natural language statement 1:**
+*Prove that for any functions f and g and any list xs, mapping f over the result of mapping g over xs is the same as mapping the composition (f ∘ g) over xs.*
 
-https://openreview.net/forum?id=IUikebJ1Bf0
+OUTPUT:
+```isabelle
+  theorem
+  fixes f :: "'b ⇒ 'c" and g :: "'a ⇒ 'b" and xs :: "'a list"
+  shows "map f (map g xs) = map (f ∘ g) xs"`
+```
+
+**Natural language statement 2:**
+*Define a custom recursive addition function add on natural numbers (using 0 and Suc). Then prove that add is both associative and commutative.*
+
+OUTPUT:
+```isabelle
+fun add :: "nat ⇒ nat ⇒ nat" where
+  "add 0 n = n" |
+  "add (Suc m) n = Suc (add m n)"
+
+theorem add_assoc:
+  fixes m n p :: nat
+  shows "add (add m n) p = add m (add n p)"
+
+theorem add_comm:
+  fixes m n :: nat
+  shows "add m n = add n m"
+```
+
+**Natural language statement 3:**
+
+*Define a custom recursive function flatten that concatenates a list of lists into a single list, then prove the length-invariance property: for any list of lists xss, length (flatten xss) equals the sum of the lengths of the inner lists (i.e., sum_list (map length xss)).*
+
+OUTPUT:
+```isabelle
+fun flatten :: "'a list list ⇒ 'a list" where
+  "flatten [] = []" |
+  "flatten (x # xs) = x @ flatten xs"
+
+theorem flatten_length_invariance:
+  fixes xss :: "'a list list"
+  shows "length (flatten xss) = sum_list (map length xss)"
+```
+
+The code is located [here](./assets-10/8.10_case_study/llm_autoformalize.md).
+
+*Currently, the API endpoint for Ollama is pointed towards the Chapman DGX0 Compute Cluster, and runs a Qwen3:30B model.*
+
+<!-- *As of writing this, the laptop I am using has 16 GB of Apple's unified RAM along with the Apple Silicon architecture. As a result, Ollama (which has natural support for Apple's GPU Metal backend) and Qwen3:4B were appropriate choices compared to something like vLLM and bigger parameter models* -->
+
+<!-- In future iterations of this book, if the class was given access to a compute cluster, it would be fairly trivial to migrate to a compute cluster with a better model, as a user would simply need to swap out the hostname in the API endpoint.
+
+For example, if we had `http://localhost:11434/api/generate` and we wanted to leverage the Chapman DGX0 Cluster, then the adjusted API endpoint would be `http://dgx0.chapman.edu:11434/api/generate`. -->
 
 
 ## History
