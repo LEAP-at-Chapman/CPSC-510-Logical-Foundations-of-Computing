@@ -477,7 +477,7 @@ This example shows how dependent types ensure:
 - **Mathematical guarantees**: Formal proofs of geometric properties
 - **Industry relevance**: Same techniques used in game engines, robotics, CAD software
 
-The code is ready to use in Lean 4 with Mathlib imported. Feel free to extend it with additional rotations (X, Y axes), compose multiple rotations, or add more complex transformations![The entire code file is available here!](/src/lean/CaseStudy.lean)
+The code is ready to use in Lean 4 with Mathlib imported. Feel free to extend it with additional rotations (X, Y axes), compose multiple rotations, or add more complex transformations!The entire code file is available [here](files/src/lean/CaseStudy.lean)!
 
 ## History
 
