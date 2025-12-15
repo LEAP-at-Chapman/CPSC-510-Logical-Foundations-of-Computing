@@ -262,7 +262,7 @@ lake new my_project math
 ````
 Feel free to replace ``my_project`` with any name. 
 
-### 3D Point Transformation Pipeline
+**3D Point Transformation Pipeline**
 This module demonstrates how dependent types and theorem proving can be used
 to verify geometric transformations in computer graphics applications.
 
@@ -432,7 +432,7 @@ theorem rotationZ_is_orthogonal (θ : ℝ) : isOrthogonal (rotationZ θ) := by
   · ring
 ```
 
-### Properties That Can Be Verified
+**Properties That Can Be Verified**
 
 The type system and proof system together ensure:
 1. **Type Safety**: We can't accidentally mix 2D and 3D operations
@@ -450,7 +450,7 @@ This approach is increasingly important in:
 By formally verifying these properties, we can guarantee correctness
 before any graphics are rendered or simulations are run.
 
-### Example Usage
+**Example Usage**
 
 Below we demonstrate the transformation pipeline with concrete values.
 
