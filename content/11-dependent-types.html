@@ -427,12 +427,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-emerging-directions">9.9.2. Recent &amp; Emerging Directions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">9.10. Case Study</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-point-transformation-pipeline">9.10.1. 3D Point Transformation Pipeline</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-that-can-be-verified">9.10.2. Properties That Can Be Verified</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">9.10.3. Example Usage</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">9.10. Case Study</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">9.11. History</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">9.12. Formal Methods and AI</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#infrastructure-for-ai-driven-theorem-proving">9.12.1. Infrastructure for AI-Driven Theorem Proving</a></li>
@@ -753,9 +748,8 @@ that such benchmarks are essential to meaningful progress in automated code veri
 </pre></div>
 </div>
 <p>Feel free to replace <code class="docutils literal notranslate"><span class="pre">my_project</span></code> with any name.</p>
-<section id="d-point-transformation-pipeline">
-<h3><span class="section-number">9.10.1. </span>3D Point Transformation Pipeline<a class="headerlink" href="#d-point-transformation-pipeline" title="Permalink to this heading">#</a></h3>
-<p>This module demonstrates how dependent types and theorem proving can be used
+<p><strong>3D Point Transformation Pipeline</strong>
+This module demonstrates how dependent types and theorem proving can be used
 to verify geometric transformations in computer graphics applications.</p>
 <p>We implement:</p>
 <ul class="simple">
@@ -919,9 +913,7 @@ to verify geometric transformations in computer graphics applications.</p>
 <span class="w">  </span><span class="bp">·</span><span class="w"> </span><span class="n">ring</span>
 </pre></div>
 </div>
-</section>
-<section id="properties-that-can-be-verified">
-<h3><span class="section-number">9.10.2. </span>Properties That Can Be Verified<a class="headerlink" href="#properties-that-can-be-verified" title="Permalink to this heading">#</a></h3>
+<p><strong>Properties That Can Be Verified</strong></p>
 <p>The type system and proof system together ensure:</p>
 <ol class="arabic simple">
 <li><p><strong>Type Safety</strong>: We can’t accidentally mix 2D and 3D operations</p></li>
@@ -939,9 +931,7 @@ to verify geometric transformations in computer graphics applications.</p>
 </ul>
 <p>By formally verifying these properties, we can guarantee correctness
 before any graphics are rendered or simulations are run.</p>
-</section>
-<section id="example-usage">
-<h3><span class="section-number">9.10.3. </span>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading">#</a></h3>
+<p><strong>Example Usage</strong></p>
 <p>Below we demonstrate the transformation pipeline with concrete values.</p>
 <div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="sd">/-- Example: A point at (1, 0, 0) -/</span>
 <span class="kd">def</span><span class="w"> </span><span class="n">examplePoint</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">Point3D</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">⟨</span><span class="mi">1</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">,</span><span class="w"> </span><span class="mi">0</span><span class="o">⟩</span>
@@ -965,7 +955,6 @@ This example shows how dependent types ensure:</p>
 <li><p><strong>Industry relevance</strong>: Same techniques used in game engines, robotics, CAD software</p></li>
 </ul>
 <p>The code is ready to use in Lean 4 with Mathlib imported. Feel free to extend it with additional rotations (X, Y axes), compose multiple rotations, or add more complex transformations<img alt="The entire code file is available here!" src="../_images/CaseStudy.lean" /></p>
-</section>
 </section>
 <section id="history">
 <h2><span class="section-number">9.11. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
@@ -1190,12 +1179,7 @@ This example shows how dependent types ensure:</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-emerging-directions">9.9.2. Recent &amp; Emerging Directions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">9.10. Case Study</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-point-transformation-pipeline">9.10.1. 3D Point Transformation Pipeline</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-that-can-be-verified">9.10.2. Properties That Can Be Verified</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-usage">9.10.3. Example Usage</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study">9.10. Case Study</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">9.11. History</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">9.12. Formal Methods and AI</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#infrastructure-for-ai-driven-theorem-proving">9.12.1. Infrastructure for AI-Driven Theorem Proving</a></li>
