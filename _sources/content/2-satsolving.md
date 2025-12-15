@@ -3,15 +3,35 @@ Author: Jake Triester
 
 ## Idea
 
-A theory in propositional logic can be seen as a set of equations in variables that range over truth values $\{0,1\}$. A SAT-solver is a software tool that solves such equations. Even though SAT is NP-complete, modern SAT-solvers can solve propositional theories with millions of variables and tens of millions of clauses (Heule et al., 2015). And, as we know from the [Cook-Levin theorem](https://en.wikipedia.org/wiki/Cook%E2%80%93Levin_theorem) every NP-problem can be encoded in SAT.
+A theory in propositional logic can be seen as a set of equations in variables that range over truth values $\{0,1\}$. A SAT-solver is a software tool that solves such equations. Even though SAT is NP-complete, modern SAT-solvers can solve propositional theories with millions of variables and tens of millions of clauses (reference?). And, as we know from the [Cook-Levin theorem](https://en.wikipedia.org/wiki/Cook%E2%80%93Levin_theorem) every NP-problem can be encoded in SAT.
 
 ## Basic Theory: SAT
+
+Propositional Logic. 
 
 Informal Definition of satisfiability: 
 SAT takes a formula and finds a satifying valuation (model).
 
 Formal definition of satisfiability:
 Given a boolean formula in propositional logic, does there exist an assignment of truth values to its variables that make this formula true. If so, we say this formula is *satisfiable*. Otherwise, we say this formula is *unsatifiable*.
+
+Let's look at a basic example of a propositional logic formula to emphasize the importance of SAT solvers:
+
+$$(p\vee q)\wedge(\neg p\vee q)$$
+
+Creating the truth table for this, we get:
+| p | q | (p ∨ q) ∧ (¬p ∨ q) |
+|---|---|--------------------|
+| 0 | 0 | 0 |
+| 0 | 1 | 1 |
+| 1 | 0 | 0 |
+| 1 | 1 | 1 |
+
+Since there is at least one assignment of truth values that makes the equation true, this equation is *satisfiable*.
+
+As we can see in this example, finding the truth table to determine if an equation is satisfiable is not incredibly difficult. However, the need for SAT solvers arises when the number of variables increases. In our example, we only had 2 variables, and therefore 4 rows in our truth table. However, there is an exponential increase in size of the truth table as we increase variables because for an equation with *n* variables, the number of rows in our truth table is $2^n$.
+
+
 
 A SAT specification is written in conjunctive normal form. 
 
@@ -30,12 +50,6 @@ a\vee(b\wedge c) &= (a\vee b)\wedge (a\vee c) & \text{move } \wedge \text{ outsi
 
 If no rule can be applied anymore, then the formula is in a conjunction $(a_{11}\vee\ldots\vee a_{1n_1})\wedge \ldots \wedge (a_{k1}\vee \ldots \vee a_{kn_k})$ of so-called clauses where each $a_{ij}$ is either a propositional variable or the negation of a propositional variable.
 
-## Tool: MiniSat
-
-Use `brew install minisat` to install on MacOS:
-
-Use `sudo apt install minisat` to install on Linux.
-
 ### DIMACS CNF format
 A normal DIMACS CNF file looks like this:
 ```
@@ -46,24 +60,6 @@ c This is a comment line
 ```
 You start the file with `p cnf n m` where n is the number of variables and m is the number of clauses. Each literal is an integer; if it is positive it means it is true, if it is negative it means it is false. Each clause is a list of literals separated by spaces and ending with a `0`. A line can be commented out of the file by starting the line with a `c`.
 
-## Introductory Examples
-
-Let's look at a basic example of a propositional logic formula to emphasize the importance of SAT solvers:
-
-$$(p\vee q)\wedge(\neg p\vee q)$$
-
-Creating the truth table for this, we get:
-| p | q | (p ∨ q) ∧ (¬p ∨ q) |
-|---|---|--------------------|
-| 0 | 0 | 0 |
-| 0 | 1 | 1 |
-| 1 | 0 | 0 |
-| 1 | 1 | 1 |
-
-Since there is at least one assignment of truth values that makes the equation true, this equation is *satisfiable*.
-
-As we can see in this example, finding the truth table to determine if an equation is satisfiable is not incredibly difficult. However, the need for SAT solvers arises when the number of variables increases. In our example, we only had 2 variables, and therefore 4 rows in our truth table. However, there is an exponential increase in size of the truth table as we increase variables because for an equation with *n* variables, the number of rows in our truth table is $2^n$.
-
 **Exercise:** Encode the following 2x2 Sudoku in conjunctive normal form.
 ```
 [1][?]
@@ -72,13 +68,16 @@ As we can see in this example, finding the truth table to determine if an equati
 
 **Exercise:** Estimate the number of variables and clauses you need to encode a 9x9 Sudoku.
 
-**Exercise:**
+## Tool: MiniSat
 
+Here is what I did for installation on MacOs.
 ```
+brew install minisat
 echo "p cnf 2 2
 1 2 0
 -1 -2 0" | minisat
 ```
+Use `sudo apt install minisat` to install on Linux.
 
 Explain the output, as far as you can.
 
@@ -112,9 +111,9 @@ minisat sudoku2x2.cnf solution.txt
 
 **Exercise:** Either reconstruct the encoding in `sudoku_2x2.cnf` and explain the solution. Or create your own encoding of `sudoku_2x2.cnf`, run it, and interpret the solution. 
 
-**Exercise:** Consider a Boolean circuit: (A ∧ B) ∨ (C ∧ ¬D) = True with the additional constraint that exactly 2 of {A,B,C,D} are True. Write this as a `cnf` specification and solve it with MiniSat. Explain your encoding and the solution in detail.
+**Homework:** Consider a Boolean circuit: (A ∧ B) ∨ (C ∧ ¬D) = True with the additional constraint that exactly 2 of {A,B,C,D} are True. Write this as a `cnf` specification and solve it with MiniSat. Explain your encoding and the solution in detail.
 
-## The Landscape of Tools
+## SAT solvers
 
 Many companies such as Intel have their own SAT solvers, but the cutting edge of SAT-solvers are widely considered to the open source solvers such as:
 
@@ -123,6 +122,8 @@ Many companies such as Intel have their own SAT solvers, but the cutting edge of
 - Intel SAT Solver, [@Github](https://github.com/alexander-nadel/intel_sat_solver), [pdf](https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.SAT.2022.8)
 - [Z3](https://microsoft.github.io/z3guide/), [@GitHub](https://github.com/Z3Prover/z3) is Microsoft's SMT solver with powerful SAT core, [Tutorial](https://theory.stanford.edu/~nikolaj/programmingz3.html)
 - [Clasp](https://potassco.org/clasp/), [@GitHub](https://github.com/potassco/clasp), Answer Set Programming solver
+
+The annual [SAT Competition](http://www.satcompetition.org/) tracks the current best performers.
 
 ## The Algorithm
 
@@ -135,7 +136,7 @@ $$
 $$
 
 ### Unit Propagation
-[Unit Propagation](https://en.wikipedia.org/wiki/Unit_propagation) is a fairly simply concept. All that it says is that if we have a clause where all but one of its literals is evaluated as False, then the last literal must be True in order for the clause to be True. For example, given the following clause:
+Unit propagation is a fairly simply concept. All that it says is that if we have a clause where all but one of its literals is evaluated as False, then the last literal must be True in order for the clause to be True. For example, given the following clause:
 
 $$(A\vee B\vee C)$$
 
@@ -394,37 +395,53 @@ The break that caused the conflict is at `(C = 0)`. Since that is the beginning 
 
 From this example, we can see how much quicker CDCL is than DPLL, and how that speed will only exponentially increase with a greater number of variables and clauses. DPLL had to go through every possible branch, while CDCL learns from each branch that it goes through so it doesn't end up searching through something that it already searched through, making it much more optimal.
 
-## Typical Use Cases
-
-### Parallel Approaches
+## Parallel Approaches
 
 Some SAT solvers use multiple processors at the same time to speed up problem solving. There are 2 different types of strategies tha modern parallel SAT solvers rely on.
 
 #### Portfolio
 
-The portfolio parallel approach involves running many solvers in parallel on the same problem (Aigner et al., 2013). Once one of the solvers finds a solution, they all can stop. This reduces the time needed to solve because it is trying multiple at once. Many portfolio approaches implement random seeds to decrease the amount of duplicate work that the solvers are doing. Depending on the underlying algorithm behind the SAT solvers, it is possible that the different portfolios could share learned clauses amongst each other, which will decrease time taken to solve even more. A few examples of portfolio parallel SAT solvers are PPfolio and HordeSat.
+The portfolio parallel approach running many solvers in parallel on the same problem. Once one of the solvers finds a solution, they all can stop. This reduces the time needed to solve because it is trying multiple at once. Many portfolio approaches implement random seeds to decrease the amount of duplicate work that the solvers are doing. Depending on the underlying algorithm behind the SAT solvers, it is possible that the different portfolios could share learned clauses amongst each other, which will decrease time taken to solve even more. A few examples of portfolio parallel SAT solvers are PPfolio and HordeSat.
 
 #### Divide-and-conquer
 
-A different parallel approach involves spitting the problem into smaller sub-problems, and then running each of those on a different processor (Nair et al., 2022). This can cause some processors to finish their problems much earlier than others because different sub-problems can vary in difficulty, which is suboptimal. One very benefical advance is the Cube-and-Conquer approach, which uses two phases. The first phase is the cube part where a solver "looks ahead" and breaks the problem into smaller "cubes." Phase 2 is the conquer f=part where each cube is solved using CDCL. Because of the way the cubes are calculated, if one cube is satisfiable, then the whole problem is satisfiable. One example divide-and-conquer that uses the cube-and-conquer approach is Treengeling.
-
-## Benchmarks and Competitions
-
-The annual [SAT Competition](http://www.satcompetition.org/) tracks the current best performers.
-
-The purpose of this competition is to promote new SAT solvers and compare them to current state-of-the-art ones, as well as identify new benchmarks.
+A different parallel approach involves spitting the problem into smaller sub-problems, and then running each of those on a different processor. This can cause some processors to finish their problems much earlier than others because different sub-problems can vary in difficulty, which is suboptimal. One very benefical advance is the Cube-and-Conquer approach, which uses two phases. The first phase is the cube part where a solver "looks ahead" and breaks the problem into smaller "cubes." Phase 2 is the conquer f=part where each cube is solved using CDCL. Because of the way the cubes are calculated, if one cube is satisfiable, then the whole problem is satisfiable. One example divide-and-conquer that uses the cube-and-conquer approach is Treengeling.
 
 ## Applications in Industry
 
 SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language. These applications are central to many industrial workflows. Historically, they have moved the field from theoretical curiosity (like NP-completeness) to large-scale problem solving. Today, solvers can easily handle problems with millions of variables and tens of millions of clauses.
 
-One main area where SAT technology is heavily used is hardware verification (Gupta, Ganai, and Wang, 2006). It is used to verify the pipelines of GPUs and CPUs through property checking. SMT solvers (a descendant of SAT) are especially used in hardware verification because they are able to combine the core principles of SAT with theory solvers for arithmetic and arrays.
+### Established Industrial Applications
 
-Similarly, SAT solvers are also used for software verification and program analysis (Ivančić et al., 2008). They can either provide counterexamples when a property fails or proofs for satisfiability, which is especially helpful when debugging.
+One main area where SAT technology is heavily used is hardware verification. It is used to verify the pipelines of GPUs and CPUs through property checking. SMT solvers (a descendant of SAT) are especially used in hardware verification because they are able to combine the core principles of SAT with theory solvers for arithmetic and arrays.
+
+Similarly, SAT solvers are also used for software verification and program analysis. They can either provide counterexamples when a property fails or proofs for satisfiability, which is especially helpful when debugging.
 
 SAT solvers are also used for package and dependency solving and optimization. By translating domain constraints into CNF, the solvers can be used for dependency resolution (package managers), combinatorial optimization (scheduling), or other large combinatorial tasks.
 
-While not necessarily an application of use in industry, there is an annual [SAT competition](#benchmarks-and-competitions) that is used to track the state of the art and can help lead to adoption in industry. This competition is beneficial because it leads people to find new algorithms and heuristics than can be used to improve the state of the art.
+While not necessarily an application of use in industry, there is an annual SAT competition that is used to track the state of the art and can help lead to adoption in industry. This competition is beneficial because it leads people to find new algorithms and heuristics than can be used to improve the state of the art.
+
+### Use of Generative AI
+
+As the use of generative AI becomes more and more integrated into every industry, SAT solvers are no exception. Generative AI (LLMs) are increasingly being used to augment SAT solvers rather than replace them completely. There are a couple of different examples that show this.
+
+First, generative AI models are being used for instance generation. This is beneficial because it is used to generate SAT instaances that mimic real-world problems, which can help to study the behavior of the solvers and see how they can be improved. One example of this is G2SAT, which makes CNF formulas into bipartite graphs and learns to generate realistic SAT instances.
+
+Another example is using solvers to check proofs that are created by LLMs. For example, an LLM will propose a proof, and the solvers will check, reject, or give feedback on these proposed proofs. This is more with SMT solvers than SAT due to their proof checking abilities, but as SMT is a descendant of SAT, it has been included in the section.
+
+Solvers are also being used to reduce hallucinations and increase reliability in certain AI models. Some models, including ones from Amazon have integrated "automated reasoning checks" to constrain generative models (argument checking, verification checks on outputs of the model, rule enforcement) to improve trustworthiness.
+
+### How this affects SAT in industry
+
+Hybrid workflows are becoming much more common in industry. This means that generative AI models are proposing something, and SAT solvers are used to provide guarantees of truthfulness or unsatisfiability. This is beneficial because it is utilizing the creativity of generative AI, while confirming correctness through the rigidity of SAT solvers.
+
+
+
+<!-- Typical examples are hardware verification (Intel, AMD, Apple, etc) and dependency resolution in software package installers (Debian Linux).
+
+More generally, SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language.
+
+... tbc ... eg there could be more to say about SAT-solving at Intel and other hardware companies ... and then about applications of SAT to software engineering ... -->
 
 ## Case Studies
 
@@ -437,10 +454,66 @@ At the beginning of this chapter, we looked at an example of a 2x2 sudoku and ho
 5. Each block contains all numbers (1-9)
 6. The solution respects the given clues
 
-In order to create the necessary cnf file, we will use the script taken from this [website](https://users.aalto.fi/~tjunttil/2020-DP-AUT/notes-sat/solving.html#solving-problems-with-cnf-sat-solvers-the-sudoku-example) named `sudoku-encode.py`:
+In order to create the necessary cnf file, we will use the following script taken from this [website](https://users.aalto.fi/~tjunttil/2020-DP-AUT/notes-sat/solving.html#solving-problems-with-cnf-sat-solvers-the-sudoku-example):
+```
+#!/usr/bin/python3
+import sys
+D = 3    # Subgrid dimension
+N = D*D  # Grid dimension
+if __name__ == '__main__':
+    # Read the clues from the file given as the first argument
+    file_name = sys.argv[1]
+    clues = []
+    digits = {'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9}
+    with open(file_name, "r") as f:
+        for line in f.readlines():
+            assert len(line.strip()) == N, "'"+line+"'"
+            for c in range(0, N):
+                assert(line[c] in digits.keys() or line[c] == '.')
+            clues.append(line.strip())
+    assert(len(clues) == N)
 
+    # A helper: get the Dimacs CNF variable number for the variable v_{r,c,v}
+    # encoding the fact that the cell at (r,c) has the value v
+    def var(r, c, v):
+        assert(1 <= r and r <= N and 1 <= c and c <= N and 1 <= v and v <= N)
+        return (r-1)*N*N+(c-1)*N+(v-1)+1
 
-This script will create a cnf representation given an example sudoku board. I created this file named `puzzle.txt` and used it as my input:
+    # Build the clauses in a list
+    cls = []  # The clauses: a list of integer lists
+    for r in range(1,N+1): # r runs over 1,...,N
+        for c in range(1, N+1):
+            # The cell at (r,c) has at least one value
+            cls.append([var(r,c,v) for v in range(1,N+1)])
+            # The cell at (r,c) has at most one value
+            for v in range(1, N+1):
+                for w in range(v+1,N+1):
+                    cls.append([-var(r,c,v), -var(r,c,w)])
+    for v in range(1, N+1):
+        # Each row has the value v
+        for r in range(1, N+1): cls.append([var(r,c,v) for c in range(1,N+1)])
+        # Each column has the value v
+        for c in range(1, N+1): cls.append([var(r,c,v) for r in range(1,N+1)])
+        # Each subgrid has the value v
+        for sr in range(0,D):
+            for sc in range(0,D):
+                cls.append([var(sr*D+rd,sc*D+cd,v)
+                            for rd in range(1,D+1) for cd in range(1,D+1)])
+    # The clues must be respected
+    for r in range(1, N+1):
+        for c in range(1, N+1):
+            if clues[r-1][c-1] in digits.keys():
+                cls.append([var(r,c,digits[clues[r-1][c-1]])])
+
+    # Output the DIMACS CNF representation
+    # Print the header line
+    print("p cnf %d %d" % (N*N*N, len(cls)))
+    # Print the clauses
+    for c in cls:
+        print(" ".join([str(l) for l in c])+" 0")
+```
+
+This script will create a cnf representation given an example sudoku board. I created this file named puzzle.txt and used it as my input:
 ```
 53..7....
 6..195...
@@ -455,7 +528,7 @@ This script will create a cnf representation given an example sudoku board. I cr
 
 In order to run these files on Linux (Ubuntu) I did this:
 
-`python3 sudoku-encode.py puzzle.txt`
+`python3 sudoku.py puzzle.txt`
 
 This will print out the example cnf, but if you want to put it into a file you can run:
 
@@ -507,59 +580,12 @@ With this script, we can run:
 
 `python3 decoder.py output.txt`
 
-This will show us the final solution of our sudoku puzzle with our given constraints. Now, we can edit our `puzzle.txt` to be able to determine if any 9x9 sudoku with any given values is satisfiable, and then use `decoder.py` to output the solution of that puzzle. Also, given the way we created our `sudoku-encode.py` and `decoder.py` files, we can try this with any size sudoku by simply changing a few numbers.
-
-## History
-
-In the 1990s, there were two different types of SAT solvers that were used - complete and incomplete solvers (Biere, Heule, Van Maaren, and Walsh, 2021). An incomplete solver is one that searches for a satisfying assignment, but cannot prove that something is unsatisfiable. A complete solver is more similar to the ones seen today, that either finds a satisfying assignment or proves that none exist. Around this time, the complete solvers were using the [DPLL](#davisputnamlogemannloveland-dpll-algorithm) algorithm.
-
-In 1993, a SAT competition was held, named the DIMACS implementation challenge (Fichte, Le Berre, Hecher, and Szeider, 2023). This competition standardized the [DIMACS CNF](#dimacs-cnf-format) format that modern SAT solvers still use as their inputs.
-
-In 1996, the solver GRASP was created (Marques-Silva, J. P., & Sakallah, K. A., 1999). This solver proposed a new architecture that combined the backtracking of the DPLL algorithm with learning, which is now known as the [CDCL](#conflict-driven-clause-learning-cdcl-algorithm) algorithm. After that, the solver Chaff was created (Moskewicz, M. W., Madigan, C. F., Zhao, Y., Zhang, L., & Malik, S., 2001, June). This solver was specifically designed to solve large benchmarks, and do so quickly.
-
-## Formal Methods and AI
-
-### Use of Generative AI
-
-As the use of generative AI becomes more and more integrated into every industry, SAT solvers are no exception. Generative AI (LLMs) are increasingly being used to augment SAT solvers rather than replace them completely. There are a couple of different examples that show this.
-
-First, generative AI models are being used for instance generation. This is beneficial because it is used to generate SAT instaances that mimic real-world problems, which can help to study the behavior of the solvers and see how they can be improved. One example of this is G2SAT, which makes CNF formulas into bipartite graphs and learns to generate realistic SAT instances.
-
-Another example is using solvers to check proofs that are created by LLMs. For example, an LLM will propose a proof, and the solvers will check, reject, or give feedback on these proposed proofs. This is more with SMT solvers than SAT due to their proof checking abilities, but as SMT is a descendant of SAT, it has been included in the section.
-
-Solvers are also being used to reduce hallucinations and increase reliability in certain AI models. Some models, including ones from Amazon have integrated "automated reasoning checks" to constrain generative models (argument checking, verification checks on outputs of the model, rule enforcement) to improve trustworthiness.
-
-More applications of AI use in SAT solvers is seen in the current developments section [below](#current-developments-with-ai)
-
-### How this affects SAT in industry
-
-Hybrid workflows are becoming much more common in industry. This means that generative AI models are proposing something, and SAT solvers are used to provide guarantees of truthfulness or unsatisfiability. This is beneficial because it is utilizing the creativity of generative AI, while confirming correctness through the rigidity of SAT solvers.
-
-## Current Developments
-
-After the developments of CDCL algorithms were added into SAT solvers, there are still a few current developments that have increased the capabilities of SAT solvers a little more.
-
-For one, people have started to create much more efficient SAT encodings by going against what intuition says. Instinctively, people think that a small formula and fewer variables in better, however that is not always true. Sometimes it is more benefical to add some auxillary variables and increase the size of the formula. While adding these variables increases the theoretical search space, the practical search may become easier. This is because SAT solvers do not search everything, and adding some extra variables will allow the solvers to significantly reduce the size of the practical search space by using CDCL.
-
-Another more current development is the use of [parallel solving](#parallel-approaches), which was mentioned more in depth above.
-
-### Current Developments with AI
-As can be seen in almost every industry, AI, specifically large language models (LLMs), are being used to try to improve the state of the art. One example in terms of SAT solvers is AutoModSAT (Sun et al., 2025). Using an LLM in a SAT solver can allow the solver to automatically generate new heuristic code so the the solver can work better given specific data. Basically, this means that the LLM is finding better strategies for solving SAT problems, and is able to determine what to use on a specific dataset.
+This will show us the final solution of our sudoku puzzle with our given constraints. Now, we can edit our `puzzle.txt` to be able to determine if any 9x9 sudoku with any given values is satisfiable, and then use `decoder.py` to output the solution of that puzzle. Also, given the way we created our `sudoku.py` and `decoder.py` files, we can try this with any size sudoku by simply changing a few numbers.
 
 ## References
 
-- Aigner et al. (2013). [Analysis of Portfolio-Style Parallel SAT Solving
-on Current Multi-Core Architectures∗](https://ckirsch.github.io/publications/conferences/PoS13-AnalysisPortfolioSAT.pdf), University of Salzburg
--  Fichte, Le Berre, Hecher, and Szeider (2023) [The Silent (R)evolution of SAT](https://cacm.acm.org/research/the-silent-revolution-of-sat/#R4), Communications of the ACM
-- Gupta, Ganai, and Wang (2006). [SAT-Based Verification Methods and Applications in Hardware Verification](https://link.springer.com/chapter/10.1007/11757283_5#citeas), Formal Methods for Hardware Verification
-- Heule et al. (2015). [Clause Elimination for SAT and QSAT](https://jair.org/index.php/jair/article/view/10942), Journal of Artificial Intelligence Research
-- Ivančić et al. (2008). [Efficient SAT-based bounded model checking for software verification](https://www.sciencedirect.com/science/article/pii/S0304397508002223), International Symposium on Leveraging Applications of Formal Methods
-- Nair et al. (2022). [Proof-Stitch: Proof Combination for
-Divide-and-Conquer SAT Solvers](https://theory.stanford.edu/~barrett/pubs/NCW+22.pdf), Formal Methods in Computer-Aided Design
-
 ### Early Work
 
-- Biere, Heule, Van Maaren, and Walsh (2021). [Handbook of Satisfiability](https://www.iospress.com/catalog/books/handbook-of-satisfiability-2), Frontiers in Artificial Intelligence and Applications
 - Davis, Martin; Putnam, Hilary (1960). [A Computing Procedure for Quantification Theory](https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory). Journal of the ACM. 7 (3): 201–215. 
     - The original resolution based algorithm that also gave rise to Prolog later, via (Robinson 1965).
 - Davis, Martin; Logemann, George; Loveland, Donald (1962). [A Machine Program for Theorem Proving](https://scholar.google.com/scholar?q=A+Machine+Program+for+Theorem+Proving). Communications of the ACM. 5 (7): 394–397. 
@@ -574,18 +600,12 @@ Divide-and-Conquer SAT Solvers](https://theory.stanford.edu/~barrett/pubs/NCW+22
 
 ### Modern Developments
 
+... this needs more work ... here are some references I found ...
+
 - Alouneh, S., Abed, S. E., Al Shayeji, M. H., & Mesleh, R. (2019). A comprehensive study and analysis on SAT-solvers: advances, usages and achievements. Artificial Intelligence Review, 52(4), 2575-2601.
 - Froleyks, N., Yu, E., & Biere, A. (2023, October). BIG backbones. In 2023 Formal Methods in Computer-Aided Design (FMCAD) (pp. 162-167). IEEE.
 - Heule, M. J., Iser, M., Järvisalo, M., & Suda, M. (2024). [Proceedings of SAT Competition 2024: Solver, Benchmark and Proof Checker Descriptions](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%22SAT+Competition+2024%22+&btnG=). [pdf](https://researchportal.helsinki.fi/files/324666039/sc2024-proceedings.pdf)
-- Sun et al. (2025). [Automatically discovering heuristics in a complex SAT solver with large language models](https://arxiv.org/html/2507.22876v1)
-
-## Future Work
-
-In the future, I believe it would be more beneficial for someone to focus more on the real-life applications of SAT solvers. I spent a lot of time on the algorithms and examples of how they are used, which didn't leave me much time to focus on how the SAT solvers apply to real-life.
-
-## Contributers
-
-The author of this chapter is Jake Triester. It was peer reviewed by Jack De Bruyn and Alexander Kurz.
+- ...
 
 
 
