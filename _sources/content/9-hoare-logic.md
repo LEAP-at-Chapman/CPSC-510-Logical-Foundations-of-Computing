@@ -406,7 +406,10 @@ Sum of array = 9
 
 ## The Landscape of Tools
 
-*To be added*
+Dafny is a programming language that helps developers write code they can trust. It bridges the gap between manual proof assistants and automated analyzers. Proof assistants are precise but require considerable manual effort. Although automated analyzers are faster, they are limited in what they can prove. Dafny combines the best of both by embedding Hoare logic directly into its structure. Programmers can write preconditions, postconditions, invariants, and termination checks alongside their code. This makes specifying behavior feel natural, like an extension of coding rather than a separate task.
+
+Dafny translates code into the Boogie intermediate language and uses the Z3 solver to ensure methods meet their contracts and loops maintain their invariants. When encountering a program that fails, Dafny can report the issue within the source code. This allows programs ranging from beginners to experts to understand what went wrong throughout the program. Dafny makes rigorous verification practical and approachable, even for complex systems and algorithms.
+
 
 ## Benchmark and Competitions
 
@@ -449,7 +452,12 @@ Using the feedback loop to build this collaborative tool, the AI assistant would
 
 ## Hoare Logic in F*
 
-*To be added*
+The F* programming language is built on the foundation of Hoare logic, more specifically the Hoare triple. The Hoare triple gives programs a strong sense of mathematical certainty through verification. This foundation allows developers to move beyond endless testing and instead write code they can trust through program verification. Like the Hoare triple, F* uses preconditions and postconditions to define when a function can be called and what it must guarantee upon completion. With built-in keywords like ```requires```, ```ensures```, and ```invariant```, logical reasoning becomes a natural part of writing code. Inspired by Dafny’s design philosophy, F* seamlessly integrates formal verification into the development process, making correctness feel like a natural aspect of programming.
+
+At the heart of F* lies weakest-precondition (WP) calculus, an extension of Dijkstra’s original idea. F* automatically checks that every function guarantees hold by calculating the weakest precondition needed for correctness across all possible paths. In comparison to F*, Dafny translates programs into the Boogie intermediate language in order to verify them through the Z3 solver. Both languages show how structured logic and automation can work together, making rigorous verification accessible to everyday programmers.
+
+F* also categorizes computations into effects such as Pure, Ghost, and Div, each representing a different kind of behavior or correctness. The Ghost effect allows programmers to write specifications solely for verification purposes, with no runtime cost. This clear separation between reasoning and execution helps developers verify their programs without needing to run it. Dafny follows the same principle, representing memory and state as mathematical models with dynamic frames and termination checks to ensure soundness. Together, F* and Dafny show that formal verification can be practical, powerful, and human-friendly, bridging the gap between theory and real-world software engineering.
+
 
 ## Resources
 
@@ -459,16 +467,20 @@ Using the feedback loop to build this collaborative tool, the AI assistant would
 
 ## References
 
-- [University of Pennsylvania – Software Foundations, Volume 2: Programming Language Foundations Chapter: Hoare Logic](https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html)
+- Alexander Kurz (2022) [Alexander Kurz – Hoare Logic Example (HackMD) Worked Example: Loop Invariants and Correctness Proofs](https://hackmd.io/@alexhkurz/Hy135C2tH)
 
-- [Carnegie Mellon University – 15-654 Software Engineering (Spring 2006) Lecture Notes: Hoare Logic by Jonathan Aldrich](https://www.cs.cmu.edu/~aldrich/courses/654-sp06/notes/3-hoare-notes.pdf)
-
-- [Alexander Kurz – Hoare Logic Example (HackMD) Worked example: Loop invariants and correctness proofs](https://hackmd.io/@alexhkurz/Hy135C2tH)
-
-- [University of Cambridge – M.J.C. Gordon: Hoare Logic Lecture Notes All Lectures (Formal Semantics, wlp, VCG, and Separation Logic)](https://www.cl.cam.ac.uk/archive/mjcg/HoareLogic/Lectures/AllLectures.pdf)
-5
 - Krzysztof and Ernst-Rudiger (2019) [Fifty Years of Hoare’s Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Fifty+years+of+Hoare%E2%80%99s+logic+KR+Apt%2C+ER+Olderog&btnG=), Springer
 
 - Josh Rushby (1995) [Formal Methods and Their Role in Digital Systems Validation for Airborne Systems](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Formal+Methods+and+Their+Role+in+Digital+Systems+Validation+for+Airborne+Systems&btnG=), NASA Contractor Report 4673 
 
-- https://www.cs.cmu.edu/~lblum/flac/Presentations/cappiello_project_report.pdf
+- Alex Cappiello (2014) [Static Analysis of Programs with Hoare Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Static+Analysis+of+Programs+with+Hoare+Logic+by+Alex+Cappiello&btnG=)
+
+- Ernst, Huisman, Mostowski, and Ulbrich (2019) [VerifyThis–Verification Competition With A Human Factor](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=VerifyThis+%E2%80%93+Verification+Competition+with+a+Human+Factor&btnG=)
+
+- Rustan and Leino (2010) [Dafny: An Automatic Program Verifier For Functional Correctness](https://www.microsoft.com/en-us/research/wp-content/uploads/2008/12/dafny_krml203.pdf)
+
+- Swamy, Martinez, and Rastogi (2023) [Proof-Oriented Programming in F*](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Proof-Oriented+Programming+in+F*+N+Swamy%2C+G+Martinez%2C+A+Rastogi&btnG=)
+
+- [Dafny Reference Manual](https://dafny.org/latest/DafnyRef/DafnyRef)
+
+- [Software Foundations Volume 2: Programming Language Foundations](https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html)
