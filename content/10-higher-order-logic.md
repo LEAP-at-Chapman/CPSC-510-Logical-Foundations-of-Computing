@@ -365,7 +365,7 @@ Also, its important to keep in mind that the [3 JSON proof examples](./assets-10
 
 OUTPUT:
 ```isabelle
-  theorem
+theorem
   fixes f :: "'b ⇒ 'c" and g :: "'a ⇒ 'b" and xs :: "'a list"
   shows "map f (map g xs) = map (f ∘ g) xs"`
 ```
@@ -420,9 +420,9 @@ For example, if we had `http://localhost:11434/api/generate` and we wanted to le
 
 Alonzo Church's work in the 1930s (via $\lambda$-calculus)<sup><a href="#SEP_D.1_LambdaCalc">[39]</a></sup> and 1940s (via type theory)<sup><a href="#SEP_D.2_TypeTheory">[40]</a></sup> and Leon Henkin's work in the 1950s (on general model/Henkin semantics)<sup><a href="#SEP_HOL">[7]</a></sup> laid the foundation for higher-order logic. From their contributions arose an extension of First-Order Logic (FOL) that allows quantification over predicates and functions, enabling reasoning about functions as first class entities.
 
-In the 1970s, Robert Milner develops LCF (Logic for Computable Functions)<sup><a href="#LCF_HOL_history">[38]</a></sup> at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evolves into OCaml and Standard ML.
+In the 1970s, Robert Milner developed LCF (Logic for Computable Functions)<sup><a href="#LCF_HOL_history">[38]</a></sup> at Stanford and later Edinburgh, introducing the idea of an interactive theorem prover. LCF pioneers the use of a tactic-based proof automation and the ML meta language, which is designed to let users safely define proof strategies. ML later evolves into OCaml and Standard ML.
 
-In the early 1980s, Michael J. C. Gordon builds upon LCF in order to create the HOL system<sup><a href="#LCF_HOL_history">[38]</a></sup>, which explicitly uses higher-order logic as its core formalism. This HOL system would become the foundation for hardware verification, paving the way and influencing later provers like HOL4 and Isabelle/HOL.
+In the early 1980s, Michael J. C. Gordon built upon LCF in order to create the HOL system<sup><a href="#LCF_HOL_history">[38]</a></sup>, which explicitly uses higher-order logic as its core formalism. This HOL system would become the foundation for hardware verification, paving the way and influencing later provers like HOL4 and Isabelle/HOL.
 
 ### Development of Isabelle/HOL
 
