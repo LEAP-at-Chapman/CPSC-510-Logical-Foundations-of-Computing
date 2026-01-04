@@ -33,6 +33,9 @@ exclude_patterns:
   - "prompts/**"
   - "literature/**"
   - "docs/**"
+  - ".cursor-rules/**"
+  - "review-2026/**"
+  - "content/appendix-puzzles.md"
 
 # Information about where the book exists on the web
 repository:

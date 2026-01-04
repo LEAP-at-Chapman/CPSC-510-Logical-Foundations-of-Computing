@@ -1,6 +1,6 @@
 # Short Intro to Logic
 
-This very short introduction to logic does not aim at explaining what logic is or the foundtaional role that logic plays in computing. As we will see throughout the book, many different answers can be given to these questions. Here, I only want to highlight some big ideas that underpin all these answers.
+This very short introduction to logic does not aim at explaining what logic is or the foundational role that logic plays in computing. As we will see throughout the book, many different answers can be given to these questions. Here, I only want to highlight some big ideas that underpin all these answers.
 
 **Big Ideas of Logic**:
 
@@ -11,7 +11,7 @@ This very short introduction to logic does not aim at explaining what logic is o
 - Duality between Syntax and Semantics
 - Proof Theory
 - Model Theory
-- Soundness and Completenss
+- Soundness and Completeness
 - Incompleteness
 
 ## Validity
@@ -44,7 +44,7 @@ The argument remains valid in all cases. This is the power of **formal reasoning
 
 Mathematically, a formal language is the smallest set closed under a finite number rules. Some examples:
 - The natural numbers are the smallest set containing "zero" and closed under "plus one". 
-- A programming language is the set of strings (or abstract syntax trees) that can be derived by the [context-free grammar](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of the language, a classic example being the [grammar of the C language](https://www.quut.com/c/ANSI-C-grammar-y.html) and we will see later the [grammar of Promela](https://spinroot.com/spin/Man/grammar.html) in  [Chapter 7: Temporal Logic with Spin](./7-temporal-logic.md).
+- A programming language is the set of strings (or abstract syntax trees) that can be derived by the [context-free grammar](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of the language, a classic example being the [grammar of the C language](https://www.quut.com/c/ANSI-C-grammar-y.html) and we will see later the [grammar of Promela](https://spinroot.com/spin/Man/grammar.html) in  [Chapter 5: Temporal Logic with Spin](05-temporal-logic-spin.md).
 - The language of propositional logic is the smallest set containing a given set of atomic propositions (strings) and being closed under the operations AND ($\wedge$), OR ($\vee$), NOT ($\neg$).
 
 Formal languages can be processed by algorithms. In particular, for any given formal language one would expect (terminating, even efficient) algorithms that
@@ -53,7 +53,7 @@ Formal languages can be processed by algorithms. In particular, for any given fo
 
 ## Decidability
 
-Some logical questions are **decidable**: There exists an algorithm that, for any input, will eventually halt and give a correct yes-or-no answer. For example, in Chapters [2](./2-satsolving.md), [4](./4-constraint-solving.md), [5](./5-smt-solving.md), [7](./7-temporal-logic.md), [8](./8-epistemic-logic.md) we will meet software tools based on algorithms that decide the satisfiability problem of various logics.
+Some logical questions are **decidable**: There exists an algorithm that, for any input, will eventually halt and give a correct yes-or-no answer. For example, in Chapters [1](01-sat-solving-minisat.md), [3](03-constraints-minizinc.md), [4](04-smt-solving-z3.md), [5](05-temporal-logic-spin.md), [6](06-epistemic-logic-smcdel.md) we will meet software tools based on algorithms that decide the satisfiability problem of various logics.
 
 Other questions are **undecidable**: No algorithm exists that can always provide an answer. Famously, Turing's [Halting Problem](https://en.wikipedia.org/wiki/Halting_problem) shows that there is no algorithm that can decide, for any program, whether that program terminates on all inputs.
 
@@ -99,7 +99,7 @@ $$
 
 The variables $p, q, r, s$ are bits taking values in $\{0,1\}$.
 
-The intended encoding is as follows. For each cell, let's say the bit is 1 when the cell contains 1, and 0 when it contains 2. In the notation of [propositional logic](./1-propositional-logic.md), a **specification** of the puzzle can now be expressed as follows.
+The intended encoding is as follows. For each cell, let's say the bit is 1 when the cell contains 1, and 0 when it contains 2. In the notation of [propositional logic](0-3-intro-propositional-logic.md), a **specification** of the puzzle can now be expressed as follows.
 
 First, the rules of Sudoku are transformed into the following equations (writing $\vee$ for OR and $\neg$ for NOT) 
 
@@ -129,7 +129,7 @@ Now we encoded the puzzle
 $$
 \rule{0pt}{2.5ex}
 \begin{array}{|c|c|}
-\firsthline
+\hline
  1 & {\ \ }  \\
 \hline
    &   \\
@@ -139,7 +139,7 @@ $$
 
 as a formula in propositional logic finding a solution to the puzzle is the same as finding **an assignment of truth values for the variables satisfying the logical specification** of the puzzle. 
 
-The software tools of Chapters [2](./2-satsolving.md), [4](./4-constraint-solving.md), [5](./5-smt-solving.md), [7](./7-temporal-logic.md), [8](./8-epistemic-logic.md) are all elaborations of this simple idea of algorithms solving logical equations.
+The software tools of Chapters [1](01-sat-solving-minisat.md), [3](03-constraints-minizinc.md), [4](04-smt-solving-z3.md), [5](05-temporal-logic-spin.md), [6](06-epistemic-logic-smcdel.md) are all elaborations of this simple idea of algorithms solving logical equations.
 
 **Remark:** Satisfiability solvers are now used everywhere in software engineering, very much like numerical methods in more traditional areas of engineering. This is a fairly recent development: Only since the beginning of the 21st century, Boole's 1847 vision of "a Calculus of Deductive Reasoning" has become mainstream engineering on a par with Newton's and Leibniz's infinitesimal calculus. 
 
@@ -204,7 +204,7 @@ if all models that satisfy the assumptions in $\Gamma$ also satisfy the conclusi
 
 Many of the tools in this book can be understood from a model theoretic point of view (for example: SAT-solvers, SMT-solvers, Prolog, model checkers).
 
-## Soundness and Completenss
+## Soundness and Completeness
 
 A hallmark of logic are its completeness theorems. For any logic, we would typically like to have a soundness and completeness theorem. While the details can be difficult, we can state soundness and completeness simply as
 

@@ -1,3 +1,4 @@
+
 # Epistemic Logic with SMCDEL
 
 Author: *John Mulhern*
@@ -190,7 +191,7 @@ Broadly, epistemic tools fall into four families: **model checkers**, **interact
 
 Traditional epistemic model checkers follow the pattern of explicit exploration: they enumerate worlds, track accessibility relations, and evaluate formulas directly over that structure. Tools like [**MCK**](https://www.csse.canterbury.ac.nz/mck/) are representative of this approach. Given a Kripke model and an epistemic-temporal formula, MCK systematically checks whether the formula holds in the initial state. Conceptually, this evaluation can be sketched as:
 
-```pseudo
+```text
 function ExplicitModelCheck(M, φ):
     for each world w in M.W:
         M.truth[w] := EvaluateFormula(M, w, φ)
@@ -392,7 +393,7 @@ Using BDDs, SMCDEL evaluates epistemic formulas through operations on these symb
 
 At a high level, we can describe the evaluation process symbolically as:
 
-```pseudo
+```text
 function ComputeKnowledgeBDD(agent a, B_phi, R_a, B_Worlds):
     # B_phi: BDD for the set of worlds where φ holds
     # R_a:   BDD encoding the accessibility relation for agent a

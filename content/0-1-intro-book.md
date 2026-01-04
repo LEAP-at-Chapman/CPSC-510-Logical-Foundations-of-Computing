@@ -1,3 +1,5 @@
+
+
 # The Book
 
 The first draft of this book project is being developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University. 
@@ -6,10 +8,10 @@ Our approach tries to give equal weight to mathematics and to software engineeri
 
 ## Suggested Table of Contents for a Typical Chapter
 
-Each chapter should by default be devided into the following sections (subject to discussion and revision):
+Each chapter should by default be divided into the following sections (subject to discussion and revision):
 - **Idea**: Each tool is based on a logic. Typically there is only a small number of big ideas at the origin of each tool.
 - **Basic Theory**: Just enough theory to understand better how each logic provides the technology used to implement the big idea at the origin of the software tool.
-- **Tool**: One advantage of learning logic via tools is that one can get hands-on eperience before even digging into the mathematics. This section will be a guide to first steps with the tool (Installation, First Example, First Exercise)
+- **Tool**: One advantage of learning logic via tools is that one can get hands-on experience before even digging into the mathematics. This section will be a guide to first steps with the tool (Installation, First Example, First Exercise)
 - **Introductory Examples**: The purpose of this section is to illustrate the big idea as well as the basic theory. Given this constraint, the examples should be as easy as possible.
 - **The Landscape of Tools**: A big idea together with the basic theory typically gives rise to a range of tools (such as satsolvers, model checkers, interactive theorem provers, etc). While each chapter will emphasize just one of these tools, here is the space to lay out the landscape of tools.
 - **Algorithms**: The basic theory needs to be implemented efficiently. This section concentrates on the algorithms that run the tool. 
@@ -26,34 +28,32 @@ Each chapter should by default be devided into the following sections (subject t
 
 ## Preliminary Table of Contents of the Book
 
-**Introductions**:
-
-- [A Short Intro to Logic](0-logic.md) introduces the fundamental concepts of logic that form the foundation for all subsequent chapters: validity, formal languages, decidability, satisfiability, and the duality between syntax and semantics.
-- [Propositional Logic](1-propositional-logic.md) introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.
-- [Modal Logic](6-modal-logic.md) introduces modal logic and the SCAN algorithm for computing first-order correspondents, exploring the mathematical foundations of modalities.
+- [A Short Intro to Logic](0-2-intro-logic.md) introduces the fundamental concepts of logic that form the foundation for all subsequent chapters: validity, formal languages, decidability, satisfiability, and the duality between syntax and semantics.
+- [Propositional Logic](0-3-intro-propositional-logic.md) introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.
+- [Modal Logic](0-4-intro-modal-logic.md) introduces modal logic and the SCAN algorithm for computing first-order correspondents, exploring the mathematical foundations of modalities.
 
 **Logics and Tools**:
 
-- [SAT solving with MiniSat](2-satsolving.md) explores SAT solving using MiniSat, focusing on semantic tableaux algorithms and their applications to satisfiability and validity checking.
-- [Logic Programming with Prolog](3-logic-programming.md) introduces logic programming with SWI-Prolog, covering unification, resolution, and applications in search with backtracking and database querying.
-- [Constraints with MiniZinc](4-constraint-solving.md) presents constraint solving using MiniZinc, demonstrating how constraint satisfaction problems can be solved and applied to program synthesis and automated bug fixing.
-- [SMT Solving and Z3](5-smt-solving.md) covers SMT (Satisfiability Modulo Theories) solving with Z3, extending beyond propositional logic to handle theories like arithmetic, arrays, and bit-vectors for program verification and model checking.
-- [Temporal Logic with Spin](7-temporal-logic.md) examines temporal logic using the Spin model checker, focusing on LTL (Linear Temporal Logic) model checking and its applications in distributed systems and protocol verification, including the famous Needham-Schroeder Key Exchange protocol.
-- [Epistemic Logic with SMCDEL](8-epistemic-logic.md) explores epistemic logic with SMCDEL, investigating how knowledge and belief can be formally modeled and applied to social network analysis.
-- [Hoare Logic with Dafny](9-hoare-logic.md) presents Hoare logic using Dafny, demonstrating how to formally specify and verify program correctness with preconditions, postconditions, and invariants.
-- [Higher-Order Logic with Isabelle](10-higher-order-logic.md) extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.
-- [Type Theory with Lean](11-dependent-types.md) presents dependent type theory with Lean, demonstrating how types can depend on values and enabling "proofs as programs" through the Curry-Howard correspondence.
+- [SAT solving with MiniSat](01-sat-solving-minisat.md) explores SAT solving using MiniSat, focusing on semantic tableaux algorithms and their applications to satisfiability and validity checking.
+- [Logic Programming with Prolog](02-logic-programming-prolog.md) introduces logic programming with SWI-Prolog, covering unification, resolution, and applications in search with backtracking and database querying.
+- [Constraints with MiniZinc](03-constraints-minizinc.md) presents constraint solving using MiniZinc, demonstrating how constraint satisfaction problems can be solved and applied to program synthesis and automated bug fixing.
+- [SMT Solving and Z3](04-smt-solving-z3.md) covers SMT (Satisfiability Modulo Theories) solving with Z3, extending beyond propositional logic to handle theories like arithmetic, arrays, and bit-vectors for program verification and model checking.
+- [Temporal Logic with Spin](05-temporal-logic-spin.md) examines temporal logic using the Spin model checker, focusing on LTL (Linear Temporal Logic) model checking and its applications in distributed systems and protocol verification, including the famous Needham-Schroeder Key Exchange protocol.
+- [Epistemic Logic with SMCDEL](06-epistemic-logic-smcdel.md) explores epistemic logic with SMCDEL, investigating how knowledge and belief can be formally modeled and applied to social network analysis.
+- [Hoare Logic with Dafny](07-hoare-logic-dafny.md) presents Hoare logic using Dafny, demonstrating how to formally specify and verify program correctness with preconditions, postconditions, and invariants.
+- [Higher-Order Logic with Isabelle](08-higher-order-logic-isabelle.md) extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.
+- [Type Theory with Lean](09-type-theory-lean.md) presents dependent type theory with Lean, demonstrating how types can depend on values and enabling "proofs as programs" through the Curry-Howard correspondence.
 
 ## Ideas for 2026
 
-- Turn this book from one one "Logical Foundations of Software Engineering" into a book on "Formal Methods and AI"
+- Turn this book from one on "Logical Foundations of Software Engineering" into a book on "Formal Methods and AI"
 - Give students a choice between adding a new chapter or doing a project. 
   - Projects would apply a logic-based formal method to some engineering problem. 
-  - I would be particularly interested in projects that combine formal methods which generative AI.
+  - I would be particularly interested in projects that combine formal methods with generative AI.
   - A great way to learn is to implement a classic algorithm from scratch. A project in this vein could be a simple from-scratch prototype implementation of a tool (eg a Prolog interpreter). The focus would be on simplicity and the educational value.
   - A new chapter would present a logic, a formal method, a software tool. For example:
     - First-order theorem proving: (Vampire, Prover9, ...)
-    - Knwoledge Representation, Semantic Web, Ontologies, Description Logics, ... [OntoUML](https://ontouml.org/) ... 
+    - Knowledge Representation, Semantic Web, Ontologies, Description Logics, ... [OntoUML](https://ontouml.org/) ... 
 - ... tbc ...
 
 

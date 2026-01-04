@@ -2,28 +2,28 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: content/0-title
+root: content/0-0-title
 parts:
 - caption: Introduction
   numbered: false
   chapters:
-    - file: content/0-intro
-    - file: content/0-logic
-    - file: content/1-propositional-logic
-    - file: content/6-modal-logic
+    - file: content/0-1-intro-book
+    - file: content/0-2-intro-logic
+    - file: content/0-3-intro-propositional-logic
+    - file: content/0-4-intro-modal-logic
 
 - caption: Logics and Tools
   numbered: true
   chapters:
-    - file: content/2-satsolving
-    - file: content/3-logic-programming
-    - file: content/4-constraint-solving
-    - file: content/5-smt-solving
-    - file: content/7-temporal-logic
-    - file: content/8-epistemic-logic
-    - file: content/9-hoare-logic
-    - file: content/10-higher-order-logic
-    - file: content/11-dependent-types
+    - file: content/01-sat-solving-minisat
+    - file: content/02-logic-programming-prolog
+    - file: content/03-constraints-minizinc
+    - file: content/04-smt-solving-z3
+    - file: content/05-temporal-logic-spin
+    - file: content/06-epistemic-logic-smcdel
+    - file: content/07-hoare-logic-dafny
+    - file: content/08-higher-order-logic-isabelle
+    - file: content/09-type-theory-lean
 
 - caption: Appendices
   numbered: false

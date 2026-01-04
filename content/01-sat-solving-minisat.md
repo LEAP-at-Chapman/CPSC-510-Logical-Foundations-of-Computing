@@ -36,7 +36,7 @@ Use `brew install minisat` to install on MacOS:
 
 Use `sudo apt install minisat` to install on Linux.
 
-### DIMACS CNF format
+### DIMACS CNF format {#dimacs-cnf-format}
 A normal DIMACS CNF file looks like this:
 ```
 p cnf <num_variables> <num_clauses>
@@ -192,7 +192,7 @@ $$(A) \wedge (\neg A)$$
 
 Using the algorithm, A appears both positively and negatively, meaning that we have to use resolution again. However, after using resolution, we are left with the empty clause (denoted as $\square$). Thus our formula is unsatisfiable. 
 
-### Davis–Putnam–Logemann–Loveland (DPLL) algorithm
+### Davis–Putnam–Logemann–Loveland (DPLL) algorithm {#davisputnamlogemannloveland-dpll-algorithm}
 
 [Davis–Putnam–Logemann–Loveland (DPLL) algorithm](https://en.wikipedia.org/wiki/DPLL_algorithm) 
 
@@ -254,7 +254,7 @@ One more time, we apply unit propagation, setting `b` equal to False. Our new fo
 
 This leads to a contradiction, because `c` cannot be both True and False. Thus, our formula is `UNSAT`
 
-### Conflict-driven Clause Learning (CDCL) algorithm
+### Conflict-driven Clause Learning (CDCL) algorithm {#conflict-driven-clause-learning-cdcl-algorithm}
 
 [Conflict-driven Clause Learning](https://en.wikipedia.org/wiki/Conflict-driven_clause_learning)
 (CDCL) is another algorithm for solving SAT problems that is similar to DPLL but the main difference is that CDCL does not back-jump chronologically. CDCL was proposed by Marques-Silva and Karem A. Sakallah (1996, 1999) and Bayardo and Schrag (1997). The algorithm is as follows:
@@ -396,7 +396,7 @@ From this example, we can see how much quicker CDCL is than DPLL, and how that s
 
 ## Typical Use Cases
 
-### Parallel Approaches
+### Parallel Approaches {#parallel-approaches}
 
 Some SAT solvers use multiple processors at the same time to speed up problem solving. There are 2 different types of strategies tha modern parallel SAT solvers rely on.
 
@@ -408,7 +408,7 @@ The portfolio parallel approach involves running many solvers in parallel on the
 
 A different parallel approach involves spitting the problem into smaller sub-problems, and then running each of those on a different processor (Nair et al., 2022). This can cause some processors to finish their problems much earlier than others because different sub-problems can vary in difficulty, which is suboptimal. One very benefical advance is the Cube-and-Conquer approach, which uses two phases. The first phase is the cube part where a solver "looks ahead" and breaks the problem into smaller "cubes." Phase 2 is the conquer f=part where each cube is solved using CDCL. Because of the way the cubes are calculated, if one cube is satisfiable, then the whole problem is satisfiable. One example divide-and-conquer that uses the cube-and-conquer approach is Treengeling.
 
-## Benchmarks and Competitions
+## Benchmarks and Competitions {#benchmarks-and-competitions}
 
 The annual [SAT Competition](http://www.satcompetition.org/) tracks the current best performers.
 
@@ -543,7 +543,7 @@ For one, people have started to create much more efficient SAT encodings by goin
 
 Another more current development is the use of [parallel solving](#parallel-approaches), which was mentioned more in depth above.
 
-### Current Developments with AI
+### Current Developments with AI {#current-developments-with-ai}
 As can be seen in almost every industry, AI, specifically large language models (LLMs), are being used to try to improve the state of the art. One example in terms of SAT solvers is AutoModSAT (Sun et al., 2025). Using an LLM in a SAT solver can allow the solver to automatically generate new heuristic code so the the solver can work better given specific data. Basically, this means that the LLM is finding better strategies for solving SAT problems, and is able to determine what to use on a specific dataset.
 
 ## References

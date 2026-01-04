@@ -85,7 +85,7 @@ end
 
 More detailed instructions on setup and initial use can be found in Chapters 1 and 2.1.2 of *Concrete Semantics*<sup><a href="#ConcreteSemantics">[1]</a></sup>
 
-### Proof Solving via Sledgehammer
+### Proof Solving via Sledgehammer {#proof-solving-via-sledgehammer}
 
 Sledgehammer is an automated theorem prover orchestrator. It dispatches proof obligations to external provers such as Vampire via command line and returns candidate proofs that can be directly applied. Basically, it find proofs by "hammering away" at different sub-goals that would typically be tedious to construct manually. In the Isabelle GUI, Sledgehammer can be accessed by clicking on the *sledgehammer* tab on the bottom left corner of the application: select the target sub-goal, invoke Sledgehammer via apply, and then apply a suggested proof if found. Although *Concrete Semantics 4.3.1*<sup><a href="#ConcreteSemantics">[1]</a></sup> introduces the basic sledgehammer command, the GUI method is generally more convenient. The official Isabelle Sledgehammer documentation page<sup><a href="#Isabelle_Sledgehammer">[35]</a></sup> provides further detail.
 
@@ -109,7 +109,7 @@ fun add :: "nat ⇒ nat ⇒ nat" where
 ~~~
 ```
 
-For a detailed explanation, [See Section 8.3.2 Exercises](./assets-10/8.3_tool/8.3_exercises.md)
+For a detailed explanation, [See Section 8.3.2 Exercises](./assets-08/8.3_tool/8.3_exercises.md)
 
 ### First Exercise - Associativity and Commutativity of Add
 
@@ -144,7 +144,7 @@ qed
 ~~~
 ```
 
-For a detailed explanation, [See Section 8.3.3 Associative Property](./assets-10/8.3_tool/8.3_exercises.md#associative-property-proof)
+For a detailed explanation, [See Section 8.3.3 Associative Property](./assets-08/8.3_tool/8.3_exercises.md#associative-property-proof)
 
 Next, to prove the commutative property, we will first prove 2 helper lemmas:
 ```isabelle
@@ -192,9 +192,9 @@ qed
 ~~~
 ```
 
-For a detailed explanation, [See Section 8.3.3 Commutative Property](./assets-10/8.3_tool/8.3_exercises.md#communative-property-proof)
+For a detailed explanation, [See Section 8.3.3 Commutative Property](./assets-08/8.3_tool/8.3_exercises.md#commutative-property-proof)
 
-*The Isabelle .thy file for this exercise is located [here](../content/assets-10/8.3_tool/exercise_2_2.md)*
+*The Isabelle .thy file for this exercise is located [here](../content/assets-08/8.3_tool/exercise_2_2.md)*
 
 *This form is an Isar style proof. The following example will be an older style tactic based proof.*
 
@@ -253,7 +253,7 @@ lemma length_flatten:
 ~~~
 ```
 
-*The Isabelle .thy file for this exercise is located [here](../content/assets-10/8.4_intro/list_flatten.md)*
+*The Isabelle .thy file for this exercise is located [here](../content/assets-08/8.4_intro/list_flatten.md)*
 
 *In addition to this exercise, there is also an introduction exercise to syllogistic logic<sup><a href="#MossSyllogism">[34]</a></sup> in Isabelle by Alexander Kurz linked [here](appendix-syllogistic-logics.md).*
 
@@ -318,7 +318,7 @@ Isabelle/HOL is widely used for formal specification and rigorous proof of both 
 **CASC** (The CADE ATP System Competition) is an annual competition of fully automatic, classical logic, ATP systems. The purpose of CASC is to provide a public evaluation of relative capabilities of ATP systems as well as to stimulate research and development of ATP systems. At CASC, ATP system performance is evaluated in terms of the total number of problems solved with an acceptable solution output within a specified time limit, as well as the average time taken for problems solved. CASC is hosted at each CADE and IJCAR conference, both forums for automated deduction.<sup><a href="#CASC">[37]</a></sup>
 
 
-## Applications in Industry and Academia
+## Applications in Industry and Academia {#applications-in-industry-and-academia}
 
 In general, Isabelle/HOL appears to have a wide variety of application throughout industry and academia due to the fact that it provides a mathematical assurance of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.
 
@@ -358,7 +358,7 @@ Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> show that large langua
 ## Case Study - Autoformalization with LLMs
 
 For the case study, we will be playing around with autoformalization with a locally hosted LLM. Neither the provided artifacts Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> nor Xu et al.<sup><a href="Xu_IsaMini">[25]</a></sup> provide model checkpoints or some kind of a modelfile, but instead simply detail the methods the authors had used to fine-tune the model. As a result, for this example, we will simply be using a baseline model along with some examples from Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> in order to produce valid Isabelle/HOL proofs from natural language input.
-Also, its important to keep in mind that the [3 JSON proof examples](./assets-10/8.10_case_study/Wu_Autoformalizations.md) provided by Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> use certain keywords like **fixes** and **shows** unlike the examples we worked through together above.
+Also, its important to keep in mind that the [3 JSON proof examples](./assets-08/8.10_case_study/Wu_Autoformalizations.md) provided by Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> use certain keywords like **fixes** and **shows** unlike the examples we worked through together above.
 
 **Natural language statement 1:**
 *Prove that for any functions f and g and any list xs, mapping f over the result of mapping g over xs is the same as mapping the composition (f ∘ g) over xs.*
@@ -403,7 +403,7 @@ theorem flatten_length_invariance:
   shows "length (flatten xss) = sum_list (map length xss)"
 ```
 
-The code is located [here](./assets-10/8.10_case_study/llm_autoformalize.md).
+The code is located [here](./assets-08/8.10_case_study/llm_autoformalize.md).
 
 *Currently, the API endpoint for Ollama is pointed towards the Chapman DGX0 Compute Cluster, and runs a Qwen3:30B model.*
 

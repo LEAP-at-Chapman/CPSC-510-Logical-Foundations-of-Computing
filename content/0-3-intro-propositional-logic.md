@@ -12,9 +12,9 @@ In class, we used mostly the text on [Propositional Logic](https://builds.openlo
 
 - [Chapter 4](https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf#page=38.24): **Natural deduction** plays a major role in interactive theorem provers such as Lean and Isabelle and more generally in proof theory and type theory. We only skimmed this chapter and came back to it later when discussing the [Lean Intro to Logic](https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic) (which may be the best starting point to learn and practice proofs in the calculus of Natural Deduction).
 
-- [Chapter 5](https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf#page=55.24): We spend more time on **tableaux** than on natural deduction because tableaux made there way into many logic-based reasoning tools including SAT-solvers and model checkers. We worked through the [Examples in 5.4](https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf#page=58.35).
+- [Chapter 5](https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf#page=55.24): We spend more time on **tableaux** than on natural deduction because tableaux made their way into many logic-based reasoning tools including SAT-solvers and model checkers. We worked through the [Examples in 5.4](https://builds.openlogicproject.org/content/propositional-logic/propositional-logic.pdf#page=58.35).
 
-The [Introduction to Logic](./0-logic.md) contains an overview and summary of the most important big ideas in logic that we need.
+The [Introduction to Logic](0-2-intro-logic.md) contains an overview and summary of the most important big ideas in logic that we need.
 
 ## References
 

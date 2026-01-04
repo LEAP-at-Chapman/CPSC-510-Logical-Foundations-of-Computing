@@ -112,7 +112,6 @@ output [
 ```{button-link} ../minizinc/nqueens/nqueens.mzn
 :color: primary
 :shadow:
-:target: _blank
 
 Download nqueens.mzn
 ```
@@ -213,7 +212,6 @@ solve satisfy;
 ```{button-link} ../minizinc/shift_scheduling.mzn
 :color: primary
 :shadow:
-:target: _blank
 
 Download shift_scheduling.mzn
 ```
