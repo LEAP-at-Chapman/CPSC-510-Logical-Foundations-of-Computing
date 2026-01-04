@@ -1,19 +1,33 @@
 # Complexity Classes Overview
 
-| Class | Definition | Complete Problem | Key Reference | DL Example |
-|-------|-----------|------------------|---------------|------------|
-| **AC⁰** | Constant depth circuits | | | DL-Lite query answering |
-| **L** | Log space | Boolean Formula Evaluation | | |
-| **NL** | Nondeterministic log space | 2-SAT | Savitch (1970) | DL-Lite concept satisfiability |
-| **P** | Polynomial time | Horn-SAT, Circuit Value Problem | Cobham (1965) | EL, EL++ reasoning |
-| **NP** | Nondeterministic polynomial time | SAT, 3-SAT | Cook (1971) | |
-| **co-NP** | Complement of NP | Tautology, Unsatisfiability | | ALC concept satisfiability (acyclic TBox) |
-| **PSPACE** | Polynomial space | QBF (TQBF) | Savitch (1970) | ALC concept satisfiability |
-| **EXPTIME** | Exponential time | Succinct Circuit Value Problem | Hartmanis & Stearns (1965) | ALC + GCIs, SHIQ, SHOIN (OWL DL) |
-| **NEXPTIME** | Nondeterministic exponential time | Succinct SAT | | SHOIQ |
-| **co-NEXPTIME** | Complement of NEXPTIME | Succinct Tautology | | |
-| **2-EXPTIME** | Double exponential time | Presburger Arithmetic | Fischer & Rabin (1974) | |
-| **N2EXPTIME** | Nondeterministic double exponential time | | | SROIQ (OWL 2 DL) |
+(draft, needs verification and more work)
+
+| Class | Definition | Complete Problem | Key Reference | DL Example | Logics in Book |
+|-------|-----------|------------------|---------------|------------|----------------|
+| **AC⁰** | Constant depth circuits | | | DL-Lite query answering | Propositional Logic (basic evaluation) |
+| **L** | Log space | Boolean Formula Evaluation | | | Propositional Logic (formula evaluation) |
+| **NL** | Nondeterministic log space | 2-SAT | Savitch (1970) | DL-Lite concept satisfiability | 2-SAT (Propositional Logic fragment) |
+| **P** | Polynomial time | Horn-SAT, Circuit Value Problem | Cobham (1965) | EL, EL++ reasoning | Horn-SAT (Propositional Logic fragment) |
+| **NP** | Nondeterministic polynomial time | SAT, 3-SAT | Cook (1971) | | SAT (Propositional Logic), Constraint Satisfaction (CSP) |
+| **co-NP** | Complement of NP | Tautology, Unsatisfiability | | ALC concept satisfiability (acyclic TBox) | Tautology checking (Propositional Logic) |
+| **PSPACE** | Polynomial space | QBF (TQBF) | Savitch (1970) | ALC concept satisfiability | Modal Logic, Temporal Logic (LTL model checking), Epistemic Logic |
+| **EXPTIME** | Exponential time | Succinct Circuit Value Problem | Hartmanis & Stearns (1965) | ALC + GCIs, SHIQ, SHOIN (OWL DL) | SMT Solving (many theories), Temporal Logic (CTL model checking) |
+| **NEXPTIME** | Nondeterministic exponential time | Succinct SAT | | SHOIQ | |
+| **co-NEXPTIME** | Complement of NEXPTIME | Succinct Tautology | | | |
+| **2-EXPTIME** | Double exponential time | Presburger Arithmetic | Fischer & Rabin (1974) | | SMT Solving (Presburger Arithmetic) |
+| **N2EXPTIME** | Nondeterministic double exponential time | | | SROIQ (OWL 2 DL) | |
+
+## Note on Undecidable Logics
+
+Some logics covered in this book are **undecidable** (or **semi-decidable**) and thus do not appear in the complexity class table above:
+
+- **First-Order Logic (FOL)**: Undecidable (though many decidable fragments exist, such as those used in SMT)
+- **Higher-Order Logic (HOL)**: Undecidable (though type checking in HOL-based systems like Isabelle/HOL is decidable)
+- **Dependent Type Theory**: Type checking is decidable, but theorem proving is semi-decidable
+- **Hoare Logic**: Program verification is undecidable in general (though specific fragments and bounded verification are decidable)
+- **Full Prolog**: Semi-decidable (though Datalog, a decidable subset, is EXPTIME-complete)
+
+The table above focuses on **decidable problems** for which we can give precise complexity bounds.
 
 ## DL Complexity Summary
 
