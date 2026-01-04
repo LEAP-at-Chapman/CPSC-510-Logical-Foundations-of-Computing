@@ -1,0 +1,1171 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>1. SAT solving with MiniSat &#8212; Logical Foundations of Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"Set": ["{\\sf Set}", 0], "Qu": ["{\\Omega}", 0], "QuCat": ["{\\Omega\\text{-cat}}", 0], "One": ["{\\mathbb{1}}", 0], "yo": ["\u3088", 0], "bigsqcap": ["\\sqcap", 0]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/01-sat-solving-minisat';</script>
+    <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/01-sat-solving-minisat.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. Logic Programming with Prolog" href="02-logic-programming-prolog.html" />
+    <link rel="prev" title="Modal Logic" href="0-4-intro-modal-logic.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="0-0-title.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Logical Foundations of Computing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0-1-intro-book.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-2-intro-logic.html">Short Intro to Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-3-intro-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-4-intro-modal-logic.html">Modal Logic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-logic-programming-prolog.html">2. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-constraints-minizinc.html">3. Constraints with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-smt-solving-z3.html">4. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-temporal-logic-spin.html">5. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-epistemic-logic-smcdel.html">6. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-hoare-logic-dafny.html">7. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-higher-order-logic-isabelle.html">8. Higher-Order Logic with Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-type-theory-lean.html">9. Type Theory with Lean</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-complexity-classes.html">Complexity Classes Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-contribute.html">How to Contribute</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fcontent/01-sat-solving-minisat.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/01-sat-solving-minisat.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>SAT solving with MiniSat</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">1.1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory-sat">1.2. Basic Theory: SAT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-minisat">1.3. Tool: MiniSat</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimacs-cnf-format-dimacs-cnf-format">1.3.1. DIMACS CNF format {#dimacs-cnf-format}</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples">1.4. Introductory Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">1.5. The Landscape of Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">1.6. The Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">1.6.1. Resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-propagation">1.6.2. Unit Propagation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pure-literal-elimination">1.6.3. Pure Literal Elimination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">1.6.4. Davis–Putnam algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#davis-putnam-algorithm-example">1.6.4.1. Davis-Putnam Algorithm example</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnamlogemannloveland-dpll-algorithm-davisputnamlogemannloveland-dpll-algorithm">1.6.5. Davis–Putnam–Logemann–Loveland (DPLL) algorithm {#davisputnamlogemannloveland-dpll-algorithm}</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning-cdcl-algorithm-conflict-driven-clause-learning-cdcl-algorithm">1.6.6. Conflict-driven Clause Learning (CDCL) algorithm {#conflict-driven-clause-learning-cdcl-algorithm}</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implication-graphs">1.6.6.1. Implication Graphs</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dpll-vs-cdcl-example">1.6.7. DPLL vs CDCL example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-use-cases">1.7. Typical Use Cases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-approaches-parallel-approaches">1.7.1. Parallel Approaches {#parallel-approaches}</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio">1.7.1.1. Portfolio</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-and-conquer">1.7.1.2. Divide-and-conquer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-competitions-benchmarks-and-competitions">1.8. Benchmarks and Competitions {#benchmarks-and-competitions}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">1.9. Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">1.10. Case Studies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">1.11. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">1.12. Formal Methods and AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-generative-ai">1.12.1. Use of Generative AI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-affects-sat-in-industry">1.12.2. How this affects SAT in industry</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-developments">1.13. Current Developments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-developments-with-ai-current-developments-with-ai">1.13.1. Current Developments with AI {#current-developments-with-ai}</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">1.14. References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#early-work">1.14.1. Early Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-developments">1.14.2. Modern Developments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work">1.15. Future Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributers">1.16. Contributers</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sat-solving-with-minisat">
+<h1><span class="section-number">1. </span>SAT solving with MiniSat<a class="headerlink" href="#sat-solving-with-minisat" title="Permalink to this heading">#</a></h1>
+<p>Author: Jake Triester</p>
+<section id="idea">
+<h2><span class="section-number">1.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
+<p>A theory in propositional logic can be seen as a set of equations in variables that range over truth values <span class="math notranslate nohighlight">\(\{0,1\}\)</span>. A SAT-solver is a software tool that solves such equations. Even though SAT is NP-complete, modern SAT-solvers can solve propositional theories with millions of variables and tens of millions of clauses (Heule et al., 2015). And, as we know from the <a class="reference external" href="https://en.wikipedia.org/wiki/Cook%E2%80%93Levin_theorem">Cook-Levin theorem</a> every NP-problem can be encoded in SAT.</p>
+</section>
+<section id="basic-theory-sat">
+<h2><span class="section-number">1.2. </span>Basic Theory: SAT<a class="headerlink" href="#basic-theory-sat" title="Permalink to this heading">#</a></h2>
+<p>Informal Definition of satisfiability:
+SAT takes a formula and finds a satifying valuation (model).</p>
+<p>Formal definition of satisfiability:
+Given a boolean formula in propositional logic, does there exist an assignment of truth values to its variables that make this formula true. If so, we say this formula is <em>satisfiable</em>. Otherwise, we say this formula is <em>unsatifiable</em>.</p>
+<p>A SAT specification is written in conjunctive normal form.</p>
+<p><strong>Theorem</strong>: Every formula in propositional logic has a conjunctive normal form.</p>
+<p><em>Proof</em>: (Sketch) The conjunctive normal form can be computed by the following rewrite rules:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+a\to b &amp;= \neg a\vee b &amp; \text{eliminate } \to\\
+\neg(a\wedge b) &amp;= \neg a \vee \neg b &amp; \text{move } \neg \text{ inside} \\
+\neg(a\vee b) &amp;= \neg a\wedge \neg b&amp; \text{move } \neg \text{ inside}\\
+\neg\neg a &amp;= a &amp; \text{eliminate } \neg\neg\\
+a\vee(b\wedge c) &amp;= (a\vee b)\wedge (a\vee c) &amp; \text{move } \wedge \text{ outside} \\
+(b\wedge c)\vee a &amp;= (b\vee a)\wedge (c\vee a) &amp; \text{move } \wedge \text{ outside} \\
+\end{align*}\]</div>
+<p>If no rule can be applied anymore, then the formula is in a conjunction <span class="math notranslate nohighlight">\((a_{11}\vee\ldots\vee a_{1n_1})\wedge \ldots \wedge (a_{k1}\vee \ldots \vee a_{kn_k})\)</span> of so-called clauses where each <span class="math notranslate nohighlight">\(a_{ij}\)</span> is either a propositional variable or the negation of a propositional variable.</p>
+</section>
+<section id="tool-minisat">
+<h2><span class="section-number">1.3. </span>Tool: MiniSat<a class="headerlink" href="#tool-minisat" title="Permalink to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">minisat</span></code> to install on MacOS:</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">minisat</span></code> to install on Linux.</p>
+<section id="dimacs-cnf-format-dimacs-cnf-format">
+<h3><span class="section-number">1.3.1. </span>DIMACS CNF format {#dimacs-cnf-format}<a class="headerlink" href="#dimacs-cnf-format-dimacs-cnf-format" title="Permalink to this heading">#</a></h3>
+<p>A normal DIMACS CNF file looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="n">cnf</span> <span class="o">&lt;</span><span class="n">num_variables</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">num_clauses</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">literal_1</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">literal_2</span><span class="o">&gt;</span> <span class="o">...</span> <span class="o">&lt;</span><span class="n">literal_n</span><span class="o">&gt;</span> <span class="mi">0</span>
+<span class="o">...</span>
+<span class="n">c</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">comment</span> <span class="n">line</span>
+</pre></div>
+</div>
+<p>You start the file with <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">cnf</span> <span class="pre">n</span> <span class="pre">m</span></code> where n is the number of variables and m is the number of clauses. Each literal is an integer; if it is positive it means it is true, if it is negative it means it is false. Each clause is a list of literals separated by spaces and ending with a <code class="docutils literal notranslate"><span class="pre">0</span></code>. A line can be commented out of the file by starting the line with a <code class="docutils literal notranslate"><span class="pre">c</span></code>.</p>
+</section>
+</section>
+<section id="introductory-examples">
+<h2><span class="section-number">1.4. </span>Introductory Examples<a class="headerlink" href="#introductory-examples" title="Permalink to this heading">#</a></h2>
+<p>Let’s look at a basic example of a propositional logic formula to emphasize the importance of SAT solvers:</p>
+<div class="math notranslate nohighlight">
+\[(p\vee q)\wedge(\neg p\vee q)\]</div>
+<p>Creating the truth table for this, we get:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>p</p></th>
+<th class="head"><p>q</p></th>
+<th class="head"><p>(p ∨ q) ∧ (¬p ∨ q)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Since there is at least one assignment of truth values that makes the equation true, this equation is <em>satisfiable</em>.</p>
+<p>As we can see in this example, finding the truth table to determine if an equation is satisfiable is not incredibly difficult. However, the need for SAT solvers arises when the number of variables increases. In our example, we only had 2 variables, and therefore 4 rows in our truth table. However, there is an exponential increase in size of the truth table as we increase variables because for an equation with <em>n</em> variables, the number of rows in our truth table is <span class="math notranslate nohighlight">\(2^n\)</span>.</p>
+<p><strong>Exercise:</strong> Encode the following 2x2 Sudoku in conjunctive normal form.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[1][?]
+[?][?]
+</pre></div>
+</div>
+<p><strong>Exercise:</strong> Estimate the number of variables and clauses you need to encode a 9x9 Sudoku.</p>
+<p><strong>Exercise:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;p cnf 2 2</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">0</span><span class="s2">&quot; | minisat</span>
+</pre></div>
+</div>
+<p>Explain the output, as far as you can.</p>
+<p><strong>Activity:</strong> Save the file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="n">cnf</span> <span class="mi">8</span> <span class="mi">16</span>
+<span class="n">c</span> <span class="n">Each</span> <span class="n">cell</span> <span class="n">has</span> <span class="n">exactly</span> <span class="n">one</span> <span class="n">value</span>
+<span class="mi">1</span> <span class="mi">2</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">0</span>
+<span class="mi">3</span> <span class="mi">4</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">3</span> <span class="o">-</span><span class="mi">4</span> <span class="mi">0</span>
+<span class="mi">5</span> <span class="mi">6</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">5</span> <span class="o">-</span><span class="mi">6</span> <span class="mi">0</span>
+<span class="mi">7</span> <span class="mi">8</span> <span class="mi">0</span>
+<span class="o">-</span><span class="mi">7</span> <span class="o">-</span><span class="mi">8</span> <span class="mi">0</span>
+<span class="n">c</span> <span class="n">Each</span> <span class="n">row</span> <span class="n">contains</span> <span class="n">both</span> <span class="n">values</span>
+<span class="mi">1</span> <span class="mi">3</span> <span class="mi">0</span>
+<span class="mi">2</span> <span class="mi">4</span> <span class="mi">0</span>
+<span class="mi">5</span> <span class="mi">7</span> <span class="mi">0</span>
+<span class="mi">6</span> <span class="mi">8</span> <span class="mi">0</span>
+<span class="n">c</span> <span class="n">Each</span> <span class="n">column</span> <span class="n">contains</span> <span class="n">both</span> <span class="n">values</span>
+<span class="mi">1</span> <span class="mi">5</span> <span class="mi">0</span>
+<span class="mi">2</span> <span class="mi">6</span> <span class="mi">0</span>
+<span class="mi">3</span> <span class="mi">7</span> <span class="mi">0</span>
+<span class="mi">4</span> <span class="mi">8</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>as <code class="docutils literal notranslate"><span class="pre">sudoku_2x2.cnf</span></code>. Call</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minisat</span> <span class="n">sudoku2x2</span><span class="o">.</span><span class="n">cnf</span> <span class="n">solution</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p><strong>Exercise:</strong> Either reconstruct the encoding in <code class="docutils literal notranslate"><span class="pre">sudoku_2x2.cnf</span></code> and explain the solution. Or create your own encoding of <code class="docutils literal notranslate"><span class="pre">sudoku_2x2.cnf</span></code>, run it, and interpret the solution.</p>
+<p><strong>Exercise:</strong> Consider a Boolean circuit: (A ∧ B) ∨ (C ∧ ¬D) = True with the additional constraint that exactly 2 of {A,B,C,D} are True. Write this as a <code class="docutils literal notranslate"><span class="pre">cnf</span></code> specification and solve it with MiniSat. Explain your encoding and the solution in detail.</p>
+</section>
+<section id="the-landscape-of-tools">
+<h2><span class="section-number">1.5. </span>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Permalink to this heading">#</a></h2>
+<p>Many companies such as Intel have their own SAT solvers, but the cutting edge of SAT-solvers are widely considered to the open source solvers such as:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://minisat.se/">MiniSat</a> - <a class="reference external" href="https://github.com/niklasso/minisat">&#64;Github</a> The reference implementation</p></li>
+<li><p><a class="reference external" href="https://www.labri.fr/perso/lsimon/glucose/">Glucose</a>, <a class="reference external" href="https://github.com/audemard/glucose">&#64;GitHub</a> … <a class="reference external" href="http://fmv.jku.at/cadical/">CaDiCaL</a>, <a class="reference external" href="https://github.com/arminbiere/cadical">&#64;GitHub</a>, <a class="reference external" href="http://fmv.jku.at/lingeling/">Lingeling</a>, <a class="reference external" href="https://github.com/arminbiere/lingeling">&#64;GitHub</a> … <a class="reference external" href="https://www.msoos.org/cryptominisat5/">CryptoMiniSat</a>, <a class="reference external" href="https://github.com/msoos/cryptominisat">&#64;GitHub</a> are some award winning SAT solvers.</p></li>
+<li><p>Intel SAT Solver, <a class="reference external" href="https://github.com/alexander-nadel/intel_sat_solver">&#64;Github</a>, <a class="reference external" href="https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.SAT.2022.8">pdf</a></p></li>
+<li><p><a class="reference external" href="https://microsoft.github.io/z3guide/">Z3</a>, <a class="reference external" href="https://github.com/Z3Prover/z3">&#64;GitHub</a> is Microsoft’s SMT solver with powerful SAT core, <a class="reference external" href="https://theory.stanford.edu/~nikolaj/programmingz3.html">Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://potassco.org/clasp/">Clasp</a>, <a class="reference external" href="https://github.com/potassco/clasp">&#64;GitHub</a>, Answer Set Programming solver</p></li>
+</ul>
+</section>
+<section id="the-algorithm">
+<h2><span class="section-number">1.6. </span>The Algorithm<a class="headerlink" href="#the-algorithm" title="Permalink to this heading">#</a></h2>
+<section id="resolution">
+<h3><span class="section-number">1.6.1. </span>Resolution<a class="headerlink" href="#resolution" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Resolution_(logic)">Resolution</a> has only one inference rule:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{p_1\vee\ldots\vee p_m\vee a\quad\quad\quad\quad q_1\vee\ldots\vee q_n\vee \neg a }{p_1\vee\ldots\vee p_m\vee q_1\vee\ldots\vee q_n}
+\]</div>
+</section>
+<section id="unit-propagation">
+<h3><span class="section-number">1.6.2. </span>Unit Propagation<a class="headerlink" href="#unit-propagation" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Unit_propagation">Unit Propagation</a> is a fairly simply concept. All that it says is that if we have a clause where all but one of its literals is evaluated as False, then the last literal must be True in order for the clause to be True. For example, given the following clause:</p>
+<div class="math notranslate nohighlight">
+\[(A\vee B\vee C)\]</div>
+<p>If we have <span class="math notranslate nohighlight">\(A =\)</span> False and <span class="math notranslate nohighlight">\(B =\)</span> False, then <span class="math notranslate nohighlight">\(C\)</span> must be True in order for our clause to be True.</p>
+<p>Unit propagation can also be used in the case of a clause having only one variable, because if there is only one variable then it has to be true. For example, given the following clause:</p>
+<div class="math notranslate nohighlight">
+\[(\neg A)\]</div>
+<p>We know the clause has to be true, so we apply unit propagation, meaning we set <span class="math notranslate nohighlight">\(A =\)</span> False.</p>
+</section>
+<section id="pure-literal-elimination">
+<h3><span class="section-number">1.6.3. </span>Pure Literal Elimination<a class="headerlink" href="#pure-literal-elimination" title="Permalink to this heading">#</a></h3>
+<p>If a variable appears throughout the entire formula as only positive or only negative, you can set it to satisfy every clause that contains it. This means that if a variable appears only positively, you can replace it by True and remove the clause. Also, if a variable appears only negatively, you can replace it by False and remove the clause. For example, given the following formula:</p>
+<div class="math notranslate nohighlight">
+\[(\neg A \vee B) \wedge (\neg A \vee C)\]</div>
+<p>We see that A appears only negatively. Thus we replace A with False and our new formula becomes:</p>
+<div class="math notranslate nohighlight">
+\[(\neg False \vee B) \wedge (\neg False \vee C)\]</div>
+<p>Since the opposite of False is True, we are able to remove both of the clauses from our formula.</p>
+</section>
+<section id="davisputnam-algorithm">
+<h3><span class="section-number">1.6.4. </span>Davis–Putnam algorithm<a class="headerlink" href="#davisputnam-algorithm" title="Permalink to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Davis%E2%80%93Putnam_algorithm">Davis–Putnam algorithm</a> uses resolution but has some additional rules to guarantee termination.</p>
+<ol class="arabic simple">
+<li><p>Select a variable</p></li>
+<li><p>Apply Pure Literal Elimination to the variable</p></li>
+<li><p>If a variable appears positively and negatively, use resolution to eliminate all occurrences.</p></li>
+<li><p>Repeat until all variables are eliminated.</p></li>
+<li><p>If the empty clause is derived, then UNSATISFIABLE, else SATISFIABLE.</p></li>
+</ol>
+<section id="davis-putnam-algorithm-example">
+<h4><span class="section-number">1.6.4.1. </span>Davis-Putnam Algorithm example<a class="headerlink" href="#davis-putnam-algorithm-example" title="Permalink to this heading">#</a></h4>
+<p>Given the following formula, we will use the Davis-Putnam algorithm to solve it:</p>
+<div class="math notranslate nohighlight">
+\[(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee \neg C)\]</div>
+<p>Step 1 of the algorithm is to select a variable, we will start with A. We see that in clause 1, A appears positively and in clause 2, A appears negatively, meaning we must use resolution. To do that, we take both clauses 1 and 2, remove each instance of A, combine the clauses, and then add it to our formula. So, our new formula is:</p>
+<div class="math notranslate nohighlight">
+\[(B \vee C) \wedge (\neg B \vee \neg C)\]</div>
+<p>Now, we repeat our steps with a new variable, we will pick B. Since B appears both positively and negatively, we will use resolution again. After resolution, we are left with the formula:</p>
+<div class="math notranslate nohighlight">
+\[(C \vee \neg C)\]</div>
+<p>As we know, this is always true, so we can remove it from our formula. Thus, no clauses are remaining, meaning the formula is satisfiable.</p>
+<p>This may be a little confusing because the 5th step of the algorithm says that if the empty clause is derived, then the formula is unsatisfiable. However, we did not derive the empty clause, and I will give a demonstration of how the empty clause is derived to clear up any confusion. Imagine this is our formula:</p>
+<div class="math notranslate nohighlight">
+\[(A) \wedge (\neg A)\]</div>
+<p>Using the algorithm, A appears both positively and negatively, meaning that we have to use resolution again. However, after using resolution, we are left with the empty clause (denoted as <span class="math notranslate nohighlight">\(\square\)</span>). Thus our formula is unsatisfiable.</p>
+</section>
+</section>
+<section id="davisputnamlogemannloveland-dpll-algorithm-davisputnamlogemannloveland-dpll-algorithm">
+<h3><span class="section-number">1.6.5. </span>Davis–Putnam–Logemann–Loveland (DPLL) algorithm {#davisputnamlogemannloveland-dpll-algorithm}<a class="headerlink" href="#davisputnamlogemannloveland-dpll-algorithm-davisputnamlogemannloveland-dpll-algorithm" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/DPLL_algorithm">Davis–Putnam–Logemann–Loveland (DPLL) algorithm</a></p>
+<p>DP can generate many new clauses. For example in</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(a ∨ x₁) ∧ (a ∨ x₂) ∧ (a ∨ x₃) ∧ (a ∨ x₄) ∧
+(¬a ∨ y₁) ∧ (¬a ∨ y₂) ∧ (¬a ∨ y₃) ∧ (¬a ∨ y₄)
+</pre></div>
+</div>
+<p>DP resolves every clause with <code class="docutils literal notranslate"><span class="pre">a</span></code> against every clause with <code class="docutils literal notranslate"><span class="pre">¬a</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(a ∨ x₁) + (¬a ∨ y₁) → (x₁ ∨ y₁)
+(a ∨ x₁) + (¬a ∨ y₂) → (x₁ ∨ y₂)  
+(a ∨ x₁) + (¬a ∨ y₃) → (x₁ ∨ y₃)
+(a ∨ x₁) + (¬a ∨ y₄) → (x₁ ∨ y₄)
+
+(a ∨ x₂) + (¬a ∨ y₁) → (x₂ ∨ y₁)
+(a ∨ x₂) + (¬a ∨ y₂) → (x₂ ∨ y₂)
+...
+(a ∨ x₄) + (¬a ∨ y₄) → (x₄ ∨ y₄)
+</pre></div>
+</div>
+<p>resulting in 4x4=16 clauses.</p>
+<p>DPLL instead intantiates variables and uses backtracking:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Try a = True:
+- All (a ∨ xᵢ) become satisfied (removed)
+- All (¬a ∨ yᵢ) become (yᵢ)
+</pre></div>
+</div>
+<p>Both DP and DPLL have exponential time complexity in the worst case. But in practice DPLL is much better. One difference is that due to backtracking DPLL is linear in memory.</p>
+<p>The algorithm for DPLL follows these steps:</p>
+<ol class="arabic">
+<li><p>Apply Unit Propagation</p></li>
+<li><p>Apply Pure Literal Elimination</p></li>
+<li><p>If the empty clause appears, return UNSAT</p></li>
+<li><p>If no clauses are left, return SAT</p></li>
+<li><p>Choose a variable</p></li>
+<li><p>Recursively try both assignments on that variable</p>
+<p>a. Assign that variable to True</p>
+<p>b. If that fails, assign it to False</p>
+<p>c. If either step a or b succeeds, return SAT, otherwise, return UNSAT</p>
+</li>
+</ol>
+<p><strong>Example Formula:</strong> <code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">∨</span> <span class="pre">b</span> <span class="pre">∨</span> <span class="pre">c)</span> <span class="pre">∧</span> <span class="pre">(¬a</span> <span class="pre">∨</span> <span class="pre">d)</span> <span class="pre">∧</span> <span class="pre">(¬b</span> <span class="pre">∨</span> <span class="pre">d)</span> <span class="pre">∧</span> <span class="pre">(¬c</span> <span class="pre">∨</span> <span class="pre">d)</span> <span class="pre">∧</span> <span class="pre">(¬d)</span></code></p>
+<p>First we apply unit propagation. Since the last clause has only one variable, we know that <code class="docutils literal notranslate"><span class="pre">d</span></code> = False. Then, we simplify so that our new formula is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">∨</span> <span class="pre">b</span> <span class="pre">∨</span> <span class="pre">c)</span> <span class="pre">∧</span> <span class="pre">(¬a)</span> <span class="pre">∧</span> <span class="pre">(¬b)</span> <span class="pre">∧</span> <span class="pre">(¬c)</span></code></p>
+<p>Now, we apply unit propagation again, this time setting <code class="docutils literal notranslate"><span class="pre">a</span></code> equal to False. Our new formula is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">(b</span> <span class="pre">∨</span> <span class="pre">c)</span> <span class="pre">∧</span> <span class="pre">(¬b)</span> <span class="pre">∧</span> <span class="pre">(¬c)</span></code></p>
+<p>One more time, we apply unit propagation, setting <code class="docutils literal notranslate"><span class="pre">b</span></code> equal to False. Our new formula is:</p>
+<p><code class="docutils literal notranslate"><span class="pre">(c)</span> <span class="pre">∧</span> <span class="pre">(¬c)</span></code></p>
+<p>This leads to a contradiction, because <code class="docutils literal notranslate"><span class="pre">c</span></code> cannot be both True and False. Thus, our formula is <code class="docutils literal notranslate"><span class="pre">UNSAT</span></code></p>
+</section>
+<section id="conflict-driven-clause-learning-cdcl-algorithm-conflict-driven-clause-learning-cdcl-algorithm">
+<h3><span class="section-number">1.6.6. </span>Conflict-driven Clause Learning (CDCL) algorithm {#conflict-driven-clause-learning-cdcl-algorithm}<a class="headerlink" href="#conflict-driven-clause-learning-cdcl-algorithm-conflict-driven-clause-learning-cdcl-algorithm" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Conflict-driven_clause_learning">Conflict-driven Clause Learning</a>
+(CDCL) is another algorithm for solving SAT problems that is similar to DPLL but the main difference is that CDCL does not back-jump chronologically. CDCL was proposed by Marques-Silva and Karem A. Sakallah (1996, 1999) and Bayardo and Schrag (1997). The algorithm is as follows:</p>
+<ol class="arabic">
+<li><p>Choose a variable and assign it with either True or False (called the decision state).</p></li>
+<li><p>Apply Unit Propagation.</p></li>
+<li><p>Construct the Implication Graph (this will be explained below).</p></li>
+<li><p>If there is any conflict in the graph, do the following:</p>
+<p>a. Determine where in the graph the break that caused the conflict is.</p>
+<p>b. Make a new clause that is the negation of the assignments that caused the conflict.</p>
+<p>c. Backtrack non-chronologically (backjump) to the decision level where the first assigned variable in the conflict was assigned.</p>
+</li>
+<li><p>If there was no conflict, start from step 1 on a new variable until every variable has been assigned.</p></li>
+</ol>
+<section id="implication-graphs">
+<h4><span class="section-number">1.6.6.1. </span>Implication Graphs<a class="headerlink" href="#implication-graphs" title="Permalink to this heading">#</a></h4>
+<p>An implication graph is something that is drawn in step 3 of the CDCL algorithm, and it involves using your arbitrary choices, unit propagation, and implications to determine a satisfiable answer to an algorithm. To show how implication graphs work (and how the entire algorithm works), we will use this example formula:</p>
+<div class="math notranslate nohighlight">
+\[(\neg A\vee B) \wedge (\neg B\vee C) \wedge (\neg C \vee A) \wedge (\neg A\vee \neg B)\]</div>
+<p>Step 1 of the algorithm says to choose a variable and assign it either True or False. For this example, we will start by assigning <span class="math notranslate nohighlight">\(A =\)</span> True.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we move on to step 2 of the algorithm, using unit propagation to assign other variables. In the first clause, since we have <span class="math notranslate nohighlight">\(A =\)</span> True, we must have <span class="math notranslate nohighlight">\(B =\)</span> True.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">B</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the fourth clause, since <span class="math notranslate nohighlight">\(A =\)</span> True, <span class="math notranslate nohighlight">\(B\)</span> must be False.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">B</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> 
+        <span class="o">-&gt;</span> <span class="p">(</span><span class="n">B</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we have a conflict, since <span class="math notranslate nohighlight">\(B\)</span> cannot be both True and False. According to the algorithm, once we have a conflict we must first determine in the graph the break that caused the conflict. In our graph, it is simple to see that the conflict is solely caused by <span class="math notranslate nohighlight">\(A =\)</span> True. Thus, according to the algorithm, we must add a new clause that is the negation of the conflict. So, our new formula is:</p>
+<div class="math notranslate nohighlight">
+\[(\neg A\vee B) \wedge (\neg B\vee C) \wedge (\neg C \vee A) \wedge (\neg A\vee \neg B) \wedge (\neg A)\]</div>
+<p>Now we backjump back to where our problem was (in this case, the beginning of the graph) and start again. This time, we will assign <span class="math notranslate nohighlight">\(A =\)</span> False.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using unit propagation, since <span class="math notranslate nohighlight">\(A =\)</span> False, C must be False according to clause 3.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since <span class="math notranslate nohighlight">\(C =\)</span> False, <span class="math notranslate nohighlight">\(B =\)</span> False according to clause 2.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">B</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we have hit step 5 of the algorithm, there are no conflicts and every variable has been assigned. Thus, our formula is satisfiable.</p>
+</section>
+</section>
+<section id="dpll-vs-cdcl-example">
+<h3><span class="section-number">1.6.7. </span>DPLL vs CDCL example<a class="headerlink" href="#dpll-vs-cdcl-example" title="Permalink to this heading">#</a></h3>
+<p>Here, we will solve an example formula using both DPLL and CDCL, and determine which algorithm is better (more efficient) and why. We will start with this formula:</p>
+<div class="math notranslate nohighlight">
+\[(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)\]</div>
+<p>Since there is no way to apply unit propagation or pure literal elimination, we start by choosing a variable <code class="docutils literal notranslate"><span class="pre">A</span></code> and recursively trying both assignments. First we will assign <code class="docutils literal notranslate"><span class="pre">A</span></code> the value of True. That makes our equation:</p>
+<div class="math notranslate nohighlight">
+\[(C) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)\]</div>
+<p>From here we can apply unit propagation to <code class="docutils literal notranslate"><span class="pre">C</span></code>, since we know from the first clause that <code class="docutils literal notranslate"><span class="pre">C</span></code> must be True, leaving us with:</p>
+<div class="math notranslate nohighlight">
+\[(D) \wedge (E) \wedge (F) \wedge (G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)\]</div>
+<p>From here we would apply unit propagation on <code class="docutils literal notranslate"><span class="pre">D</span></code>, <code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">F</span></code>, and <code class="docutils literal notranslate"><span class="pre">G</span></code>, setting them all equal to True. This leads us to a contradiction since the final clause will be False. From here, we have to backtrack to our assigned variable, meaning we set <code class="docutils literal notranslate"><span class="pre">A</span></code> to False in our original equation. That makes our formula the following:</p>
+<div class="math notranslate nohighlight">
+\[(B) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)\]</div>
+<p>From here, we can apply unit propagation, setting <code class="docutils literal notranslate"><span class="pre">B</span></code> equal to True. This makes our equation:</p>
+<div class="math notranslate nohighlight">
+\[(C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)\]</div>
+<p>Now we can apply unit propagation one more time, setting <code class="docutils literal notranslate"><span class="pre">C</span></code> equal to True, which brings us back to this formula:</p>
+<div class="math notranslate nohighlight">
+\[(D) \wedge (E) \wedge (F) \wedge (G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)\]</div>
+<p>Again, we would apply unit propagation to <code class="docutils literal notranslate"><span class="pre">D</span></code>, <code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">F</span></code>, and <code class="docutils literal notranslate"><span class="pre">G</span></code>, which we know will not be satisfiable from earlier. This means we have recursively tried both assignments on the variable <code class="docutils literal notranslate"><span class="pre">A</span></code>, and they both failed, making this equation <code class="docutils literal notranslate"><span class="pre">UNSAT</span></code>.</p>
+<p>As we can see, the DPLL algorithm took a long time and energy because it had to go through every possible branch to confirm that the formula was <code class="docutils literal notranslate"><span class="pre">UNSAT</span></code>. We even combined a few branches (<code class="docutils literal notranslate"><span class="pre">D</span></code>, <code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">F</span></code>, and <code class="docutils literal notranslate"><span class="pre">G</span></code>) and it still took awhile. In comparison, we will now solve this equation with CDCL. As a reminder, here is our original formula:</p>
+<div class="math notranslate nohighlight">
+\[(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)\]</div>
+<p>The first step of CDCL is to choose a variable and assign it a value. To mirror our DPLL implementation, we will also assign <code class="docutils literal notranslate"><span class="pre">A</span></code> the value of True. As a reminder, we also will be constructing an implication graph.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Our new equation becomes:</p>
+<div class="math notranslate nohighlight">
+\[(C) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)\]</div>
+<p>We apply unit propagation setting <code class="docutils literal notranslate"><span class="pre">C</span></code> equal to True, making our implication graph:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And our new formula:</p>
+<div class="math notranslate nohighlight">
+\[(D) \wedge (E) \wedge (F) \wedge (G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G)\]</div>
+<p>By applying unit propagation to <code class="docutils literal notranslate"><span class="pre">D</span></code>, <code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">F</span></code>, and <code class="docutils literal notranslate"><span class="pre">G</span></code>, we cause a conflict, and our implication graph looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(A = 1) -&gt; (C = 1) -&gt; (D = 1) -|
+                   -&gt; (E = 1) -| -&gt; (¬D1 ∨ ¬D2 ∨ ¬D3 ∨ ¬D4)
+                   -&gt; (F = 1) -|
+                   -&gt; (G = 1) -|
+</pre></div>
+</div>
+<p>From our implication graph, we can determine the break that caused the conflict is at <code class="docutils literal notranslate"><span class="pre">(C</span> <span class="pre">=</span> <span class="pre">1)</span></code>, so we can backjump to the beginning and add a new learned clause of <span class="math notranslate nohighlight">\((\neg C)\)</span>, making our formula:</p>
+<div class="math notranslate nohighlight">
+\[(A \vee B) \wedge (\neg A \vee C) \wedge (\neg B \vee C) \wedge (\neg C \vee D) \wedge (\neg C \vee E) \wedge (\neg C \vee F) \wedge (\neg C \vee G) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G) \wedge (\neg C)\]</div>
+<p>Now we can apply unit propagation to our learned clause and set <code class="docutils literal notranslate"><span class="pre">C</span></code> equal to False.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">C</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This makes our new equation:</p>
+<div class="math notranslate nohighlight">
+\[(A \vee B) \wedge (\neg A) \wedge (\neg B) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G) \wedge (\neg C)\]</div>
+<p>From here, we can unit propagate <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code> and set them each equal to False. This will lead to a conflict in clause 1, and our impliation graph looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(C = 0) -&gt; (A = 0) -| -&gt; (A ∨ B)
+        -&gt; (B = 0) -|
+</pre></div>
+</div>
+<p>The break that caused the conflict is at <code class="docutils literal notranslate"><span class="pre">(C</span> <span class="pre">=</span> <span class="pre">0)</span></code>. Since that is the beginning of our implication graph, we can’t backjump anymore. Therefore, the formula is <code class="docutils literal notranslate"><span class="pre">UNSAT</span></code>.</p>
+<p>From this example, we can see how much quicker CDCL is than DPLL, and how that speed will only exponentially increase with a greater number of variables and clauses. DPLL had to go through every possible branch, while CDCL learns from each branch that it goes through so it doesn’t end up searching through something that it already searched through, making it much more optimal.</p>
+</section>
+</section>
+<section id="typical-use-cases">
+<h2><span class="section-number">1.7. </span>Typical Use Cases<a class="headerlink" href="#typical-use-cases" title="Permalink to this heading">#</a></h2>
+<section id="parallel-approaches-parallel-approaches">
+<h3><span class="section-number">1.7.1. </span>Parallel Approaches {#parallel-approaches}<a class="headerlink" href="#parallel-approaches-parallel-approaches" title="Permalink to this heading">#</a></h3>
+<p>Some SAT solvers use multiple processors at the same time to speed up problem solving. There are 2 different types of strategies tha modern parallel SAT solvers rely on.</p>
+<section id="portfolio">
+<h4><span class="section-number">1.7.1.1. </span>Portfolio<a class="headerlink" href="#portfolio" title="Permalink to this heading">#</a></h4>
+<p>The portfolio parallel approach involves running many solvers in parallel on the same problem (Aigner et al., 2013). Once one of the solvers finds a solution, they all can stop. This reduces the time needed to solve because it is trying multiple at once. Many portfolio approaches implement random seeds to decrease the amount of duplicate work that the solvers are doing. Depending on the underlying algorithm behind the SAT solvers, it is possible that the different portfolios could share learned clauses amongst each other, which will decrease time taken to solve even more. A few examples of portfolio parallel SAT solvers are PPfolio and HordeSat.</p>
+</section>
+<section id="divide-and-conquer">
+<h4><span class="section-number">1.7.1.2. </span>Divide-and-conquer<a class="headerlink" href="#divide-and-conquer" title="Permalink to this heading">#</a></h4>
+<p>A different parallel approach involves spitting the problem into smaller sub-problems, and then running each of those on a different processor (Nair et al., 2022). This can cause some processors to finish their problems much earlier than others because different sub-problems can vary in difficulty, which is suboptimal. One very benefical advance is the Cube-and-Conquer approach, which uses two phases. The first phase is the cube part where a solver “looks ahead” and breaks the problem into smaller “cubes.” Phase 2 is the conquer f=part where each cube is solved using CDCL. Because of the way the cubes are calculated, if one cube is satisfiable, then the whole problem is satisfiable. One example divide-and-conquer that uses the cube-and-conquer approach is Treengeling.</p>
+</section>
+</section>
+</section>
+<section id="benchmarks-and-competitions-benchmarks-and-competitions">
+<h2><span class="section-number">1.8. </span>Benchmarks and Competitions {#benchmarks-and-competitions}<a class="headerlink" href="#benchmarks-and-competitions-benchmarks-and-competitions" title="Permalink to this heading">#</a></h2>
+<p>The annual <a class="reference external" href="http://www.satcompetition.org/">SAT Competition</a> tracks the current best performers.</p>
+<p>The purpose of this competition is to promote new SAT solvers and compare them to current state-of-the-art ones, as well as identify new benchmarks.</p>
+</section>
+<section id="applications-in-industry">
+<h2><span class="section-number">1.9. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Permalink to this heading">#</a></h2>
+<p>SAT-solvers are used as components in SMT-solvers, CSP-solvers, model checkers and model finders. In all these applications, the implementation mainly consists of translating a problem from the input domain to the language of a SAT-solver, then finding a solution for the given problem and translating this solution back to the original domain language. These applications are central to many industrial workflows. Historically, they have moved the field from theoretical curiosity (like NP-completeness) to large-scale problem solving. Today, solvers can easily handle problems with millions of variables and tens of millions of clauses.</p>
+<p>One main area where SAT technology is heavily used is hardware verification (Gupta, Ganai, and Wang, 2006). It is used to verify the pipelines of GPUs and CPUs through property checking. SMT solvers (a descendant of SAT) are especially used in hardware verification because they are able to combine the core principles of SAT with theory solvers for arithmetic and arrays.</p>
+<p>Similarly, SAT solvers are also used for software verification and program analysis (Ivančić et al., 2008). They can either provide counterexamples when a property fails or proofs for satisfiability, which is especially helpful when debugging.</p>
+<p>SAT solvers are also used for package and dependency solving and optimization. By translating domain constraints into CNF, the solvers can be used for dependency resolution (package managers), combinatorial optimization (scheduling), or other large combinatorial tasks.</p>
+<p>While not necessarily an application of use in industry, there is an annual <span class="xref myst">SAT competition</span> that is used to track the state of the art and can help lead to adoption in industry. This competition is beneficial because it leads people to find new algorithms and heuristics than can be used to improve the state of the art.</p>
+</section>
+<section id="case-studies">
+<h2><span class="section-number">1.10. </span>Case Studies<a class="headerlink" href="#case-studies" title="Permalink to this heading">#</a></h2>
+<p>At the beginning of this chapter, we looked at an example of a 2x2 sudoku and how to solve it using SAT. Now, we will look at a normal 9x9 sudoku and see how to solve that using SAT. Unlike our 2x2 sudoku which had a very small number of variables and clauses, 9x9 sudoku needs 729 variables and about 12000 clauses. Because of this, we cannot simply write the DIMACS CNF file on our own, we need to create a script that will create the file for us. Similarly to the 2x2 example, we need to create a cnf file that has the following constraints:</p>
+<ol class="arabic simple">
+<li><p>Each entry has at least one value</p></li>
+<li><p>Each entry has at most one value</p></li>
+<li><p>Each row contains all numbers (1-9)</p></li>
+<li><p>Each column contains all numbers (1-9)</p></li>
+<li><p>Each block contains all numbers (1-9)</p></li>
+<li><p>The solution respects the given clues</p></li>
+</ol>
+<p>In order to create the necessary cnf file, we will use the script taken from this <a class="reference external" href="https://users.aalto.fi/~tjunttil/2020-DP-AUT/notes-sat/solving.html#solving-problems-with-cnf-sat-solvers-the-sudoku-example">website</a> named <code class="docutils literal notranslate"><span class="pre">sudoku-encode.py</span></code>:</p>
+<p>This script will create a cnf representation given an example sudoku board. I created this file named <code class="docutils literal notranslate"><span class="pre">puzzle.txt</span></code> and used it as my input:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">53..7</span><span class="o">....</span>
+<span class="mf">6..195</span><span class="o">...</span>
+<span class="mf">.98</span><span class="o">...</span><span class="mf">.6</span><span class="o">.</span>
+<span class="mf">8.</span><span class="o">.</span><span class="mf">.6</span><span class="o">..</span><span class="mf">.3</span>
+<span class="mf">4..8.3</span><span class="o">.</span><span class="mf">.1</span>
+<span class="mf">7.</span><span class="o">.</span><span class="mf">.2</span><span class="o">..</span><span class="mf">.6</span>
+<span class="mf">.6</span><span class="o">...</span><span class="mf">.28</span><span class="o">.</span>
+<span class="o">..</span><span class="mf">.419</span><span class="o">.</span><span class="mf">.5</span>
+<span class="o">...</span><span class="mf">.8</span><span class="o">.</span><span class="mf">.79</span>
+</pre></div>
+</div>
+<p>In order to run these files on Linux (Ubuntu) I did this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">sudoku-encode.py</span> <span class="pre">puzzle.txt</span></code></p>
+<p>This will print out the example cnf, but if you want to put it into a file you can run:</p>
+<p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">sudoku.py</span> <span class="pre">puzzle.txt</span> <span class="pre">&gt;</span> <span class="pre">puzzle.cnf</span></code></p>
+<p>From there, we can use minisat to see if the puzzle is satisfiable and we can output the solution into a <code class="docutils literal notranslate"><span class="pre">.txt</span></code> file by running:</p>
+<p><code class="docutils literal notranslate"><span class="pre">minisat</span> <span class="pre">puzzle.cnf</span> <span class="pre">output.txt</span></code></p>
+<p>In the terminal, it will tell you whether or not the puzzle was satisfiable, and in the <code class="docutils literal notranslate"><span class="pre">output.txt</span></code> file, it will tell you the assignment values of each of the 729 variables, but it will not show the actual solution to the sudoku puzzle. In order to do that we must use a decoder script such as this one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">D</span><span class="o">*</span><span class="n">D</span>  <span class="c1"># 9</span>
+
+<span class="k">def</span> <span class="nf">inv_var</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">x</span> <span class="o">//</span> <span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">x</span> <span class="o">%=</span> <span class="p">(</span><span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">x</span> <span class="o">//</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">x</span> <span class="o">%</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span>
+
+<span class="c1"># read SAT solver output file</span>
+<span class="n">model</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;SAT&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;UNSAT&quot;</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
+
+<span class="c1"># grid to fill</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">N</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+
+<span class="c1"># use only positive literals</span>
+<span class="k">for</span> <span class="n">literal</span> <span class="ow">in</span> <span class="n">model</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">literal</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">inv_var</span><span class="p">(</span><span class="n">literal</span><span class="p">)</span>
+        <span class="n">grid</span><span class="p">[</span><span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+
+<span class="c1"># print sudoku</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">row</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>With this script, we can run:</p>
+<p><code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">decoder.py</span> <span class="pre">output.txt</span></code></p>
+<p>This will show us the final solution of our sudoku puzzle with our given constraints. Now, we can edit our <code class="docutils literal notranslate"><span class="pre">puzzle.txt</span></code> to be able to determine if any 9x9 sudoku with any given values is satisfiable, and then use <code class="docutils literal notranslate"><span class="pre">decoder.py</span></code> to output the solution of that puzzle. Also, given the way we created our <code class="docutils literal notranslate"><span class="pre">sudoku-encode.py</span></code> and <code class="docutils literal notranslate"><span class="pre">decoder.py</span></code> files, we can try this with any size sudoku by simply changing a few numbers.</p>
+</section>
+<section id="history">
+<h2><span class="section-number">1.11. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
+<p>In the 1990s, there were two different types of SAT solvers that were used - complete and incomplete solvers (Biere, Heule, Van Maaren, and Walsh, 2021). An incomplete solver is one that searches for a satisfying assignment, but cannot prove that something is unsatisfiable. A complete solver is more similar to the ones seen today, that either finds a satisfying assignment or proves that none exist. Around this time, the complete solvers were using the <span class="xref myst">DPLL</span> algorithm.</p>
+<p>In 1993, a SAT competition was held, named the DIMACS implementation challenge (Fichte, Le Berre, Hecher, and Szeider, 2023). This competition standardized the <span class="xref myst">DIMACS CNF</span> format that modern SAT solvers still use as their inputs.</p>
+<p>In 1996, the solver GRASP was created (Marques-Silva, J. P., &amp; Sakallah, K. A., 1999). This solver proposed a new architecture that combined the backtracking of the DPLL algorithm with learning, which is now known as the <span class="xref myst">CDCL</span> algorithm. After that, the solver Chaff was created (Moskewicz, M. W., Madigan, C. F., Zhao, Y., Zhang, L., &amp; Malik, S., 2001, June). This solver was specifically designed to solve large benchmarks, and do so quickly.</p>
+</section>
+<section id="formal-methods-and-ai">
+<h2><span class="section-number">1.12. </span>Formal Methods and AI<a class="headerlink" href="#formal-methods-and-ai" title="Permalink to this heading">#</a></h2>
+<section id="use-of-generative-ai">
+<h3><span class="section-number">1.12.1. </span>Use of Generative AI<a class="headerlink" href="#use-of-generative-ai" title="Permalink to this heading">#</a></h3>
+<p>As the use of generative AI becomes more and more integrated into every industry, SAT solvers are no exception. Generative AI (LLMs) are increasingly being used to augment SAT solvers rather than replace them completely. There are a couple of different examples that show this.</p>
+<p>First, generative AI models are being used for instance generation. This is beneficial because it is used to generate SAT instaances that mimic real-world problems, which can help to study the behavior of the solvers and see how they can be improved. One example of this is G2SAT, which makes CNF formulas into bipartite graphs and learns to generate realistic SAT instances.</p>
+<p>Another example is using solvers to check proofs that are created by LLMs. For example, an LLM will propose a proof, and the solvers will check, reject, or give feedback on these proposed proofs. This is more with SMT solvers than SAT due to their proof checking abilities, but as SMT is a descendant of SAT, it has been included in the section.</p>
+<p>Solvers are also being used to reduce hallucinations and increase reliability in certain AI models. Some models, including ones from Amazon have integrated “automated reasoning checks” to constrain generative models (argument checking, verification checks on outputs of the model, rule enforcement) to improve trustworthiness.</p>
+<p>More applications of AI use in SAT solvers is seen in the current developments section <span class="xref myst">below</span></p>
+</section>
+<section id="how-this-affects-sat-in-industry">
+<h3><span class="section-number">1.12.2. </span>How this affects SAT in industry<a class="headerlink" href="#how-this-affects-sat-in-industry" title="Permalink to this heading">#</a></h3>
+<p>Hybrid workflows are becoming much more common in industry. This means that generative AI models are proposing something, and SAT solvers are used to provide guarantees of truthfulness or unsatisfiability. This is beneficial because it is utilizing the creativity of generative AI, while confirming correctness through the rigidity of SAT solvers.</p>
+</section>
+</section>
+<section id="current-developments">
+<h2><span class="section-number">1.13. </span>Current Developments<a class="headerlink" href="#current-developments" title="Permalink to this heading">#</a></h2>
+<p>After the developments of CDCL algorithms were added into SAT solvers, there are still a few current developments that have increased the capabilities of SAT solvers a little more.</p>
+<p>For one, people have started to create much more efficient SAT encodings by going against what intuition says. Instinctively, people think that a small formula and fewer variables in better, however that is not always true. Sometimes it is more benefical to add some auxillary variables and increase the size of the formula. While adding these variables increases the theoretical search space, the practical search may become easier. This is because SAT solvers do not search everything, and adding some extra variables will allow the solvers to significantly reduce the size of the practical search space by using CDCL.</p>
+<p>Another more current development is the use of <span class="xref myst">parallel solving</span>, which was mentioned more in depth above.</p>
+<section id="current-developments-with-ai-current-developments-with-ai">
+<h3><span class="section-number">1.13.1. </span>Current Developments with AI {#current-developments-with-ai}<a class="headerlink" href="#current-developments-with-ai-current-developments-with-ai" title="Permalink to this heading">#</a></h3>
+<p>As can be seen in almost every industry, AI, specifically large language models (LLMs), are being used to try to improve the state of the art. One example in terms of SAT solvers is AutoModSAT (Sun et al., 2025). Using an LLM in a SAT solver can allow the solver to automatically generate new heuristic code so the the solver can work better given specific data. Basically, this means that the LLM is finding better strategies for solving SAT problems, and is able to determine what to use on a specific dataset.</p>
+</section>
+</section>
+<section id="references">
+<h2><span class="section-number">1.14. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Aigner et al. (2013). <a class="reference external" href="https://ckirsch.github.io/publications/conferences/PoS13-AnalysisPortfolioSAT.pdf">Analysis of Portfolio-Style Parallel SAT Solving
+on Current Multi-Core Architectures∗</a>, University of Salzburg</p></li>
+<li><p>Fichte, Le Berre, Hecher, and Szeider (2023) <a class="reference external" href="https://cacm.acm.org/research/the-silent-revolution-of-sat/#R4">The Silent (R)evolution of SAT</a>, Communications of the ACM</p></li>
+<li><p>Gupta, Ganai, and Wang (2006). <a class="reference external" href="https://link.springer.com/chapter/10.1007/11757283_5#citeas">SAT-Based Verification Methods and Applications in Hardware Verification</a>, Formal Methods for Hardware Verification</p></li>
+<li><p>Heule et al. (2015). <a class="reference external" href="https://jair.org/index.php/jair/article/view/10942">Clause Elimination for SAT and QSAT</a>, Journal of Artificial Intelligence Research</p></li>
+<li><p>Ivančić et al. (2008). <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0304397508002223">Efficient SAT-based bounded model checking for software verification</a>, International Symposium on Leveraging Applications of Formal Methods</p></li>
+<li><p>Nair et al. (2022). <a class="reference external" href="https://theory.stanford.edu/~barrett/pubs/NCW+22.pdf">Proof-Stitch: Proof Combination for
+Divide-and-Conquer SAT Solvers</a>, Formal Methods in Computer-Aided Design</p></li>
+</ul>
+<section id="early-work">
+<h3><span class="section-number">1.14.1. </span>Early Work<a class="headerlink" href="#early-work" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Biere, Heule, Van Maaren, and Walsh (2021). <a class="reference external" href="https://www.iospress.com/catalog/books/handbook-of-satisfiability-2">Handbook of Satisfiability</a>, Frontiers in Artificial Intelligence and Applications</p></li>
+<li><p>Davis, Martin; Putnam, Hilary (1960). <a class="reference external" href="https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory">A Computing Procedure for Quantification Theory</a>. Journal of the ACM. 7 (3): 201–215.</p>
+<ul>
+<li><p>The original resolution based algorithm that also gave rise to Prolog later, via (Robinson 1965).</p></li>
+</ul>
+</li>
+<li><p>Davis, Martin; Logemann, George; Loveland, Donald (1962). <a class="reference external" href="https://scholar.google.com/scholar?q=A+Machine+Program+for+Theorem+Proving">A Machine Program for Theorem Proving</a>. Communications of the ACM. 5 (7): 394–397.</p>
+<ul>
+<li><p>DPLL, also sometimes called DP Backtrack Search.</p></li>
+</ul>
+</li>
+<li><p>Stallman, R. M., &amp; Sussman, G. J. (1977). <a class="reference external" href="https://scholar.google.com/scholar?q=Forward+reasoning+and+dependency-directed+backtracking+in+a+system+for+computer-aided+circuit+analysis">Forward reasoning and dependency-directed backtracking in a system for computer-aided circuit analysis</a>. Artificial intelligence, 9(2), 135-196.</p>
+<ul>
+<li><p>Widely credited for its <strong>dependency-directed backtracking</strong>.</p></li>
+</ul>
+</li>
+<li><p>Marques-Silva, J. P., &amp; Sakallah, K. A. (1999). <a class="reference external" href="https://scholar.google.com/scholar?q=GRASP+A+search+algorithm+for+propositional+satisfiability">GRASP: A search algorithm for propositional satisfiability</a>. IEEE Transactions on Computers, 48(5), 506-521.</p>
+<ul>
+<li><p>Introduces conflict-directed backtracking, an application of dependency-directed backtracking to SAT, and conflict analysis. Later this will be called <strong>conflict-driven clause learning</strong>.</p></li>
+</ul>
+</li>
+<li><p>Moskewicz, M. W., Madigan, C. F., Zhao, Y., Zhang, L., &amp; Malik, S. (2001, June). <a class="reference external" href="https://scholar.google.com/scholar?q=Chaff+Engineering+an+efficient+SAT+solver">Chaff: Engineering an efficient SAT solver</a>. In Proceedings of the 38th annual Design Automation Conference (pp. 530-535).</p>
+<ul>
+<li><p>Chaff is widely considered the breakthrough SAT implementation. Section 1.2 also contains a good account of DPLL.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="modern-developments">
+<h3><span class="section-number">1.14.2. </span>Modern Developments<a class="headerlink" href="#modern-developments" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Alouneh, S., Abed, S. E., Al Shayeji, M. H., &amp; Mesleh, R. (2019). A comprehensive study and analysis on SAT-solvers: advances, usages and achievements. Artificial Intelligence Review, 52(4), 2575-2601.</p></li>
+<li><p>Froleyks, N., Yu, E., &amp; Biere, A. (2023, October). BIG backbones. In 2023 Formal Methods in Computer-Aided Design (FMCAD) (pp. 162-167). IEEE.</p></li>
+<li><p>Heule, M. J., Iser, M., Järvisalo, M., &amp; Suda, M. (2024). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=%22SAT+Competition+2024%22+&amp;btnG=">Proceedings of SAT Competition 2024: Solver, Benchmark and Proof Checker Descriptions</a>. <a class="reference external" href="https://researchportal.helsinki.fi/files/324666039/sc2024-proceedings.pdf">pdf</a></p></li>
+<li><p>Sun et al. (2025). <a class="reference external" href="https://arxiv.org/html/2507.22876v1">Automatically discovering heuristics in a complex SAT solver with large language models</a></p></li>
+</ul>
+</section>
+</section>
+<section id="future-work">
+<h2><span class="section-number">1.15. </span>Future Work<a class="headerlink" href="#future-work" title="Permalink to this heading">#</a></h2>
+<p>In the future, I believe it would be more beneficial for someone to focus more on the real-life applications of SAT solvers. I spent a lot of time on the algorithms and examples of how they are used, which didn’t leave me much time to focus on how the SAT solvers apply to real-life.</p>
+</section>
+<section id="contributers">
+<h2><span class="section-number">1.16. </span>Contributers<a class="headerlink" href="#contributers" title="Permalink to this heading">#</a></h2>
+<p>The author of this chapter is Jake Triester. It was peer reviewed by Jack De Bruyn and Alexander Kurz.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="0-4-intro-modal-logic.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Modal Logic</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-logic-programming-prolog.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Logic Programming with Prolog</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">1.1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory-sat">1.2. Basic Theory: SAT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-minisat">1.3. Tool: MiniSat</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimacs-cnf-format-dimacs-cnf-format">1.3.1. DIMACS CNF format {#dimacs-cnf-format}</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductory-examples">1.4. Introductory Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">1.5. The Landscape of Tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-algorithm">1.6. The Algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution">1.6.1. Resolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-propagation">1.6.2. Unit Propagation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pure-literal-elimination">1.6.3. Pure Literal Elimination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnam-algorithm">1.6.4. Davis–Putnam algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#davis-putnam-algorithm-example">1.6.4.1. Davis-Putnam Algorithm example</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#davisputnamlogemannloveland-dpll-algorithm-davisputnamlogemannloveland-dpll-algorithm">1.6.5. Davis–Putnam–Logemann–Loveland (DPLL) algorithm {#davisputnamlogemannloveland-dpll-algorithm}</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conflict-driven-clause-learning-cdcl-algorithm-conflict-driven-clause-learning-cdcl-algorithm">1.6.6. Conflict-driven Clause Learning (CDCL) algorithm {#conflict-driven-clause-learning-cdcl-algorithm}</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implication-graphs">1.6.6.1. Implication Graphs</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dpll-vs-cdcl-example">1.6.7. DPLL vs CDCL example</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-use-cases">1.7. Typical Use Cases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-approaches-parallel-approaches">1.7.1. Parallel Approaches {#parallel-approaches}</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio">1.7.1.1. Portfolio</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#divide-and-conquer">1.7.1.2. Divide-and-conquer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-competitions-benchmarks-and-competitions">1.8. Benchmarks and Competitions {#benchmarks-and-competitions}</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">1.9. Applications in Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-studies">1.10. Case Studies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">1.11. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-methods-and-ai">1.12. Formal Methods and AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-generative-ai">1.12.1. Use of Generative AI</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-this-affects-sat-in-industry">1.12.2. How this affects SAT in industry</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#current-developments">1.13. Current Developments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#current-developments-with-ai-current-developments-with-ai">1.13.1. Current Developments with AI {#current-developments-with-ai}</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">1.14. References</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#early-work">1.14.1. Early Work</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modern-developments">1.14.2. Modern Developments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work">1.15. Future Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributers">1.16. Contributers</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By CPSC 510
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
