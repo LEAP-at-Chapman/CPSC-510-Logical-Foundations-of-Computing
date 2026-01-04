@@ -32,8 +32,6 @@
 
 ### Foundational Complexity Theory
 
-- Cobham (1965): [The Intrinsic Computational Difficulty of Functions](https://scholar.google.com/scholar?q=Cobham+Intrinsic+Computational+Difficulty+Functions+1965)
-- Edmonds (1965): [Paths, Trees, and Flowers](https://scholar.google.com/scholar?q=Edmonds+Paths+Trees+Flowers+1965)
 - Hartmanis & Stearns (1965): [On the Computational Complexity of Algorithms](https://scholar.google.com/scholar?q=Hartmanis+Stearns+Computational+Complexity+Algorithms+1965)
 - Savitch (1970): [Relationships Between Nondeterministic and Deterministic Tape Complexities](https://scholar.google.com/scholar?q=Savitch+Relationships+Nondeterministic+Deterministic+Tape+1970)
 - Cook (1971): [The Complexity of Theorem-Proving Procedures](https://scholar.google.com/scholar?q=Cook+Complexity+Theorem+Proving+Procedures+1971)
@@ -57,6 +55,3 @@
 - Papadimitriou (1994): [Computational Complexity](https://scholar.google.com/scholar?q=Papadimitriou+Computational+Complexity+1994)
 - Baader et al. (2003): [The Description Logic Handbook](https://scholar.google.com/scholar?q=Baader+Description+Logic+Handbook+2003)
 
----
-
-Want me to add more references for specific areas (e.g., circuit complexity, query complexity, or specific DL fragments)?
