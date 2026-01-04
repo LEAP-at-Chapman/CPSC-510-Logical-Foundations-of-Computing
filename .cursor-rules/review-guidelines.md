@@ -99,6 +99,17 @@ When reviewing or editing chapters, ensure all changes comply with these style g
    - **Provide opinion** on whether deviations from the suggested TOC are justified
    - Not all chapters need all sections, but there should be a good reason for omissions
 
+5. **Software Engineering Perspective Evaluation** (REQUIRED):
+   - **For each chapter**, include an evaluation section from the perspective of a software engineer with strong programming/system design background but limited formal logic training
+   - This evaluation must assess: **"Will this chapter help a newcomer understand what logic can do for software engineering?"**
+   - The evaluation must include:
+     - **Strong Points**: What the chapter does well for this audience
+     - **Areas for Improvement**: Specific suggestions for making it more accessible/useful
+     - **Suggested Future Work**: Concrete additions that would strengthen the chapter
+     - **Overall Assessment**: A clear answer to whether the chapter successfully bridges logic and software engineering
+   - Focus on practical applicability, integration guidance, and real-world relevance
+   - See `review-2026/logs/01-sat-solving-minisat.md` for an example of this evaluation format
+
 5. **Update the summary**: After making changes, update `review-2026/summary.md`:
    - Update chapter status
    - Add entry to "Key Changes Made" section

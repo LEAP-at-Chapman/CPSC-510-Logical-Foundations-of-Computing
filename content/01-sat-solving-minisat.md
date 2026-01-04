@@ -8,10 +8,10 @@ A theory in propositional logic can be seen as a set of equations in variables t
 ## Basic Theory: SAT
 
 Informal Definition of satisfiability: 
-SAT takes a formula and finds a satifying valuation (model).
+SAT takes a formula and finds a satisfying valuation (model).
 
 Formal definition of satisfiability:
-Given a boolean formula in propositional logic, does there exist an assignment of truth values to its variables that make this formula true. If so, we say this formula is *satisfiable*. Otherwise, we say this formula is *unsatifiable*.
+Given a boolean formula in propositional logic, does there exist an assignment of truth values to its variables that make this formula true. If so, we say this formula is *satisfiable*. Otherwise, we say this formula is *unsatisfiable*.
 
 A SAT specification is written in conjunctive normal form. 
 
@@ -384,7 +384,7 @@ This makes our new equation:
 
 $$(A \vee B) \wedge (\neg A) \wedge (\neg B) \wedge (\neg D \vee \neg E \vee \neg F \vee \neg G) \wedge (\neg C)$$
 
-From here, we can unit propagate `A` and `B` and set them each equal to False. This will lead to a conflict in clause 1, and our impliation graph looks like this:
+From here, we can unit propagate `A` and `B` and set them each equal to False. This will lead to a conflict in clause 1, and our implication graph looks like this:
 ```
 (C = 0) -> (A = 0) -| -> (A ∨ B)
         -> (B = 0) -|
@@ -398,7 +398,7 @@ From this example, we can see how much quicker CDCL is than DPLL, and how that s
 
 ### Parallel Approaches {#parallel-approaches}
 
-Some SAT solvers use multiple processors at the same time to speed up problem solving. There are 2 different types of strategies tha modern parallel SAT solvers rely on.
+Some SAT solvers use multiple processors at the same time to speed up problem solving. There are 2 different types of strategies that modern parallel SAT solvers rely on.
 
 #### Portfolio
 
@@ -406,7 +406,7 @@ The portfolio parallel approach involves running many solvers in parallel on the
 
 #### Divide-and-conquer
 
-A different parallel approach involves spitting the problem into smaller sub-problems, and then running each of those on a different processor (Nair et al., 2022). This can cause some processors to finish their problems much earlier than others because different sub-problems can vary in difficulty, which is suboptimal. One very benefical advance is the Cube-and-Conquer approach, which uses two phases. The first phase is the cube part where a solver "looks ahead" and breaks the problem into smaller "cubes." Phase 2 is the conquer f=part where each cube is solved using CDCL. Because of the way the cubes are calculated, if one cube is satisfiable, then the whole problem is satisfiable. One example divide-and-conquer that uses the cube-and-conquer approach is Treengeling.
+A different parallel approach involves splitting the problem into smaller sub-problems, and then running each of those on a different processor (Nair et al., 2022). This can cause some processors to finish their problems much earlier than others because different sub-problems can vary in difficulty, which is suboptimal. One very beneficial advance is the Cube-and-Conquer approach, which uses two phases. The first phase is the cube part where a solver "looks ahead" and breaks the problem into smaller "cubes." Phase 2 is the conquer part where each cube is solved using CDCL. Because of the way the cubes are calculated, if one cube is satisfiable, then the whole problem is satisfiable. One example divide-and-conquer that uses the cube-and-conquer approach is Treengeling.
 
 ## Benchmarks and Competitions {#benchmarks-and-competitions}
 
@@ -459,7 +459,7 @@ In order to run these files on Linux (Ubuntu) I did this:
 
 This will print out the example cnf, but if you want to put it into a file you can run:
 
-`python3 sudoku.py puzzle.txt > puzzle.cnf`
+`python3 sudoku-encode.py puzzle.txt > puzzle.cnf`
 
 From there, we can use minisat to see if the puzzle is satisfiable and we can output the solution into a `.txt` file by running:
 
@@ -539,7 +539,7 @@ Hybrid workflows are becoming much more common in industry. This means that gene
 
 After the developments of CDCL algorithms were added into SAT solvers, there are still a few current developments that have increased the capabilities of SAT solvers a little more.
 
-For one, people have started to create much more efficient SAT encodings by going against what intuition says. Instinctively, people think that a small formula and fewer variables in better, however that is not always true. Sometimes it is more benefical to add some auxillary variables and increase the size of the formula. While adding these variables increases the theoretical search space, the practical search may become easier. This is because SAT solvers do not search everything, and adding some extra variables will allow the solvers to significantly reduce the size of the practical search space by using CDCL.
+For one, people have started to create much more efficient SAT encodings by going against what intuition says. Instinctively, people think that a small formula and fewer variables is better, however that is not always true. Sometimes it is more beneficial to add some auxiliary variables and increase the size of the formula. While adding these variables increases the theoretical search space, the practical search may become easier. This is because SAT solvers do not search everything, and adding some extra variables will allow the solvers to significantly reduce the size of the practical search space by using CDCL.
 
 Another more current development is the use of [parallel solving](#parallel-approaches), which was mentioned more in depth above.
 
@@ -583,7 +583,7 @@ Divide-and-Conquer SAT Solvers](https://theory.stanford.edu/~barrett/pubs/NCW+22
 
 In the future, I believe it would be more beneficial for someone to focus more on the real-life applications of SAT solvers. I spent a lot of time on the algorithms and examples of how they are used, which didn't leave me much time to focus on how the SAT solvers apply to real-life.
 
-## Contributers
+## Contributors
 
 The author of this chapter is Jake Triester. It was peer reviewed by Jack De Bruyn and Alexander Kurz.
 

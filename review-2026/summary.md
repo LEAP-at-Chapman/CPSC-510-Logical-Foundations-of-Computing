@@ -14,7 +14,7 @@ This document tracks the overall progress of the review process.
 | 01 - Short Intro to Logic | Completed | 2026-01-04 | Fixed typos (foundtaional→foundational, Completenss→Completeness) |
 | 02 - Propositional Logic | Completed | 2026-01-04 | Fixed typo (there→their) |
 | 03 - Modal Logic | Not Started | - | |
-| 04 - SAT Solving with MiniSat | Not Started | - | |
+| 04 - SAT Solving with MiniSat | In Progress | 2026-01-04 | Initial review with software engineering perspective evaluation |
 | 05 - Logic Programming with Prolog | Not Started | - | |
 | 06 - Constraints with MiniZinc | Not Started | - | |
 | 07 - SMT Solving and Z3 | Not Started | - | |
@@ -42,11 +42,13 @@ This document tracks the overall progress of the review process.
 - Fixed typos in logic overview chapter (01-intro-logic.md)
 - Fixed typo in propositional logic chapter (02-intro-propositional-logic.md)
 - Renamed all chapter files to match TOC structure (00-intro-book.md, 01-intro-logic.md, etc.)
+- Added software engineering perspective evaluation requirement to review guidelines
+- Started review of SAT Solving chapter with comprehensive evaluation
 
 ## Review Statistics
 
 - Total chapters: 14
 - Completed: 4
-- In Progress: 0
-- Not Started: 10
+- In Progress: 1
+- Not Started: 9
 
