@@ -1,0 +1,992 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>4. SMT Solving and Z3 &#8212; Logical Foundations of Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/5-smt-solving';</script>
+    <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/5-smt-solving.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Temporal Logic with Spin" href="7-temporal-logic.html" />
+    <link rel="prev" title="3. Constraints with MiniZinc" href="4-constraint-solving.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="0-title.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Logical Foundations of Computing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0-intro.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Short Intro to Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraints with MiniZinc</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">7. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Type Theory with Lean</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-complexity-classes.html">Complexity Classes Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-contribute.html">How to Contribute</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fcontent/5-smt-solving.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/5-smt-solving.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>SMT Solving and Z3</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">4.1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">4.2. Basic Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decidable-first-order-theories">4.2.1. Decidable First-Order Theories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-combination-the-nelson-oppen-method">4.2.2. Theory Combination: The Nelson-Oppen Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z3">4.3. Z3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z3-playground">4.3.1. Z3 Playground</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-bounds">4.3.1.1. Array bounds</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#guessing-a-number">4.3.1.2. Guessing a number</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-solvers">4.3.2. More Solvers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z3-in-python">4.3.3. Z3 in Python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-the-industry">4.4. Applications in the Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai-and-formal-methods-what-s-changing">4.5. Generative AI and Formal Methods: What’s Changing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-code-diet-planner">4.6. Case Study Code: Diet Planner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">4.7. References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="smt-solving-and-z3">
+<h1><span class="section-number">4. </span>SMT Solving and Z3<a class="headerlink" href="#smt-solving-and-z3" title="Permalink to this heading">#</a></h1>
+<section id="idea">
+<h2><span class="section-number">4.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
+<p>SMT, satisfiability modulo theories, extends propositional satisfiability (SAT) by adding interpreted functions and predicates from various decidable first-order theories. For example, instead of just Boolean variables, we can have:</p>
+<ul class="simple">
+<li><p>Linear arithmetic: variables like <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code> with constraints <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span> <span class="pre">&gt;</span> <span class="pre">10</span></code>, <code class="docutils literal notranslate"><span class="pre">2x</span> <span class="pre">-</span> <span class="pre">3y</span> <span class="pre">≤</span> <span class="pre">5</span></code></p></li>
+<li><p>Bit-vectors: variables like <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> with bitwise operations <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&amp;</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">0xFF</span></code>, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;&lt;</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">b</span></code></p></li>
+<li><p>Arrays: array variables <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code> with operations <code class="docutils literal notranslate"><span class="pre">A[i]</span> <span class="pre">=</span> <span class="pre">B[j]</span></code>, <code class="docutils literal notranslate"><span class="pre">store(A,</span> <span class="pre">i,</span> <span class="pre">v)</span></code></p></li>
+<li><p>Uninterpreted functions: function symbols <code class="docutils literal notranslate"><span class="pre">f</span></code>, <code class="docutils literal notranslate"><span class="pre">g</span></code> with constraints <code class="docutils literal notranslate"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">g(y)</span></code>, <code class="docutils literal notranslate"><span class="pre">f(f(x))</span> <span class="pre">=</span> <span class="pre">x</span></code></p></li>
+</ul>
+<p><strong>Remark:</strong> This looks very similar to constraint programming. So what is the difference? MiniZinc can call Z3 as a backend and SMT-solvers are used in CP competitions. The answer to the question may well be how different communities in computer science research evolved historically. We should add a section that explores this history.</p>
+</section>
+<section id="basic-theory">
+<h2><span class="section-number">4.2. </span>Basic Theory<a class="headerlink" href="#basic-theory" title="Permalink to this heading">#</a></h2>
+<p>First-order logic is not decidable, but it does contain some decidable theories. SMT leverages special solvers for decidable first-order theories. Moreover, under certain conditions different decidable theories can be combined into larger ones.</p>
+<section id="decidable-first-order-theories">
+<h3><span class="section-number">4.2.1. </span>Decidable First-Order Theories<a class="headerlink" href="#decidable-first-order-theories" title="Permalink to this heading">#</a></h3>
+<p>Typically, decidability requires that the formulas have to by quantifier-free (QF) but there are exceptions, most famously the theory of real closed fields.</p>
+<p><strong>Real Closed Fields</strong> (RCF) have a decidable theory due to Tarski’s quantifier elimination (1930s) which shows that any first-order formula over reals can be reduced to a quantifier-free formula:</p>
+<ul class="simple">
+<li><p><em>Variables</em>: Real numbers</p></li>
+<li><p><em>Operations</em>: <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">≤</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">≥</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code>, quantifiers <code class="docutils literal notranslate"><span class="pre">∀</span></code>, <code class="docutils literal notranslate"><span class="pre">∃</span></code></p></li>
+<li><p><em>Example</em>: <code class="docutils literal notranslate"><span class="pre">∀x∀y.</span> <span class="pre">x²</span> <span class="pre">+</span> <span class="pre">y²</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">→</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">∨</span> <span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">0</span></code> (every point on unit circle is not zero)</p></li>
+</ul>
+<p><strong>Linear Arithmetic</strong> (QFLRA/QFLIA) can be solved using simplex algorithm or Fourier-Motzkin elimination:</p>
+<ul class="simple">
+<li><p><em>Variables</em>: Rationals (QFLRA) or Integers (QFLIA)</p></li>
+<li><p><em>Operations</em>: <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">≤</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">≥</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code></p></li>
+<li><p><em>Example</em>: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">2y</span> <span class="pre">≤</span> <span class="pre">10</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></p></li>
+</ul>
+<p><strong>Equality with Uninterpreted Functions</strong> (EUF) can be solved with the congruence closure algorithm (1970s):</p>
+<ul class="simple">
+<li><p><em>Variables</em>: Any domain, with function symbols <code class="docutils literal notranslate"><span class="pre">f</span></code>, <code class="docutils literal notranslate"><span class="pre">g</span></code>, etc.</p></li>
+<li><p><em>Operations</em>: Function application, equality</p></li>
+<li><p><em>Example</em>: <code class="docutils literal notranslate"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">g(y)</span> <span class="pre">∧</span> <span class="pre">f(f(x))</span> <span class="pre">=</span> <span class="pre">x</span></code></p></li>
+</ul>
+<p><strong>Arrays</strong> (QF_A) can be reduced to EUF + axioms</p>
+<ul class="simple">
+<li><p><strong>Variables</strong>: Arrays <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, indices <code class="docutils literal notranslate"><span class="pre">i</span></code>, <code class="docutils literal notranslate"><span class="pre">j</span></code>, values <code class="docutils literal notranslate"><span class="pre">v</span></code></p></li>
+<li><p><strong>Operations</strong>: <code class="docutils literal notranslate"><span class="pre">select(A,</span> <span class="pre">i)</span></code>, <code class="docutils literal notranslate"><span class="pre">store(A,</span> <span class="pre">i,</span> <span class="pre">v)</span></code></p></li>
+<li><p><strong>Example</strong>: <code class="docutils literal notranslate"><span class="pre">select(store(A,</span> <span class="pre">i,</span> <span class="pre">v),</span> <span class="pre">j)</span> <span class="pre">=</span> <span class="pre">select(A,</span> <span class="pre">j)</span> <span class="pre">∧</span> <span class="pre">i</span> <span class="pre">≠</span> <span class="pre">j</span></code></p></li>
+</ul>
+<p><strong>Bit-vectors</strong> (QF_BV) can be reduced to SAT or solved with specialized algorithms:</p>
+<ul class="simple">
+<li><p><em>Variables</em>: Fixed-width integers (e.g., 32-bit)</p></li>
+<li><p><em>Operations</em>: Bitwise (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">|</span></code>, <code class="docutils literal notranslate"><span class="pre">^</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code>), arithmetic (<code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>), shifts (<code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>)</p></li>
+<li><p><em>Example</em>: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&amp;</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">∧</span> <span class="pre">x</span> <span class="pre">|</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">0xFF</span></code></p></li>
+</ul>
+<p><strong>Difference Logic</strong> (QF_IDL/QF_RDL) can be solved using shortest path algorithms</p>
+<ul class="simple">
+<li><p><em>Variables</em>: Integers or Reals</p></li>
+<li><p><em>Operations</em>: Differences <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span> <span class="pre">≤</span> <span class="pre">c</span></code>, equality <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">y</span></code></p></li>
+<li><p><em>Example</em>: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span> <span class="pre">≤</span> <span class="pre">5</span> <span class="pre">∧</span> <span class="pre">y</span> <span class="pre">-</span> <span class="pre">z</span> <span class="pre">≤</span> <span class="pre">3</span> <span class="pre">∧</span> <span class="pre">z</span> <span class="pre">-</span> <span class="pre">x</span> <span class="pre">≤</span> <span class="pre">-10</span></code></p></li>
+</ul>
+</section>
+<section id="theory-combination-the-nelson-oppen-method">
+<h3><span class="section-number">4.2.2. </span>Theory Combination: The Nelson-Oppen Method<a class="headerlink" href="#theory-combination-the-nelson-oppen-method" title="Permalink to this heading">#</a></h3>
+<p>See Martin’s <a class="reference external" href="https://www.cs.cmu.edu/~15414/s24/lectures/18-smt-solving.pdf">Lecture Notes on SMT Solving: Nelson-Oppen</a>.</p>
+</section>
+</section>
+<section id="z3">
+<h2><span class="section-number">4.3. </span>Z3<a class="headerlink" href="#z3" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://microsoft.github.io/z3guide/docs/logic/intro/">Z3 Tutorial</a></p>
+<p>There are different ways to use Z3. We start with the playground and then learn how to call Z3 from Python.</p>
+<section id="z3-playground">
+<h3><span class="section-number">4.3.1. </span>Z3 Playground<a class="headerlink" href="#z3-playground" title="Permalink to this heading">#</a></h3>
+<section id="array-bounds">
+<h4><span class="section-number">4.3.1.1. </span>Array bounds<a class="headerlink" href="#array-bounds" title="Permalink to this heading">#</a></h4>
+<p>Read the following program written in <a class="reference external" href="https://smt-lib.org/language.shtml">SMT-LIB</a>. For background, I recommend to read Chapter 2 as well as pages 22, 55-56, 76 of the <a class="reference external" href="https://smt-lib.org/papers/smt-lib-reference-v2.7-r2025-07-07.pdf">SMT-LIB Standard</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">const</span> <span class="n">i</span> <span class="n">Int</span><span class="p">)</span>
+<span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">const</span> <span class="n">array_size</span> <span class="n">Int</span><span class="p">)</span>
+
+<span class="p">;</span> <span class="n">Set</span> <span class="n">values</span>
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="o">=</span> <span class="n">array_size</span> <span class="mi">10</span><span class="p">))</span>
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="o">=</span> <span class="n">i</span> <span class="mi">15</span><span class="p">))</span>
+
+<span class="p">;</span> <span class="n">Check</span> <span class="k">if</span> <span class="n">bounds</span> <span class="n">can</span> <span class="n">be</span> <span class="n">violated</span>
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="ow">and</span> <span class="p">(</span><span class="o">&lt;=</span> <span class="mi">0</span> <span class="n">i</span><span class="p">)</span> <span class="p">(</span><span class="o">&lt;</span> <span class="n">i</span> <span class="n">array_size</span><span class="p">))))</span>
+
+<span class="p">(</span><span class="n">check</span><span class="o">-</span><span class="n">sat</span><span class="p">)</span>
+<span class="p">(</span><span class="n">get</span><span class="o">-</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Paste the code into the <a class="reference external" href="https://microsoft.github.io/z3guide/docs/logic/intro/">Z3 Playground</a>. How do you interpret the result?</p>
+<p>Answer the question by keep changing the code and predicting the results you expect.</p>
+</section>
+<section id="guessing-a-number">
+<h4><span class="section-number">4.3.1.2. </span>Guessing a number<a class="headerlink" href="#guessing-a-number" title="Permalink to this heading">#</a></h4>
+<p>Here’s a more interesting example where we let Z3 find values for variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">const</span> <span class="n">x</span> <span class="n">Int</span><span class="p">)</span>
+<span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">const</span> <span class="n">y</span> <span class="n">Int</span><span class="p">)</span>
+
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="o">=</span> <span class="p">(</span><span class="o">+</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="mi">15</span><span class="p">))</span>
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="o">=</span> <span class="p">(</span><span class="o">-</span> <span class="n">x</span> <span class="n">y</span><span class="p">)</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="p">(</span><span class="n">check</span><span class="o">-</span><span class="n">sat</span><span class="p">)</span>
+<span class="p">(</span><span class="n">get</span><span class="o">-</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Exercise:</strong> Create your own “guessing the number” puzzle.</p>
+</section>
+</section>
+<section id="more-solvers">
+<h3><span class="section-number">4.3.2. </span>More Solvers<a class="headerlink" href="#more-solvers" title="Permalink to this heading">#</a></h3>
+<p><strong>SMT-LIB</strong> is a standardized language used by many SMT solvers, not just Z3. Try the programs above with:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cvc4.github.io/app/">CVC4/CVC5</a>: Carnegie Mellon University</p></li>
+</ul>
+<p>Other SMT-solvers that accept SMT-LIB are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://yices.csl.sri.com/">Yices</a>: SRI International</p></li>
+<li><p><a class="reference external" href="http://mathsat.fbk.eu/">MathSAT</a>: University of Trento</p></li>
+<li><p><a class="reference external" href="https://boolector.github.io/">Boolector</a>: Johannes Kepler University</p></li>
+<li><p><a class="reference external" href="https://verify.inf.usi.ch/opensmt/">OpenSMT</a>: University of Lugano</p></li>
+</ul>
+</section>
+<section id="z3-in-python">
+<h3><span class="section-number">4.3.3. </span>Z3 in Python<a class="headerlink" href="#z3-in-python" title="Permalink to this heading">#</a></h3>
+<p>Interactive Z3 examples are available below via Colab or Binder or download a copy <a class="reference external" href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/notebooks/z3/z3-examples.ipynb">here</a>.</p>
+<p><strong>Try it interactively:</strong></p>
+<p><a class="reference external" href="https://colab.research.google.com/github/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/notebooks/z3/z3-examples.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/main?filepath=notebooks/z3/z3-examples.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<p>Practical Examples:</p>
+<p>i) Prove that array access is always within bounds in a loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">fun</span> <span class="n">i</span> <span class="p">()</span> <span class="n">Int</span><span class="p">)</span>
+<span class="p">(</span><span class="n">declare</span><span class="o">-</span><span class="n">fun</span> <span class="n">n</span> <span class="p">()</span> <span class="n">Int</span><span class="p">)</span>
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="ow">and</span> <span class="p">(</span><span class="o">&gt;=</span> <span class="n">i</span> <span class="mi">0</span><span class="p">)</span> <span class="p">(</span><span class="o">&lt;</span> <span class="n">i</span> <span class="n">n</span><span class="p">)))</span>   <span class="p">;</span> <span class="n">loop</span> <span class="n">invariant</span>
+<span class="p">(</span><span class="k">assert</span> <span class="p">(</span><span class="ow">not</span> <span class="p">(</span><span class="o">&lt;</span> <span class="n">i</span> <span class="n">n</span><span class="p">)))</span>            <span class="p">;</span> <span class="k">try</span> <span class="n">to</span> <span class="n">violate</span> <span class="n">it</span>
+<span class="p">(</span><span class="n">check</span><span class="o">-</span><span class="n">sat</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Explanation: Z3 can prove safety properties like “no out-of-bounds access occurs”. This connects to static analysis and model checking.</p>
+</section>
+</section>
+<section id="applications-in-the-industry">
+<h2><span class="section-number">4.4. </span>Applications in the Industry<a class="headerlink" href="#applications-in-the-industry" title="Permalink to this heading">#</a></h2>
+<p><strong>Cloud security &amp; compliance (billions of SMT checks at Amazon Web Services)</strong></p>
+<p>Zelkova, AWS’s policy-analysis engine, encodes IAM/S3 policies into SMT and answers safety queries at cloud scale (e.g., “Can anything make this bucket public?”). Peer-reviewed accounts report   millions to billions of SMT queries daily, and describe how abstractions and portfolio solving (including Z3) make the service production-grade and latency-predictable.</p>
+<p><strong>Software security at Microsoft (whitebox fuzzing)</strong></p>
+<p>SAGE pioneered whitebox fuzzing: path-constraint solving with SMT to generate inputs that drive binaries down new paths. Deployed across Windows and other products, SAGE and its successors<br />
+(SAGAN/JobCenter) found numerous high-impact bugs and established SMT-backed fuzzing as an industrial norm.</p>
+<p><strong>Compiler correctness (translation validation for LLVM)</strong></p>
+<p>Alive2 checks that optimizations preserve semantics by asking SMT queries over the pre/post IR. Recent work blends LLMs with Alive2 to flag transformations likely to be unsound, then uses<br />
+fuzzing to seek counterexamples—an early example of neuro-symbolic validation in a mature compiler toolchain.</p>
+<p><strong>Smart-contract analysis (blockchains)</strong></p>
+<p>Tools like Mythril symbolically execute EVM bytecode and discharge path constraints to Z3 to expose reentrancy, arithmetic, and permission bugs before deployment—now routine in audits and CI
+for DeFi systems.</p>
+<p><strong>Network correctness (pre-deployment verification)</strong></p>
+<p>Industrial network verifiers translate control-plane configs (BGP/OSPF/etc.) into logical models and use SMT to validate reachability, isolation, and failure scenarios before rollout—e.g.,
+Minesweeper/Batfish (research-to-product trajectory) and later scalable systems.</p>
+<p><strong>Safety-critical AI (neural-network verification)</strong></p>
+<p>The Reluplex line of work and the Marabou framework brought SMT into DNN certification (ACAS Xu case study, bound-tightening, piecewise-linear reasoning). This has shaped standards
+conversations for autonomy and perception stacks.</p>
+</section>
+<section id="generative-ai-and-formal-methods-what-s-changing">
+<h2><span class="section-number">4.5. </span>Generative AI and Formal Methods: What’s Changing<a class="headerlink" href="#generative-ai-and-formal-methods-what-s-changing" title="Permalink to this heading">#</a></h2>
+<p><strong>1. LLMs assisting proof and spec</strong>
+LeanDojo/ReProver shows that retrieval-augmented LLMs can select premises and generate Lean proofs; the suite provides datasets, tooling, and reproducible baselines, catalyzing rapid
+progress in ML-for-theorem-proving.
+A 2025 survey reviews how LLMs help author formal specifications from natural-language requirements (Dafny/C/Java), with promising accuracy on assertion synthesis and “assertion completion.”</p>
+<p><strong>2. Neuro-symbolic invariant synthesis for verification</strong>
+Fresh results show LLMs can propose loop invariants that an SMT-based checker validates/refines (e.g., ASE’24 neuro-symbolic bounded model checking; 2025 benchmark studies). The emerging
+recipe: LLM proposes → SMT/solver checks → counterexample-guided repair.</p>
+<p><strong>3. Hybrid validation pipelines in compilers and systems</strong>
+For LLVM, LLMs triage “hard” optimizations while Alive2 (SMT) proves the rest, using fuzzing to chase suspected unsound cases—concrete neuro-symbolic workflows shipping into compiler
+validation. Expect similar “LLM-first, SMT-confirm” loops in optimizers, static analyzers, and decompilers.</p>
+<p><strong>4. Formal analysis of AI systems themselves</strong>
+Neural-network verification continues to integrate SMT with domain-specific relaxations and bound-propagation; Marabou 2.0 documents architecture and roles for solver-in-the-loop bound
+tightening. Coupled with LLM systems, this points to spec-driven safety cases for perception and policy components.</p>
+<p><strong>5. Research directions to watch</strong>
+- Auto-formalization: LLMs converting NL requirements/tests into templates that SMT tools check (assertion mining and refinement).
+- Proof-search copilots: Retrieval + tool APIs (Lean/Isabelle/Coq) to keep LLM steps sound via solver or kernel checks.
+- Verifier-in-the-loop tooling: LLM planning; SMT establishes truth; counterexamples feed self-repair—already prototyped in compilers and invariant synthesis.</p>
+</section>
+<section id="case-study-code-diet-planner">
+<h2><span class="section-number">4.6. </span>Case Study Code: Diet Planner<a class="headerlink" href="#case-study-code-diet-planner" title="Permalink to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># diet_planner.py
+# Z3 calorie &amp; macro planner 
+# Hard constraints: nonnegative servings, availability bounds
+# Soft/Optimization: hit calorie + macro targets (L1 deviation)
+# Units are 1/2 servings 
+
+import argparse
+from typing import Dict, Tuple, Set
+from z3 import *
+
+# CONFIG
+# Per serving: (Protein g, Carbs g, Fat g, Cost, MaxServings, Vegetarian?)
+FOODS: Dict[str, Tuple[int, int, int, float, int, bool]] = {
+    &quot;Bread&quot;:     (7,  25,  1, 0.4, 6,  True),
+    &quot;Rice&quot;:      (4,  45,  0, 0.3, 6,  True),
+    &quot;Pasta&quot;:     (7,  42,  1, 0.4, 6,  True),
+    &quot;Oats&quot;:      (6,  27,  3, 0.5, 6,  True),
+    &quot;Chicken&quot;:   (31, 0,   3, 1.8, 6,  False),
+    &quot;Beef&quot;:      (26, 0,  15, 2.0, 4,  False),
+    &quot;Tofu&quot;:      (18, 5,   6, 0.8, 6,  True),
+    &quot;Eggs&quot;:      (12, 1,  10, 0.6, 6,  True),
+    &quot;Beans&quot;:     (9,  27,  1, 0.4, 6,  True),
+    &quot;GreekYog&quot;:  (17, 6,   0, 0.9, 6,  True),   #Greek Yogurt
+    &quot;Milk&quot;:      (8,  12,  5, 0.5, 6,  True),
+    &quot;PB&quot;:        (8,  6,  16, 0.5, 4,  True),   # Peanut Butter
+    &quot;OliveOil&quot;:  (0,  0,  14, 0.7, 6,  True),
+    &quot;Avocado&quot;:   (3,  9,  15, 1.0, 4,  True),
+}
+MEATY = [name for name, (*_, veg) in FOODS.items() if not veg]
+
+def parse_args() -&gt; argparse.Namespace:
+    ap = argparse.ArgumentParser(description=&quot;Z3 Diet Planner / Calorie Counter&quot;)
+    ap.add_argument(&quot;--calories&quot;, type=int, default=2200, help=&quot;Target kcal&quot;)
+    ap.add_argument(&quot;--protein&quot;,  type=int, default=140,  help=&quot;Target protein grams&quot;)
+    ap.add_argument(&quot;--carbs&quot;,    type=int, default=230,  help=&quot;Target carbohydrate grams&quot;)
+    ap.add_argument(&quot;--fat&quot;,      type=int, default=70,   help=&quot;Target fat grams&quot;)
+    ap.add_argument(&quot;--cal-tol&quot;,  type=int, default=75,   help=&quot;±kcal window (soft unless --hard-calories)&quot;)
+    ap.add_argument(&quot;--unit&quot;,     type=float, default=0.5, help=&quot;serving granularity (e.g., 0.5 = half-serving)&quot;)
+    ap.add_argument(&quot;--vegetarian&quot;, action=&quot;store_true&quot;, help=&quot;disallow meat items&quot;)
+    ap.add_argument(&quot;--exclude&quot;,  type=str, default=&quot;&quot;, help=&quot;comma-separated foods to exclude&quot;)
+    ap.add_argument(&quot;--include-only&quot;, type=str, default=&quot;&quot;, help=&quot;comma-separated list; only these allowed&quot;)
+    ap.add_argument(&quot;--pareto&quot;, action=&quot;store_true&quot;, help=&quot;use Pareto priority among objectives&quot;)
+    ap.add_argument(&quot;--hard-calories&quot;, action=&quot;store_true&quot;, help=&quot;enforce calorie window as hard constraint&quot;)
+    return ap.parse_args()
+
+def select_allowed_foods(args: argparse.Namespace) -&gt; Set[str]:
+    allowed = set(FOODS.keys())
+    if args.vegetarian:
+        allowed -= set(MEATY)
+    if args.exclude:
+        allowed -= {f.strip() for f in args.exclude.split(&quot;,&quot;) if f.strip()}
+    if args.include_only:
+        allowed = {f.strip() for f in args.include_only.split(&quot;,&quot;) if f.strip()}
+    if not allowed:
+        raise SystemExit(&quot;No foods remain after filtering; relax filters or lists.&quot;)
+    return allowed
+
+def R(x: float) -&gt; ArithRef:
+    &quot;&quot;&quot;Safe RealVal from float/string for exact Z3 arithmetic.&quot;&quot;&quot;
+    return RealVal(str(x))
+
+
+# Z3 MODEL
+
+
+class ModelParts:
+    &quot;&quot;&quot;Container to pass around Z3 pieces.&quot;&quot;&quot;
+    def __init__(self):
+        self.opt: Optimize = None
+        self.x: Dict[str, IntNumRef] = {}
+        self.y: Dict[str, IntNumRef] = {}
+        self.totP: ArithRef = None
+        self.totC: ArithRef = None
+        self.totF: ArithRef = None
+        self.cal: ArithRef  = None
+        self.total_cost: ArithRef = None
+        self.in_window: BoolRef = None
+
+def build_model(args: argparse.Namespace, allowed: Set[str]) -&gt; ModelParts:
+    mp = ModelParts()
+    mp.opt = Optimize()
+    if args.pareto:
+        mp.opt.set(priority=&#39;pareto&#39;)
+
+# Decision variables: integer counts in units of `unit` servings
+unit = args.unit
+mp.x = {f: Int(f&quot;x_{f}&quot;) for f in allowed}      # quantity in units
+mp.y = {f: Int(f&quot;use_{f}&quot;) for f in allowed}    # 0/1 usage indicator
+BIG_M = 1000
+
+# Hard constraints: bounds and linking x -&gt; y
+for f in allowed:
+    P, C, F, cost, max_serv, veg = FOODS[f]
+    max_units = int(round(max_serv / unit))
+    mp.opt.add(mp.x[f] &gt;= 0, mp.x[f] &lt;= max_units)
+    mp.opt.add(mp.y[f] &gt;= 0, mp.y[f] &lt;= 1)
+    mp.opt.add(mp.x[f] &lt;= mp.y[f] * BIG_M)
+
+# Totals and cost
+mp.totP = Sum([mp.x[f] * R(FOODS[f][0] * unit) for f in allowed])
+mp.totC = Sum([mp.x[f] * R(FOODS[f][1] * unit) for f in allowed])
+mp.totF = Sum([mp.x[f] * R(FOODS[f][2] * unit) for f in allowed])
+mp.total_cost = Sum([mp.x[f] * R(FOODS[f][3] * unit) for f in allowed])
+
+# Calories from macros (exact by definition)
+mp.cal = 4*mp.totP + 4*mp.totC + 9*mp.totF
+
+# Calorie window
+mp.in_window = And(mp.cal &gt;= R(args.calories - args.cal_tol),
+                   mp.cal &lt;= R(args.calories + args.cal_tol))
+return mp
+
+
+# DEVIATIONS (L1 absolute deviations for targets)
+
+
+def add_abs_deviation(opt: Optimize, expr: ArithRef, target: float, tag: str) -&gt; ArithRef:
+    &quot;&quot;&quot;Encodes |expr - target| via pos/neg slack: expr - target = pos - neg, pos,neg &gt;= 0&quot;&quot;&quot;
+    pos = Real(f&quot;{tag}_pos&quot;)
+    neg = Real(f&quot;{tag}_neg&quot;)
+    opt.add(pos &gt;= 0, neg &gt;= 0, expr - R(target) == pos - neg)
+    return pos + neg
+
+# 4) OBJECTIVES
+
+class SolveResult:
+    def __init__(self, model: ModelRef, mp: ModelParts, allowed: Set[str], unit: float, args: argparse.Namespace):
+        self.m = model
+        self.mp = mp
+        self.allowed = allowed
+        self.unit = unit
+        self.args = args
+
+def add_objectives_and_solve(args: argparse.Namespace, mp: ModelParts, allowed: Set[str]) -&gt; SolveResult:
+    # Primary: minimize macro &amp; calorie deviations
+    W_CAL, W_PRO, W_CAR, W_FAT = 1.0, 2.0, 1.0, 1.0
+    dev_cal = add_abs_deviation(mp.opt, mp.cal,  args.calories, &quot;cal&quot;)
+    dev_pro = add_abs_deviation(mp.opt, mp.totP, args.protein,  &quot;pro&quot;)
+    dev_car = add_abs_deviation(mp.opt, mp.totC, args.carbs,    &quot;car&quot;)
+    dev_fat = add_abs_deviation(mp.opt, mp.totF, args.fat,      &quot;fat&quot;)
+    primary_loss = W_CAL*dev_cal + W_PRO*dev_pro + W_CAR*dev_car + W_FAT*dev_fat
+    h1 = mp.opt.minimize(primary_loss)
+
+# Secondary: maximize variety (#foods used)
+h2 = mp.opt.maximize(Sum([mp.y[f] for f in allowed]))
+
+# Tertiary: minimize cost
+h3 = mp.opt.minimize(mp.total_cost)
+
+# Calorie window: soft or hard
+if args.hard_calories:
+    mp.opt.add(mp.in_window)  # hard
+else:
+    mp.opt.add_soft(mp.in_window, weight=5, id_=&quot;calorie_window&quot;)  # soft
+
+# Solve
+res = mp.opt.check()
+if res != sat:
+    raise SystemExit(f&quot;Model returned {res}. Try relaxing bounds, filters, or tolerance.&quot;)
+return SolveResult(mp.opt.model(), mp, allowed, args.unit, args)
+
+
+# REPORTING
+
+def as_float(m: ModelRef, expr: ArithRef) -&gt; float:
+    s = m.eval(expr, model_completion=True).as_decimal(10)
+    return float(s if &quot;?&quot; not in s else s[:s.index(&quot;?&quot;)])
+
+def report(sr: SolveResult) -&gt; None:
+    m, mp, allowed, unit, args = sr.m, sr.mp, sr.allowed, sr.unit, sr.args
+
+tot_p = as_float(m, mp.totP)
+tot_c = as_float(m, mp.totC)
+tot_f = as_float(m, mp.totF)
+tot_kcal = as_float(m, mp.cal)
+cost_val = as_float(m, mp.total_cost)
+
+print(&quot;\n=== Z3 Diet Plan (units = {:.2f} serving) ===&quot;.format(unit))
+print(&quot;Targets: {} kcal | P {} g, C {} g, F {} g (cal tol ±{})&quot;.format(
+    args.calories, args.protein, args.carbs, args.fat, args.cal_tol
+))
+print(&quot;Dietary style: {}&quot;.format(&quot;Vegetarian&quot; if args.vegetarian else &quot;Any&quot;))
+if args.include_only:
+    print(&quot;Include-only: {}&quot;.format(&quot;, &quot;.join(sorted(allowed))))
+elif args.exclude:
+    print(&quot;Excluded: {}&quot;.format(args.exclude))
+
+print(&quot;\nServings:&quot;)
+any_food = False
+for f in sorted(allowed):
+    q = m.eval(mp.x[f]).as_long()
+    if q &gt; 0:
+        any_food = True
+        servings = q * unit
+        P, C, F, cost, *_ = FOODS[f]
+        print(f&quot;  {f:&lt;10} {servings:&gt;4.1f}  (per serving: P{P} C{C} F{F}, cost {cost:.2f})&quot;)
+if not any_food:
+    print(&quot;  (no food selected)&quot;)
+
+print(&quot;\nTotals:&quot;)
+print(f&quot;  Calories : {tot_kcal:.0f} kcal (from macros: 4P + 4C + 9F)&quot;)
+print(f&quot;  Protein  : {tot_p:.0f} g&quot;)
+print(f&quot;  Carbs    : {tot_c:.0f} g&quot;)
+print(f&quot;  Fat      : {tot_f:.0f} g&quot;)
+print(f&quot;  Cost     : {cost_val:.2f}&quot;)
+
+print(&quot;\nDeviations (absolute):&quot;)
+print(f&quot;  |Cal-Target| ~ {abs(tot_kcal - args.calories):.0f}&quot;)
+print(f&quot;  |Pro-Target| ~ {abs(tot_p   - args.protein):.0f}&quot;)
+print(f&quot;  |Car-Target| ~ {abs(tot_c   - args.carbs):.0f}&quot;)
+print(f&quot;  |Fat-Target| ~ {abs(tot_f   - args.fat):.0f}&quot;)
+
+# Main
+
+def main():
+    args = parse_args()
+    allowed = select_allowed_foods(args)
+    mp = build_model(args, allowed)
+    sr = add_objectives_and_solve(args, mp, allowed)
+    report(sr)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</pre></div>
+</div>
+</section>
+<section id="references">
+<h2><span class="section-number">4.7. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sat-group.github.io/ruben/">Reuben Martins</a> (part of a course on <a class="reference external" href="https://www.cs.cmu.edu/~15414/s22/s21/lectures/">Bug Catching: Bug Catching: Automated Program Verification</a> )</p>
+<ul>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~15414/s22/s21/lectures/16-smt.pdf">Lecture Notes on SMT Solving</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~15414/s21/lectures/17-smt-theories.pdf">Lecture Notes on SMT Theories</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~15414/s21/lectures/18-smt-encodings.pdf">Lecture Notes on SMT Encodings</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~15414/s24/lectures/19-smt-encodings.pdf">Lecture Notes on DPLL(T) &amp; SMT Encodings</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~15414/s24/lectures/18-smt-solving.pdf">Lecture Notes on SMT Solving: Nelson-Oppen</a></p></li>
+</ul>
+</li>
+<li><p>Howe, J. M., &amp; King, A. (2012). <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=A+Pearl+on+SAT+and+SMT+Solving+in+Prolog&amp;btnG=">A pearl on SAT and SMT solving in Prolog</a>. Theoretical Computer Science, 435, 43-55. <a class="reference external" href="https://www.staff.city.ac.uk/~jacob/solver/tcs.pdf">pdf</a> - - - I only read the intro and do not claim that I understand that paper. It is of interest to because it combines ideas from SAT, Prolog and SMT.</p></li>
+<li><p>Backes, Bolignano, Cook, et al. (2018) <a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/8602994">Semantic-based Automated Reasoning for AWS Access Policies using SMT</a>
+, FMCAD.</p></li>
+<li><p>Rungta, N. <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-031-13185-1_1">A Billion SMT Queries a Day</a> Amazon Science (invited), 2022.</p></li>
+<li><p>Godefroid, P., Levin, M., Molnar, D. <a class="reference external" href="https://queue.acm.org/detail.cfm?id=2094081&amp;ref=fullrss">SAGE: Whitebox Fuzzing for Security Testing</a> CACM 2012.</p></li>
+<li><p>Bounimova, E., Godefroid, P., Molnar, D. <a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/6606558">Billions and Billions of Constraints: Whitebox Fuzz Testing at Microsoft</a> ICSE 2011/Tech Report.</p></li>
+<li><p>Wang, Y., Xie, F. <a class="reference external" href="https://www.worldscientific.com/doi/abs/10.1142/S0218194024500475">Enhancing Translation Validation of Compiler Transformations with Large Language Models</a> arXiv:2401.16797 (2024).</p></li>
+<li><p>Cadar, C., Dunbar, D., Engler, D. <a class="reference external" href="https://www.usenix.org/legacy/event/osdi08/tech/full_papers/cadar/cadar.pdf">KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs</a> OSDI 2008.</p></li>
+<li><p>Beckett, R., et al. <a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3098822.3098834">A General Approach to Network Configuration Verification (Minesweeper)</a> SIGCOMM 2017.</p></li>
+<li><p>Brown, M., et al. <a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/3603269.3604866">Lessons from the Evolution of the Batfish Configuration Analysis Tool</a> SIGCOMM 2023 (Experience).</p></li>
+<li><p>Prabhu, S., et al. <a class="reference external" href="https://www.usenix.org/conference/nsdi20/presentation/prabhu">Plankton: Scalable Network Configuration Verification</a> NSDI 2020.</p></li>
+<li><p>Katz, G., Barrett, C., Dill, D., Julian, K., Kochenderfer, M. <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-319-63387-9_5">Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks</a> CAV 2017 / arXiv:1702.01135.</p></li>
+<li><p>Katz, G., et al. <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-031-65630-9_13">The Marabou Framework for Verification and Analysis of Deep Neural Networks</a> CAV 2019 / LNCS; Marabou 2.0 (2024).</p></li>
+<li><p>Yang, K., et al. <a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html">LeanDojo: Theorem Proving with Retrieval-Augmented Language Models (ReProver)</a> NeurIPS 2023 (paper &amp; dataset).</p></li>
+<li><p>Beg, A., et al. <a class="reference external" href="https://arxiv.org/abs/2506.11874">A Short Survey on Formalising Software Requirements with LLMs</a> arXiv:2506.11874 (2025).</p></li>
+<li><p>Wu, G., et al. <a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/10628461">LLM Meets Bounded Model Checking: Neuro-symbolic Loop Invariant Inference</a> ASE 2024.</p></li>
+<li><p>Wei, A., et al. <a class="reference external" href="https://arxiv.org/abs/2509.21629">InvBench: Can LLMs Accelerate Program Verification with Invariant Synthesis?</a> arXiv:2509.21629 (2025).</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="4-constraint-solving.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Constraints with MiniZinc</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="7-temporal-logic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Temporal Logic with Spin</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">4.1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-theory">4.2. Basic Theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decidable-first-order-theories">4.2.1. Decidable First-Order Theories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-combination-the-nelson-oppen-method">4.2.2. Theory Combination: The Nelson-Oppen Method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#z3">4.3. Z3</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z3-playground">4.3.1. Z3 Playground</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array-bounds">4.3.1.1. Array bounds</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#guessing-a-number">4.3.1.2. Guessing a number</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-solvers">4.3.2. More Solvers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#z3-in-python">4.3.3. Z3 in Python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-the-industry">4.4. Applications in the Industry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai-and-formal-methods-what-s-changing">4.5. Generative AI and Formal Methods: What’s Changing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-code-diet-planner">4.6. Case Study Code: Diet Planner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">4.7. References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By CPSC 510
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
