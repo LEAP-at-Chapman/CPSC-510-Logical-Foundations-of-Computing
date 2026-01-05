@@ -80,9 +80,9 @@ output [
 ] ++ ["\n"];
 ```
 
-## Introductory Example: N-Queens in MiniZinc
+## Introductory Example
 
-To see these concepts in action, let's look at the "Hello World" of constraint programming: placing N queens on a chessboard so that no two queens attack each other. For context, the N queens problem is a classic problem in computer science and logical programming where you must place N queens on an Width x Height chessboard such that no two queens threaten each other.
+To see these concepts in action, let's look at the "Hello World" of constraint programming: placing N queens on a chessboard so that no two queens attack each other. For context, the N queens problem is a classic problem in computer science and logical programming where you must place N queens on an N x N chessboard such that no two queens threaten each other.
 
 A minimal, runnable introductory example is included in this repo at `src/minizinc/nqueens/nqueens.mzn`. You can run this file by doing minizinc nqueens.mzn while in the src/minizinc/nqueens directory.
 
@@ -128,11 +128,11 @@ When approaching the recursive logic of a CSP in MiniZinc, consider these steps:
 2. Identify the recursive structure by breaking the logic into smaller subproblems
 3. Define recursion predicates ensuring each call moves closer to the base case
 
-## Connecting Z3 and MiniZinc Concepts
+## Z3 and MiniZinc Concepts
 
 MiniZinc is a high-level modeling language for constraint satisfaction and optimization with rich global constraints and multiple backend solvers; Z3 is an SMT solver aimed at logical theories and verification. If you’re building schedules, allocations, or routing, prefer MiniZinc; for program verification or bit-vector logic, prefer Z3 (de Moura and Bjørner, 2008).
 
-## Practicality: MiniZinc vs. Embedded Libraries
+## MiniZinc vs. Embedded Libraries
 
 So, why would you choose a standalone modeling language like MiniZinc over simply importing a library like OR-Tools directly into your Python or C++ project? In my experience, the main reason is the level of abstraction. MiniZinc lets you focus purely on *what* the rules are, without forcing you to commit to *how* they will be solved.
 
@@ -152,19 +152,22 @@ While libraries like OR-Tools certainly support many of these, MiniZinc's implem
 
 This leads to a common hybrid workflow: use MiniZinc for the **exploration** phase—rapidly modeling your problem to understand its complexity and rules—and only port it to an embedded language (like Python with OR-Tools) if you need to deploy it into a **production** environment where tight integration is critical (Perron and Furnon, 2019).
 
-## Example Applications : Employee Scheduling
+## Example Applications
 
-A classic CP problem: A company runs three 8-hour shifts per day and assigns three of its four employees to different shifts each day, while giving the fourth the day off. Even with just 4 employees, there are 24 possible assignments per day, leading to 24^7 ≈ 4.5 billion possible weekly schedules (Perron and Furnon, 2019).
+### Introduction
 
-For Example:
+Classic CP problems include
 
 * **N-Queens Problem**
 * **Cryptarithmetic Puzzles**
 * **Job Shop Scheduling**
 
-These examples correspond to the standard CP problem categories in the literature (Rossi, Van Beek, and Walsh, 2006; Perron and Furnon, 2019).
+see eg (Rossi, Van Beek, and Walsh, 2006; Perron and Furnon, 2019).
 
-## Practical Business Example: Employee Shift Scheduling (MiniZinc)
+In the following we will look at scheduling. For example, a company runs three 8-hour shifts per day and assigns three of its four employees to different shifts each day, while giving the fourth the day off. Even with just 4 employees, there are 24 possible assignments per day, leading to 24^7 ≈ 4.5 billion possible weekly schedules (Perron and Furnon, 2019).
+
+
+### Employee Shift Scheduling 
 
 Finally, let's apply this to a real-world scenario. While N-Queens is theoretical, scheduling is a massive industry use case.
 
@@ -216,8 +219,6 @@ solve satisfy;
 Download shift_scheduling.mzn
 ```
 
-## Translating this into a real-world written script
-
 With the Python MiniZinc API, you can load the model from a file and feed parameters directly, avoiding large inline strings:
 
 ```python
@@ -259,8 +260,6 @@ print(result)
 ```
 
 This pipeline follows the modeling and solver interface described in MiniZinc's core language design (Nethercote et al., 2007).
-
----
 
 ## References
 

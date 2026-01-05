@@ -4,7 +4,7 @@
 
 This document tracks the overall progress of the review process.
 
-**Last Updated**: 2026-01-04
+**Last Updated**: 2026-01-05
 
 ## Chapter Status
 
@@ -44,11 +44,13 @@ This document tracks the overall progress of the review process.
 - Renamed all chapter files to match TOC structure (00-intro-book.md, 01-intro-logic.md, etc.)
 - Added software engineering perspective evaluation requirement to review guidelines
 - Started review of SAT Solving chapter with comprehensive evaluation
+- Completed review of Logic Programming chapter (02): Fixed 7 typos, reformatted all 11 references with Google Scholar links and venues, removed page numbers, added software engineering evaluation
+- Completed initial review of Constraints with MiniZinc chapter (03): Fixed typo, verified all 5 references (all properly formatted and cited), added comprehensive software engineering evaluation
 
 ## Review Statistics
 
 - Total chapters: 14
-- Completed: 4
-- In Progress: 1
-- Not Started: 9
+- Completed: 5
+- In Progress: 2
+- Not Started: 7
 
