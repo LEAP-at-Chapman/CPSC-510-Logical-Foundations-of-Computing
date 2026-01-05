@@ -28,10 +28,10 @@ graph TD
 
 ```
 
-Say from parent we wanted to find child 2, in logic programming, it would first look at child 1 and when it checks if that is child 2 and realizes it isnt, it will then go back to parent and try the other option which is correct. In contrast to imperative programming, which requires precise instructions for every step, logic programming is declarative: the programmer specifies what is true, and the system determines how to find the solution.
+Say from parent we wanted to find child 2, in logic programming, it would first look at child 1 and when it checks if that is child 2 and realizes it isn't, it will then go back to parent and try the other option which is correct. In contrast to imperative programming, which requires precise instructions for every step, logic programming is declarative: the programmer specifies what is true, and the system determines how to find the solution.
 
 ## The Tool
-The tool that I will mainly be focusing on is Prolog, a unique coding language designed for logic programming. Prolog was first created in France in 1972 by Alain Colmerauer and Philippe Roussel, with its name derived from programmation en logique (“programming in logic”). The earliest version was an interpreter built in Fortran by Gerard Battani and Henri Meloni where later, David H. D. Warren brought this work to Edinburgh, where he then developed a new front-end that established the Edinburgh Prolog syntax which is now used for most modern implementations(1).
+The tool that I will mainly be focusing on is Prolog, a unique coding language designed for logic programming. Prolog was first created in France in 1972 by Alain Colmerauer and Philippe Roussel, with its name derived from programmation en logique ("programming in logic"). The earliest version was an interpreter built in Fortran by Gerard Battani and Henri Meloni where later, David H. D. Warren brought this work to Edinburgh, where he then developed a new front-end that established the Edinburgh Prolog syntax which is now used for most modern implementations.
 
 ### Installing The Tool
 [download and install](https://www.swi-prolog.org/download/stable) Prolog. On MacOS, after moving SWI-Prolog to the Applications folder, you may have to run `echo 'export PATH="/Applications/SWI-Prolog.app/Contents/MacOS:$PATH"' >> ~/.zshrc` to add `swipl` to your path. Then, running `swipl` in your terminal should start the Prolog interpreter.
@@ -79,7 +79,7 @@ Then in the Prolog prompt:
 ?- solution(S).
 ```
 
-Here there are two options either enter `.` to end the program or `;` to see futher possible outputs.
+Here there are two options either enter `.` to end the program or `;` to see further possible outputs.
 
 Use Ctrl-d to exit Prolog.
 
@@ -157,7 +157,7 @@ Y = 40.
 Y = 5.
 ```
 
-You could also using our example from above run querys like these:
+You could also, using our example from above, run queries like these:
 
 ```prolog
 ?- square(4, Y).
@@ -191,7 +191,7 @@ Prolog has been implemented in many different environments since its introductio
 
 Across these systems, the one unifying theme is Prolog’s declarative nature. Each tool preserves the language’s logical foundation while extending it for different domains and computational models. Whether one prioritizes performance, integration, or constraint solving, there exists a Prolog implementation suited to the task.
 
-I want to put an empahsis on **Datalog**, while derived from Prolog, represents a specialized subset of logic programming optimized for database querying and deductive reasoning. Unlike Prolog, Datalog omits complex features such as function symbols and unrestricted recursion, making it declarative, decidable, and well-suited for large-scale data processing.
+I want to put an emphasis on **Datalog**, while derived from Prolog, represents a specialized subset of logic programming optimized for database querying and deductive reasoning. Unlike Prolog, Datalog omits complex features such as function symbols and unrestricted recursion, making it declarative, decidable, and well-suited for large-scale data processing.
 
 Modern Datalog systems, such as **Soufflé** and **LogicBlox**, compile logical rules into efficient relational operations, bridging the gap between logic programming and database optimization. Soufflé, for example, is widely used in static program analysis, translating high-level Datalog specifications into optimized C++ code. Similarly, LogicBlox extends Datalog with constraints and aggregates, powering enterprise analytics and reasoning over massive datasets.
 
@@ -425,7 +425,7 @@ We're not rewriting the problem rules for each approach, we simply change how we
 
 ### Automatic Backtracking
 
-One of Prolog's most best features that we've touched on a bit already is its built-in backtracking mechanism. When the system follows a sequence of moves that leads to a dead end, like repeatedly filling and emptying the same jug without progress,, it automatically backtracks and tries alternative paths.
+One of Prolog's best features that we've touched on a bit already is its built-in backtracking mechanism. When the system follows a sequence of moves that leads to a dead end, like repeatedly filling and emptying the same jug without progress, it automatically backtracks and tries alternative paths.
 
 This eliminates the need for complex error recovery code or manual stack management that would be required in imperative languages. The programmer never writes "if this doesn't work, go back and try something else", Prolog handles that automatically as part of its fundamental execution model.
 
@@ -466,7 +466,7 @@ Logic programming, with Prolog as its flagship language, experienced a surge of 
 
 - **Foundations**: Prolog emerged from automated theorem proving and resolution-based inference. Its core execution model—unification, depth-first search with backtracking, and Horn clause resolution—was both elegant and powerful for symbolic reasoning.
 - **Rise of Expert Systems**: Tools like IBM’s Watson predecessors, XCON (for configuring DEC computers), and medical diagnostic systems often used Prolog or similar rule-based engines. Logic programming’s strength in encoding domain knowledge made it a natural fit.
-- **Academic Dominance**: In Europe and Japan, logic programming was central to AI research. The Japanese Fifth Generation Computer Project (1982–1992) aimed to build massively parallel logic machines, further propelling Prolog into the spotlight. ([Stanford](https://stacks.stanford.edu/file/druid:kv359wz9060/kv359wz9060.pdf))
+- **Academic Dominance**: In Europe and Japan, logic programming was central to AI research. The Japanese Fifth Generation Computer Project (1982–1992) aimed to build massively parallel logic machines, further propelling Prolog into the spotlight.
 
 ### The Decline and Niche Survival (1990s–2000s)
 
@@ -533,7 +533,7 @@ This hybrid approach leverages the creativity and pattern recognition of neural 
 
 ---
 
-## How its being used today
+## How it's being used today
 
 ### Conferences & Workshops
 
@@ -559,24 +559,14 @@ This hybrid approach leverages the creativity and pattern recognition of neural 
 
 ## References
 
-Alberi, Fabien. "An Introduction to Datalog." Michelin.io Blog, 3 Feb. 2021, https://blogit.michelin.io/an-introduction-to-datalog/.
-
-swi-prolog. "Logic Programming Introduction." SWISH (SWI-Prolog for Sharing), https://swish.swi-prolog.org/p/dselman.swinb
-
-GeeksforGeeks. "8 Queen Problem." GeeksforGeeks, https://www.geeksforgeeks.org/dsa/8-queen-problem/
-
-swi-prolog. et al. "format/2." SWI-Prolog Documentation, https://www.swi-prolog.org/pldoc/man?predicate=format/2
-
-Swedish Institute of Computer Science. SICStus Prolog. https://sicstus.sics.se/
-
-Carlsson, Mats, and Per Mildner. "SICStus Prolog—The first 25 Years." ResearchGate, 2012, https://www.researchgate.net/publication/47822182_SICStus_Prolog_--_the_first_25_years.
-
-Diaz, Daniel, et al. GNU Prolog. http://www.gprolog.org/
-
-"ECLiPSe Constraint Programming System." Eclipse Foundation, https://eclipseclp.org/
-
-Metalevel. "Sorting." The Power of Prolog, https://www.metalevel.at/prolog/sorting
-
-"Prolog Basics." University of Washington, Computer Science & Engineering, https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html
-
-LeetCode. "Water and Jug Problem." LeetCode, https://leetcode.com/problems/water-and-jug-problem/description/.
+- Alberi (2021). [An Introduction to Datalog](https://blogit.michelin.io/an-introduction-to-datalog/), Michelin.io Blog
+- Carlsson and Mildner (2012). [SICStus Prolog—The first 25 Years](https://scholar.google.com/scholar?q=SICStus+Prolog+the+first+25+Years+Carlsson), ResearchGate
+- Diaz et al. [GNU Prolog](http://www.gprolog.org/), GNU Prolog
+- Eclipse Foundation. [ECLiPSe Constraint Programming System](https://eclipseclp.org/), Eclipse Foundation
+- GeeksforGeeks. [8 Queen Problem](https://www.geeksforgeeks.org/dsa/8-queen-problem/), GeeksforGeeks
+- LeetCode. [Water and Jug Problem](https://leetcode.com/problems/water-and-jug-problem/description/), LeetCode
+- Metalevel. [Sorting](https://www.metalevel.at/prolog/sorting), The Power of Prolog
+- SWI-Prolog. [Logic Programming Introduction](https://swish.swi-prolog.org/p/dselman.swinb), SWISH (SWI-Prolog for Sharing)
+- SWI-Prolog. [format/2](https://www.swi-prolog.org/pldoc/man?predicate=format/2), SWI-Prolog Documentation
+- Swedish Institute of Computer Science. [SICStus Prolog](https://sicstus.sics.se/), SICStus
+- University of Washington (2012). [Prolog Basics](https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html), University of Washington

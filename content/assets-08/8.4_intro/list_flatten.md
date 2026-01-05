@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 *Download the Isabelle .thy file for this exercise [here](./list_flatten.thy)*
 
 

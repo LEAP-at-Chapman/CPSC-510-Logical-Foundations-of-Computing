@@ -8,7 +8,8 @@
 4. **Improve clarity** - add context, clarify explanations
 5. **Maintain consistency** - notation, terminology, formatting
 6. **Check TOC compliance** - compare against suggested table of contents, note and evaluate deviations
-7. **Log all changes** - update `review-2026/logs/[chapter-name].md` and `review-2026/summary.md`
+7. **Check for uncited references** - verify every reference in References section is cited in text, list uncited ones in log
+8. **Log all changes** - update `review-2026/logs/[chapter-name].md` and `review-2026/summary.md`
 
 ## Logging Checklist
 
@@ -27,6 +28,7 @@
 - Inconsistent mathematical notation
 - Missing context or explanations
 - Formatting inconsistencies
+- References in References section that are not cited in text
 
 ## When Unsure
 

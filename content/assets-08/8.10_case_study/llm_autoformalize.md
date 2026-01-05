@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 Download Files:
 - [Python Script](./llm_autoformalize.py)
 - [requirements.txt](./requirements.txt)

@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 # Wu autoformalizations
 
 These files are part of the Wu et al. artifact bundle.

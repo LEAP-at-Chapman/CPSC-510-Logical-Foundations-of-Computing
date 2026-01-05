@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 *Download the Isabelle .thy file for this exercise [here](./exercise_2_2.thy)*
 
 

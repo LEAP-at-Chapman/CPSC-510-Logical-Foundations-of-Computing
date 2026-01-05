@@ -36,7 +36,8 @@ Use `brew install minisat` to install on MacOS:
 
 Use `sudo apt install minisat` to install on Linux.
 
-### DIMACS CNF format {#dimacs-cnf-format}
+(dimacs-cnf-format)=
+### DIMACS CNF format
 A normal DIMACS CNF file looks like this:
 ```
 p cnf <num_variables> <num_clauses>
@@ -192,7 +193,8 @@ $$(A) \wedge (\neg A)$$
 
 Using the algorithm, A appears both positively and negatively, meaning that we have to use resolution again. However, after using resolution, we are left with the empty clause (denoted as $\square$). Thus our formula is unsatisfiable. 
 
-### Davis–Putnam–Logemann–Loveland (DPLL) algorithm {#davisputnamlogemannloveland-dpll-algorithm}
+(davisputnamlogemannloveland-dpll-algorithm)=
+### Davis–Putnam–Logemann–Loveland (DPLL) algorithm
 
 [Davis–Putnam–Logemann–Loveland (DPLL) algorithm](https://en.wikipedia.org/wiki/DPLL_algorithm) 
 
@@ -254,7 +256,8 @@ One more time, we apply unit propagation, setting `b` equal to False. Our new fo
 
 This leads to a contradiction, because `c` cannot be both True and False. Thus, our formula is `UNSAT`
 
-### Conflict-driven Clause Learning (CDCL) algorithm {#conflict-driven-clause-learning-cdcl-algorithm}
+(conflict-driven-clause-learning-cdcl-algorithm)=
+### Conflict-driven Clause Learning (CDCL) algorithm
 
 [Conflict-driven Clause Learning](https://en.wikipedia.org/wiki/Conflict-driven_clause_learning)
 (CDCL) is another algorithm for solving SAT problems that is similar to DPLL but the main difference is that CDCL does not back-jump chronologically. CDCL was proposed by Marques-Silva and Karem A. Sakallah (1996, 1999) and Bayardo and Schrag (1997). The algorithm is as follows:
@@ -396,7 +399,8 @@ From this example, we can see how much quicker CDCL is than DPLL, and how that s
 
 ## Typical Use Cases
 
-### Parallel Approaches {#parallel-approaches}
+(parallel-approaches)=
+### Parallel Approaches
 
 Some SAT solvers use multiple processors at the same time to speed up problem solving. There are 2 different types of strategies that modern parallel SAT solvers rely on.
 
@@ -408,7 +412,8 @@ The portfolio parallel approach involves running many solvers in parallel on the
 
 A different parallel approach involves splitting the problem into smaller sub-problems, and then running each of those on a different processor (Nair et al., 2022). This can cause some processors to finish their problems much earlier than others because different sub-problems can vary in difficulty, which is suboptimal. One very beneficial advance is the Cube-and-Conquer approach, which uses two phases. The first phase is the cube part where a solver "looks ahead" and breaks the problem into smaller "cubes." Phase 2 is the conquer part where each cube is solved using CDCL. Because of the way the cubes are calculated, if one cube is satisfiable, then the whole problem is satisfiable. One example divide-and-conquer that uses the cube-and-conquer approach is Treengeling.
 
-## Benchmarks and Competitions {#benchmarks-and-competitions}
+(benchmarks-and-competitions)=
+## Benchmarks and Competitions
 
 The annual [SAT Competition](http://www.satcompetition.org/) tracks the current best performers.
 
@@ -424,7 +429,7 @@ Similarly, SAT solvers are also used for software verification and program analy
 
 SAT solvers are also used for package and dependency solving and optimization. By translating domain constraints into CNF, the solvers can be used for dependency resolution (package managers), combinatorial optimization (scheduling), or other large combinatorial tasks.
 
-While not necessarily an application of use in industry, there is an annual [SAT competition](#benchmarks-and-competitions) that is used to track the state of the art and can help lead to adoption in industry. This competition is beneficial because it leads people to find new algorithms and heuristics than can be used to improve the state of the art.
+While not necessarily an application of use in industry, there is an annual {ref}`SAT competition<benchmarks-and-competitions>` that is used to track the state of the art and can help lead to adoption in industry. This competition is beneficial because it leads people to find new algorithms and heuristics than can be used to improve the state of the art.
 
 ## Case Studies
 
@@ -511,11 +516,11 @@ This will show us the final solution of our sudoku puzzle with our given constra
 
 ## History
 
-In the 1990s, there were two different types of SAT solvers that were used - complete and incomplete solvers (Biere, Heule, Van Maaren, and Walsh, 2021). An incomplete solver is one that searches for a satisfying assignment, but cannot prove that something is unsatisfiable. A complete solver is more similar to the ones seen today, that either finds a satisfying assignment or proves that none exist. Around this time, the complete solvers were using the [DPLL](#davisputnamlogemannloveland-dpll-algorithm) algorithm.
+In the 1990s, there were two different types of SAT solvers that were used - complete and incomplete solvers (Biere, Heule, Van Maaren, and Walsh, 2021). An incomplete solver is one that searches for a satisfying assignment, but cannot prove that something is unsatisfiable. A complete solver is more similar to the ones seen today, that either finds a satisfying assignment or proves that none exist. Around this time, the complete solvers were using the {ref}`DPLL<davisputnamlogemannloveland-dpll-algorithm>` algorithm.
 
-In 1993, a SAT competition was held, named the DIMACS implementation challenge (Fichte, Le Berre, Hecher, and Szeider, 2023). This competition standardized the [DIMACS CNF](#dimacs-cnf-format) format that modern SAT solvers still use as their inputs.
+In 1993, a SAT competition was held, named the DIMACS implementation challenge (Fichte, Le Berre, Hecher, and Szeider, 2023). This competition standardized the {ref}`DIMACS CNF<dimacs-cnf-format>` format that modern SAT solvers still use as their inputs.
 
-In 1996, the solver GRASP was created (Marques-Silva, J. P., & Sakallah, K. A., 1999). This solver proposed a new architecture that combined the backtracking of the DPLL algorithm with learning, which is now known as the [CDCL](#conflict-driven-clause-learning-cdcl-algorithm) algorithm. After that, the solver Chaff was created (Moskewicz, M. W., Madigan, C. F., Zhao, Y., Zhang, L., & Malik, S., 2001, June). This solver was specifically designed to solve large benchmarks, and do so quickly.
+In 1996, the solver GRASP was created (Marques-Silva, J. P., & Sakallah, K. A., 1999). This solver proposed a new architecture that combined the backtracking of the DPLL algorithm with learning, which is now known as the {ref}`CDCL<conflict-driven-clause-learning-cdcl-algorithm>` algorithm. After that, the solver Chaff was created (Moskewicz, M. W., Madigan, C. F., Zhao, Y., Zhang, L., & Malik, S., 2001, June). This solver was specifically designed to solve large benchmarks, and do so quickly.
 
 ## Formal Methods and AI
 
@@ -529,7 +534,7 @@ Another example is using solvers to check proofs that are created by LLMs. For e
 
 Solvers are also being used to reduce hallucinations and increase reliability in certain AI models. Some models, including ones from Amazon have integrated "automated reasoning checks" to constrain generative models (argument checking, verification checks on outputs of the model, rule enforcement) to improve trustworthiness.
 
-More applications of AI use in SAT solvers is seen in the current developments section [below](#current-developments-with-ai)
+More applications of AI use in SAT solvers is seen in the current developments section {ref}`below<current-developments-with-ai>`
 
 ### How this affects SAT in industry
 
@@ -541,43 +546,42 @@ After the developments of CDCL algorithms were added into SAT solvers, there are
 
 For one, people have started to create much more efficient SAT encodings by going against what intuition says. Instinctively, people think that a small formula and fewer variables is better, however that is not always true. Sometimes it is more beneficial to add some auxiliary variables and increase the size of the formula. While adding these variables increases the theoretical search space, the practical search may become easier. This is because SAT solvers do not search everything, and adding some extra variables will allow the solvers to significantly reduce the size of the practical search space by using CDCL.
 
-Another more current development is the use of [parallel solving](#parallel-approaches), which was mentioned more in depth above.
+Another more current development is the use of {ref}`parallel solving<parallel-approaches>`, which was mentioned more in depth above.
 
-### Current Developments with AI {#current-developments-with-ai}
+(current-developments-with-ai)=
+### Current Developments with AI
 As can be seen in almost every industry, AI, specifically large language models (LLMs), are being used to try to improve the state of the art. One example in terms of SAT solvers is AutoModSAT (Sun et al., 2025). Using an LLM in a SAT solver can allow the solver to automatically generate new heuristic code so the the solver can work better given specific data. Basically, this means that the LLM is finding better strategies for solving SAT problems, and is able to determine what to use on a specific dataset.
 
 ## References
 
-- Aigner et al. (2013). [Analysis of Portfolio-Style Parallel SAT Solving
-on Current Multi-Core Architectures∗](https://ckirsch.github.io/publications/conferences/PoS13-AnalysisPortfolioSAT.pdf), University of Salzburg
--  Fichte, Le Berre, Hecher, and Szeider (2023) [The Silent (R)evolution of SAT](https://cacm.acm.org/research/the-silent-revolution-of-sat/#R4), Communications of the ACM
-- Gupta, Ganai, and Wang (2006). [SAT-Based Verification Methods and Applications in Hardware Verification](https://link.springer.com/chapter/10.1007/11757283_5#citeas), Formal Methods for Hardware Verification
-- Heule et al. (2015). [Clause Elimination for SAT and QSAT](https://jair.org/index.php/jair/article/view/10942), Journal of Artificial Intelligence Research
-- Ivančić et al. (2008). [Efficient SAT-based bounded model checking for software verification](https://www.sciencedirect.com/science/article/pii/S0304397508002223), International Symposium on Leveraging Applications of Formal Methods
-- Nair et al. (2022). [Proof-Stitch: Proof Combination for
-Divide-and-Conquer SAT Solvers](https://theory.stanford.edu/~barrett/pubs/NCW+22.pdf), Formal Methods in Computer-Aided Design
+- Aigner et al. (2013). [Analysis of Portfolio-Style Parallel SAT Solving on Current Multi-Core Architectures∗](https://scholar.google.com/scholar?q=Analysis+of+Portfolio-Style+Parallel+SAT+Solving+on+Current+Multi-Core+Architectures), University of Salzburg
+- Biere, Heule, Van Maaren, and Walsh (2021). [Handbook of Satisfiability](https://scholar.google.com/scholar?q=Handbook+of+Satisfiability), IOS Press
+-  Fichte, Le Berre, Hecher, and Szeider (2023) [The Silent (R)evolution of SAT](https://scholar.google.com/scholar?q=The+Silent+Revolution+of+SAT), Communications of the ACM
+- Gupta, Ganai, and Wang (2006). [SAT-Based Verification Methods and Applications in Hardware Verification](https://scholar.google.com/scholar?q=SAT-Based+Verification+Methods+and+Applications+in+Hardware+Verification), Formal Methods for Hardware Verification
+- Heule et al. (2015). [Clause Elimination for SAT and QSAT](https://scholar.google.com/scholar?q=Clause+Elimination+for+SAT+and+QSAT), Journal of Artificial Intelligence Research
+- Ivančić et al. (2008). [Efficient SAT-based bounded model checking for software verification](https://scholar.google.com/scholar?q=Efficient+SAT-based+bounded+model+checking+for+software+verification), Theoretical Computer Science, 404(3)
+- Nair et al. (2022). [Proof-Stitch: Proof Combination for Divide-and-Conquer SAT Solvers](https://scholar.google.com/scholar?q=Proof-Stitch+Proof+Combination+for+Divide-and-Conquer+SAT+Solvers), Formal Methods in Computer-Aided Design (FMCAD)
 
 ### Early Work
 
-- Biere, Heule, Van Maaren, and Walsh (2021). [Handbook of Satisfiability](https://www.iospress.com/catalog/books/handbook-of-satisfiability-2), Frontiers in Artificial Intelligence and Applications
-- Davis, Martin; Putnam, Hilary (1960). [A Computing Procedure for Quantification Theory](https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory). Journal of the ACM. 7 (3): 201–215. 
+- Davis, Martin; Putnam, Hilary (1960). [A Computing Procedure for Quantification Theory](https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory), Journal of the ACM
     - The original resolution based algorithm that also gave rise to Prolog later, via (Robinson 1965).
-- Davis, Martin; Logemann, George; Loveland, Donald (1962). [A Machine Program for Theorem Proving](https://scholar.google.com/scholar?q=A+Machine+Program+for+Theorem+Proving). Communications of the ACM. 5 (7): 394–397. 
+- Davis, Martin; Logemann, George; Loveland, Donald (1962). [A Machine Program for Theorem Proving](https://scholar.google.com/scholar?q=A+Machine+Program+for+Theorem+Proving), Communications of the ACM
     - DPLL, also sometimes called DP Backtrack Search.
-- Stallman, R. M., & Sussman, G. J. (1977). [Forward reasoning and dependency-directed backtracking in a system for computer-aided circuit analysis](https://scholar.google.com/scholar?q=Forward+reasoning+and+dependency-directed+backtracking+in+a+system+for+computer-aided+circuit+analysis). Artificial intelligence, 9(2), 135-196.
+- Stallman, R. M., & Sussman, G. J. (1977). [Forward reasoning and dependency-directed backtracking in a system for computer-aided circuit analysis](https://scholar.google.com/scholar?q=Forward+reasoning+and+dependency-directed+backtracking+in+a+system+for+computer-aided+circuit+analysis), Artificial Intelligence
     - Widely credited for its **dependency-directed backtracking**.
-- Marques-Silva, J. P., & Sakallah, K. A. (1999). [GRASP: A search algorithm for propositional satisfiability](https://scholar.google.com/scholar?q=GRASP+A+search+algorithm+for+propositional+satisfiability). IEEE Transactions on Computers, 48(5), 506-521. 
+- Marques-Silva, J. P., & Sakallah, K. A. (1999). [GRASP: A search algorithm for propositional satisfiability](https://scholar.google.com/scholar?q=GRASP+A+search+algorithm+for+propositional+satisfiability), IEEE Transactions on Computers
     - Introduces conflict-directed backtracking, an application of dependency-directed backtracking to SAT, and conflict analysis. Later this will be called **conflict-driven clause learning**.
-- Moskewicz, M. W., Madigan, C. F., Zhao, Y., Zhang, L., & Malik, S. (2001, June). [Chaff: Engineering an efficient SAT solver](https://scholar.google.com/scholar?q=Chaff+Engineering+an+efficient+SAT+solver). In Proceedings of the 38th annual Design Automation Conference (pp. 530-535). 
+- Moskewicz, M. W., Madigan, C. F., Zhao, Y., Zhang, L., & Malik, S. (2001). [Chaff: Engineering an efficient SAT solver](https://scholar.google.com/scholar?q=Chaff+Engineering+an+efficient+SAT+solver), Proceedings of the 38th Design Automation Conference
     - Chaff is widely considered the breakthrough SAT implementation. Section 1.2 also contains a good account of DPLL.
 
 
 ### Modern Developments
 
-- Alouneh, S., Abed, S. E., Al Shayeji, M. H., & Mesleh, R. (2019). A comprehensive study and analysis on SAT-solvers: advances, usages and achievements. Artificial Intelligence Review, 52(4), 2575-2601.
-- Froleyks, N., Yu, E., & Biere, A. (2023, October). BIG backbones. In 2023 Formal Methods in Computer-Aided Design (FMCAD) (pp. 162-167). IEEE.
+- Alouneh, S., Abed, S. E., Al Shayeji, M. H., & Mesleh, R. (2019). [A comprehensive study and analysis on SAT-solvers: advances, usages and achievements](https://scholar.google.com/scholar?q=A+comprehensive+study+and+analysis+on+SAT-solvers+advances+usages+and+achievements), Artificial Intelligence Review
+- Froleyks, N., Yu, E., & Biere, A. (2023). [BIG backbones](https://scholar.google.com/scholar?q=BIG+backbones+Froleyks), Formal Methods in Computer-Aided Design (FMCAD)
 - Heule, M. J., Iser, M., Järvisalo, M., & Suda, M. (2024). [Proceedings of SAT Competition 2024: Solver, Benchmark and Proof Checker Descriptions](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%22SAT+Competition+2024%22+&btnG=). [pdf](https://researchportal.helsinki.fi/files/324666039/sc2024-proceedings.pdf)
-- Sun et al. (2025). [Automatically discovering heuristics in a complex SAT solver with large language models](https://arxiv.org/html/2507.22876v1)
+- Sun et al. (2025). [Automatically discovering heuristics in a complex SAT solver with large language models](https://scholar.google.com/scholar?q=Automatically+discovering+heuristics+in+a+complex+SAT+solver+with+large+language+models), arXiv
 
 ## Future Work
 
