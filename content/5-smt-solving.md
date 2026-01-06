@@ -15,6 +15,19 @@ SMT, satisfiability modulo theories, extends propositional satisfiability (SAT) 
 
 First-order logic is not decidable, but it does contain some decidable theories. SMT leverages special solvers for decidable first-order theories. Moreover, under certain conditions different decidable theories can be combined into larger ones. 
 
+### A Short History & the CP/SAT/SMT Landscape
+
+SMT grew out of the SAT revolution of the late 1990s–2000s, which itself traces back to the Davis–Putnam procedure and DPLL search (Davis & Putnam, 1960; Davis, Logemann & Loveland, 1962). SMT’s key move was to keep SAT’s conflict-driven search but delegate theory reasoning (arithmetic, arrays, bit-vectors, EUF) to specialized engines, yielding scalable checking for software/hardware constraints (Barrett & Tinelli, 2018). In parallel, Constraint Programming (CP) developed rich global constraints and propagation; the two communities cross-pollinate today, as CP often uses SAT/SMT back ends, while SMT borrows CP-style modeling tricks (Hooker, 2006). Community infrastructure (the SMT-LIB language and SMT-COMP benchmark competition) standardized formats and drove rapid solver progress (Barrett, Stump & Tinelli, 2010; Barrett, Stump & Tinelli, 2005).
+
+### How Modern SMT Solvers Work (DPLL(T) in Practice)
+Most production SMT solvers implement DPLL(T): a SAT solver maintains a Boolean abstraction of the formula while theory solvers (T) check and explain conflicts; conflicts become learned clauses, powering the next SAT decisions (Nieuwenhuis, Oliveras & Tinelli, 2006). When a formula spans multiple theories, Nelson–Oppen combines disjoint, stably-infinite theories by exchanging equalities between them (Nelson & Oppen, 1979); Shostak’s method offers an alternative for certain signatures (Shostak, 1984). Z3’s architecture exemplifies this integration, adding practical engines for arithmetic (including BV/FP), arrays, and quantifiers with techniques such as E-matching and model-based quantifier instantiation (de Moura & Bjørner, 2008; Ge & de Moura, 2009). In short: CDCL for Boolean search, theory solvers for domain facts, and careful combination glue the system together.
+
+### Optimization Modulo Theories (Max-SMT & OMT)
+Beyond yes/no, many real problems want the best model—fewest violated preferences, minimum cost, maximum slack. Max-SMT treats selected clauses as soft with weights; the solver finds a model minimizing total penalty (Marques-Silva, Planes & Kutz, 2008). Optimization Modulo Theories (OMT) generalizes this to numeric objectives over theory variables (e.g., LRA/LIA), enabling lexicographic or Pareto multi-objective search (Sebastiani & Tomasi, 2015). Z3 exposes both patterns (add_soft, Optimize), which is exactly what your diet planner case study demonstrates—hard feasibility + soft calorie window + multi-objective macro fit/variety/cost.
+
+### Practical Limits & Modeling Pitfalls (and How to Avoid Them)
+SMT shines on quantifier-free linear arithmetic, bit-vectors, arrays, and EUF; performance can degrade with nonlinear integer arithmetic (undecidable in general) or heavy quantifiers (Barrett & Tinelli, 2018). Decidability lines are sharp: Presburger arithmetic is decidable, Diophantine (NIA) is not (Matiyasevich, 1970), while real closed fields are decidable but costly in practice despite Tarski’s elimination (Tarski, 1951). Modeling tips: (i) pick the right theory (bit-vectors for word-level hardware; LRA/LIA for scheduling), (ii) add bounds and symmetry breaking, (iii) encode choices as soft when possible (Max-SMT/OMT), and (iv) prefer arrays+EUF over ad-hoc encodings when modeling memory (de Moura & Bjørner, 2008; Barrett & Tinelli, 2018).
+
 ### Decidable First-Order Theories
 
 Typically, decidability requires that the formulas have to by quantifier-free (QF) but there are exceptions, most famously the theory of real closed fields.
@@ -171,26 +184,26 @@ i) Prove that array access is always within bounds in a loop:
 
   **1. LLMs assisting proof and spec**
     LeanDojo/ReProver shows that retrieval-augmented LLMs can select premises and generate Lean proofs; the suite provides datasets, tooling, and reproducible baselines, catalyzing rapid 
-    progress in ML-for-theorem-proving.
-    A 2025 survey reviews how LLMs help author formal specifications from natural-language requirements (Dafny/C/Java), with promising accuracy on assertion synthesis and “assertion completion.”
+    progress in ML-for-theorem-proving. (Yang et al., 2023)
+    A 2025 survey reviews how LLMs help author formal specifications from natural-language requirements (Dafny/C/Java), with promising accuracy on assertion synthesis and “assertion completion” (Beg, O’Donoghue & Monahan, 2025).
     
 
   **2. Neuro-symbolic invariant synthesis for verification**
     Fresh results show LLMs can propose loop invariants that an SMT-based checker validates/refines (e.g., ASE’24 neuro-symbolic bounded model checking; 2025 benchmark studies). The emerging 
-    recipe: LLM proposes → SMT/solver checks → counterexample-guided repair.
+    recipe: LLM proposes → SMT/solver checks → counterexample-guided repair. (Wu et al., 2024; Pirzada et al., 2024; Wei et al., 2025).
 
   **3. Hybrid validation pipelines in compilers and systems**
     For LLVM, LLMs triage “hard” optimizations while Alive2 (SMT) proves the rest, using fuzzing to chase suspected unsound cases—concrete neuro-symbolic workflows shipping into compiler 
-    validation. Expect similar “LLM-first, SMT-confirm” loops in optimizers, static analyzers, and decompilers.
+    validation. Expect similar “LLM-first, SMT-confirm” loops in optimizers, static analyzers, and decompilers. (Wang & Xie, 2024; Lopes et al., 2021).
 
   **4. Formal analysis of AI systems themselves**
     Neural-network verification continues to integrate SMT with domain-specific relaxations and bound-propagation; Marabou 2.0 documents architecture and roles for solver-in-the-loop bound 
-    tightening. Coupled with LLM systems, this points to spec-driven safety cases for perception and policy components.
+    tightening. Coupled with LLM systems, this points to spec-driven safety cases for perception and policy components. (Wu et al., 2024; Katz et al., 2019).
 
   **5. Research directions to watch**
     - Auto-formalization: LLMs converting NL requirements/tests into templates that SMT tools check (assertion mining and refinement).
     - Proof-search copilots: Retrieval + tool APIs (Lean/Isabelle/Coq) to keep LLM steps sound via solver or kernel checks.
-    - Verifier-in-the-loop tooling: LLM planning; SMT establishes truth; counterexamples feed self-repair—already prototyped in compilers and invariant synthesis.
+    - Verifier-in-the-loop tooling: LLM planning; SMT establishes truth; counterexamples feed self-repair—already prototyped in compilers and invariant synthesis (Beg, O’Donoghue & Monahan, 2025; Yang et al., 2023; Wu et al., 2024).
 
 ## Case Study Code: Diet Planner
 
@@ -447,3 +460,14 @@ i) Prove that array access is always within bounds in a loop:
 - Beg, A., et al. [A Short Survey on Formalising Software Requirements with LLMs](https://arxiv.org/abs/2506.11874) arXiv:2506.11874 (2025).
 - Wu, G., et al. [LLM Meets Bounded Model Checking: Neuro-symbolic Loop Invariant Inference](https://ieeexplore.ieee.org/abstract/document/10628461) ASE 2024.
 - Wei, A., et al. [InvBench: Can LLMs Accelerate Program Verification with Invariant Synthesis?](https://arxiv.org/abs/2509.21629) arXiv:2509.21629 (2025).
+- Barrett and Tinelli [Satisfiability Modulo Theories, Handbook of Model Checking](https://link.springer.com/chapter/10.1007/978-3-319-10575-8_11) (2018). 
+- Barrett, Stump and Tinelli The SMT-LIB Standard: Version 2.0, SMT-LIB (2010).
+- Davis and Putnam [A Computing Procedure for Quantification Theory](https://dl.acm.org/doi/abs/10.1145/321033.321034), Journal of the ACM (1960).
+- Davis, Logemann and Loveland (1962) [A Machine Program for Theorem-Proving](https://dl.acm.org/doi/abs/10.1145/368273.368557),  Communications of the ACM(1962).
+- de Moura and Bjørner [Z3: An Efficient SMT Solver](https://link.springer.com/chapter/10.1007/978-3-540-78800-3_24), TACAS(2008).
+- Ge and de Moura [Complete Instantiation for Quantified Formulas in SMT](https://link.springer.com/chapter/10.1007/978-3-642-02658-4_25), CAV (2009).
+- Hooker [Integrated Methods for Optimization](https://link.springer.com/chapter/10.1007/978-0-387-38274-6_4), Springer (2006).
+- Nelson and Oppen [Simplification by Cooperating Decision Procedures](https://dl.acm.org/doi/abs/10.1145/357073.357079), ACM TOPLAS (1979).
+- Nieuwenhuis, Oliveras and Tinelli [Solving SAT and SAT Modulo Theories: From an Abstract DPLL Procedure to DPLL(T)](https://dl.acm.org/doi/abs/10.1145/1217856.1217859), Journal of the ACM (2006).
+- Sebastiani and Tomasi [Optimization Modulo Theories with Linear Rational/Integer Arithmetic](https://dl.acm.org/doi/abs/10.1145/2699915), ACM Transactions on Computational Logic (2015).
+- Shostak (1984) [Deciding Combinations of Theories](https://dl.acm.org/doi/pdf/10.1145/2422.322411), Journal of the ACM (1984).
