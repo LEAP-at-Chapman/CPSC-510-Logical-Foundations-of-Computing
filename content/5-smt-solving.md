@@ -431,9 +431,92 @@ i) Prove that array access is always within bounds in a loop:
     if __name__ == "__main__":
         main()
 
-    
-    
+### Potential Possibilities with Z3: Running Z3 in the Browser (No Server) as a Puzzle Solver
 
+You can run Z3 entirely client-side via WebAssembly and the official TypeScript/JavaScript bindings published as z3-solver. This gives you a self-contained puzzle solver (e.g., Sudoku, Kakuro, cryptarithms) that ships as a static page—no backend required. The Z3 team’s Online Z3 Guide shows working JS examples (including Sudoku) and links to the npm package; the Z3 repository also documents the WebAssembly build.
+
+#### Two ways to ship it statically
+1. Official JS/TS bindings (z3-solver) – The npm package bundles a WebAssembly build of Z3 and an ergonomic JS API (Context, Solver, Int, Bool, etc.). Modern browsers load the .wasm and run Z3 locally. For maximum performance, the package uses WebAssembly threads, which require cross-origin isolation (serve with COOP/COEP headers); several static hosts let you set these headers (z3-solver maintainers, 2025; Easton, 2024).
+2. Community “z3.wasm” builds – Prior to z3-solver, community builds compiled Z3 to one .wasm with a small JS shim. They’re handy for experiments or minimal demos (Claudel, 2018–2024; Zucker, 2021).
+
+#### Minimal “static page” example (cryptarithm)
+This example solves the classic SEND + MORE = MONEY puzzle in a single HTML file. You can drop it into a static host. If your host supports custom headers, enable COOP/COEP  for best performance.
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Z3 in the Browser — SEND+MORE=MONEY</title>
+  <!-- If your static host lets you set headers, add:
+       Cross-Origin-Opener-Policy: same-origin
+       Cross-Origin-Embedder-Policy: require-corp
+       (These are response headers; some hosts let you configure them in a _headers file.) -->
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; }
+    pre { background: #f6f6f6; padding: 1rem; border-radius: 8px; overflow:auto; }
+    button { padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>Z3 in the Browser — SEND + MORE = MONEY</h1>
+  <p>Click run to solve the cryptarithm using Z3 compiled to WebAssembly.</p>
+  <button id="run">Run solver</button>
+  <pre id="out">(waiting)</pre>
+
+  <script type="module">
+    // Load the official JS bindings + WASM from a CDN.
+    // Pin a version that exists for your chapter; 4.12+ is fine. Example below uses 4.15.1 per Z3Guide footer.
+    import initZ3 from "https://cdn.jsdelivr.net/npm/z3-solver@4.15.1/dist/index.js";
+
+    const out = document.getElementById('out');
+    const log = (...xs) => out.textContent += xs.join(' ') + "\n";
+
+    document.getElementById('run').addEventListener('click', async () => {
+      out.textContent = "Loading Z3.wasm…\n";
+      const { Context } = await initZ3();              // boots wasm + returns constructors
+      const { Z3, Bool, Int, Solver, Distinct, And } = new Context("main");
+
+      // Digits: S,E,N,D,M,O,R,Y are 0..9; S and M nonzero; all distinct
+      const [S,E,N,D,M,O,R,Y] = "S,E,N,D,M,O,R,Y".split(",").map(n => Int.const(n));
+      const digits = [S,E,N,D,M,O,R,Y];
+      const zeroToNine = digits.map(d => d.ge(Int.val(0))).concat(digits.map(d => d.le(Int.val(9))));
+      const nonZero    = [ S.ge(Int.val(1)), M.ge(Int.val(1)) ];
+
+      // Helper: form a number from digits
+      const num = (a,b,c,d) =>
+        Int.val(1000).mul(a).add(Int.val(100).mul(b)).add(Int.val(10).mul(c)).add(d);
+      const num5 = (a,b,c,d,e) =>
+        Int.val(10000).mul(a).add(Int.val(1000).mul(b)).add(Int.val(100).mul(c)).add(Int.val(10).mul(d)).add(e);
+
+      // SEND + MORE = MONEY
+      const SEND  = num(S,E,N,D);
+      const MORE  = num(M,O,R,E);
+      const MONEY = num5(M,O,N,E,Y);
+
+      const s = new Solver();
+      s.add(And(...zeroToNine));
+      s.add(And(...nonZero));
+      s.add(Distinct(...digits));
+      s.add(SEND.add(MORE).eq(MONEY));
+
+      const r = await s.check();
+      if (r === "sat") {
+        const m = s.model();
+        log("sat");
+        log("Assignment:");
+        for (const v of digits) log(`${v}:`, m.get(v).toString());
+        log(`SEND  = ${m.eval(SEND).toString()}`);
+        log(`MORE  = ${m.eval(MORE).toString()}`);
+        log(`MONEY = ${m.eval(MONEY).toString()}`);
+      } else {
+        log(r);
+      }
+    });
+  </script>
+</body>
+</html>
+
+Here: the z3-solver package ships a WebAssembly build of Z3 and TypeScript/JS bindings; browsers fetch the .wasm and run the solver locally. The JS API mirrors the standard Z3 concepts (contexts, solvers, sorts, expressions), and the Z3 Guide includes more examples (arrays, bit-vectors, Sudoku).The official Z3 JavaScript page also includes a Sudoku demo you can study and adapt to your other puzzles; it’s a concise template for finite-domain modeling in the browser.
 
 ## References
 
