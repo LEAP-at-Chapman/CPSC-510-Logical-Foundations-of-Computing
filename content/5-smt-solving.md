@@ -440,7 +440,7 @@ You can run Z3 entirely client-side via WebAssembly and the official TypeScript/
 2. Community “z3.wasm” builds – Prior to z3-solver, community builds compiled Z3 to one .wasm with a small JS shim. They’re handy for experiments or minimal demos (Claudel, 2018–2024; Zucker, 2021).
 
 #### Minimal “static page” example (cryptarithm)
-This example solves the classic SEND + MORE = MONEY puzzle in a single HTML file. You can drop it into a static host. If your host supports custom headers, enable COOP/COEP  for best performance.
+The Online Z3 Guide provides browser examples (including Sudoku) you can adapt: load Z3, build expressions (Int.const, Distinct, arithmetic/bit-vector ops), add constraints, then check() and read a model (Z3Prover Team, 2025).This example solves the classic SEND + MORE = MONEY puzzle in a single HTML file. You can drop it into a static host. If your host supports custom headers, enable COOP/COEP  for best performance.
 
     <!DOCTYPE html>
     <html>
@@ -516,7 +516,14 @@ This example solves the classic SEND + MORE = MONEY puzzle in a single HTML file
     </body>
     </html>
 
-Here: the z3-solver package ships a WebAssembly build of Z3 and TypeScript/JS bindings; browsers fetch the .wasm and run the solver locally. The JS API mirrors the standard Z3 concepts (contexts, solvers, sorts, expressions), and the Z3 Guide includes more examples (arrays, bit-vectors, Sudoku).The official Z3 JavaScript page also includes a Sudoku demo you can study and adapt to your other puzzles; it’s a concise template for finite-domain modeling in the browser.
+Here the z3-solver package ships a WebAssembly build of Z3 and TypeScript/JS bindings; browsers fetch the .wasm and run the solver locally. The JS API mirrors the standard Z3 concepts (contexts, solvers, sorts, expressions), and the Z3 Guide includes more examples (arrays, bit-vectors, Sudoku).The official Z3 JavaScript page also includes a Sudoku demo you can study and adapt to your other puzzles; it’s a concise template for finite-domain modeling in the browser.
+
+###### How to use this
+1. create a file named z3-puzzle.html and paste the above code
+2. open it from a local server (or any static host)
+3. click Run solver
+4. (optional) if your host supports headers, add Cross-Origin-Opener-Policy: same-origin and Cross-Origin-Embedder-Policy: require-corp to enable WASM threads
+
 
 ## References
 
@@ -554,3 +561,9 @@ Here: the z3-solver package ships a WebAssembly build of Z3 and TypeScript/JS bi
 - Nieuwenhuis, Oliveras and Tinelli [Solving SAT and SAT Modulo Theories: From an Abstract DPLL Procedure to DPLL(T)](https://dl.acm.org/doi/abs/10.1145/1217856.1217859), Journal of the ACM (2006).
 - Sebastiani and Tomasi [Optimization Modulo Theories with Linear Rational/Integer Arithmetic](https://dl.acm.org/doi/abs/10.1145/2699915), ACM Transactions on Computational Logic (2015).
 - Shostak (1984) [Deciding Combinations of Theories](https://dl.acm.org/doi/pdf/10.1145/2422.322411), Journal of the ACM (1984).
+- Z3Prover Team (2025) [Z3 JavaScript Examples](https://microsoft.github.io/z3guide/programming/Z3%20JavaScript%20Examples), Online Z3 Guide (2025).
+- Z3Prover [Z3 repository: WebAssembly / TypeScript notes](https://github.com/Z3Prover/z3), GitHub (see “WebAssembly / TypeScript / JavaScript”) (2025).
+- z3-solver [TypeScript/JavaScript bindings](https://www.npmjs.com/package/z3-solver)_ (WebAssembly), npm package page (2025).
+- Easton [z3-solver & WebAssembly notes](https://fletcheaston.com/software/packages/z3-solver), Blog (2024).
+- Claudel (maintainer) [z3.wasm: WASM builds of Z3](https://github.com/cpitclaudel/z3.wasm), GitHub (alternative build route) (2019–2024).
+- Zucker [Replicating Rise4Fun Z3 with z3-wasm](https://www.philipzucker.com/replacing-rise4fun/), Blog & demo (2021).
