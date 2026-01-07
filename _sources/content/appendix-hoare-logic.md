@@ -40,7 +40,7 @@ These ideas have various ramifications in programming and software engineering.
 
 **Table of Contents**:
 
-- [Summary of the Rules of Hoare Logic](07-hoare-logic-dafny.md)
+- [Summary of the Rules of Hoare Logic](./9-hoare-logic.md)
 - Introductory Example
 - Preconditions and Postconditions
 - Program Variables vs Mathematical Variables

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Complexity Classes Overview &#8212; Logical Foundations of Computing</title>
+    <title>Logical Foundations of Computing &#8212; Logical Foundations of Computing</title>
   
   
   
@@ -62,12 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/appendix-complexity-classes';</script>
-    <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/appendix-complexity-classes.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/0-title';</script>
+    <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/0-title.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="How to Cite References" href="how-to-cite.html" />
-    <link rel="prev" title="Syllogistic Logics in Isabelle" href="appendix-syllogistic-logics.html" />
+    <link rel="next" title="The Book" href="0-intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -130,6 +129,8 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -148,7 +149,7 @@ const thebe_selector_output = ".output, .cell_output"
     
   
 
-<a class="navbar-brand logo" href="0-title.html">
+<a class="navbar-brand logo" href="#">
   
   
   
@@ -180,10 +181,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Complexity Classes Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-complexity-classes.html">Complexity Classes Overview</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Style Guide</span></p>
 <ul class="nav bd-sidenav">
@@ -260,7 +261,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fcontent/appendix-complexity-classes.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fcontent/0-title.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -290,7 +291,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/content/appendix-complexity-classes.md" target="_blank"
+      <li><a href="../_sources/content/0-title.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -361,9 +362,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -374,26 +373,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Complexity Classes Overview</h1>
+    <h1>Logical Foundations of Computing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-undecidable-logics">Note on Undecidable Logics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dl-complexity-summary">DL Complexity Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-complexity-theory">Foundational Complexity Theory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description-logics">Description Logics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#textbooks-surveys">Textbooks &amp; Surveys</a></li>
-</ul>
-</li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -403,192 +387,43 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="complexity-classes-overview">
-<h1>Complexity Classes Overview<a class="headerlink" href="#complexity-classes-overview" title="Permalink to this heading">#</a></h1>
-<p>(draft, needs verification and more work)</p>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Class</p></th>
-<th class="head"><p>Definition</p></th>
-<th class="head"><p>Complete Problem</p></th>
-<th class="head"><p>Key Reference</p></th>
-<th class="head"><p>DL Example</p></th>
-<th class="head"><p>Logics in Book</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><strong>AC⁰</strong></p></td>
-<td><p>Constant depth circuits</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>DL-Lite query answering</p></td>
-<td><p>Propositional Logic (basic evaluation)</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>L</strong></p></td>
-<td><p>Log space</p></td>
-<td><p>Boolean Formula Evaluation</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>Propositional Logic (formula evaluation)</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>NL</strong></p></td>
-<td><p>Nondeterministic log space</p></td>
-<td><p>2-SAT</p></td>
-<td><p>Savitch (1970)</p></td>
-<td><p>DL-Lite concept satisfiability</p></td>
-<td><p>2-SAT (Propositional Logic fragment)</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>P</strong></p></td>
-<td><p>Polynomial time</p></td>
-<td><p>Horn-SAT, Circuit Value Problem</p></td>
-<td><p>Cobham (1965)</p></td>
-<td><p>EL, EL++ reasoning</p></td>
-<td><p>Horn-SAT (Propositional Logic fragment)</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>NP</strong></p></td>
-<td><p>Nondeterministic polynomial time</p></td>
-<td><p>SAT, 3-SAT</p></td>
-<td><p>Cook (1971)</p></td>
-<td><p></p></td>
-<td><p>SAT (Propositional Logic), Constraint Satisfaction (CSP)</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>co-NP</strong></p></td>
-<td><p>Complement of NP</p></td>
-<td><p>Tautology, Unsatisfiability</p></td>
-<td><p></p></td>
-<td><p>ALC concept satisfiability (acyclic TBox)</p></td>
-<td><p>Tautology checking (Propositional Logic)</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>PSPACE</strong></p></td>
-<td><p>Polynomial space</p></td>
-<td><p>QBF (TQBF)</p></td>
-<td><p>Savitch (1970)</p></td>
-<td><p>ALC concept satisfiability</p></td>
-<td><p>Modal Logic, Temporal Logic (LTL model checking), Epistemic Logic</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>EXPTIME</strong></p></td>
-<td><p>Exponential time</p></td>
-<td><p>Succinct Circuit Value Problem</p></td>
-<td><p>Hartmanis &amp; Stearns (1965)</p></td>
-<td><p>ALC + GCIs, SHIQ, SHOIN (OWL DL)</p></td>
-<td><p>SMT Solving (many theories), Temporal Logic (CTL model checking)</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>NEXPTIME</strong></p></td>
-<td><p>Nondeterministic exponential time</p></td>
-<td><p>Succinct SAT</p></td>
-<td><p></p></td>
-<td><p>SHOIQ</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>co-NEXPTIME</strong></p></td>
-<td><p>Complement of NEXPTIME</p></td>
-<td><p>Succinct Tautology</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><strong>2-EXPTIME</strong></p></td>
-<td><p>Double exponential time</p></td>
-<td><p>Presburger Arithmetic</p></td>
-<td><p>Fischer &amp; Rabin (1974)</p></td>
-<td><p></p></td>
-<td><p>SMT Solving (Presburger Arithmetic)</p></td>
-</tr>
-<tr class="row-odd"><td><p><strong>N2EXPTIME</strong></p></td>
-<td><p>Nondeterministic double exponential time</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>SROIQ (OWL 2 DL)</p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
+  <section class="tex2jax_ignore mathjax_ignore" id="logical-foundations-of-computing">
+<h1>Logical Foundations of Computing<a class="headerlink" href="#logical-foundations-of-computing" title="Permalink to this heading">#</a></h1>
+<!--hide the markdown heading because it would not be centered (but it is needed to give the browser tab a title) -->
+<style>
+.bd-article section[id] > h1:not([style]) {
+    display: none !important;
+}
+.bd-title {
+    display: none !important;
+}
+</style><div style="text-align: center; margin-top: 0em; margin-bottom: 0em; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; page-break-after: always;">
+<h1 style="margin: 0;">Logical Foundations of Computing</h1>
+<div style="margin-top: 1.5em; margin-bottom: 1.5em; font-size: 1.2em; color: #666;">
+An Introduction to Logics and Their Software Tools
 </div>
-<section id="note-on-undecidable-logics">
-<h2>Note on Undecidable Logics<a class="headerlink" href="#note-on-undecidable-logics" title="Permalink to this heading">#</a></h2>
-<p>Some logics covered in this book are <strong>undecidable</strong> (or <strong>semi-decidable</strong>) and thus do not appear in the complexity class table above:</p>
-<ul class="simple">
-<li><p><strong>First-Order Logic (FOL)</strong>: Undecidable (though many decidable fragments exist, such as those used in SMT)</p></li>
-<li><p><strong>Higher-Order Logic (HOL)</strong>: Undecidable (though type checking in HOL-based systems like Isabelle/HOL is decidable)</p></li>
-<li><p><strong>Dependent Type Theory</strong>: Type checking is decidable, but theorem proving is semi-decidable</p></li>
-<li><p><strong>Hoare Logic</strong>: Program verification is undecidable in general (though specific fragments and bounded verification are decidable)</p></li>
-<li><p><strong>Full Prolog</strong>: Semi-decidable (though Datalog, a decidable subset, is EXPTIME-complete)</p></li>
-</ul>
-<p>The table above focuses on <strong>decidable problems</strong> for which we can give precise complexity bounds.</p>
-</section>
-<section id="dl-complexity-summary">
-<h2>DL Complexity Summary<a class="headerlink" href="#dl-complexity-summary" title="Permalink to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Description Logic</p></th>
-<th class="head"><p>Complexity</p></th>
-<th class="head"><p>Reference</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>DL-Lite</p></td>
-<td><p>AC⁰ / NL</p></td>
-<td><p>Calvanese et al. (2007)</p></td>
-</tr>
-<tr class="row-odd"><td><p>EL++</p></td>
-<td><p>P</p></td>
-<td><p>Baader et al. (2005)</p></td>
-</tr>
-<tr class="row-even"><td><p>ALC</p></td>
-<td><p>PSPACE / EXPTIME</p></td>
-<td><p>Schmidt-Schauß &amp; Smolka (1991)</p></td>
-</tr>
-<tr class="row-odd"><td><p>SHIQ</p></td>
-<td><p>EXPTIME</p></td>
-<td><p>Tobies (2001)</p></td>
-</tr>
-<tr class="row-even"><td><p>SHOIQ</p></td>
-<td><p>NEXPTIME</p></td>
-<td><p>Tobies (2001)</p></td>
-</tr>
-<tr class="row-odd"><td><p>SROIQ</p></td>
-<td><p>N2EXPTIME</p></td>
-<td><p>Kazakov (2008)</p></td>
-</tr>
-</tbody>
-</table>
+<div style="margin-top: 4em; font-size: 0.9em; color: #888; font-style: italic;">
+<em>Developed by the students and instructor of </em>
 </div>
-</section>
-<hr class="docutils" />
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<section id="foundational-complexity-theory">
-<h3>Foundational Complexity Theory<a class="headerlink" href="#foundational-complexity-theory" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Hartmanis &amp; Stearns (1965): <a class="reference external" href="https://scholar.google.com/scholar?q=Hartmanis+Stearns+Computational+Complexity+Algorithms+1965">On the Computational Complexity of Algorithms</a></p></li>
-<li><p>Savitch (1970): <a class="reference external" href="https://scholar.google.com/scholar?q=Savitch+Relationships+Nondeterministic+Deterministic+Tape+1970">Relationships Between Nondeterministic and Deterministic Tape Complexities</a></p></li>
-<li><p>Cook (1971): <a class="reference external" href="https://scholar.google.com/scholar?q=Cook+Complexity+Theorem+Proving+Procedures+1971">The Complexity of Theorem-Proving Procedures</a></p></li>
-<li><p>Levin (1973): <a class="reference external" href="https://scholar.google.com/scholar?q=Levin+Universal+Sequential+Search+Problems+1973">Universal Sequential Search Problems</a></p></li>
-<li><p>Fischer &amp; Rabin (1974): <a class="reference external" href="https://scholar.google.com/scholar?q=Fischer+Rabin+Super+Exponential+Presburger+Arithmetic+1974">Super-Exponential Complexity of Presburger Arithmetic</a></p></li>
-<li><p>Stockmeyer &amp; Meyer (1973): <a class="reference external" href="https://scholar.google.com/scholar?q=Stockmeyer+Meyer+Word+Problems+Exponential+Time+1973">Word Problems Requiring Exponential Time</a></p></li>
-<li><p>Immerman (1988): <a class="reference external" href="https://scholar.google.com/scholar?q=Immerman+Nondeterministic+Space+Closed+Complementation+1988">Nondeterministic Space is Closed Under Complementation</a></p></li>
-<li><p>Szelepcsényi (1988): <a class="reference external" href="https://scholar.google.com/scholar?q=Szelepcs%C3%A9nyi+Forced+Enumeration+Nondeterministic+Automata+1988">The Method of Forced Enumeration for Nondeterministic Automata</a></p></li>
-</ul>
-</section>
-<section id="description-logics">
-<h3>Description Logics<a class="headerlink" href="#description-logics" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Schmidt-Schauß &amp; Smolka (1991): <a class="reference external" href="https://scholar.google.com/scholar?q=Schmidt-Schau%C3%9F+Smolka+Attributive+Concept+Descriptions+Complements+1991">Attributive Concept Descriptions with Complements</a></p></li>
-<li><p>Tobies (2001): <a class="reference external" href="https://scholar.google.com/scholar?q=Tobies+Complexity+Results+Practical+Algorithms+Logics+Knowledge+Representation+2001">Complexity Results and Practical Algorithms for Logics in Knowledge Representation</a></p></li>
-<li><p>Baader et al. (2005): <a class="reference external" href="https://scholar.google.com/scholar?q=Baader+Pushing+EL+Envelope+2005">Pushing the EL Envelope</a></p></li>
-<li><p>Calvanese et al. (2007): <a class="reference external" href="https://scholar.google.com/scholar?q=Calvanese+Tractable+Reasoning+Efficient+Query+Answering+DL-Lite+2007">Tractable Reasoning and Efficient Query Answering in Description Logics: The DL-Lite Family</a></p></li>
-<li><p>Kazakov (2008): <a class="reference external" href="https://scholar.google.com/scholar?q=Kazakov+RIQ+SROIQ+Harder+SHOIQ+2008">RIQ and SROIQ Are Harder than SHOIQ</a></p></li>
-</ul>
-</section>
-<section id="textbooks-surveys">
-<h3>Textbooks &amp; Surveys<a class="headerlink" href="#textbooks-surveys" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Arora &amp; Barak (2009): <a class="reference external" href="https://scholar.google.com/scholar?q=Arora+Barak+Computational+Complexity+Modern+Approach">Computational Complexity: A Modern Approach</a></p></li>
-<li><p>Papadimitriou (1994): <a class="reference external" href="https://scholar.google.com/scholar?q=Papadimitriou+Computational+Complexity+1994">Computational Complexity</a></p></li>
-<li><p>Baader et al. (2003): <a class="reference external" href="https://scholar.google.com/scholar?q=Baader+Description+Logic+Handbook+2003">The Description Logic Handbook</a></p></li>
-</ul>
-</section>
-</section>
+<div style="margin-top: 2em; font-size: 1.1em;">
+<strong>CPSC 510</strong><br>
+<em>Logical Foundations of Computing</em>
+</div>
+<div style="margin-top: 2em; font-size: 1em; color: #666;">
+Chapman University<br>
+Fall 2025<br>
+<br>
+Spencer Au, Wayne Chong, Jack de Bruyn, Matt Favela, Brandon Foley, John Mulhern, Khoa Nguyen, Jake Triester, Alex Zermeno, Alexander Kurz
+</div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -621,21 +456,12 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="appendix-syllogistic-logics.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Syllogistic Logics in Isabelle</p>
-      </div>
-    </a>
     <a class="right-next"
-       href="how-to-cite.html"
+       href="0-intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">How to Cite References</p>
+        <p class="prev-next-title">The Book</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -645,28 +471,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-undecidable-logics">Note on Undecidable Logics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dl-complexity-summary">DL Complexity Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#foundational-complexity-theory">Foundational Complexity Theory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description-logics">Description Logics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#textbooks-surveys">Textbooks &amp; Surveys</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
