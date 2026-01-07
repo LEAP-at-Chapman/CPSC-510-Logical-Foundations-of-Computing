@@ -60,7 +60,7 @@ Before starting on this: Upgrade from Jupyter book version 1 to version 2. Organ
     - One Discord channel per chapter for discussion
     - Each student must make **one pull request per week** containing an improvement proposal
     - Proposals can include: fixing typos/errors, adding examples, improving explanations, updating references, adding missing sections, enhancing software engineering perspective.
-    - I am particularly interested in interactive features that encourage the reader to actively play with the concepts. In some cases, such as SMCDEL or Lean, such interactive playgrounds are already available online. In other cases we may have to develop something ourselves.
+    - I am particularly interested in interactive features that encourage the reader to actively play with the concepts. In some cases, such as [SMCDEL](https://w4eg.de/malvin/illc/smcdelweb) or [Lean](https://adam.math.hhu.de/#/g/leanprover-community/), interactive playgrounds are already available online. For Z3 and MiniZinc one can work with Python notebooks. For Prolog, one can use [SWISH](https://swish.swi-prolog.org/). Dafny? Isabelle?. See also Wikipedia's [Comparison of online source code playgrounds](https://en.wikipedia.org/wiki/Comparison_of_online_source_code_playgrounds).
   
 - **Week 6: Synthesis and Prioritization**
   - Rank chapters by quality/completeness

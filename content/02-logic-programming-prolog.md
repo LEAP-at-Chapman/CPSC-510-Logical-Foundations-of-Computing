@@ -30,6 +30,68 @@ graph TD
 
 Say from parent we wanted to find child 2, in logic programming, it would first look at child 1 and when it checks if that is child 2 and realizes it isn't, it will then go back to parent and try the other option which is correct. In contrast to imperative programming, which requires precise instructions for every step, logic programming is declarative: the programmer specifies what is true, and the system determines how to find the solution.
 
+### Interactive Example: Family Tree
+
+A Prolog program is a database consisting of facts and rules:
+
+```prolog
+parent(harriet, george).
+parent(george, richard).
+parent(george, amelia).
+parent(george, susan).
+parent(matilda, richard).
+parent(matilda, amelia).
+parent(victoria, susan).
+parent(richard, sophie).
+parent(richard, joseph).
+parent(ellen, sophie).
+parent(ellen, joseph).
+parent(susan, charles).
+parent(walter, charles).
+
+male(arthur).
+male(george).
+male(richard).
+male(joseph).
+male(walter).
+male(charles).
+
+female(harriet).
+female(matilda).
+female(victoria).
+female(amelia).
+female(susan).
+female(ellen).
+female(sophie).
+
+grandparent(X, Z) :- parent(X, Y), parent(Y, Z).
+
+ancestor(X, Y) :- parent(X, Y).
+ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).
+
+father(X, Y) :- parent(X, Y), male(X).
+mother(X, Y) :- parent(X, Y), female(X).
+
+sibling(X, Y) :- parent(P, X), parent(P, Y), X \= Y.
+```
+
+Try this interactive example in [SWISH](https://swish.swi-prolog.org/p/BBRAySVk.swinb). Replace `solution(X)` by one of the following:
+
+**Try these queries:**
+- `parent(X,richard).` - Who are the parents of Richard?
+- `parent(susan,Y)..` - Who are the children of Susan?
+- `mother(X,richard).` - Who is the mother of Richard?
+- `parent(X,richard), female(X).` - Who is the mother of Richard?
+- `grandparent(X,richard).` - Who are the grandparents of Richard?
+- `grandparent(george,Y).` - Who are the grandchildren of George?
+
+**Experiment by:**
+- Adding new family members: `parent(george, alice).` and `female(alice).`
+- Adding new relationships: Can you define `cousin/2`? What about `uncle/2` or `aunt/2`?
+- Creating new queries: Who are all the descendants of harriet? Who has the most children?
+
+This example demonstrates Prolog's declarative nature: we describe *what* family relationships exist, and Prolog figures out *how* to answer our questions through logical inference and backtracking. Notice how all facts of the same predicate (`parent/2`, `male/1`, `female/1`) are grouped together—this is a Prolog best practice that prevents warnings.
+
 ## The Tool
 The tool that I will mainly be focusing on is Prolog, a unique coding language designed for logic programming. Prolog was first created in France in 1972 by Alain Colmerauer and Philippe Roussel, with its name derived from programmation en logique ("programming in logic"). The earliest version was an interpreter built in Fortran by Gerard Battani and Henri Meloni where later, David H. D. Warren brought this work to Edinburgh, where he then developed a new front-end that established the Edinburgh Prolog syntax which is now used for most modern implementations.
 
