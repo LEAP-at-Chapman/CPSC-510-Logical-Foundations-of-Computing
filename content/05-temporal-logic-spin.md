@@ -1,4 +1,5 @@
 # Temporal Logic with Spin
+Author: *Jack de Bruyn*
 
 ## Idea
 
@@ -6,7 +7,7 @@ Temporal logic is a logic used to reason about time. A statement in temporal log
 
 For example: I will *eventually* be hungry
 
-This mode of logic can be very useful in concurrent systems where two threads must be made to *never* access the same reasource at the same time. 
+This mode of logic can be very useful in concurrent systems where two threads must be made to *never* access the same resource at the same time. 
 
 ## Basic Theory
 
@@ -26,7 +27,7 @@ It also includes several additional modal operators:
 * Globally (☐):
     ☐ A means that A must be true for the rest of the timeline or path.
 * For All (☐):
-    ☐ A means that B must be true on all paths starting from the current position.
+    ☐ A means that A must be true on all paths starting from the current position.
 * There Exists (◊):
     ◊ A means that there exists at least one path starting from the current position where A is true.
 
@@ -57,9 +58,9 @@ run with `$ spin -u514 -p -l ex_1a.pml`
 
 This should print 514 steps of increasing numbers.
 
-### First Excercise
+### First Exercise
 
- The following is a basic handshake protocol between two processes, written in Promela. Process A sends signal a1 to initiate, then process B sends signal b1 when it recieves signal a1, and when A recieves b1 it sends signal a1 again, restarting the process. The program also includes some basic error handling.
+ The following is a basic handshake protocol between two processes, written in Promela. Process A sends signal a1 to initiate, then process B sends signal b1 when it receives signal a1, and when A receives b1 it sends signal a1 again, restarting the process. The program also includes some basic error handling.
 
  Load this program into SPIN and try answering the questions below.
 
@@ -101,14 +102,14 @@ active proctype B()
 
 2. How would you modify the model to make all states reachable? 
 
-## Challenge Excercise: The Farmer and the River
+## The Farmer and the River
 A farmer wants to move a cabbage, a goat, and a wolf across a river in his boat. He can only fit one thing in his boat while going across. If the farmer isn't watching, the goat will eat the cabbage, and the wolf will eat the goat. Can you think of a way to model this problem and find it's solution in SPIN?
 
-Note: SPIN allows you to both define the solution in the code and in the fourmula you run from the command line.
+Note: SPIN allows you to both define the solution in the code and in the formula you run from the command line.
 
-To check a model with fourmulas, you must first define them in the file with `#define`. These defined fourmulas should begin with a lowercase letter.
+To check a model with formulas, you must first define them in the file with `#define`. These defined formulas should begin with a lowercase letter.
 
-Afterwards you may run your model with fourmulas by typing the following and replacing FOURMULA with the fourmula you wish to use (ie <>cond2):
+Afterwards you may run your model with formulas by typing the following and replacing FORMULA with the formula you wish to use (ie <>cond2):
 
 ```bash
 spin -a -f 'FORMULA' wgc.pml
@@ -131,7 +132,7 @@ A version of a model checker called SMV, but using temporal logic. Specifically 
 
 2. [PRISM](https://www.prismmodelchecker.org/)
 
-PRISM is a probabalistic model checker using its own language, also called PRISM. It is useful for models that are contain probabilities or other randomness.
+PRISM is a probabilistic model checker using its own language, also called PRISM. It is useful for models that contain probabilities or other randomness.
 
 3. [FDR](https://cocotec.io/fdr/)
 
@@ -151,9 +152,9 @@ A model checker designed to model systems made of timed automata. Uses a simplif
 
 ## Algorithms
 
-In general, model checking with Linear Temporal Logic is not NP complete due to requiring the checking of infinitly many paths ([Bauland et al., 2008](https://arxiv.org/abs/0805.0498)). However, certain fragments of the logic that limit some of the universal quantifiers are NP complete. When SPIN verifies a system, several steps are taken.
+In general, model checking with Linear Temporal Logic is not NP complete due to requiring the checking of infinitely many paths ([Bauland et al., 2008](https://arxiv.org/abs/0805.0498)). However, certain fragments of the logic that limit some of the universal quantifiers are NP complete. When SPIN verifies a system, several steps are taken.
 
-1. The user must describe the system in Promela (Process Meta Language), which is SPINs programming langauage.
+1. The user must describe the system in Promela (Process Meta Language), which is SPIN's programming language.
 
 2. The statements within this program (which are expressed as Linear-Temporal Logic), are converted into [Büchi Automata](https://en.wikipedia.org/wiki/B%C3%BCchi_automaton). These Automata are state machines that accept or rejects infinite inputs. 
 
@@ -167,19 +168,19 @@ I found a research paper that declared its intent to create a benchmark of model
 
 ## Applications in Industry
 
-One of the main applications of SPIN in the industry is model checking for concurecy or mutual exculsion problems. For example, it is often the case where two processes are running in parallel and must read and write from the same reasource. These processes cannot be allowed to access the reasource at the same time to avoid memory problems. However both processes must access the reasource *eventually*. This problem and problems like it can be modeled and checked in SPIN.
+One of the main applications of SPIN in the industry is model checking for concurrency or mutual exclusion problems. For example, it is often the case where two processes are running in parallel and must read and write from the same resource. These processes cannot be allowed to access the resource at the same time to avoid memory problems. However both processes must access the resource *eventually*. This problem and problems like it can be modeled and checked in SPIN.
 
-SPIN has also been used for a number of other, more specific applications in the industry. For instance, back in the early 2000s some researchers used SPIN  to verify the flight software of spacecraft ([Gluck and Holtzman, 2008](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Using+SPIN+model+checking+for+flight+software+verification&btnG=)). Given the risks of spaceflight, double and tripple checking everything is the norm, which is especially important for something as vital as the central flight system of a craft. 
+SPIN has also been used for a number of other, more specific applications in the industry. For instance, back in the early 2000s some researchers used SPIN  to verify the flight software of spacecraft ([Gluck and Holtzman, 2008](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Using+SPIN+model+checking+for+flight+software+verification&btnG=)). Given the risks of spaceflight, double and triple checking everything is the norm, which is especially important for something as vital as the central flight system of a craft. 
 
-Additionally the automotive industry had run into some trouble ensuring the reliability of their vehicle systems due to increasing complexity ([Zhang et al., 2018](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=)). SMT-based checking isn't very efficeny as it can't handle loops or interuptions very well ([Zhang et al., 2018](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=)). As such, SPIN was proposed as an alternative and was found to be quite efficent at verifying such systems ([Zhang et al., 2018](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=)).
+Additionally the automotive industry had run into some trouble ensuring the reliability of their vehicle systems due to increasing complexity ([Zhang et al., 2018](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=)). SMT-based checking isn't very efficient as it can't handle loops or interruptions very well ([Zhang et al., 2018](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=)). As such, SPIN was proposed as an alternative and was found to be quite efficient at verifying such systems ([Zhang et al., 2018](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=)).
 
 Model checkers like SPIN can also be used to help find design flaws in web applications, or to simplify their designs ([Alzahrani and Mohammed Yahya, 2015](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Model+checking+web+applications+heriot+watt+university&btnG=)). The researchers in this paper tested SPINs ability to verify web applications and compared it against another model checker (Upaal) to ensure it was correct ([Alzahrani and Mohammed Yahya, 2015](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Model+checking+web+applications+heriot+watt+university&btnG=)).
 
-## Case Study: Finding the Fault in the Needham-Schroedor Protocol
+## Needham-Schroeder Protocol
 
-The Needham-Schroedor Public Key Protocol was an oft-used encryption protocol for communicating across the internet. It ustilized public key encryption to exchange a secrect between both parties. This secrect then allowed them to continue conversing securely. After 17 years, a flaw was found in the protocol that would allow an attacker to listen in on communications that were supposed to be secure. The attack was discovered using model checking.
+In this case study, we will look at the Needham-Schroeder Protocol. The Needham-Schroeder Public Key Protocol was an oft-used encryption protocol for communicating across the internet. It utilized public key encryption to exchange a secret between both parties. This secret then allowed them to continue conversing securely. After 17 years, a flaw was found in the protocol that would allow an attacker to listen in on communications that were supposed to be secure. The attack was discovered using model checking.
 
-The Needham-Schroedor Protocol works as follows:
+The Needham-Schroeder Protocol works as follows:
 
 1. Alice send Bob a message with her address and a unique random number.
 
@@ -199,55 +200,56 @@ A fix was proposed by the person who found this fault. To avoid the attack, the 
 
 Most information gathered from [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=) by N Rescher and A Urquhart, as well as some additional information taken from the [wiki](https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators) on Temporal Logic and [SPIN's history tab](https://spinroot.com/spin/Doc/roots.html).
 
-- 1947: Jerzy Łoś first formalizes a logic with temporal functions in the book, *The Foundations of a Methodological Analysis of Mill’s Methods*. This aim of this book was to formailze Mill's methods of induction, but in the process Łoś created the first working instance of temporal logic.
+- 1947: Jerzy Łoś first formalizes a logic with temporal functions in the book, *The Foundations of a Methodological Analysis of Mill's Methods*. The aim of this book was to formalize Mill's methods of induction, but in the process Łoś created the first working instance of temporal logic.
 
-- 1953: Arthur Prior begins research on Temporal Logic. He was apparently interested in questions of free will. While his work shared overlap with Łoś', he would not offically reference Łoś until two years later.
+- 1953: Arthur Prior begins research on Temporal Logic. He was apparently interested in questions of free will. While his work shared overlap with Łoś', he would not officially reference Łoś until two years later.
 
 - 1957: Prior publishes a book on temporal logic called *Time and Modality*. For a time this was the widely accepted beginning of temporal logic. Prior formalized the more modern version of temporal logic, using modal operators.
 
-- 1958: Prior gets a letter from Saul Kripke, pointing out to him the possiblities of branching time. This caused Prior to revaluate his assumtion that time must be linear, and he went on to develope two theories of branching time.
+- 1958: Prior gets a letter from Saul Kripke, pointing out to him the possibilities of branching time. This caused Prior to reevaluate his assumption that time must be linear, and he went on to develop two theories of branching time.
 
 - 1967: Prior publishes *Past, Present and Future*, a collection of his most revised theories on temporal logic, before dying two years later.
 
-- 1980: The first precursor to SPIN is developed, called Pan. Pan shared many propterties with SPIN, but it only had access to safety conditions.
+- 1980: The first precursor to SPIN is developed, called Pan. Pan shared many properties with SPIN, but it only had access to safety conditions.
 
-- 1983: The successor to Pan is developed, called Trace. This model checker swapped process alegbras for automata as its verification method.
+- 1983: The successor to Pan is developed, called Trace. This model checker swapped process algebras for automata as its verification method.
 
 - 1989: The first version of SPIN is developed. It was originally intended to simply be a small example model checker for a course on protocol verification. Over the following years it would be improved and expanded upon until it began the version we use today.
 
-## Current Development, Research Challenges, Conferences and Workshops
+## Current Developments
 
 1. [International Symposium on Temporal Representation and Reasoning (TIME)](https://time-symposium.org/t/):
 
-TIME is not exclusively dedicated to temporal logic, but does include a number of papers on the subject. It offically began in 1994, and claims to be "the only yearly multidisciplinary international event dedicated to the topic of time in computer science" (TIME, 2022). Also includes overlap with spatial reasoning topics.
+TIME is not exclusively dedicated to temporal logic, but does include a number of papers on the subject. It officially began in 1994, and claims to be "the only yearly multidisciplinary international event dedicated to the topic of time in computer science" (TIME, 2022). Also includes overlap with spatial reasoning topics.
 
 2. [International Conference on Formal Modeling and Analysis of Timed Systems](https://www.formats-conference.org/)
 
-Also called FORMATS. This conference focuses on brining together all disscusions of timing in computer science, from embedded systems to verification. The conference holders believe that each of these disciplines share some basic problems related to timing that would benefit from a shared discussion.
+Also called FORMATS. This conference focuses on bringing together all discussions of timing in computer science, from embedded systems to verification. The conference holders believe that each of these disciplines share some basic problems related to timing that would benefit from a shared discussion.
 
 The following is one of the papers from this conference that I found interesting:
 
-[Stochastic Temporal Logic Abstractions: Challenges and Opportunities](https://link.springer.com/chapter/10.1007/978-3-030-00151-3_1)
+[Stochastic Temporal Logic Abstractions: Challenges and Opportunities](https://link.springer.com/chapter/10.1007/978-3-030-00151-3_1) (Deshmukh, Kyriakis, and Bogdan, 2018)
 
-This paper suggests using temporal logic to model the uncertainty of an environment. The paper develves into the potential applications of such an approach, but also discusses some of the challenges associated with it.
+This paper suggests using temporal logic to model the uncertainty of an environment. The paper delves into the potential applications of such an approach, but also discusses some of the challenges associated with it.
 
 ## References
-* Rescher and Urquhart 1971, [Temporal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=temporal+logic+N+Rescher%2C+A+Urquhart&btnG=), Springer-Verlag/Wien
 
-* Bauland et al., 2008 [The Tractability of Model-Checking for LTL: The Good, the Bad, and the Ugly Fragments](https://arxiv.org/abs/0805.0498), Arxiv
+- Rescher and Urquhart (1971). [Temporal Logic](https://scholar.google.com/scholar?q=Temporal+Logic+Rescher+Urquhart), Springer-Verlag/Wien
 
-* Gluck and Holtzman 2008, [Using SPIN model checking for flight software verification](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Using+SPIN+model+checking+for+flight+software+verification&btnG=), IEEE
+- Bauland et al. (2008). [The Tractability of Model-Checking for LTL: The Good, the Bad, and the Ugly Fragments](https://scholar.google.com/scholar?q=The+Tractability+of+Model-Checking+for+LTL+The+Good+the+Bad+and+the+Ugly+Fragments), arXiv
 
-* Alzahrani and Mohammed Yahya 2015, [Model checking web applications](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Model+checking+web+applications+heriot+watt+university&btnG=), Heriot Watt University
+- Gluck and Holtzman (2008). [Using SPIN model checking for flight software verification](https://scholar.google.com/scholar?q=Using+SPIN+model+checking+for+flight+software+verification), IEEE
 
-* Deshmukh, Kyriakis, and Bogdan 2018, [Stochastic Temporal Logic Abstractions: Challenges and Opportunities](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Stochastic+Temporal+Logic+Abstractions%3A+Challenges+and+Opportunities&btnG=), Springer
+- Alzahrani and Mohammed Yahya (2015). [Model checking web applications](https://scholar.google.com/scholar?q=Model+checking+web+applications+heriot+watt+university), Heriot Watt University
 
-* Zhang, Li, Cheng, and Xue 2018, [Verifying OSEK/VDX automotive applications: A Spin-based model checking approach](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Verifying+OSEK%2FVDX+automotive+applications%3A+A+Spin-based+model+checking+approach&btnG=), Wiley
+- Deshmukh, Kyriakis, and Bogdan (2018). [Stochastic Temporal Logic Abstractions: Challenges and Opportunities](https://scholar.google.com/scholar?q=Stochastic+Temporal+Logic+Abstractions+Challenges+and+Opportunities), Springer
 
-* TIME 2022, [International Symposium on Temporal Representation and Reasoning (TIME)](https://time-symposium.org/t/), TIME
+- Zhang, Li, Cheng, and Xue (2018). [Verifying OSEK/VDX automotive applications: A Spin-based model checking approach](https://scholar.google.com/scholar?q=Verifying+OSEK+VDX+automotive+applications+A+Spin-based+model+checking+approach), Wiley
 
-## Further Reasources
-* [Wikipedia Article on Temporal Logic](https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators). Contains a good overview of the logic with links to more indepth reading.
+- TIME (2022). [International Symposium on Temporal Representation and Reasoning (TIME)](https://time-symposium.org/t/), TIME
+
+## Further Resources
+* [Wikipedia Article on Temporal Logic](https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators). Contains a good overview of the logic with links to more in-depth reading.
 * [Wikipedia Article on SPIN](https://en.wikipedia.org/wiki/SPIN_model_checker).
 * [SPIN's Website](https://spinroot.com/spin/whatispin.html).
 * [Some examples for getting to know SPIN](https://spinroot.com/courses/summer/).
@@ -256,7 +258,7 @@ This paper suggests using temporal logic to model the uncertainty of an environm
 * [A link to the TIME symposium](https://time-symposium.org/t/)
 * [A quick guide to SPIN's history](https://spinroot.com/spin/Doc/roots.html)
 
-## Suggestions for Future Work on this Book 
+## Future Work 
 
 For future work on this chapter, I would suggest expanding the algorithm section. As it stands currently it only gives a brief overview of SPIN's algorithm, which could likely warrant further inspection.
 

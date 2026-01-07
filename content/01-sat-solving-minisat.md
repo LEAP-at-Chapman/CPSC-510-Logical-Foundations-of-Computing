@@ -1,5 +1,6 @@
 # SAT solving with MiniSat
-Author: Jake Triester
+
+Author: *Jake Triester*
 
 ## Idea
 
@@ -7,13 +8,9 @@ A theory in propositional logic can be seen as a set of equations in variables t
 
 ## Basic Theory: SAT
 
-Informal Definition of satisfiability: 
-SAT takes a formula and finds a satisfying valuation (model).
+The satisfiability problem asks whether a given formula in propositional logic has a satisfying assignment: Does there exist an assignment of truth values to the propositional variables that make the formula true? If so, we say this formula is *satisfiable*. Otherwise, we say this formula is *unsatisfiable*.
 
-Formal definition of satisfiability:
-Given a boolean formula in propositional logic, does there exist an assignment of truth values to its variables that make this formula true. If so, we say this formula is *satisfiable*. Otherwise, we say this formula is *unsatisfiable*.
-
-A SAT specification is written in conjunctive normal form. 
+A SAT specification is typically written in [conjunctive normal form](https://en.wikipedia.org/wiki/Conjunctive_normal_form). 
 
 **Theorem**: Every formula in propositional logic has a conjunctive normal form.
 
@@ -28,7 +25,19 @@ a\vee(b\wedge c) &= (a\vee b)\wedge (a\vee c) & \text{move } \wedge \text{ outsi
 (b\wedge c)\vee a &= (b\vee a)\wedge (c\vee a) & \text{move } \wedge \text{ outside} \\
 \end{align*}
 
-If no rule can be applied anymore, then the formula is in a conjunction $(a_{11}\vee\ldots\vee a_{1n_1})\wedge \ldots \wedge (a_{k1}\vee \ldots \vee a_{kn_k})$ of so-called clauses where each $a_{ij}$ is either a propositional variable or the negation of a propositional variable.
+If no rule can be applied anymore, then the formula is a conjunction $(a_{11}\vee\ldots\vee a_{1n_1})\wedge \ldots \wedge (a_{k1}\vee \ldots \vee a_{kn_k})$ of so-called clauses where each $a_{ij}$ is either a propositional variable or the negation of a propositional variable.
+
+**Remark:** A CNF-formula $(a_{11}\vee\ldots\vee a_{1n_1})\wedge \ldots \wedge (a_{k1}\vee \ldots \vee a_{kn_k})$ can be seen as a set of clauses $\{a_{11}\vee\ldots\vee a_{1n_1}, \ldots , a_{k1}\vee \ldots \vee a_{kn_k}\}$ or also as a set of equations
+
+$$
+\begin{align*}
+a_{11}\vee\ldots\vee a_{1n_1} &= \top\\
+ & \ldots \\
+ a_{k1}\vee \ldots \vee a_{kn_k} &= \top\
+\end{align*}
+$$
+
+In this sense, a SAT-solver is an equation solver. In a nutshell, the main difference to solvers that operate on integers or real numbers is that $+,\cdot$ have inverses $-,\div$ whereas $\vee,\wedge$ do not have inverses.
 
 ## Tool: MiniSat
 
@@ -61,9 +70,9 @@ Creating the truth table for this, we get:
 | 1 | 0 | 0 |
 | 1 | 1 | 1 |
 
-Since there is at least one assignment of truth values that makes the equation true, this equation is *satisfiable*.
+Since there is (at least) one assignment of truth values that makes the equation true, this equation is *satisfiable*.
 
-As we can see in this example, finding the truth table to determine if an equation is satisfiable is not incredibly difficult. However, the need for SAT solvers arises when the number of variables increases. In our example, we only had 2 variables, and therefore 4 rows in our truth table. However, there is an exponential increase in size of the truth table as we increase variables because for an equation with *n* variables, the number of rows in our truth table is $2^n$.
+As we can see in this example, finding the truth table to determine if an equation is satisfiable is not incredibly difficult. However, the need for SAT solvers arises when the number of variables increases. In our example, we only had 2 variables, and therefore 4 rows in our truth table. However, there is an exponential increase in size of the truth table as we increase the number of variables: For an equation with *n* variables, the number of rows in the truth table is $2^n$.
 
 **Exercise:** Encode the following 2x2 Sudoku in conjunctive normal form.
 ```
@@ -117,7 +126,7 @@ minisat sudoku2x2.cnf solution.txt
 
 ## The Landscape of Tools
 
-Many companies such as Intel have their own SAT solvers, but the cutting edge of SAT-solvers are widely considered to the open source solvers such as:
+Many companies such as Intel have their own SAT solvers, but the cutting edge of SAT-solvers are widely considered to be the open source solvers such as:
 
 - [MiniSat](http://minisat.se/) - [@Github](https://github.com/niklasso/minisat) The reference implementation
 - [Glucose](https://www.labri.fr/perso/lsimon/glucose/), [@GitHub](https://github.com/audemard/glucose) ... [CaDiCaL](http://fmv.jku.at/cadical/), [@GitHub](https://github.com/arminbiere/cadical), [Lingeling](http://fmv.jku.at/lingeling/), [@GitHub](https://github.com/arminbiere/lingeling) ... [CryptoMiniSat](https://www.msoos.org/cryptominisat5/), [@GitHub](https://github.com/msoos/cryptominisat) are some award winning SAT solvers. 
@@ -156,7 +165,7 @@ $$(\neg A \vee B) \wedge (\neg A \vee C)$$
 
 We see that A appears only negatively. Thus we replace A with False and our new formula becomes:
 
-$$(\neg False \vee B) \wedge (\neg False \vee C)$$
+$$(\neg \text{False} \vee B) \wedge (\neg \text{False} \vee C)$$
 
 Since the opposite of False is True, we are able to remove both of the clauses from our formula.
 
@@ -589,7 +598,7 @@ In the future, I believe it would be more beneficial for someone to focus more o
 
 ## Contributors
 
-The author of this chapter is Jake Triester. It was peer reviewed by Jack De Bruyn and Alexander Kurz.
+The author of this chapter is Jake Triester. It was peer reviewed by Jack de Bruyn and Alexander Kurz.
 
 
 

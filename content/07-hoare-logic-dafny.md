@@ -1,6 +1,6 @@
 # Hoare Logic with Dafny
 
-*Author: Alex*
+Author: *Alex Zermeno*
 
 ## Idea
 
@@ -18,7 +18,7 @@ Hoare Logic introduced the idea that we can reason about programs the same way w
 
 This notation captures the relationship between a precondition (P), a command (C), and a postcondition (Q). This notation reads as:
 
-<p align="center"> If the execution of program P begins in a state where the precondition C holds, then upon termination, the postcondition Q will hold. </p>
+<p align="center"> If the execution of program C begins in a state where the precondition P holds, then upon termination, the postcondition Q will hold. </p>
 
 Each component plays a specific role:
 - **P** (Precondition) - describes the assumptions or required state before execution.
@@ -222,7 +222,7 @@ dotnet test -v:n
 
 ## Program Verification Techniques
 
-Dafny was built using the principles of Hoare Logic as a form of program verification. Through this, Dafyny integrated the Hoare Triple directly into the system language to verify what must be true before (pre-condition) and what must be true after program execution (post-condition). This integration of built-in formal reasoning enabled constructs such as ```requires``` and ```ensures``` to be part of the natural language. Additionally, Dafny development was also able to account for loops and recursions by utilizing invariants and termination conditions. 
+Dafny was built using the principles of Hoare Logic as a form of program verification. Through this, Dafny integrated the Hoare Triple directly into the system language to verify what must be true before (pre-condition) and what must be true after program execution (post-condition). This integration of built-in formal reasoning enabled constructs such as ```requires``` and ```ensures``` to be part of the natural language. Additionally, Dafny development was also able to account for loops and recursions by utilizing invariants and termination conditions. 
 
 Although a majority of the verification work in Dafny is handled by an SMT solver, this automated process alleviates the stress of manually constructing corrected proofs. This automated process, however, still requires human input to provide well-selected specifications and invariants, which can be deemed challenging, especially for more complex properties. 
 
@@ -413,7 +413,7 @@ Dafny translates code into the Boogie intermediate language and uses the Z3 solv
 
 ## Benchmark and Competitions
 
-The development of Hoare Logic continues to grow, as the number of conferences and workshops around program verification tools continues to increase. Events such as ETAPS, TACAS, FM, and the Dagstuhl seminars provide a platform for individuals to test new ideas and assess how tools perform on real-world problems. The VerifyThis competition has become especially influential. Participants are given problems, create specifications, and work with their verification tools within an allotted time limit. These events often lead to the development of contract notation, improved annotation design, stronger automation, and more helpful tool feedback. These developments shape the evolution of verification tools.
+The development of Hoare Logic continues to grow, as the number of conferences and workshops around program verification tools continues to increase. Events such as ETAPS, TACAS, FM, and the Dagstuhl seminars provide a platform for individuals to test new ideas and assess how tools perform on real-world problems. The VerifyThis competition has become especially influential (Ernst, Huisman, Mostowski, and Ulbrich, 2019). Participants are given problems, create specifications, and work with their verification tools within an allotted time limit. These events often lead to the development of contract notation, improved annotation design, stronger automation, and more helpful tool feedback. These developments shape the evolution of verification tools.
 
 Additionally, these events highlight the challenges that researchers continue to face. Writing effective specifications and invariants still requires skill and insight. Even with recent advances, tools can produce confusing diagnostics or behave in ways that make it hard to understand what went wrong. When these issues arise, conferences and competitions provide researchers with a platform to discuss them directly. Comparing approaches, discussing which ideas are effective, and identifying areas where tools are still limited, enables an exchange that guides future improvements in program verification tools.
 
@@ -424,10 +424,10 @@ The VerifyThis competition has also contributed directly to the development of m
 Using preconditions, postconditions, and invariants, as Hoare Logic showcases, this reasoning is now embedded in modern tools and workflows. These principles have now influenced every layer of software reliability. Here are a few examples of how Hoare Logic has been implemented in industry:
 
 - **Safety-Critical Systems:**
-In safety-critical systems, such as those in the aerospace and medical device industries, implement Hoare Logic through rigorous reasoning using preconditions, postconditions, and invariants. The implementation of the Hoare Triple ensures software correctness, particularly in cases where failure can be catastrophic. NASA's use of highly complex software makes testing impossible, especially when failures need to have probabilities on the order of 10⁻⁹ per hour. This highly rare, even if subtle, edge-case condition must be proven safe rather than minimally tested. Formal verification supports the validation of flight-control algorithms, redundancy management logic, timing-critical tasks, and fault-tolerant coordination across distributed systems.
+In safety-critical systems, such as those in the aerospace and medical device industries, systems implement Hoare Logic through rigorous reasoning using preconditions, postconditions, and invariants. The implementation of the Hoare Triple ensures software correctness, particularly in cases where failure can be catastrophic. NASA's use of highly complex software makes testing impossible, especially when failures need to have probabilities on the order of 10⁻⁹ per hour (Rushby, 1995). This highly rare, even if subtle, edge-case condition must be proven safe rather than minimally tested. Formal verification supports the validation of flight-control algorithms, redundancy management logic, timing-critical tasks, and fault-tolerant coordination across distributed systems.
 
 - **Static Analysis:**
-In static analysis, the Hoare Triple is used to reason all program states, ensuring correctness when testing alone can be insufficient. This reasoning is adjusted and adapted to work across various computational models. For synchronous languages, they are rewritten into a synchronous tuple assignment form, enabling grouped updates and macro-step boundaries to be verified through specialized axioms. Meanwhile, in quantum programs, redefined semantics, quantum predicates, and measurement-aware rules are used to handle superposition and probabilistic branching. In each case, static analysis becomes an automated form of Hoare-style reasoning adapted to the computational model, ensuring that correctness is proven.
+In static analysis, the Hoare Triple is used to reason about all program states, ensuring correctness when testing alone can be insufficient (Cappiello, 2014). This reasoning is adjusted and adapted to work across various computational models. For synchronous languages, they are rewritten into a synchronous tuple assignment form, enabling grouped updates and macro-step boundaries to be verified through specialized axioms. Meanwhile, in quantum programs, redefined semantics, quantum predicates, and measurement-aware rules are used to handle superposition and probabilistic branching. In each case, static analysis becomes an automated form of Hoare-style reasoning adapted to the computational model, ensuring that correctness is proven.
 
 ## History
 
@@ -435,13 +435,13 @@ In 1949, Alan Turing presented his paper, “Checking a Large Routine”, which 
 
 Throughout the 1960s, Robert Floyd built on Turing’s ideas by introducing the inductive assertion method, a systematic approach to proving the correctness of flowchart-based programs. Floyd proposed identifying key points in a program with logical statements called invariants, similar to the idea of assertion statements, which are both meant to show specific points during the program that must remain true throughout execution. Although the idea continued to build on Turing’s progress, this was limited to flowcharts rather than structured programming languages.
 
-In the year 1969, C.A.R. Hoare continued to build on these ideas by introducing the Hoare triple: {P} S {Q}. This notation states that if the execution of program P begins in a state where the precondition C holds, then upon termination, the postcondition Q will hold. Although this development seemed simple, it proved to be powerful, as it created rules for statements, loops, and sequences. This notation enabled program proofs to be both structured and easier to understand due to their improved readability. The Hoare triple enabled program verification for all types of code, not just flowcharts, transforming program reasoning into a formal, language-based discipline. 
+In the year 1969, C.A.R. Hoare continued to build on these ideas by introducing the Hoare triple: {P} S {Q}. This notation states that if the execution of program S begins in a state where the precondition P holds, then upon termination, the postcondition Q will hold. Although this development seemed simple, it proved to be powerful, as it created rules for statements, loops, and sequences. This notation enabled program proofs to be both structured and easier to understand due to their improved readability. The Hoare triple enabled program verification for all types of code, not just flowcharts, transforming program reasoning into a formal, language-based discipline. 
 
 By the early 1970s, Hoare had expanded his logic to handle recursive procedures and local variables, which enabled reasoning about more complex programs. Working alongside Joseph Foley, he applied these ideas to verify the Quicksort algorithm, which was one of the first detailed proofs of correctness for a real-world program. Around the same time, Hoare began promoting the idea of programming and proving should be done simultaneously. This growing philosophy later influenced Edsger Dijkstra’s work on structured programming and program derivation, transforming Hoare Logic into a guide for creating verified software instead of verifying it after the fact.
 
 The development of Hoare Logic established a foundation in computer science by shifting the perspective from viewing programs as sequences of commands to viewing them as logical systems that can be mathematically analyzed. Building upon Turing’s conceptual groundwork, refining Floyd’s formalization, and realizing Hoare’s framework, this lineage transformed programming into a science of correctness. To this day, Hoare Logic remains a foundational method of verification, and it also serves as a symbol of the connection between logic, mathematics, and computation.
 
-## Suggestions for future work on the book
+## Future Work
 
 An idea for future work is the integration of an AI-assisted system that helps programmers create, refine, and select Hoare Logic specifications in languages such as Dafny and F*. As program verification continues to grow in importance for software reliability, it reduces the difficulty of writing precise preconditions, postconditions, and invariants. Rather than replacing the verifier, this system would make the specification-writing process more intuitive, guiding developers toward correct and meaningful contracts.
 
@@ -467,20 +467,20 @@ F* also categorizes computations into effects such as Pure, Ghost, and Div, each
 
 ## References
 
-- Alexander Kurz (2022) [Alexander Kurz – Hoare Logic Example (HackMD) Worked Example: Loop Invariants and Correctness Proofs](https://hackmd.io/@alexhkurz/Hy135C2tH)
+- Kurz (2022) [Alexander Kurz – Hoare Logic Example (HackMD) Worked Example: Loop Invariants and Correctness Proofs](https://hackmd.io/@alexhkurz/Hy135C2tH), HackMD
 
-- Krzysztof and Ernst-Rudiger (2019) [Fifty Years of Hoare’s Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Fifty+years+of+Hoare%E2%80%99s+logic+KR+Apt%2C+ER+Olderog&btnG=), Springer
+- Apt and Olderog (2019) [Fifty Years of Hoare's Logic](https://scholar.google.com/scholar?q=Fifty+Years+of+Hoare%27s+Logic+Apt+Olderog), Springer
 
-- Josh Rushby (1995) [Formal Methods and Their Role in Digital Systems Validation for Airborne Systems](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Formal+Methods+and+Their+Role+in+Digital+Systems+Validation+for+Airborne+Systems&btnG=), NASA Contractor Report 4673 
+- Rushby (1995) [Formal Methods and Their Role in Digital Systems Validation for Airborne Systems](https://scholar.google.com/scholar?q=Formal+Methods+and+Their+Role+in+Digital+Systems+Validation+for+Airborne+Systems+Rushby), NASA Contractor Report 4673 
 
-- Alex Cappiello (2014) [Static Analysis of Programs with Hoare Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Static+Analysis+of+Programs+with+Hoare+Logic+by+Alex+Cappiello&btnG=)
+- Cappiello (2014) [Static Analysis of Programs with Hoare Logic](https://scholar.google.com/scholar?q=Static+Analysis+of+Programs+with+Hoare+Logic+Cappiello), arXiv
 
-- Ernst, Huisman, Mostowski, and Ulbrich (2019) [VerifyThis–Verification Competition With A Human Factor](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=VerifyThis+%E2%80%93+Verification+Competition+with+a+Human+Factor&btnG=)
+- Ernst, Huisman, Mostowski, and Ulbrich (2019) [VerifyThis–Verification Competition With A Human Factor](https://scholar.google.com/scholar?q=VerifyThis+Verification+Competition+With+A+Human+Factor+Ernst+Huisman), TACAS
 
-- Rustan and Leino (2010) [Dafny: An Automatic Program Verifier For Functional Correctness](https://www.microsoft.com/en-us/research/wp-content/uploads/2008/12/dafny_krml203.pdf)
+- Leino (2010) [Dafny: An Automatic Program Verifier For Functional Correctness](https://scholar.google.com/scholar?q=Dafny+An+Automatic+Program+Verifier+For+Functional+Correctness+Leino), International Conference on Logic for Programming Artificial Intelligence and Reasoning
 
-- Swamy, Martinez, and Rastogi (2023) [Proof-Oriented Programming in F*](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Proof-Oriented+Programming+in+F*+N+Swamy%2C+G+Martinez%2C+A+Rastogi&btnG=)
+- Swamy, Martinez, and Rastogi (2023) [Proof-Oriented Programming in F*](https://scholar.google.com/scholar?q=Proof-Oriented+Programming+in+F*+Swamy+Martinez+Rastogi), Communications of the ACM
 
-- [Dafny Reference Manual](https://dafny.org/latest/DafnyRef/DafnyRef)
+- Dafny Project (2024) [Dafny Reference Manual](https://dafny.org/latest/DafnyRef/DafnyRef), https://dafny.org/
 
-- [Software Foundations Volume 2: Programming Language Foundations](https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html)
+- Pierce et al. (2024) [Software Foundations Volume 2: Programming Language Foundations](https://softwarefoundations.cis.upenn.edu/plf-current/Hoare.html), University of Pennsylvania

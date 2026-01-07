@@ -21,7 +21,7 @@ Epistemic logic is motivated by a simple but profound observation: in many syste
 2. introduce the basics of (multi-agent) epistemic logic,
 3. introduce *dynamic* epistemic logic (DEL) to handle information change,
 4. show how to use **SMCDEL** (Symbolic Model Checker for Dynamic Epistemic Logic),
-5. explain **social networks** through the lense of epistemic logic
+5. explain **social networks** through the lens of epistemic logic
 
 ## History
 
@@ -228,7 +228,7 @@ end
 
 Interactive theorem provers give maximal rigor and flexibility, though at the cost of heavy manual involvement.
 
-Epistemic Planners
+### Epistemic Planners
 
 A more recent development comes from the AI planning community, where epistemic logic is used to model actions whose effects depend on agents’ knowledge or beliefs. Systems like [**EFP**](https://github.com/epistemic-planning/efp) (Epistemic Forward Planner) or [**MAFS**](https://scholar.google.com/scholar?q=MAFS+multi-agent+forward+search) (Multi-Agent Forward Search) treat DEL-style event models as action descriptions within a planning domain. Planners search for action sequences that achieve goals such as “agent A eventually knows that agent B knows p.”
 
@@ -499,7 +499,7 @@ function CachedModelCheck(formula φ, model M, cache):
 
 By combining symbolic representation, carefully designed relational operations, and aggressive caching, SMCDEL makes it possible to interactively explore complex multi-agent epistemic scenarios—often directly from the web interface—despite the underlying worst-case complexity of DEL model checking.
 
-## Social Networks and Epistemic Logic
+## Social Networks and DEL
 
 We can think of a social network as:
 - a set of agents (users, accounts, processes),
@@ -515,8 +515,6 @@ Epistemic logic lets us ask:
 - is it common knowledge to the group?
 
 Dynamic Epistemic Logic (DEL) is particularly well-suited for this setting because it treats communication acts—such as public broadcasts and private messages—as model-transforming events, allowing precise reasoning about how information flow reshapes agents’ knowledge states (Baltag, Moss, & Solecki, 1998; [Renne, 2008](https://scholar.google.com/scholar?q=Public+and+Private+Communication+Are+Different+Renne)).
-
----
 
 ### Conceptual Mapping
 
@@ -534,8 +532,6 @@ Treating **rumors or gossip as sequences of epistemic updates** has been studied
 
 So: **social-network reasoning is a natural application of dynamic epistemic logic**, especially when the structure of communication channels determines what agents can or cannot infer ([Baltag et al., 1998](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction)).
 
----
-
 ### Example: Rumor Spread in a Small Network
 
 **Agents:** `A`, `B`, `C`.
@@ -547,8 +543,6 @@ So: **social-network reasoning is a natural application of dynamic epistemic log
 
 This scenario illustrates a key distinction in epistemic modeling: **private communication updates only the knowledge of involved agents, while public announcements can generate higher-order and even common knowledge**, depending on the assumed communication channel ([Renne, 2008](https://scholar.google.com/scholar?q=Public+and+Private+Communication+Are+Different+Renne)).
 
----
-
 ### Private vs. Public (Why It Matters)
 
 - A public announcement reduces uncertainty for every agent.
@@ -556,8 +550,6 @@ This scenario illustrates a key distinction in epistemic modeling: **private com
 - Achieving common knowledge typically requires some form of public or mutually observable communication.
 
 These distinctions are fundamental in DEL and underpin many formal results about secrecy, information leakage, and coordination in multi-agent systems ([Baltag et al., 1998](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction); Renne, 2008).
-
----
 
 ### Toward Common Knowledge
 
@@ -651,7 +643,7 @@ Finally, with the emergence of epistemic evaluations for AI systems, SMCDEL is i
 In all of these typical use cases, the models are intentionally small and stylized. The goal is not to mirror the full complexity of a real system, but to isolate the epistemic core of a phenomenon—communication, secrecy, agreement, misinformation—and to understand it well enough that larger-scale designs and analyses can be built on solid conceptual ground.
 
 
-## Epistemic Logic and Generative AI
+## Epistemic Logic and AI
 
 ### Targeting Theory of Mind in Large Language Models with Dynamic Epistemic Logic – [Sileo et al. (2023)](https://scholar.google.com/scholar?q=Sileo+Dynamic+Epistemic+Logic+Theory+of+Mind)
   
@@ -726,53 +718,53 @@ Such models help engineers verify communication protocols in distributed robotic
 - Preventing actions based on mistaken or outdated beliefs.
 - Analyzing how local updates become global knowledge—vital in swarm coordination.
 
-## Referenes & Further Reading
-- Hintikka (1962) [Knowledge and Belief](https://scholar.google.com/scholar?q=Hintikka+Knowledge+and+Belief), Cornell University Press
+## References
+- Hintikka (1962). [Knowledge and Belief](https://scholar.google.com/scholar?q=Hintikka+Knowledge+and+Belief), Cornell University Press
 
-- Kripke (1963) [Semantical Considerations on Modal Logic](https://scholar.google.com/scholar?q=Kripke+Semantical+Considerations+on+Modal+Logic+1963), *Acta Philosophica Fennica*.
+- Kripke (1963). [Semantical Considerations on Modal Logic](https://scholar.google.com/scholar?q=Kripke+Semantical+Considerations+on+Modal+Logic+1963), Acta Philosophica Fennica
 
-- Halpern and Moses (1990) [Knowledge and Common Knowledge in a Distributed Environment](https://scholar.google.com/scholar?q=Knowledge+and+Common+Knowledge+in+a+Distributed+Environment), Journal of the ACM, 37(3): 549–587
+- Halpern and Moses (1990). [Knowledge and Common Knowledge in a Distributed Environment](https://scholar.google.com/scholar?q=Knowledge+and+Common+Knowledge+in+a+Distributed+Environment), Journal of the ACM
 
-- Plaza (1989) [Logic of Public Announcements](https://scholar.google.com/scholar?q=Plaza+Logic+of+Public+Announcements), Proceedings of TARK
+- Plaza (1989). [Logic of Public Announcements](https://scholar.google.com/scholar?q=Plaza+Logic+of+Public+Announcements), Proceedings of TARK
 
-- Baltag, Moss, and Solecki (1998) [The Logic of Public Announcements, Common Knowledge, and Private Suspicions](https://scholar.google.com/scholar?q=The+Logic+of+Public+Announcements+Common+Knowledge+and+Private+Suspicions), Proceedings of TARK
+- Baltag, Moss, and Solecki (1998). [The Logic of Public Announcements, Common Knowledge, and Private Suspicions](https://scholar.google.com/scholar?q=The+Logic+of+Public+Announcements+Common+Knowledge+and+Private+Suspicions), Proceedings of TARK
 
-- Baltag, Moss, and Solecki (2004) [The Logic of Epistemic Actions](https://scholar.google.com/scholar?q=The+Logic+of+Epistemic+Actions), Synthese, 139: 165–224
+- Baltag, Moss, and Solecki (2004). [The Logic of Epistemic Actions](https://scholar.google.com/scholar?q=The+Logic+of+Epistemic+Actions), Synthese
 
-- van Ditmarsch, van der Hoek, and Kooi (2007) [Dynamic Epistemic Logic](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logic+van+Ditmarsch+van+der+Hoek+Kooi), Springer
+- van Ditmarsch, van der Hoek, and Kooi (2007). [Dynamic Epistemic Logic](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logic+van+Ditmarsch+van+der+Hoek+Kooi), Springer
 
-- van Benthem, van Eijck, Gattinger, and Su (2016) [Symbolic Model Checking for Dynamic Epistemic Logic](https://scholar.google.com/scholar?q=Symbolic+Model+Checking+for+Dynamic+Epistemic+Logic), Journal of Logic, Language and Information, 25(1): 37–71
+- van Benthem, van Eijck, Gattinger, and Su (2016). [Symbolic Model Checking for Dynamic Epistemic Logic](https://scholar.google.com/scholar?q=Symbolic+Model+Checking+for+Dynamic+Epistemic+Logic), Journal of Logic, Language and Information
 
-- Baldoni et al. (1998) [Model Checking Knowledge and Time](https://scholar.google.com/scholar?q=Model+Checking+Knowledge+and+Time), Proceedings of KR ’98 (Knowledge Representation Conference)
+- Baldoni et al. (1998). [Model Checking Knowledge and Time](https://scholar.google.com/scholar?q=Model+Checking+Knowledge+and+Time), Proceedings of KR '98 (Knowledge Representation Conference)
 
-- Balliu, Dam, and Le Guernic (2012) [Epistemic Temporal Logic for Information Flow Security](https://scholar.google.com/scholar?q=Epistemic+Temporal+Logic+for+Information+Flow+Security), Proceedings of CSF (IEEE Computer Security Foundations Symposium)
+- Balliu, Dam, and Le Guernic (2012). [Epistemic Temporal Logic for Information Flow Security](https://scholar.google.com/scholar?q=Epistemic+Temporal+Logic+for+Information+Flow+Security), Proceedings of CSF (IEEE Computer Security Foundations Symposium)
 
-- Jaramillo (2021) [Epistemic Logics for Cryptographic Protocols and Zero-Knowledge Proofs](https://scholar.google.com/scholar?q=Epistemic+Logics+for+Cryptographic+Protocols+and+Zero-Knowledge+Proofs), Master’s Thesis, University of Amsterdam
+- Jaramillo (2021). [Epistemic Logics for Cryptographic Protocols and Zero-Knowledge Proofs](https://scholar.google.com/scholar?q=Epistemic+Logics+for+Cryptographic+Protocols+and+Zero-Knowledge+Proofs), Master's Thesis, University of Amsterdam
 
-- Soldà et al. (2022) [e-PICO: An Epistemic Reasoner for Collaborative Robots](https://scholar.google.com/scholar?q=e-PICO+epistemic+reasoner+collaborative+robots), Proceedings of KR (Principles of Knowledge Representation and Reasoning)
+- Soldà et al. (2022). [e-PICO: An Epistemic Reasoner for Collaborative Robots](https://scholar.google.com/scholar?q=e-PICO+epistemic+reasoner+collaborative+robots), Proceedings of KR (Principles of Knowledge Representation and Reasoning)
 
-- Bramblett et al. (2023) [Epistemic Planning for Heterogeneous Robotic Systems](https://scholar.google.com/scholar?q=Epistemic+Planning+for+Heterogeneous+Robotic+Systems), arXiv preprint
+- Bramblett et al. (2023). [Epistemic Planning for Heterogeneous Robotic Systems](https://scholar.google.com/scholar?q=Epistemic+Planning+for+Heterogeneous+Robotic+Systems), arXiv
 
-- Gielis et al. (2022) [A Critical Review of Communications in Multi-Robot Systems](https://scholar.google.com/scholar?q=Critical+Review+of+Communications+in+Multi-Robot+Systems), Autonomous Intelligent Systems
+- Gielis et al. (2022). [A Critical Review of Communications in Multi-Robot Systems](https://scholar.google.com/scholar?q=Critical+Review+of+Communications+in+Multi-Robot+Systems), Autonomous Intelligent Systems
 
-- Sileo et al. (2023) [Targeting Theory of Mind in Language Models with Dynamic Epistemic Logic](https://scholar.google.com/scholar?q=Targeting+Theory+of+Mind+Dynamic+Epistemic+Logic), arXiv preprint
+- Sileo et al. (2023). [Targeting Theory of Mind in Language Models with Dynamic Epistemic Logic](https://scholar.google.com/scholar?q=Targeting+Theory+of+Mind+Dynamic+Epistemic+Logic), arXiv
 
-- Fierro et al. (2024) [Bridging Epistemology and Large Language Models](https://scholar.google.com/scholar?q=Bridging+Epistemology+and+Large+Language+Models), Proceedings of EMNLP 2024
+- Fierro et al. (2024). [Bridging Epistemology and Large Language Models](https://scholar.google.com/scholar?q=Bridging+Epistemology+and+Large+Language+Models), Proceedings of EMNLP 2024
 
-- Wu et al. (2025) [Inference-Time Scaling for Theory of Mind Tasks](https://scholar.google.com/scholar?q=Inference-Time+Scaling+for+Theory+of+Mind+LLM), arXiv preprint
+- Wu et al. (2025). [Inference-Time Scaling for Theory of Mind Tasks](https://scholar.google.com/scholar?q=Inference-Time+Scaling+for+Theory+of+Mind+LLM), arXiv
 
-- Klassen et al. (2023) [An AI Safety Problem: Misaligned Epistemic States in Multi-Agent Systems](https://scholar.google.com/scholar?q=Misaligned+Epistemic+States+Multi-Agent+Systems), Proceedings of AAMAS
+- Klassen et al. (2023). [An AI Safety Problem: Misaligned Epistemic States in Multi-Agent Systems](https://scholar.google.com/scholar?q=Misaligned+Epistemic+States+Multi-Agent+Systems), Proceedings of AAMAS
 
-- Ruan and Thielscher (2011) [A Logic for Knowledge Flow in Social Networks](https://scholar.google.com/scholar?q=A+Logic+for+Knowledge+Flow+in+Social+Networks), Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence (IJCAI)
+- Ruan and Thielscher (2011). [A Logic for Knowledge Flow in Social Networks](https://scholar.google.com/scholar?q=A+Logic+for+Knowledge+Flow+in+Social+Networks), Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence (IJCAI)
 
-- Seligman, Liu, and Girard (2013) [Facebook and the Epistemic Logic of Friendship](https://scholar.google.com/scholar?q=Facebook+and+the+Epistemic+Logic+of+Friendship), Proceedings of TARK
+- Seligman, Liu, and Girard (2013). [Facebook and the Epistemic Logic of Friendship](https://scholar.google.com/scholar?q=Facebook+and+the+Epistemic+Logic+of+Friendship), Proceedings of TARK
 
-- Renne (2008) [Public and Private Communication Are Different](https://scholar.google.com/scholar?q=Public+and+Private+Communication+Are+Different+Renne), *Synthese*
+- Renne (2008). [Public and Private Communication Are Different](https://scholar.google.com/scholar?q=Public+and+Private+Communication+Are+Different+Renne), Synthese
 
-- van Ditmarsch, van Eijck, Pardo, Ramezanian, and Schwarzentruber (2017) [Epistemic Protocols for Dynamic Gossip](https://scholar.google.com/scholar?q=Epistemic+Protocols+for+Dynamic+Gossip), *Journal of Applied Logic*, 20: 1–31
+- van Ditmarsch, van Eijck, Pardo, Ramezanian, and Schwarzentruber (2017). [Epistemic Protocols for Dynamic Gossip](https://scholar.google.com/scholar?q=Epistemic+Protocols+for+Dynamic+Gossip), Journal of Applied Logic
 
-- Smets and Velázquez-Quesada (2017) [How to Make Friends: A Logical Approach to Social Group Creation](https://scholar.google.com/scholar?q=How+to+Make+Friends+Smets+Velazquez-Quesada), Logic, Rationality and Interaction (LORI 2017), LNCS 10455: 377–390
+- Smets and Velázquez-Quesada (2017). [How to Make Friends: A Logical Approach to Social Group Creation](https://scholar.google.com/scholar?q=How+to+Make+Friends+Smets+Velazquez-Quesada), Logic, Rationality and Interaction (LORI 2017)
 
-- Smets and Velázquez-Quesada (2018) [The Creation and Change of Social Networks: A Logical Study Based on Group Size](https://scholar.google.com/scholar?q=The+Creation+and+Change+of+Social+Networks+Smets), Dynamic Logic and Applications (DALI)
+- Smets and Velázquez-Quesada (2018). [The Creation and Change of Social Networks: A Logical Study Based on Group Size](https://scholar.google.com/scholar?q=The+Creation+and+Change+of+Social+Networks+Smets), Dynamic Logic and Applications (DALI)
 
-- Baltag, Christoff, Rendsvig, and Smets (2019) [Dynamic Epistemic Logics of Diffusion and Prediction in Social Networks](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction), *Studia Logica*, 107(3): 489–531
+- Baltag, Christoff, Rendsvig, and Smets (2019). [Dynamic Epistemic Logics of Diffusion and Prediction in Social Networks](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction), Studia Logica

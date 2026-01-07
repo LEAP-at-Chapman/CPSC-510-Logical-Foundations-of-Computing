@@ -1,6 +1,6 @@
 # Higher-Order Logic with Isabelle
 
-*Author: Spencer Au*
+Author: *Spencer Au*
 
 ## Idea and Introduction
 
@@ -56,7 +56,7 @@ which operate over objects of any type. In Isabelle/HOL, the full syntax of term
 The deductive core of higher-order logic consists of the fundamental inference rules for logical connectives, quantifiers, and equality, including the basic introduction and elimination rules that govern valid reasoning in HOL. In Isabelle/HOL, these primitive rules form the logic’s core inference system, and every derived theorem is justified by a sequence of such sound rule applications. Higher level proof methods and tactics ultimately based on these basic rules make structured proofs possible in practice. Concrete presentations of these inference rules and how they are used in proofs can be found in the Isabelle/HOL Proof Assistant Manual.<sup><a href="#Isabelle/HOL_ProofAssistant">[3]</a></sup>
 
 
-## Tool (Installation, First Example, First Exercise)
+## Isabelle/HOL
 
 ### Installation
 
@@ -85,7 +85,8 @@ end
 
 More detailed instructions on setup and initial use can be found in Chapters 1 and 2.1.2 of *Concrete Semantics*<sup><a href="#ConcreteSemantics">[1]</a></sup>
 
-### Proof Solving via Sledgehammer {#proof-solving-via-sledgehammer}
+(proof-solving-via-sledgehammer)=
+### Proof Solving via Sledgehammer
 
 Sledgehammer is an automated theorem prover orchestrator. It dispatches proof obligations to external provers such as Vampire via command line and returns candidate proofs that can be directly applied. Basically, it find proofs by "hammering away" at different sub-goals that would typically be tedious to construct manually. In the Isabelle GUI, Sledgehammer can be accessed by clicking on the *sledgehammer* tab on the bottom left corner of the application: select the target sub-goal, invoke Sledgehammer via apply, and then apply a suggested proof if found. Although *Concrete Semantics 4.3.1*<sup><a href="#ConcreteSemantics">[1]</a></sup> introduces the basic sledgehammer command, the GUI method is generally more convenient. The official Isabelle Sledgehammer documentation page<sup><a href="#Isabelle_Sledgehammer">[35]</a></sup> provides further detail.
 
@@ -199,7 +200,7 @@ For a detailed explanation, [See Section 8.3.3 Commutative Property](./assets-08
 *This form is an Isar style proof. The following example will be an older style tactic based proof.*
 
 
-## Intro Example - Flattening and Length Invariant
+## Introductory Example - Flattening and Length Invariant
 
 <!-- show something interesting about tool, logic, etc and can be digested and understood with minimum experience -->
 
@@ -266,7 +267,7 @@ lemma length_flatten:
 
 **Rocq** (formerly Coq) is an interactive theorem prover based on the Calculus of Inductive Constructions (CIC), which is dependently typed $\lambda$-calculus that extends the Calculus of Constructions with inductive types. This extension allow propositions to be represented as types and proofs as programs, enabling highly expressive specifications. Rocq is mainly implemented in OCaml with some C, and it's dependent type theory allows it to have greater expressive power over Isabelle/HOL.
 
-**Lean (4)** is another proof assistant that follows a similar but more modern variant of dependent type theory. Like Rocq, Learn also extends the Calculus of Constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Like Rocq, Lean 4's dependent type theory also supports greater expressive power compared to Isabelle/HOL.
+**Lean (4)** is another proof assistant that follows a similar but more modern variant of dependent type theory. Like Rocq, Lean also extends the Calculus of Constructions with inductive types. Lean 4 in particular is mostly implemented in Lean (with some C++), and can have its Lean theorem prover produce C code. Like Rocq, Lean 4's dependent type theory also supports greater expressive power compared to Isabelle/HOL.
 
 ### Automated Theorem Provers
 
@@ -302,12 +303,12 @@ safe even splits goals
 similar but leaves what it cannot prove
 - **fast** and **best** are legacy methods that work well with rules involving unusual features
 
-External automation is typically invoked via the Sledgehammer tool. Sledgehammer works by selecting a set of relevant facts from the current proof context, translates it to a format appropriate for ATPs/SMTs, invokes the tools, and then returns the proof text in an appropriate Isabelle proof format (oftentimes via metis). This method helps preserve trust given that Sledgehammer relies on tools that are outside of the Isabelle/HOL ecosystem. More information about using the tool can be found in [Section 8.3.2](#proof-solving-via-sledgehammer), and the official Sledgehammer tool documentation page<sup><a href="Isabelle_Sledgehammer">[35]</a></sup> provides a breadth of detailed, supplementary information.
+External automation is typically invoked via the Sledgehammer tool. Sledgehammer works by selecting a set of relevant facts from the current proof context, translates it to a format appropriate for ATPs/SMTs, invokes the tools, and then returns the proof text in an appropriate Isabelle proof format (oftentimes via metis). This method helps preserve trust given that Sledgehammer relies on tools that are outside of the Isabelle/HOL ecosystem. More information about using the tool can be found in {ref}`Section 8.3.2<proof-solving-via-sledgehammer>`, and the official Sledgehammer tool documentation page<sup><a href="#Isabelle_Sledgehammer">[35]</a></sup> provides a breadth of detailed, supplementary information.
 
 
 ## Typical Use Cases
 
-Isabelle/HOL is widely used for formal specification and rigorous proof of both mathematical theorems and system properties. It supports expressing precise logical models and verifying them interactively with automation (via the Sledgehammer tool), making it suitable for a variety of tasks such as formalizing algorithms, verifying software and hardware correctness, and reasoning about programming language semantics and protocols. Isabelle/HOL has been used in many different verification projects, such as through the large body of libraries and developments collected in the Archive of Formal Proofs (AFP)<sup><a href="#AFP_History">[27]</a></sup> and as evidenced by the examples in [Section 8.9](#applications-in-industry-and-academia).
+Isabelle/HOL is widely used for formal specification and rigorous proof of both mathematical theorems and system properties. It supports expressing precise logical models and verifying them interactively with automation (via the Sledgehammer tool), making it suitable for a variety of tasks such as formalizing algorithms, verifying software and hardware correctness, and reasoning about programming language semantics and protocols. Isabelle/HOL has been used in many different verification projects, such as through the large body of libraries and developments collected in the Archive of Formal Proofs (AFP)<sup><a href="#AFP_History">[27]</a></sup> and as evidenced by the examples in {ref}`Section 8.9<applications-in-industry-and-academia>`.
 
 ## Benchmarks and Competitions
 
@@ -318,7 +319,8 @@ Isabelle/HOL is widely used for formal specification and rigorous proof of both 
 **CASC** (The CADE ATP System Competition) is an annual competition of fully automatic, classical logic, ATP systems. The purpose of CASC is to provide a public evaluation of relative capabilities of ATP systems as well as to stimulate research and development of ATP systems. At CASC, ATP system performance is evaluated in terms of the total number of problems solved with an acceptable solution output within a specified time limit, as well as the average time taken for problems solved. CASC is hosted at each CADE and IJCAR conference, both forums for automated deduction.<sup><a href="#CASC">[37]</a></sup>
 
 
-## Applications in Industry and Academia {#applications-in-industry-and-academia}
+(applications-in-industry-and-academia)=
+## Applications in Industry and Academia
 
 In general, Isabelle/HOL appears to have a wide variety of application throughout industry and academia due to the fact that it provides a mathematical assurance of correctness (rather than testing alone). The tool is particularly suited to safety critical systems, such as avionics, embedded systems, industrial process control, SoC design, etc where fault risk must be minimized and certification standards demand high trust.
 
@@ -338,13 +340,13 @@ Spichkova<sup><a href="#Spichkova_FOCUS">[20]</a></sup> introduces FOCUS, a fram
 
 Griffin et al.<sup><a href="#Griffin_IsaBIL">[21]</a></sup> present IsaBIL, a binary analysis framework in Isabelle/HOL that is based on BAP (Binary Analysis Platform). IsaBIL formalizes BAP's intermediate language (BIL) and integrates it with Hoare Logic (for proofs of correctness) and incorrectness logic (for proofs of incorrectness). While there is a primary focus is on the RISC-V architecture and C binaries, the authors assert that IsaBIL is a flexible framework that can verify binaries for different languages (C, C++, Rust), toolchains (LLVM, Ghidra), and architectures (x86, RISC-V). The authors prove correctness through some industry level examples such as Lockheed Martin's JSF (Joint Strike Fighter) coding standards and the MITRE ATT&CK database.
 
-### Verlso - Isolation Guarantees of Database Transactions
+### VerIso - Isolation Guarantees of Database Transactions
 
-Ghasemirad et al.<sup><a href="#Ghasemirad_VerIso">[7]</a></sup> present VerIso, a rigorous Isabelle/HOL-based framework for verifying transaction isolation within production level databases. The authors showcase VerIso by modelling the strict two-phase locking (S2PL) protocol and prove that it provides strict serializability (transactions behave as if executed sequentially and that sequential order must match the actual time order of their invocation/commit). In addition, VerIso’s parameterized architecture supports multiple isolation levels and uncovers design-level bugs in protocols such as the TAPIR protocol and its violation of atomic visibility.
+Ghasemirad et al.<sup><a href="#Ghasemirad_VerIso">[22]</a></sup> present VerIso, a rigorous Isabelle/HOL-based framework for verifying transaction isolation within production level databases. The authors showcase VerIso by modelling the strict two-phase locking (S2PL) protocol and prove that it provides strict serializability (transactions behave as if executed sequentially and that sequential order must match the actual time order of their invocation/commit). In addition, VerIso’s parameterized architecture supports multiple isolation levels and uncovers design-level bugs in protocols such as the TAPIR protocol and its violation of atomic visibility.
 
 ### IEEE 754 Floating Point Implementation for MDPs
 
-Kohlen et al.<sup><a href="#Kohlen_float">[22]</a></sup> present a fully verified implementation of the Interval Iteration (II) Algorithm for Markov Decision Processes (MDPs). They model the II algorithm in Isabelle/HOL, use the Isabelle Refinement Framework (IRF) to carry out step-wise refinement down to LLVM bytecode, and extend Isabelle/HOL’s reasoning to support IEEE 754 floating-point arithmetic with directed rounding. Their result is a correct-by-construction floating-point implementation, competitive with industry tools and highly relevant for domains where verified numerical correctness matters, such as embedded systems, SoCs and safety-critical software.
+Kohlen et al.<sup><a href="#Kohlen_float">[23]</a></sup> present a fully verified implementation of the Interval Iteration (II) Algorithm for Markov Decision Processes (MDPs). They model the II algorithm in Isabelle/HOL, use the Isabelle Refinement Framework (IRF) to carry out step-wise refinement down to LLVM bytecode, and extend Isabelle/HOL’s reasoning to support IEEE 754 floating-point arithmetic with directed rounding. Their result is a correct-by-construction floating-point implementation, competitive with industry tools and highly relevant for domains where verified numerical correctness matters, such as embedded systems, SoCs and safety-critical software.
 
 <!-- ### 10.8.6 IsaMini: Isabelle Proof Language for Machine Learning
 
@@ -357,7 +359,7 @@ Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> show that large langua
 
 ## Case Study - Autoformalization with LLMs
 
-For the case study, we will be playing around with autoformalization with a locally hosted LLM. Neither the provided artifacts Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> nor Xu et al.<sup><a href="Xu_IsaMini">[25]</a></sup> provide model checkpoints or some kind of a modelfile, but instead simply detail the methods the authors had used to fine-tune the model. As a result, for this example, we will simply be using a baseline model along with some examples from Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> in order to produce valid Isabelle/HOL proofs from natural language input.
+For the case study, we will be playing around with autoformalization with a locally hosted LLM. Neither the provided artifacts Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> nor Xu et al.<sup><a href="#Xu_IsaMini">[25]</a></sup> provide model checkpoints or some kind of a modelfile, but instead simply detail the methods the authors had used to fine-tune the model. As a result, for this example, we will simply be using a baseline model along with some examples from Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> in order to produce valid Isabelle/HOL proofs from natural language input.
 Also, its important to keep in mind that the [3 JSON proof examples](./assets-08/8.10_case_study/Wu_Autoformalizations.md) provided by Wu et al.<sup><a href="#Wu_LLM_Autoformat">[24]</a></sup> use certain keywords like **fixes** and **shows** unlike the examples we worked through together above.
 
 **Natural language statement 1:**
@@ -441,9 +443,7 @@ The integration of tools such as Sledgehammer and external SMT/ATP solvers in 20
 
 Not sure if this section is necessary since there are already sections that deal with NTP, LLMs in formal verification, autoformalization, etc. -->
 
-## Current Events within Isabelle/HOL
-
-### Current Development
+## Current Developments
 
 Active research is increasingly integrating generative and large language models (LLMs) with interactive theorem proving to reduce manual proof construction. This emerging paradigm, termed *Neural Theorem Proving (NTP)*, augments classic automatic theorem proving (ATP) by integrating generative AI with symbolic proof assistants like Isabelle/HOL to enhance automation, guide proof search, and address complex formal reasoning tasks. Recent work by Xu et al. introduces MiniLang/IsaMini<sup><a href="#Xu_IsaMini">[25]</a></sup>, an intermediate proof language designed to improve LLM performance in Isabelle/HOL and significantly boost success rates on standard proof benchmarks compared to generating Isar scripts directly. NTP and hybrid AI frameworks are also being developed to generate and structure complete formal proofs, fine-tune models for syntactically correct proof output, and integrate verification backends to reduce errors and improve correctness in formal verification tasks. These efforts align with broader trends in formal methods research that explore how LLM reasoning can be combined with rigorous symbolic verification to enhance automation, benchmark performance, and increase formal verification scalability.
 
@@ -630,37 +630,6 @@ Despite ongoing advances, substantial research challenges remain in Isabelle/HOL
   <li id="Griffin_IsaBIL" class="citation-entry">
     [21]: Griffin, Dongol, and Raad (2025)
     <a href="https://arxiv.org/abs/2504.16775v1">IsaBIL: A Framework for Verifying (In)correctness of Binaries in Isabelle/HOL (Extended Version)</a>, arXiv preprint arXiv:2504.16775.
-
-</ul>
-
-### Research Papers
-
-<ul>
-
-  <li id="Church_TypeTheory" class="citation-entry">
-    [18]: Alonzo Church (1940)
-    <a href="https://www.jstor.org/stable/2266170">A Formulation of the Simple Theory of Types</a>, The Journal of Symbolic Logic 5(2): 56–68.
-  </li>
-
-  <span style="display:block; height:0.1em;"></span>
-
-  <li id="Achermann_physicalAddressing" class="citation-entry">
-    [19]: Achermann, Humbel, Cock, and Roscoe (2018)
-    <a href="https://people.inf.ethz.ch/troscoe/pubs/achermann_itp_2018.pdf">Physical Addressing on Real Hardware in Isabelle/HOL</a>, Department of Computer Science, ETH Zurich.
-  </li>
-
-  <span style="display:block; height:0.1em;"></span>
-
-  <li id="Spichkova_FOCUS" class="citation-entry">
-    [20]: Maria Spichkova (2014)
-    <a href="https://arxiv.org/abs/1405.1512">Stream processing components: Isabelle/HOL formalisation and case studies</a>, arXiv preprint arXiv:1405.1512.
-  </li>
-
-  <span style="display:block; height:0.1em;"></span>
-
-  <li id="Griffin_IsaBIL" class="citation-entry">
-    [21]: Griffin, Dongol, and Raad (2025)
-    <a href="https://arxiv.org/abs/2504.16775v1">IsaBIL: A Framework for Verifying (In)correctness of Binaries in Isabelle/HOL (Extended Version)</a>, arXiv preprint arXiv:2504.16775.
   </li>
 
   <span style="display:block; height:0.1em;"></span>
@@ -798,6 +767,4 @@ It may also be cool to see a more interactive history section, with custom CSS a
 
 ## Contributors
 
-Initial Author: Spencer Au
-
-Peer Reviewer: Wayne Chong
+Written by Spencer Au and reviewed by Wayne Chong and Alexander Kurz.

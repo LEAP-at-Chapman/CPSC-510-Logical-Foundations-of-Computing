@@ -46,14 +46,87 @@ Each chapter should by default be divided into the following sections (subject t
 
 ## Ideas for 2026
 
-- Turn this book from one on "Logical Foundations of Software Engineering" into a book on "Formal Methods and AI"
-- Give students a choice between adding a new chapter or doing a project. 
-  - Projects would apply a logic-based formal method to some engineering problem. 
-  - I would be particularly interested in projects that combine formal methods with generative AI.
-  - A great way to learn is to implement a classic algorithm from scratch. A project in this vein could be a simple from-scratch prototype implementation of a tool (eg a Prolog interpreter). The focus would be on simplicity and the educational value.
-  - A new chapter would present a logic, a formal method, a software tool. For example:
-    - First-order theorem proving: (Vampire, Prover9, ...)
-    - Knowledge Representation, Semantic Web, Ontologies, Description Logics, ... [OntoUML](https://ontouml.org/) ... 
-- ... tbc ...
+Turn this book from one on "Logical Foundations of Software Engineering" into a book on **"Formal Methods and AI"**, emphasizing the integration of symbolic and neural approaches.
 
+Before starting on this: Upgrade from Jupyter book version 1 to version 2. Organize the references of each chapter using bibtex.
 
+### Part 1: Review and Refinement (Weeks 1-6)
+**Goal**: Engage new students with existing material while collaboratively improving it.
+
+- **Weeks 1-5: Chapter Review Cycle**
+  - Each lecture (2 lectures per week) focuses on one existing chapter
+  - **Lecture**: Review the chapter's content, tools, and theory
+  - **Homework**: Students make improvement proposals
+    - One Discord channel per chapter for discussion
+    - Each student must make **one pull request per week** containing an improvement proposal
+    - Proposals can include: fixing typos/errors, adding examples, improving explanations, updating references, adding missing sections, enhancing software engineering perspective.
+    - I am particularly interested in interactive features that encourage the reader to actively play with the concepts. In some cases, such as SMCDEL or Lean, such interactive playgrounds are already available online. In other cases we may have to develop something ourselves.
+  
+- **Week 6: Synthesis and Prioritization**
+  - Rank chapters by quality/completeness
+  - Identify highest-impact improvements
+  - Allocate time for implementing top improvements
+  - Students vote on which chapters need the most work
+
+### Part 2: Extension and Innovation (Weeks 7-13)
+
+Each student chooses one of two tracks:
+
+#### Track A: New Chapter Development
+Create a new chapter following the [suggested table of contents](#suggested-table-of-contents-for-a-typical-chapter), presenting:
+- A logic, formal method, and software tool
+- Integration with AI/formal methods theme where possible
+
+**Potential Topics:**
+- **First-order theorem proving**: Vampire, Prover9, E, or other automated first-order provers
+- **Knowledge Representation and Description Logics**: Semantic Web, OWL, Description Logic reasoners, [OntoUML](https://ontouml.org/)
+- **Separation Logic**: For reasoning about heap-manipulating programs (e.g., with VeriFast, Infer)
+- **Alloy**: Model finding and lightweight formal methods
+- **TLA+**: Temporal Logic of Actions for system specification
+- **ACL2**: Automated theorem proving for hardware/software verification
+- **Why3**: Platform for deductive program verification
+- **CBMC**: Bounded model checking for C/C++
+- **Formal Methods in AI Safety**: Verification of neural networks, adversarial robustness
+- **Probabilistic Programming**: Logic-based probabilistic reasoning (e.g., ProbLog, Church)
+
+#### Track B: Project-Based Learning
+Apply formal methods to a concrete engineering problem or build educational tools.
+
+**Project Categories:**
+
+1. **Application Projects**
+   - Apply a logic-based formal method to a real engineering problem
+   - Examples: verify a protocol, model-check a distributed system, solve a scheduling problem, verify a security property
+   - Deliverable: Working code + documentation explaining the formal method used
+
+2. **AI + Formal Methods Integration**
+   - Combine generative AI with symbolic/formal methods
+   - Examples: AI-assisted specification generation, LLM-powered proof tactics, neural-guided model checking, autoformalization tools
+   - Deliverable: Working prototype + analysis of AI/formal methods integration
+
+3. **Educational Tool Implementation**
+   - Build a simple, educational implementation of a classic algorithm or tool
+   - Focus: Simplicity and educational value over performance
+   - Examples: 
+     - Simple Prolog interpreter (unification, resolution, backtracking)
+     - Basic SAT solver (DPLL algorithm)
+     - Mini model checker for propositional temporal logic
+     - Simple type checker for a small language
+   - Deliverable: Working code + tutorial explaining how it works
+
+4. **Chapter Enhancement Projects**
+   - Substantial improvements to an existing chapter
+   - Examples:
+     - Add a comprehensive case study
+     - Implement all examples from a chapter as runnable code
+     - Create interactive visualizations or demos
+     - Expand "Applications in Industry" with detailed analysis
+     - Add missing sections (Algorithms, Typical Use Cases, etc.)
+   - Deliverable: Enhanced chapter content + supporting materials
+
+### Part 3: Integration and Publication (Week 14-15)
+- Final review of all contributions
+- Integration of new chapters into book structure
+- Quality assurance pass
+- Publication preparation
+- Reflection on collaborative process

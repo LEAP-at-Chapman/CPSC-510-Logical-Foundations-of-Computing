@@ -1,6 +1,6 @@
 # Type Theory with Lean
 
-*Author: Khoa Nguyen*
+Author: *Khoa Nguyen*
 
 ## Introduction
 
@@ -13,12 +13,12 @@ Dependent Type Theory (DTT) is the idea that types can depend on values. In trad
 This expressiveness blurs the boundary between proofs and programs. In dependent type theory, writing a function that computes something often simultaneously constructs a proof of its correctness. For instance, a function that returns the sum of two natural numbers can be defined alongside a proof that addition is associative or commutative, proofs that Lean, Coq, or Agda can check mechanically.
 
 Dependent Type Theory(DTT) is a unifying foundation for:
-- Formal methematics where theorems and proofs are treated as typed objects.
+- Formal mathematics where theorems and proofs are treated as typed objects.
 - Verified programming where correctness is guaranteed by construction.
 
 Think of DTT as the language that connects mathematics, logic, and software engineering. It transforms "what is true" into "what is computed" and vice versa.
 
-Dependenty Type Theory allows us to design systems in which the structure of code mirrors the structure of mathematics. This is the essence of the proofs-as-programs pradigm: a verified program is not something we write after designing an algorithm; it is the algorithm, expressed in a logical language rich enough to verify itself. 
+Dependent Type Theory allows us to design systems in which the structure of code mirrors the structure of mathematics. This is the essence of the proofs-as-programs paradigm: a verified program is not something we write after designing an algorithm; it is the algorithm, expressed in a logical language rich enough to verify itself. 
 
 ## Basic Theory
 
@@ -30,7 +30,7 @@ Dependent types generalize this by allowing types to vary depending on terms. Fo
 
 ### The Curry-Howard Correspondence
 
-The Curry-Howard Correspondence underlies DTT, establising a deep analogy between logic and computation:
+The Curry-Howard Correspondence underlies DTT, establishing a deep analogy between logic and computation:
 
 | Logic | Type Theory | Computation |
 |---|---|---|
@@ -69,7 +69,7 @@ One sign that Lean has been installed correctly is that `#eval` and `#check` tur
 
 ## Introductory Examples
 
-One of the most effective ways to begin learning Lean is through the [Lean Game Server](https://adam.math.hhu.de/). These games remove setup overhead, eliminate the intimidation factor of reading large formal libraries, and instead invite learners to explore Lean through hands-on examples. Two of the most valuable games for beginners are the [Logic Games](https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic) and the [Natural Number Games](https://adam.math.hhu.de/#/g/leanprover-community/nng4). Both games illustrate the power of formal methids in a setting that is playful and intellectually rigorous.
+One of the most effective ways to begin learning Lean is through the [Lean Game Server](https://adam.math.hhu.de/). These games remove setup overhead, eliminate the intimidation factor of reading large formal libraries, and instead invite learners to explore Lean through hands-on examples. Two of the most valuable games for beginners are the [Logic Games](https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic) and the [Natural Number Games](https://adam.math.hhu.de/#/g/leanprover-community/nng4). Both games illustrate the power of formal methods in a setting that is playful and intellectually rigorous.
 
 ### Logic Game
 
@@ -117,7 +117,7 @@ This concreteness demystifies dependent type theory: users experience how a simp
 
 #### Inductive Reasoing Through Direct Interaction
 
-Induction is not merely stated, it is performed repeatedly. Lean forces the user to spell out base cases, induction hypotheses, goals and recursive patterns. This active engagement builds intuition for proof assistants handle recursion and induction which are core tools in both methematics and formal verfication.
+Induction is not merely stated, it is performed repeatedly. Lean forces the user to spell out base cases, induction hypotheses, goals and recursive patterns. This active engagement builds intuition for how proof assistants handle recursion and induction, which are core tools in both mathematics and formal verification.
 
 #### Motivates Algorithmic Thinking
 
@@ -153,7 +153,7 @@ Instead of trying to infer types for all expressions (type inference) or requiri
 1. Synthesis (or inference): from a term `t`, compute (synthesize) a type `A`, written informally $t \Rightarrow A$.
 2. Checking: given a term `t` and a desired type `A`, check that `t` indeed has type `A`, written $t \Leftarrow A$. 
 
-This matters because full type inference in a dependently typed setting tends to be undecidable or requires heavy annotation, due to types themselves may depend on values. By adopting a bidirectional discipline, one can recover a decidable, predictable algorithmic core for a large class of dependent type theories. ["Generic bidirectional typing for dependent type theories](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Generic+bidirectional+typing+for+dependent+type+theories&btnG=) paper gives a generic account of bidirectional typing for a wide class of dependent type theories, showing that for many theories, a sound and complete bidirectional checker can be derived.
+This matters because full type inference in a dependently typed setting tends to be undecidable or requires heavy annotation, due to types themselves may depend on values. By adopting a bidirectional discipline, one can recover a decidable, predictable algorithmic core for a large class of dependent type theories. [Generic bidirectional typing for dependent type theories](https://scholar.google.com/scholar?q=Generic+bidirectional+typing+for+dependent+type+theories+Felicissimo) (Felicissimo et al., 2024) paper gives a generic account of bidirectional typing for a wide class of dependent type theories, showing that for many theories, a sound and complete bidirectional checker can be derived.
 
 The generic construction yields a type-checking algorithm for a broad class of DTTs, implemented in a prototype tool. This ensures that the type checker for a dependently typed language can remain decidable (under suitable normalization/termination assumptions) while supporting expressive dependent types.
 
@@ -163,7 +163,7 @@ The necessity of type annotations in places where inference is impossible (e.g.,
 
 In dependent type theory, type equality (and term equality) is not just "are they syntactically identical?". It often involves computation (normalization), conversion rules ($\beta$-reduction), and user-defined equality/extension rules (e.g., extensionality, definitional equalities). Implementations need an algorithm to decide or check when two types or terms are equal.
 
-The paper [“An extensible equality checking algorithm for dependent type theories”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=An+extensible+equality+checking+algorithm+for+dependent+type+theories&btnG=) introduces a general algorithm combining type-directed extensionality rules with normalization by computation rules, and shows how to classify rules as computational or extensional in a user-definable way. The algorithm is implemented in a proof assistant prototype that supports custom dependent type theories. 
+The paper [“An extensible equality checking algorithm for dependent type theories”](https://scholar.google.com/scholar?q=An+extensible+equality+checking+algorithm+for+dependent+type+theories+Bauer+Komel) (Bauer and Komel, 2022) introduces a general algorithm combining type-directed extensionality rules with normalization by computation rules, and shows how to classify rules as computational or extensional in a user-definable way. The algorithm is implemented in a proof assistant prototype that supports custom dependent type theories. 
 
 Without a robust equality/normalization algorithm, dependent types, especially those involving dependent functions or indexed types,become unwieldy. Many trivial-looking equalities (e.g., rewriting with definitional reduction, simplification) would need to be proven manually. A good algorithm reduces overhead and makes proofs manageable.
 
@@ -233,11 +233,11 @@ In recent years, formally grounded methods for specifying and verifying software
 
 - [“Formal methods in dependable systems engineering: a survey of professionals from Europe and North America"](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Formal+methods+in+dependable+systems+engineering%3A+a+survey+of+professionals+from+Europe+and+North+America&btnG=) presents survey results from mission-critical software engineering practitioners, investigating how they use formal methods, their intentions to use them, and perceived challenges. Intrinsic motivation drives use more than regulation. Experienced practitioners plan to use more extensively. Major obstacles remain such as: scalability, skills, education, process compatibility, tool reputation. The survey highlights that despite promising case studies, broad industrial adoption remains constrained.
 
-- [“Industrial-Strength Verification of Solid State Interlocking Programs”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CIndustrial-Strength+Verification+of+Solid+State+Interlocking+Programs.%E2%80%9D&btnG=) describes a tool used on 26 real-world interlockings and used to aument existing testing/inspection processes. It describes an end-to-end workflow that consumes engineering artefacts as produced by signalling designers, automatically encodes safety properties, runs automated theorm provers and SMT solvers, then produces diagnostics so the results are actionable.
+- [“Industrial-Strength Verification of Solid State Interlocking Programs”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CIndustrial-Strength+Verification+of+Solid+State+Interlocking+Programs.%E2%80%9D&btnG=) describes a tool used on 26 real-world interlockings and used to augment existing testing/inspection processes. It describes an end-to-end workflow that consumes engineering artefacts as produced by signalling designers, automatically encodes safety properties, runs automated theorem provers and SMT solvers, then produces diagnostics so the results are actionable.
 
 ### Recent & Emerging Directions
 
-- The paper [“Machine learning and logic: a new frontier in artificial intelligence”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CMachine+learning+and+logic%3A+a+new+frontier+in+artificial+intelligence.%E2%80%9D&btnG=) shows how ML/AI and formal methods (logic, automated reasoning) are increasingly tightly coupled. Both foundational pillars have largely developed independently, but novel and grand challenges demand their integration. The author identify three key paradigms:
+- The paper [“Machine learning and logic: a new frontier in artificial intelligence”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CMachine+learning+and+logic%3A+a+new+frontier+in+artificial+intelligence.%E2%80%9D&btnG=) shows how ML/AI and formal methods (logic, automated reasoning) are increasingly tightly coupled. Both foundational pillars have largely developed independently, but novel and grand challenges demand their integration. The authors identify three key paradigms:
     1. Using learning methods for proof-rule selection, solver heuristic and initialization.
     2. Combining inductive learning and deductive reasoning for programming-by-example, synthesis, and verification.
     3. Using solver feedback as corrective layers for ML models to improve accuracy, generalizability and trustworthiness.
@@ -245,9 +245,9 @@ They posit that this convergent direction will have major impact on future AI an
 
 - [“Application of AI to formal methods — an analysis of current trends”](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CApplication+of+AI+to+formal+methods+%E2%80%94+an+analysis+of+current+trends.%E2%80%9D&btnG=) is a systematic mapping of how AI techniques (including generative models) are being applied to formal methods (and vice versa). It charts emerging directions such as automated invariant generation via ML, proof-assistant tactic synthesis using neural networks, and formal verification of AI/ML system themselves. The analysis highlights both promise of increased automation and reduced annotation and caution. 
 
-- Special issue [“Formal Methods for Industrial Critical Systems”](https://scholar.google.com/scholar?q=%E2%80%9CFormal+Methods+for+Industrial+Critical+Systems%E2%80%9D&hl=en&as_sdt=0%2C5&as_ylo=2024&as_yhi=) compile recent tools and experience reports from industry/critical systems. The issue contributions cover a range of domains and emphasize the needs of improving formal tools and publishing empirical experience showing how formal methods integrate with industrial processes. 
+- Special issue [“Formal Methods for Industrial Critical Systems”](https://scholar.google.com/scholar?q=%E2%80%9CFormal+Methods+for+Industrial+Critical+Systems%E2%80%9D&hl=en&as_sdt=0%2C5&as_ylo=2024&as_yhi=) compiles recent tools and experience reports from industry/critical systems. The issue contributions cover a range of domains and emphasize the needs of improving formal tools and publishing empirical experience showing how formal methods integrate with industrial processes. 
 
-- [VeriBench: End-to-End Formal Verification Benchmark for AI Code Generation in Lean](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&as_ylo=2024&q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&btnG=) presents a benchmark suite called VeriBench, designed to evaluate how well large language models (LLMs) can generate complete formal verification artifacts in Lean 4. The experiments show that current frontier LLMs compile and pass only a small fraction of these tasks out of the box. It explicitly highlights how Lean 4’s dependent-type system enables encoding deep invariants. The author argues
+- [VeriBench: End-to-End Formal Verification Benchmark for AI Code Generation in Lean](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&as_ylo=2024&q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&btnG=) presents a benchmark suite called VeriBench, designed to evaluate how well large language models (LLMs) can generate complete formal verification artifacts in Lean 4. The experiments show that current frontier LLMs compile and pass only a small fraction of these tasks out of the box. It explicitly highlights how Lean 4’s dependent-type system enables encoding deep invariants. The authors argue
 that such benchmarks are essential to meaningful progress in automated code verification & provably correct code generation, especially as generative AI becomes more widely used in software engineering.
 
 ## Case Study
@@ -560,49 +560,49 @@ Looking forward, the Lean FRO's roadmap emphasizes continued investment in scala
 
 - [Lean Game Logic](https://adam.math.hhu.de/#/g/trequetrum/lean4game-logic)
 
-- Barnes (2011) [Experiences in the Industrial use of Formal Methods](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Experiences+in+the+Industrial+use+of+Formal+Methods&btnG=), ECEASST 46
+- Barnes (2011) [Experiences in the Industrial use of Formal Methods](https://scholar.google.com/scholar?q=Experiences+in+the+Industrial+use+of+Formal+Methods+Barnes), ECEASST 46
 
-- Ganesh, Seshia, and Jha (2022) [Machine learning and logic: a new frontier in artificial intelligence](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CMachine+learning+and+logic%3A+a+new+frontier+in+artificial+intelligence.%E2%80%9D&btnG=), Formal Methods Systems Design 60
+- Ganesh, Seshia, and Jha (2022) [Machine learning and logic: a new frontier in artificial intelligence](https://scholar.google.com/scholar?q=Machine+learning+and+logic+a+new+frontier+in+artificial+intelligence+Ganesh+Seshia+Jha), Formal Methods Systems Design 60
 
-- Gleirscher and Marmsoler (2020) [Formal methods in dependable systems engineering: a survey of professionals from Europe and North America](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Formal+methods+in+dependable+systems+engineering%3A+a+survey+of+professionals+from+Europe+and+North+America&btnG=), Empir Software Eng 25
+- Gleirscher and Marmsoler (2020) [Formal methods in dependable systems engineering: a survey of professionals from Europe and North America](https://scholar.google.com/scholar?q=Formal+methods+in+dependable+systems+engineering+a+survey+of+professionals+Gleirscher+Marmsoler), Empir Software Eng 25
 
 - Groote and Huisman (2024) [Formal Methods for Industrial Critical Systems](https://scholar.google.com/scholar?q=%E2%80%9CFormal+Methods+for+Industrial+Critical+Systems%E2%80%9D&hl=en&as_sdt=0%2C5&as_ylo=2024&as_yhi=), Int J Softw Tools Technol Transfer 26
 
-- Iliasov et al. (2021) [Industrial-Strength Verification of Solid State Interlocking Programs](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CIndustrial-Strength+Verification+of+Solid+State+Interlocking+Programs.%E2%80%9D&btnG=), arXiv preprint
+- Iliasov et al. (2021) [Industrial-Strength Verification of Solid State Interlocking Programs](https://scholar.google.com/scholar?q=Industrial-Strength+Verification+of+Solid+State+Interlocking+Programs+Iliasov), arXiv
 
 - Miranda et al. (2025) [VeriBench: End-to-End formal verification benchmark for AI code generation in Lean 4](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&as_ylo=2024&q=%22VeriBench%3A+End-to-End+formal+verification+benchmark+for+AI+code+generation+in+Lean+4%22&btnG=), Proceedings of ICML 2025
 
-- Singh et al. (2019) [Symbolic QED Pre-silicon Verification for Automotive Microcontroller Cores: Industrial Case Study](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CSymbolic+QED+Pre-silicon+Verification+for+Automotive+Microcontroller+Cores%3A+Industrial+Case+Study.%E2%80%9D&btnG=), arXiv preprint
+- Singh et al. (2019) [Symbolic QED Pre-silicon Verification for Automotive Microcontroller Cores: Industrial Case Study](https://scholar.google.com/scholar?q=Symbolic+QED+Pre-silicon+Verification+for+Automotive+Microcontroller+Cores+Singh), arXiv
 
 - Stanford Encyclopedia of Philosophy (2022) [Type Theory](https://plato.stanford.edu/entries/type-theory), Stanford Encyclopedia of Philosophy
 
 - Stanford Encyclopedia of Philosophy (2024) [Intuitionistic Type Theory](https://plato.stanford.edu/entries/type-theory-intuitionistic/), Stanford Encyclopedia of Philosophy
 
-- Stock, Dunkelau, and Mashkoor (2025) [Application of AI to formal methods — an analysis of current trends](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%E2%80%9CApplication+of+AI+to+formal+methods+%E2%80%94+an+analysis+of+current+trends.%E2%80%9D&btnG=), Empir Software Eng
+- Stock, Dunkelau, and Mashkoor (2025) [Application of AI to formal methods — an analysis of current trends](https://scholar.google.com/scholar?q=Application+of+AI+to+formal+methods+an+analysis+of+current+trends+Stock+Dunkelau+Mashkoor), Empir Software Eng
 
-- Wadler (2015) [Propositions as Types](https://homepages.inf.ed.ac.uk/wadler/papers/propositions-as-types/propositions-as-types.pdf), Communications of the ACM 58(12)
+- Wadler (2015) [Propositions as Types](https://scholar.google.com/scholar?q=Propositions+as+Types+Wadler), Communications of the ACM 58(12)
 
-- Bauer and Komel (2020) [Equality checking for general type theories in Andromeda 2](https://scholar.google.com/scholar?q=Equality+checking+for+general+type+theories+in+Andromeda+2), International Conference on Interactive Theorem Proving
+- Bauer and Komel (2020) [Equality checking for general type theories in Andromeda 2](https://scholar.google.com/scholar?q=Equality+checking+for+general+type+theories+in+Andromeda+2+Bauer+Komel), International Conference on Interactive Theorem Proving
 
-- Bauer and Komel (2022) [An extensible equality checking algorithm for dependent type theories](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=An+extensible+equality+checking+algorithm+for+dependent+type+theories&btnG=), Logical Methods in Computer Science
+- Bauer and Komel (2022) [An extensible equality checking algorithm for dependent type theories](https://scholar.google.com/scholar?q=An+extensible+equality+checking+algorithm+for+dependent+type+theories+Bauer+Komel), Logical Methods in Computer Science
 
-- de Moura et al. (2021) [The Lean 4 theorem prover and programming language](https://scholar.google.com/scholar?q=The+Lean+4+theorem+prover+and+programming+language), International Conference on Automated Deduction
+- de Moura et al. (2021) [The Lean 4 theorem prover and programming language](https://scholar.google.com/scholar?q=The+Lean+4+theorem+prover+and+programming+language+de+Moura), International Conference on Automated Deduction
 
 - Dunfield and Krishnaswami (2021) [Bidirectional typing](https://scholar.google.com/scholar?q=Bidirectional+typing+Dunfield+Krishnaswami), ACM Computing Surveys
 
-- Ebner et al. (2017) [A metaprogramming framework for formal verification](https://scholar.google.com/scholar?q=A+metaprogramming+framework+for+formal+verification+Lean), Proceedings of the ACM on Programming Languages
+- Ebner et al. (2017) [A metaprogramming framework for formal verification](https://scholar.google.com/scholar?q=A+metaprogramming+framework+for+formal+verification+Ebner), Proceedings of the ACM on Programming Languages
 
-- Felicissimo (2024) [Artifact report: Generic bidirectional typing for dependent type theories](https://scholar.google.com/scholar?q=Generic+bidirectional+typing+for+dependent+type+theories+artifact), ESOP 2024
+- Felicissimo (2024) [Artifact report: Generic bidirectional typing for dependent type theories](https://scholar.google.com/scholar?q=Generic+bidirectional+typing+for+dependent+type+theories+artifact+Felicissimo), ESOP 2024
 
-- Felicissimo et al. (2024) [Generic bidirectional typing for dependent type theories](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Generic+bidirectional+typing+for+dependent+type+theories&btnG=), ESOP 2024
+- Felicissimo et al. (2024) [Generic bidirectional typing for dependent type theories](https://scholar.google.com/scholar?q=Generic+bidirectional+typing+for+dependent+type+theories+Felicissimo), ESOP 2024
 
-- Ko and Gibbons (2024) [A formal treatment of bidirectional typing](https://scholar.google.com/scholar?q=A+formal+treatment+of+bidirectional+typing), ESOP 2024
+- Ko and Gibbons (2024) [A formal treatment of bidirectional typing](https://scholar.google.com/scholar?q=A+formal+treatment+of+bidirectional+typing+Ko+Gibbons), ESOP 2024
 
 - Lean Community (n.d.) [Metaprogramming in Lean 4](https://leanprover-community.github.io/lean4-metaprogramming-book/), Online documentation
 
-- Azerbayev et al. (2023) [ProofNet: Autoformalizing and formally proving undergraduate-level mathematics](https://scholar.google.com/scholar?q=ProofNet+Autoformalizing+and+formally+proving+undergraduate-level+mathematics), arXiv preprint
+- Azerbayev et al. (2023) [ProofNet: Autoformalizing and formally proving undergraduate-level mathematics](https://scholar.google.com/scholar?q=ProofNet+Autoformalizing+and+formally+proving+undergraduate-level+mathematics+Azerbayev), arXiv
 
-- DeepSeek (2025) [DeepSeek-Prover-V2: Retrieval augmented Lean prover for mathematical reasoning](https://scholar.google.com/scholar?q=DeepSeek-Prover-V2+Retrieval+augmented+Lean+prover), arXiv preprint
+- DeepSeek (2025) [DeepSeek-Prover-V2: Retrieval augmented Lean prover for mathematical reasoning](https://scholar.google.com/scholar?q=DeepSeek-Prover-V2+Retrieval+augmented+Lean+prover+DeepSeek), arXiv
 
 - Google DeepMind (2024) [AI achieves silver-medal standard solving International Mathematical Olympiad problems](https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/), Blog post
 
@@ -610,29 +610,27 @@ Looking forward, the Lean FRO's roadmap emphasizes continued investment in scala
 
 - IMO Grand Challenge (n.d.) [IMO Grand Challenge for Artificial Intelligence](https://imo-grand-challenge.github.io/), Project website
 
-- Liu et al. (2023) [FIMO: A challenge formal dataset for automated theorem proving](https://scholar.google.com/scholar?q=FIMO+A+challenge+formal+dataset+for+automated+theorem+proving), arXiv preprint
+- Liu et al. (2023) [FIMO: A challenge formal dataset for automated theorem proving](https://scholar.google.com/scholar?q=FIMO+A+challenge+formal+dataset+for+automated+theorem+proving+Liu), arXiv
 
-- Sutcliffe (2016) [The CADE ATP system competition—CASC](https://scholar.google.com/scholar?q=The+CADE+ATP+system+competition+CASC), AI Magazine
+- Sutcliffe (2016) [The CADE ATP system competition—CASC](https://scholar.google.com/scholar?q=The+CADE+ATP+system+competition+CASC+Sutcliffe), AI Magazine
 
-- Team et al. (2025) [LeanGeo: Formalizing competitional geometry problems in Lean](https://scholar.google.com/scholar?q=LeanGeo+Formalizing+competitional+geometry+problems+in+Lean), arXiv preprint
+- Team et al. (2025) [LeanGeo: Formalizing competitional geometry problems in Lean](https://scholar.google.com/scholar?q=LeanGeo+Formalizing+competitional+geometry+problems+in+Lean+Team), arXiv
 
-- Tsoukalas et al. (2024) [PutnamBench: Evaluating neural theorem-provers](https://scholar.google.com/scholar?q=PutnamBench+Evaluating+neural+theorem-provers), NeurIPS 2024
+- Tsoukalas et al. (2024) [PutnamBench: Evaluating neural theorem-provers](https://scholar.google.com/scholar?q=PutnamBench+Evaluating+neural+theorem-provers+Tsoukalas), NeurIPS 2024
 
-- Wang et al. (2025) [REAL-Prover: Retrieval augmented Lean prover for mathematical reasoning](https://scholar.google.com/scholar?q=REAL-Prover+Retrieval+augmented+Lean+prover), arXiv preprint
+- Wang et al. (2025) [REAL-Prover: Retrieval augmented Lean prover for mathematical reasoning](https://scholar.google.com/scholar?q=REAL-Prover+Retrieval+augmented+Lean+prover+Wang), arXiv
 
-- Zheng, Han, and Polu (2021) [MiniF2F: A cross-system benchmark for formal Olympiad-level mathematics](https://scholar.google.com/scholar?q=MiniF2F+A+cross-system+benchmark+for+formal+Olympiad-level+mathematics), ICLR 2022
+- Zheng, Han, and Polu (2021) [MiniF2F: A cross-system benchmark for formal Olympiad-level mathematics](https://scholar.google.com/scholar?q=MiniF2F+A+cross-system+benchmark+for+formal+Olympiad-level+mathematics+Zheng+Han+Polu), ICLR 2022
 
-- Google DeepMind (2024) [AI achieves silver-medal standard solving International Mathematical Olympiad problems](https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/), Blog post
+- Li et al. (2025) [Generating millions of Lean theorems with proofs by exploring state transition graphs](https://scholar.google.com/scholar?q=Generating+millions+of+Lean+theorems+with+proofs+by+exploring+state+transition+graphs+Li), arXiv
 
-- Li et al. (2025) [Generating millions of Lean theorems with proofs by exploring state transition graphs](https://scholar.google.com/scholar?q=Generating+millions+of+Lean+theorems+with+proofs+by+exploring+state+transition+graphs), arXiv preprint
-
-- Song, Yang, and Anandkumar (2024) [Lean Copilot: Large language models as copilots for theorem proving in Lean](https://scholar.google.com/scholar?q=Lean+Copilot+Large+language+models+as+copilots+for+theorem+proving), arXiv preprint
+- Song, Yang, and Anandkumar (2024) [Lean Copilot: Large language models as copilots for theorem proving in Lean](https://scholar.google.com/scholar?q=Lean+Copilot+Large+language+models+as+copilots+for+theorem+proving+Song+Yang+Anandkumar), arXiv
 
 - VentureBeat AI (2024) [Lean4: How the theorem prover is revolutionizing AI and mathematics](https://beamstart.com/news/lean4-how-the-theorem-prover-17638530282056), Article
 
-- Yang et al. (2023) [LeanDojo: Theorem proving with retrieval-augmented language models](https://scholar.google.com/scholar?q=LeanDojo+Theorem+proving+with+retrieval-augmented+language+models), NeurIPS 2023
+- Yang et al. (2023) [LeanDojo: Theorem proving with retrieval-augmented language models](https://scholar.google.com/scholar?q=LeanDojo+Theorem+proving+with+retrieval-augmented+language+models+Yang), NeurIPS 2023
 
-- Baanen et al. (2022) [Growing Mathlib: Maintenance of a large scale mathematical library](https://scholar.google.com/scholar?q=Growing+Mathlib+Maintenance+of+a+large+scale+mathematical+library), Intelligent Computer Mathematics
+- Baanen et al. (2022) [Growing Mathlib: Maintenance of a large scale mathematical library](https://scholar.google.com/scholar?q=Growing+Mathlib+Maintenance+of+a+large+scale+mathematical+library+Baanen), Intelligent Computer Mathematics
 
 - Buzzard (2024) [Lean in 2024](https://xenaproject.wordpress.com/2024/01/20/lean-in-2024/), Xena Project blog
 
@@ -644,5 +642,5 @@ Looking forward, the Lean FRO's roadmap emphasizes continued investment in scala
 
 - Tao (2025) [A Lean companion to "Analysis I"](https://terrytao.wordpress.com/2025/05/31/a-lean-companion-to-analysis-i/), What's New blog
 
-## Suggestions for Future Works
-For future works, find more relevant sources, specifically to Lean, for Application in the Industry. Additionally, include more algorithms and properties of Dependent Type Theory. Please extend and explore more indepthly any topics that was not thoroughly covered in this chapter. Final note, include additional different case studies for Lean to demonstrate how Lean can be applied to different fields.
+## Future Work
+For future work, find more relevant sources, specifically to Lean, for Applications in Industry. Additionally, include more algorithms and properties of Dependent Type Theory. Please extend and explore more in depth any topics that were not thoroughly covered in this chapter. Finally, include additional different case studies for Lean to demonstrate how Lean can be applied to different fields.

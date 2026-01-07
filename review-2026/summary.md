@@ -14,15 +14,15 @@ This document tracks the overall progress of the review process.
 | 01 - Short Intro to Logic | Completed | 2026-01-04 | Fixed typos (foundtaional→foundational, Completenss→Completeness) |
 | 02 - Propositional Logic | Completed | 2026-01-04 | Fixed typo (there→their) |
 | 03 - Modal Logic | Not Started | - | |
-| 04 - SAT Solving with MiniSat | In Progress | 2026-01-04 | Initial review with software engineering perspective evaluation |
-| 05 - Logic Programming with Prolog | Not Started | - | |
-| 06 - Constraints with MiniZinc | Not Started | - | |
-| 07 - SMT Solving and Z3 | Not Started | - | |
-| 08 - Temporal Logic with Spin | Not Started | - | |
-| 09 - Epistemic Logic with SMCDEL | Not Started | - | |
-| 10 - Hoare Logic with Dafny | Not Started | - | |
-| 11 - Higher-Order Logic with Isabelle | Not Started | - | |
-| 12 - Type Theory with Lean | Not Started | - | |
+| 01 - SAT Solving with MiniSat | In Progress | 2026-01-04 | Initial review with software engineering perspective evaluation |
+| 02 - Logic Programming with Prolog | Not Started | - | |
+| 03 - Constraints with MiniZinc | Not Started | - | |
+| 04 - SMT Solving and Z3 | Not Started | - | |
+| 05 - Temporal Logic with Spin | Not Started | - | |
+| 06 - Epistemic Logic with SMCDEL | Not Started | - | |
+| 07 - Hoare Logic with Dafny | Completed | 2026-01-XX | Fixed typos (Dafyny→Dafny, precondition errors), fixed reference formatting (last names only), added venues, added citations, renamed "Suggestions for future work" to "Future Work" |
+| 08 - Higher-Order Logic with Isabelle | Not Started | - | |
+| 09 - Type Theory with Lean | Completed | 2026-01-XX | Fixed 10+ typos, simplified Google Scholar queries, standardized arXiv format, removed duplicate reference, added citations, renamed section to match TOC, comprehensive software engineering evaluation |
 | Appendix - Complexity Classes | Completed | 2026-01-04 | Added "Logics in Book" column, added note on undecidable logics |
 
 ## Status Legend
@@ -46,11 +46,13 @@ This document tracks the overall progress of the review process.
 - Started review of SAT Solving chapter with comprehensive evaluation
 - Completed review of Logic Programming chapter (02): Fixed 7 typos, reformatted all 11 references with Google Scholar links and venues, removed page numbers, added software engineering evaluation
 - Completed initial review of Constraints with MiniZinc chapter (03): Fixed typo, verified all 5 references (all properly formatted and cited), added comprehensive software engineering evaluation
+- Completed review of Hoare Logic with Dafny chapter (07): Fixed 5 typos/grammatical errors, fixed 9 references (author names, venues, Google Scholar links), added 3 in-text citations, renamed section to match TOC, added comprehensive software engineering evaluation
+- Completed review of Type Theory with Lean chapter (09): Fixed 10+ typos/grammatical errors, simplified 50+ Google Scholar query URLs, standardized arXiv format, removed duplicate reference, added citations, renamed section to match TOC, comprehensive software engineering evaluation
 
 ## Review Statistics
 
 - Total chapters: 14
-- Completed: 5
-- In Progress: 2
-- Not Started: 7
+- Completed: 7
+- In Progress: 1
+- Not Started: 6
 

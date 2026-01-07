@@ -1,5 +1,7 @@
 # Constraints with MiniZinc
 
+Author: *Matt Favela*
+
 ## Idea
 
 Constraint programming (CP) is a paradigm for identifying feasible solutions from a very large set of candidates by modeling problems in terms of arbitrary constraints. These problems are called constraint satisfaction problems (CSPs) where you provide:
@@ -26,6 +28,8 @@ brew install minizinc
 ```bash
 minizinc --version
 ```
+
+It is also possible to run minizinc in a Python notebook, see eg [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/notebooks/minizinc/minizinc-examples.ipynb).
 
 ### Key Characteristics
 
@@ -218,6 +222,14 @@ solve satisfy;
 
 Download shift_scheduling.mzn
 ```
+
+### MiniZinc in Python
+
+Interactive MiniZinc examples are available below via Colab or Binder or download a copy [here](https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/notebooks/minizinc/minizinc-examples.ipynb).
+
+**Try it interactively:** 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/blob/main/notebooks/minizinc/minizinc-examples.ipynb) ... [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/main?filepath=notebooks/minizinc/minizinc-examples.ipynb)
 
 With the Python MiniZinc API, you can load the model from a file and feed parameters directly, avoiding large inline strings:
 

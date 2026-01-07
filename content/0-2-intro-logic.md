@@ -1,4 +1,4 @@
-# Short Intro to Logic
+# Big Ideas of Logic
 
 This very short introduction to logic does not aim at explaining what logic is or the foundational role that logic plays in computing. As we will see throughout the book, many different answers can be given to these questions. Here, I only want to highlight some big ideas that underpin all these answers.
 
@@ -233,10 +233,8 @@ This is a profound result that has ramifications in mathematics, philosophy and,
     
     The terms statistical, stochastic and probabilistic overlap significantly but have slightly different uses:
 
-    **Statistical**. Focuses on **analyzing and learning from data**. Emphasizes patterns, distributions, and inference from samples. 
-
-    **Stochastic**. Emphasizes **randomness in the process itself**. The system's behavior involves random variables or random transitions. "Stochastic gradient descent" uses random samples to update weights. Use when: the algorithm or process has inherent randomness
-    
-    **Probabilistic**. Focuses on **reasoning about uncertainty**. Models beliefs, likelihood, and uncertainty explicitly using probability theory. Use when: uncertainty quantification is central to the approach
+    - **Statistical**. Focuses on **analyzing and learning from data**. Emphasizes patterns, distributions, and inference from samples. 
+    - **Stochastic**. Emphasizes **randomness in the process itself**. The system's behavior involves random variables or random transitions. "Stochastic gradient descent" uses random samples to update weights. Use when: the algorithm or process has inherent randomness
+    - **Probabilistic**. Focuses on **reasoning about uncertainty**. Models beliefs, likelihood, and uncertainty explicitly using probability theory. Use when: uncertainty quantification is central to the approach
      
     Many AI methods are all three: neural networks learn **statistical** patterns from data, use **stochastic** optimization,  and can output **probabilistic** predictions. 
