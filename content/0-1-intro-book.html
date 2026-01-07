@@ -1,0 +1,707 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>The Book &#8212; Logical Foundations of Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/0-1-intro-book';</script>
+    <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/0-1-intro-book.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Big Ideas of Logic" href="0-2-intro-logic.html" />
+    <link rel="prev" title="Logical Foundations of Computing" href="0-0-title.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="0-0-title.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Logical Foundations of Computing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-2-intro-logic.html">Big Ideas of Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-3-intro-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-4-intro-modal-logic.html">Modal Logic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-sat-solving-minisat.html">1. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-logic-programming-prolog.html">2. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-constraints-minizinc.html">3. Constraints with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-smt-solving-z3.html">4. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-temporal-logic-spin.html">5. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-epistemic-logic-smcdel.html">6. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-hoare-logic-dafny.html">7. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-higher-order-logic-isabelle.html">8. Higher-Order Logic with Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-type-theory-lean.html">9. Type Theory with Lean</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-complexity-classes.html">Complexity Classes Overview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-contribute.html">How to Contribute</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fcontent/0-1-intro-book.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/0-1-intro-book.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Book</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-table-of-contents-for-a-typical-chapter">Suggested Table of Contents for a Typical Chapter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-table-of-contents-of-the-book">Preliminary Table of Contents of the Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideas-for-2026">Ideas for 2026</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-review-and-refinement-weeks-1-6">Part 1: Review and Refinement (Weeks 1-6)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-extension-and-innovation-weeks-7-13">Part 2: Extension and Innovation (Weeks 7-13)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#track-a-new-chapter-development">Track A: New Chapter Development</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#track-b-project-based-learning">Track B: Project-Based Learning</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-integration-and-publication-week-14-15">Part 3: Integration and Publication (Week 14-15)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-book">
+<h1>The Book<a class="headerlink" href="#the-book" title="Permalink to this heading">#</a></h1>
+<p>The first draft of this book project is being developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University.</p>
+<p>Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the lectures emphasize more of the theory, this book puts the tools center stage.</p>
+<section id="suggested-table-of-contents-for-a-typical-chapter">
+<h2>Suggested Table of Contents for a Typical Chapter<a class="headerlink" href="#suggested-table-of-contents-for-a-typical-chapter" title="Permalink to this heading">#</a></h2>
+<p>Each chapter should by default be divided into the following sections (subject to discussion and revision):</p>
+<ul class="simple">
+<li><p><strong>Idea</strong>: Each tool is based on a logic. Typically there is only a small number of big ideas at the origin of each tool.</p></li>
+<li><p><strong>Basic Theory</strong>: Just enough theory to understand better how each logic provides the technology used to implement the big idea at the origin of the software tool.</p></li>
+<li><p><strong>Tool</strong>: One advantage of learning logic via tools is that one can get hands-on experience before even digging into the mathematics. This section will be a guide to first steps with the tool (Installation, First Example, First Exercise)</p></li>
+<li><p><strong>Introductory Examples</strong>: The purpose of this section is to illustrate the big idea as well as the basic theory. Given this constraint, the examples should be as easy as possible.</p></li>
+<li><p><strong>The Landscape of Tools</strong>: A big idea together with the basic theory typically gives rise to a range of tools (such as satsolvers, model checkers, interactive theorem provers, etc). While each chapter will emphasize just one of these tools, here is the space to lay out the landscape of tools.</p></li>
+<li><p><strong>Algorithms</strong>: The basic theory needs to be implemented efficiently. This section concentrates on the algorithms that run the tool.</p></li>
+<li><p><strong>Typical Use Cases</strong>: Each software tool has its own use cases. This section describes typical use cases, including algorithms that can be implemented more efficiently or more easily with the support of the tool in question.</p></li>
+<li><p><strong>Benchmarks and Competitions</strong>: Not in all but in many cases, progress in formal methods is driven by benchmarks and competitions. Find out more what is happening on this side.</p></li>
+<li><p><strong>Applications in Industry</strong>. The applications in industry section should contain clickable references to websites and research articles (as can be found on google scholar). The references should also appear in the references section of each chapter. Look for applications that have been influential and changed the direction of the field. Also look for more recent applications that point to interesting directions. In particular, find out how generative AI is changing research in formal methods. Everybody is now very much interested in how to combine (connectionist, neural network based, generative) AI with (symbolic, logic-based) AI (aka formal methods).</p></li>
+<li><p><strong>Case Study</strong>. The case study should be code you develop that showcases an exemplary use of the tool. The ideal case study strikes a meaningful balance between being educational/explanatory but also interesting in its own right. Ideally, a reader would look at the case study and exclaim sth like: “Oh, Nice” or “That is interesting” or “Now I understand what I can do with the tool” or “great, maybe I could do sth similar for this other use case of mine”.</p></li>
+<li><p><strong>History</strong>. Describe the main stepping stones in the evolution of ideas, algorithms and industrial application. See this section on <a class="reference external" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/2-satsolving.html#early-work">Early Work</a> for a partial example on the development of the early work on SAT-solvers.</p></li>
+<li><p><strong>Formal Methods and AI</strong>: Under various labels such as neurosymbolic computing, all areas of formal methods are now integrating the recent advances in generative AI into their tools. Moreover, completely new tools are being built. One idea that is finding its way into many tools is to build tools based on guess (gen AI) and verify (symbolic AI).</p></li>
+<li><p><strong>Current Developments</strong>: From your point of view and your literature review of the area, what do  you think are the current research challenges and at which conferences, workshops, venues should one look to stay on top of the most recent developments?</p></li>
+<li><p><strong>References</strong>: We agreed on the format described in <a class="reference internal" href="how-to-cite.html"><span class="doc std std-doc">how to cite</span></a>.</p></li>
+<li><p><strong>Future Work</strong>: I have some general ideas below in the section “Project Ideas for 2026”. More specifically, from your own point of view, what work would you like to see from somebody who would want to extend your chapter in the future?</p></li>
+<li><p><strong>Contributors</strong>: Initial author (the student responsible for the chapter), peer reviewers, and other contributors with their contributions.</p></li>
+</ul>
+</section>
+<section id="preliminary-table-of-contents-of-the-book">
+<h2>Preliminary Table of Contents of the Book<a class="headerlink" href="#preliminary-table-of-contents-of-the-book" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="0-2-intro-logic.html"><span class="doc std std-doc">A Short Intro to Logic</span></a> introduces the fundamental concepts of logic that form the foundation for all subsequent chapters: validity, formal languages, decidability, satisfiability, and the duality between syntax and semantics.</p></li>
+<li><p><a class="reference internal" href="0-3-intro-propositional-logic.html"><span class="doc std std-doc">Propositional Logic</span></a> introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.</p></li>
+<li><p><a class="reference internal" href="0-4-intro-modal-logic.html"><span class="doc std std-doc">Modal Logic</span></a> introduces modal logic and the SCAN algorithm for computing first-order correspondents, exploring the mathematical foundations of modalities.</p></li>
+</ul>
+<p><strong>Logics and Tools</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="01-sat-solving-minisat.html"><span class="doc std std-doc">SAT solving with MiniSat</span></a> explores SAT solving using MiniSat, focusing on semantic tableaux algorithms and their applications to satisfiability and validity checking.</p></li>
+<li><p><a class="reference internal" href="02-logic-programming-prolog.html"><span class="doc std std-doc">Logic Programming with Prolog</span></a> introduces logic programming with SWI-Prolog, covering unification, resolution, and applications in search with backtracking and database querying.</p></li>
+<li><p><a class="reference internal" href="03-constraints-minizinc.html"><span class="doc std std-doc">Constraints with MiniZinc</span></a> presents constraint solving using MiniZinc, demonstrating how constraint satisfaction problems can be solved and applied to program synthesis and automated bug fixing.</p></li>
+<li><p><a class="reference internal" href="04-smt-solving-z3.html"><span class="doc std std-doc">SMT Solving and Z3</span></a> covers SMT (Satisfiability Modulo Theories) solving with Z3, extending beyond propositional logic to handle theories like arithmetic, arrays, and bit-vectors for program verification and model checking.</p></li>
+<li><p><a class="reference internal" href="05-temporal-logic-spin.html"><span class="doc std std-doc">Temporal Logic with Spin</span></a> examines temporal logic using the Spin model checker, focusing on LTL (Linear Temporal Logic) model checking and its applications in distributed systems and protocol verification, including the famous Needham-Schroeder Key Exchange protocol.</p></li>
+<li><p><a class="reference internal" href="06-epistemic-logic-smcdel.html"><span class="doc std std-doc">Epistemic Logic with SMCDEL</span></a> explores epistemic logic with SMCDEL, investigating how knowledge and belief can be formally modeled and applied to social network analysis.</p></li>
+<li><p><a class="reference internal" href="07-hoare-logic-dafny.html"><span class="doc std std-doc">Hoare Logic with Dafny</span></a> presents Hoare logic using Dafny, demonstrating how to formally specify and verify program correctness with preconditions, postconditions, and invariants.</p></li>
+<li><p><a class="reference internal" href="08-higher-order-logic-isabelle.html"><span class="doc std std-doc">Higher-Order Logic with Isabelle</span></a> extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.</p></li>
+<li><p><a class="reference internal" href="09-type-theory-lean.html"><span class="doc std std-doc">Type Theory with Lean</span></a> presents dependent type theory with Lean, demonstrating how types can depend on values and enabling “proofs as programs” through the Curry-Howard correspondence.</p></li>
+</ul>
+</section>
+<section id="ideas-for-2026">
+<h2>Ideas for 2026<a class="headerlink" href="#ideas-for-2026" title="Permalink to this heading">#</a></h2>
+<p>Turn this book from one on “Logical Foundations of Software Engineering” into a book on <strong>“Formal Methods and AI”</strong>, emphasizing the integration of symbolic and neural approaches.</p>
+<p>Before starting on this: Upgrade from Jupyter book version 1 to version 2. Organize the references of each chapter using bibtex.</p>
+<section id="part-1-review-and-refinement-weeks-1-6">
+<h3>Part 1: Review and Refinement (Weeks 1-6)<a class="headerlink" href="#part-1-review-and-refinement-weeks-1-6" title="Permalink to this heading">#</a></h3>
+<p><strong>Goal</strong>: Engage new students with existing material while collaboratively improving it.</p>
+<ul class="simple">
+<li><p><strong>Weeks 1-5: Chapter Review Cycle</strong></p>
+<ul>
+<li><p>Each lecture (2 lectures per week) focuses on one existing chapter</p></li>
+<li><p><strong>Lecture</strong>: Review the chapter’s content, tools, and theory</p></li>
+<li><p><strong>Homework</strong>: Students make improvement proposals</p>
+<ul>
+<li><p>One Discord channel per chapter for discussion</p></li>
+<li><p>Each student must make <strong>one pull request per week</strong> containing an improvement proposal</p></li>
+<li><p>Proposals can include: fixing typos/errors, adding examples, improving explanations, updating references, adding missing sections, enhancing software engineering perspective.</p></li>
+<li><p>I am particularly interested in interactive features that encourage the reader to actively play with the concepts. In some cases, such as SMCDEL or Lean, such interactive playgrounds are already available online. In other cases we may have to develop something ourselves.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Week 6: Synthesis and Prioritization</strong></p>
+<ul>
+<li><p>Rank chapters by quality/completeness</p></li>
+<li><p>Identify highest-impact improvements</p></li>
+<li><p>Allocate time for implementing top improvements</p></li>
+<li><p>Students vote on which chapters need the most work</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="part-2-extension-and-innovation-weeks-7-13">
+<h3>Part 2: Extension and Innovation (Weeks 7-13)<a class="headerlink" href="#part-2-extension-and-innovation-weeks-7-13" title="Permalink to this heading">#</a></h3>
+<p>Each student chooses one of two tracks:</p>
+<section id="track-a-new-chapter-development">
+<h4>Track A: New Chapter Development<a class="headerlink" href="#track-a-new-chapter-development" title="Permalink to this heading">#</a></h4>
+<p>Create a new chapter following the <span class="xref myst">suggested table of contents</span>, presenting:</p>
+<ul class="simple">
+<li><p>A logic, formal method, and software tool</p></li>
+<li><p>Integration with AI/formal methods theme where possible</p></li>
+</ul>
+<p><strong>Potential Topics:</strong></p>
+<ul class="simple">
+<li><p><strong>First-order theorem proving</strong>: Vampire, Prover9, E, or other automated first-order provers</p></li>
+<li><p><strong>Knowledge Representation and Description Logics</strong>: Semantic Web, OWL, Description Logic reasoners, <a class="reference external" href="https://ontouml.org/">OntoUML</a></p></li>
+<li><p><strong>Separation Logic</strong>: For reasoning about heap-manipulating programs (e.g., with VeriFast, Infer)</p></li>
+<li><p><strong>Alloy</strong>: Model finding and lightweight formal methods</p></li>
+<li><p><strong>TLA+</strong>: Temporal Logic of Actions for system specification</p></li>
+<li><p><strong>ACL2</strong>: Automated theorem proving for hardware/software verification</p></li>
+<li><p><strong>Why3</strong>: Platform for deductive program verification</p></li>
+<li><p><strong>CBMC</strong>: Bounded model checking for C/C++</p></li>
+<li><p><strong>Formal Methods in AI Safety</strong>: Verification of neural networks, adversarial robustness</p></li>
+<li><p><strong>Probabilistic Programming</strong>: Logic-based probabilistic reasoning (e.g., ProbLog, Church)</p></li>
+</ul>
+</section>
+<section id="track-b-project-based-learning">
+<h4>Track B: Project-Based Learning<a class="headerlink" href="#track-b-project-based-learning" title="Permalink to this heading">#</a></h4>
+<p>Apply formal methods to a concrete engineering problem or build educational tools.</p>
+<p><strong>Project Categories:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Application Projects</strong></p>
+<ul class="simple">
+<li><p>Apply a logic-based formal method to a real engineering problem</p></li>
+<li><p>Examples: verify a protocol, model-check a distributed system, solve a scheduling problem, verify a security property</p></li>
+<li><p>Deliverable: Working code + documentation explaining the formal method used</p></li>
+</ul>
+</li>
+<li><p><strong>AI + Formal Methods Integration</strong></p>
+<ul class="simple">
+<li><p>Combine generative AI with symbolic/formal methods</p></li>
+<li><p>Examples: AI-assisted specification generation, LLM-powered proof tactics, neural-guided model checking, autoformalization tools</p></li>
+<li><p>Deliverable: Working prototype + analysis of AI/formal methods integration</p></li>
+</ul>
+</li>
+<li><p><strong>Educational Tool Implementation</strong></p>
+<ul class="simple">
+<li><p>Build a simple, educational implementation of a classic algorithm or tool</p></li>
+<li><p>Focus: Simplicity and educational value over performance</p></li>
+<li><p>Examples:</p>
+<ul>
+<li><p>Simple Prolog interpreter (unification, resolution, backtracking)</p></li>
+<li><p>Basic SAT solver (DPLL algorithm)</p></li>
+<li><p>Mini model checker for propositional temporal logic</p></li>
+<li><p>Simple type checker for a small language</p></li>
+</ul>
+</li>
+<li><p>Deliverable: Working code + tutorial explaining how it works</p></li>
+</ul>
+</li>
+<li><p><strong>Chapter Enhancement Projects</strong></p>
+<ul class="simple">
+<li><p>Substantial improvements to an existing chapter</p></li>
+<li><p>Examples:</p>
+<ul>
+<li><p>Add a comprehensive case study</p></li>
+<li><p>Implement all examples from a chapter as runnable code</p></li>
+<li><p>Create interactive visualizations or demos</p></li>
+<li><p>Expand “Applications in Industry” with detailed analysis</p></li>
+<li><p>Add missing sections (Algorithms, Typical Use Cases, etc.)</p></li>
+</ul>
+</li>
+<li><p>Deliverable: Enhanced chapter content + supporting materials</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="part-3-integration-and-publication-week-14-15">
+<h3>Part 3: Integration and Publication (Week 14-15)<a class="headerlink" href="#part-3-integration-and-publication-week-14-15" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Final review of all contributions</p></li>
+<li><p>Integration of new chapters into book structure</p></li>
+<li><p>Quality assurance pass</p></li>
+<li><p>Publication preparation</p></li>
+<li><p>Reflection on collaborative process</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="0-0-title.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Logical Foundations of Computing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="0-2-intro-logic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Big Ideas of Logic</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggested-table-of-contents-for-a-typical-chapter">Suggested Table of Contents for a Typical Chapter</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminary-table-of-contents-of-the-book">Preliminary Table of Contents of the Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ideas-for-2026">Ideas for 2026</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-review-and-refinement-weeks-1-6">Part 1: Review and Refinement (Weeks 1-6)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-extension-and-innovation-weeks-7-13">Part 2: Extension and Innovation (Weeks 7-13)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#track-a-new-chapter-development">Track A: New Chapter Development</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#track-b-project-based-learning">Track B: Project-Based Learning</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-integration-and-publication-week-14-15">Part 3: Integration and Publication (Week 14-15)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By CPSC 510
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

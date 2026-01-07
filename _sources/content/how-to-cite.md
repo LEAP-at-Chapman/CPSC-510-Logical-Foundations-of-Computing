@@ -5,7 +5,8 @@ This guide provides a simple format for citing sources in your chapter.
 ## TL;DR
 
 **In text**: Use (Author(s), Year) or just (Author) if the year is obvious from context.  
-**In References section**: Use the format `Author(s) (Year) [Title](link), Venue`
+**In References section**: Use the format `Author(s) (Year) [Title](link), Venue`  
+**IMPORTANT**: All references MUST include a venue (journal, conference, publisher, etc.). Page numbers are NOT required.
 
 ## Reference List Format
 
@@ -27,12 +28,15 @@ Author(s) (Year) [Title](linkToGoogleScholarQuery), Venue
 3. **Title**: Full title as a clickable link (preferably to the paper, or to Google Scholar)
 
 4. **Venue**: Journal name, conference proceedings, or publisher
+   - **REQUIRED**: Every reference must include a venue
+   - **NOT required**: Page numbers, volume/issue numbers (unless essential for identification)
+   - Examples: "Journal of the ACM", "Proceedings of the 38th Design Automation Conference", "Springer", "IEEE Transactions on Computers"
 
 ### Examples
 
-Davis and Putnam (1960) [A Computing Procedure for Quantification Theory](https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory), Journal of the ACM, 7(3): 201–215
+Davis and Putnam (1960) [A Computing Procedure for Quantification Theory](https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory), Journal of the ACM
 
-Moskewicz et al. (2001) [Chaff: Engineering an efficient SAT solver](https://scholar.google.com/scholar?q=Chaff+Engineering+an+efficient+SAT+solver), Proceedings of the 38th Design Automation Conference, pp. 530-535
+Moskewicz et al. (2001) [Chaff: Engineering an efficient SAT solver](https://scholar.google.com/scholar?q=Chaff+Engineering+an+efficient+SAT+solver), Proceedings of the 38th Design Automation Conference
 
 Nipkow and Klein (2023) [Concrete Semantics with Isabelle/HOL](http://concrete-semantics.org/concrete-semantics.pdf), Springer
 
