@@ -146,9 +146,9 @@ i) Prove that array access is always within bounds in a loop:
   (check-sat)
   ```
 
-  Explanation: Z3 can prove safety properties like “no out-of-bounds access occurs”. This connects to static analysis and model checking.
+  Explanation: Z3 can prove safety properties like "no out-of-bounds access occurs". This connects to static analysis and model checking.
 
-  ## Applications in the Industry
+## Applications in the Industry
 
   **Cloud security & compliance (billions of SMT checks at Amazon Web Services)**
   
@@ -179,8 +179,7 @@ i) Prove that array access is always within bounds in a loop:
   The Reluplex line of work and the Marabou framework brought SMT into DNN certification (ACAS Xu case study, bound-tightening, piecewise-linear reasoning). This has shaped standards 
   conversations for autonomy and perception stacks.
 
-
-  ## Generative AI and Formal Methods: What's Changing
+## Generative AI and Formal Methods: What's Changing
 
   **1. LLMs assisting proof and spec**
     LeanDojo/ReProver shows that retrieval-augmented LLMs can select premises and generate Lean proofs; the suite provides datasets, tooling, and reproducible baselines, catalyzing rapid 
@@ -440,7 +439,7 @@ You can run Z3 entirely client-side via WebAssembly and the official TypeScript/
 2. Community “z3.wasm” builds – Prior to z3-solver, community builds compiled Z3 to one .wasm with a small JS shim. They’re handy for experiments or minimal demos (Claudel, 2018–2024; Zucker, 2021).
 
 #### Minimal “static page” example (cryptarithm)
-The Online Z3 Guide provides browser examples (including Sudoku) you can adapt: load Z3, build expressions (Int.const, Distinct, arithmetic/bit-vector ops), add constraints, then check() and read a model (Z3Prover Team, 2025).This example solves the classic SEND + MORE = MONEY puzzle in a single HTML file. You can drop it into a static host. If your host supports custom headers, enable COOP/COEP  for best performance.
+The Online Z3 Guide provides browser examples (including Sudoku) you can adapt: load Z3, build expressions (Int.const, Distinct, arithmetic/bit-vector ops), add constraints, then check() and read a model (Z3Prover Team, 2025). This example solves the classic SEND + MORE = MONEY puzzle in a single HTML file. You can drop it into a static host. If your host supports custom headers, enable COOP/COEP  for best performance.
 
     <!DOCTYPE html>
     <html>
@@ -518,7 +517,7 @@ The Online Z3 Guide provides browser examples (including Sudoku) you can adapt: 
 
 Here the z3-solver package ships a WebAssembly build of Z3 and TypeScript/JS bindings; browsers fetch the .wasm and run the solver locally. The JS API mirrors the standard Z3 concepts (contexts, solvers, sorts, expressions), and the Z3 Guide includes more examples (arrays, bit-vectors, Sudoku).The official Z3 JavaScript page also includes a Sudoku demo you can study and adapt to your other puzzles; it’s a concise template for finite-domain modeling in the browser.
 
-###### How to use this
+**How to use this**:
 1. create a file named z3-puzzle.html and paste the above code
 2. open it from a local server (or any static host)
 3. click Run solver
@@ -548,37 +547,41 @@ With Z3 and SMT, you can write the property you actually care about, separate re
   - [Lecture Notes on SMT Encodings](https://www.cs.cmu.edu/~15414/s21/lectures/18-smt-encodings.pdf)
   - [Lecture Notes on DPLL(T) & SMT Encodings](https://www.cs.cmu.edu/~15414/s24/lectures/19-smt-encodings.pdf)
   - [Lecture Notes on SMT Solving: Nelson-Oppen](https://www.cs.cmu.edu/~15414/s24/lectures/18-smt-solving.pdf)
-- Howe, J. M., & King, A. (2012). [A pearl on SAT and SMT solving in Prolog](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=A+Pearl+on+SAT+and+SMT+Solving+in+Prolog&btnG=). Theoretical Computer Science, 435, 43-55. [pdf](https://www.staff.city.ac.uk/~jacob/solver/tcs.pdf) - - - I only read the intro and do not claim that I understand that paper. It is of interest to because it combines ideas from SAT, Prolog and SMT.
-- Backes, Bolignano, Cook, et al. (2018) [Semantic-based Automated Reasoning for AWS Access Policies using SMT](https://ieeexplore.ieee.org/abstract/document/8602994)
-, FMCAD.
-- Rungta, N. [A Billion SMT Queries a Day](https://link.springer.com/chapter/10.1007/978-3-031-13185-1_1) Amazon Science (invited), 2022.
-- Godefroid, P., Levin, M., Molnar, D. [SAGE: Whitebox Fuzzing for Security Testing](https://queue.acm.org/detail.cfm?id=2094081&ref=fullrss) CACM 2012.
-- Bounimova, E., Godefroid, P., Molnar, D. [Billions and Billions of Constraints: Whitebox Fuzz Testing at Microsoft](https://ieeexplore.ieee.org/abstract/document/6606558) ICSE 2011/Tech Report.
-- Wang, Y., Xie, F. [Enhancing Translation Validation of Compiler Transformations with Large Language Models](https://www.worldscientific.com/doi/abs/10.1142/S0218194024500475) arXiv:2401.16797 (2024).
-- Cadar, C., Dunbar, D., Engler, D. [KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs](https://www.usenix.org/legacy/event/osdi08/tech/full_papers/cadar/cadar.pdf) OSDI 2008.
-- Beckett, R., et al. [A General Approach to Network Configuration Verification (Minesweeper)](https://dl.acm.org/doi/abs/10.1145/3098822.3098834) SIGCOMM 2017.
-- Brown, M., et al. [Lessons from the Evolution of the Batfish Configuration Analysis Tool](https://dl.acm.org/doi/abs/10.1145/3603269.3604866) SIGCOMM 2023 (Experience).
-- Prabhu, S., et al. [Plankton: Scalable Network Configuration Verification](https://www.usenix.org/conference/nsdi20/presentation/prabhu) NSDI 2020.
-- Katz, G., Barrett, C., Dill, D., Julian, K., Kochenderfer, M. [Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks](https://link.springer.com/chapter/10.1007/978-3-319-63387-9_5) CAV 2017 / arXiv:1702.01135.
-- Katz, G., et al. [The Marabou Framework for Verification and Analysis of Deep Neural Networks](https://link.springer.com/chapter/10.1007/978-3-031-65630-9_13) CAV 2019 / LNCS; Marabou 2.0 (2024).
-- Yang, K., et al. [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models (ReProver)](https://proceedings.neurips.cc/paper_files/paper/2023/hash/4441469427094f8873d0fecb0c4e1cee-Abstract-Datasets_and_Benchmarks.html) NeurIPS 2023 (paper & dataset).
-- Beg, A., et al. [A Short Survey on Formalising Software Requirements with LLMs](https://arxiv.org/abs/2506.11874) arXiv:2506.11874 (2025).
-- Wu, G., et al. [LLM Meets Bounded Model Checking: Neuro-symbolic Loop Invariant Inference](https://ieeexplore.ieee.org/abstract/document/10628461) ASE 2024.
-- Wei, A., et al. [InvBench: Can LLMs Accelerate Program Verification with Invariant Synthesis?](https://arxiv.org/abs/2509.21629) arXiv:2509.21629 (2025).
-- Barrett and Tinelli [Satisfiability Modulo Theories, Handbook of Model Checking](https://link.springer.com/chapter/10.1007/978-3-319-10575-8_11) (2018). 
-- Barrett, Stump and Tinelli The SMT-LIB Standard: Version 2.0, SMT-LIB (2010).
-- Davis and Putnam [A Computing Procedure for Quantification Theory](https://dl.acm.org/doi/abs/10.1145/321033.321034), Journal of the ACM (1960).
-- Davis, Logemann and Loveland (1962) [A Machine Program for Theorem-Proving](https://dl.acm.org/doi/abs/10.1145/368273.368557),  Communications of the ACM(1962).
-- de Moura and Bjørner [Z3: An Efficient SMT Solver](https://link.springer.com/chapter/10.1007/978-3-540-78800-3_24), TACAS(2008).
-- Ge and de Moura [Complete Instantiation for Quantified Formulas in SMT](https://link.springer.com/chapter/10.1007/978-3-642-02658-4_25), CAV (2009).
-- Hooker [Integrated Methods for Optimization](https://link.springer.com/chapter/10.1007/978-0-387-38274-6_4), Springer (2006).
-- Nelson and Oppen [Simplification by Cooperating Decision Procedures](https://dl.acm.org/doi/abs/10.1145/357073.357079), ACM TOPLAS (1979).
-- Nieuwenhuis, Oliveras and Tinelli [Solving SAT and SAT Modulo Theories: From an Abstract DPLL Procedure to DPLL(T)](https://dl.acm.org/doi/abs/10.1145/1217856.1217859), Journal of the ACM (2006).
-- Sebastiani and Tomasi [Optimization Modulo Theories with Linear Rational/Integer Arithmetic](https://dl.acm.org/doi/abs/10.1145/2699915), ACM Transactions on Computational Logic (2015).
-- Shostak (1984) [Deciding Combinations of Theories](https://dl.acm.org/doi/pdf/10.1145/2422.322411), Journal of the ACM (1984).
-- Z3Prover Team (2025) [Z3 JavaScript Examples](https://microsoft.github.io/z3guide/programming/Z3%20JavaScript%20Examples), Online Z3 Guide (2025).
-- Z3Prover [Z3 repository: WebAssembly / TypeScript notes](https://github.com/Z3Prover/z3), GitHub (see “WebAssembly / TypeScript / JavaScript”) (2025).
-- z3-solver [TypeScript/JavaScript bindings](https://www.npmjs.com/package/z3-solver)_ (WebAssembly), npm package page (2025).
-- Easton [z3-solver & WebAssembly notes](https://fletcheaston.com/software/packages/z3-solver), Blog (2024).
-- Claudel (maintainer) [z3.wasm: WASM builds of Z3](https://github.com/cpitclaudel/z3.wasm), GitHub (alternative build route) (2019–2024).
-- Zucker [Replicating Rise4Fun Z3 with z3-wasm](https://www.philipzucker.com/replacing-rise4fun/), Blog & demo (2021).
+- Howe and King (2012) [A pearl on SAT and SMT solving in Prolog](https://scholar.google.com/scholar?q=A+Pearl+on+SAT+and+SMT+Solving+in+Prolog), Theoretical Computer Science. [pdf](https://www.staff.city.ac.uk/~jacob/solver/tcs.pdf) - - - I only read the intro and do not claim that I understand that paper. It is of interest because it combines ideas from SAT, Prolog and SMT.
+- Backes et al. (2018) [Semantic-based Automated Reasoning for AWS Access Policies using SMT](https://scholar.google.com/scholar?q=Semantic-based+Automated+Reasoning+for+AWS+Access+Policies+using+SMT), FMCAD.
+- Rungta (2022) [A Billion SMT Queries a Day](https://scholar.google.com/scholar?q=A+Billion+SMT+Queries+a+Day), Amazon Science (invited).
+- Godefroid, Levin and Molnar (2012) [SAGE: Whitebox Fuzzing for Security Testing](https://scholar.google.com/scholar?q=SAGE+Whitebox+Fuzzing+for+Security+Testing), CACM.
+- Bounimova, Godefroid and Molnar (2011) [Billions and Billions of Constraints: Whitebox Fuzz Testing at Microsoft](https://scholar.google.com/scholar?q=Billions+and+Billions+of+Constraints+Whitebox+Fuzz+Testing+at+Microsoft), ICSE.
+- Wang and Xie (2024) [Enhancing Translation Validation of Compiler Transformations with Large Language Models](https://scholar.google.com/scholar?q=Enhancing+Translation+Validation+of+Compiler+Transformations+with+Large+Language+Models), arXiv:2401.16797.
+- Cadar, Dunbar and Engler (2008) [KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs](https://scholar.google.com/scholar?q=KLEE+Unassisted+and+Automatic+Generation+of+High-Coverage+Tests+for+Complex+Systems+Programs), OSDI.
+- Beckett et al. (2017) [A General Approach to Network Configuration Verification (Minesweeper)](https://scholar.google.com/scholar?q=A+General+Approach+to+Network+Configuration+Verification+Minesweeper), SIGCOMM.
+- Brown et al. (2023) [Lessons from the Evolution of the Batfish Configuration Analysis Tool](https://scholar.google.com/scholar?q=Lessons+from+the+Evolution+of+the+Batfish+Configuration+Analysis+Tool), SIGCOMM.
+- Prabhu et al. (2020) [Plankton: Scalable Network Configuration Verification](https://scholar.google.com/scholar?q=Plankton+Scalable+Network+Configuration+Verification), NSDI.
+- Katz et al. (2017) [Reluplex: An Efficient SMT Solver for Verifying Deep Neural Networks](https://scholar.google.com/scholar?q=Reluplex+An+Efficient+SMT+Solver+for+Verifying+Deep+Neural+Networks), CAV.
+- Katz et al. (2019) [The Marabou Framework for Verification and Analysis of Deep Neural Networks](https://scholar.google.com/scholar?q=The+Marabou+Framework+for+Verification+and+Analysis+of+Deep+Neural+Networks), CAV.
+- Yang et al. (2023) [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models (ReProver)](https://scholar.google.com/scholar?q=LeanDojo+Theorem+Proving+with+Retrieval-Augmented+Language+Models+ReProver), NeurIPS.
+- Beg et al. (2025) [A Short Survey on Formalising Software Requirements with LLMs](https://scholar.google.com/scholar?q=A+Short+Survey+on+Formalising+Software+Requirements+with+LLMs), arXiv:2506.11874.
+- Wu et al. (2024) [LLM Meets Bounded Model Checking: Neuro-symbolic Loop Invariant Inference](https://scholar.google.com/scholar?q=LLM+Meets+Bounded+Model+Checking+Neuro-symbolic+Loop+Invariant+Inference), ASE.
+- Wei et al. (2025) [InvBench: Can LLMs Accelerate Program Verification with Invariant Synthesis?](https://scholar.google.com/scholar?q=InvBench+Can+LLMs+Accelerate+Program+Verification+with+Invariant+Synthesis), arXiv:2509.21629.
+- Barrett and Tinelli (2018) [Satisfiability Modulo Theories, Handbook of Model Checking](https://scholar.google.com/scholar?q=Satisfiability+Modulo+Theories+Handbook+of+Model+Checking), Springer. 
+- Barrett, Stump and Tinelli (2010) [The SMT-LIB Standard: Version 2.0](https://scholar.google.com/scholar?q=The+SMT-LIB+Standard+Version+2.0), SMT-LIB.
+- Davis and Putnam (1960) [A Computing Procedure for Quantification Theory](https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory), Journal of the ACM.
+- Davis, Logemann and Loveland (1962) [A Machine Program for Theorem-Proving](https://scholar.google.com/scholar?q=A+Machine+Program+for+Theorem-Proving), Communications of the ACM.
+- de Moura and Bjørner (2008) [Z3: An Efficient SMT Solver](https://scholar.google.com/scholar?q=Z3+An+Efficient+SMT+Solver), TACAS.
+- Ge and de Moura (2009) [Complete Instantiation for Quantified Formulas in SMT](https://scholar.google.com/scholar?q=Complete+Instantiation+for+Quantified+Formulas+in+SMT), CAV.
+- Hooker (2006) [Integrated Methods for Optimization](https://scholar.google.com/scholar?q=Integrated+Methods+for+Optimization), Springer.
+- Nelson and Oppen (1979) [Simplification by Cooperating Decision Procedures](https://scholar.google.com/scholar?q=Simplification+by+Cooperating+Decision+Procedures), ACM TOPLAS.
+- Nieuwenhuis, Oliveras and Tinelli (2006) [Solving SAT and SAT Modulo Theories: From an Abstract DPLL Procedure to DPLL(T)](https://scholar.google.com/scholar?q=Solving+SAT+and+SAT+Modulo+Theories+From+an+Abstract+DPLL+Procedure+to+DPLLT), Journal of the ACM.
+- Sebastiani and Tomasi (2015) [Optimization Modulo Theories with Linear Rational/Integer Arithmetic](https://scholar.google.com/scholar?q=Optimization+Modulo+Theories+with+Linear+Rational+Integer+Arithmetic), ACM Transactions on Computational Logic.
+- Shostak (1984) [Deciding Combinations of Theories](https://scholar.google.com/scholar?q=Deciding+Combinations+of+Theories), Journal of the ACM.
+- Marques-Silva, Planes and Kutz (2008) [On Satisfying Boolean Formulas with Hard and Soft Constraints](https://scholar.google.com/scholar?q=On+Satisfying+Boolean+Formulas+with+Hard+and+Soft+Constraints), Max-SAT Evaluation.
+- Matiyasevich (1970) [Enumerable sets are diophantine](https://scholar.google.com/scholar?q=Enumerable+sets+are+diophantine), Doklady Akademii Nauk SSSR.
+- Tarski (1951) [A Decision Method for Elementary Algebra and Geometry](https://scholar.google.com/scholar?q=A+Decision+Method+for+Elementary+Algebra+and+Geometry), University of California Press.
+- Pirzada et al. (2024) [Neuro-symbolic Loop Invariant Synthesis](https://scholar.google.com/scholar?q=Neuro-symbolic+Loop+Invariant+Synthesis), ASE.
+- Lopes et al. (2021) [Alive2: Bounded Translation Validation for LLVM](https://scholar.google.com/scholar?q=Alive2+Bounded+Translation+Validation+for+LLVM), PLDI.
+- Z3Prover Team (2025) [Z3 JavaScript Examples](https://microsoft.github.io/z3guide/programming/Z3%20JavaScript%20Examples), Online Z3 Guide.
+- Z3Prover (2025) [Z3 repository: WebAssembly / TypeScript notes](https://github.com/Z3Prover/z3), GitHub.
+- z3-solver (2025) [TypeScript/JavaScript bindings](https://www.npmjs.com/package/z3-solver) (WebAssembly), npm package page.
+- Easton (2024) [z3-solver & WebAssembly notes](https://fletcheaston.com/software/packages/z3-solver), Blog.
+- Claudel (2019–2024) [z3.wasm: WASM builds of Z3](https://github.com/cpitclaudel/z3.wasm), GitHub.
+- Zucker (2021) [Replicating Rise4Fun Z3 with z3-wasm](https://www.philipzucker.com/replacing-rise4fun/), Blog.
