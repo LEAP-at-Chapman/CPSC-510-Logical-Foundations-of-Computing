@@ -79,7 +79,7 @@ Try this interactive example in [SWISH](https://swish.swi-prolog.org/p/BBRAySVk.
 
 **Try these queries:**
 - `parent(X,richard).` - Who are the parents of Richard?
-- `parent(susan,Y)..` - Who are the children of Susan?
+- `parent(susan,Y).` - Who are the children of Susan?
 - `mother(X,richard).` - Who is the mother of Richard?
 - `parent(X,richard), female(X).` - Who is the mother of Richard?
 - `grandparent(X,richard).` - Who are the grandparents of Richard?
