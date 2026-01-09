@@ -7,7 +7,7 @@ The first draft of this book project is being developed by the class CPSC 510 Lo
 Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the lectures emphasize more of the theory, this book puts the tools center stage.
 
 (suggested-table-of-contents-for-a-typical-chapter)=
-## Suggested Table of Contents for a Typical Chapter
+## Suggested ToC of a Chapter
 
 Each chapter should by default be divided into the following sections (subject to discussion and revision):
 - **Idea**: Each tool is based on a logic. Typically there is only a small number of big ideas at the origin of each tool.
@@ -27,7 +27,7 @@ Each chapter should by default be divided into the following sections (subject t
 - **Future Work**: I have some general ideas below in the section "Project Ideas for 2026". More specifically, from your own point of view, what work would you like to see from somebody who would want to extend your chapter in the future?
 - **Contributors**: Initial author (the student responsible for the chapter), peer reviewers, and other contributors with their contributions.
 
-## Preliminary Table of Contents of the Book
+## Preliminary ToC 2025
 
 - [A Short Intro to Logic](0-2-intro-logic.md) introduces the fundamental concepts of logic that form the foundation for all subsequent chapters: validity, formal languages, decidability, satisfiability, and the duality between syntax and semantics.
 - [Propositional Logic](0-3-intro-propositional-logic.md) introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.
