@@ -6,6 +6,7 @@ The first draft of this book project is being developed by the class CPSC 510 Lo
 
 Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the lectures emphasize more of the theory, this book puts the tools center stage.
 
+(suggested-table-of-contents-for-a-typical-chapter)=
 ## Suggested Table of Contents for a Typical Chapter
 
 Each chapter should by default be divided into the following sections (subject to discussion and revision):
@@ -61,6 +62,7 @@ Before starting on this: Upgrade from Jupyter book version 1 to version 2. Organ
     - Each student must make **one pull request per week** containing an improvement proposal
     - Proposals can include: fixing typos/errors, adding examples, improving explanations, updating references, adding missing sections, enhancing software engineering perspective.
     - I am particularly interested in interactive features that encourage the reader to actively play with the concepts. In some cases, such as [SMCDEL](https://w4eg.de/malvin/illc/smcdelweb) or [Lean](https://adam.math.hhu.de/#/g/leanprover-community/), interactive playgrounds are already available online. For Z3 and MiniZinc one can work with Python notebooks. For Prolog, one can use [SWISH](https://swish.swi-prolog.org/). Dafny? Isabelle?. See also Wikipedia's [Comparison of online source code playgrounds](https://en.wikipedia.org/wiki/Comparison_of_online_source_code_playgrounds).
+    - Contribute to the [Appendix on Puzzles](./appendix-puzzles.md).
   
 - **Week 6: Synthesis and Prioritization**
   - Rank chapters by quality/completeness
@@ -73,7 +75,7 @@ Before starting on this: Upgrade from Jupyter book version 1 to version 2. Organ
 Each student chooses one of two tracks:
 
 #### Track A: New Chapter Development
-Create a new chapter following the [suggested table of contents](#suggested-table-of-contents-for-a-typical-chapter), presenting:
+Create a new chapter following the {ref}`suggested table of contents <suggested-table-of-contents-for-a-typical-chapter>`, presenting:
 - A logic, formal method, and software tool
 - Integration with AI/formal methods theme where possible
 

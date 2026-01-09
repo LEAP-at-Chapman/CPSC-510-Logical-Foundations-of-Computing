@@ -32,6 +32,8 @@ Say from parent we wanted to find child 2, in logic programming, it would first 
 
 ### Interactive Example: Family Tree
 
+(Source: [[1]](https://github.com/LEAP-at-Chapman/Intro-to-Logic-Programming), [[2]](https://github.com/LEAP-at-Chapman/Intro-to-Logic-Programming/blob/main/slides/LP1-introduction-to-logic-programming.pdf))
+
 A Prolog program is a database consisting of facts and rules:
 
 ```prolog
@@ -75,7 +77,7 @@ mother(X, Y) :- parent(X, Y), female(X).
 sibling(X, Y) :- parent(P, X), parent(P, Y), X \= Y.
 ```
 
-Try this interactive example in [SWISH](https://swish.swi-prolog.org/p/BBRAySVk.swinb). Replace `solution(X)` by one of the following:
+Try this interactive example in [SWISH](https://swish.swi-prolog.org/p/BBRAySVk.swinb). Replace the query following `?-` in the lower right by one of the following:
 
 **Try these queries:**
 - `parent(X,richard).` - Who are the parents of Richard?
@@ -84,11 +86,14 @@ Try this interactive example in [SWISH](https://swish.swi-prolog.org/p/BBRAySVk.
 - `parent(X,richard), female(X).` - Who is the mother of Richard?
 - `grandparent(X,richard).` - Who are the grandparents of Richard?
 - `grandparent(george,Y).` - Who are the grandchildren of George?
+- `ancestor(X,charles).` - Who are the ancestors of Charles?
+- `ancestor(harriet,Y).` - Who are the descendants of Harriet?
 
 **Experiment by:**
 - Adding new family members: `parent(george, alice).` and `female(alice).`
 - Adding new relationships: Can you define `cousin/2`? What about `uncle/2` or `aunt/2`?
 - Creating new queries: Who are all the descendants of harriet? Who has the most children?
+- Use `Debug (trace)` in the dropdown menu `Solutions` to trace the execution of `ancestor(harriet,Y).` How is the recursively defined predicate `ancestor` executed? 
 
 This example demonstrates Prolog's declarative nature: we describe *what* family relationships exist, and Prolog figures out *how* to answer our questions through logical inference and backtracking. Notice how all facts of the same predicate (`parent/2`, `male/1`, `female/1`) are grouped together—this is a Prolog best practice that prevents warnings.
 
@@ -101,7 +106,7 @@ The tool that I will mainly be focusing on is Prolog, a unique coding language d
 There is also a web version available at [tio](https://tio.run/##KyjKz8lP1y0uz/wPBMX5OaUlmfl5GhGaegA) that is a great alternative if you do not want to download the tool!
 
 ## First Example
-The eight queens problem is a logic problem in where a user attempts to place all 8 queens on a chess board such that none threaten another.
+The eight queens problem is a logic problem where a user attempts to place all 8 queens on a chess board such that none threaten another.
 
 **What this shows:**
 - How Prolog automatically finds solutions through backtracking
@@ -151,9 +156,9 @@ Here is a link to the code to test on the free swi-prolog server: [eight-queens]
 
 ## Intro Examples
 
-In logic programming, a Prolog database is composed of facts and rules that describe relationships between entities in a declarative way. Rather than specifying how to compute something, the programmer defines what is true about the problem domain. This allows Prolog to act as a powerful tool for database querying, where relationships can be inferred rather than explicitly stored. Queries are made by posing logical questions to the database then uses backtracking to search through known facts and rules to find all possible solutions to the query.
+In logic programming, a Prolog database is composed of facts and rules that describe relationships between entities in a declarative way. Rather than specifying how to compute something, the programmer defines what is true about the problem domain. This allows Prolog to act as a powerful tool for database querying, where relationships can be inferred rather than explicitly stored. Queries are made by posing logical questions to the database, which then uses backtracking to search through known facts and rules to find all possible solutions to the query.
 
-In a simple family database, the database models a small family tree using facts such as `parent(arthur, george)` and `parent(george, amelia)`, which record direct parent-child relationships. Rules like `grandparent/2`, `sibling/2`, and `ancestor/2` define how more complex family relationships can be logically derived. For instance, `grandparent(X, Z) :- parent(X, Y)`, `parent(Y, Z)` states that X is a grandparent of Z if X is a parent of Y and Y is a parent of Z. The sibling rule ensures that two people are considered siblings if they share a parent but are not the same person. The gender facts, combined with the `father/2` and `mother/2` rules, extends the database by categorizing parents according to gender, allowing for more natural queries like `father(X, Y)` or `mother(X, Y)`.
+In a simple family database, the database models a small family tree using facts such as `parent(arthur, george)` and `parent(george, amelia)`, which record direct parent-child relationships. Rules like `grandparent/2`, `sibling/2`, and `ancestor/2` define how more complex family relationships can be logically derived. For instance, `grandparent(X, Z) :- parent(X, Y)`, `parent(Y, Z)` states that X is a grandparent of Z if X is a parent of Y and Y is a parent of Z. The sibling rule ensures that two people are considered siblings if they share a parent but are not the same person. The gender facts, combined with the `father/2` and `mother/2` rules, extend the database by categorizing parents according to gender, allowing for more natural queries like `father(X, Y)` or `mother(X, Y)`.
 
 When a query such as
 
@@ -204,9 +209,9 @@ greater_than(A, B) :- A > B.
 
 ```
 
-In this example, Prolog uses the `is` operator to evaluate arithmetic expressions. The left-hand side (like `Y or Result`) becomes bound to the numeric result of the right-hand expression. Arithmetic comparisons such as `>, <, >=, and =<` can then be used within rules to reason about numerical relationships.
+In this example, Prolog uses the `is` operator to evaluate arithmetic expressions. The left-hand side (like `Y` or `Result`) becomes bound to the numeric result of the right-hand expression. Arithmetic comparisons such as `>, <, >=, and =<` can then be used within rules to reason about numerical relationships.
 
-You can also do this directly within the terminal of swi-prolog. for example:
+You can also do this directly within the terminal of swi-prolog. For example:
 
 ```prolog
 ?- Y is 3 +5.
@@ -235,7 +240,7 @@ A = 15.0.
 true.
 ```
 
-What's interesting is that prolog doesn’t "calculate" in the way procedural languages do, it evaluates logical truths involving numeric expressions. When you ask ?- square(4, Y)., Prolog checks if there exists a value of Y such that Y is 4 * 4 can be satisfied. Once the arithmetic succeeds, it binds Y to the result 16.
+What's interesting is that Prolog doesn't "calculate" in the way procedural languages do; it evaluates logical truths involving numeric expressions. When you ask `?- square(4, Y).`, Prolog checks if there exists a value of Y such that `Y is 4 * 4` can be satisfied. Once the arithmetic succeeds, it binds Y to the result 16.
 
 tio run: [code](https://tio.run/##XY/BisIwFEX3/Yq7EVp9dlQUBxdC6x8MLupKojzbMtpokurn1ySNgq5yueQc3r0qeZblWD/qrhtgWzH0rRWKIU8QaNrLgVXUV3FB2CVYjbFDrVFgiCKNokC1F4eYhwyQjmwVZ4Sc8Me6PRuP9tHxGUbI37y4sxIlfztCHTzZvfQS@zpD7BUJfjDznk3Fx3/UJ8iGg8F9KxULY6OpRAPRSFPZSaHcu9LbezHW9qauC4PnlCWp37GgJeU2v@6ZTmg2oY1tPkS/tEjSJw)
 
@@ -249,7 +254,7 @@ Prolog has been implemented in many different environments since its introductio
 
 **GNU Prolog** takes a different approach, functioning as a native-code compiler rather than an interpreter. It compiles Prolog code directly into machine code via an intermediate C representation. This results in highly efficient executables compared to SICStus. GNU Prolog also includes a finite domain constraint solver and provides a C interface, allowing integration with low-level systems programming. Its minimalist design and speed make it ideal for embedding Prolog logic in performance-sensitive applications.
 
-**ECLiPSe (ECRC Logic Programming System)** extends traditional Prolog into the field of constraint logic programming (CLP). It supports solving complex combinatorial problems by allowing constraints over integers, reals, sets, and other structures to be expressed directly in logic. ECLiPSe is  strongest in operations research, scheduling, and optimization problems, offering a flexible environment for hybrid programming that blends declarative and procedural paradigms.
+**ECLiPSe (ECRC Logic Programming System)** extends traditional Prolog into the field of constraint logic programming (CLP). It supports solving complex combinatorial problems by allowing constraints over integers, reals, sets, and other structures to be expressed directly in logic. ECLiPSe is strongest in operations research, scheduling, and optimization problems, offering a flexible environment for hybrid programming that blends declarative and procedural paradigms.
 
 Across these systems, the one unifying theme is Prolog’s declarative nature. Each tool preserves the language’s logical foundation while extending it for different domains and computational models. Whether one prioritizes performance, integration, or constraint solving, there exists a Prolog implementation suited to the task.
 
@@ -464,7 +469,7 @@ solve_dfs_path(CurrentState, Path, Solution) :-
 
 Here the move rules remain unchanged regardless of whether we use BFS, DFS, or any other search strategy. The search algorithms simply navigate the graph defined by those moves.
 
-Tio code is available to run here: [code](https://tio.run/##nVZtb9owEP7Or7h@qAhqQC2wfWDrpGQdkyZ16lqp@8AQSokpnpwX2ckoUtW/zs4vcUwCSFskaOw7P3fP47ujOc9Y9twXG7rbncPPqCAcvpXPcMezJ0YSeMjYH8I752ozmMAYGEUfAcsoj5a02PrKEk5g1LTgoa9ZxCZwSyJRcgLkJVoWbAtD49lBj7594KHA6HBPck4ESXFBs9Sxo7OQHh7GCxafS87RSUUPq1WvgfgYMRrDbfaHCBcIna4GMKWMaVawzJKckYKwbSdBZ0/HWfgQ9nwTdCwXPZj0oQP4rDKeRIXXrUHe0m5vIKGHDnToQAO44IEPCwuOi5ECP4wdWuzRAL4kebHVIY8me1klu4fnnLSAYxcwPJXg5SnAOsN3A7jLSg4rniWobJGhBmVaUIZ/qYBViZwyjhZcEHm@EbMm8Z1scI3fDpUAPoEkBx9h5KsdGSxIMgwhEROaKjGhL4GUg4SRpgD3amdrU1mFcNGyVSQVm7dNVdyKl64a5FZx92FWn59rJd67SoTSOzBKBK4S4f8pEWolAlRifEyJ0Md27UPQUuLihBL9f1YirJQIjijh9jiJ@HINAXvOOC3WSaMt1bSBYk1goybRb0TN9STqCGUz9NVi8bQS3qwq@cveHIPjB0FKOTsMbU5wgAniVds@jhi1EzccU@bDBrMiXreywBRpxGddvAppxY/yzDlNi4UwTl4LT7EOOYniYt1fUS4KEJo4ldMgqaZbp0VD3fvrAlk8UoGpxEjJtZjdua0DL4DryTUMP@A1qBdMFfTgxdmTxlTGmdiRCzQFgsJrbRXCGWbr5GFGqRrGr/dEFD9KUhI3IUvTzgOaxhFjWKcv@pyvh2T1eKqwXWBZzca313CGXxeQkOSJcBfPBO/VpawMwqyjPCdp7Nl0/dpDvapN41tzrQyo8R7rSmSHaquOqwK5oSJn0dat40Z1zGQXNPdUoHljoi70TVeynB05duXrn8qhup5TIFe9g/U62zuO1PZOOuXWmvjmnwA7BOyPv93RI0Cebjd/wNAjxcrHPr4hOfbGVPWGGQqOhPqO4pXY73fcWORRsfbqnrf9YQbA8Z6@mT5Y68R09CF13Ds/GNbM5jvc0d8nm/FsYPsRB8JyTeIW7H5naNxWk53uoc7RzlEJ@odEdJxm9v1V@u9V/m6nzg3@Ag)
+TIO code is available to run here: [code](https://tio.run/##nVZtb9owEP7Or7h@qAhqQC2wfWDrpGQdkyZ16lqp@8AQSokpnpwX2ckoUtW/zs4vcUwCSFskaOw7P3fP47ujOc9Y9twXG7rbncPPqCAcvpXPcMezJ0YSeMjYH8I752ozmMAYGEUfAcsoj5a02PrKEk5g1LTgoa9ZxCZwSyJRcgLkJVoWbAtD49lBj7594KHA6HBPck4ESXFBs9Sxo7OQHh7GCxafS87RSUUPq1WvgfgYMRrDbfaHCBcIna4GMKWMaVawzJKckYKwbSdBZ0/HWfgQ9nwTdCwXPZj0oQP4rDKeRIXXrUHe0m5vIKGHDnToQAO44IEPCwuOi5ECP4wdWuzRAL4kebHVIY8me1klu4fnnLSAYxcwPJXg5SnAOsN3A7jLSg4rniWobJGhBmVaUIZ/qYBViZwyjhZcEHm@EbMm8Z1scI3fDpUAPoEkBx9h5KsdGSxIMgwhEROaKjGhL4GUg4SRpgD3amdrU1mFcNGyVSQVm7dNVdyKl64a5FZx92FWn59rJd67SoTSOzBKBK4S4f8pEWolAlRifEyJ0Md27UPQUuLihBL9f1YirJQIjijh9jiJ@HINAXvOOC3WSaMt1bSBYk1goybRb0TN9STqCGUz9NVi8bQS3qwq@cveHIPjB0FKOTsMbU5wgAniVds@jhi1EzccU@bDBrMiXreywBRpxGddvAppxY/yzDlNi4UwTl4LT7EOOYniYt1fUS4KEJo4ldMgqaZbp0VD3fvrAlk8UoGpxEjJtZjdua0DL4DryTUMP@A1qBdMFfTgxdmTxlTGmdiRCzQFgsJrbRXCGWbr5GFGqRrGr/dEFD9KUhI3IUvTzgOaxhFjWKcv@pyvh2T1eKqwXWBZzca313CGXxeQkOSJcBfPBO/VpawMwqyjPCdp7Nl0/dpDvapN41tzrQyo8R7rSmSHaquOqwK5oSJn0dat40Z1zGQXNPdUoHljoi70TVeynB05duXrn8qhup5TIFe9g/U62zuO1PZOOuXWmvjmnwA7BOyPv93RI0Cebjd/wNAjxcrHPr4hOfbGVPWGGQqOhPqO4pXY73fcWORRsfbqnrf9YQbA8Z6@mT5Y68R09CF13Ds/GNbM5jvc0d8nm/FsYPsRB8JyTeIW7H5naNxWk53uoc7RzlEJ@odEdJxm9v1V@u9V/m6nzg3@Ag)
 
 
 ### Declarative State Transitions
@@ -534,14 +539,14 @@ Logic programming, with Prolog as its flagship language, experienced a surge of 
 
 - **Performance Concerns**: Prolog’s interpretive execution and unbounded search struggled with the scale and efficiency demands of growing software systems. Imperative and object-oriented languages (C++, Java) dominated industry.
 - **Shift in AI**: The “AI winter” and the rise of statistical machine learning moved focus away from symbolic approaches. Prolog remained strong in specific niches: computational linguistics, formal verification, and combinatorial search problems.
-- **Tool Specialization**: While general-purpose Prolog use declined, specialized logic-based tools still used prolog:
+- **Tool Specialization**: While general-purpose Prolog use declined, specialized logic-based tools still used Prolog:
   - **Datalog** emerged as a tractable subset for database querying and program analysis.
   - **Answer Set Programming (ASP)** gained traction for declarative problem solving.
   - **Constraint Logic Programming (CLP)** integrated finite-domain solvers for scheduling and optimization.
 
 ### The Modern Renaissance: Ideas Diffused and Recombined
 
-The core ideas of logic programming didn’t fully disappear rather they diffused into new contexts and hybrid systems:
+The core ideas of logic programming didn't fully disappear; rather, they diffused into new contexts and hybrid systems:
 
 1. **Deductive Databases and Big Data**
    - Datalog engines like **Soufflé** and **LogicBlox** scaled logic programming to billions of facts, enabling industrial-scale program analysis, security auditing, and enterprise rule systems.
@@ -556,7 +561,7 @@ The core ideas of logic programming didn’t fully disappear rather they diffuse
    - Prolog’s grammar-definition facilities (DCGs) inspired parser generators and data-validation frameworks.
 
 4. **Knowledge Graphs and Semantic Web**
-   - RDF and OWL are fundamentally logic-based reasoning engines like SWI-Prolog’s **semweb** library apply Prolog inference to linked data.
+   - RDF and OWL are fundamentally logic-based reasoning engines; SWI-Prolog's **semweb** library applies Prolog inference to linked data.
    - Graph query languages (Cypher, Gremlin) incorporate pattern-matching ideas from logic programming.
 
 ## Formal Methods and AI
@@ -621,14 +626,14 @@ This hybrid approach leverages the creativity and pattern recognition of neural 
 
 ## References
 
-- Alberi (2021). [An Introduction to Datalog](https://blogit.michelin.io/an-introduction-to-datalog/), Michelin.io Blog
-- Carlsson and Mildner (2012). [SICStus Prolog—The first 25 Years](https://scholar.google.com/scholar?q=SICStus+Prolog+the+first+25+Years+Carlsson), ResearchGate
-- Diaz et al. [GNU Prolog](http://www.gprolog.org/), GNU Prolog
-- Eclipse Foundation. [ECLiPSe Constraint Programming System](https://eclipseclp.org/), Eclipse Foundation
-- GeeksforGeeks. [8 Queen Problem](https://www.geeksforgeeks.org/dsa/8-queen-problem/), GeeksforGeeks
-- LeetCode. [Water and Jug Problem](https://leetcode.com/problems/water-and-jug-problem/description/), LeetCode
-- Metalevel. [Sorting](https://www.metalevel.at/prolog/sorting), The Power of Prolog
-- SWI-Prolog. [Logic Programming Introduction](https://swish.swi-prolog.org/p/dselman.swinb), SWISH (SWI-Prolog for Sharing)
-- SWI-Prolog. [format/2](https://www.swi-prolog.org/pldoc/man?predicate=format/2), SWI-Prolog Documentation
-- Swedish Institute of Computer Science. [SICStus Prolog](https://sicstus.sics.se/), SICStus
-- University of Washington (2012). [Prolog Basics](https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html), University of Washington
+- Alberi (2021) [An Introduction to Datalog](https://blogit.michelin.io/an-introduction-to-datalog/), Michelin.io Blog.
+- Carlsson and Mildner (2012) [SICStus Prolog—The first 25 Years](https://scholar.google.com/scholar?q=SICStus+Prolog+the+first+25+Years+Carlsson), ResearchGate.
+- Diaz et al. [GNU Prolog](http://www.gprolog.org/), GNU Prolog.
+- Eclipse Foundation [ECLiPSe Constraint Programming System](https://eclipseclp.org/), Eclipse Foundation.
+- GeeksforGeeks [8 Queen Problem](https://www.geeksforgeeks.org/dsa/8-queen-problem/), GeeksforGeeks.
+- LeetCode [Water and Jug Problem](https://leetcode.com/problems/water-and-jug-problem/description/), LeetCode.
+- Metalevel [Sorting](https://www.metalevel.at/prolog/sorting), The Power of Prolog.
+- SWI-Prolog [Logic Programming Introduction](https://swish.swi-prolog.org/p/dselman.swinb), SWISH (SWI-Prolog for Sharing).
+- SWI-Prolog [format/2](https://www.swi-prolog.org/pldoc/man?predicate=format/2), SWI-Prolog Documentation.
+- Swedish Institute of Computer Science [SICStus Prolog](https://sicstus.sics.se/), SICStus.
+- University of Washington (2012) [Prolog Basics](https://courses.cs.washington.edu/courses/cse341/12au/prolog/basics.html), University of Washington.

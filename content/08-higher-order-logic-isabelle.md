@@ -110,7 +110,7 @@ fun add :: "nat ⇒ nat ⇒ nat" where
 ~~~
 ```
 
-For a detailed explanation, [See Section 8.3.2 Exercises](./assets-08/8.3_tool/8.3_exercises.md)
+For a detailed explanation, see [Section 8.3.2 Exercises](./assets-08/8.3_tool/8.3_exercises.md)
 
 ### First Exercise - Associativity and Commutativity of Add
 
@@ -145,7 +145,7 @@ qed
 ~~~
 ```
 
-For a detailed explanation, [See Section 8.3.3 Associative Property](./assets-08/8.3_tool/8.3_exercises.md#associative-property-proof)
+For a detailed explanation, see [Section 8.3.3 Associative Property](./assets-08/8.3_tool/8.3_exercises.md)
 
 Next, to prove the commutative property, we will first prove 2 helper lemmas:
 ```isabelle
@@ -193,7 +193,7 @@ qed
 ~~~
 ```
 
-For a detailed explanation, [See Section 8.3.3 Commutative Property](./assets-08/8.3_tool/8.3_exercises.md#commutative-property-proof)
+For a detailed explanation, see [Section 8.3.3 Commutative Property](./assets-08/8.3_tool/8.3_exercises.md)
 
 *The Isabelle .thy file for this exercise is located [here](../content/assets-08/8.3_tool/exercise_2_2.md)*
 

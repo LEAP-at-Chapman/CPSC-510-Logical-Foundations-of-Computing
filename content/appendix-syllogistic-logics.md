@@ -10,9 +10,9 @@ This leaves open the question of what to prove. One typical choice would be to a
 
 Here I want to follow another idea. Throughout CPSC-510 Logical Foundations of Computing, we put a lot of emphasis on various software tools. I think it is time to return to their logical foundations. So here I want to apply Isabelle to logic itself. In particular, we will formalize the soundness and completeness proof of a particular logic. 
 
-As we have discussed earlier, soundness and completeness is often the first theorem one wants to prove about any logic. We have seen, but not formally proved, that, for example, the tableaux method is sound and complete for classical propositional logic. Simlarly, there are soundness and completeness theorems for predicate logic, temporal logic, (dynamic) epistemic logic, etc.
+As we have discussed earlier, soundness and completeness is often the first theorem one wants to prove about any logic. We have seen, but not formally proved, that, for example, the tableaux method is sound and complete for classical propositional logic. Similarly, there are soundness and completeness theorems for predicate logic, temporal logic, (dynamic) epistemic logic, etc.
 
-Since our aim is a first introduction, the following question arises. What is the simplest meaningful example of a logic for which one can explain (and formalize) soundnessn and completeness?
+Since our aim is a first introduction, the following question arises. What is the simplest meaningful example of a logic for which one can explain (and formalize) soundness and completeness?
 
 Fortunately, this question has been asked and answered convincingly by Larry Moss in his work on syllogistic logics. 
 
@@ -55,7 +55,7 @@ Then the claim of theorem follows:
 
 **Exercise/Activity**: Justify all steps.
 
-**Remark:** Every model of $\Gamma$ satsifies all consequences of $\Gamma$. But the canonical model also refutes everything that is not derivable from $\Gamma$. This is the most important idea for completeness: If $\Gamma\not\vdash\phi$ then find a model $M$ such that $M\models\Gamma$ and $M\not\models\phi$.
+**Remark:** Every model of $\Gamma$ satisfies all consequences of $\Gamma$. But the canonical model also refutes everything that is not derivable from $\Gamma$. This is the most important idea for completeness: If $\Gamma\not\vdash\phi$ then find a model $M$ such that $M\models\Gamma$ and $M\not\models\phi$.
 
 ### The Details of the Proof
 
@@ -107,7 +107,7 @@ We already showed that it suffices to prove the following.
 
 ## The Formalization 
 
-Since we will implement Chapters 2.1-2.4 of the book in Isabelle, it is a good a idea to arrange the windows on your screen so that you can simultaneously see the book `Logic From Language` and the Isabelle IDE with the theory `AllPAreQ_noProofs.thy` (there is also a theory with the proofs but that would be spoiling it). 
+Since we will implement Chapters 2.1-2.4 of the book in Isabelle, it is a good idea to arrange the windows on your screen so that you can simultaneously see the book `Logic From Language` and the Isabelle IDE with the theory `AllPAreQ_noProofs.thy` (there is also a theory with the proofs but that would be spoiling it). 
 
 Let us start with the beginning of Chapter 2.1 from `Logic From Language`
 
@@ -137,7 +137,7 @@ which is formalized in the Isabelle/HOL theory `AllPAreQ_noProofs.thy` by
       by auto
     ```
     - `fixes` introduces type constraints
-    - The unicode characters can by typeset in the IDE with `\<models>` and `\<longleftrightarrow>` 
+    - The unicode characters can be typeset in the IDE with `\<models>` and `\<longleftrightarrow>` 
 
 Let us now continue in the book `Logic From Language` with
 

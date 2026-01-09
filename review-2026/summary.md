@@ -23,7 +23,9 @@ This document tracks the overall progress of the review process.
 | 07 - Hoare Logic with Dafny | Completed | 2026-01-XX | Fixed typos (Dafyny→Dafny, precondition errors), fixed reference formatting (last names only), added venues, added citations, renamed "Suggestions for future work" to "Future Work" |
 | 08 - Higher-Order Logic with Isabelle | Not Started | - | |
 | 09 - Type Theory with Lean | Completed | 2026-01-XX | Fixed 10+ typos, simplified Google Scholar queries, standardized arXiv format, removed duplicate reference, added citations, renamed section to match TOC, comprehensive software engineering evaluation |
-| Appendix - Complexity Classes | Completed | 2026-01-04 | Added "Logics in Book" column, added note on undecidable logics |
+| Appendix - Complexity Classes | Completed | 2026-01-08 | Reformatted all 15 references (standardized format, added venues, changed "&" to "and"), fixed table references |
+| Appendix - Hoare Logic | Completed | 2026-01-08 | Fixed 10 typos/grammatical errors, reformatted 2 references (standardized format, added venues, Google Scholar links), fixed incomplete reference (added missing author) |
+| Appendix - Syllogistic Logics | Completed | 2026-01-08 | Fixed 5 typos/grammatical errors (Simlarly→Similarly, soundnessn→soundness, satsifies→satisfies, removed extra "a", can by→can be) |
 
 ## Status Legend
 
@@ -49,6 +51,9 @@ This document tracks the overall progress of the review process.
 - Completed review of Hoare Logic with Dafny chapter (07): Fixed 5 typos/grammatical errors, fixed 9 references (author names, venues, Google Scholar links), added 3 in-text citations, renamed section to match TOC, added comprehensive software engineering evaluation
 - Completed review of Type Theory with Lean chapter (09): Fixed 10+ typos/grammatical errors, simplified 50+ Google Scholar query URLs, standardized arXiv format, removed duplicate reference, added citations, renamed section to match TOC, comprehensive software engineering evaluation
 - Completed review of SMT Solving and Z3 chapter (04): Fixed structural issues (section indentation), fixed 4 typos, reformatted all 40+ references (standardized format, Google Scholar links, removed page numbers), added 5 missing cited references (Marques-Silva et al., Matiyasevich, Tarski, Pirzada et al., Lopes et al.), comprehensive software engineering evaluation
+- Completed review of Appendix - Complexity Classes: Reformatted all 15 references (standardized format, added venues, changed "&" to "and" for two-author references), fixed table references to use "and" instead of "&"
+- Completed review of Appendix - Hoare Logic: Fixed 10 typos/grammatical errors (correcteness→correctness, build→built, aribtrary→arbitrary, caclulate→calculate, throuth→through, explicitely→explicitly, controle→control, fiving→giving, eecutions→executions, removed duplicate "should"), reformatted 2 references (Hoare 1969, Reynolds 1981), fixed incomplete reference (added missing author "Jacopini" to Böhm reference)
+- Completed review of Appendix - Syllogistic Logics: Fixed 5 typos/grammatical errors (Simlarly→Similarly, soundnessn→soundness, satsifies→satisfies, removed extra "a" in "good a idea", can by→can be typeset). Appendix is marked as incomplete ("tbc") which is appropriate.
 
 ## Review Statistics
 
@@ -56,4 +61,5 @@ This document tracks the overall progress of the review process.
 - Completed: 8
 - In Progress: 1
 - Not Started: 5
+- Appendices reviewed: 3
 

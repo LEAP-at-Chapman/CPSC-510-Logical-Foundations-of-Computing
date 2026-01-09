@@ -60,9 +60,9 @@ This should print 514 steps of increasing numbers.
 
 ### First Exercise
 
- The following is a basic handshake protocol between two processes, written in Promela. Process A sends signal a1 to initiate, then process B sends signal b1 when it receives signal a1, and when A receives b1 it sends signal a1 again, restarting the process. The program also includes some basic error handling.
+The following is a basic handshake protocol between two processes, written in Promela. Process A sends signal a1 to initiate, then process B sends signal b1 when it receives signal a1, and when A receives b1 it sends signal a1 again, restarting the process. The program also includes some basic error handling.
 
- Load this program into SPIN and try answering the questions below.
+Load this program into SPIN and try answering the questions below.
 
 ```promela
 mtype = { a0, a1, b0, b1, err } // file ex_2.pml
@@ -103,6 +103,8 @@ active proctype B()
 2. How would you modify the model to make all states reachable? 
 
 ## The Farmer and the River
+(Source: [[1]](https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/), [[2]](https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/blob/main/notes/Wolf-Goat-Cabbage.md))
+
 A farmer wants to move a cabbage, a goat, and a wolf across a river in his boat. He can only fit one thing in his boat while going across. If the farmer isn't watching, the goat will eat the cabbage, and the wolf will eat the goat. Can you think of a way to model this problem and find it's solution in SPIN?
 
 Note: SPIN allows you to both define the solution in the code and in the formula you run from the command line.
@@ -178,6 +180,8 @@ Model checkers like SPIN can also be used to help find design flaws in web appli
 
 ## Needham-Schroeder Protocol
 
+(Source: [[1]](https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/), [[2]](https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/blob/main/notes/Needham-Schroeder.md))
+
 In this case study, we will look at the Needham-Schroeder Protocol. The Needham-Schroeder Public Key Protocol was an oft-used encryption protocol for communicating across the internet. It utilized public key encryption to exchange a secret between both parties. This secret then allowed them to continue conversing securely. After 17 years, a flaw was found in the protocol that would allow an attacker to listen in on communications that were supposed to be secure. The attack was discovered using model checking.
 
 The Needham-Schroeder Protocol works as follows:
@@ -192,7 +196,7 @@ The Needham-Schroeder Protocol works as follows:
 
 These messages are encoded with Public Key Encryption, which is secure but expensive, hence why it isn't used for the whole conversation. 
 
-A program that can be used to find this flaw is located [here](https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/blob/main/src/Needham-Schroeder/ns.pml). This program was written by Professor Kurtz. 
+A program that can be used to find this flaw is located [here](https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/blob/main/src/Needham-Schroeder/ns.pml). 
 
 A fix was proposed by the person who found this fault. To avoid the attack, the second message should also include Bob's address. Can you explain how this avoids the attack? Try editing the SPIN program to include this fix, does it prevent the attack?
 
@@ -249,6 +253,7 @@ This paper suggests using temporal logic to model the uncertainty of an environm
 - TIME (2022). [International Symposium on Temporal Representation and Reasoning (TIME)](https://time-symposium.org/t/), TIME
 
 ## Further Resources
+* [Introduction to Model Checking with Spin](https://github.com/LEAP-at-Chapman/Intro-to-Model-Checking-with-Spin/), LEAP-at-Chapman.
 * [Wikipedia Article on Temporal Logic](https://en.wikipedia.org/wiki/Temporal_logic#Temporal_operators). Contains a good overview of the logic with links to more in-depth reading.
 * [Wikipedia Article on SPIN](https://en.wikipedia.org/wiki/SPIN_model_checker).
 * [SPIN's Website](https://spinroot.com/spin/whatispin.html).

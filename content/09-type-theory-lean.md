@@ -12,7 +12,7 @@ Dependent Type Theory (DTT) is the idea that types can depend on values. In trad
 
 This expressiveness blurs the boundary between proofs and programs. In dependent type theory, writing a function that computes something often simultaneously constructs a proof of its correctness. For instance, a function that returns the sum of two natural numbers can be defined alongside a proof that addition is associative or commutative, proofs that Lean, Coq, or Agda can check mechanically.
 
-Dependent Type Theory(DTT) is a unifying foundation for:
+DTT is a unifying foundation for:
 - Formal mathematics where theorems and proofs are treated as typed objects.
 - Verified programming where correctness is guaranteed by construction.
 
