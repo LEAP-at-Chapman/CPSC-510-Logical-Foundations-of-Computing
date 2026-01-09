@@ -17,14 +17,14 @@ This is of interest for various reasons:
 
 [^pP]: We follow here a convention in much of the literature to denote atomic propositions in ML by lower case letters and one-place predicates in FOL by upper-case letters. Thus $p$ is translated to $Pv$.
 
-[^decidable]: A logic is decidable if there is an algorithm $A$ that can takes formulas $\phi$ of the logic as input and
+[^decidable]: A logic is decidable if there is an algorithm $A$ that takes formulas $\phi$ of the logic as input and
     - always terminates,
     - returns 1 if $\phi$ is valid,
     - returns 0 if $\phi$ is not valid.
     
-[^observational]: Two models $M,M'$ are logically equivalent if for all formulas $\phi$ it holds that $M$ satisfies $\phi$ if and only if $M'$ satisfies $\phi$. If $M,M'$ are models of computation there are various notions of equivalence motivated by computational consdirations. Some of these equivalences are called "obserational". Roughly speaking, two models are observationally equivalent if they cannot be distinguished by running them an only observing their outputs (as opposed to looking at how they are implemented). 
+[^observational]: Two models $M,M'$ are logically equivalent if for all formulas $\phi$ it holds that $M$ satisfies $\phi$ if and only if $M'$ satisfies $\phi$. If $M,M'$ are models of computation there are various notions of equivalence motivated by computational considerations. Some of these equivalences are called "observational". Roughly speaking, two models are observationally equivalent if they cannot be distinguished by running them and only observing their outputs (as opposed to looking at how they are implemented). 
 
-[^philosophical]: In this notes we only mention the question of the meaning of "necessary" and "possible". For a study of time from the point of view of modal logic, I recommend van Benthem, The Logic of Time. The work of David Lewis on Counterfactuals is another good example. I plan to add more references along these lines in the future ...
+[^philosophical]: In these notes we only mention the question of the meaning of "necessary" and "possible". For a study of time from the point of view of modal logic, I recommend van Benthem, The Logic of Time. The work of David Lewis on Counterfactuals is another good example. I plan to add more references along these lines in the future ...
 
 ## Motivation
 
@@ -39,7 +39,7 @@ One of the reasons modal logic has been so important is that there are so many p
 - $\Box\phi$ means **always** $\phi$ and $\Diamond\phi$ means sometimes $\phi$,
 - $\Box_i\phi$ means agent $i$ **knows** $\phi$ and $\Diamond_i\phi$ means agent $i$ thinks $\phi$ is possible.
 
-**(Temporal and Epistemic Logic)** Each of these interpretations created their own field of research. The first one dominated modal logic in the first half of the 20th century. The second one is known as temporal logic and has been playing an important role in computer science (verificiation, model checking) since the 1980ies. The third one is known as epistemic logic and continues to be cutting edge in philosophy, economics, software engineering, AI and other areas.
+**(Temporal and Epistemic Logic)** Each of these interpretations created their own field of research. The first one dominated modal logic in the first half of the 20th century. The second one is known as [temporal logic](05-temporal-logic-spin.md) and has been playing an important role in computer science (verification, model checking) since the 1980s. The third one is known as [epistemic logic](06-epistemic-logic-smcdel.md) and continues to be cutting edge in philosophy, economics, software engineering, AI and other areas.
 
 Besides temporal logic and epistemic logic there is also ... (insert more examples) ...
 
@@ -49,13 +49,13 @@ Besides temporal logic and epistemic logic there is also ... (insert more exampl
 
 The first point has given rise to various generalisations of modal logic, in particular in the area of automated theorem proving. Search for [guarded fragment](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=%22guarded+fragment%22+%22modal+logic%22&btnG=) for references. 
 
-In the second point bisimulation refers to a relation of observational or behavioural equivalence of dynamic systems, which are themselves considered as "black boxes". In fact, bisimulation is the natural notion of behavioural equivalence for non-determinstic transition systems in which the states themselves are not observable but choices are. This leads us to the next item.
+In the second point bisimulation refers to a relation of observational or behavioural equivalence of dynamic systems, which are themselves considered as "black boxes". In fact, bisimulation is the natural notion of behavioural equivalence for non-deterministic transition systems in which the states themselves are not observable but choices are. This leads us to the next item.
 
 **(Possible Worlds Semantics)** The idea that something is necessarily true if it is true in all possible worlds is an old one. The turning point for modal logic was the mathematical formalisation of possible world semantics by Kripke:
 
 - Kripke (1959) [A Completeness Theorem in Modal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Saul+Kripke%3A+A+Completeness+Theorem+in+Modal+Logic.+1959.&btnG=), The Journal of Symbolic Logic.
 - Kripke (1963) [Semantical Analysis of Modal Logic I](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Kripke+1963+Semantical+Analysis+of+Modal+Logic+I&btnG=), Zeitschr. f. math. Logik und Grundlagen d. Math., [[pdf]](http://fitelson.org/142/kripke_1.pdf) . I recommend Section 2.1, which also contains the solution to one of the exercises below.
-- Kripke (1965) [Semantical Analysis of Modal Logic II](http://fitelson.org/142/kripke_2.pdf). 1965. 
+- Kripke (1965) [Semantical Analysis of Modal Logic II](https://scholar.google.com/scholar?q=Kripke+1965+Semantical+Analysis+of+Modal+Logic+II), Zeitschr. f. math. Logik und Grundlagen d. Math. 
 
 There is a lot to say here, but to present the main ideas as quickly as possible I would proceed as follows (see Chapters 3.1 and 3.2 of the book referenced below).
 
@@ -99,15 +99,15 @@ The proof can be generalised to a method applying to all so-called Sahlqvist for
 
 **Exercise:** $(W,R)\models \Box p\to\Box\Box p$ iff $R$ is transitive.
 
-**Remark:** In the early 20th century modal logics where developed by philosophers from a syntactic and proof theoretic point of view. Axioms such as $\Box p\to p$ and $\Box\phi\to\Box\Box\phi$ where discovered by reading them as "necessarily p implies p" and "necessarily p implies necessarily necessarily p" and modal logics where characterised by axioms and proof rules. As far as I know the history, it came as a surprise that these axioms had such a neat semantic characterisation. 
+**Remark:** In the early 20th century modal logics were developed by philosophers from a syntactic and proof theoretic point of view. Axioms such as $\Box p\to p$ and $\Box\phi\to\Box\Box\phi$ were discovered by reading them as "necessarily p implies p" and "necessarily p implies necessarily necessarily p" and modal logics were characterised by axioms and proof rules. As far as I know the history, it came as a surprise that these axioms had such a neat semantic characterisation. 
 
-**Exercise:** Interpret $\Box p\to p$ and $\Box p\to\Box\Box p$ from the point of view of temporal and epistemic logic.
+**Exercise:** Interpret $\Box p\to p$ and $\Box p\to\Box\Box p$ from the point of view of [temporal logic](05-temporal-logic-spin.md) and [epistemic logic](06-epistemic-logic-smcdel.md).
 
 ## The Basic Theory
 
 We have seen that modal logic comprises several independent areas (temporal logic, epistemic logic, etc) and has important overlaps with others (concurrency, multi-agent systems, automated reasoning, game theory, etc). My intention here is only to sketch out the basic theory that is important in all these fields.
 
-Actually, instead of writing this out myself, I refer to the book "Modal Logic" by Blackburn, de Rijke, Venema.(The book treats also $n$-ary relations (the "general case", as opposed to binary relations). This generalisation is interesting for some applications but should be skipped on a first reading.)
+Actually, instead of writing this out myself, I refer to the book "Modal Logic" by Blackburn, de Rijke, Venema. (The book treats also $n$-ary relations (the "general case", as opposed to binary relations). This generalisation is interesting for some applications but should be skipped on a first reading.)
 
 Here is what I would consider essential for a first run through the basics of modal logic.
 
@@ -119,23 +119,19 @@ Here is what I would consider essential for a first run through the basics of mo
 - 2.2: Bisimulations (up to Thm 2.20)
 - 2.3: Finite Models (can be skipped on first reading)
 - 2.4: The Standard Translation (up to Prop 2.47)
-- 3.1: Frame Definability (Exle 3.6)
-- 3.2: Frame Definability and Second-Order Logic (Exle 3.11)
+- 3.1: Frame Definability (Example 3.6)
+- 3.2: Frame Definability and Second-Order Logic (Example 3.11)
 
 
 ## References
 
-- Halpern and Vardi (1991) [Model Checking v. Theorem Proving: A Manifesto](https://www.cs.cornell.edu/home/halpern/papers/manifesto.pdf)
+- Halpern and Vardi (1991) [Model Checking v. Theorem Proving: A Manifesto](https://scholar.google.com/scholar?q=Halpern+Vardi+Model+Checking+Theorem+Proving+Manifesto+1991), Artificial Intelligence.
 
-illustrates many of the themes that make modal logic so important for computer science applications.
+- Blackburn, de Rijke, and Venema (1995) [Modal Logic](https://scholar.google.com/scholar?q=Blackburn+de+Rijke+Venema+Modal+Logic+1995), Cambridge University Press.
 
-- Blackburn, de Rijke, Venema (1995) [Modal Logic](https://scholar.google.com/scholar?cluster=1085284409909169504&hl=en&as_sdt=0,5) 
+- Kripke (1959) [A Completeness Theorem in Modal Logic](https://scholar.google.com/scholar?q=Kripke+Completeness+Theorem+Modal+Logic+1959), The Journal of Symbolic Logic.
 
-is widely considered to be the standard textbook on modern mathematical modal logic.
+- Kripke (1963) [Semantical Analysis of Modal Logic I](https://scholar.google.com/scholar?q=Kripke+Semantical+Analysis+Modal+Logic+I+1963), Zeitschr. f. math. Logik und Grundlagen d. Math.
 
-The following articles introduced the mathematical possible worlds semantics:
-
-- Kripke (1959) [A Completeness Theorem in Modal Logic](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Saul+Kripke%3A+A+Completeness+Theorem+in+Modal+Logic.+1959.&btnG=)
-- Kripke (1963) [Semantical Analysis of Modal Logic I](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Kripke+1963+Semantical+Analysis+of+Modal+Logic+I&btnG=) ... [[pdf]](http://fitelson.org/142/kripke_1.pdf)
-- Kripke (1965) [Semantical Analysis of Modal Logic II](http://fitelson.org/142/kripke_2.pdf)
+- Kripke (1965) [Semantical Analysis of Modal Logic II](https://scholar.google.com/scholar?q=Kripke+Semantical+Analysis+Modal+Logic+II+1965), Zeitschr. f. math. Logik und Grundlagen d. Math.
 

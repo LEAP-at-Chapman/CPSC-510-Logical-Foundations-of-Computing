@@ -45,13 +45,18 @@ Each chapter should by default be divided into the following sections (subject t
 - [Higher-Order Logic with Isabelle](08-higher-order-logic-isabelle.md) extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.
 - [Type Theory with Lean](09-type-theory-lean.md) presents dependent type theory with Lean, demonstrating how types can depend on values and enabling "proofs as programs" through the Curry-Howard correspondence.
 
-## Ideas for 2026
+## Planning for Fall 2026
 
-Turn this book from one on "Logical Foundations of Software Engineering" into a book on **"Formal Methods and AI"**, emphasizing the integration of symbolic and neural approaches.
+### General Ideas
 
-Before starting on this: Upgrade from Jupyter book version 1 to version 2. Organize the references of each chapter using bibtex.
+- Develop this book from one on "Logical Foundations of Software Engineering" to one on **"Formal Methods and AI"**, emphasizing the integration of symbolic and neural approaches.
+- **Jupyter book version 2**: Upgrade from Jupyter book version 1 to . 
+- **Bibtex**: Organize the references of each chapter using bibtex.
+- **AI Assistance for Editing**: The folder [Cursor Rules](../.cursor-rules) contains natural language instructions for an AI agent to help with review and editing. They proved to particularly useful for finding typos in text and formulas, for correcting grammar and for maintaining consistent references, labelling, citations. Next time we run the course, it would be interesting to develop and use AI agents from the beginning.
 
-### Part 1: Review and Refinement (Weeks 1-6)
+### Outline of Schedule
+
+#### Part 1: Review and Refinement (Weeks 1-6)
 **Goal**: Engage new students with existing material while collaboratively improving it.
 
 - **Weeks 1-5: Chapter Review Cycle**
@@ -70,11 +75,11 @@ Before starting on this: Upgrade from Jupyter book version 1 to version 2. Organ
   - Allocate time for implementing top improvements
   - Students vote on which chapters need the most work
 
-### Part 2: Extension and Innovation (Weeks 7-13)
+#### Part 2: Extension and Innovation (Weeks 7-13)
 
 Each student chooses one of two tracks:
 
-#### Track A: New Chapter Development
+##### Track A: New Chapter Development
 Create a new chapter following the {ref}`suggested table of contents <suggested-table-of-contents-for-a-typical-chapter>`, presenting:
 - A logic, formal method, and software tool
 - Integration with AI/formal methods theme where possible
@@ -91,7 +96,7 @@ Create a new chapter following the {ref}`suggested table of contents <suggested-
 - **Formal Methods in AI Safety**: Verification of neural networks, adversarial robustness
 - **Probabilistic Programming**: Logic-based probabilistic reasoning (e.g., ProbLog, Church)
 
-#### Track B: Project-Based Learning
+##### Track B: Project-Based Learning
 Apply formal methods to a concrete engineering problem or build educational tools.
 
 **Project Categories:**
@@ -126,7 +131,7 @@ Apply formal methods to a concrete engineering problem or build educational tool
      - Add missing sections (Algorithms, Typical Use Cases, etc.)
    - Deliverable: Enhanced chapter content + supporting materials
 
-### Part 3: Integration and Publication (Week 14-15)
+#### Part 3: Integration and Publication (Week 14-15)
 - Final review of all contributions
 - Integration of new chapters into book structure
 - Quality assurance pass
