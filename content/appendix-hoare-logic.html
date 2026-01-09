@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Syllogistic Logics in Isabelle" href="appendix-syllogistic-logics.html" />
-    <link rel="prev" title="9. Type Theory with Lean" href="11-dependent-types.html" />
+    <link rel="prev" title="9. Type Theory with Lean" href="09-type-theory-lean.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,7 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
     
   
 
-<a class="navbar-brand logo" href="0-title.html">
+<a class="navbar-brand logo" href="0-0-title.html">
   
   
   
@@ -164,28 +164,29 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0-intro.html">The Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Short Intro to Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-1-intro-book.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-2-intro-logic.html">Big Ideas of Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-3-intro-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-4-intro-modal-logic.html">Modal Logic</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraints with MiniZinc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">4. SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">7. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-sat-solving-minisat.html">1. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-logic-programming-prolog.html">2. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-constraints-minizinc.html">3. Constraints with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-smt-solving-z3.html">4. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-temporal-logic-spin.html">5. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-epistemic-logic-smcdel.html">6. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-hoare-logic-dafny.html">7. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-higher-order-logic-isabelle.html">8. Higher-Order Logic with Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-type-theory-lean.html">9. Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Hoare Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-complexity-classes.html">Complexity Classes Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Style Guide</span></p>
 <ul class="nav bd-sidenav">
@@ -437,8 +438,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hoare-logic">
 <h1>Hoare Logic<a class="headerlink" href="#hoare-logic" title="Permalink to this heading">#</a></h1>
-<p>“The most  important property of a program is whether it accomplishes the intentions of its user. If the intentions can be described rigorously by making assertions about the values of variables at the end of the execution of the program, then the techniques described in this paper may be used to prove the correcteness of the program.”</p>
-<p>Hoare. <a class="reference external" href="http://extras.springer.com/2002/978-3-642-63970-8/DVD3/rom/pdf/Hoare_hist.pdf">An axiomatic basis for computer programming</a>. Communications of the ACM. 12 (10): 576–580, 1969.</p>
+<p>“The most  important property of a program is whether it accomplishes the intentions of its user. If the intentions can be described rigorously by making assertions about the values of variables at the end of the execution of the program, then the techniques described in this paper may be used to prove the correctness of the program.”</p>
+<p>Hoare (1969) <a class="reference external" href="https://scholar.google.com/scholar?q=Hoare+axiomatic+basis+computer+programming+1969">An axiomatic basis for computer programming</a>, Communications of the ACM.</p>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>In Programming Languages there is an important circle of ideas including <a class="reference external" href="https://en.wikipedia.org/wiki/Hoare_logic">Hoare logic</a> and Dijkstra’s <a class="reference external" href="https://en.wikipedia.org/wiki/Predicate_transformer_semantics">predicate transformer semantics</a>, Kozen’s <a class="reference external" href="https://en.wikipedia.org/wiki/Kleene_algebra">Kleene algebra</a> and Pratt’s <a class="reference external" href="https://en.wikipedia.org/wiki/Dynamic_logic_(modal_logic)">Dynamic logic</a>, O’Hearn and Reynolds’s <a class="reference external" href="https://en.wikipedia.org/wiki/Separation_logic">Separation logic</a> and many more methods, techniques, tools, etc.</p>
@@ -463,13 +464,13 @@ document.write(`
 <li><p>invariants that are guaranteed to hold after execution if they held before execution</p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Design_by_contract">Design by contract</a> is a software engineering method build on these ideas.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Design_by_contract">Design by contract</a> is a software engineering method built on these ideas.</p></li>
 <li><p>Check out the <a class="reference external" href="https://en.wikipedia.org/wiki/Design_by_contract#Language_support">list of programming languages</a> supporting these ideas.</p></li>
 <li><p>Assume/guarantee or rely/guarantee is an important technique in the development of concurrent programs</p></li>
 </ul>
 <p><strong>Table of Contents</strong>:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="9-hoare-logic.html"><span class="doc std std-doc">Summary of the Rules of Hoare Logic</span></a></p></li>
+<li><p><a class="reference internal" href="07-hoare-logic-dafny.html"><span class="doc std std-doc">Summary of the Rules of Hoare Logic</span></a></p></li>
 <li><p>Introductory Example</p></li>
 <li><p>Preconditions and Postconditions</p></li>
 <li><p>Program Variables vs Mathematical Variables</p></li>
@@ -876,7 +877,7 @@ two values <span class="math notranslate nohighlight">\(x\)</span> and <span cla
 <li><p>The following habits can improve the practice of programming</p>
 <ul>
 <li><p>What are the pre and postconditions of the code I write?</p></li>
-<li><p>Should I test them explicitely? Raise an exception if they are violated? Describe them explicitely in comments? Make users of my code aware of them?</p></li>
+<li><p>Should I test them explicitly? Raise an exception if they are violated? Describe them explicitly in comments? Make users of my code aware of them?</p></li>
 <li><p>Using software tools that support pre and postcondition in my code.</p></li>
 <li><p>Thinking of loop-invariants before implementing my loops.</p></li>
 <li><p>Working backwards from postconditions to preconditions: Given that I want to guarantee a postcondition, what are the preconditions and what is the code needed for this? <a class="footnote-reference brackets" href="#fromposttopre" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a></p></li>
@@ -902,13 +903,13 @@ This is a consequence of the previous item. Formal systems can be implemented an
 <h3>Structured Programming<a class="headerlink" href="#structured-programming" title="Permalink to this heading">#</a></h3>
 <p>(this section is being written as an after-thought and was not part of the semester)</p>
 <p>Early programming close to the machine relies on jumps as a basic mechanism to control flow. Accordingly, early higher level languages such as Fortran had a corresponding <span class="math notranslate nohighlight">\(\texttt{goto}\)</span> statement. Goto’s lend themselves to the writing of “unstructured” code that is difficult to read and debug, but was considered a necessary ingredient.</p>
-<p>In 1966, the article <a class="reference external" href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Flow+diagrams%2C+turing+machines+and+languages+with+only+two+formation+rules&amp;btnG=">Flow diagrams, turing machines and languages with only two formation rules</a> by Boehm and  showed that jumps (gotos) are not needed and any program can be written with just three controle structures: sequential composition, conditional and iteration. This was an important result at the time as it suggested that the complex control structures (typically based on gotos, later fiving rise to so-called spaghetti code) that plagued programming at the time were not necessary.</p>
+<p>In 1966, the article <a class="reference external" href="https://scholar.google.com/scholar?q=Flow+diagrams+turing+machines+languages+only+two+formation+rules">Flow diagrams, turing machines and languages with only two formation rules</a> by Böhm and Jacopini showed that jumps (gotos) are not needed and any program can be written with just three control structures: sequential composition, conditional and iteration. This was an important result at the time as it suggested that the complex control structures (typically based on gotos, later giving rise to so-called spaghetti code) that plagued programming at the time were not necessary.</p>
 </section>
 </section>
 <section id="historical-references">
 <h2>Historical References<a class="headerlink" href="#historical-references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Reynolds: <a class="reference external" href="https://kilthub.cmu.edu/ndownloader/files/12102656">The Craft of Programming</a>. 1981.</p></li>
+<li><p>Reynolds (1981) <a class="reference external" href="https://scholar.google.com/scholar?q=Reynolds+Craft+Programming+1981">The Craft of Programming</a>, Prentice-Hall.</p></li>
 </ul>
 <p>This is one of the first textbooks teaching verification of programs. I find it still interesting today …</p>
 <ul class="simple">
@@ -919,7 +920,7 @@ This is a consequence of the previous item. Formal systems can be implemented an
 <h2>Further Reading<a class="headerlink" href="#further-reading" title="Permalink to this heading">#</a></h2>
 <section id="formal-verification">
 <h3>Formal Verification<a class="headerlink" href="#formal-verification" title="Permalink to this heading">#</a></h3>
-<p>We have seen that the rules of Hoare logic can be formalised in symbolic notation. It should therefore should be possible to implement software engineering tools that automate reasoning about programs.</p>
+<p>We have seen that the rules of Hoare logic can be formalised in symbolic notation. It should therefore be possible to implement software engineering tools that automate reasoning about programs.</p>
 <p>To get a taste of how verification is done in real world programming applications, have a look at the blogs by David Crocker about <em>Verifying loops in C and C++</em>, <a class="reference external" href="https://critical.eschertech.com/2010/03/22/verifying-loops-in-c/">part 1</a> and <a class="reference external" href="https://critical.eschertech.com/2010/03/29/verifying-loops-part-2/">part 2</a> and <a class="reference external" href="https://critical.eschertech.com/2010/03/31/verifying-loops-proving-termination/">part 3</a>. There is also a very short <a class="reference external" href="https://critical.eschertech.com/about/">introduction to software verification</a>.</p>
 </section>
 </section>
@@ -1007,19 +1008,19 @@ gcd x y | x &gt; y = gcd (x-y) y
 <p>Let us think about it.</p>
 <p>Each time the program goes through the loop, <code class="docutils literal notranslate"><span class="pre">x</span></code> will be decremented. How often does it happen? This again depends on <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
 <p><em><strong>The aim is to find a reasoning principle that frees us from tracking how often we go through a loop.</strong></em></p>
-<p>Here it is actually easy to see that we go <code class="docutils literal notranslate"><span class="pre">x</span></code> times through the loop (if <code class="docutils literal notranslate"><span class="pre">x</span></code> is not negative). But in more complicated examples there may not be a formula that allows us to caclulate the number of times we go through a loop from the available data.</p>
+<p>Here it is actually easy to see that we go <code class="docutils literal notranslate"><span class="pre">x</span></code> times through the loop (if <code class="docutils literal notranslate"><span class="pre">x</span></code> is not negative). But in more complicated examples there may not be a formula that allows us to calculate the number of times we go through a loop from the available data.</p>
 <p>(This follows from the halting problem.)</p>
 <p>So we would like to decouple the question “how often do we go through the loop?” (termination) from the question of correctness … which is then called <em><strong>partial correctness</strong></em>, or more precisely, correctness under the assumption of termination.</p>
 <p>Does this sound impossible?</p>
 <p>Remember our lecture about <a class="reference external" href="https://hackmd.io/&#64;alexhkurz/BkMoUhXvD">invariants</a>?</p>
-<p>Can you spot an invariant? A property that remains unchanged while going throuth the loop?</p>
+<p>Can you spot an invariant? A property that remains unchanged while going through the loop?</p>
 <p>Hint: Invent a notation that allows to distinguish the value of a program variable before and after the execution of some code. (There are different ways of doing this.)</p>
 <p>Can you conclude from the invariant what the result of the computation is?</p>
 <p>After answering the questions yourself, you can check with my solutions below.</p>
 </aside>
 <aside class="footnote brackets" id="invariantwhile" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>Let us make a table of an execution. We assume here that the program variables are initialised as follows: <code class="docutils literal notranslate"><span class="pre">x</span></code> is 100, <code class="docutils literal notranslate"><span class="pre">y</span></code> is 2 and <code class="docutils literal notranslate"><span class="pre">z</span></code> is 0. <code class="docutils literal notranslate"><span class="pre">t</span></code> counts how often the body of the loop was executed. (We will later see how to generalize to aribtrary input <code class="docutils literal notranslate"><span class="pre">x,y,z</span></code>.)</p>
+<p>Let us make a table of an execution. We assume here that the program variables are initialised as follows: <code class="docutils literal notranslate"><span class="pre">x</span></code> is 100, <code class="docutils literal notranslate"><span class="pre">y</span></code> is 2 and <code class="docutils literal notranslate"><span class="pre">z</span></code> is 0. <code class="docutils literal notranslate"><span class="pre">t</span></code> counts how often the body of the loop was executed. (We will later see how to generalize to arbitrary input <code class="docutils literal notranslate"><span class="pre">x,y,z</span></code>.)</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">t</span></code></p></th>
@@ -1139,7 +1140,7 @@ z = t * y
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="11-dependent-types.html"
+       href="09-type-theory-lean.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">

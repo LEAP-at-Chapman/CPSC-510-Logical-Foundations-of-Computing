@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="How to Contribute" href="how-to-contribute.html" />
-    <link rel="prev" title="Complexity Classes Overview" href="appendix-complexity-classes.html" />
+    <link rel="prev" title="Resources on Puzzles" href="appendix-puzzles.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -148,7 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
     
   
 
-<a class="navbar-brand logo" href="0-title.html">
+<a class="navbar-brand logo" href="0-0-title.html">
   
   
   
@@ -162,28 +162,29 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0-intro.html">The Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Short Intro to Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-1-intro-book.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-2-intro-logic.html">Big Ideas of Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-3-intro-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-4-intro-modal-logic.html">Modal Logic</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraints with MiniZinc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">4. SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">7. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-sat-solving-minisat.html">1. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-logic-programming-prolog.html">2. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-constraints-minizinc.html">3. Constraints with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-smt-solving-z3.html">4. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-temporal-logic-spin.html">5. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-epistemic-logic-smcdel.html">6. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-hoare-logic-dafny.html">7. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-higher-order-logic-isabelle.html">8. Higher-Order Logic with Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-type-theory-lean.html">9. Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-complexity-classes.html">Complexity Classes Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Style Guide</span></p>
 <ul class="current nav bd-sidenav">
@@ -410,7 +411,8 @@ document.write(`
 <section id="tl-dr">
 <h2>TL;DR<a class="headerlink" href="#tl-dr" title="Permalink to this heading">#</a></h2>
 <p><strong>In text</strong>: Use (Author(s), Year) or just (Author) if the year is obvious from context.<br />
-<strong>In References section</strong>: Use the format <code class="docutils literal notranslate"><span class="pre">Author(s)</span> <span class="pre">(Year)</span> <span class="pre">[Title](link),</span> <span class="pre">Venue</span></code></p>
+<strong>In References section</strong>: Use the format <code class="docutils literal notranslate"><span class="pre">Author(s)</span> <span class="pre">(Year)</span> <span class="pre">[Title](link),</span> <span class="pre">Venue</span></code><br />
+<strong>IMPORTANT</strong>: All references MUST include a venue (journal, conference, publisher, etc.). Page numbers are NOT required.</p>
 </section>
 <section id="reference-list-format">
 <h2>Reference List Format<a class="headerlink" href="#reference-list-format" title="Permalink to this heading">#</a></h2>
@@ -430,13 +432,19 @@ document.write(`
 </li>
 <li><p><strong>Year</strong>: Publication year in parentheses</p></li>
 <li><p><strong>Title</strong>: Full title as a clickable link (preferably to the paper, or to Google Scholar)</p></li>
-<li><p><strong>Venue</strong>: Journal name, conference proceedings, or publisher</p></li>
+<li><p><strong>Venue</strong>: Journal name, conference proceedings, or publisher</p>
+<ul class="simple">
+<li><p><strong>REQUIRED</strong>: Every reference must include a venue</p></li>
+<li><p><strong>NOT required</strong>: Page numbers, volume/issue numbers (unless essential for identification)</p></li>
+<li><p>Examples: “Journal of the ACM”, “Proceedings of the 38th Design Automation Conference”, “Springer”, “IEEE Transactions on Computers”</p></li>
+</ul>
+</li>
 </ol>
 </section>
 <section id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h3>
-<p>Davis and Putnam (1960) <a class="reference external" href="https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory">A Computing Procedure for Quantification Theory</a>, Journal of the ACM, 7(3): 201–215</p>
-<p>Moskewicz et al. (2001) <a class="reference external" href="https://scholar.google.com/scholar?q=Chaff+Engineering+an+efficient+SAT+solver">Chaff: Engineering an efficient SAT solver</a>, Proceedings of the 38th Design Automation Conference, pp. 530-535</p>
+<p>Davis and Putnam (1960) <a class="reference external" href="https://scholar.google.com/scholar?q=A+Computing+Procedure+for+Quantification+Theory">A Computing Procedure for Quantification Theory</a>, Journal of the ACM</p>
+<p>Moskewicz et al. (2001) <a class="reference external" href="https://scholar.google.com/scholar?q=Chaff+Engineering+an+efficient+SAT+solver">Chaff: Engineering an efficient SAT solver</a>, Proceedings of the 38th Design Automation Conference</p>
 <p>Nipkow and Klein (2023) <a class="reference external" href="http://concrete-semantics.org/concrete-semantics.pdf">Concrete Semantics with Isabelle/HOL</a>, Springer</p>
 <p>SWI-Prolog Documentation (2024) <a class="reference external" href="https://www.swi-prolog.org/pldoc/man?section=arith">Arithmetic Functions</a>, https://www.swi-prolog.org/</p>
 </section>
@@ -505,12 +513,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="appendix-complexity-classes.html"
+       href="appendix-puzzles.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Complexity Classes Overview</p>
+        <p class="prev-next-title">Resources on Puzzles</p>
       </div>
     </a>
     <a class="right-next"

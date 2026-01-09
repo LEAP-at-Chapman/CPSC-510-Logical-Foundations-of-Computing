@@ -1,8 +1,8 @@
 # Hoare Logic
 
-"The most  important property of a program is whether it accomplishes the intentions of its user. If the intentions can be described rigorously by making assertions about the values of variables at the end of the execution of the program, then the techniques described in this paper may be used to prove the correcteness of the program." 
+"The most  important property of a program is whether it accomplishes the intentions of its user. If the intentions can be described rigorously by making assertions about the values of variables at the end of the execution of the program, then the techniques described in this paper may be used to prove the correctness of the program." 
 
-Hoare. [An axiomatic basis for computer programming](http://extras.springer.com/2002/978-3-642-63970-8/DVD3/rom/pdf/Hoare_hist.pdf). Communications of the ACM. 12 (10): 576–580, 1969.
+Hoare (1969) [An axiomatic basis for computer programming](https://scholar.google.com/scholar?q=Hoare+axiomatic+basis+computer+programming+1969), Communications of the ACM.
 
 ## Introduction
 
@@ -32,7 +32,7 @@ These ideas have various ramifications in programming and software engineering.
   - postconsitions that are guarantees to the user
   - invariants that are guaranteed to hold after execution if they held before execution
 
-- [Design by contract](https://en.wikipedia.org/wiki/Design_by_contract) is a software engineering method build on these ideas.
+- [Design by contract](https://en.wikipedia.org/wiki/Design_by_contract) is a software engineering method built on these ideas.
 
 - Check out the [list of programming languages](https://en.wikipedia.org/wiki/Design_by_contract#Language_support) supporting these ideas.
    
@@ -40,7 +40,7 @@ These ideas have various ramifications in programming and software engineering.
 
 **Table of Contents**:
 
-- [Summary of the Rules of Hoare Logic](./9-hoare-logic.md)
+- [Summary of the Rules of Hoare Logic](07-hoare-logic-dafny.md)
 - Introductory Example
 - Preconditions and Postconditions
 - Program Variables vs Mathematical Variables
@@ -65,7 +65,7 @@ This program will terminate and yield `z = x*y`  at the end if `x` is non-negati
 
 Answer. [^invariantwhile2][^invariantwhile]
 
-[^invariantwhile]: Let us make a table of an execution. We assume here that the program variables are initialised as follows: `x` is 100, `y` is 2 and `z` is 0. `t` counts how often the body of the loop was executed. (We will later see how to generalize to aribtrary input `x,y,z`.)
+[^invariantwhile]: Let us make a table of an execution. We assume here that the program variables are initialised as follows: `x` is 100, `y` is 2 and `z` is 0. `t` counts how often the body of the loop was executed. (We will later see how to generalize to arbitrary input `x,y,z`.)
 
 	|`t`|`x`|`y`|`z`|
 	|:---:|:---:|:---:|:---:|
@@ -94,7 +94,7 @@ Answer. [^invariantwhile2][^invariantwhile]
 	
 	***The aim is to find a reasoning principle that frees us from tracking how often we go through a loop.***
 	
-	Here it is actually easy to see that we go `x` times through the loop (if `x` is not negative). But in more complicated examples there may not be a formula that allows us to caclulate the number of times we go through a loop from the available data. 
+	Here it is actually easy to see that we go `x` times through the loop (if `x` is not negative). But in more complicated examples there may not be a formula that allows us to calculate the number of times we go through a loop from the available data. 
 	
 	(This follows from the halting problem.)
 	
@@ -104,7 +104,7 @@ Answer. [^invariantwhile2][^invariantwhile]
 	
 	Remember our lecture about [invariants](https://hackmd.io/@alexhkurz/BkMoUhXvD)?
 	
-	Can you spot an invariant? A property that remains unchanged while going throuth the loop?
+	Can you spot an invariant? A property that remains unchanged while going through the loop?
 
     Hint: Invent a notation that allows to distinguish the value of a program variable before and after the execution of some code. (There are different ways of doing this.)
 
@@ -593,7 +593,7 @@ Then I will briefely look at the history of ideas around "structured programming
 - The following habits can improve the practice of programming
   
   - What are the pre and postconditions of the code I write?
-  - Should I test them explicitely? Raise an exception if they are violated? Describe them explicitely in comments? Make users of my code aware of them?
+  - Should I test them explicitly? Raise an exception if they are violated? Describe them explicitly in comments? Make users of my code aware of them?
   - Using software tools that support pre and postcondition in my code.
   - Thinking of loop-invariants before implementing my loops.
   - Working backwards from postconditions to preconditions: Given that I want to guarantee a postcondition, what are the preconditions and what is the code needed for this? [^fromposttopre]
@@ -621,11 +621,11 @@ This is a consequence of the previous item. Formal systems can be implemented an
 
 Early programming close to the machine relies on jumps as a basic mechanism to control flow. Accordingly, early higher level languages such as Fortran had a corresponding $\texttt{goto}$ statement. Goto's lend themselves to the writing of "unstructured" code that is difficult to read and debug, but was considered a necessary ingredient. 
 
-In 1966, the article [Flow diagrams, turing machines and languages with only two formation rules](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Flow+diagrams%2C+turing+machines+and+languages+with+only+two+formation+rules&btnG=) by Boehm and  showed that jumps (gotos) are not needed and any program can be written with just three controle structures: sequential composition, conditional and iteration. This was an important result at the time as it suggested that the complex control structures (typically based on gotos, later fiving rise to so-called spaghetti code) that plagued programming at the time were not necessary.
+In 1966, the article [Flow diagrams, turing machines and languages with only two formation rules](https://scholar.google.com/scholar?q=Flow+diagrams+turing+machines+languages+only+two+formation+rules) by Böhm and Jacopini showed that jumps (gotos) are not needed and any program can be written with just three control structures: sequential composition, conditional and iteration. This was an important result at the time as it suggested that the complex control structures (typically based on gotos, later giving rise to so-called spaghetti code) that plagued programming at the time were not necessary.
 
 ## Historical References
 
-- Reynolds: [The Craft of Programming](https://kilthub.cmu.edu/ndownloader/files/12102656). 1981.
+- Reynolds (1981) [The Craft of Programming](https://scholar.google.com/scholar?q=Reynolds+Craft+Programming+1981), Prentice-Hall.
 
 This is one of the first textbooks teaching verification of programs. I find it still interesting today ...
 
@@ -635,7 +635,7 @@ This is one of the first textbooks teaching verification of programs. I find it 
 
 ### Formal Verification
 
-We have seen that the rules of Hoare logic can be formalised in symbolic notation. It should therefore should be possible to implement software engineering tools that automate reasoning about programs.
+We have seen that the rules of Hoare logic can be formalised in symbolic notation. It should therefore be possible to implement software engineering tools that automate reasoning about programs.
 
 To get a taste of how verification is done in real world programming applications, have a look at the blogs by David Crocker about *Verifying loops in C and C++*, [part 1](https://critical.eschertech.com/2010/03/22/verifying-loops-in-c/) and [part 2](https://critical.eschertech.com/2010/03/29/verifying-loops-part-2/) and [part 3](https://critical.eschertech.com/2010/03/31/verifying-loops-proving-termination/). There is also a very short [introduction to software verification](https://critical.eschertech.com/about/).
 
@@ -645,7 +645,7 @@ To get a taste of how verification is done in real world programming application
 
     The second trick is that we can conclude the value of $\mathtt z$ after the loop finishes by taking the conjunction of the loop-invariant $\mathtt z = (n-\mathtt x)*\mathtt y$ with the negation $\mathtt x=0$ of the condition `(x != 0)` that controls the entry into the loop. After all, we can only finish the loop if we are not allowed entry. 
     
-    But now see what happens. This conjunction implies $\mathtt z= n\cdot \mathtt y$, which is what we wanted, namely the value of $\mathtt z$ after $n$ eecutions of the loop (remember that $n$ is the value of $\mathtt x$ before the loop was entered).
+    But now see what happens. This conjunction implies $\mathtt z= n\cdot \mathtt y$, which is what we wanted, namely the value of $\mathtt z$ after $n$ executions of the loop (remember that $n$ is the value of $\mathtt x$ before the loop was entered).
 
 ## Exercises
 

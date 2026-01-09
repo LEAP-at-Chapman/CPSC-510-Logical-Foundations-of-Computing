@@ -150,7 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
     
   
 
-<a class="navbar-brand logo" href="0-title.html">
+<a class="navbar-brand logo" href="0-0-title.html">
   
   
   
@@ -164,28 +164,29 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="0-intro.html">The Book</a></li>
-<li class="toctree-l1"><a class="reference internal" href="0-logic.html">Short Intro to Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1-propositional-logic.html">Propositional Logic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="6-modal-logic.html">Modal Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-1-intro-book.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-2-intro-logic.html">Big Ideas of Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-3-intro-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-4-intro-modal-logic.html">Modal Logic</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="2-satsolving.html">1. SAT solving with MiniSat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3-logic-programming.html">2. Logic Programming with Prolog</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4-constraint-solving.html">3. Constraints with MiniZinc</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5-smt-solving.html">4. SMT Solving and Z3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="7-temporal-logic.html">5. Temporal Logic with Spin</a></li>
-<li class="toctree-l1"><a class="reference internal" href="8-epistemic-logic.html">6. Epistemic Logic with SMCDEL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="9-hoare-logic.html">7. Hoare Logic with Dafny</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-higher-order-logic.html">8. Higher-Order Logic with Isabelle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-dependent-types.html">9. Type Theory with Lean</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-sat-solving-minisat.html">1. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-logic-programming-prolog.html">2. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-constraints-minizinc.html">3. Constraints with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-smt-solving-z3.html">4. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-temporal-logic-spin.html">5. Temporal Logic with Spin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-epistemic-logic-smcdel.html">6. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-hoare-logic-dafny.html">7. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-higher-order-logic-isabelle.html">8. Higher-Order Logic with Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-type-theory-lean.html">9. Type Theory with Lean</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Syllogistic Logics in Isabelle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="appendix-complexity-classes.html">Complexity Classes Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Style Guide</span></p>
 <ul class="nav bd-sidenav">
@@ -413,8 +414,8 @@ document.write(`
 <p>An ITP is used to help humans to formalize proofs. You can think of an ITP as a programming language in which programs are mathematical proofs. There are many different ITPs and Isabelle is one of the most widely used ones and has been at the cutting edge of the field for many decades. So it is definitely worth seeing an example of Isabelle in practice.</p>
 <p>This leaves open the question of what to prove. One typical choice would be to apply Isabelle to proving the correctness of programs. This is a very good way to learn about ITPs in general and Isabelle in particular. For this I recommend the book <a class="reference external" href="http://concrete-semantics.org/">Concrete Semantics</a>.</p>
 <p>Here I want to follow another idea. Throughout CPSC-510 Logical Foundations of Computing, we put a lot of emphasis on various software tools. I think it is time to return to their logical foundations. So here I want to apply Isabelle to logic itself. In particular, we will formalize the soundness and completeness proof of a particular logic.</p>
-<p>As we have discussed earlier, soundness and completeness is often the first theorem one wants to prove about any logic. We have seen, but not formally proved, that, for example, the tableaux method is sound and complete for classical propositional logic. Simlarly, there are soundness and completeness theorems for predicate logic, temporal logic, (dynamic) epistemic logic, etc.</p>
-<p>Since our aim is a first introduction, the following question arises. What is the simplest meaningful example of a logic for which one can explain (and formalize) soundnessn and completeness?</p>
+<p>As we have discussed earlier, soundness and completeness is often the first theorem one wants to prove about any logic. We have seen, but not formally proved, that, for example, the tableaux method is sound and complete for classical propositional logic. Similarly, there are soundness and completeness theorems for predicate logic, temporal logic, (dynamic) epistemic logic, etc.</p>
+<p>Since our aim is a first introduction, the following question arises. What is the simplest meaningful example of a logic for which one can explain (and formalize) soundness and completeness?</p>
 <p>Fortunately, this question has been asked and answered convincingly by Larry Moss in his work on syllogistic logics.</p>
 </section>
 <section id="setting-up">
@@ -453,7 +454,7 @@ Have:  <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span></p
 <p>Have: <span class="math notranslate nohighlight">\(\Gamma\models\phi \ \Rightarrow \ \Gamma\vdash\phi\)</span></p>
 </div></blockquote>
 <p><strong>Exercise/Activity</strong>: Justify all steps.</p>
-<p><strong>Remark:</strong> Every model of <span class="math notranslate nohighlight">\(\Gamma\)</span> satsifies all consequences of <span class="math notranslate nohighlight">\(\Gamma\)</span>. But the canonical model also refutes everything that is not derivable from <span class="math notranslate nohighlight">\(\Gamma\)</span>. This is the most important idea for completeness: If <span class="math notranslate nohighlight">\(\Gamma\not\vdash\phi\)</span> then find a model <span class="math notranslate nohighlight">\(M\)</span> such that <span class="math notranslate nohighlight">\(M\models\Gamma\)</span> and <span class="math notranslate nohighlight">\(M\not\models\phi\)</span>.</p>
+<p><strong>Remark:</strong> Every model of <span class="math notranslate nohighlight">\(\Gamma\)</span> satisfies all consequences of <span class="math notranslate nohighlight">\(\Gamma\)</span>. But the canonical model also refutes everything that is not derivable from <span class="math notranslate nohighlight">\(\Gamma\)</span>. This is the most important idea for completeness: If <span class="math notranslate nohighlight">\(\Gamma\not\vdash\phi\)</span> then find a model <span class="math notranslate nohighlight">\(M\)</span> such that <span class="math notranslate nohighlight">\(M\models\Gamma\)</span> and <span class="math notranslate nohighlight">\(M\not\models\phi\)</span>.</p>
 </section>
 <section id="the-details-of-the-proof">
 <h3>The Details of the Proof<a class="headerlink" href="#the-details-of-the-proof" title="Permalink to this heading">#</a></h3>
@@ -504,7 +505,7 @@ Have:  <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span></p
 </section>
 <section id="the-formalization">
 <h2>The Formalization<a class="headerlink" href="#the-formalization" title="Permalink to this heading">#</a></h2>
-<p>Since we will implement Chapters 2.1-2.4 of the book in Isabelle, it is a good a idea to arrange the windows on your screen so that you can simultaneously see the book <code class="docutils literal notranslate"><span class="pre">Logic</span> <span class="pre">From</span> <span class="pre">Language</span></code> and the Isabelle IDE with the theory <code class="docutils literal notranslate"><span class="pre">AllPAreQ_noProofs.thy</span></code> (there is also a theory with the proofs but that would be spoiling it).</p>
+<p>Since we will implement Chapters 2.1-2.4 of the book in Isabelle, it is a good idea to arrange the windows on your screen so that you can simultaneously see the book <code class="docutils literal notranslate"><span class="pre">Logic</span> <span class="pre">From</span> <span class="pre">Language</span></code> and the Isabelle IDE with the theory <code class="docutils literal notranslate"><span class="pre">AllPAreQ_noProofs.thy</span></code> (there is also a theory with the proofs but that would be spoiling it).</p>
 <p>Let us start with the beginning of Chapter 2.1 from <code class="docutils literal notranslate"><span class="pre">Logic</span> <span class="pre">From</span> <span class="pre">Language</span></code></p>
 <p><img alt="" src="../_images/2025-10-30-09-27-20.png" /></p>
 <p>which is formalized in the Isabelle/HOL theory <code class="docutils literal notranslate"><span class="pre">AllPAreQ_noProofs.thy</span></code> by</p>
@@ -541,7 +542,7 @@ Have:  <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span></p
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">fixes</span></code> introduces type constraints</p></li>
-<li><p>The unicode characters can by typeset in the IDE with <code class="docutils literal notranslate"><span class="pre">\&lt;models&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">\&lt;longleftrightarrow&gt;</span></code></p></li>
+<li><p>The unicode characters can be typeset in the IDE with <code class="docutils literal notranslate"><span class="pre">\&lt;models&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">\&lt;longleftrightarrow&gt;</span></code></p></li>
 </ul>
 </aside>
 </section>

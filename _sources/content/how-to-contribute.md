@@ -3,15 +3,15 @@
 Some suggested guidelines to consider when contributing to the book:
 
 - Writing:
-  - Inline clickable links that lead to further reading. If you look at the introduction to [Propositional Logic](1-propositional-logic.md) you see that I tried to make it easy for readers to access further information. You may find this tedious, but interesting inline links add a lot of value.
+  - Inline clickable links that lead to further reading. If you look at the introduction to [Propositional Logic](0-3-intro-propositional-logic.md) you see that I tried to make it easy for readers to access further information. You may find this tedious, but interesting inline links add a lot of value.
   - One way in which good online writing distinguishes itself is by the quality of interesting resources linked for further reading. 
   - Avoid long code snippets that are uninterrupted by interesting explanations.
   - Link source code and other resources
 - Organization and Layout:
-  - Compare your table of contents with the [suggested table of contents](0-intro.md). Not all items will be equally meaningful for all topics, but it can be interesting to look for sth that is not immediately on the surface.
+  - Compare your table of contents with the [suggested table of contents](0-1-intro-book.md). Not all items will be equally meaningful for all topics, but it can be interesting to look for sth that is not immediately on the surface.
   - I turned on automatic numbering of sections and subsections. Make sure that this is compatible with the headings you choose for your subsections.
   - Do not have  only a single subsection in a section.
-  - Links to local references should use the local path as in `[suggested table of contents](0-intro.md)`.
+  - Links to local references should use the local path as in `[suggested table of contents](0-1-intro-book.md)`.
 - References and Citations:
   - General Guideline: [How to Cite References](how-to-cite.md).
   - Cite your references in the text. Do not list sth in the references if it is not cited.

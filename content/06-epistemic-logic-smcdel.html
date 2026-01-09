@@ -1,0 +1,1380 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>6. Epistemic Logic with SMCDEL &#8212; Logical Foundations of Computing</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/06-epistemic-logic-smcdel';</script>
+    <link rel="canonical" href="https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/content/06-epistemic-logic-smcdel.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Hoare Logic with Dafny" href="07-hoare-logic-dafny.html" />
+    <link rel="prev" title="5. Temporal Logic with Spin" href="05-temporal-logic-spin.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="0-0-title.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Logical Foundations of Computing</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0-1-intro-book.html">The Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-2-intro-logic.html">Big Ideas of Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-3-intro-propositional-logic.html">Propositional Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="0-4-intro-modal-logic.html">Modal Logic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Logics and Tools</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-sat-solving-minisat.html">1. SAT solving with MiniSat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-logic-programming-prolog.html">2. Logic Programming with Prolog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-constraints-minizinc.html">3. Constraints with MiniZinc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-smt-solving-z3.html">4. SMT Solving and Z3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-temporal-logic-spin.html">5. Temporal Logic with Spin</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Epistemic Logic with SMCDEL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-hoare-logic-dafny.html">7. Hoare Logic with Dafny</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-higher-order-logic-isabelle.html">8. Higher-Order Logic with Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-type-theory-lean.html">9. Type Theory with Lean</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="appendix-hoare-logic.html">Hoare Logic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-syllogistic-logics.html">Syllogistic Logics in Isabelle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-complexity-classes.html">Complexity Classes Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appendix-puzzles.html">Resources on Puzzles</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Style Guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="how-to-cite.html">How to Cite References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-to-contribute.html">How to Contribute</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LEAP-at-Chapman/CPSC-510-Logical-Foundations-of-Computing/issues/new?title=Issue%20on%20page%20%2Fcontent/06-epistemic-logic-smcdel.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/content/06-epistemic-logic-smcdel.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Epistemic Logic with SMCDEL</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">6.1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-chapter-we-will">6.2. In this chapter we will:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">6.3. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-epistemic-logic">6.4. Basic Epistemic Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">6.4.1. Syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics-possible-worlds">6.4.2. Semantics (Possible Worlds)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-not-knowing-even-when-its-true">6.4.3. Example (Not Knowing Even When It’s True)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-knowledge-s5-style">6.4.4. Properties of Knowledge (S5-style)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#belief">6.4.5. Belief</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-epistemic-logic-del">6.5. Dynamic Epistemic Logic (DEL)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">6.6. The Landscape of Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-checkers">6.6.1. Model Checkers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-theorem-provers">6.6.2. Interactive Theorem Provers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epistemic-planners">6.6.3. Epistemic Planners</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-oriented-epistemic-reasoning-systems">6.6.4. AI-Oriented Epistemic Reasoning Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-smcdel-fits">6.6.5. How SMCDEL Fits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-smcdel">6.7. Using SMCDEL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">6.7.1. Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-example-use-in-online-tool">6.7.2. Model Example (use in online tool)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-public-announcement">6.7.3. Adding a Public Announcement</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">6.8. Algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation-for-knowledge">6.8.1. Model Evaluation for Knowledge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-updates-via-event-models">6.8.2. Dynamic Updates via Event Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complexity-and-practical-performance">6.8.3. Complexity and Practical Performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizations-in-smcdel">6.8.4. Optimizations in SMCDEL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-networks-and-del">6.9. Social Networks and DEL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-mapping">6.9.1. Conceptual Mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rumor-spread-in-a-small-network">6.9.2. Example: Rumor Spread in a Small Network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#private-vs-public-why-it-matters">6.9.3. Private vs. Public (Why It Matters)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toward-common-knowledge">6.9.4. Toward Common Knowledge</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">6.10. Applications in Industry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cybersecurity-and-information-flow">6.10.1. Cybersecurity and Information Flow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-and-database-systems">6.10.2. Distributed Cloud and Database Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robotics-and-autonomous-systems">6.10.3. Robotics and Autonomous Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai-and-cognitive-modeling">6.10.4. Generative AI and Cognitive Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finance-compliance-and-organizational-behavior">6.10.5. Finance, Compliance, and Organizational Behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epistemic-logics-for-cryptographic-protocols-and-zeroknowledge-proofs-jaramillo-2021">6.10.6. “Epistemic Logics for Cryptographic Protocols and Zero‐Knowledge Proofs” (Jaramillo, 2021)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-process-algebraic-framework-for-multi-agent-dynamic-epistemic-systems-2024-system-level-del-with-agents-and-transitions">6.10.7. <em>A process algebraic framework for multi-agent dynamic epistemic systems</em> (2024) — system-level DEL with agents and transitions.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#van-benthem-van-eijck-gattinger-su-symbolic-model-checking-for-dynamic-epistemic-logic">6.10.8. Van Benthem, van Eijck, Gattinger, Su, <em>Symbolic Model Checking for Dynamic Epistemic Logic</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-industry-needs-epistemic-logic">6.10.9. Why Industry Needs Epistemic Logic</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-use-cases">6.11. Typical Use Cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#epistemic-logic-and-ai">6.12. Epistemic Logic and AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#targeting-theory-of-mind-in-large-language-models-with-dynamic-epistemic-logic-sileo-et-al-2023">6.12.1. Targeting Theory of Mind in Large Language Models with Dynamic Epistemic Logic – Sileo et al. (2023)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-time-scaling-for-theory-of-mind-tasks-wu-et-al-2025">6.12.2. Inference-Time Scaling for Theory-of-Mind Tasks – Wu et al. (2025)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bridging-epistemology-and-large-language-models-fierro-et-al-2024">6.12.3. Bridging Epistemology and Large Language Models – Fierro et al. (2024)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-ai-safety-problem-klassen-al-aamas-2023">6.12.4. An AI Safety Problem – Klassen &amp; al., AAMAS 2023</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-the-rescue-drone-coordination-problem">6.13. Case Study: The “Rescue Drone Coordination” Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-overview">6.13.1. Scenario Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-in-smcdel">6.13.2. Modeling in SMCDEL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-matters">6.13.3. Why It Matters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">6.14. References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="epistemic-logic-with-smcdel">
+<h1><span class="section-number">6. </span>Epistemic Logic with SMCDEL<a class="headerlink" href="#epistemic-logic-with-smcdel" title="Permalink to this heading">#</a></h1>
+<p>Author: <em>John Mulhern</em></p>
+<section id="idea">
+<h2><span class="section-number">6.1. </span>Idea<a class="headerlink" href="#idea" title="Permalink to this heading">#</a></h2>
+<p>Epistemic logic is the study of <strong>knowledge</strong> and <strong>belief</strong> using a formal logical language (<a class="reference external" href="https://scholar.google.com/scholar?q=Hintikka+Knowledge+and+Belief">Hintikka, 1962</a>). Instead of only asking “is <code class="docutils literal notranslate"><span class="pre">p</span></code> true?”, we can ask:</p>
+<ul class="simple">
+<li><p>“does agent <code class="docutils literal notranslate"><span class="pre">a</span></code> know that <code class="docutils literal notranslate"><span class="pre">p</span></code> is true?” (<code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">p</span></code>)</p></li>
+<li><p>“does agent <code class="docutils literal notranslate"><span class="pre">a</span></code> believe that <code class="docutils literal notranslate"><span class="pre">p</span></code> is true?” (<code class="docutils literal notranslate"><span class="pre">B_a</span> <span class="pre">p</span></code>)</p></li>
+<li><p>“does agent <code class="docutils literal notranslate"><span class="pre">a</span></code> know that agent <code class="docutils literal notranslate"><span class="pre">b</span></code> knows that <code class="docutils literal notranslate"><span class="pre">p</span></code>?” (<code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">K_b</span> <span class="pre">p</span></code>)</p></li>
+</ul>
+<p>This is useful in computer science because many systems are <strong>multi-agent</strong> or <strong>distributed</strong>. What an individual process, user, or node <strong>knows</strong> (or does <strong>not</strong> know) affects what it can safely and effectively do (<a class="reference external" href="https://scholar.google.com/scholar?q=Knowledge+and+Common+Knowledge+in+a+Distributed+Environment">Halpern and Moses, 1990</a>).</p>
+<p>Epistemic logic is motivated by a simple but profound observation: in many systems, what matters is not merely what is true but what agents think is true. Whether we examine human communication, negotiation between strategic players, or computation in networked software agents, the ability to reason about an entity’s informational state becomes central. Questions such as “what does the system know about its environment?” or “what can a user infer from a public disclosure?” characterize modern cybersecurity, distributed systems, and artificial intelligence. Thus epistemic logic provides a formal language to articulate and analyze these questions rigorously, giving us a way to represent knowledge differences, detect misinformation, model secrecy, and reason about what becomes knowable as communication unfolds (<a class="reference external" href="https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logic+van+Ditmarsch+van+der+Hoek+Kooi">van Ditmarsch, van der Hoek, and Kooi, 2007</a>).</p>
+</section>
+<section id="in-this-chapter-we-will">
+<h2><span class="section-number">6.2. </span>In this chapter we will:<a class="headerlink" href="#in-this-chapter-we-will" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>dive into the history of epistemic logic,</p></li>
+<li><p>introduce the basics of (multi-agent) epistemic logic,</p></li>
+<li><p>introduce <em>dynamic</em> epistemic logic (DEL) to handle information change,</p></li>
+<li><p>show how to use <strong>SMCDEL</strong> (Symbolic Model Checker for Dynamic Epistemic Logic),</p></li>
+<li><p>explain <strong>social networks</strong> through the lens of epistemic logic</p></li>
+</ol>
+</section>
+<section id="history">
+<h2><span class="section-number">6.3. </span>History<a class="headerlink" href="#history" title="Permalink to this heading">#</a></h2>
+<p>The story of epistemic logic begins not in computer science, but in philosophy—specifically, in a moment when logicians first wondered whether knowledge itself could be treated with the same mathematical precision as truth. In the early 1960s, Jaakko Hintikka proposed a bold idea that reshaped the field: if we can speak formally about what is true, we should also be able to speak formally about what an agent knows to be true. His seminal work introduced modal operators such as K_a φ, and with them a logic that captured the structure of knowledge through the lens of “possible worlds” <a class="reference external" href="https://scholar.google.com/scholar?q=Hintikka+Knowledge+and+Belief">(Hintikka, 1962)</a>. In one stroke, Hintikka gave us a language for expressing uncertainty, inference, ignorance, and introspection—with the rigor of classical logic.</p>
+<p>Through the 1970s and 1980s, epistemic logic matured alongside another major development: the rise of Kripke semantics. Saul Kripke’s relational semantics provided clarity and precision to modal logic, grounding Hintikka’s insights in a framework where knowledge corresponded to accessibility between worlds <a class="reference external" href="https://scholar.google.com/scholar?q=Kripke+semantical+considerations+modal+logic+1963">(Kripke, 1963)</a>. These frames became powerful tools, capable of describing anything from the beliefs of a single agent to the mutual awareness of large groups. Researchers like Halpern and Moses soon recognized another profound application: distributed systems. In their influential 1990 paper, they observed that many coordination problems hinge not merely on what processes know, but on what they know about the knowledge of others (<a class="reference external" href="https://scholar.google.com/scholar?q=Knowledge+and+Common+Knowledge+in+a+Distributed+Environment">Halpern and Moses, 1990</a>). This insight forged the first deep connection between epistemic logic and computer science.</p>
+<p>While epistemic logic had established itself as a rich static theory, its dynamic nature—how knowledge changes—remained elusive. That changed in the 1990s. Alexandru Baltag, Lawrence Moss, and Slawomir Solecki, building on earlier work by Plaza on public announcement logic <a class="reference external" href="https://scholar.google.com/scholar?q=Plaza+Logic+of+Public+Announcements">(Plaza, 1989)</a>, developed what we now call Dynamic Epistemic Logic (DEL). Their breakthrough was to treat communication events themselves as mathematical objects: not just “messages sent,” but structured transformations of epistemic models. A public announcement, a whispered secret, a shared observation—all could be described as actions that reshape the possibilities agents consider. The importance of this shift cannot be overstated: DEL made information flow first-class, allowing researchers to reason formally about communication, misinformation, secrecy, and coordinated decision-making (<a class="reference external" href="https://scholar.google.com/scholar?q=The+Logic+of+Public+Announcements+Common+Knowledge+and+Private+Suspicions">Baltag, Moss, and Solecki, 1998</a>; <a class="reference external" href="https://scholar.google.com/scholar?q=The+Logic+of+Epistemic+Actions">Baltag, Moss, and Solecki, 2004</a>).</p>
+<p>With the arrival of the 2000s came a new challenge: could these elegant theories be implemented? Could machines reason about knowledge the way logicians did on paper? The development of explicit-state model checkers such as MCK and tools like DEMO marked the first serious attempts to bring epistemic logic into computational practice <a class="reference external" href="https://scholar.google.com/scholar?q=Model+Checking+Knowledge+and+Time">(Baldoni et al., 1998)</a>. Soon after, the logic-and-AI renaissance led by Johan van Benthem, together with Hans van Ditmarsch, Jan van Eijck, and many others, provided the theoretical and algorithmic foundation needed to make epistemic model checking more efficient, more expressive, and more widely applicable <a class="reference external" href="https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logic+van+Ditmarsch+van+der+Hoek+Kooi">(van Ditmarsch, van der Hoek, and Kooi, 2007)</a>. Their work laid the groundwork for symbolic representations of epistemic structures and for a deeper understanding of dynamic logics as computational artifacts.</p>
+<p>In 2016, the field crossed a major milestone with the introduction of SMCDEL, the first fully symbolic model checker for Dynamic Epistemic Logic. Leveraging Binary Decision Diagrams (BDDs), SMCDEL scaled DEL reasoning to models containing thousands or millions of states—sizes previously unreachable for explicit methods. For the first time, researchers could explore nontrivial multi-agent communication scenarios interactively, observing how knowledge changed step by step, update by update. SMCDEL didn’t just implement DEL; it demonstrated its computational viability <a class="reference external" href="https://scholar.google.com/scholar?q=Symbolic+Model+Checking+for+Dynamic+Epistemic+Logic">(van Benthem, van Eijck, Gattinger, and Su, 2016)</a>.</p>
+<p>The most recent chapter in this story emerges from an unexpected direction: artificial intelligence. As large language models and multi-agent AI systems proliferate, epistemic logic has found itself at the center of questions about belief modeling, theory of mind, explainability, and communication among autonomous systems. DEL-based reasoning tasks are now used to test the social inference capabilities of generative models (<a class="reference external" href="https://scholar.google.com/scholar?q=Targeting+Theory+of+Mind+Dynamic+Epistemic+Logic">Sileo et al., 2023</a>; <a class="reference external" href="https://scholar.google.com/scholar?q=Inference-Time+Scaling+for+Theory+of+Mind+LLM">Wu et al., 2025</a>). Neurosymbolic architectures pair generative agents that produce hypotheses with epistemic modules that verify or correct them <a class="reference external" href="https://scholar.google.com/scholar?q=Bridging+Epistemology+and+Large+Language+Models">(Fierro et al., 2024)</a>. Meanwhile, robotics researchers use epistemic models to ensure that swarms, drones, and autonomous vehicles coordinate safely in environments saturated with partial information and unreliable communication (<a class="reference external" href="https://scholar.google.com/scholar?q=e-PICO+epistemic+reasoner+collaborative+robots">Soldà et al., 2022</a>; <a class="reference external" href="https://scholar.google.com/scholar?q=Critical+Review+of+Communications+in+Multi-Robot+Systems">Gielis et al., 2022</a>).</p>
+<p>From philosophical curiosity to formal semantics, from dynamic reasoning to symbolic computation, and now into the age of generative AI, the history of epistemic logic is a progression toward greater expressive power and deeper computational relevance. What began as an abstract theory of knowledge has grown into a foundational tool for understanding how information flows in interactive, intelligent, and increasingly autonomous systems.</p>
+</section>
+<section id="basic-epistemic-logic">
+<h2><span class="section-number">6.4. </span>Basic Epistemic Logic<a class="headerlink" href="#basic-epistemic-logic" title="Permalink to this heading">#</a></h2>
+<section id="syntax">
+<h3><span class="section-number">6.4.1. </span>Syntax<a class="headerlink" href="#syntax" title="Permalink to this heading">#</a></h3>
+<p>The syntax of epistemic logic expands propositional logic by equipping it with operators that express informational attitudes. Rather than merely stating that a fact holds, epistemic logic allows us to articulate perspectives on truth — what each agent takes to be the case, what they rule out, and how they reflect on their own knowledge state. This syntactic extension is minimalist by design: a small number of new operators yields an expressive language capable of capturing secrecy, inference, deception, and shared knowledge among distributed agents.</p>
+<p>For example, we assume:</p>
+<ul class="simple">
+<li><p>a set of atomic propositions: <code class="docutils literal notranslate"><span class="pre">p,</span> <span class="pre">q,</span> <span class="pre">r,</span> <span class="pre">...</span></code></p></li>
+<li><p>a finite set of agents: <code class="docutils literal notranslate"><span class="pre">a,</span> <span class="pre">b,</span> <span class="pre">c,</span> <span class="pre">...</span></code></p></li>
+</ul>
+<p>The language is built by:</p>
+<ul>
+<li><p>every atomic proposition <code class="docutils literal notranslate"><span class="pre">p</span></code> is a formula</p></li>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">φ</span></code> and <code class="docutils literal notranslate"><span class="pre">ψ</span></code> are formulas, then</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">¬φ</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(φ</span> <span class="pre">∧</span> <span class="pre">ψ)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(φ</span> <span class="pre">∨</span> <span class="pre">ψ)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(φ</span> <span class="pre">→</span> <span class="pre">ψ)</span></code></p></li>
+</ul>
+<p>are formulas</p>
+</li>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">φ</span></code> is a formula and <code class="docutils literal notranslate"><span class="pre">a</span></code> is an agent, then</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">φ</span></code> is a formula, read “agent <code class="docutils literal notranslate"><span class="pre">a</span></code> knows that <code class="docutils literal notranslate"><span class="pre">φ</span></code>”</p></li>
+</ul>
+</li>
+</ul>
+<p>Optionally we can also allow:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">B_a</span> <span class="pre">φ</span></code> for “agent <code class="docutils literal notranslate"><span class="pre">a</span></code> believes that <code class="docutils literal notranslate"><span class="pre">φ</span></code>”</p></li>
+</ul>
+<p>Examples:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">p</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">K_b</span> <span class="pre">p</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">(p</span> <span class="pre">→</span> <span class="pre">q)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">p</span> <span class="pre">∧</span> <span class="pre">K_b</span> <span class="pre">p</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">p</span> <span class="pre">→</span> <span class="pre">B_a</span> <span class="pre">p</span></code> (knowledge implies belief)</p></li>
+</ul>
+</section>
+<section id="semantics-possible-worlds">
+<h3><span class="section-number">6.4.2. </span>Semantics (Possible Worlds)<a class="headerlink" href="#semantics-possible-worlds" title="Permalink to this heading">#</a></h3>
+<p>Epistemic logic uses <strong>possible worlds semantics</strong> <a class="reference external" href="https://scholar.google.com/scholar?q=Kripke+semantical+considerations+modal+logic+1963">(Kripke semantics)</a>.</p>
+<p>A model is a triple:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span> <span class="pre">=</span> <span class="pre">(W,</span> <span class="pre">{R_a}_a,</span> <span class="pre">V)</span></code></p></li>
+</ul>
+<p>where:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">W</span></code> is a nonempty set of <strong>worlds</strong></p></li>
+<li><p>for each agent <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">R_a</span></code> is a binary relation on <code class="docutils literal notranslate"><span class="pre">W</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">w')</span> <span class="pre">∈</span> <span class="pre">R_a</span></code> means: <em>at world <code class="docutils literal notranslate"><span class="pre">w</span></code>, agent <code class="docutils literal notranslate"><span class="pre">a</span></code> considers world <code class="docutils literal notranslate"><span class="pre">w'</span></code> possible</em></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">V</span></code> is a valuation assigning to every atomic proposition the set of worlds where it is true</p></li>
+</ol>
+<p>We define truth at a world <code class="docutils literal notranslate"><span class="pre">w</span></code> inductively:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">p</span></code> iff <code class="docutils literal notranslate"><span class="pre">w</span> <span class="pre">∈</span> <span class="pre">V(p)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">¬φ</span></code> iff <strong>not</strong> (<code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">φ</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">(φ</span> <span class="pre">∧</span> <span class="pre">ψ)</span></code> iff (<code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">φ</span></code> <strong>and</strong> <code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">ψ</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">(φ</span> <span class="pre">∨</span> <span class="pre">ψ)</span></code> iff (<code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">φ</span></code> <strong>or</strong> <code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">ψ</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">(φ</span> <span class="pre">→</span> <span class="pre">ψ)</span></code> iff (if <code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">φ</span></code> then <code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">ψ</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w</span> <span class="pre">⊨</span> <span class="pre">K_a</span> <span class="pre">φ</span></code> iff for <strong>all</strong> <code class="docutils literal notranslate"><span class="pre">w'</span></code> such that <code class="docutils literal notranslate"><span class="pre">(w,</span> <span class="pre">w')</span> <span class="pre">∈</span> <span class="pre">R_a</span></code>, we have <code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w'</span> <span class="pre">⊨</span> <span class="pre">φ</span></code></p></li>
+</ul>
+<p>Key sentence:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">φ</span></code> is true at <code class="docutils literal notranslate"><span class="pre">w</span></code> iff <code class="docutils literal notranslate"><span class="pre">φ</span></code> is true in <strong>all</strong> worlds that agent <code class="docutils literal notranslate"><span class="pre">a</span></code> considers possible from <code class="docutils literal notranslate"><span class="pre">w</span></code>.</p>
+</div></blockquote>
+</section>
+<section id="example-not-knowing-even-when-its-true">
+<h3><span class="section-number">6.4.3. </span>Example (Not Knowing Even When It’s True)<a class="headerlink" href="#example-not-knowing-even-when-its-true" title="Permalink to this heading">#</a></h3>
+<p>Let there be 2 worlds: <code class="docutils literal notranslate"><span class="pre">w1</span></code>, <code class="docutils literal notranslate"><span class="pre">w2</span></code>.</p>
+<ul class="simple">
+<li><p>in <code class="docutils literal notranslate"><span class="pre">w1</span></code>, <code class="docutils literal notranslate"><span class="pre">p</span></code> is true</p></li>
+<li><p>in <code class="docutils literal notranslate"><span class="pre">w2</span></code>, <code class="docutils literal notranslate"><span class="pre">p</span></code> is false</p></li>
+</ul>
+<p>Let agent <code class="docutils literal notranslate"><span class="pre">a</span></code> be <strong>uncertain</strong> between these 2 worlds:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">R_a</span> <span class="pre">=</span> <span class="pre">{(w1,w1),</span> <span class="pre">(w1,w2),</span> <span class="pre">(w2,w1),</span> <span class="pre">(w2,w2)}</span></code></p></li>
+</ul>
+<p>Then:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w1</span> <span class="pre">⊨</span> <span class="pre">p</span></code> (because <code class="docutils literal notranslate"><span class="pre">p</span></code> is true in <code class="docutils literal notranslate"><span class="pre">w1</span></code>)</p></li>
+<li><p>but <code class="docutils literal notranslate"><span class="pre">M,</span> <span class="pre">w1</span> <span class="pre">⊭</span> <span class="pre">K_a</span> <span class="pre">p</span></code> (because from <code class="docutils literal notranslate"><span class="pre">w1</span></code>, agent <code class="docutils literal notranslate"><span class="pre">a</span></code> also considers <code class="docutils literal notranslate"><span class="pre">w2</span></code> possible, and in <code class="docutils literal notranslate"><span class="pre">w2</span></code> <code class="docutils literal notranslate"><span class="pre">p</span></code> is false)</p></li>
+</ul>
+<p>So: <code class="docutils literal notranslate"><span class="pre">p</span></code> is actually true, but agent <code class="docutils literal notranslate"><span class="pre">a</span></code> does <strong>not</strong> know <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
+</section>
+<section id="properties-of-knowledge-s5-style">
+<h3><span class="section-number">6.4.4. </span>Properties of Knowledge (S5-style)<a class="headerlink" href="#properties-of-knowledge-s5-style" title="Permalink to this heading">#</a></h3>
+<p>These S5 principles constitute a kind of “idealized epistemic agent.” Knowledge is factual, agents perfectly reflect on what they know, and lacking knowledge is itself a known state. While these assumptions prove analytically convenient — particularly in security or distributed systems where local state is perfectly introspectable — they are not universally appropriate. Human reasoners, machine learning systems, and bounded computational agents often violate introspection or even factivity. Thus S5 serves as a baseline theory upon which weaker or alternative epistemic logics can be constructed. In many CS applications, we model knowledge with S5-like properties.</p>
+<p>For each agent <code class="docutils literal notranslate"><span class="pre">a</span></code>, the relation <code class="docutils literal notranslate"><span class="pre">R_a</span></code> is:</p>
+<ul class="simple">
+<li><p>reflexive</p></li>
+<li><p>symmetric</p></li>
+<li><p>transitive</p></li>
+</ul>
+<p>This validates the following principles:</p>
+<ol class="arabic simple">
+<li><p><strong>Factivity</strong>: <code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">φ</span></code></p></li>
+<li><p><strong>Positive introspection</strong>: <code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">K_a</span> <span class="pre">K_a</span> <span class="pre">φ</span></code></p></li>
+<li><p><strong>Negative introspection</strong>: <code class="docutils literal notranslate"><span class="pre">¬K_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">K_a</span> <span class="pre">¬K_a</span> <span class="pre">φ</span></code></p></li>
+<li><p><strong>Distribution</strong>: <code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">(φ</span> <span class="pre">→</span> <span class="pre">ψ)</span> <span class="pre">→</span> <span class="pre">(K_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">K_a</span> <span class="pre">ψ)</span></code></p></li>
+</ol>
+<p>These together make knowledge quite strong.</p>
+</section>
+<section id="belief">
+<h3><span class="section-number">6.4.5. </span>Belief<a class="headerlink" href="#belief" title="Permalink to this heading">#</a></h3>
+<p>Belief (<code class="docutils literal notranslate"><span class="pre">B_a</span> <span class="pre">φ</span></code>) is often taken to be <strong>weaker</strong>:</p>
+<ul class="simple">
+<li><p>belief is <strong>not</strong> factive (we do <strong>not</strong> assume <code class="docutils literal notranslate"><span class="pre">B_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">φ</span></code>)</p></li>
+<li><p>we can still assume doxastic introspection (depending on the logic)</p></li>
+<li><p>often we assume: <code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">φ</span> <span class="pre">→</span> <span class="pre">B_a</span> <span class="pre">φ</span></code> (knowledge implies belief)</p></li>
+</ul>
+<p>Belief is handy for modeling <strong>mistakes</strong> or <strong>rumors</strong> in social networks.</p>
+</section>
+</section>
+<section id="dynamic-epistemic-logic-del">
+<h2><span class="section-number">6.5. </span>Dynamic Epistemic Logic (DEL)<a class="headerlink" href="#dynamic-epistemic-logic-del" title="Permalink to this heading">#</a></h2>
+<p>So far: <em>static</em> epistemic logic — one model, we ask what is known.</p>
+<p>But many real situations have <strong>information change</strong>:</p>
+<ul class="simple">
+<li><p>a public announcement</p></li>
+<li><p>a private message</p></li>
+<li><p>an observation</p></li>
+<li><p>an agent discovering a fact</p></li>
+</ul>
+<p><strong>Dynamic Epistemic Logic</strong> adds <strong>events</strong> and <strong>updates</strong> to represent such changes.</p>
+<p>Dynamic epistemic logic begins from a deep insight: knowledge changes. Our epistemic state is shaped not only by what the world is but also by what we learn, observe, forget, or misinterpret. DEL formalizes information events — announcements, observations, private communication — and studies how they transform possible-world structures. DEL allows reasoning about what becomes knowable after a rumor spreads, when a protocol message is broadcast, or how shared secrets propagate through a network.</p>
+<p><strong>Public Announcement (Informal)</strong></p>
+<p>Suppose we have a model <code class="docutils literal notranslate"><span class="pre">M</span></code> and we publicly announce <code class="docutils literal notranslate"><span class="pre">φ</span></code>.</p>
+<ul class="simple">
+<li><p>every agent hears the same announcement</p></li>
+<li><p>every agent trusts it (it becomes true, or was already true)</p></li>
+<li><p>so they <strong>eliminate</strong> all worlds in which <code class="docutils literal notranslate"><span class="pre">φ</span></code> was false</p></li>
+<li><p>result: a new epistemic model with fewer worlds</p></li>
+</ul>
+<p>After this, many things that were <strong>not</strong> known become <strong>known</strong>, because there are fewer possibilities left.</p>
+<p>This is exactly the kind of update SMCDEL is good at checking.</p>
+</section>
+<section id="the-landscape-of-tools">
+<h2><span class="section-number">6.6. </span>The Landscape of Tools<a class="headerlink" href="#the-landscape-of-tools" title="Permalink to this heading">#</a></h2>
+<p>Epistemic logic sits at the intersection of modal logic, distributed systems theory, and multi-agent reasoning, and over the past two decades it has given rise to a diverse ecosystem of tools. Each tool reflects a different philosophical or computational stance—whether emphasizing explicit-state exploration, symbolic verification, interactive proof, or planning under uncertainty. Understanding this landscape clarifies where SMCDEL fits and what makes it distinct.</p>
+<p>Broadly, epistemic tools fall into four families: <strong>model checkers</strong>, <strong>interactive theorem provers</strong>, <strong>epistemic planners</strong>, and <strong>AI-oriented reasoning systems</strong>. Each family implements a different slice of the epistemic reasoning pipeline, and together they form a cohesive ecosystem.</p>
+<section id="model-checkers">
+<h3><span class="section-number">6.6.1. </span>Model Checkers<a class="headerlink" href="#model-checkers" title="Permalink to this heading">#</a></h3>
+<p>Traditional epistemic model checkers follow the pattern of explicit exploration: they enumerate worlds, track accessibility relations, and evaluate formulas directly over that structure. Tools like <a class="reference external" href="https://www.csse.canterbury.ac.nz/mck/"><strong>MCK</strong></a> are representative of this approach. Given a Kripke model and an epistemic-temporal formula, MCK systematically checks whether the formula holds in the initial state. Conceptually, this evaluation can be sketched as:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>function ExplicitModelCheck(M, φ):
+    for each world w in M.W:
+        M.truth[w] := EvaluateFormula(M, w, φ)
+    return M.truth
+</pre></div>
+</div>
+<p>Although straightforward, explicit exploration becomes costly as models grow. Nevertheless, these tools provide clear insight into epistemic structures and are useful for protocol analysis, security examples, and small multi-agent scenarios.</p>
+<p>Another branch of this family includes tools such as <a class="reference external" href="http://people.uleth.ca/~kooi/del/"><strong>DEMO</strong></a> and DEMO-S5, which focus on dynamic epistemic models and support visualization of DEL updates. They excel in educational and conceptual settings, where visualizing product updates and information flow is as important as the raw computation.</p>
+</section>
+<section id="interactive-theorem-provers">
+<h3><span class="section-number">6.6.2. </span>Interactive Theorem Provers<a class="headerlink" href="#interactive-theorem-provers" title="Permalink to this heading">#</a></h3>
+<p>A different approach embeds epistemic logic inside a higher-order proof environment such as <a class="reference external" href="https://isabelle.in.tum.de/"><strong>Isabelle/HOL</strong></a> or <a class="reference external" href="https://coq.inria.fr/"><strong>Coq</strong></a>. Here, epistemic reasoning is not automated model checking but rather formal deduction about epistemic principles. These systems allow the user to define Kripke structures, prove lemmas about knowledge, establish impossibility results (such as the Coordinated Attack theorem), and verify security protocols.</p>
+<p>A typical proof workflow might look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">theory</span> <span class="n">Epistemic_Example</span>
+<span class="n">begin</span>
+
+<span class="n">datatype</span> <span class="n">world</span> <span class="o">=</span> <span class="n">w1</span> <span class="o">|</span> <span class="n">w2</span>
+
+<span class="n">definition</span> <span class="n">R_a</span> <span class="n">where</span>
+  <span class="s2">&quot;R_a = {(w1, w1), (w1, w2), (w2, w1), (w2, w2)}&quot;</span>
+
+<span class="n">lemma</span> <span class="n">KnowsImpliesTruth</span><span class="p">:</span>
+  <span class="n">assumes</span> <span class="s2">&quot;M, w ⊨ K_a φ&quot;</span>
+  <span class="n">shows</span> <span class="s2">&quot;M, w ⊨ φ&quot;</span>
+  <span class="n">using</span> <span class="n">assms</span> <span class="n">unfolding</span> <span class="n">semantics_of_K</span>
+  <span class="n">by</span> <span class="n">auto</span>
+
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>Interactive theorem provers give maximal rigor and flexibility, though at the cost of heavy manual involvement.</p>
+</section>
+<section id="epistemic-planners">
+<h3><span class="section-number">6.6.3. </span>Epistemic Planners<a class="headerlink" href="#epistemic-planners" title="Permalink to this heading">#</a></h3>
+<p>A more recent development comes from the AI planning community, where epistemic logic is used to model actions whose effects depend on agents’ knowledge or beliefs. Systems like <a class="reference external" href="https://github.com/epistemic-planning/efp"><strong>EFP</strong></a> (Epistemic Forward Planner) or <a class="reference external" href="https://scholar.google.com/scholar?q=MAFS+multi-agent+forward+search"><strong>MAFS</strong></a> (Multi-Agent Forward Search) treat DEL-style event models as action descriptions within a planning domain. Planners search for action sequences that achieve goals such as “agent A eventually knows that agent B knows p.”</p>
+<p>A high-level sketch of how such planning might proceed is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function EpistemicPlan(M_initial, Goal):
+    frontier := {M_initial}
+    visited  := ∅
+
+    while frontier not empty:
+        M := pop(frontier)
+        if Satisfies(M, Goal):
+            return ExtractPlan(M)
+
+        for each event E in AvailableEvents:
+            M&#39; := ApplyEventModel(M, E)
+            if M&#39; not in visited:
+                frontier.add(M&#39;)
+                visited.add(M&#39;)
+    return failure
+</pre></div>
+</div>
+<p>These planners treat DEL updates much like classical STRIPS operators but with epistemic structure embedded inside them.</p>
+</section>
+<section id="ai-oriented-epistemic-reasoning-systems">
+<h3><span class="section-number">6.6.4. </span>AI-Oriented Epistemic Reasoning Systems<a class="headerlink" href="#ai-oriented-epistemic-reasoning-systems" title="Permalink to this heading">#</a></h3>
+<p>As artificial intelligence increasingly adopts multi-agent or social reasoning tasks, new tools integrate epistemic logic with learning-based systems. Some frameworks generate DEL scenarios to evaluate large language models’ Theory-of-Mind abilities. Others embed knowledge updates inside reinforcement-learning pipelines or agent-based simulators.</p>
+<p>Although still experimental, these systems often pair a learned component for prediction or hypothesis generation with a symbolic epistemic module for consistency checking. A simplified architecture looks like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loop</span><span class="p">:</span>
+    <span class="n">observation</span> <span class="o">:=</span> <span class="n">Agent</span><span class="o">.</span><span class="n">observe</span><span class="p">()</span>
+    <span class="n">guess</span>       <span class="o">:=</span> <span class="n">LLM</span><span class="o">.</span><span class="n">generate_hypothesis</span><span class="p">(</span><span class="n">observation</span><span class="p">)</span>
+    <span class="n">knowledge</span>   <span class="o">:=</span> <span class="n">ApplyEventModel</span><span class="p">(</span><span class="n">knowledge</span><span class="p">,</span> <span class="n">guess_as_event</span><span class="p">)</span>
+    <span class="n">action</span>      <span class="o">:=</span> <span class="n">KnowledgeGuidedPolicy</span><span class="p">(</span><span class="n">knowledge</span><span class="p">)</span>
+    <span class="n">Agent</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This neurosymbolic pattern—guess with a generative model, verify with symbolic epistemic logic—is increasingly influential.</p>
+</section>
+<section id="how-smcdel-fits">
+<h3><span class="section-number">6.6.5. </span>How SMCDEL Fits<a class="headerlink" href="#how-smcdel-fits" title="Permalink to this heading">#</a></h3>
+<p>SMCDEL occupies a distinct niche within this ecosystem. Unlike explicit-state tools, it is fully symbolic, representing worlds, relations, and updates as BDDs. Unlike theorem provers, it performs automated model checking without requiring manual proof steps. Unlike planners, it does not search action sequences but instead analyzes specific epistemic transitions. By combining the expressive machinery of DEL with the computational efficiency of BDDs, SMCDEL permits interactive experimentation with models that would be impractical for explicit tools.</p>
+</section>
+</section>
+<section id="using-smcdel">
+<h2><span class="section-number">6.7. </span>Using SMCDEL<a class="headerlink" href="#using-smcdel" title="Permalink to this heading">#</a></h2>
+<p>SMCDEL (Symbolic Model Checker for Dynamic Epistemic Logic) is a tool that:</p>
+<ul class="simple">
+<li><p>lets you define agents, worlds, valuations, relations</p></li>
+<li><p>lets you define <strong>event models</strong> (for announcements, private messages, etc.)</p></li>
+<li><p>applies them with <code class="docutils literal notranslate"><span class="pre">update</span></code></p></li>
+<li><p>and then lets you <code class="docutils literal notranslate"><span class="pre">check</span></code> whether a certain epistemic formula holds</p></li>
+</ul>
+<p>You can use the <strong>web version</strong>, which all the code present in this chapter is based around:</p>
+<ul class="simple">
+<li><p>https://w4eg.de/malvin/illc/smcdelweb</p></li>
+</ul>
+<p>or install it locally.</p>
+<p><strong>WARNING: IF ANY CODE FROM THIS DOCUMENT IS USED WHEN RUNNING LOCALLY, IT MAY NOT WORK AS THERE IS DIFFERENCES BETWEEN THE ONLINE VERSION AND THE LOCALLY RUN VERSION’S SYNTAX</strong></p>
+<section id="installation">
+<h3><span class="section-number">6.7.1. </span>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using Haskell Stack</span>
+stack<span class="w"> </span>install<span class="w"> </span>smcdel
+</pre></div>
+</div>
+<p>After installation, you can run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>smcdel<span class="w"> </span>my_model.smcdel
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">my_model.smcdel</span></code> is a text file describing your epistemic model and the formulas you want to check.</p>
+</section>
+<section id="model-example-use-in-online-tool">
+<h3><span class="section-number">6.7.2. </span>Model Example (use in online tool)<a class="headerlink" href="#model-example-use-in-online-tool" title="Permalink to this heading">#</a></h3>
+<p>Goal: two agents, <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, two worlds, <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">2</span></code>, and both agents are uncertain.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>VARS 1, 2
+
+LAW  Top
+
+OBS  a: 1
+     b: 1
+
+WHERE? 1
+
+WHERE? a knows whether 1
+
+WHERE? a knows whether 2
+
+WHERE? b knows whether 1
+
+WHERE? b knows whether 2
+</pre></div>
+</div>
+<p>What this does:</p>
+<ul class="simple">
+<li><p>The model contains two propositional variables (1, 2) and two agents (a, b), with all valuations allowed (LAW Top).</p></li>
+<li><p>Both agents observe only the value of variable 1, so they can always distinguish worlds by 1 but never by 2.</p></li>
+<li><p>As a result:</p>
+<ul>
+<li><p>1 is true exactly in the worlds where it appears in the valuation.</p></li>
+<li><p>Agents always know whether 1 (they directly observe it).</p></li>
+<li><p>Agents never know whether 2 (worlds indistinguishable to them disagree on 2).</p></li>
+</ul>
+</li>
+</ul>
+<p>Intuition: both answers should be false because each agent still considers the world where p is false possible.</p>
+</section>
+<section id="adding-a-public-announcement">
+<h3><span class="section-number">6.7.3. </span>Adding a Public Announcement<a class="headerlink" href="#adding-a-public-announcement" title="Permalink to this heading">#</a></h3>
+<p>Now we show how a Public Announcement can impact an epistemic model.</p>
+<p>We start from the previous model and then “<strong>add an event</strong>” where we publicly announce 1.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>VARS 1, 2
+
+LAW  Top
+
+OBS 
+  a: 1
+  b: 1
+
+-- Before any announcement
+WHERE? a knows whether 1
+WHERE? b knows whether 1
+
+WHERE? a knows whether 2
+WHERE? b knows whether 2
+
+-- After a public announcement that 2 is true
+WHERE? [ ! 2 ] a knows whether 1
+WHERE? [ ! 2 ] b knows whether 1
+
+WHERE? [ ! 2 ] a knows whether 2
+WHERE? [ ! 2 ] b knows whether 2
+
+</pre></div>
+</div>
+<p>What happens:</p>
+<ul class="simple">
+<li><p>since we publicly announced <code class="docutils literal notranslate"><span class="pre">2</span></code>, all worlds where <code class="docutils literal notranslate"><span class="pre">2</span></code> was false are dropped</p></li>
+<li><p>in a model with a single world, <code class="docutils literal notranslate"><span class="pre">1</span></code> is trivially known by everyone</p></li>
+<li><p>so both <code class="docutils literal notranslate"><span class="pre">Ka</span> <span class="pre">2</span></code> and <code class="docutils literal notranslate"><span class="pre">Kb</span> <span class="pre">2</span></code> should now be <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+<p>This is the dynamic piece: <strong>before</strong> the update, they did not know; <strong>after</strong> the update, they do.</p>
+</section>
+</section>
+<section id="algorithms">
+<h2><span class="section-number">6.8. </span>Algorithms<a class="headerlink" href="#algorithms" title="Permalink to this heading">#</a></h2>
+<p>Understanding the algorithms that drive SMCDEL reveals both the power and the limits of symbolic model checking for epistemic logic. At its core, the tool must determine which worlds satisfy a formula, and how those sets of worlds evolve when epistemic events occur. To do this efficiently, SMCDEL relies on <em>symbolic</em> representations rather than explicit enumeration.</p>
+<p>The foundation of SMCDEL’s symbolic approach is the <strong>Binary Decision Diagram (BDD)</strong>. Instead of storing worlds, accessibility relations, valuations, and event preconditions as large explicit sets, SMCDEL encodes them as Boolean decision structures. These BDDs compress the underlying state space—often exponentially—by exploiting repeated logical substructure, in much the same way as symbolic hardware model checkers.</p>
+<p>Formally, we can think of each formula, relation, or set of worlds as being represented by a BDD that encodes a Boolean characteristic function. For example, the set of worlds where a formula <code class="docutils literal notranslate"><span class="pre">φ</span></code> holds is represented by a BDD <code class="docutils literal notranslate"><span class="pre">B_φ</span></code>, which returns true exactly on those assignments corresponding to worlds satisfying <code class="docutils literal notranslate"><span class="pre">φ</span></code>.</p>
+<section id="model-evaluation-for-knowledge">
+<h3><span class="section-number">6.8.1. </span>Model Evaluation for Knowledge<a class="headerlink" href="#model-evaluation-for-knowledge" title="Permalink to this heading">#</a></h3>
+<p>Using BDDs, SMCDEL evaluates epistemic formulas through operations on these symbolic sets. For a knowledge formula <code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">φ</span></code>, the semantics say that <code class="docutils literal notranslate"><span class="pre">K_a</span> <span class="pre">φ</span></code> holds at a world <code class="docutils literal notranslate"><span class="pre">w</span></code> if, in all worlds <code class="docutils literal notranslate"><span class="pre">w′</span></code> accessible from <code class="docutils literal notranslate"><span class="pre">w</span></code> via <code class="docutils literal notranslate"><span class="pre">R_a</span></code>, the formula <code class="docutils literal notranslate"><span class="pre">φ</span></code> is true. Algorithmically, this becomes a universal relational image computation.</p>
+<p>At a high level, we can describe the evaluation process symbolically as:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>function ComputeKnowledgeBDD(agent a, B_phi, R_a, B_Worlds):
+    # B_phi: BDD for the set of worlds where φ holds
+    # R_a:   BDD encoding the accessibility relation for agent a
+    # B_Worlds: BDD for all reachable worlds
+
+    # Step 1: encode the complement of φ
+    B_not_phi := NOT(B_phi)
+
+    # Step 2: find (w, w&#39;) such that w R_a w&#39; and w&#39; violates φ
+    #         i.e., bad successors with respect to φ
+    B_bad_pairs := R_a AND LiftToPairs(B_not_phi)
+
+    # Step 3: project away w&#39; to obtain worlds w that have some bad successor
+    B_bad_sources := Exists_wprime(B_bad_pairs)
+
+    # Step 4: K_a φ holds exactly at worlds with no bad successors
+    B_Ka_phi := B_Worlds AND NOT(B_bad_sources)
+
+    return B_Ka_phi
+</pre></div>
+</div>
+<p>Here, LiftToPairs conceptually aligns the BDD for ¬φ with the second component of the pair (w, w′), and Exists_wprime performs existential quantification over the successor world variables. The result B_Ka_phi is the BDD representing all worlds where K_a φ holds. In practice, SMCDEL caches such intermediate results and uses optimized BDD libraries to implement the Boolean and quantification operations efficiently.</p>
+</section>
+<section id="dynamic-updates-via-event-models">
+<h3><span class="section-number">6.8.2. </span>Dynamic Updates via Event Models<a class="headerlink" href="#dynamic-updates-via-event-models" title="Permalink to this heading">#</a></h3>
+<p>Dynamic Epistemic Logic introduces a second layer of computation: model updates. When a public announcement or private event occurs, SMCDEL constructs a new epistemic model that reflects the changed information state. Formally, this is described as the product of the current model M and an event model E, written M ⊗ E.</p>
+<p>On the symbolic side, we work with BDDs representing:</p>
+<ul class="simple">
+<li><p>the current set of worlds,</p></li>
+<li><p>the current accessibility relations,</p></li>
+<li><p>the events and their preconditions,</p></li>
+<li><p>and the event indistinguishability relations for each agent.</p></li>
+</ul>
+<p>The DEL product can be sketched as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function ApplyEventModel(M, E):
+    # M: current model with
+    #    - B_Worlds: BDD for worlds
+    #    - R_a: BDDs for each agent a&#39;s accessibility
+    # E: event model with
+    #    - B_Events: BDD for events
+    #    - Pre: BDD for preconditions (over worlds × events)
+    #    - R_a_evt: BDDs for event indistinguishability
+
+    # Step 1: build candidate world–event pairs
+    B_world_event_pairs := B_Worlds × B_Events
+
+    # Step 2: enforce event preconditions (filter out impossible pairs)
+    B_valid_pairs := B_world_event_pairs AND Pre
+
+    # Step 3: project to obtain the new &quot;worlds&quot; of the product model
+    B_new_worlds := Exists_events(B_valid_pairs)
+
+    # Step 4: construct new accessibility relations for each agent
+    for each agent a:
+        # (w, e) is related to (w&#39;, e&#39;) if:
+        #   - w R_a w&#39;   in the old model
+        #   - e R_a_evt e&#39; in the event model
+        B_Ra_worlds := LiftWorldRelation(R_a[a])
+        B_Ra_events := LiftEventRelation(R_a_evt[a])
+        B_Ra_product := (B_Ra_worlds AND B_Ra_events) AND
+                        PairRestrictionTo(B_valid_pairs)
+
+        # Optionally project to appropriate variable sets
+        R_a_new[a] := B_Ra_product
+
+    return NewModel(B_new_worlds, R_a_new)
+</pre></div>
+</div>
+<p>Intuitively, this procedure constructs the Cartesian product of worlds and events, filters out combinations that do not satisfy the event’s precondition, and then recomputes each agent’s accessibility relation based on both the old world relation and the event indistinguishability relation. The result is a new symbolic model representing the updated epistemic state after the event.</p>
+<p>In the special case of a public announcement of a formula φ, the event model has a single event whose precondition is φ, and all agents consider this event indistinguishable from itself. Symbolically, this collapses to simply eliminating worlds that do not satisfy φ, which can be expressed very compactly in BDD form.</p>
+</section>
+<section id="complexity-and-practical-performance">
+<h3><span class="section-number">6.8.3. </span>Complexity and Practical Performance<a class="headerlink" href="#complexity-and-practical-performance" title="Permalink to this heading">#</a></h3>
+<p>From the standpoint of computational complexity, DEL model checking is demanding. The general problem is PSPACE-complete, and systems involving deeply nested updates or many agents can reach EXPTIME complexity. In principle, this would make large-scale reasoning infeasible. In practice, however, symbolic methods allow SMCDEL to operate effectively on models containing thousands or even millions of worlds.</p>
+<p>The key is that BDDs frequently represent huge sets very compactly, and the core algorithms—Boolean operations, relational products, quantification—operate on these compressed structures, often without ever “seeing” individual worlds. This is the same phenomenon that enabled symbolic hardware model checking to scale to industrial-sized designs.</p>
+</section>
+<section id="optimizations-in-smcdel">
+<h3><span class="section-number">6.8.4. </span>Optimizations in SMCDEL<a class="headerlink" href="#optimizations-in-smcdel" title="Permalink to this heading">#</a></h3>
+<p>To further improve performance, SMCDEL employs several implementation-level optimizations. Unreachable worlds are pruned early and often, reducing the size of the state space that subsequent operations must handle. The underlying BDD library performs dynamic variable reordering to keep the diagrams compact, which has a significant impact on memory and runtime. Intermediate results, such as BDDs for subformulas or partial relational images, are stored in caches and reused whenever the same structure appears again.</p>
+<p>Additionally, event models are simplified before being applied: logically equivalent or redundant conditions are merged, and unnecessary structure is removed. Updates are often evaluated incrementally, building on existing symbolic objects instead of recomputing from scratch. A high-level sketch of this optimization pattern looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">CachedModelCheck</span><span class="p">(</span><span class="n">formula</span> <span class="n">φ</span><span class="p">,</span> <span class="n">model</span> <span class="n">M</span><span class="p">,</span> <span class="n">cache</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">φ</span><span class="p">)</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="p">[(</span><span class="n">M</span><span class="p">,</span> <span class="n">φ</span><span class="p">)]</span>
+
+    <span class="k">if</span> <span class="n">φ</span> <span class="ow">is</span> <span class="n">atomic</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">:=</span> <span class="n">EvaluateAtomic</span><span class="p">(</span><span class="n">φ</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="n">φ</span> <span class="ow">is</span> <span class="n">K_a</span> <span class="n">ψ</span><span class="p">:</span>
+        <span class="n">B_psi</span> <span class="o">:=</span> <span class="n">CachedModelCheck</span><span class="p">(</span><span class="n">ψ</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">cache</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">:=</span> <span class="n">ComputeKnowledgeBDD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">B_psi</span><span class="p">,</span> <span class="n">M</span><span class="o">.</span><span class="n">R_a</span><span class="p">,</span> <span class="n">M</span><span class="o">.</span><span class="n">B_Worlds</span><span class="p">)</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="n">φ</span> <span class="ow">is</span> <span class="p">[</span><span class="n">E</span><span class="p">]</span> <span class="n">ψ</span> <span class="p">(</span><span class="n">a</span> <span class="n">DEL</span> <span class="n">update</span> <span class="n">modality</span><span class="p">):</span>
+        <span class="n">M_updated</span> <span class="o">:=</span> <span class="n">ApplyEventModel</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">EventModelOf</span><span class="p">(</span><span class="n">E</span><span class="p">))</span>
+        <span class="n">result</span> <span class="o">:=</span> <span class="n">CachedModelCheck</span><span class="p">(</span><span class="n">ψ</span><span class="p">,</span> <span class="n">M_updated</span><span class="p">,</span> <span class="n">cache</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">:=</span> <span class="n">CombineSubresults</span><span class="p">(</span><span class="n">φ</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">cache</span><span class="p">)</span>
+
+    <span class="n">cache</span><span class="p">[(</span><span class="n">M</span><span class="p">,</span> <span class="n">φ</span><span class="p">)]</span> <span class="o">:=</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>By combining symbolic representation, carefully designed relational operations, and aggressive caching, SMCDEL makes it possible to interactively explore complex multi-agent epistemic scenarios—often directly from the web interface—despite the underlying worst-case complexity of DEL model checking.</p>
+</section>
+</section>
+<section id="social-networks-and-del">
+<h2><span class="section-number">6.9. </span>Social Networks and DEL<a class="headerlink" href="#social-networks-and-del" title="Permalink to this heading">#</a></h2>
+<p>We can think of a social network as:</p>
+<ul class="simple">
+<li><p>a set of agents (users, accounts, processes),</p></li>
+<li><p>a set of connections (who can hear whom, who follows whom, who is in the same group chat),</p></li>
+<li><p>a sequence of information events (DMs, posts, story updates, announcements).</p></li>
+</ul>
+<p>From an epistemic perspective, such networks determine <strong>who can receive information, who can distinguish which situations, and how knowledge propagates through communication</strong> (<a class="reference external" href="https://scholar.google.com/scholar?q=A+Logic+for+Knowledge+Flow+in+Social+Networks">Ruan &amp; Thielscher, 2011</a>; <a class="reference external" href="https://scholar.google.com/scholar?q=Facebook+and+the+Epistemic+Logic+of+Friendship">Seligman, Liu, &amp; Girard, 2013</a>).</p>
+<p>Epistemic logic lets us ask:</p>
+<ul class="simple">
+<li><p>after this sequence of events, who knows the information?</p></li>
+<li><p>who only believes it?</p></li>
+<li><p>who knows that others know it?</p></li>
+<li><p>is it common knowledge to the group?</p></li>
+</ul>
+<p>Dynamic Epistemic Logic (DEL) is particularly well-suited for this setting because it treats communication acts—such as public broadcasts and private messages—as model-transforming events, allowing precise reasoning about how information flow reshapes agents’ knowledge states (Baltag, Moss, &amp; Solecki, 1998; <a class="reference external" href="https://scholar.google.com/scholar?q=Public+and+Private+Communication+Are+Different+Renne">Renne, 2008</a>).</p>
+<section id="conceptual-mapping">
+<h3><span class="section-number">6.9.1. </span>Conceptual Mapping<a class="headerlink" href="#conceptual-mapping" title="Permalink to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Social concept</p></th>
+<th class="head"><p>Epistemic logic counterpart</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>user / account</p></td>
+<td><p>agent (e.g. <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p>follow / friend</p></td>
+<td><p>accessibility / visibility / communication link</p></td>
+</tr>
+<tr class="row-even"><td><p>public post</p></td>
+<td><p>public announcement</p></td>
+</tr>
+<tr class="row-odd"><td><p>private message</p></td>
+<td><p>private event (visible to a subset of agents)</p></td>
+</tr>
+<tr class="row-even"><td><p>rumor</p></td>
+<td><p>sequence of (possibly private) announcements</p></td>
+</tr>
+<tr class="row-odd"><td><p>“everyone knows”</p></td>
+<td><p>group knowledge (<code class="docutils literal notranslate"><span class="pre">E_G</span> <span class="pre">φ</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p>“everyone knows that everyone knows”</p></td>
+<td><p>common knowledge (<code class="docutils literal notranslate"><span class="pre">C_G</span> <span class="pre">φ</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Treating <strong>rumors or gossip as sequences of epistemic updates</strong> has been studied explicitly in the DEL literature, where repeated private and public communications are shown to generate complex higher-order knowledge effects (<a class="reference external" href="https://scholar.google.com/scholar?q=Epistemic+Protocols+for+Dynamic+Gossip">van Ditmarsch et al., 2017</a>).</p>
+<p>So: <strong>social-network reasoning is a natural application of dynamic epistemic logic</strong>, especially when the structure of communication channels determines what agents can or cannot infer (<a class="reference external" href="https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction">Baltag et al., 1998</a>).</p>
+</section>
+<section id="example-rumor-spread-in-a-small-network">
+<h3><span class="section-number">6.9.2. </span>Example: Rumor Spread in a Small Network<a class="headerlink" href="#example-rumor-spread-in-a-small-network" title="Permalink to this heading">#</a></h3>
+<p><strong>Agents:</strong> <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>.</p>
+<ul class="simple">
+<li><p>only <code class="docutils literal notranslate"><span class="pre">A</span></code> initially knows proposition <code class="docutils literal notranslate"><span class="pre">1</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code> privately tells <code class="docutils literal notranslate"><span class="pre">1</span></code> to <code class="docutils literal notranslate"><span class="pre">B</span></code>,</p></li>
+<li><p>then <code class="docutils literal notranslate"><span class="pre">B</span></code> publicly says “I learned <code class="docutils literal notranslate"><span class="pre">1</span></code>”,</p></li>
+<li><p>we want to see what <code class="docutils literal notranslate"><span class="pre">C</span></code> can now conclude.</p></li>
+</ul>
+<p>This scenario illustrates a key distinction in epistemic modeling: <strong>private communication updates only the knowledge of involved agents, while public announcements can generate higher-order and even common knowledge</strong>, depending on the assumed communication channel (<a class="reference external" href="https://scholar.google.com/scholar?q=Public+and+Private+Communication+Are+Different+Renne">Renne, 2008</a>).</p>
+</section>
+<section id="private-vs-public-why-it-matters">
+<h3><span class="section-number">6.9.3. </span>Private vs. Public (Why It Matters)<a class="headerlink" href="#private-vs-public-why-it-matters" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A public announcement reduces uncertainty for every agent.</p></li>
+<li><p>A private event reduces uncertainty only for the involved agents.</p></li>
+<li><p>Achieving common knowledge typically requires some form of public or mutually observable communication.</p></li>
+</ul>
+<p>These distinctions are fundamental in DEL and underpin many formal results about secrecy, information leakage, and coordination in multi-agent systems (<a class="reference external" href="https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction">Baltag et al., 1998</a>; Renne, 2008).</p>
+</section>
+<section id="toward-common-knowledge">
+<h3><span class="section-number">6.9.4. </span>Toward Common Knowledge<a class="headerlink" href="#toward-common-knowledge" title="Permalink to this heading">#</a></h3>
+<p>In a group chat with agents <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>, we might model:</p>
+<ul class="simple">
+<li><p>a message is posted publicly: <code class="docutils literal notranslate"><span class="pre">p</span></code>,</p></li>
+<li><p>everyone sees it,</p></li>
+<li><p>everyone knows that everyone sees it.</p></li>
+</ul>
+<p>In epistemic logic we define:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">E_G(φ)</span></code> = everyone in group <code class="docutils literal notranslate"><span class="pre">G</span></code> knows <code class="docutils literal notranslate"><span class="pre">φ</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C_G(φ)</span></code> = <code class="docutils literal notranslate"><span class="pre">φ</span></code> is common knowledge in <code class="docutils literal notranslate"><span class="pre">G</span></code>.</p></li>
+</ul>
+<p>Public announcements are a canonical mechanism for generating common knowledge, and their role in social and informational networks has been extensively studied in DEL (<a class="reference external" href="https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction">Baltag et al., 1998</a>).</p>
+<p>More recent work extends this perspective by allowing <strong>the social network itself to change</strong>, modeling how new links, groups, or communication structures emerge and affect knowledge dynamics (Smets &amp; Velázquez-Quesada, <a class="reference external" href="https://scholar.google.com/scholar?q=How+to+Make+Friends+Smets+Velazquez-Quesada">2017</a>, <a class="reference external" href="https://scholar.google.com/scholar?q=The+Creation+and+Change+of+Social+Networks+Smets">2018</a>). These ideas have also been applied to <strong>diffusion and prediction phenomena in social networks</strong>, where epistemic states evolve alongside social influence (<a class="reference external" href="https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction">Baltag, Christoff, Rendsvig, &amp; Smets, 2019</a>).</p>
+</section>
+</section>
+<section id="applications-in-industry">
+<h2><span class="section-number">6.10. </span>Applications in Industry<a class="headerlink" href="#applications-in-industry" title="Permalink to this heading">#</a></h2>
+<p>Although epistemic logic began as a theoretical exploration of knowledge, it has quietly become a practical tool in some of the most demanding sectors of modern technology. Industry has discovered that many real systems—distributed networks, security protocols, autonomous robots, and even financial infrastructures—are governed as much by what agents <em>know</em> as by what they <em>do</em>. As a result, epistemic reasoning has found its way into the engineering pipelines of organizations that require absolute clarity about information flow, decision foundations, and the consequences of communication.</p>
+<section id="cybersecurity-and-information-flow">
+<h3><span class="section-number">6.10.1. </span><a class="reference external" href="https://eprints.illc.uva.nl/id/eprint/1802/1/MoL-2021-12.text.pdf">Cybersecurity and Information Flow</a><a class="headerlink" href="#cybersecurity-and-information-flow" title="Permalink to this heading">#</a></h3>
+<p>One of the earliest industrial applications emerged in cybersecurity. Here, the central question is deceptively simple: <em>What can an attacker learn from the behavior of a system?</em> Epistemic logic provides language to express this precisely. Whether a program leaks information through its outputs, or a cryptographic protocol reveals more than intended, can be formulated in terms of what an adversary knows before and after observing the system.</p>
+<p>Security analysts now routinely use epistemic-temporal logics to understand information release policies, derive conditions for noninterference, and evaluate side-channel vulnerabilities. In such contexts, DEL offers a way to model how knowledge accumulates over time—an invaluable perspective for industries managing confidential or sensitive data. Instead of asking merely “is this system secure?”, engineers ask “who could know what, and when?”, which is often a far more revealing question.</p>
+</section>
+<section id="distributed-cloud-and-database-systems">
+<h3><span class="section-number">6.10.2. </span><a class="reference external" href="https://arxiv.org/abs/2308.00579">Distributed Cloud and Database Systems</a><a class="headerlink" href="#distributed-cloud-and-database-systems" title="Permalink to this heading">#</a></h3>
+<p>As modern cloud infrastructures grow in scale, distributed systems increasingly rely on reasoning about uncertainty. Large databases often replicate data across many nodes, and correct operation depends on each node having <em>sufficient</em> information to take safe actions. Consensus protocols, commit protocols, and failure detectors are all underpinned by subtle knowledge conditions: a node must know that others know, or know that they do not know, before proceeding.</p>
+<p>Many companies—ranging from cloud providers to financial exchanges—use epistemic arguments to verify the correctness of their distributed algorithms. Epistemic logic clarifies the exact information requirements a process must meet before sending a message, committing a transaction, or assuming that a quorum has been achieved. Engineers apply logical frameworks to reason not just about the behavior of code, but about the mental state of the system’s components, treating them as information-processing agents.</p>
+</section>
+<section id="robotics-and-autonomous-systems">
+<h3><span class="section-number">6.10.3. </span><a class="reference external" href="https://ceur-ws.org/Vol-3204/paper_4.pdf">Robotics and Autonomous Systems</a><a class="headerlink" href="#robotics-and-autonomous-systems" title="Permalink to this heading">#</a></h3>
+<p>In robotics, epistemic logic plays a direct role in safety. Autonomous drones, vehicles, robots, and factory agents operate in complex environments where incorrect assumptions can cause severe failures. When multiple robots coordinate, they must act based on their own observations, their beliefs about the observations of others, and their knowledge about shared or missing information.</p>
+<p>DEL is especially well-suited for modeling such interactions. Consider fleets of drones that must determine when an area is safe, or robot arms that must avoid collision based on inferred knowledge of each other’s actions. Engineers use epistemic models to verify that these systems will take action <em>only when they know enough to do so</em>. The logic does not merely confirm that a protocol makes sense—it exposes the precise boundary between safe and unsafe knowledge states.</p>
+</section>
+<section id="generative-ai-and-cognitive-modeling">
+<h3><span class="section-number">6.10.4. </span><a class="reference external" href="https://link.springer.com/article/10.1007/s43154-022-00090-9">Generative AI and Cognitive Modeling</a><a class="headerlink" href="#generative-ai-and-cognitive-modeling" title="Permalink to this heading">#</a></h3>
+<p>Perhaps the most recent and exciting application occurs in artificial intelligence, particularly with the rise of large language models and multi-agent AI systems. When generative models interact with humans or with each other, reasoning about beliefs, expectations, misunderstandings, and informational changes becomes central to their behavior.</p>
+<p>Dynamic epistemic logic has become a testbed for evaluating an AI system’s ability to perform social reasoning. DEL-based scenarios are now used to challenge LLMs with Theory-of-Mind tasks: who knows what, when do they learn it, and how do announcements reshape their beliefs? Even more compelling is the emergence of <strong>neurosymbolic architectures</strong>, where generative models propose actions or hypotheses and epistemic modules verify whether these proposals are consistent with the knowledge state of an agent.</p>
+<p>Much like robotics, AI systems benefit from epistemic guarantees. If an AI assistant must make recommendations based on partial user information, or if an autonomous negotiation system must infer the intentions of another agent, epistemic logic provides a disciplined way to model the process.</p>
+</section>
+<section id="finance-compliance-and-organizational-behavior">
+<h3><span class="section-number">6.10.5. </span>Finance, Compliance, and Organizational Behavior<a class="headerlink" href="#finance-compliance-and-organizational-behavior" title="Permalink to this heading">#</a></h3>
+<p>In industries defined by strict information regulations—such as finance, auditing, and legal compliance—epistemic logic solves a subtle but critical problem: tracing who knows what, when they knew it, and what they are allowed to infer. Concepts such as insider trading hinge on distinctions in knowledge states. Corporate governance involves modeling chains of disclosure, ensuring that required parties are informed while preventing leaks to unauthorized ones.</p>
+<p>Increasingly, organizations model information flow using epistemic constraints. For example, a trading algorithm may be verified to operate legally only if certain knowledge conditions remain impossible. Boards may analyze decision timelines by reconstructing knowledge propagation during key events. In these settings, epistemic logic becomes not merely a tool for technical verification but also a framework for explaining events in terms that regulators and analysts can understand.</p>
+</section>
+<section id="epistemic-logics-for-cryptographic-protocols-and-zeroknowledge-proofs-jaramillo-2021">
+<h3><span class="section-number">6.10.6. </span><a class="reference external" href="https://eprints.illc.uva.nl/id/eprint/1802/1/MoL-2021-12.text.pdf">“Epistemic Logics for Cryptographic Protocols and Zero‐Knowledge Proofs”</a> (Jaramillo, 2021)<a class="headerlink" href="#epistemic-logics-for-cryptographic-protocols-and-zeroknowledge-proofs-jaramillo-2021" title="Permalink to this heading">#</a></h3>
+<p>The author uses epistemic logic to model multi-agent interactions in cryptographic settings — specifically for modelling zero-knowledge proofs (where a verifier is convinced of a fact but learns nothing more).</p>
+</section>
+<section id="a-process-algebraic-framework-for-multi-agent-dynamic-epistemic-systems-2024-system-level-del-with-agents-and-transitions">
+<h3><span class="section-number">6.10.7. </span><a class="reference external" href="https://arxiv.org/abs/2407.17537"><em>A process algebraic framework for multi-agent dynamic epistemic systems</em></a> (2024) — system-level DEL with agents and transitions.<a class="headerlink" href="#a-process-algebraic-framework-for-multi-agent-dynamic-epistemic-systems-2024-system-level-del-with-agents-and-transitions" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="van-benthem-van-eijck-gattinger-su-symbolic-model-checking-for-dynamic-epistemic-logic">
+<h3><span class="section-number">6.10.8. </span>Van Benthem, van Eijck, Gattinger, Su, <a class="reference external" href="https://staff.fnwi.uva.nl/d.j.n.vaneijck2/papers/16/pdfs/2016-05-23-del-bdd-lori-journal.pdf"><em>Symbolic Model Checking for Dynamic Epistemic Logic</em></a><a class="headerlink" href="#van-benthem-van-eijck-gattinger-su-symbolic-model-checking-for-dynamic-epistemic-logic" title="Permalink to this heading">#</a></h3>
+<p>The classic symbolic SMCDEL reference.</p>
+</section>
+<section id="why-industry-needs-epistemic-logic">
+<h3><span class="section-number">6.10.9. </span>Why Industry Needs Epistemic Logic<a class="headerlink" href="#why-industry-needs-epistemic-logic" title="Permalink to this heading">#</a></h3>
+<p>Across these sectors, a common pattern emerges: modern systems do not operate solely on physical states or raw data. They operate on <em>information</em> and on the <em>beliefs derived from it</em>. Whether a system secures user data, coordinates autonomous robots, manages distributed transactions, or interacts with human beings, the essential question becomes:</p>
+<p><strong>What does each component know, what can it infer, and how does new information change its behavior?</strong></p>
+<p>Epistemic logic provides the machinery to answer these questions rigorously. DEL extends that machinery to the realm of change, modeling communication and observation as first-class citizens in the logic. Tools like SMCDEL make these insights computationally accessible, enabling engineers to test, verify, and explore the dynamics of knowledge in real systems.</p>
+<p>The result is a growing recognition that epistemic logic is not merely an abstract curiosity but a practical necessity—one that helps bridge the gap between theoretical reasoning and industrial-grade system design.</p>
+</section>
+</section>
+<section id="typical-use-cases">
+<h2><span class="section-number">6.11. </span>Typical Use Cases<a class="headerlink" href="#typical-use-cases" title="Permalink to this heading">#</a></h2>
+<p>While applications in industry highlight <em>where</em> epistemic logic matters, typical use cases focus on <em>what people actually do</em> with tools like SMCDEL in practice. In research labs, classrooms, and early-stage design work, SMCDEL serves less as a heavy-duty industrial verifier and more as a conceptual microscope: it lets us build small, precise models of information flow and then experiment with them until the underlying patterns become clear.</p>
+<p>One of the most common use cases is <strong>exploratory modeling of small communication scenarios</strong>. A student or researcher starts with an informal story—perhaps a protocol sketch, a rumor in a social network, or a toy cryptographic exchange—and turns it into a DEL model. By encoding the agents, worlds, and events, they can ask questions such as “after this announcement, who knows what?” or “is there any agent who mistakenly believes <code class="docutils literal notranslate"><span class="pre">p</span></code>?”. SMCDEL becomes a sandbox in which to test intuitions: you propose a scenario, run an update, and let the model either confirm or refute your expectations about knowledge and belief (<a class="reference external" href="https://scholar.google.com/scholar?q=Plaza+Public+Announcement+Logic+1989">Plaza (1989)</a>, <a class="reference external" href="https://scholar.google.com/scholar?q=Baltag+Moss+Solecki+Dynamic+Epistemic+Logic">Baltag, Moss, &amp; Solecki (1998/2004)</a>, <a class="reference external" href="https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logic+Ditmarsch+Hoek+Kooi">van Ditmarsch, van der Hoek, &amp; Kooi (2007)</a>).</p>
+<p>A closely related pattern is <strong>debugging epistemic behavior in protocols and algorithms</strong>. When designing a multi-agent protocol, it is easy to assume that some piece of information “obviously” becomes known after a certain step. SMCDEL provides a way to challenge those assumptions. By encoding the protocol as a sequence of events, one can check whether key epistemic conditions actually hold: does the coordinator ever know that all participants received the message? Does an agent know that its secret has not leaked? When the model shows that a desired knowledge property fails, it often reveals exactly which step in the protocol is epistemically inadequate (<a class="reference external" href="https://scholar.google.com/scholar?q=Halpern+Moses+1990+Knowledge+Common+Knowledge">Halpern &amp; Moses (1990)</a>, <a class="reference external" href="https://www.csse.canterbury.ac.nz/mck/">MCK</a>, <a class="reference external" href="https://arxiv.org/abs/1208.6106">Balliu et al. (2012)</a>).</p>
+<p>In teaching and learning, SMCDEL is often used for <strong>visualizing classic epistemic puzzles</strong>. Problems such as muddy children, Russian cards, or coordinated attack become much more transparent when they are not only described but also executed. Students can watch how successive announcements or observations prune the space of possible worlds and turn ignorance into knowledge. The tool allows them to experiment: change an assumption, add an event, remove a piece of information, and see immediately how the structure of knowledge shifts (<a class="reference external" href="http://people.uleth.ca/~kooi/del/">DEMO</a>,<a class="reference external" href="https://scholar.google.com/scholar?q=Symbolic+Model+Checking+Dynamic+Epistemic+Logic">SMCDEL</a>, <a class="reference external" href="https://scholar.google.com/scholar?q=Ditmarsch+muddy+children+1990+modal+logic">van Ditmarsch (2000)</a>).</p>
+<p>Another frequent use case is <strong>rapid prototyping of “what-if” scenarios</strong> for more complex systems. Before investing in a full-fledged verification effort or a detailed simulator, a designer can build a small epistemic model that captures the essence of a situation: a few agents, a handful of propositions, and a simplified sequence of communication events. Questions like “could an observer ever deduce this secret?” or “can these agents ever achieve common knowledge of success?” can often be answered at this coarse level. If the toy model already exhibits a problematic epistemic pattern—say, an unavoidable leak or a failure of agreement—that insight can guide subsequent design choices (<a class="reference external" href="https://scholar.google.com/scholar?q=Baltag+Moss+Solecki+Dynamic+Epistemic+Logic">Baltag, Moss, &amp; Solecki (1998/2004)</a>, <a class="reference external" href="https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logic+Ditmarsch+Hoek+Kooi">van Ditmarsch, van der Hoek, &amp; Kooi (2007)</a>, <a class="reference external" href="https://scholar.google.com/scholar?q=epistemic+planning+Muise">Muise et al., Epistemic Planning</a>
+).</p>
+<p>Finally, with the emergence of epistemic evaluations for AI systems, SMCDEL is increasingly used as a <strong>test harness for reasoning tasks</strong>. Researchers designing Theory-of-Mind benchmarks can specify DEL models that encode nested beliefs and staged updates, and then translate those into textual scenarios for large language models or other agents. The “ground truth” about who knows what, and when, is computed by SMCDEL; model outputs can then be compared against this logical baseline. In this role, SMCDEL is less about verifying a deployed system and more about generating and validating sophisticated epistemic test cases (<a class="reference external" href="https://scholar.google.com/scholar?q=Sileo+Dynamic+Epistemic+Logic+Theory+of+Mind">Sileo et al. (2023)</a>, <a class="reference external" href="https://scholar.google.com/scholar?q=Wu+Inference+Time+Scaling+Theory+of+Mind+2025">Wu et al. (2025)</a>, <a class="reference external" href="https://scholar.google.com/scholar?q=Fierro+Bridging+Epistemology+Large+Language+Models">Fierro et al. (2024)</a>
+).</p>
+<p>In all of these typical use cases, the models are intentionally small and stylized. The goal is not to mirror the full complexity of a real system, but to isolate the epistemic core of a phenomenon—communication, secrecy, agreement, misinformation—and to understand it well enough that larger-scale designs and analyses can be built on solid conceptual ground.</p>
+</section>
+<section id="epistemic-logic-and-ai">
+<h2><span class="section-number">6.12. </span>Epistemic Logic and AI<a class="headerlink" href="#epistemic-logic-and-ai" title="Permalink to this heading">#</a></h2>
+<section id="targeting-theory-of-mind-in-large-language-models-with-dynamic-epistemic-logic-sileo-et-al-2023">
+<h3><span class="section-number">6.12.1. </span>Targeting Theory of Mind in Large Language Models with Dynamic Epistemic Logic – <a class="reference external" href="https://scholar.google.com/scholar?q=Sileo+Dynamic+Epistemic+Logic+Theory+of+Mind">Sileo et al. (2023)</a><a class="headerlink" href="#targeting-theory-of-mind-in-large-language-models-with-dynamic-epistemic-logic-sileo-et-al-2023" title="Permalink to this heading">#</a></h3>
+<p>Uses dynamic epistemic logic (DEL) to generate controlled Theory-of-Mind tasks and test whether LLMs can reason about who knows what, when, and under which information updates. They explicitly use DEL models to construct scenarios where knowledge and belief are manipulated stepwise, then probe LLM behavior against these formal structures.</p>
+</section>
+<section id="inference-time-scaling-for-theory-of-mind-tasks-wu-et-al-2025">
+<h3><span class="section-number">6.12.2. </span>Inference-Time Scaling for Theory-of-Mind Tasks – <a class="reference external" href="https://scholar.google.com/scholar?q=Wu+Inference+Time+Scaling+Theory+of+Mind+2025">Wu et al. (2025)</a><a class="headerlink" href="#inference-time-scaling-for-theory-of-mind-tasks-wu-et-al-2025" title="Permalink to this heading">#</a></h3>
+<p>Builds on the same idea: ToM is framed in explicitly epistemic-logical terms, and dynamic epistemic logic is used to structure multi-agent belief/knowledge states. LLMs are then evaluated (and improved) on these tasks, showing that epistemic logic can act as a test harness for higher-order social reasoning in generative models.</p>
+</section>
+<section id="bridging-epistemology-and-large-language-models-fierro-et-al-2024">
+<h3><span class="section-number">6.12.3. </span>Bridging Epistemology and Large Language Models – <a class="reference external" href="https://scholar.google.com/scholar?q=Fierro+Bridging+Epistemology+Large+Language+Models">Fierro et al. (2024)</a><a class="headerlink" href="#bridging-epistemology-and-large-language-models-fierro-et-al-2024" title="Permalink to this heading">#</a></h3>
+<p>Analyzes different philosophical definitions of knowledge and connects them to large language models, giving semi-formal epistemic-logic style axioms (e.g., S4/T-like systems) in an appendix. They explicitly discuss how modal operators (like those in epistemic logic) can formalize competing notions of “the model knows that p.”</p>
+</section>
+<section id="an-ai-safety-problem-klassen-al-aamas-2023">
+<h3><span class="section-number">6.12.4. </span>An AI Safety Problem – Klassen &amp; al., AAMAS 2023<a class="headerlink" href="#an-ai-safety-problem-klassen-al-aamas-2023" title="Permalink to this heading">#</a></h3>
+<p>Analyzes safety failures in multi-agent AI systems as arising from misaligned epistemic states rather than faulty policies, showing how agents can act rationally yet unsafely due to incorrect or incomplete knowledge about the world or other agents. The paper argues that explicit epistemic reasoning is necessary for AI safety, framing knowledge alignment as a core design requirement for multi-agent systems.</p>
+</section>
+</section>
+<section id="case-study-the-rescue-drone-coordination-problem">
+<h2><span class="section-number">6.13. </span>Case Study: The “Rescue Drone Coordination” Problem<a class="headerlink" href="#case-study-the-rescue-drone-coordination-problem" title="Permalink to this heading">#</a></h2>
+<section id="scenario-overview">
+<h3><span class="section-number">6.13.1. </span>Scenario Overview<a class="headerlink" href="#scenario-overview" title="Permalink to this heading">#</a></h3>
+<p>Imagine a fleet of <strong>autonomous rescue drones</strong> responding to a natural disaster.<br />
+Each drone (<code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>) monitors a separate zone but must coordinate to deliver medical supplies safely.<br />
+However, communication links are intermittent and not every message is received by every drone.</p>
+<p>Key proposition:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span></code> = “Zone X has been cleared of hazards.”</p></li>
+</ul>
+<p>Initially, only <code class="docutils literal notranslate"><span class="pre">A</span></code> detects that <code class="docutils literal notranslate"><span class="pre">p</span></code> is true.<br />
+Drone <code class="docutils literal notranslate"><span class="pre">A</span></code> sends a <strong>private message</strong> to <code class="docutils literal notranslate"><span class="pre">B</span></code>, but the network drops <code class="docutils literal notranslate"><span class="pre">A</span></code>’s broadcast to <code class="docutils literal notranslate"><span class="pre">C</span></code>.<br />
+Then <code class="docutils literal notranslate"><span class="pre">B</span></code> issues a <strong>public announcement</strong> (“Zone X is safe!”) on the shared channel.</p>
+</section>
+<section id="modeling-in-smcdel">
+<h3><span class="section-number">6.13.2. </span>Modeling in SMCDEL<a class="headerlink" href="#modeling-in-smcdel" title="Permalink to this heading">#</a></h3>
+<p>We can represent:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>-- Rescue Drone Coordination (approximate private-then-public) in SMCDEL
+
+VARS 1,2,3
+
+LAW  Top
+
+-- a = detected safety
+-- b = was privately informed (also sees 1)
+-- c = cannot see 1 initially so its base is 2
+OBS  a: 1
+     b: 1,3
+     c: 2
+
+TRUE?
+  {1,3}
+  a knows that 1
+  &amp; b knows that 1
+  &amp; ~ (c knows that 1)
+
+WHERE?
+  &lt; ! (1) &gt;
+  (a knows that 1)
+  &amp; (b knows that 1)
+  &amp; (c knows that 1)
+
+VALID?
+  [ ! (1) ]
+  (a knows that 1 &amp; b knows that 1 &amp; c knows that 1)
+</pre></div>
+</div>
+<p>This case study tests knowledge propagation in a safety-critical network.
+You can expand upon this experiment by adding false public announcements (miscommunication), modeling message delays or dropped links, or by checking whether “everyone knows that everyone knows p” (common knowledge) ever arises.</p>
+</section>
+<section id="why-it-matters">
+<h3><span class="section-number">6.13.3. </span>Why It Matters<a class="headerlink" href="#why-it-matters" title="Permalink to this heading">#</a></h3>
+<p>Such models help engineers verify communication protocols in distributed robotics or IoT systems:</p>
+<ul class="simple">
+<li><p>Ensuring drones act only when they know an area is safe.</p></li>
+<li><p>Preventing actions based on mistaken or outdated beliefs.</p></li>
+<li><p>Analyzing how local updates become global knowledge—vital in swarm coordination.</p></li>
+</ul>
+</section>
+</section>
+<section id="references">
+<h2><span class="section-number">6.14. </span>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Hintikka (1962). <a class="reference external" href="https://scholar.google.com/scholar?q=Hintikka+Knowledge+and+Belief">Knowledge and Belief</a>, Cornell University Press</p></li>
+<li><p>Kripke (1963). <a class="reference external" href="https://scholar.google.com/scholar?q=Kripke+Semantical+Considerations+on+Modal+Logic+1963">Semantical Considerations on Modal Logic</a>, Acta Philosophica Fennica</p></li>
+<li><p>Halpern and Moses (1990). <a class="reference external" href="https://scholar.google.com/scholar?q=Knowledge+and+Common+Knowledge+in+a+Distributed+Environment">Knowledge and Common Knowledge in a Distributed Environment</a>, Journal of the ACM</p></li>
+<li><p>Plaza (1989). <a class="reference external" href="https://scholar.google.com/scholar?q=Plaza+Logic+of+Public+Announcements">Logic of Public Announcements</a>, Proceedings of TARK</p></li>
+<li><p>Baltag, Moss, and Solecki (1998). <a class="reference external" href="https://scholar.google.com/scholar?q=The+Logic+of+Public+Announcements+Common+Knowledge+and+Private+Suspicions">The Logic of Public Announcements, Common Knowledge, and Private Suspicions</a>, Proceedings of TARK</p></li>
+<li><p>Baltag, Moss, and Solecki (2004). <a class="reference external" href="https://scholar.google.com/scholar?q=The+Logic+of+Epistemic+Actions">The Logic of Epistemic Actions</a>, Synthese</p></li>
+<li><p>van Ditmarsch, van der Hoek, and Kooi (2007). <a class="reference external" href="https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logic+van+Ditmarsch+van+der+Hoek+Kooi">Dynamic Epistemic Logic</a>, Springer</p></li>
+<li><p>van Benthem, van Eijck, Gattinger, and Su (2016). <a class="reference external" href="https://scholar.google.com/scholar?q=Symbolic+Model+Checking+for+Dynamic+Epistemic+Logic">Symbolic Model Checking for Dynamic Epistemic Logic</a>, Journal of Logic, Language and Information</p></li>
+<li><p>Baldoni et al. (1998). <a class="reference external" href="https://scholar.google.com/scholar?q=Model+Checking+Knowledge+and+Time">Model Checking Knowledge and Time</a>, Proceedings of KR ‘98 (Knowledge Representation Conference)</p></li>
+<li><p>Balliu, Dam, and Le Guernic (2012). <a class="reference external" href="https://scholar.google.com/scholar?q=Epistemic+Temporal+Logic+for+Information+Flow+Security">Epistemic Temporal Logic for Information Flow Security</a>, Proceedings of CSF (IEEE Computer Security Foundations Symposium)</p></li>
+<li><p>Jaramillo (2021). <a class="reference external" href="https://scholar.google.com/scholar?q=Epistemic+Logics+for+Cryptographic+Protocols+and+Zero-Knowledge+Proofs">Epistemic Logics for Cryptographic Protocols and Zero-Knowledge Proofs</a>, Master’s Thesis, University of Amsterdam</p></li>
+<li><p>Soldà et al. (2022). <a class="reference external" href="https://scholar.google.com/scholar?q=e-PICO+epistemic+reasoner+collaborative+robots">e-PICO: An Epistemic Reasoner for Collaborative Robots</a>, Proceedings of KR (Principles of Knowledge Representation and Reasoning)</p></li>
+<li><p>Bramblett et al. (2023). <a class="reference external" href="https://scholar.google.com/scholar?q=Epistemic+Planning+for+Heterogeneous+Robotic+Systems">Epistemic Planning for Heterogeneous Robotic Systems</a>, arXiv</p></li>
+<li><p>Gielis et al. (2022). <a class="reference external" href="https://scholar.google.com/scholar?q=Critical+Review+of+Communications+in+Multi-Robot+Systems">A Critical Review of Communications in Multi-Robot Systems</a>, Autonomous Intelligent Systems</p></li>
+<li><p>Sileo et al. (2023). <a class="reference external" href="https://scholar.google.com/scholar?q=Targeting+Theory+of+Mind+Dynamic+Epistemic+Logic">Targeting Theory of Mind in Language Models with Dynamic Epistemic Logic</a>, arXiv</p></li>
+<li><p>Fierro et al. (2024). <a class="reference external" href="https://scholar.google.com/scholar?q=Bridging+Epistemology+and+Large+Language+Models">Bridging Epistemology and Large Language Models</a>, Proceedings of EMNLP 2024</p></li>
+<li><p>Wu et al. (2025). <a class="reference external" href="https://scholar.google.com/scholar?q=Inference-Time+Scaling+for+Theory+of+Mind+LLM">Inference-Time Scaling for Theory of Mind Tasks</a>, arXiv</p></li>
+<li><p>Klassen et al. (2023). <a class="reference external" href="https://scholar.google.com/scholar?q=Misaligned+Epistemic+States+Multi-Agent+Systems">An AI Safety Problem: Misaligned Epistemic States in Multi-Agent Systems</a>, Proceedings of AAMAS</p></li>
+<li><p>Ruan and Thielscher (2011). <a class="reference external" href="https://scholar.google.com/scholar?q=A+Logic+for+Knowledge+Flow+in+Social+Networks">A Logic for Knowledge Flow in Social Networks</a>, Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence (IJCAI)</p></li>
+<li><p>Seligman, Liu, and Girard (2013). <a class="reference external" href="https://scholar.google.com/scholar?q=Facebook+and+the+Epistemic+Logic+of+Friendship">Facebook and the Epistemic Logic of Friendship</a>, Proceedings of TARK</p></li>
+<li><p>Renne (2008). <a class="reference external" href="https://scholar.google.com/scholar?q=Public+and+Private+Communication+Are+Different+Renne">Public and Private Communication Are Different</a>, Synthese</p></li>
+<li><p>van Ditmarsch, van Eijck, Pardo, Ramezanian, and Schwarzentruber (2017). <a class="reference external" href="https://scholar.google.com/scholar?q=Epistemic+Protocols+for+Dynamic+Gossip">Epistemic Protocols for Dynamic Gossip</a>, Journal of Applied Logic</p></li>
+<li><p>Smets and Velázquez-Quesada (2017). <a class="reference external" href="https://scholar.google.com/scholar?q=How+to+Make+Friends+Smets+Velazquez-Quesada">How to Make Friends: A Logical Approach to Social Group Creation</a>, Logic, Rationality and Interaction (LORI 2017)</p></li>
+<li><p>Smets and Velázquez-Quesada (2018). <a class="reference external" href="https://scholar.google.com/scholar?q=The+Creation+and+Change+of+Social+Networks+Smets">The Creation and Change of Social Networks: A Logical Study Based on Group Size</a>, Dynamic Logic and Applications (DALI)</p></li>
+<li><p>Baltag, Christoff, Rendsvig, and Smets (2019). <a class="reference external" href="https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logics+of+Diffusion+and+Prediction">Dynamic Epistemic Logics of Diffusion and Prediction in Social Networks</a>, Studia Logica</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05-temporal-logic-spin.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Temporal Logic with Spin</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="07-hoare-logic-dafny.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Hoare Logic with Dafny</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#idea">6.1. Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-this-chapter-we-will">6.2. In this chapter we will:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#history">6.3. History</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-epistemic-logic">6.4. Basic Epistemic Logic</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">6.4.1. Syntax</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#semantics-possible-worlds">6.4.2. Semantics (Possible Worlds)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-not-knowing-even-when-its-true">6.4.3. Example (Not Knowing Even When It’s True)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-knowledge-s5-style">6.4.4. Properties of Knowledge (S5-style)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#belief">6.4.5. Belief</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-epistemic-logic-del">6.5. Dynamic Epistemic Logic (DEL)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-landscape-of-tools">6.6. The Landscape of Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-checkers">6.6.1. Model Checkers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-theorem-provers">6.6.2. Interactive Theorem Provers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epistemic-planners">6.6.3. Epistemic Planners</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-oriented-epistemic-reasoning-systems">6.6.4. AI-Oriented Epistemic Reasoning Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-smcdel-fits">6.6.5. How SMCDEL Fits</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-smcdel">6.7. Using SMCDEL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">6.7.1. Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-example-use-in-online-tool">6.7.2. Model Example (use in online tool)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-public-announcement">6.7.3. Adding a Public Announcement</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithms">6.8. Algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-evaluation-for-knowledge">6.8.1. Model Evaluation for Knowledge</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-updates-via-event-models">6.8.2. Dynamic Updates via Event Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complexity-and-practical-performance">6.8.3. Complexity and Practical Performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizations-in-smcdel">6.8.4. Optimizations in SMCDEL</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-networks-and-del">6.9. Social Networks and DEL</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptual-mapping">6.9.1. Conceptual Mapping</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rumor-spread-in-a-small-network">6.9.2. Example: Rumor Spread in a Small Network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#private-vs-public-why-it-matters">6.9.3. Private vs. Public (Why It Matters)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toward-common-knowledge">6.9.4. Toward Common Knowledge</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-in-industry">6.10. Applications in Industry</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cybersecurity-and-information-flow">6.10.1. Cybersecurity and Information Flow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributed-cloud-and-database-systems">6.10.2. Distributed Cloud and Database Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robotics-and-autonomous-systems">6.10.3. Robotics and Autonomous Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-ai-and-cognitive-modeling">6.10.4. Generative AI and Cognitive Modeling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finance-compliance-and-organizational-behavior">6.10.5. Finance, Compliance, and Organizational Behavior</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#epistemic-logics-for-cryptographic-protocols-and-zeroknowledge-proofs-jaramillo-2021">6.10.6. “Epistemic Logics for Cryptographic Protocols and Zero‐Knowledge Proofs” (Jaramillo, 2021)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-process-algebraic-framework-for-multi-agent-dynamic-epistemic-systems-2024-system-level-del-with-agents-and-transitions">6.10.7. <em>A process algebraic framework for multi-agent dynamic epistemic systems</em> (2024) — system-level DEL with agents and transitions.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#van-benthem-van-eijck-gattinger-su-symbolic-model-checking-for-dynamic-epistemic-logic">6.10.8. Van Benthem, van Eijck, Gattinger, Su, <em>Symbolic Model Checking for Dynamic Epistemic Logic</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-industry-needs-epistemic-logic">6.10.9. Why Industry Needs Epistemic Logic</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typical-use-cases">6.11. Typical Use Cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#epistemic-logic-and-ai">6.12. Epistemic Logic and AI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#targeting-theory-of-mind-in-large-language-models-with-dynamic-epistemic-logic-sileo-et-al-2023">6.12.1. Targeting Theory of Mind in Large Language Models with Dynamic Epistemic Logic – Sileo et al. (2023)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-time-scaling-for-theory-of-mind-tasks-wu-et-al-2025">6.12.2. Inference-Time Scaling for Theory-of-Mind Tasks – Wu et al. (2025)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bridging-epistemology-and-large-language-models-fierro-et-al-2024">6.12.3. Bridging Epistemology and Large Language Models – Fierro et al. (2024)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-ai-safety-problem-klassen-al-aamas-2023">6.12.4. An AI Safety Problem – Klassen &amp; al., AAMAS 2023</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-the-rescue-drone-coordination-problem">6.13. Case Study: The “Rescue Drone Coordination” Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scenario-overview">6.13.1. Scenario Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-in-smcdel">6.13.2. Modeling in SMCDEL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-it-matters">6.13.3. Why It Matters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">6.14. References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By CPSC 510
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
