@@ -2,7 +2,7 @@
 
 # The Book Project
 
-The first draft of this book project is being developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University. 
+The first draft of this book project has been developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University. 
 
 Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the lectures emphasize more of the theory, this book puts the tools center stage.
 
