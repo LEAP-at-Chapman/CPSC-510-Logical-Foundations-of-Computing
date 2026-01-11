@@ -273,7 +273,7 @@ Style is somewhat informal. Too informal for a book?
 
 There are single subsections such as 1.7.1, 1.13.1
 
--?: The case study is taken from a website instead of developing your own.
+The case study is taken from a website, not an original development.
 
 Section 1.8 is too short.
 

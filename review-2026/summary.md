@@ -4,16 +4,17 @@
 
 This document tracks the overall progress of the review process.
 
-**Last Updated**: 2026-01-08
+**Last Updated**: 2026-01-09
 
 ## Chapter Status
 
 | Chapter | Status | Last Reviewed | Notes |
 |---------|--------|---------------|-------|
-| 00 - The Book | Completed | 2026-01-04 | Fixed typos (devided→divided, eperience→experience, etc.) |
-| 01 - Short Intro to Logic | Completed | 2026-01-04 | Fixed typos (foundtaional→foundational, Completenss→Completeness) |
-| 02 - Propositional Logic | Completed | 2026-01-04 | Fixed typo (there→their) |
-| 03 - Modal Logic | Not Started | - | |
+| 0-0 - Title | Not Started | - | |
+| 0-1 - The Book | Completed | 2026-01-04 | Fixed typos (devided→divided, eperience→experience, etc.) |
+| 0-2 - Short Intro to Logic | Completed | 2026-01-04 | Fixed typos (foundtaional→foundational, Completenss→Completeness) |
+| 0-3 - Propositional Logic | Completed | 2026-01-04 | Fixed typo (there→their) |
+| 0-4 - Modal Logic | Completed | 2026-01-09 | Fixed 11 typos/grammatical errors, reformatted all 5 references (standardized format, Google Scholar links, added venues), removed duplicate references, identified 1 uncited reference |
 | 01 - SAT Solving with MiniSat | In Progress | 2026-01-04 | Initial review with software engineering perspective evaluation |
 | 02 - Logic Programming with Prolog | Not Started | - | |
 | 03 - Constraints with MiniZinc | Not Started | - | |
@@ -54,12 +55,14 @@ This document tracks the overall progress of the review process.
 - Completed review of Appendix - Complexity Classes: Reformatted all 15 references (standardized format, added venues, changed "&" to "and" for two-author references), fixed table references to use "and" instead of "&"
 - Completed review of Appendix - Hoare Logic: Fixed 10 typos/grammatical errors (correcteness→correctness, build→built, aribtrary→arbitrary, caclulate→calculate, throuth→through, explicitely→explicitly, controle→control, fiving→giving, eecutions→executions, removed duplicate "should"), reformatted 2 references (Hoare 1969, Reynolds 1981), fixed incomplete reference (added missing author "Jacopini" to Böhm reference)
 - Completed review of Appendix - Syllogistic Logics: Fixed 5 typos/grammatical errors (Simlarly→Similarly, soundnessn→soundness, satsifies→satisfies, removed extra "a" in "good a idea", can by→can be typeset). Appendix is marked as incomplete ("tbc") which is appropriate.
+- Completed review of Modal Logic (0-4): Fixed 11 typos/grammatical errors (can takes→takes, consdirations→considerations, obserational→observational, an only→and only, In this notes→In these notes, verificiation→verification, 1980ies→1980s, non-determinstic→non-deterministic, where→were (3x), Exle→Example), reformatted all 5 references (standardized format, Google Scholar links, added venues), removed duplicate Kripke references, identified 1 uncited reference (Halpern and Vardi 1991), comprehensive software engineering evaluation
 
 ## Review Statistics
 
 - Total chapters: 14
-- Completed: 8
+- Completed: 9
 - In Progress: 1
-- Not Started: 5
+- Not Started: 4
 - Appendices reviewed: 3
+- Introductory chapters reviewed: 4 (0-1, 0-2, 0-3, 0-4)
 

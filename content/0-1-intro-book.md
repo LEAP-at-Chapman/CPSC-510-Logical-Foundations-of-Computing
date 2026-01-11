@@ -1,13 +1,13 @@
 
 
-# The Book
+# The Book Project
 
-The first draft of this book project is being developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University. 
+The first draft of this book project has been developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University. 
 
 Our approach tries to give equal weight to mathematics and to software engineering. On the one hand, we present the mathematical theory of various logics (propositional logic, predicate logic, modal logic, higher order logic, etc), on the other hand, we learn to use various software tools (MiniSat, Prolog, MiniZinc, Z3, Spin, Lean, etc). While the lectures emphasize more of the theory, this book puts the tools center stage.
 
 (suggested-table-of-contents-for-a-typical-chapter)=
-## Suggested Table of Contents for a Typical Chapter
+## Suggested ToC of a Chapter
 
 Each chapter should by default be divided into the following sections (subject to discussion and revision):
 - **Idea**: Each tool is based on a logic. Typically there is only a small number of big ideas at the origin of each tool.
@@ -27,7 +27,7 @@ Each chapter should by default be divided into the following sections (subject t
 - **Future Work**: I have some general ideas below in the section "Project Ideas for 2026". More specifically, from your own point of view, what work would you like to see from somebody who would want to extend your chapter in the future?
 - **Contributors**: Initial author (the student responsible for the chapter), peer reviewers, and other contributors with their contributions.
 
-## Preliminary Table of Contents of the Book
+## Preliminary ToC 2025
 
 - [A Short Intro to Logic](0-2-intro-logic.md) introduces the fundamental concepts of logic that form the foundation for all subsequent chapters: validity, formal languages, decidability, satisfiability, and the duality between syntax and semantics.
 - [Propositional Logic](0-3-intro-propositional-logic.md) introduces propositional logic with an emphasis on mathematical concepts that are central to understanding applications of logic in computer science: formal language, parsing, syntax, semantics, satisfiability, proof system, soundness, completeness, decidability.
@@ -45,13 +45,18 @@ Each chapter should by default be divided into the following sections (subject t
 - [Higher-Order Logic with Isabelle](08-higher-order-logic-isabelle.md) extends to higher-order logic in Isabelle/HOL, showing how to reason about functions as first-class objects and exploring the foundations of modern theorem proving.
 - [Type Theory with Lean](09-type-theory-lean.md) presents dependent type theory with Lean, demonstrating how types can depend on values and enabling "proofs as programs" through the Curry-Howard correspondence.
 
-## Ideas for 2026
+## Planning for Fall 2026
 
-Turn this book from one on "Logical Foundations of Software Engineering" into a book on **"Formal Methods and AI"**, emphasizing the integration of symbolic and neural approaches.
+### General Ideas
 
-Before starting on this: Upgrade from Jupyter book version 1 to version 2. Organize the references of each chapter using bibtex.
+- Develop this book from one on "Logical Foundations of Software Engineering" to one on **"Formal Methods and AI"**, emphasizing the integration of symbolic and neural approaches.
+- **Jupyter book version 2**: Upgrade from Jupyter book version 1 to . 
+- **Bibtex**: Organize the references of each chapter using bibtex.
+- **AI Assistance for Editing**: The folder [Cursor Rules](../.cursor-rules) contains natural language instructions for an AI agent to help with review and editing. They proved to particularly useful for finding typos in text and formulas, for correcting grammar and for maintaining consistent references, labelling, citations. Next time we run the course, it would be interesting to develop and use AI agents from the beginning.
 
-### Part 1: Review and Refinement (Weeks 1-6)
+### Outline of Schedule
+
+#### Part 1: Review and Refinement (Weeks 1-6)
 **Goal**: Engage new students with existing material while collaboratively improving it.
 
 - **Weeks 1-5: Chapter Review Cycle**
@@ -70,11 +75,11 @@ Before starting on this: Upgrade from Jupyter book version 1 to version 2. Organ
   - Allocate time for implementing top improvements
   - Students vote on which chapters need the most work
 
-### Part 2: Extension and Innovation (Weeks 7-13)
+#### Part 2: Extension and Innovation (Weeks 7-13)
 
 Each student chooses one of two tracks:
 
-#### Track A: New Chapter Development
+##### Track A: New Chapter Development
 Create a new chapter following the {ref}`suggested table of contents <suggested-table-of-contents-for-a-typical-chapter>`, presenting:
 - A logic, formal method, and software tool
 - Integration with AI/formal methods theme where possible
@@ -91,7 +96,7 @@ Create a new chapter following the {ref}`suggested table of contents <suggested-
 - **Formal Methods in AI Safety**: Verification of neural networks, adversarial robustness
 - **Probabilistic Programming**: Logic-based probabilistic reasoning (e.g., ProbLog, Church)
 
-#### Track B: Project-Based Learning
+##### Track B: Project-Based Learning
 Apply formal methods to a concrete engineering problem or build educational tools.
 
 **Project Categories:**
@@ -126,7 +131,7 @@ Apply formal methods to a concrete engineering problem or build educational tool
      - Add missing sections (Algorithms, Typical Use Cases, etc.)
    - Deliverable: Enhanced chapter content + supporting materials
 
-### Part 3: Integration and Publication (Week 14-15)
+#### Part 3: Integration and Publication (Week 14-15)
 - Final review of all contributions
 - Integration of new chapters into book structure
 - Quality assurance pass
