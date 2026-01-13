@@ -5,7 +5,7 @@ Author: *John Mulhern*
 
 ## Idea
 
-Epistemic logic is the study of **knowledge** and **belief** using a formal logical language ([Hintikka, 1962](https://scholar.google.com/scholar?q=Hintikka+Knowledge+and+Belief)). Instead of only asking “is `p` true?”, we can ask::
+Epistemic logic is the study of **knowledge** and **belief** using a formal logical language ([Hintikka, 1962](https://scholar.google.com/scholar?q=Hintikka+Knowledge+and+Belief)). Instead of only asking “is `p` true?”, we can ask:
 
 - “does agent `a` know that `p` is true?” (`K_a p`)
 - “does agent `a` believe that `p` is true?” (`B_a p`)
