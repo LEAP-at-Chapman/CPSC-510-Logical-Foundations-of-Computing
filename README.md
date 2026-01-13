@@ -57,7 +57,8 @@ At the end of the course, we will have written a draft of an introductory [book]
    ```bash
    ghp-import -n -p -f _build/html
    ```
-
+   This way of deploying to Github requires the following settings. In Github->Settings->Actions choose "Disable actions". In Github->Settings->Pages choose "Deploy from a branch" and then "gh-pages" as the branch.
+   
 5. **View the book**: [https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/](https://leap-at-chapman.github.io/CPSC-510-Logical-Foundations-of-Computing/)
 
 **Development**:
