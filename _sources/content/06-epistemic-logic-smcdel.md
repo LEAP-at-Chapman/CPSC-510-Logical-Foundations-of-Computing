@@ -15,6 +15,8 @@ This is useful in computer science because many systems are **multi-agent** or *
 
 Epistemic logic is motivated by a simple but profound observation: in many systems, what matters is not merely what is true but what agents think is true. Whether we examine human communication, negotiation between strategic players, or computation in networked software agents, the ability to reason about an entity’s informational state becomes central. Questions such as “what does the system know about its environment?” or “what can a user infer from a public disclosure?” characterize modern cybersecurity, distributed systems, and artificial intelligence. Thus epistemic logic provides a formal language to articulate and analyze these questions rigorously, giving us a way to represent knowledge differences, detect misinformation, model secrecy, and reason about what becomes knowable as communication unfolds ([van Ditmarsch, van der Hoek, and Kooi, 2007](https://scholar.google.com/scholar?q=Dynamic+Epistemic+Logic+van+Ditmarsch+van+der+Hoek+Kooi)).
 
+Feel free to peek ahead for the {ref}`muddy children puzzle <muddy-children>`.
+
 ## In this chapter we will:
 
 1. dive into the history of epistemic logic,
@@ -378,6 +380,52 @@ What happens:
 - so both `Ka 2` and `Kb 2` should now be `true`
 
 This is the dynamic piece: **before** the update, they did not know; **after** the update, they do.
+
+(muddy-children)=
+## Muddy Children
+
+The muddy children puzzle is sometimes considered the hello world of dyanmic epistemic logic. Fortunately, we can start exploring this interactively with [SMCDEL](https://w4eg.de/malvin/illc/smcdelweb/index.html). In fact, I recommend to start to work through the example pen-and-paper and interactively with SMCDEL at the same time.
+
+For more background, I am referring to 
+
+- Reasoning about knowledge. R Fagin, JY Halpern, Y Moses, M Vardi - 2004 [[pdf]](http://www.cse.buffalo.edu/~rapaport/676/F01/fagin.pdf)
+
+Our starting point is the following quote from that book:
+
+<!-- ![image](https://hackmd.io/_uploads/rJrvlGXTge.png)
+
+![](images/2026-01-13-15-42-48.png) -->
+
+![](images/2026-01-13-15-35-59.png)
+
+---
+
+Summary for 4 children 3 of whom are muddy:
+
+- $4$ children
+- $3$ children are muddy
+- "At least one of you is muddy"
+- "Do you know whether you are muddy?"
+- All children say "No"
+- "Do you know whether you are muddy?"
+- All children say "No"
+- "Do you know whether you are muddy?""
+- All muddy children say "Yes"
+
+How can we understand what is happening?
+
+- Why should the announcement "At least one of you is muddy" have any effect? (All children already know that this is true.)
+- Can announcing a true fact change the knowledge of the agents?
+- Why should the questions "Do you know whether you are muddy?" have any effect? (This question does not seem to carry any information.)
+- Why should repeating the question "Do you know whether you are muddy?" have accumulative effect? 
+
+**Exercise/Activity**: Build a Kripke structure that models the situation before the first announcement. It will have 8 world and relations $R_1,R_2,R_3$ and atomic propositions $p_1,p_2,p_3$. Each world specifies a valuation of the variables $p_i$ such that $p_i=0$ if child $i$ is muddy in that world. Relation $R_i$ relates two worlds if child $i$ cannot distinguish them. Assume that in this example child 1 is not muddy and that children 2 and 3 are muddy. 
+- Draw a picture of the Kripke model.
+- What do the children know about the actual world before the game starts?
+- Which world gets removed after the first announcement ("At least one of you is muddy")?
+- Which worlds get removed after all children answer "No" following the first question ()"Do you know whether you are muddy")?
+- Explain how the game proceeds using the dynamic updates of the model.
+
 
 ## Algorithms
 
