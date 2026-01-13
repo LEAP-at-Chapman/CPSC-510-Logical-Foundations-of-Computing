@@ -2,6 +2,8 @@
 
 (draft, needs verification and more work)
 
+See also [Complexity of reasoning in Description Logics](https://www.cs.man.ac.uk/~ezolin/dl/)
+
 | Class | Definition | Complete Problem | Key Reference | DL Example | Logics in Book |
 |-------|-----------|------------------|---------------|------------|----------------|
 | **AC⁰** | Constant depth circuits | | | DL-Lite query answering | Propositional Logic (basic evaluation) |

@@ -1,0 +1,513 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Description Logic Complexity Navigator: Updates</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+<meta name="description" content="Computational Complexity of Description Logics: Updates" />
+<meta name="author" content="Evgeny Zolin, 2005-2011" />
+<meta name="revisit" content="7" />
+
+<meta name="keywords" content="description logic, modal logic, graded modal logic, graded modalities, SHIQ, SHOQ, SHOIQ" />
+<meta name="keywords" content="decidability, undecidability, complexity, PSpace, ExpTime, NExpTime, tableau algorithm, transitive role, role hierarchy" />
+<meta name="keywords" content="reasoning, concept satisfiability, concept subsumption, knowledge base, TBox consistency, ABox satisfiability, acyclic TBox" />
+<meta name="keywords" content="Semantic Web, Ontology Web Language, Resource Description Framework, OWL, DAML, RDF, RDFS" />
+
+<meta name="keywords" content="Дескрипционная логика, Модальная логика, Вычислительная сложность, Онтология, Семантическая паутина" />
+<meta name="keywords" content="Evgeny Zolin, Евгений Золин, Moscow State University, The University of Manchester" />
+
+<link rel="shortcut icon" type="image/x-icon" href="dl.ico">
+<link rel="stylesheet" type="text/css" href="dl.css"/>
+
+</head>
+<body>
+
+<br>
+<h2>List of updates for the <a href="index.html">Description Logic Complexity Navigator</a></h2>
+
+<table width="99%" border=0 cellspacing=9 cellpadding=3>
+<tbody valign=top align=left>
+
+<!--
+<tr><td><nobr><b>2011, November 15</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+
+</td></tr>
+-->
+
+<tr><td><nobr><b>2013</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify;color:gray">
+Planning to put the reasoning script onto object-oriented rails.
+It will take some time to accomplish, but will give some benefits...
+E.g. to be able to easily add new results,
+to be able to automatically show <i>all</i> results
+that follow from the given ones,
+to be able to add new complexity "measures" (such as
+complexity of query answering, complexity of finite model reasoning, etc),
+and even to
+create other Complexity Navigators (say, for sub-boolean logics like <em>EL</em>,
+or for modal logics, etc). So far, any of these tasks requires a lot of
+manual work and re-programming many things.
+</td></tr>
+
+<tr><td><nobr><b>2013, August 1</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+For all papers in the bibliography, BiBTeX entries are created,
+with the "doi" and "ee" fields whenever possible.
+Note that the "ee" fields ("electronic edition") are clickable!
+Some missing abstracts are also added.
+</td></tr>
+
+<tr><td><nobr><b>2013, June 1</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+For all journal articles, BiBTeX entries are added.
+</td></tr>
+
+<tr><td><nobr><b>2012, December 15</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Corrections are made to the text on
+<a href="elimination_TBox_ABox.pdf">elimination of TBoxes and ABoxes</a>.
+</td></tr>
+
+
+<tr><td><nobr><b>2011, November 5</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Abstracts added. You can open/close a particular abstract by clicking a link
+next to PDF or PS link.
+You can also open/close all abstracts by a single pressing a special button
+at the <a href="index.html#papers">beginning</a> of the list of papers
+(this may be useful for searching papers by keywords in their abstracts).
+</td></tr>
+
+<!--
+<tr><td><nobr><b>2011, November 4</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Terminating Tableaux for Graded Hybrid Logic with Global Modalities and Role Hierarchies<br>
+Mark Kaminski, Sigurd Schneider and Gert Smolka<br>
+http://www.springerlink.com/content/vx78666712533841/
+<p>
+ExpTime Tableaux for Checking Satisfiability of a Knowledge Base in the Description Logic ALC,<br>
+Linh Anh Nguyen and Andrzej Szalas<br>
+http://www.springerlink.com/content/nm4406h822m47785/
+<p>
+EXPTIME Tableaux with Global Caching for Description Logics with Transitive Roles, Inverse Roles and Role Hierarchies 
+Rajeev Gore and Linh Anh Nguyen<br>
+http://www.springerlink.com/content/3410147018x43504/
+<p>
+A General Tableau Method for Deciding Description Logics, Modal Logics and Related First-Order Fragments<br>
+Renate A. Schmidt and Dmitry Tishkovsky<br>
+http://www.springerlink.com/content/a2020123406331w5/
+<p>
+Using Tableau to Decide Expressive Description Logics with Role Negation<br>
+Renate A. Schmidt and Dmitry Tishkovsky<br>
+http://www.springerlink.com/content/t8660444032w906t/
+<p>
+F.Baader, J.Hladik, C.Lutz, and F.Wolter.
+From tableaux to automata for description logics.
+<i>Fundamenta Informaticae</i>,
+57:1-33, 2003.
+http://www.springerlink.com/content/upn87xlvct656aca/
+<p>
+-->
+
+</td></tr>
+
+
+<tr><td><nobr><b>2011, October 31</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+In the (PSpace-complete) Description Logics <em>SIN</em> and <em>SIQ</em>&nbsp;,
+it is assumed that transitive roles are <i>not</i>
+used in number restrictions (although it is only said on p.24 of 
+[<a target=_self href="index.html#HorrocksSattlerTobies1998_Anchor">HorrocksSattlerTobies1998</a>, Definition&nbsp;19]
+and not mentioned in the abstract,
+so I didn't mention it in the Navigator before; now it's fixed).
+
+<p style="margin-top:1mm">
+
+&bull; On the contrary, for the unrestricted
+<em>SIN</em> and <em>SIQ</em>&nbsp;,
+concept satisfiability w.r.t. general TBoxes is undecidable;
+see [<a target=_self href="index.html#KazSatZolin2007_Anchor">KazSatZol2007</a>]
+(note that no role hierarchy was needed to obtain undecidability).
+
+<p style="margin-top:1mm">
+
+&bull; In fact, the unrestricted 
+<em>SIQ</em>&nbsp; is the <i>fusion</i>
+of several copies of the
+graded inverse modal logics:
+<b>GrIK</b> (which is PSpace-complete)
+and
+<b>GrIK4</b> (which is (globally) undecidable).
+
+<p style="margin-top:1mm">
+
+&bull; At the same time, the restricted 
+<em>SIQ</em>&nbsp; is the <i>fusion</i>
+of several copies of the
+inverse modal logics:
+<b>GrIK</b> (which is PSpace-complete)
+and
+<b>IK4</b> (which is PSpace-complete);
+that is why it is PSpace-complete.
+
+<p style="margin-top:1mm">
+
+&bull; Is concept satifiability (without TBoxes)
+for the unrestricted <em>SIQ</em> undecidable too?
+I.e. is the the unrestricted <em>SIQ</em> locally undecidable?
+Yes! (the result will be published soon)
+</td></tr>
+
+<tr><td><nobr><b>2011, October 30</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+In a recent paper I read:
+<cite>
+The description logic <em>S</em> extends <em>ALC</em> with transitive roles,
+and so can be thought of as the union of <b>K<sub>m</sub></b> and <b>K4<sub>m</sub></b>.</cite>
+Nope, this is not fair...
+As everyone knows, <b>K</b>&nbsp;&sub;&nbsp;<b>K4</b>, so their union is just <b>K4</b>.
+
+<p style="margin-top:1mm">
+
+&bull; In fact, <em>S</em> corresponds to the <i>fusion</i>
+of several copies of the (PSpace-complete) modal logics <b>K</b> and <b>K4</b>.
+
+<p style="margin-top:1mm">
+
+&bull; Similarly, unrestricted <em>SQ</em>&nbsp;
+(i.e., where transitive roles are allowed in number restrictions)
+corresponds to the <i>fusion</i>
+of several copies of
+the graded modal logics:
+<b>GrK</b> (which is PSpace-complete)
+and <b>GrK4</b> (which is NExpTime-complete);
+so concept satisfiability in the unrestricted <em>SQ</em> is decidable
+(in fact, NExpTime-complete).
+
+<p style="margin-top:1mm">
+&bull; Furthermore, restricted <em>SQ</em>&nbsp;
+(i.e., where transitive roles are <i>not</i> allowed in number restrictions)
+corresponds to the <i>fusion</i>
+of several copies of the
+PSpace-complete graded modal logic 
+<b>GrK</b>
+and another PSpace-complete modal logic <b>K4</b>;
+therefore, concept satisfiability in this logic is PSpace-complete.
+
+<p style="margin-top:1mm">
+
+&bull; Complexity of <b>GrK</b> and <b>GrK4</b>
+can be found in [Kazakov, Pratt-Hartmann, 2009];
+for the results on fusions of modal / description logics, see
+[Frank Wolter, Fusion of Description Logics, JAIR, 2002].
+</td></tr>
+
+<tr><td><nobr><b>2011, October 25</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Long conference names (and their dates and places) are now hidden, only short names are left to be shown (e.g., IJCAI'91).
+However, you can press a special button at the <a href="index.html#papers">beginning</a> of the list of papers
+and all long names will be shown again.
+This is done with a use of a semantic HTML markup.
+</td></tr>
+
+<tr><td><nobr><b>2011, October 20</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Added some new results:
+First-order two-variable logic with counting is NExpTime-complete
+even with binary encoding of numbers (Ian Pratt-Hartmann, 2005);
+PDL with intersection and converse is not only decidable, but 2ExpTime-complete
+(S.Goeller, M.Lohrey, C.Lutz, 2007).
+<!-- Eliminating the converse -->
+</td></tr>
+
+<tr><td><nobr><b>2011, October 15</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+After years, many of the external links to PDF and PS documents are broken
+(as people move their homepages, and sites change their link structures).
+Henceforth, for your (and my) convenience, documents are now stored locally,
+with meaningful file names.
+</td></tr>
+
+<tr><td><nobr><b>2011, October 10</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Added a link to the 2nd edition of <b>The Description Logic Handbook</b>.
+Reformatted the bibliography, with a sort of semantic html markup.
+Corrected several references (years, pages, even paper titles).
+Updated links to people's homepages.
+</td></tr>
+
+<tr><td><nobr><b>2010, June 10</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+A trivial, but missing, bunch of results is added:
+All role constructors in the logic
+<em>ALC</em>(&cup;,o,<i>id</i>) are eliminable.
+Therefore, for all its sublogics the complexity of all problems
+(concept satisfiablilty and ABox consistency,
+with or without TBox) is the same as for <em>ALC</em>.
+Similarly for <em>ALC</em> extended with inverse roles and/or nominals.
+<!-- We also need to copy the results on FMP and TMP. -->
+</td></tr>
+
+
+<tr><td><nobr><b>2010, June 1</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Some improvements in design:
+constructors are highlighted in blue;
+rows with constructors are highlighted when the mouse is over;
+now you can click <i>anywhere</i> in the row (not only on the checkbox) in order to select the constructor;
+role-value maps and feature agreement constructors (both not realized so far) are hidden to save space
+(there are not much results known for them anyway).
+</td></tr>
+
+<tr><td><nobr><b>2007, July 26</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+In <em>SHIQ</em> family of Description Logics, there is a notorious
+restriction on the syntax: transitive roles and their sub-roles cannot
+be used in number restrictions (otherwise, the logic becomes undecidable).
+Our recent results [<a target=_self href="index.html#KazSatZolin2007_Anchor">KazSatZol2007</a>]
+shows that, in many cases, one <i><b>can</b></i> use transitive roles in number restrictions &#150;
+and still have a decidable logic!
+So the notion of a <i>simple</i> role could be substantially extended.
+
+<tr><td><nobr><b>2007, July 23</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+ABox consistency in the logic <em>ALCI</em> with empty or acyclic TBoxes
+is PSpace-complete, a result obtained in
+[<a target=_self href="index.html#DingHaWiDL2007_Anchor">Ding et al., 2007</a>]
+by reduction of logics with inverses to logics without inverses.
+
+<tr><td><nobr><b>2007, March 15</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">Improved interface:
+whether role complement is atomic or full, and
+whether complex roles are allowed or forbidden in number restrictions
+is now displayed <i>explicitly</i> in the field "You have selected a DL..."
+(only if these options are relevant, of&nbsp;course).
+Otherwise people often forget about these options and come to wrong conclusions.
+
+<tr><td><nobr><b>2007, March 10</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">Finite model property and tree model property
+depend on what kind
+of TBoxes are allowed. Some minor corrections to the Navigator are applied,
+with almost no effect on currently displayed results (just because there are very few
+<i>positive</i> results on FMP or TMP for logics,
+in which TBoxes are <i>not</i> internalized,
+and for which adding TBoxes breaks FMP or TMP).
+
+
+<tr><td><nobr><b>2007, March 01</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">All sublogics of <em>SHOQ</em>
+have the finite model property. The result is not new (see a paper by
+<a target=_self href="index.html#LutzArecHorSat2004_Anchor">C.Lutz, C.Areces, I.Horrocks, and U.Sattler, 2002</a>),
+but was missing in the Complexity Navigator.
+
+
+<tr><td><nobr><b>2006, October 26</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+The result is added: the concept satisfiability problem
+in the logic <em>SI</em> with acyclic TBoxes
+is PSpace-complete.
+
+
+<tr><td><nobr><b>2006, July 05</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Now the picture concerning &mu;-logics is (relatively) complete:
+all logics between <em>&mu;ALC</em> and <em>&mu;ALCQIO</em>
+are ExpTime-complete (even with numbers coded in binary),
+except for logics above <em>&mu;ALCFIO</em> (which are undecidable).
+The remaining open problem about <em>&mu;ALCQO</em>
+has been solved in [<a target=_self href="index.html#BonattiLutzICALP06_Anchor">P.Bonatti, C.Lutz, A.Murano, and M.Y.Vardi, 2006</a>].
+
+<tr><td><nobr><b>2006, June 13</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+All logics between <em>ALCFIO</em> and <em>ALCQIO</em>(&cap;,&cup;,&not;)
+with or without TBoxes are NExpTime-complete (with unary number encoding only)
+for both concept satisfiability and ABox consistency problems.
+If we consider only "safe" boolean combinations of roles,
+then such an extension of any logic between <em>ALC</em> and <em>ALCQI</em> is PSpace-complete
+without TBoxes, and ExpTime-complete with general TBoxes
+(the case of acyclic TBoxes remains open).
+These results were picked up again by Birte Glimm
+from the inexhaustible source &#150;
+<a target=_self href="index.html#TobiesPhD2001_Anchor">Stephan Tobies' PhD Thesis</a>.
+
+<tr><td><nobr><b>2006, June 12</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Concept satisfiability for the logic <em>SIN</em> is shown to be PSpace-complete by
+<a target=_self href="index.html#HorrocksSattlerTobies1998_Anchor">I.Horrocks, U.Sattler, and S.Tobies in&nbsp;1998</a>.
+Moreover, the Finite Model Property for this logic (and all its sublogics)
+follows from their results as well.
+(Thanks to Birte Glimm for pointing this out to me.)
+
+<tr><td><nobr><b>2006, June 11</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+The Complexity Navigator is even more handy now:
+all references to the literature are hyperlinks.
+One click &#150; and you see the reference you need!
+
+
+<tr><td><nobr><b>2006, April 24</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+The results about logics <em>RIQ</em>, <em>sRIQ</em>, and <em>sROIQ</em>
+are added.
+Dependencies concerning <em>R</em> are implemented:
+if <em>R</em> is ticked, then <em>S</em> and <em>H</em>
+are ticked (and hence, TBox is internalized).
+Another checkbox <em>s</em> appeared, for some additional
+features in the logics <em>sRIQ</em> and <em>sROIQ</em>
+(a lower-case letter <em>s</em> is used for them, in order to avoid
+collision with the upper-case <em>S</em>, which traditionally stands for transitivity).
+
+
+<tr><td><nobr><b>2006, March 28</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Knowledge base consistency for any logic between <em>ALC</em> and <em>SHIQ</em>
+w.r.t. general TBoxes
+has the same complexity as concept satisfiability, as S.Tobies has shown in his
+<a target=_self href="index.html#TobiesPhD2001_Anchor">PhD Thesis</a>.
+(Thanks to Birte Glimm for pointing this out to me.)
+
+
+<tr><td><nobr><b>2006, March 17</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+The checkbox for <em>R</em> (complex role inclusions) is added,
+so far inactive. Its dependency with other features,
+its impact on logic name, and complexity results will be added later.
+The button <nobr>"<a target=_blank href="http://owl1_1.cs.manchester.ac.uk/">OWL 1.1</a>"</nobr>
+is added, also inactive. References to the papers concerning the
+state-of-the-art logics <em>RIQ</em>, <em>sRIQ</em>, and <em>sROIQ</em>
+are listed.
+
+<tr><td><nobr><b>2006, March 15</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+In the logic <em>ALCQI</em>,
+finite model reasoning (both concept satisfiability and ABox consistency)
+w.r.t. general TBoxes is ExpTime-complete.
+This improves the ExpExpTime upper bound established in&nbsp;1996. 
+
+<tr><td><nobr><b>2006, March 14</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+The logic <em>&mu;ALCQIO</em> is undecidable. Among its sublogics,
+only the decidability of <em>&mu;ALCQO</em> remains unknown.
+
+<tr><td><nobr><b>2006, March 11</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Buttons "OWL-Lite" and "OWL-DL" are added.
+
+<tr><td><nobr><b>2006, March 1</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+This list of updates was created. Thus the list below this point
+only partially covers the history of updates.
+
+<tr><td><nobr><b>2006, January 2</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+A short <a target=_blank
+href="http://clarkparsia.com/weblog/2006/01/02/two-fine-resources-on-description-logics/">article</a>
+by <a target=_blank href="http://www.unc.edu/~bparsia/">Bijan Parsia</a>,
+where, in particular, the Navigator is mentioned.
+
+<tr><td><nobr><b>2005, September 16</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+The <em>&mu;</em>-operator is added, with its dependencies:
+TBox is internalized in presence of <nobr><em>&mu;</em>-operator</nobr> and
+<nobr>&mu;-logics</nobr> "almost" contain <em>ALC</em><sub>reg</sub>.
+
+<tr><td><nobr><b>2005, September 15</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Many results on DLs with number restrictions (<em>N</em>)
+and role operations are added.
+There is a subtlety in the naming of these logics:
+one can allow/disallow role operators independently
+in number (&ge;<i>n</i> <i>R</i>) and in value (&exist;<i>R</i>,&nbsp;&forall;<i>R</i>) restrictions.
+To resolve the issue, the selector
+<select><option selected>Forbid</option><option>Allow</option></select>
+was introduced to the Navigator. Dependency:
+This selector is active iff
+one of <em>F</em>, <em>N</em>, or <em>Q</em>&nbsp;
+<i>and</i> any role operation (other than role inverse)
+are selected.
+
+<tr><td><nobr><b>2005, September 1</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+The link to the Navigator appeared on the
+<a target=_blank href="http://www.dl.kr.org/">Description Logic</a> web site.
+
+<tr><td><nobr><b>2005, August 30</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+Numerous results on DLs with role negation
+are added. For this, the selector
+"<select><option selected>full</option><option>atomic</option></select>
+role negation" was introduced to the Navigator.
+Dependencies:
+1)&nbsp;If &not; and one of {&cap;,&cup;} is selected,
+then the other one is also selected (by the script).
+2)&nbsp;The full/atomic selector
+is <i>active</i> iff the negation <i>and</i>
+any other role operation (<i>except</i> role inverse) is selected.
+Exception: this selector is <i>not</i> active, if only
+{&not;,&cap;,&cup;} and no other operations are selected.
+3)&nbsp;The <i>atomic</i> negation is turned into <i>full</i> (by the script)
+iff {&not;,&cap;,&cup;} and no other operations are selected.
+
+
+<tr><td><nobr><b>2005, June 25</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+WOW! A link to the DL Complexity Navigator pas appeared in the English
+(<a target=_blank href="http://en.wikipedia.org/wiki/Description_Logic">Description&nbsp;Logic</a>),
+German (<a target=_blank href="http://de.wikipedia.org/wiki/Beschreibungslogik">Beschreibungslogik</a>),
+Spanish (<a target=_blank href="http://es.wikipedia.org/wiki/L%C3%B3gica_de_descripci%C3%B3n">L&oacute;gicas de Descripci&oacute;n</a>)
+and other articles in
+<a target=_blank href="http://wikipedia.org/">Wikipedia</a>.
+
+<tr><td><nobr><b>2005, March 27</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+The announcement about the Navigator was sent in the
+<a target=_blank href="http://www.dl.kr.org/ml.html">DL mailing list</a>.
+
+<tr><td><nobr><b>2005, March 10</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+TBox is internalizable in extensions of the logics: <em>ALCIO</em>,
+<em>SH</em>, <em>ALC</em>(&cup;,*).
+
+<tr><td><nobr><b>2005, March 3</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+The dependency is realized:
+If a TBox is internalizable in a logic, then the script
+must "collect" the results from the cases of empty,
+acyclic, and general TBoxes.
+
+<tr><td><nobr><b>2005, March 2</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+The dependency is realized:
+If a logic contains nominals, then the complexity result
+for ABox consistency must be automatically read off
+from that for concept satisfiability.
+
+<tr><td><nobr><b>2005, March 1</b></nobr></td><td>&nbsp;&#150;&nbsp;</td>
+<td style="text-align:justify">
+The first version was designed, but contained almost no complexity results.
+
+
+</table>
+
+<h2><a style="color:blue" href="javascript:history.back();">Back</a></h2>
+
+
+<div align="center">
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/stat/cs.man.ac.uk/~ezolin/dl/index.html' "+
+"target=_blank><img src='http://counter.yadro.ru/hit?t54.6;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+ "' alt='' title='Hits / Hosts in 24 h' "+
+"border=0 width=88 height=31><\/a>")//--></script>
+<!--/LiveInternet-->
+<a target=_blank href="http://www.amazingcounters.com"><img border="1" style="border-color:gold"
+src="http://c6.amazingcounters.com/counter.php?i=1284999&c=3855310"
+alt="Free Web Counter"></a><br><small><a target=_blank
+href="http://www.1-coupons.com/"><font
+color="#999999">Best Buy Coupon</font></a></small></div>
+
+
+</body></html>

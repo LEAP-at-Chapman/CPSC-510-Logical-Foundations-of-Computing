@@ -1,0 +1,17 @@
+User-agent: Swiftbot
+Disallow: /study/undergraduate/virtual-visit-day/
+Disallow: /study/postgraduate-research/research-projects/groups/
+Disallow: /about/people/academic-and-research-staff-2/
+Disallow: /research/impact-2/
+Disallow: /study/undergraduate/courses/2023/
+Disallow: /study/undergraduate/courses/2024/
+
+User-agent: *
+Disallow: /study/undergraduate/virtual-visit-day/
+Disallow: /study/postgraduate-research/research-projects/groups/
+Disallow: /about/people/academic-and-research-staff-2/
+Disallow: /research/impact-2/
+Disallow: /study/undergraduate/courses/2023/
+Disallow: /study/undergraduate/courses/2024/
+
+Sitemap: https://www.cs.manchester.ac.uk/sitemap-en.xml

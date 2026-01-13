@@ -86,15 +86,18 @@ Create a new chapter following the {ref}`suggested table of contents <suggested-
 
 **Potential Topics:**
 - **First-order theorem proving**: Vampire, Prover9, E, or other automated first-order provers
-- **Knowledge Representation and Description Logics**: Semantic Web, OWL, Description Logic reasoners, [OntoUML](https://ontouml.org/)
+- **Knowledge Representation and Description Logics**: Semantic Web, OWL, Description Logic reasoners, [OntoUML](https://ontouml.org/), [CEL](https://github.com/julianmendez/cel), [Sattler's List of Reasoners](http://owl.cs.manchester.ac.uk/tools/list-of-reasoners/), ...
+- **Souffle**: (Soufflé is short for Systematic, Ontological, Undiscovered Fact Finding Logic Engine). [Soufflé](https://souffle-lang.github.io/) is a logic programming language inspired by Datalog. Soufflé was initially designed for crafting static analysis in logic at Oracle Labs. Since then, there have been many other applications written in the Soufflé language, including applications in reverse engineering, network analysis and data analytics.
 - **Separation Logic**: For reasoning about heap-manipulating programs (e.g., with VeriFast, Infer)
 - **Alloy**: Model finding and lightweight formal methods
 - **TLA+**: Temporal Logic of Actions for system specification
+- [Finkbeiner's group](https://finkbeiner.groups.cispa.de/research/) has a number of [tools](https://finkbeiner.groups.cispa.de/tools/) for the verification of reactive systems.
 - **ACL2**: Automated theorem proving for hardware/software verification
 - **Why3**: Platform for deductive program verification
 - **CBMC**: Bounded model checking for C/C++
-- **Formal Methods in AI Safety**: Verification of neural networks, adversarial robustness
+- **Formal Methods in AI Safety**: Verification of neural networks, adversarial robustness, ...
 - **Probabilistic Programming**: Logic-based probabilistic reasoning (e.g., ProbLog, Church)
+- **Computer Algebra Systems**: [homalg-project](https://homalg-project.github.io/) by Mohamed Berkat, ...
 
 ##### Track B: Project-Based Learning
 Apply formal methods to a concrete engineering problem or build educational tools.

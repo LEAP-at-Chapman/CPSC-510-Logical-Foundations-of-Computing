@@ -1,0 +1,103 @@
+body, table {font-family: Verdana, Arial; font-size: 12pt; }
+body { margin:3pt; }
+h2 { font-size:14pt; }
+h3 { font-size:13pt; margin-top:2pt; margin-bottom:5pt; }
+h3.subtitle { color:darkblue; }
+
+a { color:#0000EE;}
+
+em {
+	font-size:16pt;
+	font-style: italic;
+	font-weight:normal;
+	font-family:"Monotype Corsiva","Comic Sans MS", "Brush Script MT", "Zap Chance", Cursive, Verdana, Arial;
+}
+
+em.med {font-size:15pt;}
+em.small {font-size:14pt;}
+
+ul { margin-bottom:2pt; margin-top:2pt; }
+
+ol.bib li { margin-bottom:11pt; }
+ul.bb  li { margin-bottom:5pt; margin-top:5pt; list-style-type: disc; }
+
+.little { font-size:10pt; }
+
+a.bib { color:blue; }
+
+a:hover { position: relative; left: 1px; top: 1px; }
+
+acronym { border-bottom: 1px dashed blue; color: navy; }
+
+.nobr { white-space:nowrap; }
+
+span.bl { color:blue; }
+
+tr.hl:hover { background:#eeeeee; }
+
+hr.dashes {
+	border-top: 1px dashed #555555;
+	border-bottom: 0;
+	margin-top: 1px;
+	height:0;
+}
+
+.paper_title { font-weight:bold; }
+.thesis { font-style: italic; color:darkblue; }
+.paper_link { white-space: nowrap; }
+.paper_link a { font-variant: small-caps; }
+.paper_location { }
+
+.proc_editors { display:none; }
+.book_editors { }
+
+.book_title { font-weight:bold; font-style:italic; }
+.book_title a { color:navy; text-decoration:none; }
+.book_authors { }
+.book_press {}
+
+.paper_authors a,
+.book_authors a,
+.proc_editors a,
+.book_editors a,
+.paper_location a { color:black; }
+
+.conference, .journal { font-style:italic; }
+.short {  }
+.long { display:none }
+
+.journal, .journal a { color: #30C; }
+
+.conference, .conference a { color: #903; }
+
+.report { color: #060; }
+
+.abstract {
+	border:1px dashed grey;
+   border-radius: 9px;
+	padding: 7px;
+	margin: 5px;
+	width: 95%;
+	color: #111155;
+	font-size:11pt;
+	text-align:justify;
+	display:none;
+}
+
+.abstract p {margin: 0pt; margin-top: 5pt; }
+
+.bibtex {
+   border:1px dashed grey;
+   border-radius: 9px;
+   padding: 7px;
+   margin: 5px;
+   color: #111155;
+   font-size:11pt;
+   font-family:monospace;
+   white-space:pre;
+   text-align:left;
+   width: 850px;
+   display:none;
+}
+
+.bibtex a {color:black;}
