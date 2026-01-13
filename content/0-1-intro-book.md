@@ -1,6 +1,6 @@
 
 
-# The Book Project 2
+# The Book Project
 
 The first draft of this book project has been developed by the class CPSC 510 Logical Foundations of Computing taught in Fall 2025 at Chapman University. 
 
