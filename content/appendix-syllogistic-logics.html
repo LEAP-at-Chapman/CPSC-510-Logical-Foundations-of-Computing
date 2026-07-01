@@ -438,12 +438,7 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(M\models \textsf{All p are q}\)</span> if <span class="math notranslate nohighlight">\([[p]]\subseteq [[q]]\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(M\models\Gamma\)</span> if <span class="math notranslate nohighlight">\(M\models\gamma\)</span> for all <span class="math notranslate nohighlight">\(\gamma\in\Gamma\)</span>.</p></li>
 <li><p><span class="math notranslate nohighlight">\(\Gamma\models\phi\)</span> if every model <span class="math notranslate nohighlight">\(M\)</span> with <span class="math notranslate nohighlight">\(M\models\Gamma\)</span> satisfies <span class="math notranslate nohighlight">\(M\models\phi\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span> if</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\phi\in\Gamma\)</span>  (AXIOM) or</p></li>
-<li><p><span class="math notranslate nohighlight">\(\phi\)</span> follows from the rule (BARBARA)</p></li>
-</ul>
-</li>
+<li><p><span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span> if <span class="math notranslate nohighlight">\(\phi\)</span> can be proved from <span class="math notranslate nohighlight">\(\Gamma\)</span> using the proof system below.</p></li>
 <li><p><strong>Soundness:</strong> <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\Rightarrow\Gamma\models\phi\)</span>.</p></li>
 <li><p><strong>Completeness:</strong> <span class="math notranslate nohighlight">\(\Gamma\models\phi\Rightarrow\Gamma\vdash\phi\)</span>.</p></li>
 </ul>

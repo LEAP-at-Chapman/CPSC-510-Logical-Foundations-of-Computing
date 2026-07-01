@@ -33,9 +33,7 @@ The following definitions are from the documents linked above:
 - $M\models \textsf{All p are q}$ if $[[p]]\subseteq [[q]]$.  
 - $M\models\Gamma$ if $M\models\gamma$ for all $\gamma\in\Gamma$.  
 - $\Gamma\models\phi$ if every model $M$ with $M\models\Gamma$ satisfies $M\models\phi$.  
-- $\Gamma\vdash\phi$ if
-  - $\phi\in\Gamma$  (AXIOM) or  
-  - $\phi$ follows from the rule (BARBARA)  
+- $\Gamma\vdash\phi$ if $\phi$ can be proved from $\Gamma$ using the proof system below.  
 - **Soundness:** $\Gamma\vdash\phi\Rightarrow\Gamma\models\phi$. 
 - **Completeness:** $\Gamma\models\phi\Rightarrow\Gamma\vdash\phi$. 
   
