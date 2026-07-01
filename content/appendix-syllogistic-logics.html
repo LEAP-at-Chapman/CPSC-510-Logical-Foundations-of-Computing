@@ -435,11 +435,17 @@ document.write(`
 <li><p>AtProp is a set of elements called atomic propositions <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(q\)</span>, etc.</p></li>
 <li><p>Formulas are <span class="math notranslate nohighlight">\(\textsf{All p are q}\)</span> with <span class="math notranslate nohighlight">\(p,q\in\text{AtProp}\)</span>; we write <span class="math notranslate nohighlight">\(\phi\)</span> for such a formula.</p></li>
 <li><p>A model <span class="math notranslate nohighlight">\(M\)</span> consists of a set <span class="math notranslate nohighlight">\(A\)</span> together with a subset <span class="math notranslate nohighlight">\([[p]]\subseteq A\)</span> for each atomic proposition <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(M\models \textsf{All p are q}\)</span> if <span class="math notranslate nohighlight">\([[p]]\subseteq [[q]]\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(M\models\Gamma\)</span> if <span class="math notranslate nohighlight">\(M\models\gamma\)</span> for all <span class="math notranslate nohighlight">\(\gamma\in\Gamma\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\Gamma\models\phi\)</span> if every model <span class="math notranslate nohighlight">\(M\)</span> with <span class="math notranslate nohighlight">\(M\models\Gamma\)</span> satisfies <span class="math notranslate nohighlight">\(M\models\phi\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span> by <strong>assumption</strong> (<span class="math notranslate nohighlight">\(\textsf{All p are q}\in\Gamma\)</span>), <strong>AXIOM</strong> (<span class="math notranslate nohighlight">\(\Gamma\vdash\textsf{All p are p}\)</span>), and <strong>BARBARA</strong> (from <span class="math notranslate nohighlight">\(\Gamma\vdash\textsf{All p are q}\)</span> and <span class="math notranslate nohighlight">\(\Gamma\vdash\textsf{All q are r}\)</span> infer <span class="math notranslate nohighlight">\(\Gamma\vdash\textsf{All p are r}\)</span>)</p></li>
-<li><p><strong>Soundness:</strong> <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\Rightarrow\Gamma\models\phi\)</span>. <strong>Completeness:</strong> <span class="math notranslate nohighlight">\(\Gamma\models\phi\Rightarrow\Gamma\vdash\phi\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(M\models \textsf{All p are q}\)</span> if <span class="math notranslate nohighlight">\([[p]]\subseteq [[q]]\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(M\models\Gamma\)</span> if <span class="math notranslate nohighlight">\(M\models\gamma\)</span> for all <span class="math notranslate nohighlight">\(\gamma\in\Gamma\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Gamma\models\phi\)</span> if every model <span class="math notranslate nohighlight">\(M\)</span> with <span class="math notranslate nohighlight">\(M\models\Gamma\)</span> satisfies <span class="math notranslate nohighlight">\(M\models\phi\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span> if</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\phi\in\Gamma\)</span>  (AXIOM) or</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi\)</span> follows from the rule (BARBARA)</p></li>
+</ul>
+</li>
+<li><p><strong>Soundness:</strong> <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\Rightarrow\Gamma\models\phi\)</span>.</p></li>
+<li><p><strong>Completeness:</strong> <span class="math notranslate nohighlight">\(\Gamma\models\phi\Rightarrow\Gamma\vdash\phi\)</span>.</p></li>
 </ul>
 </section>
 <section id="the-completeness-theorem">
