@@ -27,7 +27,7 @@ Fortunately, this question has been asked and answered convincingly by Larry Mos
 
 The following definitions are from the documents linked above:
 
-- AtProp is a set of elements called atomic propositions $p$, $q$, etc.  
+- AtProp is a set of elements called atomic propositions, written as $p$, $q$, etc.  
 - Formulas are $\textsf{All p are q}$ with $p,q\in\text{AtProp}$; we write $\phi$ for such a formula.  
 - A model $M$ consists of a set $A$ together with a subset $[[p]]\subseteq A$ for each atomic proposition $p$.  
 - $M\models \textsf{All p are q}$ if $[[p]]\subseteq [[q]]$.  
