@@ -389,6 +389,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up">Setting Up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-completeness-theorem">The Completeness Theorem</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-idea-of-the-proof">The Idea of the Proof</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-details-of-the-proof">The Details of the Proof</a></li>
@@ -427,15 +428,29 @@ document.write(`
 <li><p>See also this <a class="reference download internal" download="" href="../_downloads/9d62fb0944ce03331b0e779537f8690d/Isabelle-Tutorial-2014.pdf"><span class="xref download myst">Isabelle Tutorial</span></a>.</p></li>
 </ul>
 </section>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this heading">#</a></h2>
+<p>The following definitions are from the documents linked above:</p>
+<ul class="simple">
+<li><p>AtProp is a set of elements called atomic propositions <span class="math notranslate nohighlight">\(p\)</span>, <span class="math notranslate nohighlight">\(q\)</span>, etc.</p></li>
+<li><p>Formulas are <span class="math notranslate nohighlight">\(\textsf{All p are q}\)</span> with <span class="math notranslate nohighlight">\(p,q\in\text{AtProp}\)</span>; we write <span class="math notranslate nohighlight">\(\phi\)</span> for such a formula.</p></li>
+<li><p>A model <span class="math notranslate nohighlight">\(M\)</span> consists of a set <span class="math notranslate nohighlight">\(A\)</span> together with a subset <span class="math notranslate nohighlight">\([[p]]\subseteq A\)</span> for each atomic proposition <span class="math notranslate nohighlight">\(p\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(M\models \textsf{All p are q}\)</span> if <span class="math notranslate nohighlight">\([[p]]\subseteq [[q]]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M\models\Gamma\)</span> if <span class="math notranslate nohighlight">\(M\models\gamma\)</span> for all <span class="math notranslate nohighlight">\(\gamma\in\Gamma\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Gamma\models\phi\)</span> if every model <span class="math notranslate nohighlight">\(M\)</span> with <span class="math notranslate nohighlight">\(M\models\Gamma\)</span> satisfies <span class="math notranslate nohighlight">\(M\models\phi\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span> by <strong>assumption</strong> (<span class="math notranslate nohighlight">\(\textsf{All p are q}\in\Gamma\)</span>), <strong>AXIOM</strong> (<span class="math notranslate nohighlight">\(\Gamma\vdash\textsf{All p are p}\)</span>), and <strong>BARBARA</strong> (from <span class="math notranslate nohighlight">\(\Gamma\vdash\textsf{All p are q}\)</span> and <span class="math notranslate nohighlight">\(\Gamma\vdash\textsf{All q are r}\)</span> infer <span class="math notranslate nohighlight">\(\Gamma\vdash\textsf{All p are r}\)</span>)</p></li>
+<li><p><strong>Soundness:</strong> <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\Rightarrow\Gamma\models\phi\)</span>. <strong>Completeness:</strong> <span class="math notranslate nohighlight">\(\Gamma\models\phi\Rightarrow\Gamma\vdash\phi\)</span>.</p></li>
+</ul>
+</section>
 <section id="the-completeness-theorem">
 <h2>The Completeness Theorem<a class="headerlink" href="#the-completeness-theorem" title="Permalink to this heading">#</a></h2>
-<p>In this tutorial we will be reading Section 2.1-2.4 of the book while at the same time formally proving its theorems in Isabelle. The logic we will consider has only two rules</p>
+<p>In this tutorial we will be reading Section 2.1-2.4 of the book while at the same time formally proving its theorems in Isabelle. The proof rules are as above; Moss also pictures them as</p>
 <p><img alt="" src="../_images/2025-10-30-15-43-25.png" /></p>
-<p>and the main theorem we are going to prove, the completeness theorem, is</p>
+<p>The main theorem we prove is completeness, <span class="math notranslate nohighlight">\(\Gamma\models\phi\Rightarrow\Gamma\vdash\phi\)</span>, also stated as</p>
 <p><img alt="" src="../_images/2025-10-30-15-45-52.png" /></p>
 <section id="the-idea-of-the-proof">
 <h3>The Idea of the Proof<a class="headerlink" href="#the-idea-of-the-proof" title="Permalink to this heading">#</a></h3>
-<p>The strategy of the proof will be the following. Given <span class="math notranslate nohighlight">\(\Gamma\)</span>, we build a so-called canonical model <span class="math notranslate nohighlight">\(M_\Gamma\)</span> from <span class="math notranslate nohighlight">\(\Gamma\)</span> which, by construction, will have the properties that <a class="footnote-reference brackets" href="#phi" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>The strategy of the proof will be the following. Given <span class="math notranslate nohighlight">\(\Gamma\)</span>, we build a so-called canonical model <span class="math notranslate nohighlight">\(M_\Gamma\)</span> from <span class="math notranslate nohighlight">\(\Gamma\)</span> which, by construction, will have the properties that <a class="footnote-reference brackets" href="#canonical" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(M_\Gamma\models \Gamma\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(M_\Gamma\models \phi \Rightarrow \Gamma\vdash\phi\)</span></p></li>
@@ -528,9 +543,9 @@ Have:  <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span></p
 <p><strong>Exercise/Activity:</strong> Prove the lemma using sledgehammer.</p>
 <p>… tbc …</p>
 <hr class="footnotes docutils" />
-<aside class="footnote brackets" id="phi" role="note">
+<aside class="footnote brackets" id="canonical" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>We write <span class="math notranslate nohighlight">\(\phi\)</span> instead of “All p are q” not only as an abbreviation but also to indicate that this proof strategy applies to a wide range of other logics.</p>
+<p>This proof strategy applies to a wide range of other logics, not only syllogistic logic.</p>
 </aside>
 <aside class="footnote brackets" id="lemma-allpareq-solution" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
@@ -614,6 +629,7 @@ Have:  <span class="math notranslate nohighlight">\(\Gamma\vdash\phi\)</span></p
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up">Setting Up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-completeness-theorem">The Completeness Theorem</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-idea-of-the-proof">The Idea of the Proof</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-details-of-the-proof">The Details of the Proof</a></li>

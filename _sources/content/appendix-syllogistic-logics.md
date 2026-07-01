@@ -22,24 +22,37 @@ Fortunately, this question has been asked and answered convincingly by Larry Mos
 - Open [AllPAreQ_noProofs.thy](../src/isabelle/AllPAreQ_noProofs.thy) from the Isabelle IDE.
 - Open Moss's book [Logic From Language](../src/isabelle/Logic-From-Language-2014.pdf) and read the introduction.
 - See also this [Isabelle Tutorial](../src/isabelle/Isabelle-Tutorial-2014.pdf).
+
+## Definitions
+
+The following definitions are from the documents linked above:
+
+- AtProp is a set of elements called atomic propositions $p$, $q$, etc.
+- Formulas are $\textsf{All p are q}$ with $p,q\in\text{AtProp}$; we write $\phi$ for such a formula.
+- A model $M$ consists of a set $A$ together with a subset $[[p]]\subseteq A$ for each atomic proposition $p$. 
+- $M\models \textsf{All p are q}$ if $[[p]]\subseteq [[q]]$
+- $M\models\Gamma$ if $M\models\gamma$ for all $\gamma\in\Gamma$
+- $\Gamma\models\phi$ if every model $M$ with $M\models\Gamma$ satisfies $M\models\phi$
+- $\Gamma\vdash\phi$ by **assumption** ($\textsf{All p are q}\in\Gamma$), **AXIOM** ($\Gamma\vdash\textsf{All p are p}$), and **BARBARA** (from $\Gamma\vdash\textsf{All p are q}$ and $\Gamma\vdash\textsf{All q are r}$ infer $\Gamma\vdash\textsf{All p are r}$)
+- **Soundness:** $\Gamma\vdash\phi\Rightarrow\Gamma\models\phi$. **Completeness:** $\Gamma\models\phi\Rightarrow\Gamma\vdash\phi$.
   
 ## The Completeness Theorem
 
-In this tutorial we will be reading Section 2.1-2.4 of the book while at the same time formally proving its theorems in Isabelle. The logic we will consider has only two rules
+In this tutorial we will be reading Section 2.1-2.4 of the book while at the same time formally proving its theorems in Isabelle. The proof rules are as above; Moss also pictures them as
 
 ![](images/2025-10-30-15-43-25.png)
 
-and the main theorem we are going to prove, the completeness theorem, is
+The main theorem we prove is completeness, $\Gamma\models\phi\Rightarrow\Gamma\vdash\phi$, also stated as
 
 ![](images/2025-10-30-15-45-52.png)
 
 ### The Idea of the Proof
 
-The strategy of the proof will be the following. Given $\Gamma$, we build a so-called canonical model $M_\Gamma$ from $\Gamma$ which, by construction, will have the properties that [^phi]
+The strategy of the proof will be the following. Given $\Gamma$, we build a so-called canonical model $M_\Gamma$ from $\Gamma$ which, by construction, will have the properties that [^canonical]
 - $M_\Gamma\models \Gamma$
 - $M_\Gamma\models \phi \Rightarrow \Gamma\vdash\phi$
   
-[^phi]: We write $\phi$ instead of "All p are q" not only as an abbreviation but also to indicate that this proof strategy applies to a wide range of other logics.
+[^canonical]: This proof strategy applies to a wide range of other logics, not only syllogistic logic.
 
 Then the claim of theorem follows:
 
